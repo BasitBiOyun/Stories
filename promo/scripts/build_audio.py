@@ -2,7 +2,7 @@
 """Build the promo soundtrack: an original procedural score + subtle sound design.
 
 Music and sound design are synthesized here (no third-party samples). The only voice is two short
-excerpts of the app's own chapter-1 narration (promo/assets/audio/narration_*.wav). The score is written on a 90 BPM grid and its
+excerpts of the app's own chapter-1 narration (EN male, AR female) (promo/assets/audio/narration_*.wav). The score is written on a 90 BPM grid and its
 sections follow the film (promo/timeline.json); sound-design cues mirror the motion
 cues in film.js.
 
@@ -205,40 +205,31 @@ def cymbal(rev=False, dur=2.5):
 
 
 # ------------------------------------------------------------------ score
-# Sections (beats @ 90 BPM, film time in brackets) — they follow timeline.json:
-#   opener 0–21 [0–14]  hook 21–28 [14–18.7]  A 28–59 [18.7–39.3]  B 59–76 [39.3–50.7]
-#   C 76–103 [50.7–68.7]  D 103–114 [68.7–76]  E 114–125 [76–83.3]  F 125– [83.3–]
-OPEN, HOOK, A0, B0, C0, D0, E0, F0 = 0, 28, 35, 66, 90, 117, 128, 139
+# Sections (beats @ 90 BPM, film time in brackets) — v9, they follow timeline.json:
+#   opener 0–20 [0–13.3]  hook 20–27 [13.3–18]  A 27–62 [18–41.3] story page, Word Notes, EN ⇄ AR
+#   B 62–81 [41.3–54] chapter loop   C 81–100 [54–66.7] end of book (peak)   D 100–110 [66.7–73.3] levels (breath)
+#   G 110–146 [73.3–97.3] new features (three paths, on my own, teacher tools, result code)
+#   E 146–166 [97.3–110.7] guides, places & maps, Ibn Jubayr (rise)   F 166– [110.7–] finale
+OPEN, HOOK, A0, B0, C0, D0, G0, E0, F0 = 0, 20, 27, 62, 81, 100, 110, 146, 166
+DM9, BB7, FADD9, CADD9, GM9, A7S = [50, 53, 57, 60, 64], [50, 53, 57, 58, 62], [48, 53, 57, 60, 64], [48, 52, 55, 60, 62], [50, 53, 55, 58, 62], [49, 52, 57, 61, 64]
 # (start_beat, end_beat, bass_root, chord tones)
 CH = [
-    (0, 13, 38, [50, 57, 62, 66]),  # D (Hicaz colour: F#) over a D–A drone
-    (13, 21, 31, [50, 55, 58, 62]),  # Gm / D pedal
-    (21, 28, 38, [50, 57, 62, 66]),  # D
-    (28, 35, 38, [50, 57, 62, 69]),  # hook: D + A drone
-    (35, 43, 38, [50, 53, 57, 60, 64]),  # Dm9
-    (43, 51, 34, [50, 53, 57, 58, 62]),  # Bbmaj7
-    (51, 55, 29, [48, 53, 57, 60, 64]),  # F(add9)
-    (55, 59, 36, [48, 52, 55, 60, 62]),  # C(add9)
-    (59, 63, 31, [50, 53, 55, 58, 62]),  # Gm9
-    (63, 66, 33, [49, 52, 57, 61, 64]),  # A7sus -> A
-    (66, 70, 38, [50, 53, 57, 60, 64]),  # Dm9
-    (70, 74, 34, [50, 53, 57, 58, 62]),  # Bbmaj7
-    (74, 78, 29, [48, 53, 57, 60, 64]),  # F(add9)
-    (78, 83, 36, [48, 52, 55, 60, 62]),  # C(add9)
-    (83, 87, 38, [50, 53, 57, 60, 64]),  # Dm9 (chapter loop, extended)
-    (87, 90, 34, [50, 53, 57, 58, 62]),  # Bbmaj7
-    (90, 94, 38, [50, 53, 57, 60, 64]),  # Dm9
-    (94, 98, 34, [50, 53, 57, 58, 62]),  # Bbmaj7
-    (98, 102, 29, [48, 53, 57, 60, 64]),  # F(add9)
-    (102, 106, 36, [48, 52, 55, 60, 62]),  # C(add9)
-    (106, 110, 38, [50, 53, 57, 60, 64]),  # Dm9
-    (110, 114, 34, [50, 53, 57, 58, 62]),  # Bbmaj7
-    (114, 117, 36, [48, 52, 55, 60, 64]),  # C
-    (117, 122, 33, [48, 53, 57, 60, 64]),  # F/A (breakdown)
-    (122, 128, 34, [50, 53, 57, 58, 62, 65]),  # Bbmaj7
-    (128, 133, 31, [50, 53, 55, 58, 62]),  # Gm9
-    (133, 139, 33, [52, 57, 61, 64, 67]),  # A7sus -> A (pull)
-    (139, 154, 38, [50, 54, 57, 62, 64, 66, 69]),  # D(add9) — resolution
+    (0, 10, 38, [50, 57, 62, 66]),  # D (Hicaz colour: F#) over a D–A drone
+    (10, 17, 31, [50, 55, 58, 62]),  # Gm / D pedal
+    (17, 20, 38, [50, 57, 62, 66]),  # D
+    (20, 27, 38, [50, 57, 62, 69]),  # hook: D + A drone
+    (27, 31, 38, DM9), (31, 35, 34, BB7), (35, 39, 29, FADD9), (39, 43, 36, CADD9),
+    (43, 47, 31, GM9), (47, 51, 33, A7S), (51, 55, 38, DM9), (55, 59, 34, BB7), (59, 62, 36, [48, 52, 55, 60, 64]),
+    (62, 66, 38, DM9), (66, 70, 34, BB7), (70, 74, 29, FADD9), (74, 78, 36, CADD9), (78, 81, 33, A7S),   # chapter loop
+    (81, 85, 38, DM9), (85, 89, 34, BB7), (89, 93, 29, FADD9), (93, 97, 36, CADD9), (97, 100, 36, [48, 52, 55, 60, 64]),
+    (100, 105, 33, [48, 53, 57, 60, 64]),  # F/A (breakdown: levels)
+    (105, 110, 34, [50, 53, 57, 58, 62, 65]),  # Bbmaj7
+    (110, 114, 38, DM9), (114, 118, 34, BB7), (118, 122, 29, FADD9), (122, 126, 36, CADD9),   # new features
+    (126, 130, 38, DM9), (130, 134, 34, BB7), (134, 138, 29, FADD9), (138, 142, 36, CADD9), (142, 146, 31, GM9),
+    (146, 154, 34, [50, 53, 57, 58, 62, 65]),  # Bbmaj7 (guides)
+    (154, 160, 31, GM9),  # Gm9 (places)
+    (160, 166, 33, [52, 57, 61, 64, 67]),  # A7sus -> A (pull)
+    (166, 181, 38, [50, 54, 57, 62, 64, 66, 69]),  # D(add9) — resolution
 ]
 
 
@@ -281,50 +272,53 @@ def build_music() -> dict[str, np.ndarray]:
         dur = b2t(b - a) + 1.8
         for m in tones:
             place(st["pad"], pad(m - 12 if m > 60 else m, dur, 0.26 if a < A0 else 0.36), b2t(a) - 0.2, 0.05 if a >= HOOK else 0.045)
-        if a >= B0 or (OPEN + 10 <= a < A0):
-            lvl = 0.03 if a < HOOK else 0.04 if a < A0 else 0.035 if a < C0 else 0.05 if a < D0 else 0.03 if a < E0 else 0.05
+        if a >= B0 or (OPEN + 8 <= a < A0):
+            lvl = 0.03 if a < HOOK else 0.04 if a < A0 else 0.035 if a < C0 else 0.05 if a < D0 else 0.03 if a < G0 else 0.04 if a < E0 else 0.05
             for j, m in enumerate(tones[-3:]):
                 place(st["str"], stereo(strings(m, dur, 0.45), (j - 1) * 0.4), b2t(a) - 0.1, lvl)
     # --- opener colour: ney phrases in D Hicaz, oud answers, frame drum
     HIC = {'D': 62, 'Eb': 63, 'F#': 66, 'G': 67, 'A': 69, 'Bb': 70, 'C': 72, 'D5': 74}
+    # v9: the opener is five stops (20 beats); the v8 phrase is played at 3/4 of its old length
+    OPS = 0.75
     phrase = [(2.00, 'A', 2.5), (5.33, 'Bb', 1.0), (6.67, 'A', 1.0), (8.00, 'G', 1.0), (9.33, 'F#', 2.5),
               (13.33, 'G', 1.5), (15.33, 'A', 1.0), (16.67, 'Bb', 1.0), (18.00, 'C', 1.5), (20.00, 'Bb', 1.0), (21.33, 'A', 3.5)]
     for bt, nm, ln in phrase:
-        place(st["eth"], stereo(ney(HIC[nm], b2t(ln) + 0.4), -0.15), b2t(bt), 0.07)
+        place(st["eth"], stereo(ney(HIC[nm], b2t(ln * OPS) + 0.4), -0.15), b2t(bt * OPS), 0.07)
     for bt, nm in [(4.00, 'D'), (4.67, 'Eb'), (5.33, 'F#'), (10.67, 'G'), (11.33, 'F#'), (12.00, 'Eb'), (12.67, 'D'), (17.33, 'D5'), (18.00, 'C'), (18.67, 'Bb'), (22.67, 'A'), (23.33, 'G'), (24.00, 'F#'), (25.33, 'Eb'), (26.00, 'D')]:
-        place(st["eth"], stereo(oud(HIC[nm] - 12), 0.25), b2t(bt), 0.05)
-    for bt in np.arange(6, 34, 1.0):
+        place(st["eth"], stereo(oud(HIC[nm] - 12), 0.25), b2t(round(bt * OPS * 2) / 2), 0.05)
+    for bt in np.arange(5, A0, 1.0):
         place(st["eth"], stereo(frame_drum(True), -0.1), b2t(bt), 0.12 if (bt - 6) % 2 == 0 else 0.07)
         place(st["eth"], stereo(frame_drum(False), 0.2), b2t(bt + 0.5), 0.05)
     # --- piano motif in A and C, melody in the breakdown and the finale
     offs = [0, 1, 1.5, 2, 3]
-    for bar_beat in list(range(39, 66, 4)) + list(range(90, 117, 4)):
+    for bar_beat in list(range(31, B0, 4)) + list(range(C0, D0 - 3, 4)) + list(range(G0 + 16, E0, 4)):
         a, b, root, tones = chord_at(bar_beat)
         up = sorted({t + 12 for t in tones if t >= 50})
         seq = [up[0], up[2 % len(up)], up[3 % len(up)], up[-1], up[2 % len(up)]]
         for off, m in zip(offs, seq):
             place(st["pno"], stereo(piano(m, 2.2, 0.55 if bar_beat < C0 else 0.7), 0.15), b2t(bar_beat + off), 0.11)
     for k, (bt, m) in enumerate([(117, 69), (118.5, 72), (119, 74), (120, 72), (121, 70), (122.5, 69), (123, 67), (124, 65), (125, 64), (126.5, 65)]):
+        bt = bt - 117 + D0
         place(st["pno"], stereo(piano(m, 3.0, 0.65), -0.1), b2t(bt), 0.1)
         if k % 2 == 0:
             place(st["pno"], stereo(piano(m - 24, 3.0, 0.5), 0.1), b2t(bt), 0.05)
     for bt, m in [(139, 66), (139, 74), (140, 78), (141, 76), (142.5, 74), (143, 81), (145, 78), (146, 74)]:
-        place(st["pno"], stereo(piano(m, 4.0, 0.75), 0.05), b2t(bt), 0.09)
+        place(st["pno"], stereo(piano(m, 4.0, 0.75), 0.05), b2t(bt - 139 + F0), 0.09)
     # --- kalimba-like arpeggio (eighths) from the story page on
     pat = [0, 2, 3, 4, 3, 2, 4, 1]
     k = 0; bt = float(A0)
     while bt < F0:
-        if D0 <= bt < E0:
+        if D0 <= bt < G0:
             bt += 0.5; continue
         a, b, root, tones = chord_at(bt)
         up = sorted(tt + 12 for tt in tones)
         m = up[pat[k % len(pat)] % len(up)]
-        ramp = np.interp(bt, [A0, A0 + 8, B0, C0, D0, E0, F0], [0.35, 0.7, 0.9, 1.0, 1.0, 0.6, 0.9])
+        ramp = np.interp(bt, [A0, A0 + 8, B0, C0, D0, G0, E0, F0], [0.35, 0.7, 0.9, 1.0, 1.0, 0.85, 0.6, 0.9])
         place(st["arp"], stereo(pluck(m, 0.9), 0.35 * np.sin(k * 0.9)), b2t(bt), 0.06 * ramp * (1.15 if k % 4 == 0 else 0.9))
         k += 1; bt += 0.5
     # --- bass
     for a, b, root, tones in CH:
-        if a < A0 or D0 <= a < E0:
+        if a < A0 or D0 <= a < G0:
             continue
         if a < B0 or a >= F0:
             place(st["bass"], bass(root, b2t(b - a) + 0.2), b2t(a), 0.1)
@@ -336,8 +330,8 @@ def build_music() -> dict[str, np.ndarray]:
     # --- drums
     d = st["drm"]
     for bt in np.arange(A0, F0, 1.0):
-        in_A, in_B, in_C, in_D, in_E = A0 <= bt < B0, B0 <= bt < C0, C0 <= bt < D0, D0 <= bt < E0, E0 <= bt < F0
-        pos = (bt - A0) % 4
+        in_A, in_B, in_C, in_D, in_E = A0 <= bt < B0, (B0 <= bt < C0) or (G0 <= bt < E0), C0 <= bt < D0, D0 <= bt < G0, E0 <= bt < F0
+        pos = (bt - max(x for x in (A0, B0, C0, D0, G0, E0) if x <= bt)) % 4   # bar position inside its own section
         if in_A and pos in (0, 2):
             place(d, kick(0.55), b2t(bt), 0.5)
         if (in_B or in_C) and pos in (0, 2):
@@ -361,7 +355,7 @@ def build_music() -> dict[str, np.ndarray]:
     for i, f0 in enumerate([120, 100, 85, 70]):
         place(d, stereo(tom(f0), -0.4 + i * 0.25), b2t(C0 - 2 + i * 0.5), 0.35)
         place(d, stereo(tom(f0), -0.4 + i * 0.25), b2t(D0 - 2 + i * 0.5), 0.3)
-    for at in (B0, C0, F0):
+    for at in (B0, C0, G0, F0):
         place(d, stereo(cymbal(), 0.2), b2t(at), 0.5)
     return st
 
@@ -436,16 +430,17 @@ def build_sfx() -> np.ndarray:
     fx = np.zeros((N, 2))
     def at(scene, clock, snd, gain):
         place(fx, snd, film_time(scene, clock), gain)
-    # S0 — civilization opener (its own clock is film time)
+    # S0 — civilization opener (its own clock is film time); v9: five stops, END = 9.23
+    END = 1.7 + 4.6 * 1.7 - 0.29
     at("s0", 0.2, shimmer(2.4, 84), 0.35)
-    for i in range(8):                                        # each stop takes focus
+    for i in range(5):                                        # each stop takes focus
         tt = 1.7 + i * 1.7
         at("s0", tt - 0.55, whoosh(0.9, 250, 4200, 0.62), 0.07)
-        at("s0", tt - 0.05, chime((74 + [0, 3, 5, 7, 10, 7, 5, 12][i],), 0), 0.035)
-    at("s0", 14.6, whoosh(1.4, 180, 3000, 0.7), 0.09)        # constellation forms
-    at("s0", 15.15, impact(0.5, 48), 0.12)                    # "tarihini ve medeniyetini de keşfet."
-    at("s0", 15.2, shimmer(2.0, 86), 0.3)
-    at("s0", 17.87, whoosh(0.8, 300, 5000, 0.9, rev=True), 0.1)  # collapse into the star
+        at("s0", tt - 0.05, chime((74 + [0, 3, 5, 7, 12][i],), 0), 0.035)
+    at("s0", END + 0.05, whoosh(1.4, 180, 3000, 0.7), 0.09)   # the panels form an arc
+    at("s0", END + 0.6, impact(0.5, 48), 0.12)               # "tarihini ve medeniyetini de keşfet."
+    at("s0", END + 0.65, shimmer(2.0, 86), 0.3)
+    at("s0", END + 3.32, whoosh(0.8, 300, 5000, 0.9, rev=True), 0.1)  # collapse into the point of light
     # S1 — hook
     at("s1", 0.1, shimmer(2.2, 86), 0.4)
     at("s1", 0.4, whoosh(1.0, 200, 3000, 0.7), 0.07)
@@ -456,12 +451,15 @@ def build_sfx() -> np.ndarray:
     at("s1", 3.5, impact(0.6, 50), 0.16)
     # S2 — story page
     at("s2", 4.76, click(1900), 0.22)
-    at("s2", 6.05, click(2600, 0.05), 0.16)
+    at("s2", 5.55, click(2500, 0.05), 0.2)                   # Before you read: a guess
+    at("s2", 5.92, click(2100), 0.22); at("s2", 5.96, chime((86, 93)), 0.14)   # Check my guess → right
+    at("s2", 6.5, click(2600, 0.05), 0.14)
     at("s2", 7.45, whoosh(1.2, 250, 7000, 0.92), 0.13)
     # S3 — Word Notes
     at("s3", 8.72, click(2300), 0.28); at("s3", 8.74, chime((93,), 0), 0.08)
     at("s3", 9.05, whoosh(0.9, 300, 5000, 0.6), 0.08)
     at("s3", 10.35, whoosh(0.9, 300, 5000, 0.6), 0.08)
+    at("s3", 11.25, click(2400), 0.24); at("s3", 11.28, chime((88, 95)), 0.12)   # Save to My words
     # S4 — EN ⇄ AR
     at("s4", 13.02, click(2000), 0.3)
     at("s4", 13.3, whoosh(1.2, 180, 8000, 0.5), 0.16)
@@ -477,7 +475,9 @@ def build_sfx() -> np.ndarray:
     at("s5", 25.8, click(2200), 0.22)
     for j in range(4):                                        # Language Focus writing task: prompts ticked
         at("s5", 26.9 + j * 0.24, click(3000 + j * 150, 0.04), 0.1)
-    at("s5", 27.7, chime((88,), 0), 0.1)
+    at("s5", 27.6, chime((88,), 0), 0.1)
+    for c in (27.665, 27.7, 27.735):                          # I can: Yes, Yes, Almost
+        at("s5", c, click(2500, 0.05), 0.18)
     at("s5", 28.15, whoosh(1.4, 300, 7000, 0.5), 0.12)
     # S5b — end of book
     at("s5b", 29.35, shimmer(1.2, 91), 0.35)
@@ -488,8 +488,9 @@ def build_sfx() -> np.ndarray:
         at("s5b", 32.6 + j * 0.17, click(2800 + (j % 5) * 120, 0.03), 0.08)
     for j in range(4):
         at("s5b", 36.35 + j * 0.42, click(2600, 0.04), 0.12); at("s5b", 36.5 + j * 0.42 + 0.34, click(3300, 0.04), 0.12)
-    for j in range(4):
-        at("s5b", 39.05 + j * 0.33 + 0.26, click(3100 + j * 100, 0.04), 0.1)
+    for j in range(6):                                        # Language Review: parts drop into their groups
+        at("s5b", 39.3 + j * 0.2 + 0.2, click(3000 + j * 80, 0.04), 0.09)
+    at("s5b", 40.55, chime((86, 93)), 0.12)
     at("s5b", 42.0, click(1900), 0.28)
     at("s5b", 42.55, whoosh(0.8, 400, 6000, 0.3), 0.1)
     # S6 — levels
@@ -502,8 +503,45 @@ def build_sfx() -> np.ndarray:
     at("s7", 31.5, whoosh(0.9, 150, 2000, 0.5), 0.1)
     for j in range(6):
         at("s7", 32.35 + j * 0.17, click(2800 + j * 90, 0.03), 0.05)
-    place(fx, riser(2.4), film_time("s7", 34.45) - 2.4, 0.45)
     at("s7", 33.55, whoosh(0.9, 200, 4000, 0.9, rev=True), 0.14)
+    # v9 new scenes (clock 0 = scene start)
+    at("n1", 0.0, whoosh(0.9, 200, 3500, 0.6), 0.1)
+    for c in (0.95, 1.75, 2.6):
+        at("n1", c, click(3000, 0.04), 0.08)
+    at("n1", 3.15, click(2300), 0.24); at("n1", 3.2, chime((86, 93)), 0.12)
+    at("n1", 4.2, whoosh(0.7, 400, 5000, 0.4), 0.08)
+    at("n5", 0.0, whoosh(0.9, 200, 3500, 0.6), 0.1)
+    at("n5", 0.6, impact(0.35, 58), 0.12); at("n5", 0.62, chime((81, 88)), 0.1)   # suggested level: B1
+    at("n5", 2.35, whoosh(0.8, 250, 4000, 0.6), 0.09)
+    for c in (3.55, 4.45, 5.15):
+        at("n5", c, click(2400), 0.2)
+    at("n5", 4.48, chime((88, 95)), 0.1)
+    at("n5", 5.55, whoosh(0.7, 400, 5000, 0.4), 0.08)
+    at("n6", 0.0, whoosh(0.9, 200, 3500, 0.6), 0.1)
+    at("n6", 0.9, whoosh(1.4, 600, 2500, 0.5), 0.04)
+    at("n6", 2.5, whoosh(0.9, 250, 4000, 0.6), 0.09)
+    at("n6", 3.55, chime((81,), 0), 0.08)
+    at("n6", 5.0, whoosh(0.9, 250, 4000, 0.6), 0.09)
+    at("n6", 6.05, click(2000), 0.26); at("n6", 6.1, chime((86, 93)), 0.1)      # Class mode on
+    at("n6", 6.45, shimmer(1.2, 88), 0.2)
+    at("n6", 7.55, whoosh(0.7, 400, 5000, 0.4), 0.08)
+    at("n7", 0.0, whoosh(0.9, 200, 3500, 0.6), 0.1)
+    for j in range(6):
+        at("n7", 0.55 + j * 0.075, click(3400, 0.025), 0.05)
+    at("n7", 1.2, chime((81, 88)), 0.1)
+    at("n7", 2.0, whoosh(0.8, 250, 4000, 0.6), 0.09)
+    for j in range(8):                                        # the teacher types the code
+        at("n7", 2.55 + j * 0.65 / 8, click(3300 + (j % 3) * 120, 0.025), 0.07)
+    at("n7", 3.45, click(2000), 0.26); at("n7", 3.55, chime((86, 93, 98)), 0.12)  # VALID CODE
+    at("n7", 4.9, whoosh(0.7, 400, 5000, 0.4), 0.08)
+    at("n4", 0.0, whoosh(1.0, 200, 3500, 0.6), 0.1)
+    at("n4", 2.35, whoosh(0.9, 250, 4000, 0.6), 0.09)
+    at("n4", 3.75, click(2400), 0.22); at("n4", 3.8, chime((84, 91)), 0.1)
+    at("n4", 4.85, whoosh(0.9, 200, 4000, 0.6), 0.1); at("n4", 5.0, shimmer(1.8, 86), 0.3)
+    for j in range(5):
+        at("n4", 4.95 + j * 0.09 + 0.3, click(2600 + j * 150, 0.04), 0.06)
+    place(fx, riser(2.4), film_time("s8", 34.45) - 2.4, 0.45)
+    at("n4", 6.9, whoosh(0.9, 200, 4000, 0.9, rev=True), 0.1)
     # S8 — finale
     at("s8", 34.45, impact(1.4, 40), 0.6)
     at("s8", 35.15, shimmer(2.6, 86), 0.6)
@@ -514,7 +552,9 @@ def build_sfx() -> np.ndarray:
 # ------------------------------------------------------------------ narration (the app's own recordings)
 # Two short excerpts of the real chapter-1 audio (src/data/adam/b1/{en,ar}/pages.ts → audioUrl):
 #   EN "Adam (pbuh) is the first Messenger and the father of all humans." — when play is pressed on the story page
-#   AR «آدم (عليه السلام) هو أول رسول وأبو البشر جميعا» — after the page switches to Arabic
+#      (adam_b1 chapter-1 English mp3, 2.54–6.62 s; male voice)
+#   AR «آدَمُ عَلَيْهِ السَّلَامُ هُوَ أَوَّلُ نَبِيٍّ وَأَبُو الْبَشَرِ جَمِيعًا.» — after the page switches to Arabic
+#      (adam_b1/audio/arabic_audio/b1-chapter 1-.mp3, 2.26–7.30 s; the app's current female voice, chapter title cut)
 NARRATION = [("narration_en_ch1.wav", "s2", 4.80), ("narration_ar_ch1.wav", "s4", 14.42)]
 
 
@@ -537,20 +577,6 @@ def narration() -> tuple[np.ndarray, np.ndarray]:
     return reverb(vo, 0.9, 0.06, 9000), duck
 
 
-# the score was composed on the v6 grid; the v8 Arabic-hotspot beat added one bar (4 beats) to the film at 40.55 s.
-# The music repeats bar 59–63 (Gm9) at the bar line 63 (42.0 s), so every later section still lands on its cut.
-INSERT_AT_BEAT, INSERT_BEATS = 63, 4
-
-
-def insert_bar(music: np.ndarray) -> np.ndarray:
-    a, b = int(round(b2t(INSERT_AT_BEAT - INSERT_BEATS) * SR)), int(round(b2t(INSERT_AT_BEAT) * SR))
-    rep = music[a:b].copy()
-    x = int(0.02 * SR)
-    r = np.linspace(0, 1, x)[:, None]
-    rep[:x] = music[b:b + x] * np.sqrt(1 - r) + rep[:x] * np.sqrt(r)   # the repeat's own end flows on into bar 63
-    return np.concatenate([music[:b], rep, music[b:]])[:N]
-
-
 def rms_comp(x: np.ndarray, thr_db=-18, ratio=2.5, att=0.01, rel=0.2) -> np.ndarray:
     lvl = np.sqrt(np.convolve((x ** 2).mean(1), np.ones(480) / 480, mode="same") + 1e-12)
     db = 20 * np.log10(lvl)
@@ -566,16 +592,15 @@ def rms_comp(x: np.ndarray, thr_db=-18, ratio=2.5, att=0.01, rel=0.2) -> np.ndar
 def main() -> None:
     out_dir = PROMO / "out"
     (out_dir / "stems").mkdir(parents=True, exist_ok=True)
-    music = insert_bar(score())
+    music = score()
     sfx = build_sfx()
     vo, duck = narration()
     tt = t_axis(N)
     fade = np.clip(tt / 0.05, 0, 1) * np.clip((TL["duration"] + 0.4 - tt) / 1.6, 0, 1)
     # arc of the piece: calm story → chapter loop → peak at the end-of-book review → breath (levels) → rise → finale
-    ins = b2t(INSERT_BEATS)
-    keys = [0, 18.3, 18.9, 23.1, 23.6, 43.7, 44.3, 59.8, 60.4, 77.7, 78.3, 85.0, 85.6, 92.3, 92.8, 98.7]
-    arc = np.interp(tt, [k + ins if k > 42 else k for k in keys],
-                    [0.85, 0.9, 1.0, 1.05, 0.85, 0.8, 0.8, 0.84, 0.95, 1.0, 0.68, 0.72, 0.8, 0.92, 1.12, 1.0])
+    # v9 section times: hook 13.3, story 18.0, chapter loop 41.3, end of book 54.0, levels 66.7, new features 73.3, guides 97.3, finale 110.7
+    keys = [0, 13.0, 13.6, 17.8, 18.3, 41.0, 41.6, 53.8, 54.4, 66.4, 67.0, 73.0, 73.6, 96.8, 97.4, 110.2, 110.8]
+    arc = np.interp(tt, keys, [0.85, 0.9, 1.0, 1.05, 0.85, 0.8, 0.84, 0.95, 1.0, 1.0, 0.68, 0.72, 0.88, 0.9, 0.8, 1.12, 1.0])
     mix = (music * (arc * duck)[:, None] + sfx * 0.9 + vo) * fade[:, None]
     finish(mix, music, sfx, out_dir)
 

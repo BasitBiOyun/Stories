@@ -123,6 +123,12 @@ function archD(x, y, w, h, closed = true) {
   return closed ? d + ' Z' : d;
 }
 
+/** asset path: 'x' → assets/img/x.jpg, 'dir/x.webp' kept as is */
+const imgSrc = n => `assets/img/${n}${/\.[a-z0-9]+$/i.test(n) ? '' : '.jpg'}`;
+/** the app's own icons (icons.js, Phosphor regular, as in src/components/ui/icons.tsx) */
+const ico = (name, cls = '') => `<svg class="${cls}" viewBox="0 0 256 256" fill="currentColor">${(window.ICONS || {})[name] || ''}</svg>`;
+document.querySelectorAll('path[data-ico]').forEach(p => { const svg = p.parentNode; svg.setAttribute('fill', 'currentColor'); svg.innerHTML = (window.ICONS || {})[p.dataset.ico] || ''; });
+
 /* ---------- global overlays ---------- */
 const DPR = window.devicePixelRatio || 1;
 const dustCv = $('#dust'); dustCv.width = W * DPR; dustCv.height = H * DPR; dustCv.style.width = W + 'px'; dustCv.style.height = H + 'px';
@@ -182,19 +188,16 @@ function sceneClock(id, t) {
 
 /* ---------------------- S0 · CIVILIZATION OPENER ----------------------
    "Dil öğrenirken tarihini ve medeniyetini de keşfet."
-   A slow camera journey through arch-framed panels — prophets' stories, Mecca,
-   Jerusalem, Bukhara, Kashgari, Yasawi, Yunus Emre, Istanbul — which then settle
-   into one constellation behind the message and collapse into the brand star. */
+   A slow camera journey through arch-framed panels — the prophets' stories, Mecca,
+   Jerusalem, Bukhara, Istanbul — which then settle into one arc behind the message
+   and collapse into a point of light. v9: five stops, and no panel shows a person. */
 {
   const S = $('#s0'), world = $('#s0world');
   const STOPS = [
-    { name: 'Peygamberlerin Hikâyeleri', sub: 'Hz. Âdem · Hz. İbrahim · Hz. Musa', imgs: ['adam_b1_05', 'abraham_b1_03', 'moses_a2_15'] },
+    { name: 'Peygamberlerin Hikâyeleri', sub: 'Hz. Âdem · Hz. İbrahim · Hz. Musa', imgs: ['adam_b1_05', 'abraham_a2_09', 'covers/moses_cover.webp'] },
     { name: 'Mekke', sub: 'Kâbe’nin şehri', imgs: ['civ/mekke|mecca_b1_10'] },
     { name: 'Kudüs', sub: 'Mescid-i Aksâ’nın şehri', imgs: ['civ/kudus|designed/kudus'] },
     { name: 'Buhara', sub: 'İpek Yolu’nun ilim şehri', imgs: ['civ/buhara|designed/buhara'] },
-    { name: 'Kaşgarlı Mahmud', sub: 'Dîvânu Lugâti’t-Türk', imgs: ['civ/kasgarli|designed/kasgarli'] },
-    { name: 'Ahmed Yesevi', sub: 'Pîr-i Türkistan', imgs: ['civ/yesevi|designed/yesevi'] },
-    { name: 'Yunus Emre', sub: 'Anadolu’nun gönül eri', imgs: ['yunusEmre_b1_07'] },
     { name: 'İstanbul', sub: 'İki kıtanın buluştuğu şehir', imgs: ['civ/istanbul|designed/istanbul'] },
   ];
   const GAPZ = 1500, FOCUS = 420, T0 = 1.7, STEP = 1.7, PX = 420;
@@ -205,14 +208,14 @@ function sceneClock(id, t) {
     st.imgs.forEach((im, k) => {
       // 'civ/x|fallback': supplied artwork in assets/img/civ/ wins; otherwise the fallback is used (resolved in ready())
       const [want, alt] = im.split('|');
-      const p = el('div', 'civ', `<div class="civ-img"><img src="assets/img/${alt || want}.jpg"${alt ? ` data-want="assets/img/${want}.jpg"` : ''}></div>${frame()}`, world);
+      const p = el('div', 'civ', `<div class="civ-img"><img src="${imgSrc(alt || want)}"${alt ? ` data-want="${imgSrc(want)}"` : ''}></div>${frame()}`, world);
       const focus = { 'civ/mekke': '57% 60%', 'civ/kudus': '59% 45%', 'civ/istanbul': '72% 50%', 'civ/buhara': '47% 40%', 'civ/kasgarli': '42% 50%', 'civ/yesevi': '40% 45%' }[want];
       if (focus) p.querySelector('img').dataset.focus = focus;
       const fan = st.imgs.length > 1 ? (k - 1) : 0;
       panels.push({ el: p, img: p.querySelector('img'), i, k, side,
         x: side * PX + fan * 250 * -side, y: -30 + Math.abs(fan) * 40, z: -(i * GAPZ + FOCUS) - Math.abs(fan) * 380, s: k ? 0.86 : 1, rz: fan * 4 * -side });
     });
-    const lab = el('div', 'civ-label' + (side < 0 ? ' right' : ''), `<div class="ix">${String(i + 1).padStart(2, '0')} / 08</div><div class="nm"><span>${st.name}</span></div><div class="sb"><span>${st.sub}</span></div>`, S);
+    const lab = el('div', 'civ-label' + (side < 0 ? ' right' : ''), `<div class="ix">${String(i + 1).padStart(2, '0')} / 05</div><div class="nm"><span>${st.name}</span></div><div class="sb"><span>${st.sub}</span></div>`, S);
     lab.setAttribute('lang', 'tr');
     if (st.name.length > 14) lab.querySelector('.nm').style.fontSize = '84px';
     st.label = lab; st.side = side; st.nm = lab.querySelector('.nm > span'); st.sb = lab.querySelector('.sb > span');
@@ -220,13 +223,14 @@ function sceneClock(id, t) {
   const msg = $('#s0msg'), l1 = msg.querySelector('.l1'), l2 = msg.querySelector('.l2');
   const l1s = l1.firstChild, l2s = l2.firstChild;
   const path = $('#s0path'), spark = $('#s0spark');
-  const station = t => (t - T0) / STEP;                         // 0 at the first stop, 7 at İstanbul
+  const LAST = STOPS.length - 1 + 0.6;
+  const station = t => (t - T0) / STEP;                         // 0 at the first stop, 4 at İstanbul
   const camZ = t => {
     if (t < T0) return -GAPZ * 0.5 * (1 - E.outSoft(clamp(t / T0)));
-    const s = Math.min(station(t), 7.6);
+    const s = Math.min(station(t), LAST);
     return GAPZ * (s - 0.6 * Math.sin(2 * Math.PI * s) / (2 * Math.PI));   // eases (never stops) at every station
   };
-  const END = T0 + 7.6 * STEP - 0.07;                          // gallery → constellation (14.55)
+  const END = T0 + LAST * STEP - 0.29;                         // gallery → arc (9.23); the scene hands over to S1 at beat 20
   const zEnd = camZ(END);
   const ARC = panels.map((p, j) => {
     const n = panels.length, u = j / (n - 1) - 0.5;
@@ -292,7 +296,7 @@ function sceneClock(id, t) {
     l2.style.top = '370px';
     l2s.style.transform = `translate3d(0,${((1 - P(t, END + 0.55, END + 1.4, E.outSoft)) * 110).toFixed(1)}%,0)`;
     op(msg, 1 - out); blur(msg, out * 12, 'drop-shadow(0 12px 34px rgba(0,0,0,.7))');
-    /* collapse into the brand star (S1 picks it up) */
+    /* collapse into a point of light (S1 picks it up) */
     const sp = P(t, END + 3.32, END + 4.07, E.inOut);
     tf(spark, { s: 0.2 + sp * 0.5 }); op(spark, Math.sin(Math.PI * clamp((t - END - 3.32) / 1.0)) * 0.9);
     drawDust(t, 0.3 + 0.25 * settle, cz / 2500);
@@ -303,16 +307,16 @@ function sceneClock(id, t) {
 {
   const world = $('#s1world');
   const CARDS = [
-    ['moses_a2_15', -610, -150, 900, 430, 560, -6],
-    ['abraham_b1_03', 560, 170, 1500, 440, 570, 5],
+    ['covers/moses_cover.webp', -610, -150, 900, 430, 560, -6],
+    ['abraham_a2_09', 560, 170, 1500, 440, 570, 5],
     ['mecca_b1_06', -520, 230, 2100, 420, 540, 4],
-    ['yunusEmre_b1_07', 590, -190, 2700, 430, 560, -5],
-    ['abraham_a2_09', -600, -60, 3300, 420, 540, -3],
-    ['mecca_b2_12', 540, 120, 3850, 400, 520, 6],
-    ['yunusEmre_b2_08', -470, 210, 4400, 400, 520, 3],
-    ['moses_a2_03', 480, -230, 4950, 380, 490, -4],
+    ['places/andalus_granada.webp', 590, -190, 2700, 430, 560, -5],
+    ['mecca_b2_12', -600, -60, 3300, 420, 540, -3],
+    ['adam_b1_05', 540, 120, 3850, 400, 520, 6],
+    ['covers/mecca_cover.webp', -470, 210, 4400, 400, 520, 3],
+    ['places/yunus_konya.webp', 480, -230, 4950, 380, 490, -4],
   ].map(([img, x, y, z, w, h, rz]) => {
-    const c = el('div', 'card3d', `<img src="assets/img/${img}.jpg"><div class="shade"></div>`, world);
+    const c = el('div', 'card3d', `<img src="${imgSrc(img)}"><div class="shade"></div>`, world);
     c.style.width = w + 'px'; c.style.height = h + 'px';
     return { c, x, y, z, w, h, rz };
   });
@@ -332,7 +336,7 @@ function sceneClock(id, t) {
   const AR = { x: 760, y: 300, w: 400, h: 560 };
 
   scene('s1', 0, 3.9, t => {
-    /* star ignition */
+    /* the point of light ignites */
     const ign = P(t, 0.12, 0.7, E.out);
     const flare = Math.exp(-Math.pow((t - 0.95) / 0.12, 2));
     const starOut = P(t, 0.95, 1.35, E.in);
@@ -398,11 +402,16 @@ const enWords = splitWords($('#pgTextEn'));
   const hs1 = $('#hs1'), hs2 = $('#hs2'), hsCard = $('#hsCard');
   const title = $('.pg-title', pageEn), chap = pageEn.querySelector('.pg-chapter');
   const word = $('#vwMessenger');
+  /* Before you read (chapterExtras.ts, chapter 1): guess → Check my guess → right */
+  const byr = $('#byr'), byrB = $('#byrB'), byrBtn = $('#byrBtn'), byrFb = $('#byrFb');
+  const byrParts = [byr.querySelector('.byr-q'), ...byr.querySelectorAll('.byr-o')];
+  const tap2 = el('div', 'tap', null, $('#s2'));
+  const TAP_B = 5.55, TAP_CHK = 5.92;
   let imgRect = null, wRect = null;
   const svg = $('#callouts'), labels = $('#calloutLabels');
   const CALLOUTS = [
-    { key: 'player', text: 'Sesli anlatım', sub: 'her bölüm için', t0: 5.05, t1: 7.35, target: () => player, dx: -330, dy: -40, anchor: 'right' },
-    { key: 'hs', text: 'Keşif noktası', sub: 'görselin içinde', t0: 6.0, t1: 7.4, target: () => hs1, dx: -250, dy: -170, anchor: 'bottom' },
+    { key: 'player', text: 'Sesli anlatım', sub: 'her bölüm için', t0: 5.05, t1: 6.3, target: () => player, dx: -330, dy: -40, anchor: 'right' },
+    { key: 'byr', text: 'Okumadan önce', sub: 'önce bir tahmin', t0: 5.3, t1: 6.75, target: () => byr, dx: -300, dy: 150, anchor: 'top' },
     { key: 'word', text: 'Word Notes', sub: 'dokun, anlamını gör', t0: 6.75, t1: 7.55, target: () => word, dx: 40, dy: 250, anchor: 'top' },
   ].map(c => {
     c.path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
@@ -471,7 +480,30 @@ const enWords = splitWords($('#pgTextEn'));
       h.style.transform = `scale(${(a * (1 + pulse * 0.08)).toFixed(3)})`;
       h.style.boxShadow = `0 0 0 ${(pulse * 14).toFixed(1)}px rgba(225,113,0,${(0.35 * (1 - pulse)).toFixed(3)})`;
     });
-    const hc = P(t, 6.05, 6.5, E.back) * (1 - P(t, 7.5, 7.8));
+    const hc = P(t, 6.5, 6.9, E.back) * (1 - P(t, 7.5, 7.8));
+    /* Before you read */
+    byrParts.forEach((q, i) => { const p = P(t, 4.4 + i * 0.07, 4.85 + i * 0.07, E.outSoft); q.style.opacity = p.toFixed(3); q.style.transform = `translateY(${((1 - p) * 12).toFixed(1)}px)`; });
+    byr.style.opacity = P(t, 4.35, 4.6).toFixed(3);
+    byrB.classList.toggle('sel', t >= TAP_B && t < TAP_CHK + 0.02);
+    byrB.classList.toggle('ok', t >= TAP_CHK + 0.02);
+    const bb = P(t, TAP_B + 0.03, TAP_B + 0.15, E.back);
+    byrBtn.style.opacity = (bb * (1 - P(t, TAP_CHK + 0.02, TAP_CHK + 0.08))).toFixed(3);
+    byrBtn.style.transform = `scale(${(0.85 + 0.15 * bb) * (1 - Math.exp(-Math.pow((t - TAP_CHK) / 0.03, 2)) * 0.08)})`;
+    const fbp = P(t, TAP_CHK + 0.04, TAP_CHK + 0.2, E.outSoft);
+    byrFb.style.opacity = fbp.toFixed(3); byrFb.style.transform = `translateY(${((1 - fbp) * -8).toFixed(1)}px)`;
+    let tv2 = 0;
+    [[TAP_B, byrB], [TAP_CHK, byrBtn]].forEach(([tt, target]) => {
+      const v = P(t, tt - 0.12, tt - 0.05, E.lin) * (1 - P(t, tt + 0.06, tt + 0.14, E.lin));
+      if (v <= 0) return;
+      tv2 = v;
+      const r = target.getBoundingClientRect(), x = r.left + r.width / 2, y = r.top + r.height / 2;
+      const mv = P(t, tt - 0.12, tt, E.outSoft), press = Math.exp(-Math.pow((t - tt) / 0.025, 2));
+      tap2.style.left = lerp(x + 90, x, mv) + 'px'; tap2.style.top = lerp(y + 70, y, mv) + 'px';
+      tap2.style.transform = `scale(${(1 - press * 0.25).toFixed(3)})`;
+      const rp = clamp((t - tt) / 0.15);
+      tap2.style.setProperty('--r', (1 + rp * 1.8).toFixed(3)); tap2.style.setProperty('--ro', (t > tt ? 1 - rp : 0).toFixed(3));
+    });
+    op(tap2, tv2);
     hsCard.style.opacity = clamp(hc * 1.4).toFixed(3);
     hsCard.style.transform = `translateY(${((1 - hc) * 16).toFixed(1)}px) scale(${(0.9 + 0.1 * hc).toFixed(3)})`;
 
@@ -480,7 +512,7 @@ const enWords = splitWords($('#pgTextEn'));
       const vis = P(t, co.t0, co.t0 + 0.5, E.outSoft) * (1 - P(t, co.t1, co.t1 + 0.3, E.in));
       if (vis <= 0.001) { co.path.style.opacity = 0; co.dot.style.opacity = 0; co.ring.style.opacity = 0; co.label.style.opacity = 0; continue; }
       const r = co.target().getBoundingClientRect();
-      const tx = co.key === 'player' ? r.left + 8 : r.left + r.width / 2, ty = co.key === 'word' ? r.bottom + 4 : r.top + r.height / 2;
+      const tx = co.key === 'player' ? r.left + 8 : co.key === 'byr' ? r.left + 10 : r.left + r.width / 2, ty = co.key === 'word' || co.key === 'byr' ? r.bottom + 4 : r.top + r.height / 2;
       const lw = co.label.offsetWidth, lh = co.label.offsetHeight;
       const lx = clamp(tx + co.dx, 40 + lw / 2, W - 40 - lw / 2), ly = clamp(ty + co.dy, 40 + lh / 2, H - 40 - lh / 2);
       co.label.style.transform = `translate3d(${(lx - lw / 2).toFixed(1)}px,${(ly - lh / 2 + (1 - vis) * 12).toFixed(1)}px,0)`;
@@ -506,7 +538,7 @@ const enWords = splitWords($('#pgTextEn'));
 {
   const world = $('#s3world'), bg = $('#s3bg'), word = $('#s3word');
   const NOTES = [
-    ['Messenger', 'noun', 'A person chosen by Allah to deliver His message.', 'رسول', 'شخص يختاره الله لتبليغ رسالته.'],
+    ['Messenger', 'noun', 'A person chosen by Allah to deliver His message.', 'نبي', 'شخص يختاره الله ليبلّغ الناس رسالته ويهديهم.'],
     ['ruler', 'noun', 'A person given responsibility to lead or manage.', 'خليفة', 'من يُكلَّف بالمسؤولية والعمارة في الأرض.'],
     ['curiosity', 'noun', 'A strong wish to know more.', 'فضول', 'رغبة قوية في معرفة المزيد.'],
     ['fabulous', 'adjective', 'Very impressive or wonderful.', 'الرائعة', 'جميلة ومثيرة للإعجاب.'],
@@ -515,6 +547,11 @@ const enWords = splitWords($('#pgTextEn'));
     `<div class="wn-word">${w}<span class="wn-pos">${pos}</span></div><div class="wn-lbl">MEANING</div><div class="wn-def">${d}</div><div class="wn-hr"></div><div class="wn-arl">العربية</div><div class="wn-arw">${aw}</div><div class="wn-ard">${ad}</div>`, world);
   const main = card(NOTES[0], false);
   const mainParts = Array.from(main.children);
+  /* v9: "Save to My words" on every Word Note → "In My words" */
+  const save = el('div', 'wn-save', `${ico('BookBookmark')}<span>Save to My words</span>`, main);
+  const saveTxt = save.querySelector('span'), saveIco = save.querySelector('svg');
+  const tapF = el('div', 'tap', null, $('#s3'));
+  const TAP_SAVE = 11.25;
   const ring = NOTES.slice(1).map((n, i) => ({ c: card(n, true), i }));
   const head = $('#s3head'), headSpans = maskLines(head);
   const count = $('#s3count'), num = $('#s3num');
@@ -563,6 +600,23 @@ const enWords = splitWords($('#pgTextEn'));
       op(c, P(t, t0, t0 + 0.4, E.lin) * (1 - exitRing) * (i > 3 ? 0.55 : 1));
       blur(c, (-z - 250) / 160 + (1 - p) * 8 + exitRing * 6);
     });
+    /* save the word */
+    const sv = P(t, 9.9, 10.3, E.outSoft);
+    save.style.opacity = sv.toFixed(3); save.style.transform = `translateY(${((1 - sv) * 14).toFixed(1)}px) scale(${(1 - Math.exp(-Math.pow((t - TAP_SAVE) / 0.04, 2)) * 0.06).toFixed(3)})`;
+    const saved = t >= TAP_SAVE + 0.02;
+    save.classList.toggle('on', saved);
+    saveTxt.textContent = saved ? 'In My words' : 'Save to My words';
+    saveIco.innerHTML = (window.ICONS || {})[saved ? 'Check' : 'BookBookmark'] || '';
+    {
+      const v = P(t, TAP_SAVE - 0.3, TAP_SAVE - 0.1, E.lin) * (1 - P(t, TAP_SAVE + 0.15, TAP_SAVE + 0.35, E.lin));
+      const r = save.getBoundingClientRect(), x = r.left + r.width * 0.3, y = r.top + r.height / 2;
+      const mv = P(t, TAP_SAVE - 0.3, TAP_SAVE, E.outSoft), press = Math.exp(-Math.pow((t - TAP_SAVE) / 0.05, 2));
+      tapF.style.left = lerp(x + 120, x, mv) + 'px'; tapF.style.top = lerp(y + 90, y, mv) + 'px';
+      tapF.style.transform = `scale(${(1 - press * 0.25).toFixed(3)})`;
+      const rp = clamp((t - TAP_SAVE) / 0.35);
+      tapF.style.setProperty('--r', (1 + rp * 1.8).toFixed(3)); tapF.style.setProperty('--ro', (t > TAP_SAVE ? 1 - rp : 0).toFixed(3));
+      op(tapF, v * (1 - exitRing));
+    }
     /* 4 — type + counter */
     headSpans.forEach((s, i) => riseIn(s, t, 10.45 + i * 0.12, 0.8));
     op(head, 1 - P(t, 11.95, 12.3, E.lin));
@@ -584,26 +638,42 @@ const enWords = splitWords($('#pgTextEn'));
   en.querySelector('.hs-card').remove(); ar.querySelector('.hs-card').remove();
   en.querySelector('.pg-title').style.clipPath = 'none'; en.querySelector('.pg-chapter').style.opacity = 1;
   en.querySelector('.player').style.opacity = 1;
-  // Arabic source: src/data/adam/b1/ar/pages.ts (chapter 1), unchanged
+  // the English page as the reader leaves it: the guess was checked
+  en.querySelector('#byrB')?.classList.add('ok'); en.querySelectorAll('.byr-q, .byr-o').forEach(q => { q.style.opacity = 1; q.style.transform = 'none'; });
+  en.querySelector('.byr').style.opacity = 1; en.querySelector('.byr-fb').style.opacity = 1;
+  // Arabic source: src/data/adam/b1/ar/pages.ts (chapter 1) and ar/chapterExtras.ts, word for word (v9: Adam is «نبي»)
   ar.querySelector('.pg-title').textContent = 'الْمُقَدِّمَةُ وَالْخَلْق';
   ar.querySelector('.pg-title').style.clipPath = 'none';
-  ar.querySelector('.pg-chapter').textContent = 'الفصل ١'; ar.querySelector('.pg-chapter').style.opacity = 1;
-  ar.querySelector('.pg-book-title').textContent = 'قصص الأنبياء: آدم (عليه السلام)';
-  ar.querySelector('.pg-book-meta').textContent = 'المستوى B1 · صفحة ١';
+  ar.querySelector('.pg-chapter').textContent = 'الْفَصْل ١'; ar.querySelector('.pg-chapter').style.opacity = 1;
+  ar.querySelector('.pg-book-title').textContent = 'النَّبِيُّ آدَم';
+  ar.querySelector('.pg-book-meta').textContent = 'الْمُسْتَوَى B1 · صَفْحَة ١';
+  const arQ = ar.querySelector('.pg-quote .en'); arQ.textContent = 'سُورَةُ يُوسُف، الآيَة ١١١'; arQ.style.fontFamily = 'Arakom'; arQ.style.fontSize = '15px'; arQ.style.direction = 'rtl';
   ar.querySelector('.pg-lang').innerHTML = '<span class="on" style="font-family:Arakom;font-weight:400;font-size:17px">العربية</span><span>EN</span>';
-  ar.querySelector('.pg-count').textContent = 'صفحة ١ / ١٧';
+  ar.querySelector('.pg-count').textContent = 'صَفْحَة ١ / ١٧';
   ar.querySelector('.pg-brand').textContent = 'قصص الأنبياء عليهم السلام';
-  ar.querySelectorAll('.pl-time')[1].textContent = '1:11';
+  ar.querySelectorAll('.pl-time')[0].textContent = '٠:٠٠';
+  ar.querySelectorAll('.pl-time')[1].textContent = '١:٠٤';
   ar.querySelector('.player').style.opacity = 1;
+  ar.querySelectorAll('.pg-chips span').forEach((c, i) => { c.lastChild.textContent = ['اسْتَمِعْ', 'اقْرَأْ', 'تَحَدٍّ سَرِيع', 'التَّرْكِيزُ اللُّغَوِيّ'][i]; c.classList.toggle('on', false); });
+  {
+    const b = ar.querySelector('.byr');
+    b.style.opacity = 1; b.querySelectorAll('.byr-q, .byr-o').forEach(q => { q.style.opacity = 1; q.style.transform = 'none'; });
+    b.querySelector('.byr-t').lastChild.textContent = 'قَبْلَ القِرَاءَةِ';
+    b.querySelector('.byr-q b').textContent = 'اُنْظُرْ إِلَى الصُّورَةِ. مِمَّ تَظُنُّ أَنَّ اللهَ خَلَقَ آدَمَ عَلَيْهِ السَّلَامُ؟';
+    b.querySelector('.byr-btn').remove(); b.querySelector('.byr-fb').remove();
+    b.querySelectorAll('.byr-o').forEach((o, i) => { o.classList.remove('sel', 'ok'); o.querySelector('i').textContent = ['أ', 'ب', 'ج'][i]; o.querySelector('span').textContent = ['مِنَ النَّارِ.', 'مِنَ التُّرَابِ.', 'مِنَ الْمَاءِ.'][i]; });
+  }
   const arText = ar.querySelector('.pg-text');
-  arText.innerHTML = '<p>آدم (عليه السلام) هو أول <b class="vw">رسول</b> وأبو البشر جميعا. خلقه الله من التراب، وأكرمه تكريما عظيما، وأعطاه قيمة كبيرة كأول إنسان. يحكي القرآن الكريم قصة آدم (عليه السلام) في سور مختلفة. تتحدث سور الأعراف، والبقرة، والحجر، والإسراء، وص، وطه عن قصة آدم (عليه السلام) بوضوح. نحن -أحفاد آدم- يمكننا أن نتعلم دروسا كثيرة من هذه القصة <b class="vw">الرائعة</b> والحقيقية.</p><p>بعد أن خلق الله السماء والأرض، أخبر الملائكة أنه سيخلق إنسانًا. وقال إنه قرر أن يجعل <b class="vw">خليفة</b> في الأرض. وكان هذا الخليفة سيعيش فيها سنوات كثيرة. فتعجبت الملائكة وبدأت تنتظر <b class="vw">بفضول</b>.</p>';
+  const AR_FIRST = 'آدَمُ عَلَيْهِ السَّلَامُ هُوَ أَوَّلُ <b class="vw">نَبِيٍّ</b> وَأَبُو الْبَشَرِ جَمِيعًا.';   // = the narrated clip (narration_ar_ch1.wav)
+  arText.innerHTML = `<p><span class="nar">${AR_FIRST}</span> خَلَقَهُ اللهُ مِنَ التُّرَابِ، وَأَكْرَمَهُ تَكْرِيمًا عَظِيمًا، وَأَعْطَاهُ قِيمَةً كَبِيرَةً كَأَوَّلِ إِنْسَانٍ. يَحْكِي الْقُرْآنُ الْكَرِيمُ قِصَّةَ آدَمَ عَلَيْهِ السَّلَامُ فِي سُوَرٍ مُخْتَلِفَةٍ. تَتَحَدَّثُ سُوَرُ الْأَعْرَافِ، وَالْبَقَرَةِ، وَالْحِجْرِ، وَالْإِسْرَاءِ، وَصَاد، وَطه عَنْ قِصَّةِ آدَمَ عَلَيْهِ السَّلَامُ بِوُضُوحٍ. نَحْنُ، أَحْفَادَ آدَمَ، يُمْكِنُنَا أَنْ نَتَعَلَّمَ دُرُوسًا كَثِيرَةً مِنْ هَذِهِ الْقِصَّةِ <b class="vw">الرَّائِعَةِ</b> وَالْحَقِيقِيَّةِ. تُوجَدُ فِي هَذِهِ الْقِصَّةِ رَسَائِلُ مُهِمَّةٌ وَمُتَنَوِّعَةٌ حَوْلَ دَوْرِ الْإِنْسَانِ فِي الْحَيَاةِ.</p><p>بَعْدَ أَنْ خَلَقَ اللهُ السَّمَاءَ وَالْأَرْضَ، أَخْبَرَ الْمَلَائِكَةَ أَنَّهُ سَيَخْلُقُ إِنْسَانًا. وَقَالَ إِنَّهُ قَرَّرَ أَنْ يَجْعَلَ <b class="vw">خَلِيفَةً</b> فِي الْأَرْضِ. وَكَانَ هَذَا الْخَلِيفَةُ سَيَعِيشُ فِيهَا سَنَوَاتٍ كَثِيرَةً. فَتَعَجَّبَتِ الْمَلَائِكَةُ وَبَدَأَتْ تَنْتَظِرُ <b class="vw">بِفُضُولٍ</b>.</p>`;
+  const arNar = arText.querySelector('.nar');
   const toggle = $('#s4toggle'), knob = $('#s4knob'), seam = $('#s4seam');
   const arTag = $('#s4arTag'), trTag = $('#s4trTag');
-  /* Arabic hotspots on the chapter illustration (src/data/adam/b1/ar/pages.ts, chapter 1 hotspots, unchanged) */
+  /* Arabic hotspots on the chapter illustration (src/data/adam/b1/ar/pages.ts, chapter 1 hotspots) */
   const arImg = ar.querySelector('.pg-img'), arHs = [...ar.querySelectorAll('.hotspot')];
   const AR_HS = [
-    ['التراب', 'يذكر الفصل أن آدم خُلق من التراب.'],
-    ['المسؤولية في الأرض', 'يخبر الله الملائكة أنه سيجعل خليفة في الأرض.'],
+    ['مخلوق من التراب', 'خلق الله آدم عليه السلام من التراب، وأكرمه كأول إنسان.'],
+    ['المسؤولية في الأرض', 'أخبر الله الملائكة أنه سيجعل في الأرض خليفة.'],
   ];
   const arCards = AR_HS.map(([b, e]) => el('div', 'hs-card hs-ar', `<b>${b}</b><em>${e}</em>`, arImg));
   const arPlay = ar.querySelector('.pl-btn'), arFill = ar.querySelector('.pl-fill'), arKnob = ar.querySelector('.pl-knob');
@@ -657,13 +727,16 @@ const enWords = splitWords($('#pgTextEn'));
     op(enL, P(t, 12.35, 12.75, E.lin)); op(arL, 1 - leave);
     seam.style.left = seamX + 'px';
     op(seam, Math.sin(Math.PI * flip) * 1.2);
-    /* the Arabic narration of the same page plays on (real chapter-1 recording, 1:11) */
+    /* the Arabic narration of the same page plays on (the app's chapter-1 recording, female voice, 1:04;
+       the clip is its first sentence, which the page highlights while it is heard) */
     const arPlaying = t > 14.42;
     arPlay.querySelector('.play').style.opacity = arPlaying ? 0 : 1; arPlay.querySelector('.pause').style.opacity = arPlaying ? 1 : 0;
     const sec = Math.max(0, filmSince('s4', 14.42, t));
-    const prog = clamp(sec / 71);
+    const prog = clamp((sec + 2.26) / 64.29 * (arPlaying ? 1 : 0));
     arFill.style.width = (prog * 100).toFixed(3) + '%'; arKnob.style.left = (prog * 100).toFixed(3) + '%';
-    arTime.textContent = `0:0${Math.floor(sec)}`;
+    arTime.textContent = '٠:٠' + '٠١٢٣٤٥٦٧٨٩'[Math.min(9, Math.floor(arPlaying ? sec + 2.26 : 0))];
+    const nh = arPlaying ? clamp(sec / 0.25) * (1 - clamp((sec - 5.04) / 0.4)) : 0;
+    arNar.style.background = `rgba(243,213,138,${(0.38 * nh).toFixed(3)})`;
     /* hotspots pulse; tap → Arabic card */
     arHs.forEach((h, i) => {
       const pulse = (Math.sin((t - 14.4) * 5 + i) + 1) / 2 * P(t, 14.6, 15.0);
@@ -711,9 +784,10 @@ const enWords = splitWords($('#pgTextEn'));
   });
 }
 
-/* ------------- S5 · CHAPTER LOOP · story → Quick Challenge → Language Focus ------------- */
+/* ------------- S5 · CHAPTER LOOP · story → Quick Challenge → Language Focus → I can ------------- */
 // The reader's real chapter order (StoryPage.tsx): the chapter text, then its Quick Challenge,
-// then its "After reading" Language Focus. Every one of the 12 chapters repeats this loop.
+// then its "After reading" Language Focus, then the chapter's "I can" self-check (v9).
+// Every one of the 12 chapters repeats this loop.
 const CHECK_SVG = '<svg viewBox="0 0 24 24"><path d="M5.5 12.5l4 4 9-9" fill="none" stroke="#1a1408" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 function flowRow(labels) {
   return '<div class="fl-row">' + labels.map((l, i) => (i ? '<b class="fl-l"><em></em></b>' : '') + `<div class="fl-n"><i>${CHECK_SVG}</i><span>${l}</span></div>`).join('') + '</div>';
@@ -764,13 +838,13 @@ const ADAM_CH = ['Introduction & The Creation', 'The Shaping of Adam', 'Iblis’
   const opts = [0, 1, 2].map(i => $('#qo' + i)), fb = $('#qcFb'), tap = $('#s5tap');
   const qWords = splitWords(q);
   const oldHead = $('#s5head'); if (oldHead) oldHead.remove();
-  const flow = el('div', 'flow', `<div class="fl-eye"><span lang="tr">Bölüm 1</span> · Introduction &amp; The Creation</div>${flowRow(['Hikâye', 'Quick Challenge', 'Language Focus'])}`, S);
+  const flow = el('div', 'flow', `<div class="fl-eye"><span lang="tr">Bölüm 1</span> · Introduction &amp; The Creation</div>${flowRow(['Hikâye', 'Quick Challenge', 'Language Focus', 'I can'])}`, S);
   /* Language Focus panel — real Chapter 1 activities (src/data/adam/b1/en/languageFocus.ts) */
   const LFA = [
-    ['True Now or Happened Then?', 'CLASSIFY', 'Is it true now, or an event that happened in the story? Put it in the right group.'],
-    ['Order, Report, Look Forward', 'COMPLETE', 'Complete the lines from Chapter 1 with words from the bank.'],
+    ['True Now or Happened Then?', 'CLASSIFY', 'Read each part of Chapter 1. Is it something that is true now, or an event that happened in the story? Put it in the right group.'],
+    ['Order, Report, Look Forward', 'COMPLETE', 'Complete the lines from Chapter 1 with words from the bank. Three words are not needed.'],
     ['Find and Fix the Mistake', 'CORRECT', 'Each sentence has one mistake. Tap the wrong words, then choose the correction.'],
-    ['Build a Connected Account', 'USE', 'Write or say four connected B1 sentences using Chapter 1 language patterns.'],
+    ['Build a Connected Account', 'USE', 'Write or say four connected B1 sentences. Use at least three different Chapter 1 language patterns from this Language Focus.'],
   ];
   const lf = el('div', 'ui lf', `<div class="lf-head"><div class="ico brown"><svg viewBox="0 0 24 24"><path d="M5 4.5h11a2 2 0 0 1 2 2V20H7a2 2 0 0 1-2-2z M5 18a2 2 0 0 1 2-2h11" fill="none" stroke="#fff" stroke-width="1.7" stroke-linejoin="round"/></svg></div>
     <div><div class="lf-meta">AFTER READING<span>4 activities</span></div><div class="lf-title">Language Focus</div><div class="lf-sub">Open when you are ready to notice, connect, and use the language.</div></div>
@@ -786,15 +860,22 @@ const ADAM_CH = ['Introduction & The Creation', 'The Shaping of Adam', 'Iblis’
     <div class="lfw-btn">I’ve reflected on these</div>`, world) };
   const lfwTxt = task.c.querySelector('.lfw-txt'), lfwPh = task.c.querySelector('.lfw-ph'), lfwCaret = task.c.querySelector('.lfw-caret');
   const lfwP = Array.from(task.c.querySelectorAll('.lfw-p')), lfwBtn = task.c.querySelector('.lfw-btn');
+  /* I can — chapter 1 (src/data/adam/b1/en/chapterExtras.ts) */
+  const ICAN = ['I can say what Allah told the angels before He created Adam (pbuh).', 'I can say what someone was going to do later.', 'I can write four linked sentences about the start of a story.'];
+  const ican = el('div', 'ui ican', `<div class="ican-h"><span class="t">${ico('ListChecks')}I CAN</span><span>How well can you do these now?</span></div>
+    ${ICAN.map(x => `<div class="ican-r"><p>${x}</p><div class="bt"><i class="y">Yes</i><i class="a">Almost</i><i class="n">Not yet</i></div></div>`).join('')}`, world);
+  const icanRows = Array.from(ican.querySelectorAll('.ican-r'));
+  const RATE = [[27.665, 'y'], [27.7, 'y'], [27.735, 'a']];
   /* chapter rail: all 12 chapters of Adam (B1), each with its own Quick Challenge and Language Focus */
   const railW = $('#s5railw');
   const mods = ADAM_CH.map((ti, i) => el('div', 'rail-m', `<div class="ri"><img src="assets/img/adam_b1/ch${String(i + 1).padStart(2, '0')}.jpg"></div><div class="rb"><div class="rn" lang="tr">BÖLÜM ${String(i + 1).padStart(2, '0')}</div><div class="rt">${ti}</div><div class="rc"><span class="h" lang="tr">Hikâye</span><i class="ar a0"></i><span class="q">Quick Challenge</span><i class="ar a1"></i><span class="l">Language Focus</span></div></div>`, railW));
   const modQ = mods.map(m => m.querySelector('.rc .q')), modL = mods.map(m => m.querySelector('.rc .l')), modA = mods.map(m => m.querySelector('.rc .a1')), modA0 = mods.map(m => m.querySelector('.rc .a0'));
-  const railHead = el('div', 'kin', '<div class="eyebrow">Hikâye → <span lang="en">Quick Challenge</span> → <span lang="en">Language Focus</span></div><div class="line">Her bölüm.</div><div class="line">Kendi hikâyesi.</div><div class="line gold">Kendi alıştırmaları.</div>', S);
+  const railHead = el('div', 'kin', '<div class="eyebrow">Hikâye → <span lang="en">Quick Challenge</span> → <span lang="en">Language Focus</span> → <span lang="en">I can</span></div><div class="line">Her bölüm.</div><div class="line">Kendi hikâyesi.</div><div class="line gold">Kendi alıştırmaları.</div>', S);
   railHead.setAttribute('lang', 'tr');
   railHead.style.bottom = '70px'; railHead.querySelectorAll('.line').forEach(l => { l.style.fontSize = '56px'; });
   const railSpans = maskLines(railHead);
   let fbH = null;
+  const lOutI = t => P(t, 27.8, 27.98, E.inStrong);
 
   scene('s5', 20.5, 29.6, t => {
     if (fbH == null) { fb.style.height = 'auto'; fbH = fb.offsetHeight; }
@@ -802,7 +883,7 @@ const ADAM_CH = ['Introduction & The Creation', 'The Shaping of Adam', 'Iblis’
     /* flow indicator */
     const fIn = P(t, 20.7, 21.3, E.outSoft), fOut = P(t, 27.8, 27.97, E.in);
     op(flow, fIn * (1 - fOut)); tf(flow, { y: (1 - fIn) * -16 });
-    paintFlow(flow, [1 + P(t, 21.1, 21.5), P(t, 21.2, 21.6) + P(t, 24.45, 24.85), P(t, 24.6, 25.0) + P(t, 27.7, 28.0)], [P(t, 21.0, 21.6, E.inOut), P(t, 24.4, 25.0, E.inOut)]);
+    paintFlow(flow, [1 + P(t, 21.1, 21.5), P(t, 21.2, 21.6) + P(t, 24.45, 24.85), P(t, 24.6, 25.0) + P(t, 27.6, 27.625), P(t, 27.605, 27.63) + P(t, 27.75, 27.77)], [P(t, 21.0, 21.6, E.inOut), P(t, 24.4, 25.0, E.inOut), P(t, 27.59, 27.625, E.inOut)]);
     /* Quick Challenge */
     const inn = P(t, 20.75, 21.5, E.outSoft);
     const up = P(t, 24.3, 25.2, E.cam);
@@ -818,7 +899,26 @@ const ADAM_CH = ['Introduction & The Creation', 'The Shaping of Adam', 'Iblis’
     tap.style.transform = `scale(${(1 - press * 0.25).toFixed(3)})`;
     const rp = P(t, 23.1, 23.6, E.out);
     tap.style.setProperty('--r', (1 + rp * 1.8).toFixed(3)); tap.style.setProperty('--ro', (t > 23.1 ? 1 - rp : 0).toFixed(3));
-    op(tap, P(t, 22.55, 22.75, E.lin) * (1 - P(t, 23.4, 23.7, E.lin)));
+    let tapV = P(t, 22.55, 22.75, E.lin) * (1 - P(t, 23.4, 23.7, E.lin));
+    /* I can: the learner rates the chapter's three lines (this beat is held ~9× slower in film time) */
+    const iIn = P(t, 27.6, 27.645, E.cam);
+    tf(ican, { x: 400 + hand.x, y: lerp(1150, 300, iIn) + hand.y, z: 260 - lOutI(t) * 900, rx: lerp(14, 2, iIn), s: 0.98 });
+    op(ican, P(t, 27.6, 27.615, E.lin) * (1 - lOutI(t)));
+    icanRows.forEach((row, i) => {
+      const [at, kind] = RATE[i];
+      row.querySelectorAll('.bt i').forEach(b => b.classList.toggle('on', t >= at && b.classList.contains(kind)));
+      const btn = row.querySelector('.bt .' + kind);
+      btn.style.transform = `scale(${(1 - Math.exp(-Math.pow((t - at) / 0.004, 2)) * 0.1).toFixed(3)})`;
+      const v = P(t, at - 0.014, at - 0.006, E.lin) * (1 - P(t, at + 0.006, at + 0.014, E.lin));
+      if (v > 0) {
+        const rr = btn.getBoundingClientRect(), x = rr.left + rr.width / 2, y = rr.top + rr.height / 2, mv = P(t, at - 0.014, at, E.outSoft);
+        tap.style.left = lerp(x + 70, x, mv) + 'px'; tap.style.top = lerp(y + 60, y, mv) + 'px';
+        tap.style.transform = `scale(${(1 - Math.exp(-Math.pow((t - at) / 0.003, 2)) * 0.25).toFixed(3)})`;
+        const rp = clamp((t - at) / 0.02); tap.style.setProperty('--r', (1 + rp * 1.8).toFixed(3)); tap.style.setProperty('--ro', (t > at ? 1 - rp : 0).toFixed(3));
+        tapV = v;
+      }
+    });
+    op(tap, tapV);
     const ok = t >= 23.12;
     opts[1].classList.toggle('ok', ok);
     const pop = ok ? Math.exp(-Math.pow((t - 23.2) / 0.12, 2)) : 0;
@@ -842,12 +942,12 @@ const ADAM_CH = ['Introduction & The Creation', 'The Shaping of Adam', 'Iblis’
     tf(task.c, { x: lerp(2100, 720, tIn) + hand.x, y: 150 + hand.y, z: 120 - lOut * 900, ry: lerp(-24, -6, tIn), rx: 2, s: 0.94 });
     op(task.c, P(t, 25.95, 26.2, E.lin) * (1 - lOut));
     // the learner writes, following the four sentence prompts; each prompt is ticked as it is used
-    const typed = Math.round(WRITE.length * P(t, 26.55, 27.62, E.lin));
+    const typed = Math.round(WRITE.length * P(t, 26.55, 27.58, E.lin));
     lfwTxt.textContent = WRITE.slice(0, typed);
     lfwPh.style.display = typed ? 'none' : '';
     lfwCaret.style.opacity = t > 26.45 && t < 27.75 && (Math.floor(t * 6) % 2 === 0 || (typed > 0 && typed < WRITE.length)) ? 1 : 0;
     lfwP.forEach((pp, j) => pp.classList.toggle('on', t >= 26.9 + j * 0.24));
-    lfwBtn.classList.toggle('on', t >= 27.62);
+    lfwBtn.classList.toggle('on', t >= 27.6);
     /* every chapter repeats the loop — this stretch plays ~4x slower in film time (timeline.json warps) */
     const rIn = P(t, 27.98, 28.12, E.outSoft), rOut = P(t, 29.36, 29.46, E.in);
     const pan = P(t, 27.98, 29.46, bezier(0.35, 0, 0.55, 1));
@@ -886,12 +986,12 @@ const ADAM_CH = ['Introduction & The Creation', 'The Shaping of Adam', 'Iblis’
   /* Knowledge Check (src/data/adam/b1/en/exercises.ts) */
   const kc = el('div', 'ui kc', `<div class="kc-box"><div class="ico">${ICON_CAP}</div><div><div class="ui-ey">AFTER THE STORY</div><div class="ui-t" style="font-size:40px">B1 Knowledge Check: Prophet Adam (pbuh)</div><div class="ui-s">Check your understanding of the key relationships, events and ideas across the whole book.</div></div></div>
     <div class="kc-ans"><span id="kcA">Answered 0/8</span><div class="bar"><i id="kcBar"></i></div></div>
-    <div class="kc-q"><div class="qq"><span>1</span>How is Adam introduced at the beginning of the book?</div>
-      <div class="kc-o"><span>A</span>As a ruler who lived after many other messengers</div><div class="kc-o" id="kcB"><span>B</span>As the first Messenger and father of all humans</div><div class="kc-o"><span>C</span>As one of Qabil’s sons</div></div>
-    <div class="kc-q"><div class="qq"><span>2</span>Chapter 2 presents knowledge and intellect as important gifts given to Adam for learning and understanding.</div><div class="kc-tf"><div id="kcT">True</div><div>False</div></div></div>`, world);
+    <div class="kc-q"><div class="qq"><span>1</span>According to Chapter 2, Adam knew less than the angels, so the angels had to teach him.</div><div class="kc-tf"><div>True</div><div id="kcT">False</div></div></div>
+    <div class="kc-q"><div class="qq"><span>4</span>How did Adam feel as soon as he finished eating the fruit?</div>
+      <div class="kc-o" id="kcB"><span>A</span>He felt pain, sadness and shame in his heart.</div><div class="kc-o"><span>B</span>He felt proud that he would never die now.</div><div class="kc-o"><span>C</span>He felt angry with Eve for giving him the fruit.</div></div>`, world);
 
   /* Master Glossary — all 48 words of the book (src/data/adam/b1/en/pages.ts, glossary page) */
-  const GLOSS = [["admired", "verb", 3, "Felt respect and approval for someone.", "Feelings & Attitudes"], ["admitting", "verb", 12, "Accepting or saying that something is true.", "Learning & Values"], ["angry", "adjective", 4, "Feeling strong displeasure.", "Feelings"], ["arrogant", "adjective", 3, "Too proud and sure of one’s own importance.", "Character & Values"], ["barrier", "noun", 7, "Something that prevents progress or clear understanding.", "Ideas & Obstacles"], ["blessings", "noun", 5, "Good things or gifts for which people are thankful.", "Spiritual Life"], ["careful", "adjective", 4, "Paying attention to avoid danger or harm.", "Safety & Awareness"], ["community", "noun", 9, "A group of people living or acting together.", "Society"], ["Creator", "noun", 4, "The One who creates.", "Belief & Faith"], ["curiosity", "noun", 1, "A strong wish to know more.", "Learning & Thinking"], ["digging", "verb", 11, "Making a hole in the ground.", "Actions"], ["disagreement", "noun", 10, "A serious difference of opinion.", "Relationships & Conflict"], ["distinguishing", "verb", 7, "Recognizing the difference between things.", "Learning & Thinking"], ["enemy", "noun", 4, "Someone who is hostile or wishes harm.", "Relationships"], ["fabulous", "adjective", 1, "Very impressive or wonderful.", "Description"], ["forbidden", "adjective", 6, "Not allowed by a rule or command.", "Rules & Choices"], ["friend", "noun", 5, "A person who is trusted and cared about.", "Relationships"], ["goodness", "noun", 2, "What is good, helpful, or beneficial.", "Values"], ["guide", "verb", 12, "To show the right direction or way to act.", "Guidance & Faith"], ["handful", "noun", 2, "An amount that can be held in one hand.", "Quantity & Description"], ["harm", "verb", 11, "To hurt or damage someone or something.", "Actions & Safety"], ["inborn", "adjective", 6, "Present naturally from birth.", "Human Nature"], ["intellect", "noun", 2, "The ability to reason, learn, and understand.", "Learning & Thinking"], ["jealous", "adjective", 10, "Unhappy because someone else has something one wants.", "Feelings"], ["jealousy", "noun", 12, "A feeling of wanting what another person has.", "Feelings"], ["knowledge", "noun", 2, "Information and understanding that someone has.", "Learning & Thinking"], ["lonely", "adjective", 5, "Unhappy because one is without companionship.", "Feelings"], ["message", "noun", 12, "An important idea or teaching passed to others.", "Communication & Faith"], ["Messenger", "noun", 1, "A person chosen by Allah to deliver His message.", "Spiritual Life"], ["mistake", "noun", 7, "An action or decision that is wrong.", "Learning & Choices"], ["offering", "noun", 10, "A gift or sacrifice made to show devotion.", "Spiritual Life"], ["origin", "noun", 3, "The point or material from which something begins.", "Ideas & Identity"], ["panic", "noun", 11, "Sudden strong fear that makes calm thinking difficult.", "Feelings"], ["pardon", "verb", 7, "To forgive someone for a wrong action.", "Forgiveness & Values"], ["purpose", "noun", 9, "The reason why something exists or is done.", "Ideas & Meaning"], ["raven", "noun", 11, "A large black bird.", "Animals & Nature"], ["righteously", "adverb", 9, "In a morally right way.", "Values & Conduct"], ["ruler", "noun", 1, "A person given responsibility to lead or manage.", "Leadership & Responsibility"], ["sacred", "adjective", 9, "Connected with religion and deserving special respect.", "Spiritual Life"], ["shame", "noun", 6, "A painful feeling connected with awareness of wrong behavior.", "Feelings & Values"], ["shelter", "noun", 8, "A place that gives protection from danger or weather.", "Survival & Daily Life"], ["shepherd", "noun", 10, "A person who takes care of sheep or other animals.", "People & Roles"], ["struggle", "verb", 8, "To make a strong effort during difficulty.", "Challenges & Effort"], ["superiority", "noun", 3, "The state of being considered better or higher.", "Values & Equality"], ["survive", "verb", 8, "To continue to live despite difficulty or danger.", "Survival & Life"], ["visible", "adjective", 6, "Able to be seen.", "Description"], ["weapons", "noun", 8, "Objects used for protection or fighting.", "Objects & Safety"], ["wife", "noun", 5, "A married woman in relation to her spouse.", "Family & Relationships"]];
+  const GLOSS = [["admired", "verb", 3, "Felt respect and approval for someone.", "Feelings & Attitudes"], ["admitting", "verb", 12, "Accepting or saying that something is true.", "Learning & Values"], ["arrogant", "adjective", 3, "Too proud and sure of one’s own importance.", "Character & Values"], ["barrier", "noun", 7, "Something that prevents progress or clear understanding.", "Ideas & Obstacles"], ["blessings", "noun", 5, "Good things or gifts for which people are thankful.", "Spiritual Life"], ["careful", "adjective", 4, "Paying attention to avoid danger or harm.", "Safety & Awareness"], ["community", "noun", 9, "A group of people living or acting together.", "Society"], ["companion", "noun", 5, "Someone who spends time with another person and shares their life.", "Family & Relationships"], ["Creator", "noun", 4, "The One who brought all things into existence.", "Belief & Faith"], ["curiosity", "noun", 1, "A strong wish to know more.", "Learning & Thinking"], ["digging", "verb", 11, "Making a hole in the ground.", "Actions"], ["disagreement", "noun", 10, "A serious difference of opinion.", "Relationships & Conflict"], ["distinguishing", "verb", 7, "Recognizing the difference between things.", "Learning & Thinking"], ["enemy", "noun", 4, "Someone who is hostile or wishes harm.", "Relationships"], ["fabulous", "adjective", 1, "Very impressive or wonderful.", "Description"], ["forbidden", "adjective", 6, "Not allowed by a rule or command.", "Rules & Choices"], ["guide", "verb", 12, "To show the right direction or way to act.", "Guidance & Faith"], ["handful", "noun", 2, "An amount that can be held in one hand.", "Quantity & Description"], ["harm", "verb", 11, "To hurt or damage someone or something.", "Actions & Safety"], ["inborn", "adjective", 6, "Present naturally from birth.", "Human Nature"], ["intellect", "noun", 2, "The ability to reason, learn, and understand.", "Learning & Thinking"], ["jealous", "adjective", 10, "Unhappy because someone else has something one wants.", "Feelings"], ["knowledge", "noun", 2, "Information and understanding that someone has.", "Learning & Thinking"], ["lonely", "adjective", 5, "Unhappy because one is without companionship.", "Feelings"], ["message", "noun", 12, "An important idea or teaching passed to others.", "Communication & Faith"], ["messenger", "noun", 1, "A person chosen by Allah to deliver His message.", "Spiritual Life"], ["offering", "noun", 10, "A gift or sacrifice made to show devotion.", "Spiritual Life"], ["opposite", "adjective", 7, "Completely different, or going in the other direction.", "Learning & Choices"], ["origin", "noun", 3, "The point or material from which something begins.", "Ideas & Identity"], ["panic", "verb", 11, "To suddenly feel so afraid that you cannot think calmly.", "Feelings"], ["pardon", "verb", 7, "To forgive someone for a wrong action.", "Forgiveness & Values"], ["pretending", "verb", 5, "Acting as if something is true when it is not.", "Honesty & Deception"], ["purpose", "noun", 9, "The reason why something exists or is done.", "Ideas & Meaning"], ["raven", "noun", 11, "A large black bird.", "Animals & Nature"], ["righteously", "adverb", 9, "In a morally right way.", "Values & Conduct"], ["ruler", "noun", 1, "A person given responsibility to lead or manage.", "Leadership & Responsibility"], ["sacred", "adjective", 9, "Connected with religion and deserving special respect.", "Spiritual Life"], ["shame", "noun", 6, "A painful feeling connected with awareness of wrong behavior.", "Feelings & Values"], ["shaped", "verb", 2, "Gave something a particular form.", "Creation"], ["shelter", "noun", 8, "A place that gives protection from danger or weather.", "Survival & Daily Life"], ["shepherd", "noun", 10, "A person who takes care of sheep or other animals.", "People & Roles"], ["spread", "verb", 12, "Carried or passed something to many people or places.", "Guidance & Faith"], ["struggle", "verb", 8, "To make a strong effort during difficulty.", "Challenges & Effort"], ["superiority", "noun", 3, "The state of being considered better or higher.", "Values & Equality"], ["survive", "verb", 8, "To continue to live despite difficulty or danger.", "Survival & Life"], ["visible", "adjective", 6, "Able to be seen.", "Description"], ["warned", "verb", 4, "Told someone about a possible danger so they could avoid it.", "Guidance & Faith"], ["weapons", "noun", 8, "Objects used for protection or fighting.", "Objects & Safety"]];
   const gl = el('div', 'ui gl', `<div class="gl-top"><div class="ico">${ICON_BOOK}</div><div><div class="ui-ey">VOCABULARY LEARNING HUB</div><div class="ui-t" style="font-size:42px">Master Glossary</div><div class="ui-s" style="font-size:18px">Review the story vocabulary, map your confidence and keep difficult words visible.</div></div>
     <div class="gl-map"><small>CONFIDENCE MAP</small><b id="glPct">0%</b><p>This stage reflects your current self-assessment of the vocabulary.</p><div class="bar"><i id="glBar" style="background:linear-gradient(90deg,#00bc7d,#34d399)"></i></div></div></div>
     <div class="gl-stats"><div class="gl-st a"><small>ALL WORDS</small><b>48</b></div><div class="gl-st c"><small>CONFIDENT</small><b id="glC">0</b></div><div class="gl-st p"><small>PRACTICE</small><b id="glP">0</b></div><div class="gl-st n"><small>NEW</small><b id="glN">48</b></div></div>
@@ -903,30 +1003,31 @@ const ADAM_CH = ['Introduction & The Creation', 'The Shaping of Adam', 'Iblis’
   const MARKS = [[0, 'conf'], [2, 'conf'], [3, 'prac'], [5, 'conf'], [6, 'conf'], [9, 'conf'], [11, 'prac'], [13, 'conf'], [14, 'conf'], [16, 'conf'], [18, 'conf'], [21, 'prac'], [22, 'conf'], [25, 'conf']];
 
   /* Vocabulary Challenge (live UI content) */
-  const VW = ['Messenger', 'Origin', 'Friend', 'Struggle', 'Disagreement', 'Guide', 'Fabulous', 'Arrogant'];
-  const VM = ['A place that gives protection from danger or weather.', 'Too proud and sure of one’s own importance.', 'A person who takes care of sheep or other animals.', 'The point or material from which something begins.', 'A person chosen by Allah to deliver His message.', 'To show the right direction or way to act.', 'To make a strong effort during difficulty.', 'A serious difference of opinion.'];
+  // src/data/adam/b1/en/exercises.ts → adamB1VocabularyChallengePairs (10 words), meanings in the order the UI shows them
+  const VW = ['Curiosity', 'Intellect', 'Arrogant', 'Lonely', 'Forbidden', 'Opposite', 'Survive', 'Sacred', 'Harm', 'Guide'];
+  const VM = ['A strong wish to know more.', 'The ability to reason, learn, and understand.', 'To hurt or damage someone or something.', 'Not allowed by a rule or command.', 'Connected with religion and deserving special respect.', 'Too proud and sure of one’s own importance.', 'To continue to live despite difficulty or danger.', 'To show the right direction or way to act.', 'Unhappy because one is without companionship.', 'Completely different, or going in the other direction.'];
   const vc = el('div', 'ui vc', `<div class="hrow"><div class="ico">${ICON_BOOK}</div><div><div class="ui-ey">VOCABULARY CHALLENGE</div><div class="ui-s" style="margin-top:4px">Move from meaning recognition to story context and active recall.</div></div></div>
     <div class="tabs"><div class="on">Match</div><div>In Context</div><div>Recall &amp; Use</div></div>
-    <div class="vc-cnt"><span id="vcN">0/12</span><div class="bar"><i id="vcBar"></i></div></div>
-    <div class="vc-hint">Select a word, then select its meaning to make a match.</div>
-    <div class="vc-cols"><div><h5>WORDS</h5>${VW.map(w => `<div class="vc-w">${w}</div>`).join('')}</div><div><h5>MEANINGS</h5>${VM.map(m => `<div class="vc-m">${m}</div>`).join('')}</div><svg class="mt-svg"></svg></div>`, world);
+    <div class="vc-cnt"><span id="vcN">0/10</span><div class="bar"><i id="vcBar"></i></div></div>
+    <div class="vc-hint">Pair every word with a meaning, then check. Wrong pairs come back for another try.</div>
+    <div class="vc-cols"><div><h5>WORDS</h5>${VW.map(w => `<div class="vc-w">${w}</div>`).join('')}</div><div><h5>MEANINGS</h5>${VM.map(m => `<div class="vc-m">${m}</div>`).join('')}</div><svg class="mt-svg"></svg></div><div class="vc-go">I'VE MATCHED THEM!</div>`, world);
   const vcL = Array.from(vc.querySelectorAll('.vc-w')), vcR = Array.from(vc.querySelectorAll('.vc-m')), vcSvg = vc.querySelector('.mt-svg');
-  const VPAIRS = [[0, 4], [1, 3], [7, 1], [3, 6]];
+  const VPAIRS = [[0, 0], [2, 5], [3, 8], [4, 3]];
 
-  /* Language Review (live UI content, task 1 / 8) */
+  /* Language Review (src/data/adam/b1/en/exercises.ts, task 1 / 10: a drag-drop sort in the Notice stage) */
   const lrWrap = el('div', 'ui', '', world); lrWrap.style.width = '1400px';
-  const lrHead = el('div', 'ui-pad', `<div class="kc-box" style="display:block;padding:22px 30px"><div style="display:flex;justify-content:space-between"><div><div class="ui-ey">AFTER VOCABULARY</div><div class="ui-t" style="font-size:40px">Language Review</div></div><div style="width:190px;font-size:13px;letter-spacing:.16em;color:#8a8579;font-weight:700">TASK <b style="float:right;color:var(--rust);font-size:18px">5 / 8</b><div class="bar" style="margin-top:12px"><i style="width:62.5%"></i></div></div></div>
-    <div class="tabs amber" style="margin-top:14px"><div class="done">✓ Notice</div><div class="on">Build</div><div>Use</div></div></div>`, lrWrap);
-  // Task 5 / 8 of the real Language Review (exercises.ts): sequencing, in the Build stage
-  const SEQ = ['After an earlier event, a new situation began.', 'Over time, the situation changed.', 'Later, people took on new roles and responsibilities.', 'The influence still continues today.'];
-  const SEQ_SHOWN = [2, 0, 3, 1];   // presented out of order, as the app does
-  const lr = { c: el('div', 'ui-pad lrs', `<div class="ui-ey">LANGUAGE TASK</div><div class="ui-t" style="font-size:34px">Build a Coherent Development</div>
-    <div class="mt-q" style="font-size:26px;margin-top:14px">How can a paragraph move from an earlier event to change, later development, and continuing influence?</div>
-    <div class="sq-h">Click the events in the correct order</div>
-    ${SEQ_SHOWN.map(k => `<div class="sq-i" data-k="${k}"><span>—</span>${SEQ[k]}</div>`).join('')}
-    <div class="sq-btn">SELECT ALL EVENTS (0/4)</div>`, lrWrap) };
-  const sqItems = Array.from(lr.c.querySelectorAll('.sq-i')), sqBtn = lr.c.querySelector('.sq-btn');
+  const lrHead = el('div', 'ui-pad', `<div class="kc-box" style="display:block;padding:22px 30px"><div style="display:flex;justify-content:space-between"><div><div class="ui-ey">AFTER VOCABULARY</div><div class="ui-t" style="font-size:40px">Language Review</div></div><div style="width:190px;font-size:13px;letter-spacing:.16em;color:#8a8579;font-weight:700">TASK <b style="float:right;color:var(--rust);font-size:18px">1 / 10</b><div class="bar" style="margin-top:12px"><i style="width:10%"></i></div></div></div>
+    <div class="tabs amber" style="margin-top:14px"><div class="on">Notice</div><div>Build</div><div>Use</div></div></div>`, lrWrap);
+  const LRG = [['Looks back: it happened earlier', ['He said He had decided to place a ruler (khalifah) on earth.', '… Allah had put him far from His help.', '… they forgot the warning Allah had given them.']],
+    ['Looks forward: it was still ahead', ['… He told the angels that He was going to create a human.', 'They would direct, control and make everything better on the planet.', 'They would use land to grow crops and keep animals.']],
+    ['True now, for the reader', ['Arrogance is the biggest barrier …', 'We are all descendants of their children.', '… their stories still guide us.']]];
+  const lr = { c: el('div', 'ui-pad lrs', `<div class="ui-ey">LANGUAGE TASK</div><div class="ui-t" style="font-size:34px">Notice: Looking Back, Looking Forward, True Now</div>
+    <div class="mt-q" style="font-size:24px;margin-top:12px">What do had + past participle, was going to / would + verb and the present simple do in the book?</div>
+    <div class="dd-g">${LRG.map(([g]) => `<div class="dd-col"><h6>${g}</h6><div class="dd-slot"></div></div>`).join('')}</div>`, lrWrap) };
   lr.c.style.paddingTop = '0'; lrHead.style.paddingBottom = '18px';
+  const ddCols = Array.from(lr.c.querySelectorAll('.dd-slot'));
+  // two parts per group are placed on screen (the order the learner drags them in)
+  const DD = [[1, 0], [2, 1], [0, 0], [1, 1], [2, 0], [0, 1]].map(([gi, k], j) => ({ gi, j, item: el('div', 'dd-i', LRG[gi][1][k], ddCols[gi]) }));
 
   /* Final Challenge */
   const fc = el('div', 'ui fc', `<div class="ico">${ICON_TROPHY}</div><h2>Final Challenge</h2><p>You’ve reached the end of the journey. Bring the whole story together with a carefully designed final challenge.</p><div class="go" id="fcGo">START THE CHALLENGE &nbsp;→</div>`, world);
@@ -978,7 +1079,7 @@ const ADAM_CH = ['Introduction & The Creation', 'The Shaping of Adam', 'Iblis’
       c.style.opacity = p.toFixed(3); c.style.transform = `translateY(${((1 - P(t, a - 0.1, a + 0.45, E.outSoft)) * 30).toFixed(1)}px)`;
     });
     /* Knowledge Check interactions */
-    const kB = t >= 30.45, kT = t >= 30.95;
+    const kT = t >= 30.45, kB = t >= 30.95;
     $('#kcB').classList.toggle('ok', kB); $('#kcT').classList.toggle('ok', kT);
     $('#kcA').textContent = `Answered ${(kB ? 1 : 0) + (kT ? 1 : 0)}/8`; $('#kcBar').style.width = `${((kB ? 1 : 0) + (kT ? 1 : 0)) * 12.5}%`;
     /* Master Glossary: 48 cards, self-assessment, scroll */
@@ -999,21 +1100,14 @@ const ADAM_CH = ['Introduction & The Creation', 'The Shaping of Adam', 'Iblis’
     VPAIRS.forEach(([li], k) => vcL[li].classList.toggle('sel', t >= 36.35 + k * 0.42 && t < 36.35 + k * 0.42 + 0.3));
     matchLines(vcSvg, vcL, vcR, VPAIRS, t, 36.5, 0.42);
     const vn = VPAIRS.filter((_, k) => t >= 36.5 + k * 0.42 + 0.34).length;
-    $('#vcN').textContent = `${vn}/12`; $('#vcBar').style.width = (vn / 12 * 100) + '%';
-    /* Language Review */
-    // events are clicked in order (1 → 4), then the order is checked
-    let picked = 0;
-    sqItems.forEach(it => {
-      const k = +it.dataset.k, at = 39.31 + k * 0.33, on = t >= at;
-      if (on) picked++;
-      it.classList.toggle('sel', on);
-      it.querySelector('span').textContent = on ? String(k + 1) : '—';
-      it.style.transform = `scale(${(1 - Math.exp(-Math.pow((t - at) / 0.06, 2)) * 0.015).toFixed(4)})`;
+    $('#vcN').textContent = `${vn}/10`; $('#vcBar').style.width = (vn / 10 * 100) + '%';
+    /* Language Review: parts drop into their groups */
+    DD.forEach(({ item, j }) => {
+      const at = 39.3 + j * 0.2, p = P(t, at, at + 0.28, E.back);
+      item.style.opacity = P(t, at, at + 0.08, E.lin).toFixed(3);
+      item.style.transform = `translate3d(0,${((1 - p) * -60).toFixed(1)}px,0) rotate(${((1 - p) * (j % 2 ? 3 : -3)).toFixed(2)}deg)`;
+      item.classList.toggle('ok', t >= 40.55);
     });
-    const checked = t >= 40.55;
-    sqItems.forEach(it => it.classList.toggle('ok', checked));
-    sqBtn.textContent = checked ? 'Correct. The development moves from earlier event to change, later stage, and present continuity.' : picked === 4 ? 'CHECK ORDER' : `SELECT ALL EVENTS (${picked}/4)`;
-    sqBtn.className = 'sq-btn' + (checked ? ' ok' : picked === 4 ? ' ready' : '');
     /* Final Challenge */
     const go = Math.exp(-Math.pow((t - 42.0) / 0.07, 2));
     $('#fcGo').style.transform = `scale(${(1 - go * 0.05).toFixed(3)})`;
@@ -1090,7 +1184,7 @@ const ADAM_CH = ['Introduction & The Creation', 'The Shaping of Adam', 'Iblis’
 /* ----------------------------- S7 · GUIDES ----------------------------- */
 {
   const TG = ['Overview', 'Curriculum Alignment', 'Teaching Approach', 'Reading Framework', 'Chapter Support', 'Classroom Management', 'Differentiation', 'Assessment & Rubrics', 'Kinesthetic Learning', 'Global Citizenship', 'Values Education', 'Sensitive Notes', 'English Tips', 'Home Connection', 'Quick Checklist', 'Appendices'];
-  const SG = ['Study Home', 'Study Path', '1. Who is this for?', '2. What is in the book?', '3. How to use the book', '4. Your Study Routine', '5. Reading Tips', '6. Learning New Words', '7. Listening & Speaking', '8. Writing Practice', '9. When it feels hard'];
+  const SG = ['Study Home', 'Study Path', '1. One Chapter per Session', '2. Listen and Read', '3. Word Notes and Hotspots', '4. Quick Challenge', '5. Language Focus', '6. When It Is Hard', '7. Values in the Story', '8. At the End of the Book'];
   const tgItems = TG.map((s, i) => el('div', 'g-item', `<div class="ic"><i></i></div><span class="n">${i + 1}</span>${s.replace('&', '&amp;')}`, $('#tgList')));
   const sgItems = SG.map(s => el('div', 'g-item', `<div class="ic"><i></i></div>${s.replace('&', '&amp;')}`, $('#sgList')));
   const map = Array.from({ length: 12 }, (_, i) => el('div', '', String(i + 1), $('#sgMap')));
@@ -1148,15 +1242,26 @@ const ADAM_CH = ['Introduction & The Creation', 'The Shaping of Adam', 'Iblis’
 {
   const wall = $('#s8wall');
   const tiles = [];
+  // v9: the wall is built only from the app's place pictures (src/features/historical-entities/assets/pictures; no people)
+  const PLACES = ["andalus_mecca", "abraham_yemen", "moses_canaan", "moses_nile-delta", "andalus_cordoba", "moses_pharaohs-palace", "andalus_middle-east", "andalus_baghdad", "yunus_sivas", "andalus_lighthouse-of-alexandria", "andalus_crete", "andalus_north-africa", "mecca_medina-7th-century", "andalus_red-sea", "abraham_syria-ancient", "mecca_mecca-valley-ancient", "yunus_khorasan", "mecca_safa-and-marwa", "andalus_seville", "andalus_sicily", "yunus_transoxiana", "andalus_acre", "mecca_mecca-7th-century", "yunus_erzurum", "yunus_kayseri", "andalus_egypt", "moses_midian", "abraham_damascus-pre-islamic", "andalus_medina", "mecca_damascus-7th-century", "moses_gulf-of-aqaba", "andalus_granada", "andalus_syria", "yunus_konya", "abraham_kaaba-abraham", "andalus_great-mosque-of-damascus", "andalus_aleppo", "andalus_al-andalus", "andalus_ceuta", "abraham_mesopotamia", "mecca_ukaz", "abraham_hijaz", "andalus_palestine", "andalus_mediterranean", "abraham_sumer", "abraham_safa-and-marwa-ancient", "abraham_harran", "andalus_alexandria", "mecca_kaaba-7th-century", "mecca_silk-road", "andalus_jerusalem", "mecca_zamzam", "andalus_kerak", "mecca_arabian-peninsula", "moses_pi-ramesses", "andalus_genoa", "mecca_arafat", "abraham_egypt-ancient", "mecca_abyssinia", "andalus_sardinia", "yunus_central-asia", "andalus_nile", "andalus_damascus", "abraham_ur", "yunus_turkestan", "moses_sinai", "andalus_valencia", "abraham_babylon", "andalus_euphrates", "andalus_cairo", "andalus_mosul", "mecca_constantinople-byzantine", "moses_jerusalem-ancient"];
   for (let r = 0; r < 7; r++) for (let c = 0; c < 11; c++) {
-    const i = (r * 11 + c) % 60;
-    const d = el('div', 'wall', `<img src="assets/img/wall/w${String(i).padStart(2, '0')}.jpg">`, wall);
+    const i = (r * 11 + c) % PLACES.length;
+    const d = el('div', 'wall', `<img src="assets/img/places/${PLACES[i]}.webp">`, wall);
     tiles.push({ d, r, c, ph: (r * 7 + c * 13) % 10 / 10 });
   }
   const word = $('#s8word');
   word.innerHTML = 'Lisandan Kültüre'.split('').map(ch => `<span class="clip"><span class="ch">${ch === ' ' ? '&nbsp;' : ch}</span></span>`).join('');
   const chars = Array.from(word.querySelectorAll('.ch'));
   const logo = $('#s8logo'), sheen = $('#s8sheen'), flare = $('#s8flare');
+  /* brand mark drawn for the film: the library's arch, an open book and a round point of light.
+     (The app's own logo PNG has a four-point sparkle and an eight-lobed frame, so it is not used.) */
+  $('#s8mark').innerHTML = `<defs><radialGradient id="mkDot"><stop offset="0" stop-color="#fffaf0"/><stop offset=".45" stop-color="#fff0c4"/><stop offset="1" stop-color="#f3d58a" stop-opacity="0"/></radialGradient>
+      <linearGradient id="mkFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2a2114"/><stop offset="1" stop-color="#14100a"/></linearGradient></defs>
+    <path d="${archD(62, 22, 176, 250)}" fill="url(#mkFill)" stroke="url(#goldStroke)" stroke-width="5" stroke-linejoin="round"/>
+    <path d="${archD(80, 46, 140, 214, false)}" fill="none" stroke="rgba(243,213,138,.4)" stroke-width="1.6"/>
+    <circle cx="150" cy="138" r="34" fill="url(#mkDot)"/><circle cx="150" cy="138" r="9" fill="#fff8e6"/>
+    <path d="M150,212 C132,199 108,196 90,201 L90,236 C108,231 132,233 150,246 C168,233 192,231 210,236 L210,201 C192,196 168,199 150,212 Z" fill="none" stroke="url(#goldStroke)" stroke-width="4.5" stroke-linejoin="round"/>
+    <path d="M150,212 L150,246" stroke="url(#goldStroke)" stroke-width="3.5" stroke-linecap="round"/>`;
   const sub = $('#s8sub'), meta = $('#s8meta');
 
   scene('s8', 34.4, OLD_END, t => {
@@ -1175,7 +1280,7 @@ const ADAM_CH = ['Introduction & The Creation', 'The Shaping of Adam', 'Iblis’
     op(logo, P(t, 34.5, 34.9, E.lin)); blur(logo, (1 - lg) * 18);
     sheen.style.backgroundPosition = `${(lerp(120, -40, P(t, 35.15, 36.1, E.inOut))).toFixed(1)}% 0`;
     const fl = Math.exp(-Math.pow((t - 35.25) / 0.25, 2));
-    tf(flare, { s: 0.2 + fl * 0.9, rz: drift * 30 }); op(flare, fl);
+    tf(flare, { y: -12 * lerp(0.72, 1, lg), s: 0.2 + fl * 0.9 }); op(flare, fl);
     chars.forEach((c, i) => { const p = P(t, 35.3 + i * 0.035, 36.1 + i * 0.035, E.outSoft); c.style.transform = `translate3d(0,${((1 - p) * 135).toFixed(1)}%,0)`; });
     const sp = P(t, 35.95, 36.6, E.outSoft); sub.style.opacity = sp; sub.style.letterSpacing = `${lerp(0.6, 0.34, sp).toFixed(3)}em`;
     const mp = P(t, 36.6, 37.3, E.outSoft); meta.style.opacity = mp; tf(meta, { y: (1 - mp) * 16 });
@@ -1183,6 +1288,285 @@ const ADAM_CH = ['Introduction & The Creation', 'The Shaping of Adam', 'Iblis’
     $('#stage').style.filter = fade > 0 ? `brightness(${(1 - fade).toFixed(3)})` : '';
     drawDust(t, 0.45 * a, 0.05);
     $('#flash').style.opacity = (Math.exp(-Math.pow((t - 34.47) / 0.18, 2)) * 0.9).toFixed(3);
+  });
+}
+
+/* ======================================================================
+   v9 · NEW FEATURES — each scene runs on its own clock (0 … its length in seconds)
+   Everything shown is the live app: dialogs are recomposed from the components'
+   own text (src/), the maps and the lesson card are 2× screenshots of the running
+   app (assets/img/app/, made with scratchpad tooling from 127.0.0.1:5173).
+   ====================================================================== */
+function nHead(sec, eyebrow, lines, cls = '') {
+  const h = el('div', 'kin nhead ' + cls, `<div class="eyebrow">${eyebrow}</div>${lines.map(([x, g]) => `<div class="line${g ? ' gold' : ''}">${x}</div>`).join('')}`, sec);
+  h.setAttribute('lang', 'tr');
+  return { el: h, spans: maskLines(h) };
+}
+function headAt(h, t, t0, t1) {
+  h.spans.forEach((s, i) => riseIn(s, t, t0 + i * 0.1, 0.75));
+  const o = P(t, t1, t1 + 0.35, E.in);
+  op(h.el, (t >= t0 ? 1 : 0) * (1 - o)); blur(h.el, o * 10, 'drop-shadow(0 10px 30px rgba(0,0,0,.6))');
+  show(h.el, t >= t0 - 0.05 && o < 1);
+}
+/** the finger: approaches, presses at tt, ripples. Returns its visibility (0..1). */
+function finger(tapEl, t, tt, target, fx = 0.5, fy = 0.5, pre = 0.32, post = 0.34) {
+  const v = P(t, tt - pre, tt - pre * 0.55, E.lin) * (1 - P(t, tt + post * 0.5, tt + post, E.lin));
+  if (v <= 0) return 0;
+  const r = target.getBoundingClientRect(), x = r.left + r.width * fx, y = r.top + r.height * fy;
+  const mv = P(t, tt - pre, tt, E.outSoft), press = Math.exp(-Math.pow((t - tt) / 0.06, 2));
+  tapEl.style.left = lerp(x + 110, x, mv) + 'px'; tapEl.style.top = lerp(y + 80, y, mv) + 'px';
+  tapEl.style.transform = `scale(${(1 - press * 0.25).toFixed(3)})`;
+  const rp = clamp((t - tt) / 0.4);
+  tapEl.style.setProperty('--r', (1 + rp * 1.8).toFixed(3)); tapEl.style.setProperty('--ro', (t > tt ? 1 - rp : 0).toFixed(3));
+  return v;
+}
+const press = (t, tt) => 1 - Math.exp(-Math.pow((t - tt) / 0.06, 2)) * 0.05;
+function shot(parent, src, w, h, radius = 26) {
+  const d = el('div', 'shot', `<img src="assets/img/app/${src}">`, parent);
+  d.style.width = w + 'px'; d.style.height = h + 'px'; d.style.borderRadius = radius + 'px';
+  return d;
+}
+const glowBg = sec => el('div', 'nbg', '', sec);
+
+/* ----------------------- N1 · THREE PATHS (RolePicker) ----------------------- */
+{
+  const S = $('#n1'), w = $('#n1w');
+  glowBg(S).style.background = 'radial-gradient(60% 70% at 65% 45%, rgba(216,179,92,.14), rgba(0,0,0,0) 70%)';
+  // src/components/RolePicker.tsx, captured live (768 × 477 css px)
+  const CW = 1100, CH = CW * 477.375 / 768;
+  const card = shot(w, 'rp.png', CW, CH, 30);
+  card.style.boxShadow = '0 60px 140px rgba(0,0,0,.7), 0 0 80px rgba(194,170,107,.18)';
+  const OPT = [[38, 184], [272.66, 184], [507.33, 184]].map(([x, y], i) => {
+    const g = el('div', 'rp-glow', '', card);
+    Object.assign(g.style, { left: (x / 768 * 100) + '%', top: (y / 477.375 * 100) + '%', width: (222.66 / 768 * 100) + '%', height: (255.375 / 477.375 * 100) + '%' });
+    return g;
+  });
+  const TAGS = [['Öğrenci', 'oku · dinle · çalış'], ['Öğretmen', 'kılavuz · ders kartı · sınıf modu'], ['Kendi başına', 'seviye testi · kelimelerim']].map(([a, b]) => el('div', 'rp-tag', `<small>${b}</small>${a}`, S));
+  const head = nHead(S, 'Yeni · Kimin için?', [['Üç yol.', true], ['Aynı kitaplar.']]);
+  const tap = el('div', 'tap', null, S);
+  const SEL = [[0.95, 1.75], [1.75, 2.6], [2.6, 4.2]];
+  scene('n1', 0, 4.667, t => {
+    const inn = P(t, 0, 0.8, E.cam), out = P(t, 4.2, 4.65, E.inStrong);
+    const hand = { x: smoothNoise(t * 0.5, 91) * 5, y: smoothNoise(t * 0.45, 92) * 4 };
+    tf(card, { x: 1340 - CW / 2 + hand.x, y: 470 - CH / 2 + hand.y + (1 - inn) * 120, z: lerp(-700, 0, inn) - out * 600, rx: lerp(16, 2, inn), ry: lerp(-22, -9, inn) + out * 6 });
+    op(card, P(t, 0, 0.3, E.lin) * (1 - out)); blur(card, out * 10);
+    OPT.forEach((g, i) => { const [a, b] = SEL[i]; const v = P(t, a, a + 0.2, E.outSoft) * (1 - P(t, b, b + 0.2, E.in)); g.style.opacity = v.toFixed(3); g.style.transform = `scale(${(1 + 0.03 * v).toFixed(4)})`; });
+    TAGS.forEach((tg, i) => {
+      const r = OPT[i].getBoundingClientRect(), [a, b] = SEL[i];
+      const v = P(t, a + 0.05, a + 0.35, E.outSoft) * (1 - P(t, b, b + 0.2, E.in));
+      tg.style.left = (r.left + r.width / 2 - tg.offsetWidth / 2) + 'px'; tg.style.top = (r.bottom + 30 + (1 - v) * 14) + 'px';
+      op(tg, v * (1 - out));
+    });
+    op(tap, finger(tap, t, 3.15, OPT[2], 0.5, 0.42) * (1 - out));
+    headAt(head, t, 0.35, 4.15);
+    drawDust(t + 70, 0.25, 0.05);
+  });
+}
+
+/* ------------- N5 · ON MY OWN · level test result → My words review ------------- */
+{
+  const S = $('#n5'), w = $('#n5w');
+  glowBg(S).style.background = 'radial-gradient(60% 70% at 62% 48%, rgba(216,179,92,.13), rgba(0,0,0,0) 70%)';
+  // src/components/LevelTest*.tsx text (result for 3 A2 + 4 B1 + 1 B2 right = B1)
+  const lt = el('div', 'dlg', `<div class="dlg-h"><div class="ic">${ico('Stack')}</div><div><b>Level test</b><small>Ten short questions, about three minutes.</small></div></div>
+    <div class="lt-res"><small>Your suggested level</small><div class="lv">B1</div><p>Start at B1. You can follow a longer story<br>and the reasons for what happens.</p><div class="sc">You answered 8 of 10 questions correctly.</div></div>
+    <div class="lt-btn">Start with Prophet Adam · B1 ${ico('ArrowRight')}</div><div class="lt-alt">I’ll choose myself</div><div class="lt-note">You can always open any level from the library.</div>`, w);
+  lt.style.width = '700px';
+  const ltLv = lt.querySelector('.lv'), ltParts = Array.from(lt.querySelectorAll('.lt-res > *, .lt-btn, .lt-alt, .lt-note'));
+  // src/components/MyWords*.tsx — review card
+  const WORDS = [['Messenger', 'A person chosen by Allah to deliver His message.'], ['curiosity', 'A strong wish to know more.']];
+  const mw = el('div', 'dlg', `<div class="dlg-h"><div class="ic">${ico('BookBookmark')}</div><div><b>My words</b></div></div>
+    <div class="mw-card"><small class="mw-n">1 / 3 · Prophet Adam · B1</small><div class="w">Messenger</div><div class="d"></div>
+      <div class="bts"><i class="k">I knew it</i><i class="n">Not yet</i><i class="sm">Show the meaning</i></div></div>
+    <div class="mw-prog"><i></i><i></i><i></i></div><div class="mw-list">List</div>`, w);
+  mw.style.width = '720px';
+  const mwN = mw.querySelector('.mw-n'), mwW = mw.querySelector('.w'), mwD = mw.querySelector('.d'), mwK = mw.querySelector('.k'), mwNo = mw.querySelector('.n'), mwSm = mw.querySelector('.sm');
+  const mwCard = mw.querySelector('.mw-card'), mwProg = Array.from(mw.querySelectorAll('.mw-prog i'));
+  const head = nHead(S, 'Kendi başına', [['Seviyeni bul.'], ['Kelimelerini sakla.', true]]);
+  const tap = el('div', 'tap', null, S);
+  const T_SHOW = 3.55, T_KNEW = 4.45, T_SHOW2 = 5.15;
+  scene('n5', 0, 6.0, t => {
+    const hand = { x: smoothNoise(t * 0.5, 93) * 5, y: smoothNoise(t * 0.45, 94) * 4 };
+    const a = P(t, 0, 0.75, E.cam), swap = P(t, 2.35, 3.05, E.cam), out = P(t, 5.55, 5.98, E.inStrong);
+    tf(lt, { x: 1290 - 350 + hand.x - swap * 520, y: 120 + hand.y + (1 - a) * 160, z: lerp(-600, 0, a) - swap * 700, rx: lerp(14, 2, a), ry: lerp(-18, -6, a) + swap * 14 });
+    op(lt, P(t, 0, 0.3, E.lin) * (1 - P(t, 2.6, 3.0, E.lin))); blur(lt, swap * 8);
+    const lvp = P(t, 0.55, 1.1, E.back);
+    ltLv.style.transform = `scale(${(0.6 + 0.4 * lvp).toFixed(3)})`; ltLv.style.opacity = P(t, 0.55, 0.75).toFixed(3);
+    ltParts.forEach((p, i) => { if (p === ltLv) return; const q = P(t, 0.5 + i * 0.09, 0.95 + i * 0.09, E.outSoft); p.style.opacity = q.toFixed(3); p.style.transform = `translateY(${((1 - q) * 14).toFixed(1)}px)`; });
+    const b = P(t, 2.35, 3.05, E.cam);
+    tf(mw, { x: 1290 - 360 + hand.x + (1 - b) * 600, y: 170 + hand.y, z: lerp(-500, 0, b) - out * 600, rx: 2, ry: lerp(-30, -6, b) });
+    op(mw, P(t, 2.35, 2.6, E.lin) * (1 - out)); blur(mw, out * 10);
+    // review: Show the meaning → I knew it → next word
+    const second = t >= T_KNEW + 0.15;
+    const flip = Math.sin(Math.PI * P(t, T_KNEW + 0.02, T_KNEW + 0.3, E.inOut));
+    mwCard.style.transform = `rotateY(${(flip * 8).toFixed(2)}deg) scale(${(1 - flip * 0.03).toFixed(3)})`;
+    mwN.textContent = second ? '2 / 3 · Prophet Adam · B1' : '1 / 3 · Prophet Adam · B1';
+    mwW.textContent = WORDS[second ? 1 : 0][0];
+    const shown = second ? t >= T_SHOW2 + 0.02 : t >= T_SHOW + 0.02;
+    mwD.textContent = shown ? WORDS[second ? 1 : 0][1] : '';
+    mwD.style.opacity = (second ? P(t, T_SHOW2, T_SHOW2 + 0.25) : P(t, T_SHOW, T_SHOW + 0.25)).toFixed(3);
+    mwSm.style.display = shown ? 'none' : ''; mwK.style.visibility = mwNo.style.visibility = shown ? 'visible' : 'hidden';
+    mwSm.style.transform = `translateX(-50%) scale(${press(t, second ? T_SHOW2 : T_SHOW)})`; mwK.style.transform = `scale(${press(t, T_KNEW)})`;
+    mwProg.forEach((p, i) => p.classList.toggle('on', i === 0 && t >= T_KNEW));
+    op(tap, Math.max(finger(tap, t, T_SHOW, mwSm), finger(tap, t, T_KNEW, mwK), finger(tap, t, T_SHOW2, mwSm)) * (1 - out));
+    headAt(head, t, 0.3, 5.5);
+    drawDust(t + 80, 0.22, 0.05);
+  });
+}
+
+/* --------- N6 · TEACHER · lesson card → group task → class mode --------- */
+{
+  const S = $('#n6'), w = $('#n6w');
+  glowBg(S).style.background = 'radial-gradient(60% 70% at 62% 48%, rgba(0,153,102,.10), rgba(0,0,0,0) 70%)';
+  // Lesson card, Mecca Before Islam A2, chapter 10 (src/components/book/LessonCard*.tsx), captured live: 768 × 971 css px
+  const LW = 780, LH = LW * 970.75 / 768;
+  const lcWin = el('div', 'shot', '', w); lcWin.style.width = LW + 'px'; lcWin.style.height = '900px'; lcWin.style.borderRadius = '28px';
+  const lcImg = el('img', '', null, lcWin); lcImg.src = 'assets/img/app/lc.png'; lcImg.style.width = LW + 'px'; lcImg.style.height = LH + 'px';
+  // Group task "History Radio Show" (src/data/mecca/a2/en/groupTasks.ts), expanded: 1734 × 478 css px
+  const GW = 1560, GH = GW * 478 / 1734;
+  const gt = shot(w, 'gt.png', GW, GH, 26);
+  const gtHi = el('div', 'rp-glow', '', gt);
+  Object.assign(gtHi.style, { left: (14 / 1734 * 100) + '%', top: (334 / 478 * 100) + '%', width: (600 / 1734 * 100) + '%', height: (30 / 478 * 100) + '%', borderRadius: '10px', borderColor: '#c9a65a' });
+  const rule = el('div', 'co nchip', '<div class="chip"><i></i>Kimse hikâyedeki bir kişiyi canlandırmaz<small>Tarihçi yalnızca anlatır</small></div>', S);
+  // Class mode (reading settings → Class mode), Mecca A2 page 11, captured live
+  const cm = shot(w, 'class_menu.png', 1920, 1080, 22);
+  const cmOn = el('img', '', null, cm); cmOn.src = 'assets/img/app/class_menu_on.png'; Object.assign(cmOn.style, { position: 'absolute', inset: 0 });
+  const cmBig = el('img', '', null, cm); cmBig.src = 'assets/img/app/class_on.png'; Object.assign(cmBig.style, { position: 'absolute', inset: 0 });
+  const tgl = el('div', '', '', cm); Object.assign(tgl.style, { position: 'absolute', left: '1624px', top: '354px', width: '44px', height: '24px' });
+  const showAns = el('div', '', '', cm); Object.assign(showAns.style, { position: 'absolute', left: '1404px', top: '232px', width: '124px', height: '34px' });
+  const shade = el('div', 'cap-shade', '', S); shade.style.height = '520px'; shade.style.zIndex = 5;
+  const h1 = nHead(S, 'Öğretmen için · Lesson card', [['Her bölüme', false], ['40 dakikalık plan.', true]]);
+  const h2 = nHead(S, 'Group task', [['Rollerle,'], ['birlikte konuş.', true]]);
+  const h3 = nHead(S, 'Class mode', [['Tahtaya yansıt.'], ['Büyük yazı.', true]]);
+  const tap = el('div', 'tap', null, S);
+  const T_TGL = 6.05;
+  scene('n6', 0, 8.0, t => {
+    const hand = { x: smoothNoise(t * 0.5, 95) * 5, y: smoothNoise(t * 0.45, 96) * 4 };
+    /* 1 — lesson card scrolls from the aims to the group task */
+    const a = P(t, 0, 0.75, E.cam), l2 = P(t, 2.45, 3.1, E.cam);
+    tf(lcWin, { x: 1360 - LW / 2 + hand.x - l2 * 300, y: 90 + hand.y + (1 - a) * 160, z: lerp(-600, 0, a) - l2 * 900, rx: lerp(14, 2, a), ry: lerp(-20, -7, a) });
+    op(lcWin, P(t, 0, 0.3, E.lin) * (1 - P(t, 2.6, 3.0, E.lin))); blur(lcWin, l2 * 8);
+    lcImg.style.transform = `translateY(${(-P(t, 0.9, 2.4, E.inOut) * (LH - 900)).toFixed(1)}px)`;
+    /* 2 — the group task opens; the rule on step 4 is lit */
+    const g = P(t, 2.5, 3.2, E.cam), gOut = P(t, 4.95, 5.4, E.cam);
+    tf(gt, { x: CX - GW / 2 + hand.x, y: 110 + hand.y + (1 - g) * 200, z: lerp(-700, 0, g) - gOut * 900, rx: lerp(18, 3, g), ry: gOut * -12 });
+    op(gt, P(t, 2.5, 2.75, E.lin) * (1 - P(t, 5.05, 5.4, E.lin))); blur(gt, gOut * 8);
+    const hi = P(t, 3.55, 3.85, E.outSoft) * (1 - P(t, 4.9, 5.1, E.in));
+    gtHi.style.opacity = hi.toFixed(3);
+    const rr = gtHi.getBoundingClientRect();
+    rule.style.transform = `translate3d(${(rr.left + 40).toFixed(1)}px,${(rr.bottom + 34 + (1 - hi) * 12).toFixed(1)}px,0)`; op(rule, hi);
+    /* 3 — Class mode: the toggle, then the page for the board */
+    const c = P(t, 5.0, 5.7, E.cam), cOut = P(t, 7.55, 7.98, E.inStrong);
+    const zoom = P(t, 6.55, 7.4, E.cam);
+    camTf(cm, { px: lerp(1400, 1180, zoom), py: lerp(330, 520, zoom), s: lerp(1.3, 1.12, zoom) * (0.85 + 0.15 * c), sx: CX + 230 + hand.x, sy: 470 + hand.y + (1 - c) * 120, z: -cOut * 600, ry: lerp(-16, -8, c), rx: 3 });
+    op(cm, P(t, 5.0, 5.3, E.lin) * (1 - cOut)); blur(cm, cOut * 10);
+    cmOn.style.opacity = t >= T_TGL + 0.03 ? 1 : 0;
+    cmBig.style.opacity = P(t, 6.45, 6.75, E.inOut).toFixed(3);
+    op(tap, Math.max(finger(tap, t, T_TGL, tgl), finger(tap, t, 7.05, showAns, 0.5, 0.5, 0.3, 0.3) * 0) * (1 - cOut));
+    op(shade, P(t, 5.0, 5.4) * (1 - cOut));
+    headAt(h1, t, 0.3, 2.35); headAt(h2, t, 2.8, 4.9); headAt(h3, t, 5.25, 7.5);
+    drawDust(t + 90, 0.22, 0.05);
+  });
+}
+
+/* --------------- N7 · RESULT CARD → CHECK A RESULT CODE --------------- */
+{
+  const S = $('#n7'), w = $('#n7w');
+  glowBg(S).style.background = 'radial-gradient(60% 70% at 50% 55%, rgba(216,179,92,.12), rgba(0,0,0,0) 70%)';
+  // src/components/book/ResultCard.tsx + lib/resultCode.ts: 2ENLRSSA = Mecca Before Islam · A2,
+  // chapters 100 %, Knowledge Check 90 %, Vocabulary Challenge done, Language Review 75 %, Final Challenge 85 %, “I can” 80 %
+  const ROWS = [['Chapters read', '100%'], ['Knowledge Check', '90%'], ['Vocabulary Challenge', 'Done'], ['Language Review', '75%'], ['Final Challenge', '85%'], ['“I can”: Yes', '80%']];
+  const CODE = '2ENLRSSA';
+  const rc = el('div', 'dlg', `<div class="dlg-h"><div class="ic">${ico('Certificate')}</div><div><b>Result card</b><small>Mecca Before Islam · A2 · 3 October 2026</small></div></div>
+    <div class="rc-name"><small>Your name</small><div class="rc-in"><span class="nm"></span></div></div>
+    <div class="rc-rows">${ROWS.map(([k, v]) => `<div><span>${k}</span><b>${v}</b></div>`).join('')}</div>
+    <div class="rc-code"><small>TEACHER CODE</small><div class="c">${CODE}</div><p>Your teacher types this code in “Check a result code” to see the same results.</p></div>`, w);
+  rc.style.width = '640px';
+  const rcName = rc.querySelector('.nm'), rcRows = Array.from(rc.querySelectorAll('.rc-rows div')), rcCode = rc.querySelector('.rc-code');
+  const cc = el('div', 'dlg', `<div class="dlg-h"><div class="ic">${ico('CheckCircle')}</div><div><b>Check a result code</b></div></div>
+    <div class="ui-s" style="font-size:20px;margin-top:14px;color:#55524a">Type the code from the student’s result card.</div>
+    <div class="cc-row"><div class="cc-in"><span class="tx"></span><i class="caret"></i></div><div class="cc-btn">Check</div></div>
+    <div class="cc-res"><div class="cc-ok"><small>VALID CODE</small><h4>Mecca Before Islam · A2</h4></div>
+    <div class="rc-rows">${ROWS.map(([k, v]) => `<div><span>${k}</span><b>${v}</b></div>`).join('')}</div>
+    <div class="cc-note">Scores are rounded to the nearest 5%. The code is a light check, not protection against cheating.</div></div>`, w);
+  cc.style.width = '680px';
+  const ccTx = cc.querySelector('.tx'), ccCaret = cc.querySelector('.caret'), ccBtn = cc.querySelector('.cc-btn'), ccRes = cc.querySelector('.cc-res');
+  const ccRows = Array.from(ccRes.querySelectorAll('.rc-rows div'));
+  const head = nHead(S, 'Result card · Check a result code', [['Kitap biter,'], ['sonuç öğretmene ulaşır.', true]], 'top');
+  const tap = el('div', 'tap', null, S);
+  const T_CHECK = 3.45;
+  let ccH = null;
+  scene('n7', 0, 5.333, t => {
+    if (ccH == null) { ccRes.style.height = 'auto'; ccH = ccRes.offsetHeight; }
+    const hand = { x: smoothNoise(t * 0.5, 97) * 5, y: smoothNoise(t * 0.45, 98) * 4 };
+    const a = P(t, 0, 0.75, E.cam), mv = P(t, 1.9, 2.6, E.cam), out = P(t, 4.9, 5.3, E.inStrong);
+    tf(rc, { x: lerp(CX - 320, 230, mv) + hand.x, y: 245 + hand.y + (1 - a) * 160, z: lerp(-600, 0, a) - mv * 250 - out * 600, rx: lerp(14, 2, a), ry: lerp(-14, 10, mv), s: 0.86 });
+    op(rc, P(t, 0, 0.3, E.lin) * (1 - out) * (1 - mv * 0.35)); blur(rc, mv * 2 + out * 8);
+    rcName.textContent = 'Zeynep'.slice(0, Math.round(6 * P(t, 0.55, 1.0, E.lin)));
+    rcRows.forEach((r, i) => { const q = P(t, 0.6 + i * 0.08, 1.0 + i * 0.08, E.outSoft); r.style.opacity = q.toFixed(3); });
+    const cp = P(t, 1.15, 1.5, E.back);
+    rcCode.style.transform = `scale(${(0.94 + 0.06 * cp) * (1 + 0.03 * Math.exp(-Math.pow((t - 1.55) / 0.15, 2)))})`; rcCode.style.opacity = P(t, 1.1, 1.3).toFixed(3);
+    rcCode.style.boxShadow = `0 0 0 ${(3 * Math.exp(-Math.pow((t - 1.6) / 0.25, 2))).toFixed(2)}px #e0b84c`;
+    // the teacher types it
+    const b = P(t, 2.0, 2.7, E.cam);
+    tf(cc, { x: 1000 + hand.x + (1 - b) * 500, y: 150 + hand.y, z: lerp(-400, 0, b) - out * 600, rx: 2, ry: lerp(-28, -8, b), s: 0.92 });
+    op(cc, P(t, 2.0, 2.25, E.lin) * (1 - out)); blur(cc, out * 10);
+    const n = Math.round(CODE.length * P(t, 2.55, 3.2, E.lin));
+    ccTx.textContent = CODE.slice(0, n);
+    ccCaret.style.opacity = t < T_CHECK && (n < 8 || Math.floor(t * 4) % 2 === 0) ? 1 : 0;
+    ccBtn.style.transform = `scale(${press(t, T_CHECK)})`;
+    const rp = P(t, T_CHECK + 0.05, T_CHECK + 0.55, E.cam);
+    ccRes.style.height = (rp * ccH).toFixed(1) + 'px'; ccRes.style.overflow = 'hidden'; ccRes.style.opacity = P(t, T_CHECK + 0.05, T_CHECK + 0.25).toFixed(3);
+    ccRows.forEach((r, i) => { const q = P(t, T_CHECK + 0.3 + i * 0.07, T_CHECK + 0.6 + i * 0.07, E.outSoft); r.style.opacity = q.toFixed(3); });
+    op(tap, finger(tap, t, T_CHECK, ccBtn) * (1 - out));
+    headAt(head, t, 0.3, 4.85);
+    drawDust(t + 100, 0.22, 0.05);
+  });
+}
+
+/* ------ N4 · PLACES & PEOPLE · journey map · Ibn Jubayr (the 6th book family) ------ */
+{
+  const S = $('#n4'), w = $('#n4w');
+  glowBg(S).style.background = 'radial-gradient(70% 70% at 50% 50%, rgba(216,179,92,.12), rgba(0,0,0,0) 70%)';
+  // Ibn Jubayr A2, page 16 "Places & People" (book atlas) and Prophet Moses A2, page 2 "Moses’s Journey", captured live
+  const pp = shot(w, 'ibn_places.png', 1920, 1080, 22);
+  const mm = shot(w, 'moses_map.png', 1920, 1080, 22);
+  const mmB = el('img', '', null, mm); mmB.src = 'assets/img/app/moses_map_midian.png'; Object.assign(mmB.style, { position: 'absolute', inset: 0 });
+  const midian = el('div', '', '', mm); Object.assign(midian.style, { position: 'absolute', left: '1490px', top: '486px', width: '320px', height: '46px' });
+  const shade = el('div', 'cap-shade', '', S); shade.style.height = '480px'; shade.style.zIndex = 5;
+  // the sixth family: Ibn Jubayr (Al-Andalus) · A2 · English (src/data/ibnJubayr; place pictures only)
+  const TILES = [['andalus_granada', 'Granada'], ['andalus_cordoba', 'Córdoba'], ['andalus_lighthouse-of-alexandria', 'Alexandria'], ['andalus_great-mosque-of-damascus', 'Damascus'], ['andalus_mecca', 'Mecca']];
+  const ij = el('div', 'ij', `<div class="ij-tiles">${TILES.map(([f, n]) => `<div class="t"><img src="assets/img/places/${f}.webp"><span>${n}</span></div>`).join('')}</div>
+    <div class="ij-txt" lang="tr"><div class="ix">06 / 06 · YENİ HİKÂYE AİLESİ</div><div class="nm" lang="en">Ibn Jubayr</div><div class="sb">Endülüs’ten Mekke’ye bir yolculuk</div>
+    <div class="pills"><i>A2</i><i>English</i><i>13 bölüm</i></div><div class="ch" lang="en">Al-Andalus and a Great Traveler · Cairo under Saladin · The Caravan to Mecca · Damascus and Its Great Mosque · Return, Later Life, and Lessons</div></div>`, w);
+  const tiles = Array.from(ij.querySelectorAll('.t')), ijParts = Array.from(ij.querySelectorAll('.ij-txt > *'));
+  const TPOS = [[0, 0, -4], [330, 20, 3], [0, 330, 2], [330, 340, -3], [165, 170, 0]];
+  const h1 = nHead(S, 'Places &amp; People', [['Haritada bul.'], ['Hikâyede oku.', true]]);
+  const h2 = nHead(S, 'Journey map · Moses’s Journey', [['Yolculuk,'], ['bölüm bölüm.', true]]);
+  const tap = el('div', 'tap', null, S);
+  const T_MID = 3.75;
+  scene('n4', 0, 7.333, t => {
+    const hand = { x: smoothNoise(t * 0.5, 99) * 5, y: smoothNoise(t * 0.45, 100) * 4 };
+    /* 1 — the book atlas: cities, lands, seas and rulers, each with its picture and chapter */
+    const a = P(t, 0, 0.8, E.cam), push = P(t, 0.7, 2.4, E.inOut), aOut = P(t, 2.3, 2.75, E.cam);
+    camTf(pp, { px: lerp(960, 1390, push), py: lerp(560, 430, push), s: lerp(0.62, 1.12, push) * (0.9 + 0.1 * a), sx: CX + hand.x, sy: CY - 30 + hand.y, z: lerp(-500, 0, a) - aOut * 900, ry: lerp(-12, -5, a), rx: 4 });
+    op(pp, P(t, 0, 0.3, E.lin) * (1 - P(t, 2.4, 2.75, E.lin))); blur(pp, aOut * 8);
+    /* 2 — the journey map: tap a place, it tells its part of the story */
+    const m = P(t, 2.35, 3.05, E.cam), mOut = P(t, 4.7, 5.15, E.cam);
+    const mz = P(t, 2.9, 4.6, E.inOut);
+    camTf(mm, { px: lerp(960, 1300, mz), py: lerp(540, 520, mz), s: lerp(0.7, 0.98, mz), sx: CX + 170 + hand.x, sy: CY - 30 + hand.y, z: lerp(-600, 0, m) - mOut * 900, ry: lerp(18, 6, m), rx: 3 });
+    op(mm, P(t, 2.35, 2.6, E.lin) * (1 - P(t, 4.8, 5.15, E.lin))); blur(mm, mOut * 8);
+    mmB.style.opacity = P(t, T_MID + 0.03, T_MID + 0.25, E.inOut).toFixed(3);
+    op(tap, finger(tap, t, T_MID, midian, 0.35, 0.5) * (1 - mOut));
+    op(shade, P(t, 0, 0.4) * (1 - P(t, 4.8, 5.1)));
+    /* 3 — the sixth story family */
+    const ia = P(t, 4.85, 5.6, E.cam), iOut = P(t, 6.9, 7.3, E.inStrong);
+    tf(ij, { x: 230 + hand.x, y: 220 + hand.y, z: lerp(-500, 0, ia) - iOut * 500, rx: 2, ry: lerp(-14, -4, ia) });
+    op(ij, P(t, 4.85, 5.1, E.lin) * (1 - iOut)); blur(ij, iOut * 10);
+    tiles.forEach((d, i) => { const q = P(t, 4.95 + i * 0.09, 5.65 + i * 0.09, E.back); const [x, y, rz] = TPOS[i]; tf(d, { x, y: y + (1 - q) * 80, s: 0.8 + 0.2 * q, rz: rz * q }); d.style.opacity = P(t, 4.95 + i * 0.09, 5.15 + i * 0.09).toFixed(3); });
+    ijParts.forEach((p, i) => { const q = P(t, 5.2 + i * 0.1, 5.75 + i * 0.1, E.outSoft); p.style.opacity = q.toFixed(3); p.style.transform = `translateY(${((1 - q) * 20).toFixed(1)}px)`; });
+    headAt(h1, t, 0.35, 2.3); headAt(h2, t, 2.75, 4.7);
+    drawDust(t + 110, 0.25, 0.05);
   });
 }
 
