@@ -3,7 +3,7 @@
  "outputFps": 60,
  "width": 1920,
  "height": 1080,
- "duration": 162.666001,
+ "duration": 191.999334,
  "bpm": 90.0,
  "scenes": [
   {
@@ -334,44 +334,52 @@
   {
    "id": "n1",
    "at": 23.3,
-   "len": 8.0,
-   "name": "Üç yol — Herkes için bir yol."
+   "len": 8
   },
   {
    "id": "n2",
-   "at": 31.35,
-   "len": 8.0,
-   "name": "Before you read — Okumadan önce tahmin et."
+   "at": 23.3,
+   "len": 8
   },
   {
    "id": "n3",
    "at": 62.62,
-   "len": 10.666667,
-   "name": "I can + group task — Ne öğrendiğini kendin gör. · Grupla, rollerle konuş."
+   "len": 10.666666666666666
+  },
+  {
+   "id": "n3g",
+   "at": 62.62,
+   "len": 8
   },
   {
    "id": "n4",
    "at": 81.25,
-   "len": 8.0,
-   "name": "Result card — Sonucunu öğretmenine göster."
+   "len": 8
   },
   {
    "id": "n5",
    "at": 88.3,
-   "len": 8.0,
-   "name": "On my own — Kendi hızında öğren."
+   "len": 8
   },
   {
    "id": "n6",
    "at": 88.3,
-   "len": 10.666667,
-   "name": "Lesson card + class mode — Derse hazır, tahtaya hazır."
+   "len": 10.666666666666666
   },
   {
    "id": "n7",
    "at": 88.3,
-   "len": 8.0,
-   "name": "Places & People + journey map — Hikâyenin geçtiği yerleri keşfet."
+   "len": 8
+  },
+  {
+   "id": "n8",
+   "at": 88.3,
+   "len": 10.666666666666666
+  },
+  {
+   "id": "n9",
+   "at": 88.3,
+   "len": 10.666666666666666
   }
  ]
 }

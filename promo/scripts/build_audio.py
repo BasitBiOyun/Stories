@@ -27,7 +27,8 @@ TL = json.loads((PROMO / "timeline.json").read_text())
 SR = 48000
 V8D = TL.get("v8duration", TL["duration"])   # the v8 film; the v10 inserts are spliced in afterwards
 DUR = V8D + 1.5
-N = int(DUR * SR)
+N = int(DUR * SR)                      # sound design and voice: v8 time, spliced around the inserts afterwards
+NF = int((TL["duration"] + 1.5) * SR)  # the score: written straight in film time
 BEAT = 60.0 / TL["bpm"]          # 0.6667 s
 rng = np.random.default_rng(11)
 
@@ -205,51 +206,11 @@ def cymbal(rev=False, dur=2.5):
     return x
 
 
-# ------------------------------------------------------------------ score
-# Sections (beats @ 90 BPM, film time in brackets) — they follow timeline.json:
-#   opener 0–21 [0–14]  hook 21–28 [14–18.7]  A 28–59 [18.7–39.3]  B 59–76 [39.3–50.7]
-#   C 76–103 [50.7–68.7]  D 103–114 [68.7–76]  E 114–125 [76–83.3]  F 125– [83.3–]
-OPEN, HOOK, A0, B0, C0, D0, E0, F0 = 0, 28, 35, 66, 90, 117, 128, 139
-# (start_beat, end_beat, bass_root, chord tones)
-CH = [
-    (0, 13, 38, [50, 57, 62, 66]),  # D (Hicaz colour: F#) over a D–A drone
-    (13, 21, 31, [50, 55, 58, 62]),  # Gm / D pedal
-    (21, 28, 38, [50, 57, 62, 66]),  # D
-    (28, 35, 38, [50, 57, 62, 69]),  # hook: D + A drone
-    (35, 43, 38, [50, 53, 57, 60, 64]),  # Dm9
-    (43, 51, 34, [50, 53, 57, 58, 62]),  # Bbmaj7
-    (51, 55, 29, [48, 53, 57, 60, 64]),  # F(add9)
-    (55, 59, 36, [48, 52, 55, 60, 62]),  # C(add9)
-    (59, 63, 31, [50, 53, 55, 58, 62]),  # Gm9
-    (63, 66, 33, [49, 52, 57, 61, 64]),  # A7sus -> A
-    (66, 70, 38, [50, 53, 57, 60, 64]),  # Dm9
-    (70, 74, 34, [50, 53, 57, 58, 62]),  # Bbmaj7
-    (74, 78, 29, [48, 53, 57, 60, 64]),  # F(add9)
-    (78, 83, 36, [48, 52, 55, 60, 62]),  # C(add9)
-    (83, 87, 38, [50, 53, 57, 60, 64]),  # Dm9 (chapter loop, extended)
-    (87, 90, 34, [50, 53, 57, 58, 62]),  # Bbmaj7
-    (90, 94, 38, [50, 53, 57, 60, 64]),  # Dm9
-    (94, 98, 34, [50, 53, 57, 58, 62]),  # Bbmaj7
-    (98, 102, 29, [48, 53, 57, 60, 64]),  # F(add9)
-    (102, 106, 36, [48, 52, 55, 60, 62]),  # C(add9)
-    (106, 110, 38, [50, 53, 57, 60, 64]),  # Dm9
-    (110, 114, 34, [50, 53, 57, 58, 62]),  # Bbmaj7
-    (114, 117, 36, [48, 52, 55, 60, 64]),  # C
-    (117, 122, 33, [48, 53, 57, 60, 64]),  # F/A (breakdown)
-    (122, 128, 34, [50, 53, 57, 58, 62, 65]),  # Bbmaj7
-    (128, 133, 31, [50, 53, 55, 58, 62]),  # Gm9
-    (133, 139, 33, [52, 57, 61, 64, 67]),  # A7sus -> A (pull)
-    (139, 154, 38, [50, 54, 57, 62, 64, 66, 69]),  # D(add9) — resolution
-]
-
-
-def chord_at(beat):
-    for c in CH:
-        if c[0] <= beat < c[1]:
-            return c
-    return CH[-1]
-
-
+# ------------------------------------------------------------------ score (v11)
+# A new score written for the whole v11 film, in film time, on one 90 BPM grid (no repeated or
+# looped bars). Each section follows what is on screen and has its own energy: the music thins
+# out and fills up again, switches between half-time, straight and double-time drum feels, and
+# moves between D Hicaz colour (opener, places, finale) and D minor (the app's features).
 def ney(m: float, dur: float) -> np.ndarray:
     """Breathy end-blown flute: soft fundamental, few harmonics, breath noise, slow vibrato."""
     n = int(dur * SR); tt = t_axis(n)
@@ -257,7 +218,7 @@ def ney(m: float, dur: float) -> np.ndarray:
     ph = np.cumsum(midi(m) * vib) / SR
     tone = np.sin(2 * np.pi * ph) + 0.22 * np.sin(4 * np.pi * ph) + 0.08 * np.sin(6 * np.pi * ph)
     breath = bp(rng.standard_normal(n), midi(m) * 0.9, midi(m) * 3.2) * 0.35
-    return (tone + breath) * env(n, 0.22, 0.2, 0.85, 0.5)
+    return (tone + breath) * env(n, 0.18, 0.2, 0.85, 0.4)
 
 
 def oud(m: float, dur: float = 1.4) -> np.ndarray:
@@ -275,96 +236,234 @@ def frame_drum(low=True):
     return bp(rng.standard_normal(n), 1200, 6000) * np.exp(-tt * 28) * 0.5 + np.sin(2 * np.pi * 330 * tt) * np.exp(-tt * 40) * 0.2
 
 
+def doum():
+    n = int(0.7 * SR); tt = t_axis(n)
+    f = 82 + 55 * np.exp(-tt * 30)
+    body = np.sin(2 * np.pi * np.cumsum(f) / SR) * np.exp(-tt * 5.5)
+    return np.tanh(body * 1.4 + bp(rng.standard_normal(n), 150, 700) * np.exp(-tt * 40) * 0.25) * 0.9
+
+
+def tek(level=1.0):
+    n = int(0.25 * SR); tt = t_axis(n)
+    ring = np.sin(2 * np.pi * 620 * tt) * np.exp(-tt * 45) * 0.35 + np.sin(2 * np.pi * 1180 * tt) * np.exp(-tt * 60) * 0.2
+    return (bp(rng.standard_normal(n), 1500, 9000) * np.exp(-tt * 55) * 0.7 + ring) * level
+
+
+def clap():
+    n = int(0.4 * SR); tt = t_axis(n); x = np.zeros(n)
+    for d in (0, 0.011, 0.023):
+        i = int(d * SR); x[i:] += bp(rng.standard_normal(n - i), 900, 6000) * np.exp(-t_axis(n - i) * (60 if d < 0.02 else 14))
+    return x * 0.5
+
+
+def shaker():
+    n = int(0.09 * SR); tt = t_axis(n)
+    return hp(rng.standard_normal(n), 5500) * np.sin(np.pi * np.clip(tt / 0.09, 0, 1)) ** 2 * 0.35
+
+
+def taiko():
+    n = int(1.6 * SR); tt = t_axis(n)
+    f = 52 + 50 * np.exp(-tt * 14)
+    return np.tanh((np.sin(2 * np.pi * np.cumsum(f) / SR) * np.exp(-tt * 3.2) + lp(rng.standard_normal(n), 1200) * np.exp(-tt * 18) * 0.5) * 1.8) * 0.9
+
+
+def spic(m: float, dur=0.22):
+    """Short bowed note (spiccato strings)."""
+    n = int(dur * SR); tt = t_axis(n); out = np.zeros(n)
+    for d in (-7, 0, 7):
+        f = midi(m) * 2 ** (d / 1200)
+        for k in range(1, 10):
+            out += (1 / k) * np.sin(2 * np.pi * f * k * tt + rng.uniform(0, 6))
+    return lp(out / 3, 3200) * np.exp(-tt * 14) * (1 - np.exp(-tt * 400))
+
+
+def snare_roll(dur, gain_from=0.05, gain_to=1.0):
+    n = int(dur * SR); out = np.zeros(n); t = 0.0
+    while t < dur:
+        p = t / dur
+        g = gain_from + (gain_to - gain_from) * p ** 1.6
+        s = snare()[: int(0.15 * SR)] * g
+        i = int(t * SR); m = min(len(s), n - i); out[i:i + m] += s[:m]
+        t += lerp_(0.17, 0.045, p ** 0.8)
+    return out
+
+
+def lerp_(a, b, p):
+    return a + (b - a) * p
+
+
+# chords: (bass root, tones) — D minor world and D Hicaz world
+Dm, Bb, C, A7, Gm, F, Dh, Eb, Cm, Asus = (
+    (38, [50, 53, 57, 62, 65]), (34, [50, 53, 58, 62, 65]), (36, [48, 52, 55, 60, 64]), (33, [49, 52, 55, 57, 61, 64]),
+    (31, [50, 55, 58, 62, 67]), (29, [48, 53, 57, 60, 65]), (38, [50, 54, 57, 62, 66]), (39, [51, 55, 58, 63, 67]),
+    (36, [48, 51, 55, 60, 63]), (33, [50, 52, 57, 62, 64]))
+HIC = [62, 63, 66, 67, 69, 70, 72, 74, 75, 78, 79, 81]   # D Eb F# G A Bb C D …
+
+# sections: (name, start s, end s, chord cycle, energy 0..1 at start/end)
+SECTIONS = [
+    ("intro", 0.0, 18.667, [Dh, Dh, Gm, Dh], (0.25, 0.6)),
+    ("hook", 18.667, 23.333, [A7, Dh], (0.7, 0.7)),
+    ("roles", 23.333, 39.333, [Dm, Bb, C, A7], (0.45, 0.6)),
+    ("story", 39.333, 62.667, [Dm, Bb, Gm, A7], (0.35, 0.45)),
+    ("chapter", 62.667, 78.667, [Dm, Bb, F, C], (0.55, 0.8)),
+    ("ican", 78.667, 89.333, [Bb, F, C, Dm], (0.8, 0.85)),
+    ("group", 89.333, 97.333, [Gm, Bb, A7, A7], (0.6, 0.7)),
+    ("peak", 97.333, 115.333, [Dm, Bb, F, C, Dm, Bb, Gm, A7], (0.9, 1.0)),
+    ("break", 115.333, 124.0, [Bb, F, Gm, Asus], (0.3, 0.35)),
+    ("levels", 124.0, 130.667, [Dm, Bb, C], (0.55, 0.7)),
+    ("self", 130.667, 138.667, [F, C, Bb, F], (0.45, 0.5)),
+    ("teach", 138.667, 149.333, [Dm, Bb, F, C], (0.7, 0.75)),
+    ("places", 149.333, 157.333, [Dh, Cm, Dh], (0.6, 0.65)),
+    ("offline", 157.333, 168.0, [Gm, Dm, Bb, A7], (0.5, 0.75)),
+    ("pdf", 168.0, 178.667, [Dm, Bb, C, A7], (0.75, 0.95)),
+    ("guides", 178.667, 186.0, [Bb, C, Asus], (0.95, 1.0)),
+    ("finale", 186.0, 194.0, [Dh, Dh], (1.0, 0.6)),
+]
+BAR = 4 * BEAT
+
+
 def build_music() -> dict[str, np.ndarray]:
-    st = {k: np.zeros((N, 2)) for k in ("pad", "str", "pno", "arp", "bass", "drm", "eth")}
-    # --- pads everywhere; strings from the chapter loop on
-    for a, b, root, tones in CH:
-        dur = b2t(b - a) + 1.8
-        for m in tones:
-            place(st["pad"], pad(m - 12 if m > 60 else m, dur, 0.26 if a < A0 else 0.36), b2t(a) - 0.2, 0.05 if a >= HOOK else 0.045)
-        if a >= B0 or (OPEN + 10 <= a < A0):
-            lvl = 0.03 if a < HOOK else 0.04 if a < A0 else 0.035 if a < C0 else 0.05 if a < D0 else 0.03 if a < E0 else 0.05
-            for j, m in enumerate(tones[-3:]):
-                place(st["str"], stereo(strings(m, dur, 0.45), (j - 1) * 0.4), b2t(a) - 0.1, lvl)
-    # --- opener colour: ney phrases in D Hicaz, oud answers, frame drum
-    HIC = {'D': 62, 'Eb': 63, 'F#': 66, 'G': 67, 'A': 69, 'Bb': 70, 'C': 72, 'D5': 74}
-    phrase = [(2.00, 'A', 2.5), (5.33, 'Bb', 1.0), (6.67, 'A', 1.0), (8.00, 'G', 1.0), (9.33, 'F#', 2.5),
-              (13.33, 'G', 1.5), (15.33, 'A', 1.0), (16.67, 'Bb', 1.0), (18.00, 'C', 1.5), (20.00, 'Bb', 1.0), (21.33, 'A', 3.5)]
-    for bt, nm, ln in phrase:
-        place(st["eth"], stereo(ney(HIC[nm], b2t(ln) + 0.4), -0.15), b2t(bt), 0.07)
-    for bt, nm in [(4.00, 'D'), (4.67, 'Eb'), (5.33, 'F#'), (10.67, 'G'), (11.33, 'F#'), (12.00, 'Eb'), (12.67, 'D'), (17.33, 'D5'), (18.00, 'C'), (18.67, 'Bb'), (22.67, 'A'), (23.33, 'G'), (24.00, 'F#'), (25.33, 'Eb'), (26.00, 'D')]:
-        place(st["eth"], stereo(oud(HIC[nm] - 12), 0.25), b2t(bt), 0.05)
-    for bt in np.arange(6, 34, 1.0):
-        place(st["eth"], stereo(frame_drum(True), -0.1), b2t(bt), 0.12 if (bt - 6) % 2 == 0 else 0.07)
-        place(st["eth"], stereo(frame_drum(False), 0.2), b2t(bt + 0.5), 0.05)
-    # --- piano motif in A and C, melody in the breakdown and the finale
-    offs = [0, 1, 1.5, 2, 3]
-    for bar_beat in list(range(39, 66, 4)) + list(range(90, 117, 4)):
-        a, b, root, tones = chord_at(bar_beat)
-        up = sorted({t + 12 for t in tones if t >= 50})
-        seq = [up[0], up[2 % len(up)], up[3 % len(up)], up[-1], up[2 % len(up)]]
-        for off, m in zip(offs, seq):
-            place(st["pno"], stereo(piano(m, 2.2, 0.55 if bar_beat < C0 else 0.7), 0.15), b2t(bar_beat + off), 0.11)
-    for k, (bt, m) in enumerate([(117, 69), (118.5, 72), (119, 74), (120, 72), (121, 70), (122.5, 69), (123, 67), (124, 65), (125, 64), (126.5, 65)]):
-        place(st["pno"], stereo(piano(m, 3.0, 0.65), -0.1), b2t(bt), 0.1)
-        if k % 2 == 0:
-            place(st["pno"], stereo(piano(m - 24, 3.0, 0.5), 0.1), b2t(bt), 0.05)
-    for bt, m in [(139, 66), (139, 74), (140, 78), (141, 76), (142.5, 74), (143, 81), (145, 78), (146, 74)]:
-        place(st["pno"], stereo(piano(m, 4.0, 0.75), 0.05), b2t(bt), 0.09)
-    # --- kalimba-like arpeggio (eighths) from the story page on
-    pat = [0, 2, 3, 4, 3, 2, 4, 1]
-    k = 0; bt = float(A0)
-    while bt < F0:
-        if D0 <= bt < E0:
-            bt += 0.5; continue
-        a, b, root, tones = chord_at(bt)
-        up = sorted(tt + 12 for tt in tones)
-        m = up[pat[k % len(pat)] % len(up)]
-        ramp = np.interp(bt, [A0, A0 + 8, B0, C0, D0, E0, F0], [0.35, 0.7, 0.9, 1.0, 1.0, 0.6, 0.9])
-        place(st["arp"], stereo(pluck(m, 0.9), 0.35 * np.sin(k * 0.9)), b2t(bt), 0.06 * ramp * (1.15 if k % 4 == 0 else 0.9))
-        k += 1; bt += 0.5
-    # --- bass
-    for a, b, root, tones in CH:
-        if a < A0 or D0 <= a < E0:
-            continue
-        if a < B0 or a >= F0:
-            place(st["bass"], bass(root, b2t(b - a) + 0.2), b2t(a), 0.1)
-        else:
-            x = a
-            while x < b:
-                place(st["bass"], bass(root, BEAT * 0.45), b2t(x), 0.1 if (x - a) % 1 == 0 else 0.065)
-                x += 0.5
-    # --- drums
-    d = st["drm"]
-    for bt in np.arange(A0, F0, 1.0):
-        in_A, in_B, in_C, in_D, in_E = A0 <= bt < B0, B0 <= bt < C0, C0 <= bt < D0, D0 <= bt < E0, E0 <= bt < F0
-        pos = (bt - A0) % 4
-        if in_A and pos in (0, 2):
-            place(d, kick(0.55), b2t(bt), 0.5)
-        if (in_B or in_C) and pos in (0, 2):
-            place(d, kick(0.8), b2t(bt), 0.55)
-        if (in_B or in_C) and pos == 2:
-            place(d, kick(0.5), b2t(bt + 0.5), 0.35)
-        if (in_B or in_C) and pos in (1, 3):
-            place(d, snare(), b2t(bt), 0.16 if in_B else 0.2)
-        if in_D and pos == 0:
-            place(d, kick(0.45), b2t(bt), 0.35)
-        if in_E and pos in (0, 2):
-            place(d, kick(0.6), b2t(bt), 0.45)
-        if in_E and pos == 3 and bt > E0 + 4:
-            place(d, snare(), b2t(bt), 0.12)
-        if (A0 + 8 <= bt < B0) or in_B or in_C or in_E:
-            for h in ((0.5,) if (in_A or in_E) else (0.0, 0.5)):
-                place(d, stereo(hat(), 0.3), b2t(bt + h), 0.05 if in_C else 0.035)
-        if in_C:
-            place(d, stereo(hat(), -0.3), b2t(bt + 0.25), 0.018)
-            place(d, stereo(hat(), -0.3), b2t(bt + 0.75), 0.018)
-    for i, f0 in enumerate([120, 100, 85, 70]):
-        place(d, stereo(tom(f0), -0.4 + i * 0.25), b2t(C0 - 2 + i * 0.5), 0.35)
-        place(d, stereo(tom(f0), -0.4 + i * 0.25), b2t(D0 - 2 + i * 0.5), 0.3)
-    for at in (B0, C0, F0):
-        place(d, stereo(cymbal(), 0.2), b2t(at), 0.5)
+    st = {k: np.zeros((NF, 2)) for k in ("pad", "str", "pno", "arp", "bass", "drm", "eth", "fx")}
+
+    def bars(a, b):
+        t = a
+        while t < b - 0.3:
+            yield t, min(t + BAR, b)
+            t += BAR
+
+    for name, a, b, cyc, (e0, e1) in SECTIONS:
+        for k, (t0, t1) in enumerate(bars(a, b)):
+            root, tones = cyc[k % len(cyc)]
+            p = (t0 - a) / max(b - a, 1e-6)
+            e = e0 + (e1 - e0) * p
+            dur = t1 - t0
+            last = t1 >= b - 0.01
+            hic = name in ("intro", "hook", "places", "finale")
+            # --- harmony bed
+            for m in tones[:4]:
+                place(st["pad"], pad(m - 12 if m > 60 else m, dur + 1.2, 0.25 + 0.2 * e), t0 - 0.05, 0.035 + 0.02 * e)
+            if name not in ("intro",) or k >= 3:
+                for j, m in enumerate(tones[-3:]):
+                    place(st["str"], stereo(strings(m, dur + 0.6, 0.35 + 0.35 * e), (j - 1) * 0.45), t0 - 0.08, 0.018 + 0.03 * e)
+            # --- bass
+            if name not in ("intro", "break") or (name == "intro" and k >= 4):
+                if name in ("story", "self", "hook", "group"):
+                    place(st["bass"], bass(root, dur * 0.95), t0, 0.09)
+                else:
+                    pat = [0, 1.5, 2, 3, 3.5] if e > 0.7 else [0, 1.5, 2.5]
+                    for x in pat:
+                        place(st["bass"], bass(root + (12 if x == 3.5 else 0), BEAT * 0.55), t0 + x * BEAT, 0.1 if x in (0, 2) else 0.07)
+            # --- drums: feel depends on the section
+            d = st["drm"]
+            def hit(snd, beat, g, pan=0.0):
+                place(d, stereo(snd, pan), t0 + beat * BEAT, g)
+            if name == "intro":
+                if k >= 2:
+                    for x in (0, 1, 2, 3):
+                        hit(frame_drum(True), x, 0.11 if x % 2 == 0 else 0.06, -0.1)
+                        hit(frame_drum(False), x + 0.5, 0.04 + 0.03 * e, 0.2)
+                if k >= 5:
+                    for x in (1.75, 3.25, 3.75):
+                        hit(tek(0.6), x, 0.05, 0.3)
+            elif name == "hook":
+                hit(taiko(), 0, 0.35); hit(doum(), 2.5, 0.25); hit(taiko(), 3, 0.2)
+            elif name in ("roles", "chapter", "ican", "teach", "pdf", "levels", "offline", "guides", "peak"):
+                # maqsum: D T . T D . T .  (+ fills when the energy is high)
+                for x in (0, 2):
+                    hit(doum(), x, 0.32 + 0.12 * e)
+                for x in (0.5, 1.5, 3):
+                    hit(tek(), x, 0.12 + 0.08 * e, 0.15)
+                if e > 0.62:
+                    for x in (1, 2.5, 3.5):
+                        hit(tek(0.7), x, 0.07 + 0.05 * e, -0.2)
+                    hit(clap(), 1, 0.1 * e); hit(clap(), 3, 0.12 * e)
+                if e > 0.75 or name == "peak":
+                    for x in np.arange(0, 4, 0.25):
+                        hit(shaker(), x, (0.05 if x % 0.5 else 0.08) * e, 0.35)
+                if name == "peak" and k % 2 == 1:     # double-time darbuka run
+                    for x in np.arange(2, 4, 0.25):
+                        hit(tek(0.8), x, 0.08 + 0.04 * (x - 2), 0.1 * np.sin(x * 5))
+                if name == "offline" and k == 0:
+                    pass
+                if last and name in ("chapter", "ican", "peak", "teach"):
+                    for i, f0 in enumerate([120, 100, 85, 70]):
+                        hit(tom(f0), 2 + i * 0.5, 0.22, -0.4 + i * 0.25)
+            elif name == "group":                     # half-time: the tempo seems to drop
+                hit(doum(), 0, 0.38); hit(clap(), 2, 0.16); hit(tek(0.7), 3.5, 0.08)
+                for x in np.arange(0, 4, 0.5):
+                    hit(shaker(), x, 0.05, 0.3)
+            elif name == "self":
+                hit(doum(), 0, 0.22); hit(tek(0.6), 1.5, 0.07); hit(doum(), 2.5, 0.16); hit(tek(0.6), 3, 0.08)
+            elif name == "story":
+                if k >= 3:
+                    hit(doum(), 0, 0.18); hit(tek(0.5), 2, 0.06)
+            elif name == "places":
+                for x in (0, 1, 2, 3):
+                    hit(frame_drum(True), x, 0.12 if x % 2 == 0 else 0.07, -0.1)
+                    hit(frame_drum(False), x + 0.5, 0.06, 0.2)
+                hit(tek(0.6), 3.75, 0.06)
+            # --- melodic layers
+            up = sorted(tt + 12 for tt in tones)
+            if name in ("roles", "story", "self", "offline", "break") or (name == "chapter" and k < 2):
+                pat = [0, 2, 3, 4, 3, 2, 4, 1]
+                for i in range(8):
+                    m = up[pat[i] % len(up)]
+                    place(st["arp"], stereo(pluck(m, 0.9), 0.35 * np.sin((k * 8 + i) * 0.9)), t0 + i * 0.5 * BEAT, (0.035 + 0.04 * e) * (1.15 if i % 4 == 0 else 0.9))
+            if name in ("chapter", "ican", "peak", "teach", "pdf", "guides", "levels", "offline") and not (name == "chapter" and k < 2) and not (name == "offline" and k < 2):
+                step = 0.25 if e > 0.78 else 0.5
+                lo = [tones[0] - 12, tones[1] - 12, tones[0] - 12, tones[2] - 12]
+                for i, x in enumerate(np.arange(0, 4, step)):
+                    place(st["str"], stereo(spic(lo[i % 4] + 12), -0.3 + 0.6 * ((i % 2))), t0 + x * BEAT, (0.045 if step == 0.5 else 0.035) * (1.3 if i % 4 == 0 else 1) * e)
+            if name in ("roles", "ican", "break", "self", "teach") or (name == "story" and k % 2 == 0):
+                offs = [0, 1, 1.5, 2, 3]
+                seq = [up[0], up[2 % len(up)], up[3 % len(up)], up[-1], up[2 % len(up)]]
+                for off, m in zip(offs, seq):
+                    place(st["pno"], stereo(piano(m, 2.2, 0.5 + 0.25 * e), 0.15), t0 + off * BEAT, 0.08)
+            # ney theme: in the Hicaz sections and over the peak and the guides
+            if hic or name in ("peak", "guides") and k % 2 == 0:
+                theme = [(0, 4, 1.5), (1.5, 5, 0.5), (2, 4, 1.0), (3, 3, 1.0)] if k % 2 == 0 else [(0, 2, 1.0), (1, 3, 0.5), (1.5, 4, 1.5), (3, 1, 1.0)]
+                if name in ("peak", "guides"):
+                    theme = [(0, 7, 1.0), (1, 6, 0.5), (1.5, 5, 0.5), (2, 4, 1.5), (3.5, 5, 0.5)]
+                lvl = 0.06 if name != "intro" or k >= 1 else 0.05
+                for bt, idx, ln in theme:
+                    if name == "finale" and k > 0:
+                        break
+                    place(st["eth"], stereo(ney(HIC[idx], ln * BEAT + 0.35), -0.15), t0 + bt * BEAT, lvl)
+                if name in ("intro", "places"):
+                    for bt, idx in [(0.5, 0), (1.0, 1), (1.5, 2), (2.5, 4), (3.0, 3), (3.5, 2)]:
+                        place(st["eth"], stereo(oud(HIC[idx] - 12), 0.25), t0 + bt * BEAT, 0.045)
+    # transitions: cymbal swells into the big sections, a snare-roll crescendo into the guides and the finale
+    for at in (18.667, 62.667, 97.333, 124.0, 138.667, 178.667):
+        place(st["fx"], stereo(cymbal(rev=True, dur=1.6), 0.2), at - 1.6, 0.35)
+        place(st["fx"], stereo(cymbal(), -0.2), at, 0.22)
+    place(st["drm"], stereo(snare_roll(4.0, 0.03, 0.4), 0.0), 178.667 - 4.0, 0.3)
+    place(st["drm"], stereo(snare_roll(2.6, 0.05, 0.5), 0.0), 186.0 - 2.6, 0.3)
+    for at in (97.333, 186.0):
+        place(st["drm"], stereo(taiko(), 0), at, 0.45)
+    # finale: resolution on D with the melody once more
+    for bt, m in [(0, 66), (0, 74), (1, 78), (2, 76), (3.5, 74), (4, 81), (6, 78), (7, 74)]:
+        place(st["pno"], stereo(piano(m, 4.0, 0.75), 0.05), 186.0 + bt * BEAT, 0.09)
     return st
+
+
+def score() -> np.ndarray:
+    st = build_music()
+    st["pad"] = hp(st["pad"], 220)
+    st["str"] = hp(st["str"], 120)
+    st["eth"] = hp(st["eth"], 60)
+    music = (st["pad"] + reverb(st["str"], 2.6, 0.32, 6000) + reverb(st["pno"], 2.4, 0.3, 7000)
+             + reverb(st["arp"], 2.0, 0.38, 5500) + st["bass"] + reverb(st["drm"] * 0.75, 1.1, 0.14, 8000)
+             + reverb(st["eth"], 2.8, 0.42, 6000) + reverb(st["fx"], 2.0, 0.3, 8000))
+    music = hp(music, 38)
+    music = music + 0.45 * hp(music, 3200) + 0.25 * bp(music, 900, 3000) - 0.25 * bp(music, 180, 450)
+    # the offline scene starts muffled (as if the connection dropped) and opens up again
+    t = t_axis(len(music))
+    k0, k1 = int(157.333 * SR), int(162.67 * SR)
+    seg = music[k0:k1]
+    muff = lp(seg, 900)
+    w = np.linspace(1, 0, k1 - k0)[:, None] ** 1.5
+    music[k0:k1] = muff * w + seg * (1 - w)
+    return music
 
 
 # ------------------------------------------------------------------ sound design (film time, see film.js)
@@ -538,20 +637,6 @@ def narration() -> tuple[np.ndarray, np.ndarray]:
     return reverb(vo, 0.9, 0.06, 9000), duck
 
 
-# the score was composed on the v6 grid; the v8 Arabic-hotspot beat added one bar (4 beats) to the film at 40.55 s.
-# The music repeats bar 59–63 (Gm9) at the bar line 63 (42.0 s), so every later section still lands on its cut.
-INSERT_AT_BEAT, INSERT_BEATS = 63, 4
-
-
-def insert_bar(music: np.ndarray) -> np.ndarray:
-    a, b = int(round(b2t(INSERT_AT_BEAT - INSERT_BEATS) * SR)), int(round(b2t(INSERT_AT_BEAT) * SR))
-    rep = music[a:b].copy()
-    x = int(0.02 * SR)
-    r = np.linspace(0, 1, x)[:, None]
-    rep[:x] = music[b:b + x] * np.sqrt(1 - r) + rep[:x] * np.sqrt(r)   # the repeat's own end flows on into bar 63
-    return np.concatenate([music[:b], rep, music[b:]])[:N]
-
-
 def rms_comp(x: np.ndarray, thr_db=-18, ratio=2.5, att=0.01, rel=0.2) -> np.ndarray:
     lvl = np.sqrt(np.convolve((x ** 2).mean(1), np.ones(480) / 480, mode="same") + 1e-12)
     db = 20 * np.log10(lvl)
@@ -567,35 +652,26 @@ def rms_comp(x: np.ndarray, thr_db=-18, ratio=2.5, att=0.01, rel=0.2) -> np.ndar
 def main() -> None:
     out_dir = PROMO / "out"
     (out_dir / "stems").mkdir(parents=True, exist_ok=True)
-    music = insert_bar(score())
+    music = score()
     sfx = build_sfx()
     vo, duck = narration()
     tt = t_axis(N)
-    fade = np.clip(tt / 0.05, 0, 1) * np.clip((V8D + 0.4 - tt) / 1.6, 0, 1)
-    # arc of the piece: calm story → chapter loop → peak at the end-of-book review → breath (levels) → rise → finale
-    ins = b2t(INSERT_BEATS)
-    keys = [0, 18.3, 18.9, 23.1, 23.6, 43.7, 44.3, 59.8, 60.4, 77.7, 78.3, 85.0, 85.6, 92.3, 92.8, 98.7]
-    arc = np.interp(tt, [k + ins if k > 42 else k for k in keys],
-                    [0.85, 0.9, 1.0, 1.05, 0.85, 0.8, 0.8, 0.84, 0.95, 1.0, 0.68, 0.72, 0.8, 0.92, 1.12, 1.0])
-    bed = music * (arc * duck * fade)[:, None]
+    fade = np.clip(tt / 0.05, 0, 1)
     fx = (sfx * 0.9 + vo) * fade[:, None]
-    bed, fx = splice_inserts(bed, fx)
+    fx, duck = splice_inserts(fx, duck)
+    tf = t_axis(NF)
+    end = TL["duration"] + 0.4
+    gain = np.clip(tf / 0.05, 0, 1) * np.clip((end - tf) / 2.2, 0, 1)
+    duck = np.concatenate([duck, np.ones(max(0, NF - len(duck)))])[:NF]
+    # the large shape of the piece: quiet sections sit lower, the big ones open up
+    keys, vals = [], []
+    for _, a, b, _, (e0, e1) in SECTIONS:
+        keys += [a + 0.25, b - 0.25]; vals += [0.55 + 0.6 * e0, 0.55 + 0.6 * e1]
+    shape = np.interp(tf, keys, vals)
+    bed = music * (duck * gain * shape)[:, None]
+    fx = np.concatenate([fx, np.zeros((max(0, NF - len(fx)), 2))])[:NF] * np.clip((end - tf) / 1.6, 0, 1)[:, None]
     mix = bed + fx
     finish(mix, bed, fx, out_dir)
-
-
-def score() -> np.ndarray:
-    st = build_music()
-    st["pad"] = hp(st["pad"], 240)
-    st["str"] = hp(st["str"], 200)
-    st["drm"] = st["drm"] * 0.62
-    st["eth"] = hp(st["eth"], 60)
-    music = (st["pad"] * 1.0 + reverb(st["str"], 3.2, 0.4, 5000) + reverb(st["pno"], 2.6, 0.32, 7000)
-             + reverb(st["arp"], 2.2, 0.42, 5000) + st["bass"] + reverb(st["drm"], 1.4, 0.18, 7000)
-             + reverb(st["eth"], 3.0, 0.45, 6000))
-    music = hp(music, 40)
-    music = music + 0.5 * hp(music, 3200) + 0.3 * bp(music, 900, 3000) - 0.25 * bp(music, 180, 450)  # presence / air
-    return music
 
 
 def finish(mix, music, sfx, out_dir) -> None:
@@ -624,7 +700,10 @@ BAR = 4 * BEAT
 INSERT_SFX = {   # scene clock u (seconds) → sound; mirrors the taps in film.js
     "n1": [(6.1, "tap")],
     "n2": [(2.1, "tap"), (3.9, "tap"), (3.98, "right")],
-    "n3": [(1.7, "tap"), (2.7, "tap"), (3.7, "tap"), (5.2, "move")],
+    "n3": [(2.0, "tap"), (3.7, "tap"), (5.4, "tap"), (6.65, "right")],
+    "n3g": [(1.3, "tick"), (3.9, "tick")],
+    "n8": [(1.8, "tap"), (3.6, "right"), (5.1, "move"), (6.45, "tick")],
+    "n9": [(1.7, "tap"), (3.0, "move"), (5.6, "page"), (6.05, "page"), (6.5, "page")],
     "n4": [(3.0, "move")] + [(3.83 + k * 0.122, "key") for k in range(8)] + [(5.175, "tap"), (5.3, "right")],
     "n5": [(3.13, "move"), (4.73, "tap"), (5.93, "tap"), (6.87, "tap")],
     "n6": [(4.8, "move"), (6.5, "tap"), (7.4, "tick"), (8.9, "tap")],
@@ -639,41 +718,34 @@ def insert_sound(kind):
         return click(3000, 0.03), 0.07
     if kind == "tick":
         return click(2600, 0.05), 0.12
+    if kind == "page":
+        return whoosh(0.5, 600, 5000, 0.4), 0.05
     if kind == "right":
         return chime((86, 93)), 0.16
     return whoosh(0.8, 250, 3200, 0.55), 0.06
 
 
-def splice_inserts(bed: np.ndarray, fx: np.ndarray):
+def splice_inserts(fx: np.ndarray, duck: np.ndarray):
+    """Open the v8 sound design (and the music-duck curve) at every insert: effects ring out under the
+    insert and pick up again afterwards; each inserted scene gets its own quiet UI sounds."""
     ins = TL.get("inserts", [])
-    if not ins:
-        return bed, fx
     fade_in = TL.get("insertFade", 0.5)
+    out_f, out_d, prev, film_off, cues = [], [], 0, 0.0, []
     groups = []
     for n in ins:
         if groups and groups[-1][0] == n["at"]:
             groups[-1][1].append(n)
         else:
             groups.append((n["at"], [n]))
-    out_b, out_f, prev, prev_b, film_off = [], [], 0, 0, 0.0
-    cues = []
-    x = int(0.03 * SR)
     for at, ns in groups:
         p = int(round(at * SR))
         total = sum(n["len"] for n in ns)
-        nbars = int(round(total / BAR))
-        L = int(round(nbars * BAR * SR))
-        wbars = nbars if nbars <= 4 else 4
-        W = int(round(wbars * BAR * SR))
-        loop = np.concatenate([bed[p - W:p]] * (L // W + 2))[:L + x].copy()
-        r = np.linspace(0, 1, x)[:, None]
-        loop[:x] = bed[p:p + x] * np.sqrt(1 - r) + loop[:x] * np.sqrt(r)          # into the repeat
-        loop[-x:] = loop[-x:] * np.sqrt(1 - r) + bed[p:p + x] * np.sqrt(r)       # and out of it
-        out_b += [bed[prev_b:p], loop]
-        ring = int(0.35 * SR)                                                     # effects ring out under the insert
+        L = int(round(total * SR))
+        ring = int(0.35 * SR)
         pause = np.zeros((L, 2)); pause[:ring] = fx[p:p + ring] * np.linspace(1, 0, ring)[:, None]
         out_f += [fx[prev:p], pause]
-        fx[p:p + int(0.12 * SR)] *= np.linspace(0, 1, int(0.12 * SR))[:, None]      # and pick up again softly
+        out_d += [duck[prev:p], np.ones(L)]
+        fx[p:p + int(0.12 * SR)] *= np.linspace(0, 1, int(0.12 * SR))[:, None]
         start = at + film_off
         for n in ns:
             cues.append((start - fade_in + 0.1, "move", 0.6))
@@ -681,14 +753,14 @@ def splice_inserts(bed: np.ndarray, fx: np.ndarray):
                 cues.append((start + u, kind, 1.0))
             start += n["len"]
         film_off += total
-        prev, prev_b = p, p + x       # the loop's last 30 ms already cross-faded into bed[p:p+x]
-    out_b.append(bed[prev_b:]); out_f.append(fx[prev:])
-    bed, fx = np.concatenate(out_b), np.concatenate(out_f)
+        prev = p
+    out_f.append(fx[prev:]); out_d.append(duck[prev:])
+    fx, duck = np.concatenate(out_f), np.concatenate(out_d)
     extra = np.zeros_like(fx)
     for t0, kind, g in cues:
         snd, gain = insert_sound(kind)
         place(extra, snd if snd.ndim > 1 else stereo(snd), t0, gain * g)
-    return bed, fx + reverb(extra, 1.6, 0.18) * 0.9
+    return fx + reverb(extra, 1.6, 0.18) * 0.9, duck
 
 
 if __name__ == "__main__":

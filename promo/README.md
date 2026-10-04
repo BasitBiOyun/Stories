@@ -1,8 +1,8 @@
 # Lisandan Kültüre — Tanıtım Filmi (motion graphic)
 
-2:43 süreli (v10), **3840×2160 (4K UHD), 60 fps**, müzikli tanıtım filmi (yalnızca iki kısa gerçek anlatım kesiti).
-Final dosya: `out/lisandan-kulture-v10-4k.mp4` (H.264 High + AAC 48 kHz). v10 = v8 filmi aynen + araya eklenen 7 yeni
-özellik sahnesi (aşağıda "v10").
+3:12 süreli (v11), **3840×2160 (4K UHD), 60 fps**, müzikli tanıtım filmi (yalnızca iki kısa gerçek anlatım kesiti).
+Final dosya: `out/lisandan-kulture-v11-4k.mp4` (H.264 High + AAC 48 kHz). v11 = v8 filmi aynen + araya eklenen 10 özellik
+sahnesi ve baştan yazılmış müzik (aşağıda "v10" ve "v11").
 
 Film tamamen kodla üretilir: `index.html` + `film.css` + `film.js` deterministik bir zaman çizelgesidir
 (`window.__seek(t)` → t anının tam karesi). 1920×1080 CSS kompozisyonu **device scale factor 2** ile
@@ -125,4 +125,39 @@ Adam B1 1. bölüm, 2.26–7.30 sn); Arapça sayfa metni ve Word Note «نبي»
 ```bash
 python3 promo/scripts/build_audio.py
 python3 promo/scripts/render.py --workers 3 --crf 14 --out promo/out/lisandan-kulture-v10-4k.mp4
+```
+
+## v11 — sıra, I can, offline, PDF, yeni müzik (4 Ekim 2026)
+
+Proje sahibinin v10 notları üzerine:
+
+- **Before you read** okumadan önceye taşındı: artık "Üç yol" sahnesinin hemen ardından gelir (v8 23.30), hikâye sayfası
+  ve Messenger kelimesi onu izler. v8'in 31.35 noktasında ekleme yok.
+- **I can** kendi sahnesi oldu (n3, 10.67 sn): kart uygulamadan 4× alındı ve ekranı dolduracak büyüklükte; her satır
+  cevaplanırken altın çerçeveyle vurgulanır. Grup görevi ayrı sahne (n3g, 8 sn).
+- **Derse hazır, tahtaya hazır.** sol tarafta, dikey ortada, iki satır. Lesson card ve Class mode sağda pencerede.
+- **Yeni sahneler:** n8 *Save this book offline* (menü: Saving… → Saved for offline; sonra Storage kapalıyken açılan
+  sayfa, resim kaydedilen kopyadan gelir) · "İnternet olmadan da oku, dinle." n9 *Printable PDFs* (menü → Story book (PDF);
+  kitabın üç gerçek PDF'i, `public/pdfs/books/adam-b1-en-*.pdf`, kapaktan iç sayfaya açılır) · "İndir, yazdır, sınıfa götür."
+- **Harita** görüntüleri güncel uygulamadan (yuvarlak hale, resimli iğneler; eski yıldız odak yok).
+- **Müzik** baştan yazıldı (`build_audio.py → SECTIONS`, film zamanında, döngü/tekrar yok): girişte ney + ud (D Hicaz),
+  özelliklerde darbuka (maksum) + yay ostinatoları; grup görevinde yarım tempo, kitap sonunda çift tempo zirve, sonuç
+  kartında sakin ara, offline sahnesinde boğuk açılış, PDF ve kılavuzlarda trampet crescendosu, finalde D majörde çözülme.
+
+| Ekleme | v8 noktası | Süre | Yazı |
+|---|---|---|---|
+| n1 · Üç yol | 23.30 | 8 sn | Herkes için bir yol. |
+| n2 · Before you read | 23.30 (n1'in ardından) | 8 sn | Okumadan önce tahmin et. |
+| n3 · I can | 62.62 | 10.67 sn | Ne öğrendiğini kendin gör. |
+| n3g · Grup görevi | 62.62 | 8 sn | Grupla, rollerle konuş. |
+| n4 · Sonuç kartı | 81.25 | 8 sn | Sonucunu öğretmenine göster. |
+| n5 · Kendi başına | 88.30 | 8 sn | Kendi hızında öğren. |
+| n6 · Öğretmen | 88.30 | 10.67 sn | Derse hazır, tahtaya hazır. |
+| n7 · Yerler ve haritalar | 88.30 | 8 sn | Hikâyenin geçtiği yerleri keşfet. |
+| n8 · Offline | 88.30 | 10.67 sn | İnternet olmadan da oku, dinle. |
+| n9 · PDF | 88.30 | 10.67 sn | İndir, yazdır, sınıfa götür. |
+
+```bash
+python3 promo/scripts/build_audio.py
+python3 promo/scripts/render.py --workers 3 --crf 14 --out promo/out/lisandan-kulture-v11-4k.mp4
 ```

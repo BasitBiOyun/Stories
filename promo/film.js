@@ -1267,6 +1267,16 @@ function appShot(parent, states) {
   const imgs = states.map((s, i) => { const im = el('img', '', null, d); im.src = `assets/img/app/${s}.jpg`; Object.assign(im.style, { position: 'absolute', inset: 0, width: '100%', height: '100%', opacity: i ? 0 : 1 }); return im; });
   return { d, imgs };
 }
+/** a clipped window onto a screenshot (iw×ih css px); view(fx, fy, s) puts image point (fx,fy) at the window centre */
+function winShot(parent, states, iw, ih, ww, wh, radius = 28) {
+  const d = el('div', 'shot', '', parent);
+  Object.assign(d.style, { width: ww + 'px', height: wh + 'px', borderRadius: radius + 'px' });
+  const inner = el('div', '', '', d);
+  Object.assign(inner.style, { position: 'absolute', left: 0, top: 0, width: iw + 'px', height: ih + 'px', transformOrigin: '0 0' });
+  const imgs = states.map((s, i) => { const im = el('img', '', null, inner); im.src = `assets/img/app/${s}.jpg`; Object.assign(im.style, { position: 'absolute', inset: 0, width: '100%', height: '100%', opacity: i ? 0 : 1 }); return im; });
+  const view = (fx, fy, s) => { inner.style.transform = `translate(${(ww / 2 - fx * s).toFixed(2)}px,${(wh / 2 - fy * s).toFixed(2)}px) scale(${s.toFixed(4)})`; };
+  return { d, inner, imgs, view };
+}
 /** an invisible box inside a plane, in the plane's own (css) pixels: something to tap or light up */
 function spot(parent, x, y, w, h, cls = '') { const s = el('div', cls, '', parent); Object.assign(s.style, { position: 'absolute', left: x + 'px', top: y + 'px', width: w + 'px', height: h + 'px' }); return s; }
 const swapAt = (imgs, t, times, d = 0.18) => imgs.forEach((im, i) => { if (i) im.style.opacity = P(t, times[i - 1], times[i - 1] + d, E.inOut).toFixed(3); });
@@ -1332,72 +1342,95 @@ const tapAt = (tapEl, t, tt, target, fx = 0.5, fy = 0.5) => finger(tapEl, t, tt,
   });
 }
 
-/* --------------- N3 · I CAN + GROUP TASK ("Ne öğrendiğini kendin gör." · "Grupla, rollerle konuş.") ---------------
-   I can: Prophet Adam B1, chapter 1, live (Yes · Yes · Almost). Group task: Mecca Before Islam A2, chapter 10,
-   "History Radio Show" (src/data/mecca/a2/en/groupTasks.ts), opened; step 4: nobody plays a person from the story. */
+/* --------------- N3 · I CAN ("Ne öğrendiğini kendin gör.") ---------------
+   Prophet Adam B1, chapter 1, live: the I can card at the end of the chapter, answered Yes · Yes · Almost.
+   The card is a 3× element screenshot (assets/img/app/ican_*.jpg), shown large so every line reads. */
 {
   const S = $('#n3'), w = $('#n3w');
-  glowBg(S).style.background = 'radial-gradient(60% 70% at 55% 45%, rgba(0,153,102,.10), rgba(0,0,0,0) 70%)';
-  const { d: pg, imgs } = appShot(w, ['ican0', 'ican1', 'ican2', 'ican3']);
-  const BT = [spot(pg, 1596, 798, 44, 30), spot(pg, 1596, 854, 44, 30), spot(pg, 1650, 912, 64, 30)];
-  const GW = 1800, GH = GW * 479 / 1734;
-  const gt = shot(w, 'gt1.jpg', GW, GH, 26);
-  const k = GW / 1734;
-  const roles = spot(gt, 10 * k, 128 * k, 1714 * k, 72 * k, 'shot-hi'), step4 = spot(gt, 10 * k, 334 * k, 620 * k, 32 * k, 'shot-hi');
-  const shade = el('div', 'cap-shade deep', '', S); shade.style.zIndex = 5;
-  const h1 = nHead(S, 'I can', [['Ne öğrendiğini kendin gör.', true]]);
-  const h2 = nHead(S, 'Group task', [['Grupla, rollerle konuş.', true]]);
+  glowBg(S).style.background = 'radial-gradient(60% 70% at 50% 40%, rgba(0,153,102,.12), rgba(0,0,0,0) 70%)';
+  const CW = 742, CH = 263, DW = 1560, k = DW / CW, DH = CH * k;
+  const card = shot(w, 'ican_0.jpg', DW, DH, 30);
+  const imgs = [card.firstChild];
+  ['ican_1', 'ican_2', 'ican_3'].forEach(s => { const im = el('img', '', null, card); im.src = `assets/img/app/${s}.jpg`; Object.assign(im.style, { position: 'absolute', inset: 0, opacity: 0 }); imgs.push(im); });
+  const rows = [[60, 58], [124, 54], [181, 54]].map(([y, h]) => spot(card, 8 * k, y * k, (CW - 16) * k, h * k, 'shot-hi'));
+  const BT = [[542, 88, 46], [542, 151, 46], [606, 208, 70]].map(([x, y, bw]) => spot(card, (x - bw / 2) * k, (y - 18) * k, bw * k, 36 * k));
+  const shade = el('div', 'cap-shade', '', S); shade.style.zIndex = 5;
+  const head = nHead(S, 'I can · after every chapter', [['Ne öğrendiğini kendin gör.', true]]);
   const tap = el('div', 'tap', null, S);
-  const TAPS = [1.7, 2.7, 3.7];
-  ins('n3', 32 / 3, u => {
+  const TAPS = [2.0, 3.7, 5.4], END = 32 / 3;
+  ins('n3', END, u => {
     const hd = handDrift(u, 95);
-    /* 1 — I can: three answers */
-    const a = P(u, -0.5, 1.0, E.cam), aOut = P(u, 5.0, 5.7, E.cam);
-    camTf(pg, { px: 960, py: lerp(760, 850, a), s: lerp(0.86, 1.0, a), sx: CX + hd.x, sy: 430 + hd.y, z: lerp(-500, 0, a) - aOut * 800, ry: lerp(-12, -4, a), rx: lerp(6, 2, a) });
-    op(pg, P(u, -0.45, 0.1, E.lin) * (1 - P(u, 5.2, 5.7, E.lin))); blur(pg, aOut * 8);
+    const a = P(u, -0.5, 1.3, E.cam), push = P(u, 6.0, END, E.inOut);
+    tf(card, { x: CX - DW / 2 + hd.x, y: 200 + hd.y + (1 - a) * 150 - push * 20, z: lerp(-700, 0, a) + push * 60, rx: lerp(16, 2, a), ry: lerp(-12, -2, a) + push * 2, s: 1 });
+    op(card, P(u, -0.45, 0.15, E.lin));
     swapAt(imgs, u, TAPS.map(x => x + 0.02), 0.12);
-    op(tap, Math.max(...TAPS.map((tt, i) => tapAt(tap, u, tt, BT[i]))) * (1 - aOut));
-    /* 2 — the group task: roles, then the steps */
-    const g = P(u, 5.2, 6.2, E.cam);
-    tf(gt, { x: CX - GW / 2 + hd.x, y: 110 + hd.y + (1 - g) * 160, z: lerp(-700, 0, g), rx: lerp(16, 3, g), ry: lerp(-10, -3, g) });
-    op(gt, P(u, 5.2, 5.6, E.lin)); show(gt, u > 5.1);
-    roles.style.opacity = (P(u, 6.6, 7.0, E.outSoft) * (1 - P(u, 8.0, 8.3, E.in))).toFixed(3);
-    step4.style.opacity = (P(u, 8.3, 8.7, E.outSoft) * (1 - P(u, 10.0, 10.4, E.in))).toFixed(3);
-    op(shade, P(u, 0, 0.6) * (1 - P(u, 5.0, 5.6)));
-    headAt(h1, u, 0.6, 4.95); headAt(h2, u, 5.7, 32 / 3 - 0.55);
+    rows.forEach((r, i) => { const t0 = TAPS[i]; r.style.opacity = (P(u, t0 - 0.7, t0 - 0.35, E.outSoft) * (1 - P(u, t0 + 0.9, t0 + 1.3, E.in)) * 0.95).toFixed(3); });
+    // after the three answers: all three lines light up together, the answers are the learner's own check
+    const all = P(u, 6.6, 7.2, E.outSoft) * (1 - P(u, 9.6, 10.2, E.in));
+    if (u > 6.4) rows.forEach(r => { r.style.opacity = (all * 0.75).toFixed(3); });
+    op(tap, Math.max(...TAPS.map((tt, i) => tapAt(tap, u, tt, BT[i]))));
+    op(shade, P(u, 0, 0.6));
+    headAt(head, u, 0.6, END - 0.55);
     drawDust(u + 68, 0.22, 0.05);
+  });
+}
+
+/* --------------- N3G · GROUP TASK ("Grupla, rollerle konuş.") ---------------
+   Mecca Before Islam A2, chapter 10, "History Radio Show" (src/data/mecca/a2/en/groupTasks.ts), opened;
+   the roles, then step 4: nobody plays a person from the story. */
+{
+  const S = $('#n3g'), w = $('#n3gw');
+  glowBg(S).style.background = 'radial-gradient(60% 70% at 55% 45%, rgba(0,153,102,.10), rgba(0,0,0,0) 70%)';
+  const GW = 1800, GH = GW * 479 / 1734, k = GW / 1734;
+  const gt = shot(w, 'gt1.jpg', GW, GH, 26);
+  const roles = spot(gt, 10 * k, 128 * k, 1714 * k, 72 * k, 'shot-hi'), step4 = spot(gt, 10 * k, 334 * k, 620 * k, 32 * k, 'shot-hi');
+  const shade = el('div', 'cap-shade', '', S); shade.style.zIndex = 5;
+  const head = nHead(S, 'Group task', [['Grupla, rollerle konuş.', true]]);
+  ins('n3g', 8.0, u => {
+    const hd = handDrift(u, 96);
+    const g = P(u, -0.5, 1.0, E.cam), push = P(u, 3.0, 8.0, E.inOut);
+    tf(gt, { x: CX - GW / 2 + hd.x, y: 130 + hd.y + (1 - g) * 160, z: lerp(-700, 0, g) + push * 40, rx: lerp(16, 3, g), ry: lerp(-10, -3, g) });
+    op(gt, P(u, -0.45, 0.1, E.lin));
+    roles.style.opacity = (P(u, 1.3, 1.7, E.outSoft) * (1 - P(u, 3.4, 3.8, E.in))).toFixed(3);
+    step4.style.opacity = (P(u, 3.9, 4.3, E.outSoft) * (1 - P(u, 6.8, 7.2, E.in))).toFixed(3);
+    op(shade, P(u, 0, 0.6));
+    headAt(head, u, 0.5, 7.45);
+    drawDust(u + 70, 0.22, 0.05);
   });
 }
 
 /* ------- N6 · TEACHER · lesson card → class mode ("Derse hazır, tahtaya hazır.") -------
    Lesson card: Mecca Before Islam A2, chapter 10 (40 minutes), live. Class mode: Prophet Adam B1, chapter 1,
-   live: Reading settings → Class mode on → bigger text → Show the answer. */
+   live: Reading settings → Class mode on → bigger text → Show the answer. Both sit in windows on the right;
+   the line stands on its own on the left. */
 {
   const S = $('#n6'), w = $('#n6w');
-  glowBg(S).style.background = 'radial-gradient(60% 70% at 62% 48%, rgba(0,153,102,.10), rgba(0,0,0,0) 70%)';
+  glowBg(S).style.background = 'radial-gradient(60% 70% at 70% 48%, rgba(0,153,102,.10), rgba(0,0,0,0) 70%)';
   const LW = 760, LH = LW * 1940 / 1536, WIN = 880;
   const lcWin = el('div', 'shot', '', w); lcWin.style.width = LW + 'px'; lcWin.style.height = WIN + 'px'; lcWin.style.borderRadius = '28px';
   const lcImg = el('img', '', null, lcWin); lcImg.src = 'assets/img/app/lc.jpg'; lcImg.style.width = LW + 'px'; lcImg.style.height = LH + 'px';
-  const { d: cm, imgs } = appShot(w, ['cm1', 'cm2', 'cm3', 'cm4']);
-  const tgl = spot(cm, 1626, 370, 40, 22), ans = spot(cm, 1490, 234, 126, 26);
-  const shade = el('div', 'cap-shade deep', '', S); shade.style.zIndex = 5;
-  const head = nHead(S, 'Lesson card · Class mode', [['Derse hazır, tahtaya hazır.', true]]);
+  const CWW = 1040, CWH = 820;
+  const cm = winShot(w, ['cm1', 'cm2', 'cm3', 'cm4'], W, H, CWW, CWH, 28);
+  const tgl = spot(cm.inner, 1626, 370, 40, 22), ans = spot(cm.inner, 1490, 234, 126, 26);
+  const shade = el('div', 'cap-shade left', '', S); shade.style.zIndex = 5;
+  const head = nHead(S, 'Lesson card · Class mode', [['Derse hazır,', true], ['tahtaya hazır.', true]], 'mid');
   const tap = el('div', 'tap', null, S);
   const T_TGL = 6.5, T_CLOSE = 7.4, T_ANS = 8.9;
   ins('n6', 32 / 3, u => {
     const hd = handDrift(u, 97);
     /* 1 — the lesson card: aims, minute-by-minute steps, group task, exit ticket */
     const a = P(u, -0.5, 1.0, E.cam), aOut = P(u, 4.6, 5.3, E.cam);
-    tf(lcWin, { x: 1400 - LW / 2 + hd.x, y: 90 + hd.y + (1 - a) * 140, z: lerp(-600, 0, a) - aOut * 800, rx: lerp(12, 2, a), ry: lerp(-18, -7, a) });
+    tf(lcWin, { x: 1380 - LW / 2 + hd.x, y: 100 + hd.y + (1 - a) * 140, z: lerp(-600, 0, a) - aOut * 800, rx: lerp(12, 2, a), ry: lerp(-18, -7, a) });
     op(lcWin, P(u, -0.45, 0.1, E.lin) * (1 - P(u, 4.8, 5.3, E.lin))); blur(lcWin, aOut * 8);
     lcImg.style.transform = `translateY(${(-P(u, 1.3, 4.3, E.inOut) * (LH - WIN)).toFixed(1)}px)`;
-    /* 2 — class mode */
+    /* 2 — class mode, in a window of the same size family */
     const c = P(u, 4.8, 5.9, E.cam), mv = P(u, T_CLOSE + 0.1, T_CLOSE + 1.2, E.cam);
-    camTf(cm, { px: lerp(1480, 900, mv), py: lerp(330, 470, mv), s: lerp(1.35, 1.08, mv) * (0.88 + 0.12 * c), sx: CX + 200 + hd.x - mv * 120, sy: 450 + hd.y + (1 - c) * 120, z: lerp(-500, 0, c), ry: lerp(-16, -6, c), rx: 3 });
-    op(cm, P(u, 4.8, 5.2, E.lin)); show(cm, u > 4.7);
-    swapAt(imgs, u, [T_TGL + 0.02, T_CLOSE, T_ANS + 0.02], 0.25);
+    tf(cm.d, { x: 1390 - CWW / 2 + hd.x, y: 130 + hd.y + (1 - c) * 140, z: lerp(-600, 0, c), rx: lerp(10, 2, c), ry: lerp(-16, -6, c) });
+    cm.view(lerp(1480, 1385, mv), lerp(340, 420, mv), lerp(1.1, 0.95, mv));
+    op(cm.d, P(u, 4.8, 5.2, E.lin)); show(cm.d, u > 4.7);
+    swapAt(cm.imgs, u, [T_TGL + 0.02, T_CLOSE, T_ANS + 0.02], 0.25);
     op(tap, Math.max(tapAt(tap, u, T_TGL, tgl), tapAt(tap, u, T_ANS, ans)));
-    op(shade, P(u, 4.8, 5.4));
+    op(shade, P(u, 0, 0.6));
     headAt(head, u, 0.6, 32 / 3 - 0.55);
     drawDust(u + 72, 0.22, 0.05);
   });
@@ -1410,7 +1443,7 @@ const tapAt = (tapEl, t, tt, target, fx = 0.5, fy = 0.5) => finger(tapEl, t, tt,
   glowBg(S).style.background = 'radial-gradient(70% 70% at 50% 50%, rgba(216,179,92,.12), rgba(0,0,0,0) 70%)';
   const { d: pp, imgs: ppI } = appShot(w, ['pp0', 'pp1']);
   const { d: mp, imgs: mpI } = appShot(w, ['map0', 'map1']);
-  const midCard = spot(pp, 1045, 545, 150, 26), midList = spot(mp, 1484, 492, 200, 34);
+  const midCard = spot(pp, 1045, 545, 150, 26), midList = spot(mp, 1490, 500, 220, 36);
   const shade = el('div', 'cap-shade deep', '', S); shade.style.zIndex = 5;
   const head = nHead(S, 'Places &amp; People · Journey map', [['Hikâyenin geçtiği yerleri keşfet.', true]]);
   const tap = el('div', 'tap', null, S);
@@ -1539,6 +1572,94 @@ const tapAt = (tapEl, t, tt, target, fx = 0.5, fy = 0.5) => finger(tapEl, t, tt,
     op(tap, Math.max(finger(tap, t, T_SHOW, mwSm), finger(tap, t, T_KNEW, mwK), finger(tap, t, T_SHOW2, mwSm)) * (1 - out));
     headAt(head, u, 0.5, 7.45);
     drawDust(u + 80, 0.22, 0.05);
+  });
+}
+
+
+/* ------- N8 · OFFLINE ("İnternet olmadan da oku, dinle.") -------
+   Prophet Adam B1, live (production build): book menu → Save this book offline → Saving… → Saved for offline;
+   then page 3 opened with Storage blocked, its picture coming from the saved copy. */
+{
+  const S = $('#n8'), w = $('#n8w');
+  glowBg(S).style.background = 'radial-gradient(60% 70% at 60% 45%, rgba(216,179,92,.12), rgba(0,0,0,0) 70%)';
+  const MW = 700, MH = 760;
+  const mn = winShot(w, ['m_idle', 'm_saving', 'm_saved'], 352, 760, MW, MH, 28);
+  mn.d.style.background = '#16201b';
+  const save = spot(mn.inner, 40, 424, 230, 32);
+  const { d: pg } = appShot(w, ['offline_page']);
+  const badge = el('div', 'off-badge', `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><circle cx="12" cy="20" r="1"/><path class="sl" d="M2 2l20 20"/></svg><span>Offline</span>`, S);
+  const slash = badge.querySelector('.sl');
+  const shade = el('div', 'cap-shade deep', '', S); shade.style.zIndex = 5;
+  const head = nHead(S, 'Save this book offline', [['İnternet olmadan da oku, dinle.', true]]);
+  const tap = el('div', 'tap', null, S);
+  const T_SAVE = 1.8, T_DONE = 3.6, END = 32 / 3;
+  ins('n8', END, u => {
+    const hd = handDrift(u, 101);
+    /* 1 — the book menu */
+    const a = P(u, -0.5, 1.0, E.cam), aOut = P(u, 5.0, 5.7, E.cam);
+    tf(mn.d, { x: 1240 - MW / 2 + hd.x, y: 110 + hd.y + (1 - a) * 140, z: lerp(-600, 0, a) - aOut * 800, rx: lerp(12, 2, a), ry: lerp(-18, -7, a) });
+    mn.view(176, lerp(300, 330, P(u, 0, 5, E.inOut)), 1.9);
+    op(mn.d, P(u, -0.45, 0.1, E.lin) * (1 - P(u, 5.2, 5.7, E.lin))); blur(mn.d, aOut * 8); show(mn.d, u < 5.8);
+    swapAt(mn.imgs, u, [T_SAVE + 0.05, T_DONE], 0.2);
+    op(tap, tapAt(tap, u, T_SAVE, save, 0.35, 0.5));
+    /* 2 — later, without internet: the page still opens with its picture */
+    const c = P(u, 5.1, 6.3, E.cam), push = P(u, 6.0, END, E.inOut);
+    camTf(pg, { px: lerp(960, 820, push), py: lerp(540, 470, push), s: lerp(0.74, 0.92, push) * (0.9 + 0.1 * c), sx: CX + hd.x, sy: 470 + hd.y, z: lerp(-600, 0, c), ry: lerp(14, 5, c), rx: 3 });
+    op(pg, P(u, 5.1, 5.5, E.lin)); show(pg, u > 5.0);
+    const b = P(u, 6.4, 6.9, E.back);
+    badge.style.opacity = (P(u, 6.4, 6.6) * (1 - P(u, END - 0.5, END, E.lin))).toFixed(3);
+    badge.style.transform = `translateX(-50%) scale(${(0.8 + 0.2 * b).toFixed(3)})`;
+    slash.style.strokeDashoffset = (1 - P(u, 6.9, 7.4, E.outSoft)) * 30;
+    op(shade, P(u, 0, 0.6));
+    headAt(head, u, 0.6, END - 0.55);
+    drawDust(u + 84, 0.22, 0.05);
+  });
+}
+
+/* ------- N9 · PRINTABLE PDFs ("İndir, yazdır, sınıfa götür.") -------
+   Prophet Adam B1, live: book menu → Printable PDFs → Story book (PDF); then the three real PDFs of the book
+   (public/pdfs/books/adam-b1-en-*.pdf, rendered at 150 dpi): covers, which open on an inside page. */
+{
+  const S = $('#n9'), w = $('#n9w');
+  glowBg(S).style.background = 'radial-gradient(60% 70% at 58% 45%, rgba(216,179,92,.13), rgba(0,0,0,0) 70%)';
+  const MW = 700, MH = 760;
+  const mn = winShot(w, ['m_saved', 'm_pdfhover'], 352, 760, MW, MH, 28);
+  mn.d.style.background = '#16201b';
+  const story = spot(mn.inner, 40, 598, 230, 32);
+  const SW = 400, SH = SW * 1754 / 1240;
+  const SLOTS = [['pdf_s1', 'pdf_s5', 'Story book'], ['pdf_t1', 'pdf_t8', 'Teacher’s Book'], ['pdf_g1', 'pdf_g5', 'Self-Study Guide']].map(([cov, inn, label], i) => {
+    const d = el('div', 'pdf-slot', '', w); Object.assign(d.style, { width: SW + 'px', height: SH + 'px' });
+    const page = el('div', 'pdf-page', `<img src="assets/img/app/${inn}.jpg">`, d);
+    const cover = el('div', 'pdf-page cover', `<img src="assets/img/app/${cov}.jpg">`, d);
+    const lb = el('div', 'pdf-label', label, d);
+    return { d, page, cover, lb, x: 780 + i * 450 };
+  });
+  const shade = el('div', 'cap-shade deep', '', S); shade.style.zIndex = 5;
+  const head = nHead(S, 'Printable PDFs', [['İndir, yazdır, sınıfa götür.', true]]);
+  const tap = el('div', 'tap', null, S);
+  const T_PDF = 1.7, END = 32 / 3;
+  ins('n9', END, u => {
+    const hd = handDrift(u, 103);
+    /* 1 — the book menu */
+    const a = P(u, -0.5, 1.0, E.cam), aOut = P(u, 2.8, 3.5, E.cam);
+    tf(mn.d, { x: 1240 - MW / 2 + hd.x, y: 110 + hd.y + (1 - a) * 140, z: lerp(-600, 0, a) - aOut * 800, rx: lerp(12, 2, a), ry: lerp(-18, -7, a) });
+    mn.view(176, 560, 1.9);
+    op(mn.d, P(u, -0.45, 0.1, E.lin) * (1 - P(u, 3.0, 3.5, E.lin))); blur(mn.d, aOut * 8); show(mn.d, u < 3.6);
+    swapAt(mn.imgs, u, [T_PDF - 0.15], 0.15);
+    op(tap, tapAt(tap, u, T_PDF, story, 0.35, 0.5));
+    /* 2 — the three PDFs: covers arrive, then open on an inside page */
+    SLOTS.forEach((o, i) => {
+      const p = P(u, 3.0 + i * 0.25, 4.3 + i * 0.25, E.cam), open = P(u, 5.6 + i * 0.45, 6.9 + i * 0.45, E.inOut);
+      const drift = P(u, 4.0, END, E.inOut);
+      tf(o.d, { x: o.x - SW / 2 + hd.x - drift * 30, y: 150 + hd.y + (1 - p) * 220, z: lerp(-900, 0, p) + drift * 50, rx: lerp(20, 4, p), ry: lerp(-24, -8, p) + i * 2, rz: (i - 1) * 1.2 * (1 - open * 0.5) });
+      op(o.d, P(u, 3.0 + i * 0.25, 3.4 + i * 0.25, E.lin)); show(o.d, u > 2.9);
+      o.cover.style.transform = `rotateY(${(-158 * open).toFixed(2)}deg)`;
+      o.cover.style.filter = `brightness(${(1 - open * 0.45).toFixed(3)})`;
+      o.lb.style.opacity = P(u, 4.2 + i * 0.2, 4.7 + i * 0.2).toFixed(3);
+    });
+    op(shade, P(u, 0, 0.6));
+    headAt(head, u, 0.6, END - 0.55);
+    drawDust(u + 88, 0.25, 0.05);
   });
 }
 
