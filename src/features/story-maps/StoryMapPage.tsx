@@ -28,7 +28,7 @@ import type { StoryMap, StoryMapCamera, StoryMapPlace } from './types';
 type View = { x: number; y: number; w: number; h: number };
 
 const MAX_ZOOM = 6;
-const PIN = 17;
+const PIN = 20;
 const GOOD = '#0f8a5f';
 
 // Soft atlas palette, fixed so the map reads the same in every collection; markers take the book accent.
@@ -506,6 +506,13 @@ export const StoryMapPage: React.FC<StoryMapPageProps> = ({ page }) => {
   // --- Classroom --------------------------------------------------------------------------------
   const hiddenPlaces = classroom ? places.filter(place => !revealed.has(place.id)) : [];
   const shownPlaces = classroom ? places.filter(place => revealed.has(place.id)) : places;
+
+  // Round pictures for the pins, from each place's Places & People card. A place without one keeps its icon.
+  const pictures = useMemo(() => Object.fromEntries(places.flatMap(place => {
+    const entity = place.entityId ? getHistoricalEntity(place.entityId) : undefined;
+    const picture = entity ? entityPictureUrl(entity) : undefined;
+    return picture ? [[place.id, picture]] : [];
+  })) as Record<string, string>, [places]);
 
   const toggleClassroom = () => {
     stopTour();
@@ -1003,10 +1010,24 @@ export const StoryMapPage: React.FC<StoryMapPageProps> = ({ page }) => {
                     <circle className="ring story-map-selring" r={PIN + 6} fill="none" stroke="var(--brand-500)" strokeWidth={2.5} data-on={isSelected ? '1' : '0'} />
                     <g className="story-map-body" data-on={isSelected ? '1' : '0'} filter={`url(#${uid}-shadow)`}>
                       <circle r={PIN + 2.5} fill="#fffdf7" />
-                      <circle r={PIN - 1} fill={fill} />
-                      <g color="#ffffff">
-                        <MapGlyph icon={place.icon} size={20} x={-10} y={-10} strokeWidth={2} />
-                      </g>
+                      {pictures[place.id] ? (
+                        <>
+                          {/* The place's own picture, round, in place of the small icon. */}
+                          <clipPath id={`${uid}-pic-${place.id}`}>
+                            <circle r={PIN - 1} />
+                          </clipPath>
+                          <circle r={PIN - 1} fill={fill} />
+                          <image href={pictures[place.id]} x={-(PIN - 1)} y={-(PIN - 1)} width={(PIN - 1) * 2} height={(PIN - 1) * 2} preserveAspectRatio="xMidYMid slice" clipPath={`url(#${uid}-pic-${place.id})`} />
+                          <circle r={PIN - 1} fill="none" stroke={fill} strokeWidth={2.2} />
+                        </>
+                      ) : (
+                        <>
+                          <circle r={PIN - 1} fill={fill} />
+                          <g color="#ffffff">
+                            <MapGlyph icon={place.icon} size={22} x={-11} y={-11} strokeWidth={2} />
+                          </g>
+                        </>
+                      )}
                       <g transform={`translate(${PIN - 2} ${-(PIN - 2)})`}>
                         <g key={isVisited ? 'seen' : 'new'} className={isVisited ? 'story-map-pop' : undefined}>
                         <circle r={8.5} fill={isVisited ? GOOD : '#fffdf7'} stroke={isVisited ? '#fffdf7' : fill} strokeWidth={1.6} />
@@ -1346,12 +1367,22 @@ export const StoryMapPage: React.FC<StoryMapPageProps> = ({ page }) => {
                         onClick={() => { stopTour(); selectPlace(place.id, true); }}
                         className="flex min-h-11 w-full items-center gap-3 rounded-xl border border-brand-200/80 bg-white/80 px-3 py-2 text-start hover:border-brand-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
                       >
-                        <span
-                          className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-white"
-                          style={{ background: place.tone === 'event' ? PALETTE.mongol : 'var(--brand-700)' }}
-                        >
-                          <MapGlyph icon={place.icon} size={17} strokeWidth={2.1} />
-                        </span>
+                        {pictures[place.id] ? (
+                          <img
+                            src={pictures[place.id]}
+                            alt=""
+                            loading="lazy"
+                            className="h-9 w-9 shrink-0 rounded-full object-cover ring-2"
+                            style={{ '--tw-ring-color': place.tone === 'event' ? PALETTE.mongol : 'var(--brand-700)' } as React.CSSProperties}
+                          />
+                        ) : (
+                          <span
+                            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-white"
+                            style={{ background: place.tone === 'event' ? PALETTE.mongol : 'var(--brand-700)' }}
+                          >
+                            <MapGlyph icon={place.icon} size={18} strokeWidth={2.1} />
+                          </span>
+                        )}
                         <span className="min-w-0 flex-1 truncate font-display text-[14px] font-semibold text-wood">
                           {formatNumber(places.indexOf(place) + 1)}. {place.name}
                         </span>

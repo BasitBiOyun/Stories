@@ -6,6 +6,8 @@ substitutions:
   _AR_REPOSITORY: cloud-run-source-deploy
   _IMAGE: stories-preview
   _SERVICE: stories-preview
+  # Bucket that holds the narration MP3s; a small tts-state/ folder there remembers the last complete TTS run.
+  _TTS_STATE_BUCKET: gen-lang-client-0373200489.firebasestorage.app
 
 steps:
   # Skips the image build and deploy when nothing that goes into the app changed
@@ -56,11 +58,21 @@ steps:
           echo "[Stories TTS] No tts/requests.json; skipping narration generation."
           exit 0
         fi
-        export ELEVENLABS_API_KEY="$(gcloud secrets versions access latest --secret=ELEVENLABS_API_KEY --project=$PROJECT_ID)"
+        # The queue is walked only when it (or the narration scripts) changed since the last
+        # complete run: the hash of a finished run is kept in Storage, so ordinary app commits
+        # skip this step in seconds instead of re-checking every chapter's audio.
+        state="gs://${_TTS_STATE_BUCKET}/tts-state/en-queue-hash.txt"
+        hash="$$(cat tts/requests.json scripts/tts/expand_source_batch.py scripts/tts/process_requests.py scripts/tts/cleanup_duplicates.py | sha256sum | cut -c1-40)"
+        if [ "$$(gcloud storage cat "$$state" 2>/dev/null || true)" = "$$hash" ]; then
+          echo "[Stories TTS] Narration queue unchanged since the last complete run ($$hash); skipping."
+          exit 0
+        fi
+        export ELEVENLABS_API_KEY="$$(gcloud secrets versions access latest --secret=ELEVENLABS_API_KEY --project=$PROJECT_ID)"
         # Narration never blocks the app deploy: on a failure (for example an exhausted
-        # ElevenLabs quota) the requests stay queued and are retried by the next build.
+        # ElevenLabs quota) the hash is not saved, so the queue is retried by the next build.
         if python3 scripts/tts/expand_source_batch.py && python3 scripts/tts/process_requests.py; then
           python3 scripts/tts/cleanup_duplicates.py || echo "[Stories TTS] Duplicate cleanup failed; the deploy continues."
+          printf '%s' "$$hash" | gcloud storage cp - "$$state" || echo "[Stories TTS] Could not save the queue hash; the next build checks the queue again."
         else
           echo "[Stories TTS] WARNING: narration generation failed; the deploy continues and the queue is retried on the next build."
         fi
@@ -79,12 +91,23 @@ steps:
           echo "[Stories TTS Arabic] No tts/arabic_requests.json; skipping."
           exit 0
         fi
-        if ! ELEVENLABS_ARABIC_API_KEY="$(gcloud secrets versions access latest --secret=ELEVENLABS_ARABIC_API_KEY --project=$PROJECT_ID 2>/dev/null)"; then
+        # Same as the English step: only a changed queue is walked again.
+        state="gs://${_TTS_STATE_BUCKET}/tts-state/ar-queue-hash.txt"
+        hash="$$(cat tts/arabic_requests.json scripts/tts/process_arabic_requests.py | sha256sum | cut -c1-40)"
+        if [ "$$(gcloud storage cat "$$state" 2>/dev/null || true)" = "$$hash" ]; then
+          echo "[Stories TTS Arabic] Arabic queue unchanged since the last complete run ($$hash); skipping."
+          exit 0
+        fi
+        if ! ELEVENLABS_ARABIC_API_KEY="$$(gcloud secrets versions access latest --secret=ELEVENLABS_ARABIC_API_KEY --project=$PROJECT_ID 2>/dev/null)"; then
           echo "[Stories TTS Arabic] Secret ELEVENLABS_ARABIC_API_KEY is not readable; skipping Arabic narration."
           exit 0
         fi
         export ELEVENLABS_ARABIC_API_KEY
-        python3 scripts/tts/process_arabic_requests.py || echo "[Stories TTS Arabic] WARNING: Arabic narration failed; the deploy continues and the queue is retried on the next build."
+        if python3 scripts/tts/process_arabic_requests.py; then
+          printf '%s' "$$hash" | gcloud storage cp - "$$state" || echo "[Stories TTS Arabic] Could not save the queue hash; the next build checks the queue again."
+        else
+          echo "[Stories TTS Arabic] WARNING: Arabic narration failed; the deploy continues and the queue is retried on the next build."
+        fi
 
   # Two builds so the dependency install (npm ci) is cached too: the first keeps the
   # build stage as its own cache image, the second builds the small runtime image.
