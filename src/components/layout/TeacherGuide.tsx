@@ -1593,7 +1593,7 @@ entries.set(key, { word, definition });
               <button 
                 onClick={onClose}
                 className="w-11 h-11 flex items-center justify-center bg-white/[0.05] text-gold hover:bg-white/10 rounded-xl border border-white/[0.06] transition-all cursor-pointer shrink-0"
-                aria-label={language === 'ar' ? 'إغلاق دليل المعلم' : 'Close Teacher Guide'}
+                aria-label={language === 'ar' ? 'إغلاق كتاب المعلم' : "Close Teacher's Book"}
               >
                 <X className="w-5 h-5 sm:w-6 sm:h-6" />
               </button>
@@ -1709,7 +1709,7 @@ entries.set(key, { word, definition });
                         "w-full h-11 rounded-xl border border-white/[0.08] bg-black/20 text-parchment placeholder:text-parchment/30 outline-none focus:border-gold/35 focus:ring-2 focus:ring-gold/10 font-serif text-[13px] sm:text-sm",
                         isRTL ? "pr-10 pl-3.5 text-right" : "pl-10 pr-3.5"
                       )}
-                      aria-label={language === 'ar' ? 'بحث سريع في دليل المعلم' : 'Quick search in Teacher Guide'}
+                      aria-label={language === 'ar' ? 'بحث سريع في كتاب المعلم' : "Quick search in Teacher's Book"}
                     />
                     {searchQuery.trim() && (
                       <div className="absolute top-[calc(100%+0.5rem)] inset-x-0 z-50 overflow-hidden rounded-2xl border border-gold/15 bg-wood/95 shadow-2xl backdrop-blur-xl">

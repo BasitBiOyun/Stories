@@ -21,6 +21,8 @@ import { useMyWords } from '../../lib/myWords';
 import { firstOpenBookAt } from '../../lib/nextBook';
 import { InstallAppButton } from '../ui/InstallAppButton';
 import { AboutPage } from './AboutPage';
+import { UsageGuide } from './UsageGuide';
+import { USAGE_GUIDES } from '../../data/usageGuides';
 import { ArrowRight, ChevronLeft, ChevronRight, Clock, GraduationCap } from '../ui/icons';
 import { preloadBook } from '../../core/content/bookRegistry';
 import { readReaderPosition, type ReaderPosition } from '../../lib/readerPosition';
@@ -51,10 +53,11 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart, onOpenTeacherGuide 
   const [activeCollection, setActiveCollection] = useState<CollectionId>('all');
   const [activeIndex, setActiveIndex] = useState(0);
   const [isAboutOpen, setIsAboutOpen] = useState(false);
+  const [isUsageGuideOpen, setIsUsageGuideOpen] = useState(false);
   const [lastActive, setLastActive] = useState<{ prophetId: string; level: Level; position: ReaderPosition | null } | null>(null);
 
   const { language, t, isRTL, formatNumber } = useLanguage();
-  const { isSelfLearner, isTeacher } = useUserRole();
+  const { role, isSelfLearner, isTeacher } = useUserRole();
   const [isCheckCodeOpen, setIsCheckCodeOpen] = useState(false);
   const [isLevelTestOpen, setIsLevelTestOpen] = useState(false);
   const [isMyWordsOpen, setIsMyWordsOpen] = useState(false);
@@ -837,6 +840,14 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart, onOpenTeacherGuide 
       <footer className="mx-auto w-full max-w-[1500px] px-5 pb-10 text-center sm:px-8 lg:px-12">
         <button
           type="button"
+          onClick={() => setIsUsageGuideOpen(true)}
+          className="min-h-10 rounded-full px-4 text-[13px] font-semibold text-[#F6F0E2]/55 underline decoration-white/20 underline-offset-4 transition-colors hover:text-[#F6F0E2] hover:decoration-[#D8B35C]/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50"
+          data-usage-guide-link
+        >
+          {USAGE_GUIDES[role ?? 'student'][language === 'ar' ? 'ar' : 'en'].title}
+        </button>
+        <button
+          type="button"
           onClick={() => setIsAboutOpen(true)}
           className="min-h-10 rounded-full px-4 text-[13px] font-semibold text-[#F6F0E2]/55 underline decoration-white/20 underline-offset-4 transition-colors hover:text-[#F6F0E2] hover:decoration-[#D8B35C]/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50"
           data-about-link
@@ -846,6 +857,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart, onOpenTeacherGuide 
       </footer>
 
       <AboutPage isOpen={isAboutOpen} onClose={() => setIsAboutOpen(false)} />
+      <UsageGuide isOpen={isUsageGuideOpen} onClose={() => setIsUsageGuideOpen(false)} />
     </div>
   );
 };

@@ -171,8 +171,8 @@ export const SECTION_ICONS = {
   },
   teacherGuide: {
     icon: GraduationCap,
-    en: 'Teacher Guide',
-    ar: 'دَلِيلُ المُعَلِّمِ',
+    en: "Teacher's Book",
+    ar: 'كِتَابُ المُعَلِّمِ',
     hint: { en: 'Lesson plans and answers for the teacher.', ar: 'خُطَطُ الدُّرُوسِ وَالإِجَابَاتُ لِلْمُعَلِّمِ.' },
   },
 } satisfies Record<string, SectionIconEntry>;

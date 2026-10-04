@@ -63,7 +63,8 @@ self.addEventListener('fetch', event => {
   if (request.method !== 'GET') return;
   const url = new URL(request.url);
 
-  if (request.mode === 'navigate') {
+  // PDFs open in their own tab: leave them to the browser so a PDF never replaces the cached app shell.
+  if (request.mode === 'navigate' && !url.pathname.startsWith('/pdfs/')) {
     event.respondWith(handleNavigation(request));
     return;
   }

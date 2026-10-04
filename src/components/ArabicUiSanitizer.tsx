@@ -2,7 +2,8 @@ import React from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
 
 const REPLACEMENTS: Array<[RegExp, string]> = [
-  [/Professional Teacher Guide/gi, 'دليل المعلم المهني'],
+  [/Teacher(?:'s|’s) Book/gi, 'كتاب المعلم'],
+  [/Professional Teacher Guide/gi, 'كتاب المعلم'],
   [/Student(?:'s|’s)? Self[- ]Study Guide/gi, 'دليل الدراسة الذاتية للطالب'],
   [/Self[- ]Study Guide/gi, 'دليل الدراسة الذاتية'],
   [/Tap\s*&\s*Reveal/gi, 'اضغط واكشف'],

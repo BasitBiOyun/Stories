@@ -17,7 +17,7 @@ import {
   Layers,
   MapPin,
   Menu,
-  X, HelpCircle } from './components/ui/icons';
+  X, HelpCircle, FileText } from './components/ui/icons';
 
 import { Level, PageData } from './types';
 import { useBookBundle } from './hooks/useBookBundle';
@@ -50,6 +50,8 @@ import { SelfStudyGuide } from './components/layout/SelfStudyGuide';
 import { HomePage } from './components/layout/HomePage';
 import { AboutPage } from './components/layout/AboutPage';
 import { HowToUse } from './components/layout/HowToUse';
+import { UsageGuide } from './components/layout/UsageGuide';
+import { USAGE_GUIDES } from './data/usageGuides';
 import { SECTION_ICONS } from './lib/sectionIcons';
 
 // Book Components
@@ -94,6 +96,7 @@ const AppContent = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isAboutOpen, setIsAboutOpen] = useState(false);
   const [isHowToUseOpen, setIsHowToUseOpen] = useState(false);
+  const [isUsageGuideOpen, setIsUsageGuideOpen] = useState(false);
   const [isMyWordsOpen, setIsMyWordsOpen] = useState(false);
   const [isTeacherGuideOpen, setIsTeacherGuideOpen] = useState(false);
   const [isSelfStudyOpen, setIsSelfStudyOpen] = useState(false);
@@ -536,7 +539,7 @@ const AppContent = () => {
 
       // Only navigate if a story is active, no overlays are open, and summary is not shown
       if (!selectedProphetId || showSummary || isFinalChallengePage) return;
-      if (isMenuOpen || isAboutOpen || isHowToUseOpen || isMyWordsOpen || isTeacherGuideOpen || isSelfStudyOpen || isQuickTOCOpen || isReaderSettingsOpen) return;
+      if (isMenuOpen || isAboutOpen || isHowToUseOpen || isUsageGuideOpen || isMyWordsOpen || isTeacherGuideOpen || isSelfStudyOpen || isQuickTOCOpen || isReaderSettingsOpen) return;
 
       if (e.key === 'ArrowRight') {
         if (language === 'ar') {
@@ -563,6 +566,7 @@ const AppContent = () => {
     isMenuOpen,
     isAboutOpen,
     isHowToUseOpen,
+    isUsageGuideOpen,
     isMyWordsOpen,
     isTeacherGuideOpen,
     isSelfStudyOpen,
@@ -583,7 +587,7 @@ const AppContent = () => {
       !touch ||
       Boolean(target?.closest('input, textarea, select, [role="slider"], [draggable="true"], [data-no-swipe]')) ||
       showSummary || isFinalChallengePage ||
-      isMenuOpen || isAboutOpen || isHowToUseOpen || isMyWordsOpen || isTeacherGuideOpen || isSelfStudyOpen || isQuickTOCOpen || isReaderSettingsOpen;
+      isMenuOpen || isAboutOpen || isHowToUseOpen || isUsageGuideOpen || isMyWordsOpen || isTeacherGuideOpen || isSelfStudyOpen || isQuickTOCOpen || isReaderSettingsOpen;
     swipeStartRef.current = touch ? { x: touch.clientX, y: touch.clientY, ignore } : null;
   };
   const handleSwipeEnd = (e: React.TouchEvent) => {
@@ -1442,6 +1446,19 @@ const AppContent = () => {
                     type="button"
                     onClick={() => {
                       setIsMenuOpen(false);
+                      setIsUsageGuideOpen(true);
+                    }}
+                    className={cn("touch-target flex w-full items-center gap-4 rounded-xl px-4 text-parchment transition-colors", themeClasses.menuHoverBg)}
+                    data-usage-guide-link
+                  >
+                    <FileText size={21} className={themeClasses.menuAccentText} />
+                    <span className="font-display text-[14px] sm:text-[15px] font-semibold">{USAGE_GUIDES[role ?? 'student'][language === 'ar' ? 'ar' : 'en'].title}</span>
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setIsMenuOpen(false);
                       setIsMyWordsOpen(true);
                     }}
                     className={cn("touch-target flex w-full items-center gap-4 rounded-xl px-4 text-parchment transition-colors", themeClasses.menuHoverBg)}
@@ -1529,6 +1546,7 @@ const AppContent = () => {
 
       <AboutPage isOpen={isAboutOpen} onClose={() => setIsAboutOpen(false)} />
       <HowToUse isOpen={isHowToUseOpen} onClose={() => setIsHowToUseOpen(false)} isTeacher={isTeacher} />
+      <UsageGuide isOpen={isUsageGuideOpen} onClose={() => setIsUsageGuideOpen(false)} />
       <MyWordsPanel isOpen={isMyWordsOpen} onClose={() => setIsMyWordsOpen(false)} />
 
       {/* Teacher Guide Overlay */}

@@ -42,8 +42,8 @@ export const LessonCard: React.FC<LessonCardProps> = ({ isOpen, onClose, section
   }, [isOpen]);
 
   const copy = isArabic
-    ? { close: 'إغلاق', aims: 'الأَهْدَافُ', steps: 'خُطُوَاتُ الدَّرْسِ', group: 'مُهِمَّةٌ جَمَاعِيَّةٌ', exit: 'بِطَاقَةُ الخُرُوجِ', people: 'أَشْخَاص', full: 'التَّفَاصِيلُ كُلُّهَا فِي دَلِيلِ المُعَلِّمِ.' }
-    : { close: 'Close', aims: 'Aims', steps: 'Lesson steps', group: 'Group task', exit: 'Exit ticket', people: 'people', full: 'Full details are in the Teacher Guide.' };
+    ? { close: 'إغلاق', aims: 'الأَهْدَافُ', steps: 'خُطُوَاتُ الدَّرْسِ', group: 'مُهِمَّةٌ جَمَاعِيَّةٌ', exit: 'بِطَاقَةُ الخُرُوجِ', people: 'أَشْخَاص', full: 'التَّفَاصِيلُ كُلُّهَا فِي كِتَابِ المُعَلِّمِ.' }
+    : { close: 'Close', aims: 'Aims', steps: 'Lesson steps', group: 'Group task', exit: 'Exit ticket', people: 'people', full: 'Full details are in the Teacher\'s Book.' };
 
   const steps = splitLessonPlan(section.lessonPlan ?? '');
   const exit = section.assessmentTools?.exitTicket ?? [];
