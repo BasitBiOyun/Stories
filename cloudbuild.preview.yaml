@@ -14,6 +14,7 @@ steps:
   # (for example a docs, promo or TTS-queue-only commit). The hash of the app inputs is
   # stored as a label on the Cloud Run service by the deploy step and compared here.
   - id: check-app-changes
+    waitFor: ['-']
     name: gcr.io/google.com/cloudsdktool/cloud-sdk:slim
     entrypoint: bash
     args:
@@ -33,13 +34,15 @@ steps:
           echo "[Stories] App inputs changed ($${deployed:-none} -> $$hash); building."
         fi
 
+  # Runs alongside check-app-changes (and the narration steps) instead of after it: on a
+  # skipped build the pull is simply unused.
   - id: pull-cache
+    waitFor: ['-']
     name: gcr.io/cloud-builders/docker
     entrypoint: bash
     args:
       - -c
       - |
-        [ -f /workspace/.skip-deploy ] && exit 0
         docker pull ${_REGION}-docker.pkg.dev/$PROJECT_ID/${_AR_REPOSITORY}/${_IMAGE}:latest || true
 
   # Chat-controlled narration queue. Normal preview commits do nothing here unless
@@ -48,6 +51,7 @@ steps:
   # exact approved Firebase Storage object, then removes verified old English
   # duplicates for that same story/level/chapter. Arabic paths are never cleaned.
   - id: tts-requests
+    waitFor: ['-']
     name: gcr.io/google.com/cloudsdktool/cloud-sdk:slim
     entrypoint: bash
     args:
@@ -81,6 +85,7 @@ steps:
   # ELEVENLABS_ARABIC_API_KEY secret and only overwrites existing arabic_audio objects.
   # If that secret is not set up yet, the step logs it and the deploy continues.
   - id: tts-arabic-requests
+    waitFor: ['-']
     name: gcr.io/google.com/cloudsdktool/cloud-sdk:slim
     entrypoint: bash
     args:
@@ -112,6 +117,7 @@ steps:
   # Two builds so the dependency install (npm ci) is cached too: the first keeps the
   # build stage as its own cache image, the second builds the small runtime image.
   - id: build
+    waitFor: ['check-app-changes', 'pull-cache']
     name: gcr.io/cloud-builders/docker
     entrypoint: bash
     env:
@@ -133,6 +139,7 @@ steps:
           -t ${_REGION}-docker.pkg.dev/$PROJECT_ID/${_AR_REPOSITORY}/${_IMAGE}:latest .
 
   - id: push
+    waitFor: ['build']
     name: gcr.io/cloud-builders/docker
     entrypoint: bash
     args:
@@ -145,6 +152,7 @@ steps:
         docker push ${_REGION}-docker.pkg.dev/$PROJECT_ID/${_AR_REPOSITORY}/${_IMAGE}:build-cache
 
   - id: deploy
+    waitFor: ['push']
     name: gcr.io/google.com/cloudsdktool/cloud-sdk:slim
     entrypoint: bash
     args:
@@ -162,7 +170,10 @@ steps:
 
   # Keeps only the newest images of this service in Artifact Registry (plus the latest,
   # build-cache and currently served ones). Never blocks: a failure only leaves old images.
+  # Runs in parallel with build/push/deploy, so it no longer adds to the build time. The image
+  # being pushed is the newest one and is never in the deleted tail.
   - id: cleanup-old-images
+    waitFor: ['check-app-changes']
     name: gcr.io/google.com/cloudsdktool/cloud-sdk:slim
     entrypoint: bash
     args:

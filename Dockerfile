@@ -5,9 +5,11 @@ COPY package*.json ./
 # Install from the lockfile first, then explicitly guarantee the two packages imported by vite.config.ts.
 RUN npm ci --include=dev \
   && npm install --no-save --package-lock=false @vitejs/plugin-react@5.2.0 @tailwindcss/vite@4.1.14
-COPY . .
-RUN npm run build \
-  && rm -rf dist/pdfs/books
+# The sources are read through a mount instead of COPY . . so the book PDFs (about 300 MB)
+# never enter this stage: Vite does not copy them and the build-cache image does not store them.
+RUN --mount=type=bind,target=/ctx \
+  tar -C /ctx --exclude=./public/pdfs/books --exclude=./node_modules -cf - . | tar -xf - \
+  && npm run build
 
 FROM node:22-alpine AS runtime
 WORKDIR /app
