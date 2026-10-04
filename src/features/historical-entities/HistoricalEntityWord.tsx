@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useLayoutEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { AnimatePresence, motion } from 'motion/react';
 import { useLanguage } from '../../contexts/LanguageContext';
@@ -64,16 +64,18 @@ export const HistoricalEntityWord = ({
 
   const close = () => setIsOpen(false);
 
-  useEffect(() => {
+  // Measured before paint, so the card opens in place instead of jumping from the screen corner.
+  useLayoutEffect(() => {
     if (!isOpen) return;
 
     updateCoords();
-    const timer = window.setTimeout(updateCoords, 20);
+    const resizeObserver = typeof ResizeObserver !== 'undefined' ? new ResizeObserver(updateCoords) : null;
+    if (tooltipRef.current) resizeObserver?.observe(tooltipRef.current);
     window.addEventListener('resize', updateCoords);
     window.addEventListener('scroll', updateCoords, true);
 
     return () => {
-      window.clearTimeout(timer);
+      resizeObserver?.disconnect();
       window.removeEventListener('resize', updateCoords);
       window.removeEventListener('scroll', updateCoords, true);
     };
@@ -122,10 +124,10 @@ export const HistoricalEntityWord = ({
               <div className="fixed inset-0 z-[99998]" onClick={close} />
               <motion.div
                 ref={tooltipRef}
-                initial={{ opacity: 0, scale: 0.98 }}
+                initial={{ opacity: 0, scale: 0.985 }}
                 animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.98 }}
-                transition={{ duration: 0.12, ease: 'easeOut' }}
+                exit={{ opacity: 0, scale: 0.985 }}
+                transition={{ duration: 0.2, ease: 'easeOut' }}
                 style={{
                   position: 'fixed',
                   top: coords.top,

@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect, useMemo } from 'react';
+import React, { useState, useRef, useEffect, useLayoutEffect, useMemo } from 'react';
 import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'motion/react';
 import { cn } from '../../lib/utils';
@@ -89,14 +89,16 @@ export const VocabularyWord = ({
     setCoords({ top, left, arrowOffset, isAbove });
   };
 
-  useEffect(() => {
+  // Measured before paint, so the card opens in place instead of jumping from the screen corner.
+  useLayoutEffect(() => {
     if (isOpen && hasDefinition) {
       updateCoords();
-      const timer = setTimeout(updateCoords, 10);
+      const resizeObserver = typeof ResizeObserver !== 'undefined' ? new ResizeObserver(updateCoords) : null;
+      if (tooltipRef.current) resizeObserver?.observe(tooltipRef.current);
       window.addEventListener('resize', updateCoords);
       window.addEventListener('scroll', updateCoords, true);
       return () => {
-        clearTimeout(timer);
+        resizeObserver?.disconnect();
         window.removeEventListener('resize', updateCoords);
         window.removeEventListener('scroll', updateCoords, true);
       };
@@ -154,10 +156,10 @@ export const VocabularyWord = ({
               />
               <motion.div
                 ref={tooltipRef}
-                initial={{ opacity: 0, scale: 0.97 }}
+                initial={{ opacity: 0, scale: 0.985 }}
                 animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.97 }}
-                transition={{ duration: 0.15, ease: 'easeOut' }}
+                exit={{ opacity: 0, scale: 0.985 }}
+                transition={{ duration: 0.2, ease: 'easeOut' }}
                 style={{ 
                   position: 'fixed',
                   top: coords.top,

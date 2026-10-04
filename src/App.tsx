@@ -109,6 +109,7 @@ const AppContent = () => {
     return Number.isFinite(stored) && stored >= 0.85 && stored <= 1.3 ? stored : 1;
   });
   const [isWideView, setIsWideView] = useState(() => localStorage.getItem('reader_wide') === 'true');
+  const [showHighlights, setShowHighlights] = useState(() => localStorage.getItem('reader_highlights') !== 'false');
   const isLargeDesktop = useMediaQuery('(min-width: 90rem)');
   const [isReaderSettingsOpen, setIsReaderSettingsOpen] = useState(false);
   const [userAnswers, setUserAnswers] = useState<Record<string, boolean | null>>({});
@@ -148,6 +149,10 @@ const AppContent = () => {
   useEffect(() => {
     localStorage.setItem('reader_wide', String(isWideView));
   }, [isWideView]);
+
+  useEffect(() => {
+    localStorage.setItem('reader_highlights', String(showHighlights));
+  }, [showHighlights]);
  
   const { language, setLanguage, t, formatNumber, isRTL } = useLanguage();
   const { stats, resetStats, hydrateStats } = useStoryProgress();
@@ -760,6 +765,7 @@ const AppContent = () => {
             allPages={currentBook?.pages || []}
             currentIndex={currentPageIndex}
             isDyslexic={isDyslexic} 
+            showHighlights={showHighlights}
             fontSize={(currentBook?.baseFontSize || 12) * readerScale * (isLargeDesktop ? 1.15 : 1) * (classMode ? 1.3 : 1)}
             level={currentLevel}
             collectionId={currentCollection || 'prophets'}
@@ -964,6 +970,33 @@ const AppContent = () => {
                             "flex h-6 w-11 shrink-0 items-center rounded-full p-1 transition-colors",
                             isDyslexic ? themeClasses.progressBar : "bg-white/15",
                             isDyslexic ? "justify-end" : "justify-start"
+                          )}
+                        >
+                          <span className="h-4 w-4 rounded-full bg-white shadow" />
+                        </span>
+                      </button>
+
+                      <button
+                        type="button"
+                        onClick={() => setShowHighlights(prev => !prev)}
+                        className="mt-2 flex w-full items-center justify-between gap-4 rounded-xl bg-white/[0.045] px-3 py-3 text-start transition-colors hover:bg-white/[0.08]"
+                        aria-pressed={showHighlights}
+                        data-highlights-toggle
+                      >
+                        <span>
+                          <span className="block font-display text-[11px] font-semibold text-parchment">
+                            {language === 'ar' ? 'الكلمات الملونة' : 'Highlighted words'}
+                          </span>
+                          <span className="mt-0.5 block text-[11px] text-parchment/62">
+                            {language === 'ar' ? 'أوقفها لقراءة النص بلون واحد' : 'Turn off to read plain text'}
+                          </span>
+                        </span>
+                        <span
+                          dir="ltr"
+                          className={cn(
+                            "flex h-6 w-11 shrink-0 items-center rounded-full p-1 transition-colors",
+                            showHighlights ? themeClasses.progressBar : "bg-white/15",
+                            showHighlights ? "justify-end" : "justify-start"
                           )}
                         >
                           <span className="h-4 w-4 rounded-full bg-white shadow" />

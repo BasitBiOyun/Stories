@@ -1,4 +1,4 @@
-import React, { useRef, useState, useMemo, useEffect } from 'react';
+import React, { useRef, useState, useMemo, useEffect, useLayoutEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { motion, useMotionValue, useTransform, useSpring, AnimatePresence } from 'motion/react';
 import { Play, Pause, Volume2, VolumeX, Info, Rocket, Lock, ArrowLeftRight, ArrowRight, CheckCircle2 } from '../ui/icons';
@@ -88,25 +88,31 @@ const HotspotButton = ({
     setCoords({ top, left, arrowOffset, isAbove });
   };
 
-  useEffect(() => {
+  // Measured before paint (again once the card exists), so it opens in place instead of jumping.
+  useLayoutEffect(() => {
     if (!isActive) {
       setCanShowTooltip(false);
       return;
     }
 
     updateCoords();
-    const frame = window.requestAnimationFrame(updateCoords);
-    const timer = window.setTimeout(updateCoords, 40);
     window.addEventListener('resize', updateCoords);
     window.addEventListener('scroll', updateCoords, true);
 
     return () => {
-      window.cancelAnimationFrame(frame);
-      window.clearTimeout(timer);
       window.removeEventListener('resize', updateCoords);
       window.removeEventListener('scroll', updateCoords, true);
     };
   }, [isActive]);
+
+  useLayoutEffect(() => {
+    if (!isActive || !canShowTooltip || !tooltipRef.current) return;
+    updateCoords();
+    if (typeof ResizeObserver === 'undefined') return;
+    const resizeObserver = new ResizeObserver(updateCoords);
+    resizeObserver.observe(tooltipRef.current);
+    return () => resizeObserver.disconnect();
+  }, [isActive, canShowTooltip]);
 
   return (
     <div
@@ -143,10 +149,10 @@ const HotspotButton = ({
                 />
                 <motion.div
                   ref={tooltipRef}
-                  initial={{ opacity: 0, scale: 0.97 }}
+                  initial={{ opacity: 0, scale: 0.985 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.97 }}
-                  transition={{ duration: 0.14, ease: 'easeOut' }}
+                  exit={{ opacity: 0, scale: 0.985 }}
+                  transition={{ duration: 0.2, ease: 'easeOut' }}
                   style={{
                     position: 'fixed',
                     top: coords.top,
@@ -372,6 +378,7 @@ export const StoryPage = ({
   allPages,
   currentIndex,
   isDyslexic,
+  showHighlights = true,
   fontSize,
   level,
   collectionId = 'prophets',
@@ -381,6 +388,8 @@ export const StoryPage = ({
   allPages: PageData[];
   currentIndex: number;
   isDyslexic: boolean;
+  /** Off: the story reads as plain text, without Word Note and place card highlights. */
+  showHighlights?: boolean;
   fontSize: number;
   level: string;
   collectionId?: string;
@@ -450,6 +459,8 @@ export const StoryPage = ({
   }, [page.id, page.exercises]);
 
   const isArabic = language === 'ar';
+  const highlightVocabulary = showHighlights ? page.vocabulary : undefined;
+  const highlightAnimatedWords = showHighlights ? page.animatedWords : undefined;
   const highlightLanguage = isArabic ? 'ar' : 'en';
 
   const vocabStyle = "border-b-2 border-brand-600/40 hover:border-brand-700 font-bold text-brand-900 transition-colors cursor-help";
@@ -738,8 +749,8 @@ export const StoryPage = ({
     };
     const maxPhraseWords = Math.max(
       1,
-      ...(page.vocabulary ?? []).map(v => highlightWordCount(v.word)),
-      ...(page.animatedWords ?? []).map(highlightWordCount),
+      ...(highlightVocabulary ?? []).map(v => highlightWordCount(v.word)),
+      ...(highlightAnimatedWords ?? []).map(highlightWordCount),
     );
     const hasAlreadyBeenHighlighted = (requested: string, seen: Set<string>) => {
       const normalizedRequested = normalizeHighlightText(requested, highlightLanguage);
@@ -788,13 +799,13 @@ export const StoryPage = ({
 
         for (let i = potentialPhrases.length - 1; i >= 0; i -= 1) {
           const candidate = potentialPhrases[i];
-          const vocab = page.vocabulary?.find(v => (
+          const vocab = highlightVocabulary?.find(v => (
             highlightWordCount(v.word) > 1
             && (isPlaceCard(v.definition) || !hasAlreadyBeenHighlighted(v.word, seenHighlightedWords))
             && !hasAlreadyBeenHighlighted(v.word, seenOnCurrentPage)
             && highlightPhraseMatches(candidate.text, v.word, highlightLanguage)
           ));
-          const animatedWord = !vocab ? page.animatedWords?.find(aw => (
+          const animatedWord = !vocab ? highlightAnimatedWords?.find(aw => (
             highlightWordCount(aw) > 1
             && !hasAlreadyBeenHighlighted(aw, seenHighlightedWords)
             && !hasAlreadyBeenHighlighted(aw, seenOnCurrentPage)
@@ -830,13 +841,13 @@ export const StoryPage = ({
           continue;
         }
 
-        const vocab = page.vocabulary?.find(v => (
+        const vocab = highlightVocabulary?.find(v => (
           highlightWordCount(v.word) === 1
           && (isPlaceCard(v.definition) || !hasAlreadyBeenHighlighted(v.word, seenHighlightedWords))
           && !hasAlreadyBeenHighlighted(v.word, seenOnCurrentPage)
           && highlightTokenMatches(word, v.word, highlightLanguage)
         ));
-        const animatedWord = !vocab ? page.animatedWords?.find(aw => (
+        const animatedWord = !vocab ? highlightAnimatedWords?.find(aw => (
           highlightWordCount(aw) === 1
           && !hasAlreadyBeenHighlighted(aw, seenHighlightedWords)
           && !hasAlreadyBeenHighlighted(aw, seenOnCurrentPage)
@@ -957,14 +968,14 @@ export const StoryPage = ({
           // Check longest phrases first.
           for (let i = potentialPhrases.length - 1; i >= 0; i--) {
             const p = potentialPhrases[i];
-            const vocab = page.vocabulary?.find(v => (
+            const vocab = highlightVocabulary?.find(v => (
               highlightWordCount(v.word) > 1
               && (isPlaceCard(v.definition) || !hasAlreadyBeenHighlighted(v.word, seenHighlightedWords))
               && !hasAlreadyBeenHighlighted(v.word, seenOnCurrentPage)
               && highlightPhraseMatches(p.text, v.word, highlightLanguage)
             ));
 
-            const animatedWord = !vocab ? page.animatedWords?.find(aw => (
+            const animatedWord = !vocab ? highlightAnimatedWords?.find(aw => (
               highlightWordCount(aw) > 1
               && !hasAlreadyBeenHighlighted(aw, seenHighlightedWords)
               && !hasAlreadyBeenHighlighted(aw, seenOnCurrentPage)
@@ -1022,14 +1033,14 @@ export const StoryPage = ({
               </motion.span>
             );
           } else {
-            const vocab = page.vocabulary?.find(v => (
+            const vocab = highlightVocabulary?.find(v => (
               highlightWordCount(v.word) === 1
               && (isPlaceCard(v.definition) || !hasAlreadyBeenHighlighted(v.word, seenHighlightedWords))
               && !hasAlreadyBeenHighlighted(v.word, seenOnCurrentPage)
               && highlightTokenMatches(word, v.word, highlightLanguage)
             ));
             
-            const animatedWord = !vocab ? page.animatedWords?.find(aw => (
+            const animatedWord = !vocab ? highlightAnimatedWords?.find(aw => (
               highlightWordCount(aw) === 1
               && !hasAlreadyBeenHighlighted(aw, seenHighlightedWords)
               && !hasAlreadyBeenHighlighted(aw, seenOnCurrentPage)
