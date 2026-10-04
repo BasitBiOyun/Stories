@@ -32,7 +32,8 @@ const sendFile = (res, filePath) => {
   const ext = extname(filePath).toLowerCase();
   res.writeHead(200, {
     'Content-Type': contentTypes[ext] || 'application/octet-stream',
-    'Cache-Control': ext === '.html' ? 'no-cache' : 'public, max-age=31536000, immutable',
+    // PDFs keep their names when they are rebuilt, so they are only cached for an hour.
+    'Cache-Control': ext === '.html' ? 'no-cache' : ext === '.pdf' ? 'public, max-age=3600' : 'public, max-age=31536000, immutable',
     'X-Content-Type-Options': 'nosniff',
     'X-Stories-Git-Sha': gitSha,
     'X-Stories-Revision': revision,

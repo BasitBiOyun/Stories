@@ -6,11 +6,14 @@ COPY package*.json ./
 RUN npm ci --include=dev \
   && npm install --no-save --package-lock=false @vitejs/plugin-react@5.2.0 @tailwindcss/vite@4.1.14
 COPY . .
-RUN npm run build
+RUN npm run build \
+  && rm -rf dist/pdfs/books
 
 FROM node:22-alpine AS runtime
 WORKDIR /app
 ENV NODE_ENV=production
+# The book PDFs get their own layer, so a code change does not copy (and store) them again.
+COPY public/pdfs/books ./dist/pdfs/books
 COPY --from=app-build /app/dist ./dist
 COPY deploy/server.mjs ./server.mjs
 EXPOSE 8080
