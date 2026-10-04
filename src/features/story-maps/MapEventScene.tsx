@@ -21,35 +21,22 @@ const arcPath = ([ax, ay]: Point, [bx, by]: Point, bend = 0.2) => {
   return `M${ax.toFixed(1)} ${ay.toFixed(1)} Q${(mx + dy * bend).toFixed(1)} ${(my - dx * bend).toFixed(1)} ${bx.toFixed(1)} ${by.toFixed(1)}`;
 };
 
-/** The eight-pointed Seljuk star: two squares, one turned by 45 degrees. */
-const STAR = (() => {
-  const square = (turn: number) => [0, 1, 2, 3].map(i => {
-    const angle = turn + (i * Math.PI) / 2 + Math.PI / 4;
-    return `${(Math.cos(angle) * 20).toFixed(2)} ${(Math.sin(angle) * 20).toFixed(2)}`;
-  });
-  return `M${square(0).join(' L')} Z M${square(Math.PI / 4).join(' L')} Z`;
-})();
-
 const SCENE_CSS = `
   @keyframes scene-draw { to { stroke-dashoffset: 0 } }
   @keyframes scene-grow { 0% { transform: scale(.25); opacity: 0 } 100% { transform: scale(1); opacity: 1 } }
   @keyframes scene-breathe { 0%, 100% { transform: scale(1); opacity: 1 } 50% { transform: scale(1.06); opacity: .8 } }
   @keyframes scene-wave { 0% { transform: scale(.04); opacity: 0 } 12% { opacity: .75 } 100% { transform: scale(1); opacity: 0 } }
-  @keyframes scene-spin-in { 0% { transform: rotate(-120deg) scale(0); opacity: 0 } 70% { transform: rotate(8deg) scale(1.12); opacity: 1 } 100% { transform: rotate(0) scale(1); opacity: 1 } }
-  @keyframes scene-spin { to { transform: rotate(360deg) } }
   @keyframes scene-pop { 0% { transform: scale(.3); opacity: .9 } 100% { transform: scale(3.2); opacity: 0 } }
   @keyframes scene-fade { from { opacity: 0 } to { opacity: 1 } }
   .scene-draw { stroke-dashoffset: 1; animation: scene-draw var(--dur, 1.6s) cubic-bezier(.45,.05,.35,1) var(--delay, 0s) forwards; }
   .scene-grow { transform-box: fill-box; transform-origin: center; animation: scene-grow 1.8s cubic-bezier(.2,.8,.2,1) var(--delay, 0s) both; }
   .scene-breathe { transform-box: fill-box; transform-origin: center; animation: scene-breathe 4.5s ease-in-out 1.8s infinite; }
   .scene-wave { transform-box: fill-box; transform-origin: center; animation: scene-wave var(--dur, 3.6s) cubic-bezier(.15,.6,.3,1) var(--delay, 0s) var(--count, 1) both; }
-  .scene-spin-in { transform-box: fill-box; transform-origin: center; animation: scene-spin-in 1.2s cubic-bezier(.3,.9,.3,1) var(--delay, 0s) both; }
-  .scene-spin { transform-box: fill-box; transform-origin: center; animation: scene-spin 40s linear infinite; }
   .scene-pop { transform-box: fill-box; transform-origin: center; animation: scene-pop 1.1s ease-out var(--delay, 0s) both; }
   .scene-fade { animation: scene-fade .9s ease-out var(--delay, 0s) both; }
   @media (prefers-reduced-motion: reduce) {
     .scene-draw { animation: none; stroke-dashoffset: 0; }
-    .scene-grow, .scene-breathe, .scene-spin-in, .scene-spin, .scene-fade { animation: none; }
+    .scene-grow, .scene-breathe, .scene-fade { animation: none; }
     .scene-wave, .scene-pop { animation: none; opacity: 0; }
   }
 `;
@@ -129,7 +116,7 @@ const Dawn: React.FC<{ at: Point; px: number; uid: string; km: number }> = ({ at
         <g className="scene-grow"><circle className="scene-breathe" r={r} fill={`url(#${uid}-dawn)`} /></g>
       </g>
       <g transform={`translate(${at[0]} ${at[1]}) scale(${px})`}>
-        <g className="scene-spin">
+        <g>
           {Array.from({ length: 12 }, (_, i) => {
             const angle = (i / 12) * Math.PI * 2;
             const inner = 30;
@@ -187,9 +174,12 @@ const Radiate: React.FC<{ at: Point; reach: Point[]; px: number; uid: string; km
         </g>
       ))}
       <g transform={`translate(${at[0]} ${at[1]}) scale(${px})`}>
-        <g className="scene-spin-in" style={vars({ '--delay': '0.15s' })}>
-          <g className="scene-spin">
-            <path d={STAR} transform="scale(1.9)" fill="#fff7e2" fillOpacity={0.55} stroke={GOLD_DEEP} strokeWidth={1.1} strokeLinejoin="round" />
+        {/* A soft round halo around the place: rings only, never a star or any pointed shape. */}
+        <g className="scene-grow" style={vars({ '--delay': '0.15s' })}>
+          <g className="scene-breathe">
+            <circle r={36} fill="#fff7e2" fillOpacity={0.4} />
+            <circle r={36} fill="none" stroke={GOLD_DEEP} strokeWidth={1.4} strokeOpacity={0.75} />
+            <circle r={44} fill="none" stroke={GOLD_DEEP} strokeWidth={1} strokeOpacity={0.4} strokeDasharray="2 5" strokeLinecap="round" />
           </g>
         </g>
       </g>
