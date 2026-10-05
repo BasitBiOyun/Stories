@@ -89,6 +89,12 @@ export const storageManifests: Record<string, BookAssetManifest> = {
     [],
   ),
 
+  [manifestKey('gevherNesibe', 'A2')]: media(
+    ['gevherNesibe/a2/images', 'GevherNesibe/a2/images'],
+    ['gevherNesibe/a2/audio', 'GevherNesibe/a2/audio'],
+    [],
+  ),
+
   [manifestKey('yunusEmre', 'A2')]: media(
     [
       'Yunus/a2/images', 'yunus/a2/images', 'Yunus/yunus_a2/images', 'yunus/yunus_a2/images',

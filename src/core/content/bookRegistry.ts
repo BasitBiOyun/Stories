@@ -181,6 +181,14 @@ export const bookRegistry: readonly BookDefinition[] = [
     'yunusEmreB2BookDataAr',
     'Yunus Emre B2',
   )),
+
+  // Hidden books (see hiddenStoryCatalog): English only until the Arabic edition arrives.
+  createDefinition('gevherNesibe', 'A2', 'turkish', () => loadBookPairFromModule(
+    () => import('../../data/gevherNesibe/a2'),
+    'gevherNesibeA2BookDataEn',
+    'gevherNesibeA2BookDataAr',
+    'Gevher Nesibe A2',
+  )),
 ] as const;
 
 const registryByKey = new Map(bookRegistry.map(definition => [definitionKey(definition.storyId, definition.level), definition]));

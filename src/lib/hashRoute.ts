@@ -1,5 +1,6 @@
 import type { Level } from '../types';
 import { isRegisteredStoryId } from '../core/content/bookRegistry';
+import { isHiddenStory } from '../core/content/storyCatalog';
 
 /** Where the reader is, as carried in the URL hash: `#/` for the library, `#/mecca/a2/5` for page 5 of a book. */
 export interface HashRoute {
@@ -22,6 +23,8 @@ export const parseHashRoute = (hash: string): HashRoute | null => {
   if (parts.length < 2) return null;
   const [storyId, rawLevel, rawPage] = parts;
   if (!isRegisteredStoryId(storyId)) return null;
+  // Hidden books open only from a preview link that carries ?gizli=1.
+  if (isHiddenStory(storyId) && (typeof window === 'undefined' || !new URLSearchParams(window.location.search).has('gizli'))) return null;
   const level = LEVELS.find(candidate => candidate.toLowerCase() === rawLevel.toLowerCase());
   if (!level) return null;
   const page = rawPage === undefined ? 1 : Number.parseInt(rawPage, 10);

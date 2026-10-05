@@ -41,6 +41,7 @@ const storyFolder: Record<StoryId, string> = {
   mecca: 'mecca',
   ibnJubayr: 'ibnJubayr',
   yunusEmre: 'yunusEmre',
+  gevherNesibe: 'gevherNesibe',
 };
 
 const isObject = (value: unknown): value is Record<string, unknown> =>

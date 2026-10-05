@@ -18,6 +18,8 @@ export interface StoryCatalogItem extends ProphetStory {
   collection: StoryCollectionId;
   /** The book has no Arabic edition: the reader opens it in English and hides the language switch. */
   englishOnly?: boolean;
+  /** Never listed anywhere; opens only from a preview link (see hashRoute). */
+  hidden?: boolean;
 }
 
 /**
@@ -161,6 +163,30 @@ export const storyCatalog: StoryCatalogItem[] = [
   },
 ];
 
+/**
+ * Books that are loaded in the app but not shown to anyone yet: they are kept out of
+ * `storyCatalog`, so the home page, shelf, search, next-book links and result codes never
+ * see them. They open only from a preview link: `?gizli=1#/<storyId>/<level>`.
+ * A book moves into `storyCatalog` when its Arabic edition is ready and the user approves it.
+ */
+export const hiddenStoryCatalog: StoryCatalogItem[] = [
+  {
+    id: 'gevherNesibe',
+    name: 'Gevher Nesibe',
+    nameAr: 'جوهر نسيبة',
+    description: 'The first hospital and medical school together in the world, in Seljuk Kayseri.',
+    descriptionAr: 'أول مستشفى ومدرسة طبية معًا في العالم، في قيصري السلجوقية.',
+    image: scholarsIcon,
+    availableLevels: ['A2'],
+    collection: 'turkish',
+    englishOnly: true,
+    hidden: true,
+  },
+];
+
+export const isHiddenStory = (storyId: string): boolean =>
+  hiddenStoryCatalog.some(story => story.id === storyId);
+
 export const collectionStoryIds: Record<StoryCollectionId, string[]> = {
   prophets: storyCatalog.filter(story => story.collection === 'prophets').map(story => story.id),
   history: storyCatalog.filter(story => story.collection === 'history').map(story => story.id),
@@ -250,10 +276,10 @@ export const collectionVisualFor = (collectionId?: string): CollectionVisual =>
   collectionVisuals[(collectionId ?? 'prophets') as StoryCollectionId] ?? collectionVisuals.prophets;
 
 export const getStoryCollection = (storyId: string): StoryCollectionId =>
-  storyCatalog.find(story => story.id === storyId)?.collection ?? 'prophets';
+  getStoryMeta(storyId)?.collection ?? 'prophets';
 
 export const getStoryMeta = (storyId: string): StoryCatalogItem | undefined =>
-  storyCatalog.find(story => story.id === storyId);
+  storyCatalog.find(story => story.id === storyId) ?? hiddenStoryCatalog.find(story => story.id === storyId);
 
 export const getNextLevel = (level: Level): Level | null => {
   const levels: Level[] = ['A2', 'B1', 'B2'];

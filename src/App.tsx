@@ -31,7 +31,7 @@ import { cn } from './lib/utils';
 import { clearReaderPosition, readReaderPosition, saveReaderPosition } from './lib/readerPosition';
 import { formatHashRoute, isHomeHash, parseHashRoute, type HashRoute } from './lib/hashRoute';
 import { mergeBookProgress, readBookProgress, type BookProgress } from './lib/bookProgress';
-import { collectionVisuals, getStoryMeta, readerTokenVariables } from './core/content/storyCatalog';
+import { collectionVisuals, getStoryMeta, isHiddenStory, readerTokenVariables } from './core/content/storyCatalog';
 import { useLanguage } from './contexts/LanguageContext';
 import { LanguageToggle } from './components/ui/LanguageToggle';
 import { FullscreenIcon, useFullscreen } from './components/ui/FullscreenButton';
@@ -1525,7 +1525,7 @@ const AppContent = () => {
                   )}
                 </div>
 
-                {selectedProphetId && currentLevel && (
+                {selectedProphetId && currentLevel && !isHiddenStory(selectedProphetId) && (
                   <>
                     <h4 className={cn("mt-6 px-4 font-display text-[11px] sm:text-[12px] font-semibold uppercase tracking-[0.16em]", themeClasses.menuSectionHeader)}>
                       {BOOK_PDF_LABELS[language === 'ar' ? 'ar' : 'en'].heading}
@@ -1589,7 +1589,7 @@ const AppContent = () => {
             bookId={currentBook?.id}
             level={currentLevel || undefined}
             collectionId={currentCollection || 'prophets'}
-            pdfUrl={selectedProphetId && currentLevel ? bookPdfUrl(selectedProphetId, currentLevel, language, 'teachers-book') : undefined}
+            pdfUrl={selectedProphetId && currentLevel && !isHiddenStory(selectedProphetId) ? bookPdfUrl(selectedProphetId, currentLevel, language, 'teachers-book') : undefined}
           />
         </Suspense>
       )}
@@ -1609,7 +1609,7 @@ const AppContent = () => {
         footerText={t('nav.interactiveEbookSeries')}
         collectionId={currentCollection || 'prophets'}
         level={currentLevel}
-        pdfUrl={selectedProphetId && currentLevel ? bookPdfUrl(selectedProphetId, currentLevel, language, 'self-study-guide') : undefined}
+        pdfUrl={selectedProphetId && currentLevel && !isHiddenStory(selectedProphetId) ? bookPdfUrl(selectedProphetId, currentLevel, language, 'self-study-guide') : undefined}
       />
 
       {/* Background PDF Generation Notification Card */}
