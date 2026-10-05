@@ -14,7 +14,7 @@ export const mosesB1ChapterExtrasEn: ChapterExtras = {
     9: { kind: 'find', question: "Find it fast: Which surah tells this part of the story?", options: ["Surah Yusuf", "Surah Maryam", "Surah Taha"], answer: 2, quote: "(See Surah Taha: 9–24.)" },
     10: { kind: 'find', question: "Find it fast: Why did Allah give Moses (pbuh) the miracles?", options: ["to make him rich", "to help him against the Pharaoh", "to make the people laugh"], answer: 1, quote: "Allah gave them to Moses (pbuh) in order to help him against the Pharaoh." },
     11: { kind: 'picture', question: "Look at the picture. What did Moses’s staff do to the magicians’ snakes?", options: ["It ate them all.", "It ran away from them.", "It turned them into ropes."], answer: 0, quote: "In a second, his staff ate up all the snakes of the magicians." },
-    12: { kind: 'find', question: "Find it fast: When did Moses (pbuh) and his people leave Egypt?", options: ["in the middle of the day", "at night", "on a holiday morning"], answer: 1, quote: "They left Egypt at night." },
+    12: { kind: 'picture', question: "Look at the picture. When did Moses (pbuh) and his people leave Egypt?", options: ["in the middle of the day", "at night", "on a holiday morning"], answer: 1, quote: "They left Egypt at night." },
     13: { kind: 'find', question: "Find it fast: What rose high like walls when the sea parted?", options: ["the rocks", "the waves", "the soldiers"], answer: 1, quote: "The waves rose high like walls" },
   },
   iCan: {

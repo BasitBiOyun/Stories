@@ -5,7 +5,7 @@ import { highlightPhraseOccurs } from '../../../../lib/highlightTextMatch';
 const rawMosesA2PagesAr: PageData[] = [
   {
     id: 1, type: 'story', title: 'فرعون الظالم',
-    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fa2%2Fimages%2Fmoses_a2_ch1.png?alt=media&token=2d3e91e6-5956-4625-804b-3425c7bca502',
+    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fa2%2Fimages%2Fmoses_a2_chapter1.png?alt=media',
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fa2%2Faudio%2Farabic_audio%2Fchapter%201.mp3?alt=media&token=9a898f77-7aba-4ff1-8217-28657bf5389e',
     content: `كَانَ مُوسَى عَلَيْهِ السَّلَامُ رَسُولًا عَظِيمًا مِنْ رُسُلِ اللهِ. عَاشَ فِي مِصْرَ مُنْذُ أَكْثَرَ مِنْ ثَلَاثَةِ آلَافِ عَامٍ. كَانَ فِرْعَوْنُ مَلِكَ مِصْرَ. وَكَانَ حَاكِمًا ظَالِمًا وَقَاسِيًا. لَمْ يُؤْمِنْ بِاللهِ. كَانَ يَعْتَقِدُ أَنَّهُ إِلٰهٌ.
 
@@ -25,7 +25,7 @@ const rawMosesA2PagesAr: PageData[] = [
   },
   {
     id: 2, type: 'story', title: 'حلم فرعون',
-    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fa2%2Fimages%2Fmoses_a2_ch2.png?alt=media&token=593d804d-010a-4849-928e-47a64d57e741',
+    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fa2%2Fimages%2Fmoses_a2_chapter2.png?alt=media',
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fa2%2Faudio%2Farabic_audio%2Fchapter%202.mp3?alt=media&token=245fe0a6-52cb-4c15-83f8-eeaee0d3846e',
     content: `مَرَّتِ السَّنَوَاتُ، وَتَوَالَى عَلَى حُكْمِ مِصْرَ الْعَدِيدُ مِنَ الْمُلُوكِ الْمُسْتَبِدِّينَ. وَفِي أَحَدِ الْأَيَّامِ، رَأَى فِرْعَوْنُ حُلْمًا. فَقَدْ رَأَى فِي رُؤْيَاهُ نَارًا. كَانَتِ النَّارُ قَادِمَةً مِنَ الْقُدْسِ، وَأَحْرَقَتْ بُيُوتَ الْمِصْرِيِّينَ. لٰكِنَّهَا لَمْ تَمَسَّ أَحَدًا مِنْ بَنِي إِسْرَائِيلَ.
 
@@ -45,7 +45,7 @@ const rawMosesA2PagesAr: PageData[] = [
   },
   {
     id: 3, type: 'story', title: 'طفل في تابوت صغير',
-    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fa2%2Fimages%2Fmoses_a2_ch3.png?alt=media&token=187ca24c-104b-48e2-8f6f-ed7c522c7c3f',
+    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fa2%2Fimages%2Fmoses_a2_chapter3.png?alt=media',
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fa2%2Faudio%2Farabic_audio%2Fchapter%203.mp3?alt=media&token=d65599a0-6a0b-4ecc-944c-b21cc87ec773',
     content: `وُلِدَ مُوسَى فِي تِلْكَ السَّنَةِ. كَانَتْ أُمُّهُ تَخَافُ أَنْ يَعْثُرَ الْجُنُودُ عَلَى طِفْلِهَا. لِذٰلِكَ، لَمْ تَسْتَطِعِ النَّوْمَ لَيْلًا. لَمْ تَكُنْ تَعْرِفُ مَاذَا تَفْعَلُ، فَطَلَبَتِ الْعَوْنَ مِنَ اللهِ.
 
@@ -67,7 +67,7 @@ const rawMosesA2PagesAr: PageData[] = [
   },
   {
     id: 4, type: 'story', title: 'حب آسية',
-    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fa2%2Fimages%2Fmoses_a2_ch4.png?alt=media&token=d9db9929-97b6-43fb-9d23-8e91af4a5add',
+    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fa2%2Fimages%2Fmoses_a2_chapter4.png?alt=media',
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fa2%2Faudio%2Farabic_audio%2Fchapter%204.mp3?alt=media&token=6813399c-7dd2-4202-bb21-aa52e56c378b',
     content: `أَمَرَ اللهُ الْمَاءَ أَنْ يَحْمِلَ الطِّفْلَ بِرِفْقٍ. وَسُرْعَانَ مَا وَصَلَ التَّابُوتُ إِلَى شَاطِئِ النَّهْرِ. كَانَ قَرِيبًا مِنْ قَصْرِ فِرْعَوْنَ.
 
@@ -89,7 +89,7 @@ const rawMosesA2PagesAr: PageData[] = [
   },
   {
     id: 5, type: 'story', title: 'العودة إلى أمه',
-    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fa2%2Fimages%2Fmoses_a2_ch5.png?alt=media&token=2cf7f637-79ed-4103-8499-7878d985ad97',
+    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fa2%2Fimages%2Fmoses_a2_chapter5.png?alt=media',
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fa2%2Faudio%2Farabic_audio%2Fchapter%205.mp3?alt=media&token=d006ee99-544f-44d3-a8d7-c4ff8e5431cc',
     content: `أَحْضَرَتْ أُخْتُ مُوسَى أُمَّهُ إِلَى الْقَصْرِ لِتَرْعَى الطِّفْلَ. فَرَدَّ اللهُ مُوسَى إِلَى أُمِّهِ، وَعَادَ الطِّفْلُ مُوسَى إِلَى حِضْنِ أُمِّهِ مَرَّةً أُخْرَى. وَاعْتَنَتْ أُمُّهُ بِالطِّفْلِ مُوسَى. وَاللهُ خَيْرُ الْحَافِظِينَ.
 
@@ -111,7 +111,7 @@ const rawMosesA2PagesAr: PageData[] = [
   },
   {
     id: 6, type: 'story', title: 'خطأ في السوق',
-    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fa2%2Fimages%2Fmoses_a2_ch6.png?alt=media&token=d5cfe23d-7b58-4028-898a-8cc730345eaa',
+    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fa2%2Fimages%2Fmoses_a2_chapter6.png?alt=media',
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fa2%2Faudio%2Farabic_audio%2Fchapter%206.mp3?alt=media&token=5b2c5be3-506b-4364-ac9f-8a8e86fdd239',
     content: `كَانَ الرَّجُلُ الْآخَرُ مِنْ بَنِي إِسْرَائِيلَ. وَفَجْأَةً، صَرَخَ الرَّجُلُ الضَّعِيفُ مِنْ بَنِي إِسْرَائِيلَ: «النَّجْدَةَ!» فَأَسْرَعَ مُوسَى لِمُسَاعَدَتِهِ، فَضَرَبَ الْمِصْرِيَّ، فَمَاتَ الرَّجُلُ.
 
@@ -131,7 +131,7 @@ const rawMosesA2PagesAr: PageData[] = [
   },
   {
     id: 7, type: 'story', title: 'الهروب إلى مدين',
-    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fa2%2Fimages%2Fmoses_a2_ch7.png?alt=media&token=7965513d-54b5-4614-b1d2-b91531ce52e3',
+    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fa2%2Fimages%2Fmoses_a2_chapter7.png?alt=media',
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fa2%2Faudio%2Farabic_audio%2Fchapter%207.mp3?alt=media&token=2f43e3bf-dda3-4f08-8f6b-c223aba369df',
     content: `كَانَ مُوسَى يَعْلَمُ أَنَّ عُقُوبَةَ قَتْلِ مِصْرِيٍّ هِيَ الْمَوْتُ. هَرَبَ مُوسَى مِنَ الْجُنُودِ. غَادَرَ مِصْرَ، وَسَافَرَ لِفَتْرَةٍ طَوِيلَةٍ. لَمْ يَكُنْ وَحْدَهُ، فَقَدْ هَدَاهُ اللهُ.
 
@@ -155,7 +155,7 @@ const rawMosesA2PagesAr: PageData[] = [
   },
   {
     id: 8, type: 'story', title: 'الأختان',
-    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fa2%2Fimages%2Fmoses_a2_ch8.png?alt=media&token=71a0334e-b085-4ef4-879c-e54255b21614',
+    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fa2%2Fimages%2Fmoses_a2_chapter8.png?alt=media',
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fa2%2Faudio%2Farabic_audio%2Fchapter%208.mp3?alt=media&token=009569d8-40ec-434c-8779-6c2d76215246',
     content: `سَأَلَ مُوسَى الْفَتَاتَيْنِ: «لِمَاذَا لَا تَأْخُذَانِ غَنَمَكُمَا لِتَشْرَبَ؟»
 
@@ -179,7 +179,7 @@ const rawMosesA2PagesAr: PageData[] = [
   },
   {
     id: 9, type: 'story', title: 'حياة جديدة',
-    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fa2%2Fimages%2Fmoses_a2_ch9.png?alt=media&token=7fafa80c-ff5b-4fcd-b2b5-ef2bcc16f1e3',
+    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fa2%2Fimages%2Fmoses_a2_chapter9.png?alt=media',
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fa2%2Faudio%2Farabic_audio%2Fchapter%209.mp3?alt=media&token=120baab5-70ea-496e-8a27-d664867ebf6d',
     content: `كَانَ وَالِدُ هَاتَيْنِ الْفَتَاتَيْنِ هُوَ النَّبِيَّ شُعَيْبًا عَلَيْهِ السَّلَامُ. وَكَانَ شُعَيْبٌ عَلَيْهِ السَّلَامُ رَسُولًا مِنْ رُسُلِ اللهِ فِي مَدْيَنَ. وَكَانَ قَدْ تَقَدَّمَ بِهِ الْعُمْرُ، لِذٰلِكَ لَمْ يَكُنْ قَادِرًا عَلَى مُسَاعَدَةِ بَنَاتِهِ.
 
@@ -201,7 +201,7 @@ const rawMosesA2PagesAr: PageData[] = [
   },
   {
     id: 10, type: 'story', title: 'النداء على الجبل',
-    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fa2%2Fimages%2Fmoses_a2_ch10.png?alt=media&token=1443b29a-01ad-46ba-9d5f-1beb55c1fe92',
+    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fa2%2Fimages%2Fmoses_a2_chapter10.png?alt=media',
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fa2%2Faudio%2Farabic_audio%2Fchapter%2010.mp3?alt=media&token=206d3c6b-9c82-40d3-94f5-0cd82d09d0e8',
     content: `أَخَذَ مُوسَى عَائِلَتَهُ، وَبَدَأُوا رِحْلَتَهُمْ إِلَى مِصْرَ. سَارُوا مَسَافَةً طَوِيلَةً. كَانَ الشِّتَاءُ، وَلَمْ يَكُنْ هُنَاكَ أَحَدٌ فِي الطَّرِيقِ. بَدَأَ الظَّلَامُ يَحِلُّ، وَاشْتَدَّ الْبَرْدُ. كَانُوا فِي وَادٍ بَيْنَ الْجِبَالِ.
 
@@ -223,7 +223,7 @@ const rawMosesA2PagesAr: PageData[] = [
   },
   {
     id: 11, type: 'story', title: 'آيات الله',
-    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fa2%2Fimages%2Fmoses_a2_ch11.png?alt=media&token=aebfa27e-5009-418b-85f7-79f30afdbf4d',
+    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fa2%2Fimages%2Fmoses_a2_chapter11.png?alt=media',
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fa2%2Faudio%2Farabic_audio%2Fchapter%2011.mp3?alt=media&token=d007187b-72d7-4a22-8ea6-a82ab27e12ad',
     content: `تَكَلَّمَ اللهُ مَعَ مُوسَى مَرَّةً أُخْرَى، وَقَالَ لَهُ: «أَدْخِلْ يَدَكَ فِي جَيْبِكَ، ثُمَّ أَخْرِجْهَا».
 
@@ -247,7 +247,7 @@ const rawMosesA2PagesAr: PageData[] = [
   },
   {
     id: 12, type: 'story', title: 'سحرة فرعون',
-    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fa2%2Fimages%2Fmoses_a2_ch12.png?alt=media&token=2029ca53-5abc-4afe-a117-1d41273cadf0',
+    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fa2%2Fimages%2Fmoses_a2_chapter12.png?alt=media',
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fa2%2Faudio%2Farabic_audio%2Fchapter%2012.mp3?alt=media&token=8a5eb80e-2942-40f9-ae97-e5b0da828c36',
     content: `أَخْبَرَ مُوسَى عَلَيْهِ السَّلَامُ فِرْعَوْنَ عَنِ اللهِ. فَقَالَ لَهُ: «إِنِّي رَسُولٌ مِنْ رَبِّ الْعَالَمِينَ».
 
@@ -271,7 +271,7 @@ const rawMosesA2PagesAr: PageData[] = [
   },
   {
     id: 13, type: 'story', title: 'إيمان السحرة',
-    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fa2%2Fimages%2Fmoses_a2_ch13.png?alt=media&token=8a25b7b6-53de-4fe1-88ce-d0a1c4612726',
+    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fa2%2Fimages%2Fmoses_a2_chapter13.png?alt=media',
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fa2%2Faudio%2Farabic_audio%2Fchapter%2013.mp3?alt=media&token=4c05fb61-863b-4693-a5a8-3e8d820dd464',
     content: `دَعَا فِرْعَوْنُ السَّحَرَةَ إِلَى الْقَصْرِ. جَاءَ السَّحَرَةُ وَعِصِيُّهُمْ فِي أَيْدِيهِمْ، وَكَانَ بَعْضُهُمْ يَحْمِلُ حِبَالًا. فَوَضَعُوا الْعِصِيَّ وَالْحِبَالَ عَلَى الْأَرْضِ، فَبَدَتْ كَأَنَّهَا تَسْعَى.
 
@@ -293,7 +293,7 @@ const rawMosesA2PagesAr: PageData[] = [
   },
   {
     id: 14, type: 'story', title: 'الرحلة الليلية',
-    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fa2%2Fimages%2Fmoses_a2_ch14.png?alt=media&token=6704d42a-c001-4a1f-ac39-428fbfbfca89',
+    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fa2%2Fimages%2Fmoses_a2_chapter14.png?alt=media',
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fa2%2Faudio%2Farabic_audio%2Fchapter%2014.mp3?alt=media&token=10c4227f-42e7-42d9-b3ee-cdb6871377a5',
     content: `فَقَالَ فِرْعَوْنُ لِأَتْبَاعِهِ وَجُنُودِهِ: «عَامِلُوهُمْ بِقَسْوَةٍ!» فَازْدَادَتْ حَيَاتُهُمْ صُعُوبَةً.
 
@@ -317,7 +317,7 @@ const rawMosesA2PagesAr: PageData[] = [
   },
   {
     id: 15, type: 'story', title: 'انشقاق البحر',
-    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fa2%2Fimages%2Fmoses_a2_ch15.png?alt=media&token=83ae6fff-230a-45d0-98ca-ae36450286e0',
+    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fa2%2Fimages%2Fmoses_a2_chapter15.png?alt=media',
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fa2%2Faudio%2Farabic_audio%2Fchapter%2015.mp3?alt=media&token=1975bc59-2b1b-4504-8348-377a5f145d6a',
     content: `رَأَى مُوسَى عَلَيْهِ السَّلَامُ وَقَوْمُهُ فِرْعَوْنَ وَجُنُودَهُ يُلَاحِقُونَهُمْ، فَخَافَ قَوْمُهُ كَثِيرًا. لٰكِنَّ مُوسَى عَلَيْهِ السَّلَامُ قَالَ: «اِهْدَؤُوا! إِنَّ مَعِيَ رَبِّي سَيَهْدِينِ».
 
@@ -339,7 +339,7 @@ const rawMosesA2PagesAr: PageData[] = [
   },
   {
     id: 16, type: 'story', title: 'غرق فرعون',
-    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fa2%2Fimages%2Fmoses_a2_ch16.png?alt=media&token=57b9bfca-b512-46ec-adb1-c9ed1cb30e47',
+    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fa2%2Fimages%2Fmoses_a2_chapter16.png?alt=media',
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fa2%2Faudio%2Farabic_audio%2Fchapter%2016.mp3?alt=media&token=326191c4-0856-421e-a578-621848290541',
     content: `كَانَ فِرْعَوْنُ وَجُنُودُهُ قَرِيبِينَ جِدًّا مِنْ وَرَائِهِمْ. وَرَأَوْا هُمْ أَيْضًا الطَّرِيقَ فِي وَسَطِ الْبَحْرِ. فَقَالَ فِرْعَوْنُ لِجُنُودِهِ: «اُنْظُرُوا! لَقَدْ أَمَرْتُ الْبَحْرَ أَنْ يَنْفَلِقَ، فَانْفَلَقَ».
 
