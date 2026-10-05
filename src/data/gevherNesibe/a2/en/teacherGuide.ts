@@ -311,7 +311,7 @@ export const gevherNesibeA2TeacherGuide: TeacherGuideSection[] = plans.map(p => 
 }));
 
 export const gevherNesibeA2TeacherGuideMetadata: TeacherGuideMetadata = {
-  title: 'Gevher Nesibe A2 — Teacher’s Book',
+  title: 'The Gevher Nesibe Hospital A2 — Teacher’s Book',
   subtitle: 'TYMM-aligned guide with chapter-specific support, grammar learners discover from the story, and 40-minute lesson plans',
   level: 'A2',
   estimatedDuration: '11 chapter units of 40 minutes each. Whole-book review pages follow separately.',

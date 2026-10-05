@@ -232,7 +232,7 @@ export const gevherNesibeA2StudentGuideSections: StudentGuideSection[] = [
 ];
 
 export const gevherNesibeA2StudentGuideMetadata: StudentGuideMetadata = {
-  title: 'Gevher Nesibe A2 — Self-Study Guide',
+  title: 'The Gevher Nesibe Hospital A2 — Self-Study Guide',
   subtitle: 'Look • Listen • Read • Check • Use',
   level: 'A2',
   language: 'English',

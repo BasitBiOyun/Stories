@@ -36,7 +36,7 @@ const buildEnglishPages = (): PageData[] => applyChapterExtras(gevherNesibeA2Pag
 
 export const gevherNesibeA2BookDataEn: BookData = {
   id: 'gevherNesibe-turkish-a2-en',
-  title: 'Gevher Nesibe Hospital and Medical School (A2)',
+  title: 'The Gevher Nesibe Hospital (A2)',
   level: 'A2',
   baseFontSize: 13,
   pages: buildEnglishPages(),

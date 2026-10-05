@@ -172,8 +172,8 @@ export const storyCatalog: StoryCatalogItem[] = [
 export const hiddenStoryCatalog: StoryCatalogItem[] = [
   {
     id: 'gevherNesibe',
-    name: 'Gevher Nesibe',
-    nameAr: 'جوهر نسيبة',
+    name: 'The Gevher Nesibe Hospital',
+    nameAr: 'دار شفاء جوهر نسيبة',
     description: 'The first hospital and medical school together in the world, in Seljuk Kayseri.',
     descriptionAr: 'أول مستشفى ومدرسة طبية معًا في العالم، في قيصري السلجوقية.',
     image: scholarsIcon,
