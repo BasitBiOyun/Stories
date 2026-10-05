@@ -371,8 +371,7 @@ const mosesB2StoryNotes: Record<number, Pick<PageData, 'vocabulary' | 'hotspots'
 
 const STORY_IDS=new Set(Array.from({length:24},(_,i)=>i+1));
 const STORAGE_BASE='https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/';
-const IMAGE_TOKENS=['','56fc134a-cdf0-4b42-8e16-45eb9ca06c8b','a3812fa5-fe4c-4e40-b2ec-72c2f789a451','34ae67a1-2514-4cb2-bf9a-2cd519fc30d4','eb2e0b66-db4e-46ac-8e1e-c51f5ed8871c','ddb12468-059a-42bb-9e06-9e0c35c0abc4','ca8146a7-3856-4465-90c0-5f8b2aae08fb','ad1d3e13-6de0-4039-b10c-40e614b5e1fa','db47b6e8-42a5-4b0f-b12d-2fbf0954f1a3','5b070a5c-de08-4a18-beb8-2a9e32393301','ad54e0bf-d71f-4f96-b6ca-4bfe4a2a3999','5f17bd1f-fd3c-42b6-8c7e-5fb754947e0f','cee91ed0-849c-4d0f-8639-4f20e3f554ad','5f03c11a-6834-450d-835c-ca919fa8b585','4f44b5f1-0e50-4952-81a4-62f1d94e74a8','c6380e4e-dde1-4e40-abdb-685797ad560e','a8961826-9a59-4ea4-9339-219d8f49db02','c5c4f5b0-3709-4354-958d-7da3695b074d','67df034f-b106-4024-8206-0ac05bab639f','d942d39a-d09f-400f-8e86-692c963443bf','74415857-f5f3-4536-bf56-72e27ecc34e0','1790ef59-49f4-412f-8696-2ffdb5dfc493','645abbdf-fc63-43fa-bb71-3affa988fac0','ff045137-d9a3-474a-89cf-49293b022a88','5fec4ebc-efd7-48b2-9912-c45235fbd333'];
-export const mosesB2ImageUrl=(chapter:number)=>`${STORAGE_BASE}${encodeURIComponent(`Moses/b2/images/moses_b2_ch${chapter}-clean.png`)}?alt=media&token=${IMAGE_TOKENS[chapter]}`;
+export const mosesB2ImageUrl=(chapter:number)=>`${STORAGE_BASE}${encodeURIComponent(`Moses/b2/images/moses_b2_chapter${chapter}.png`)}?alt=media`;
 const mosesB2GlossaryCategoryByChapter:Record<number,string>={
 1:'History & Society',2:'History & Oppression',3:'Power & Economy',4:'Birth & Providence',5:'Power & Oppression',6:'Policy & Providence',
 7:'Care & Faith',8:'Identity & Justice',9:'Conflict & Consequences',10:'Repentance & Escape',11:'Escape & Trust',12:'Service & Daily Life',
