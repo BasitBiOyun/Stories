@@ -6,7 +6,7 @@ export const meccaB2StoryMapLayout: StoryMapLayout = {
   home: { west: 26, east: 51, south: 11, north: 38.5 },
   overlays: [],
   features: { timeSlider: true, tour: true, challenge: true, classroom: true },
-  // Chapters 1–6 mix very different times (c. 2200 BC, the 5th–7th centuries, 1453), so the steps follow the chapters.
+  // Chapters 1–6 mix very different times (c. 20th century BC, the 5th–7th centuries, 1453), so the steps follow the chapters.
   time: { start: 1, lastYear: 7, birth: 1, mode: 'stages' },
   routes: [
     // Chapter 3: the migration to Medina. No year is given in B2.

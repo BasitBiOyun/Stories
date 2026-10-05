@@ -7,7 +7,7 @@ export const meccaB2StoryMapCopyEn: StoryMapCopy = {
       name: 'Mecca',
       kind: 'Holy city',
       text: 'Mecca is in the western part of the Arabian Peninsula. Allah chose it to be the location of His House, the Holy Ka’ba, and the Qur’an describes it as “a valley where no crops grow”. Prophet Muhammad (pbuh) was born here and spent 52 years of his life here. In the Hajj season, pagan Arabs also stood in Arafat, and major trade festivals such as Ukaz, Majannah and Dhul-Majaz were held during the sacred months.',
-      teacherNote: 'Arafat and the fair sites are not drawn because the book does not give their locations; chapter 6 only says people attended the fairs and then went to Arafat. Chapter 3 dates Abraham (pbuh) leaving Hagar and Ishmael here to about 2200–2000 BC.',
+      teacherNote: 'Arafat and the fair sites are not drawn because the book does not give their locations; chapter 6 only says people attended the fairs and then went to Arafat. Chapter 3 dates Abraham (pbuh) leaving Hagar and Ishmael here to about the 20th century BC.',
       question: 'Why can we say that city life in Mecca began with the building of the Ka’ba?',
     },
     medina: {

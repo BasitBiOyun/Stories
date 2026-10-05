@@ -75,7 +75,7 @@ Prophet Muhammad (pbuh) loved this city so much that while leaving Mecca during 
 
 Mecca is described in the Holy Qur’an as “a valley where no crops grow” (Surah Ibrahim: 37). The Ka’ba is the main factor in the establishment of Mecca as a settlement. It can be said that city life began here only with the building of the Ka’ba.
 
-When Prophet Abraham (pbuh) brought his son Ishmael and his wife Hagar to the city and left them there, the Zamzam water had not yet been discovered, so there was no population living there. This date is approximately between 2200 and 2000 BC.`,
+When Prophet Abraham (pbuh) brought his son Ishmael and his wife Hagar to the city and left them there, the Zamzam water had not yet been discovered, so there was no population living there. This date is approximately in the 20th century BC.`,
     vocabulary: [
       { word: 'holy', definition: 'Sacred and connected with worship.' },
       { word: 'Ka’ba', definition: 'The Holy House of Allah in Mecca.' },
