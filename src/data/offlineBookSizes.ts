@@ -6,7 +6,7 @@
 export const OFFLINE_BOOK_SIZE_MB: Record<string, number> = {
   'adam:A2': 48,
   'adam:B1': 62,
-  'adam:B2': 75,
+  'adam:B2': 93,
   'ibrahim:A2': 62,
   'ibrahim:B1': 70,
   'ibrahim:B2': 153,
