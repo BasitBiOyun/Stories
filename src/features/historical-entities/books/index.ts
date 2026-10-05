@@ -4,6 +4,7 @@ import { ABRAHAM_SET } from './abraham';
 import { MOSES_SET } from './moses';
 import { YUNUS_EMRE_SET } from './yunus';
 import { MECCA_SET } from './mecca';
+import { GEVHER_NESIBE_SET } from './gevherNesibe';
 
 /** One story's cards and, per book level, the cards each chapter offers. */
 export interface EntityBookSet {
@@ -17,4 +18,5 @@ export const BOOK_SETS: EntityBookSet[] = [
   ABRAHAM_SET,
   MOSES_SET,
   YUNUS_EMRE_SET,
+  GEVHER_NESIBE_SET,
 ];

@@ -1,5 +1,6 @@
 import type { BookData, PageData } from '../../../types';
 import { gevherNesibeA2Pages } from './en/pages';
+import { withPlacesLayer } from '../../../features/historical-entities';
 import {
   gevherNesibeA2QuickChallenges,
   gevherNesibeA2KnowledgeCheckExercises,
@@ -39,7 +40,7 @@ export const gevherNesibeA2BookDataEn: BookData = {
   title: 'The Gevher Nesibe Hospital (A2)',
   level: 'A2',
   baseFontSize: 13,
-  pages: buildEnglishPages(),
+  pages: withPlacesLayer(buildEnglishPages(), 'gevherNesibe-a2', 'en'),
   teacherGuide: [],
   selfStudyGuide: [],
 };
