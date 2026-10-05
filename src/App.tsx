@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { Suspense, lazy, useState, useEffect, useMemo, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import {
   BookMarked,
@@ -11,32 +11,61 @@ import {
   EyeOff,
   GraduationCap,
   Home,
+  Info,
   LoaderCircle,
+  CheckCircle,
+  Layers,
+  MapPin,
   Menu,
-  X,
-} from './components/ui/icons';
+  X, HelpCircle, FileText, ArrowRight } from './components/ui/icons';
 
-import { Level } from './types';
+import { Level, PageData } from './types';
 import { useBookBundle } from './hooks/useBookBundle';
+import {
+  loadSelfStudyGuideData,
+  loadTeacherGuideData,
+  type BilingualSelfStudyGuideData,
+  type BilingualTeacherGuideData,
+} from './core/content/bookGuideLoader';
 import { cn } from './lib/utils';
-import { generateBookPDF } from './lib/pdfGenerator';
+import { clearReaderPosition, readReaderPosition, saveReaderPosition } from './lib/readerPosition';
+import { formatHashRoute, isHomeHash, parseHashRoute, type HashRoute } from './lib/hashRoute';
+import { mergeBookProgress, readBookProgress, type BookProgress } from './lib/bookProgress';
+import { collectionVisuals, getStoryMeta, isHiddenStory, readerTokenVariables } from './core/content/storyCatalog';
 import { useLanguage } from './contexts/LanguageContext';
 import { LanguageToggle } from './components/ui/LanguageToggle';
+import { FullscreenIcon, useFullscreen } from './components/ui/FullscreenButton';
+import { useMediaQuery } from './lib/useMediaQuery';
 import { StoryProgressProvider, useStoryProgress } from './contexts/StoryProgressContext';
 
 // Layout Components
-import { TeacherGuide } from './components/layout/TeacherGuide';
+// Loaded on first use: the teacher guide, the final challenge and the summary are large and not needed to start reading.
+const TeacherGuide = lazy(() => import('./components/layout/TeacherGuide').then(module => ({ default: module.TeacherGuide })));
+const FinalChallenge = lazy(() => import('./components/book/FinalChallenge').then(module => ({ default: module.FinalChallenge })));
+const StoryMapPage = lazy(() => import('./features/story-maps/StoryMapPage').then(module => ({ default: module.StoryMapPage })));
+const PlacesPage = lazy(() => import('./features/historical-entities/PlacesPage'));
+const SummaryDashboard = lazy(() => import('./components/book/SummaryDashboard').then(module => ({ default: module.SummaryDashboard })));
 import { SelfStudyGuide } from './components/layout/SelfStudyGuide';
 import { HomePage } from './components/layout/HomePage';
+import { AboutPage } from './components/layout/AboutPage';
+import { HowToUse } from './components/layout/HowToUse';
+import { UsageGuide } from './components/layout/UsageGuide';
+import { USAGE_GUIDES } from './data/usageGuides';
+import { SECTION_ICONS } from './lib/sectionIcons';
+import { BOOK_PDF_LABELS, bookPdfUrl } from './lib/bookPdfs';
 
 // Book Components
 import { StoryPage } from './components/book/StoryPage';
-import { InteractiveMapPage } from './components/book/InteractiveMapPage';
 import { ExercisePage } from './components/book/ExercisePage';
 import { MasterGlossary } from './components/book/MasterGlossary';
-import { FinalChallenge } from './components/book/FinalChallenge';
-import { SummaryDashboard } from './components/book/SummaryDashboard';
-import { ParchmentEffect } from './components/ui/ParchmentEffect';
+import { RolePicker } from './components/layout/RolePicker';
+import { BrandedEntry } from './components/layout/BrandedEntry';
+import { MyWordsPanel } from './components/book/MyWordsPanel';
+import { setMyWordsBook } from './lib/myWords';
+import { useUserRole } from './contexts/UserRoleContext';
+import { useClassMode } from './contexts/ClassModeContext';
+import { saveBookOffline } from './lib/pwa';
+import { OFFLINE_BOOK_SIZE_MB } from './data/offlineBookSizes';
 
 const AppContent = () => {
   // --- State ---
@@ -44,6 +73,8 @@ const AppContent = () => {
     const code = sessionStorage.getItem('app_access_code');
     return code === 'stories_enar';
   });
+  const { role, isTeacher } = useUserRole();
+  const { classMode, setClassMode } = useClassMode();
   const [passwordInput, setPasswordInput] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [errorMsg, setErrorMsg] = useState('');
@@ -59,13 +90,30 @@ const AppContent = () => {
     }
   };
 
-  const [selectedProphetId, setSelectedProphetId] = useState<string | null>(null);
-  const [currentLevel, setCurrentLevel] = useState<Level | null>(null);
-  const [currentPageIndex, setCurrentPageIndex] = useState(0);
+  // A shared or reloaded link like #/mecca/a2/5 opens that book at that page.
+  const [initialRoute] = useState(() => parseHashRoute(window.location.hash));
+  const [selectedProphetId, setSelectedProphetId] = useState<string | null>(initialRoute?.storyId ?? null);
+  const [currentLevel, setCurrentLevel] = useState<Level | null>(initialRoute?.level ?? null);
+  const [currentPageIndex, setCurrentPageIndex] = useState(initialRoute?.pageIndex ?? 0);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isAboutOpen, setIsAboutOpen] = useState(false);
+  const [isHowToUseOpen, setIsHowToUseOpen] = useState(false);
+  const [isUsageGuideOpen, setIsUsageGuideOpen] = useState(false);
+  const [isMyWordsOpen, setIsMyWordsOpen] = useState(false);
   const [isTeacherGuideOpen, setIsTeacherGuideOpen] = useState(false);
   const [isSelfStudyOpen, setIsSelfStudyOpen] = useState(false);
-  const [isDyslexic, setIsDyslexic] = useState(false);
+  const [teacherGuideData, setTeacherGuideData] = useState<BilingualTeacherGuideData | null>(null);
+  const [selfStudyGuideData, setSelfStudyGuideData] = useState<BilingualSelfStudyGuideData | null>(null);
+  const [isDyslexic, setIsDyslexic] = useState(() => localStorage.getItem('reader_dyslexic') === 'true');
+  const [readerScale, setReaderScale] = useState(() => {
+    const stored = Number(localStorage.getItem('reader_scale'));
+    return Number.isFinite(stored) && stored >= 0.85 && stored <= 1.3 ? stored : 1;
+  });
+  const [isWideView, setIsWideView] = useState(() => localStorage.getItem('reader_wide') === 'true');
+  const [showHighlights, setShowHighlights] = useState(() => localStorage.getItem('reader_highlights') !== 'false');
+  const [followAlong, setFollowAlong] = useState(() => localStorage.getItem('reader_follow_along') !== 'false');
+  const isLargeDesktop = useMediaQuery('(min-width: 90rem)');
+  const [isReaderSettingsOpen, setIsReaderSettingsOpen] = useState(false);
   const [userAnswers, setUserAnswers] = useState<Record<string, boolean | null>>({});
   const [showSummary, setShowSummary] = useState(false);
   const [isQuickTOCOpen, setIsQuickTOCOpen] = useState(false);
@@ -91,17 +139,42 @@ const AppContent = () => {
       window.removeEventListener('pdf-generation-end', handleEnd);
     };
   }, []);
+
+  useEffect(() => {
+    localStorage.setItem('reader_scale', String(readerScale));
+  }, [readerScale]);
+
+  useEffect(() => {
+    localStorage.setItem('reader_dyslexic', String(isDyslexic));
+  }, [isDyslexic]);
+
+  useEffect(() => {
+    localStorage.setItem('reader_wide', String(isWideView));
+  }, [isWideView]);
+
+  useEffect(() => {
+    localStorage.setItem('reader_highlights', String(showHighlights));
+  }, [showHighlights]);
+
+  useEffect(() => {
+    localStorage.setItem('reader_follow_along', String(followAlong));
+  }, [followAlong]);
  
-
-
-  const { language, t, formatNumber, isRTL } = useLanguage();
-  const { resetStats } = useStoryProgress();
+  const { language, setLanguage, t, formatNumber, isRTL } = useLanguage();
+  const { stats, resetStats, hydrateStats } = useStoryProgress();
+  const { isSupported: canFullscreen, isFullscreen, toggleFullscreen } = useFullscreen();
   const {
     definition: currentDefinition,
     pair: currentBookPair,
     loading: isBookLoading,
     error: bookLoadError,
   } = useBookBundle(selectedProphetId, currentLevel);
+
+  // English-only books (no Arabic edition) always open in English.
+  const isEnglishOnlyBook = Boolean(selectedProphetId && getStoryMeta(selectedProphetId)?.englishOnly);
+  useEffect(() => {
+    if (isEnglishOnlyBook && language === 'ar') setLanguage('en');
+  }, [isEnglishOnlyBook, language, setLanguage]);
 
   // --- Data ---
   const currentBook = useMemo(() => {
@@ -110,110 +183,252 @@ const AppContent = () => {
   }, [currentBookPair, language]);
 
   const currentPage = currentBook?.pages[currentPageIndex];
+  const isFinalChallengePage = currentPage?.type === 'final-challenge';
   const totalPages = currentBook?.pages.length || 0;
   const progress = totalPages > 0 ? (currentPageIndex + 1) / totalPages : 0;
 
+  // A resumed position or a hand-typed link may point past the end of the book.
+  useEffect(() => {
+    if (!currentBook) return;
+    setCurrentPageIndex(prev => Math.min(prev, Math.max(currentBook.pages.length - 1, 0)));
+  }, [currentBook, currentPageIndex]);
+
+  useEffect(() => {
+    if (!selectedProphetId || !currentLevel || !currentPage) return;
+    if (showSummary) {
+      clearReaderPosition(selectedProphetId, currentLevel);
+      return;
+    }
+    saveReaderPosition(selectedProphetId, currentLevel, { pageIndex: currentPageIndex, totalPages });
+  }, [selectedProphetId, currentLevel, currentPage, currentPageIndex, totalPages, showSummary]);
+
+  useEffect(() => {
+    setMyWordsBook(selectedProphetId && currentLevel ? { storyId: selectedProphetId, level: currentLevel } : null);
+  }, [selectedProphetId, currentLevel]);
+
+  // --- Book progress: pages read and exercises done, stored per book and shared by the TOC, summary and home page ---
+  const [bookProgress, setBookProgress] = useState<BookProgress | null>(null);
+
+  useEffect(() => {
+    if (!selectedProphetId || !currentLevel || !currentBookPair) {
+      setBookProgress(null);
+      return;
+    }
+    const saved = readBookProgress(selectedProphetId, currentLevel);
+    const pages = currentBookPair.en.pages;
+    const chaptersVisited = saved.readPages
+      .map(index => pages[index])
+      .filter(page => page?.type === 'story')
+      .map(page => page.id);
+    hydrateStats({ exercisesCompleted: saved.doneExercises, chaptersVisited });
+    setBookProgress(saved);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedProphetId, currentLevel, currentBookPair]);
+
+  useEffect(() => {
+    if (!selectedProphetId || !currentLevel || !currentBook) return;
+    setBookProgress(
+      mergeBookProgress(selectedProphetId, currentLevel, {
+        readPages: [currentPageIndex],
+        totalPages: currentBook.pages.length,
+      }),
+    );
+  }, [selectedProphetId, currentLevel, currentBook, currentPageIndex]);
+
+  useEffect(() => {
+    if (!selectedProphetId || !currentLevel || stats.exercisesCompleted.size === 0) return;
+    setBookProgress(mergeBookProgress(selectedProphetId, currentLevel, { doneExercises: stats.exercisesCompleted }));
+  }, [selectedProphetId, currentLevel, stats.exercisesCompleted]);
+
+  const readPageSet = useMemo(() => new Set(bookProgress?.readPages ?? []), [bookProgress]);
+  const doneExerciseSet = useMemo(() => new Set(bookProgress?.doneExercises ?? []), [bookProgress]);
+  const allDone = (ids: string[] | undefined) =>
+    Boolean(ids && ids.length > 0 && ids.every(id => doneExerciseSet.has(id)));
+
+  // --- URL hash: one entry per page, so the browser back button and reload keep the reader's place ---
+  const currentRoute = useMemo<HashRoute | null>(
+    () => (selectedProphetId && currentLevel ? { storyId: selectedProphetId, level: currentLevel, pageIndex: currentPageIndex } : null),
+    [selectedProphetId, currentLevel, currentPageIndex],
+  );
+  const currentRouteRef = useRef(currentRoute);
+  currentRouteRef.current = currentRoute;
+
+  useEffect(() => {
+    const next = formatHashRoute(currentRoute);
+    const hash = window.location.hash;
+    if (hash === next || (!currentRoute && isHomeHash(hash))) return;
+    window.location.hash = next;
+  }, [currentRoute]);
+
   const currentCollection = currentDefinition?.collection ?? null;
 
-  // Dynamic UI theme classes based on active collection
-  const themeClasses = useMemo(() => {
-    if (currentCollection === 'history') {
-      return {
-        headerBg: "bg-emerald-950/85 border-emerald-500/20",
-        headerSubtitle: "text-emerald-400",
-        buttonSec: "bg-emerald-500/10 border-emerald-500/30 text-parchment hover:bg-emerald-500/20",
-        progressTrack: "bg-emerald-500/10",
-        progressBar: "bg-emerald-500",
-        percentageText: "text-emerald-400/80",
-        mainBg: !showSummary && (currentLevel === 'A2' || currentLevel === 'B1' 
-          ? "bg-[#F4F7F5]/95" 
-          : "bg-[#EDF2EE]/95"),
-        cardBorder: "border-emerald-500/20",
-        navButton: "bg-emerald-700 border-emerald-500 text-white hover:bg-emerald-800 hover:scale-110",
-        goldText: "text-emerald-400",
-        quoteLine: "via-emerald-500/40",
-        // Side-menu specific
-        menuOverlayBg: "bg-emerald-950/60",
-        menuBg: "bg-[#042416]/95",
-        menuBorder: "border-emerald-500/10",
-        menuAccentText: "text-emerald-400",
-        menuHoverBg: "hover:bg-emerald-500/10",
-        menuSectionHeader: "text-emerald-400/40",
-        menuItemActive: "bg-emerald-600 text-white",
-        menuItemHover: "hover:bg-emerald-500/5 text-parchment/60",
-        menuCloseButton: "text-emerald-400/40 hover:text-emerald-400",
-        menuLogoContainer: "border-emerald-500/20 bg-emerald-500/10 shadow-[0_2px_10px_rgba(16,185,129,0.15)]",
-      };
-    } else if (currentCollection === 'turkish') {
-      return {
-        headerBg: "bg-[#0D1D2C]/85 border-[#22D3EE]/20",
-        headerSubtitle: "text-[#22D3EE]",
-        buttonSec: "bg-[#22D3EE]/10 border-[#22D3EE]/30 text-parchment hover:bg-[#22D3EE]/20",
-        progressTrack: "bg-[#22D3EE]/10",
-        progressBar: "bg-[#22D3EE]",
-        percentageText: "text-[#22D3EE]/80",
-        mainBg: !showSummary && (currentLevel === 'A2' || currentLevel === 'B1' 
-          ? "bg-[#F2F6F9]/95" 
-          : "bg-[#EAF0F4]/95"),
-        cardBorder: "border-[#22D3EE]/20",
-        navButton: "bg-sky-700 border-sky-450 text-white hover:bg-sky-850 hover:scale-110",
-        goldText: "text-[#22D3EE]",
-        quoteLine: "via-[#22D3EE]/40",
-        // Side-menu specific
-        menuOverlayBg: "bg-[#06121D]/60",
-        menuBg: "bg-[#0a1826]/95",
-        menuBorder: "border-[#22D3EE]/10",
-        menuAccentText: "text-[#22D3EE]",
-        menuHoverBg: "hover:bg-[#22D3EE]/10",
-        menuSectionHeader: "text-[#22D3EE]/40",
-        menuItemActive: "bg-sky-700 text-white",
-        menuItemHover: "hover:bg-[#22D3EE]/5 text-parchment/60",
-        menuCloseButton: "text-[#22D3EE]/40 hover:text-[#22D3EE]",
-        menuLogoContainer: "border-[#22D3EE]/20 bg-[#22D3EE]/10 shadow-[0_2px_10px_rgba(34,211,238,0.15)]",
-      };
-    } else {
-      // Default 'prophets'
-      return {
-        headerBg: "bg-amber-950/80 border-amber-400/20",
-        headerSubtitle: "text-gold",
-        buttonSec: "bg-amber-400/10 border-amber-400/30 text-parchment hover:bg-amber-400/20",
-        progressTrack: "bg-gold/10",
-        progressBar: "bg-gold",
-        percentageText: "text-gold/60",
-        mainBg: !showSummary && (currentLevel === 'A2' || currentLevel === 'B1' 
-          ? "bg-orange-50/95" 
-          : "bg-parchment/95"),
-        cardBorder: "border-amber-400/10",
-        navButton: currentLevel === 'A2' || currentLevel === 'B1' 
-          ? "bg-amber-600 border-amber-400 text-white hover:bg-amber-700 hover:scale-110" 
-          : "bg-gold border-gold/40 text-white hover:bg-gold/80 hover:scale-110",
-        goldText: "text-gold",
-        quoteLine: "via-gold/40",
-        // Side-menu specific
-        menuOverlayBg: "bg-[#14221a]/60",
-        menuBg: "bg-[#14221a]/95",
-        menuBorder: "border-amber-400/10",
-        menuAccentText: "text-gold",
-        menuHoverBg: "hover:bg-gold/10",
-        menuSectionHeader: "text-gold/40",
-        menuItemActive: "bg-gold text-white",
-        menuItemHover: "hover:bg-gold/5 text-parchment/60",
-        menuCloseButton: "text-gold/40 hover:text-gold",
-        menuLogoContainer: "border-gold/20 bg-gold/10 shadow-[0_2px_10px_rgba(212,175,55,0.15)]",
-      };
-    }
-  }, [currentCollection, currentLevel, showSummary]);
+  const currentTeacherGuide = teacherGuideData
+    ? (language === 'ar' ? teacherGuideData.ar : teacherGuideData.en)
+    : null;
+  const currentSelfStudyGuide = selfStudyGuideData
+    ? (language === 'ar' ? selfStudyGuideData.ar : selfStudyGuideData.en)
+    : null;
 
+  // The Teacher Guide section for a story chapter: matched by the chapter number in its title, else by position.
+  const lessonSectionFor = (page: PageData) => {
+    const sections = currentTeacherGuide?.content;
+    if (!sections?.length || page.type !== 'story') return undefined;
+    const storyPages = (currentBook?.pages ?? []).filter(item => item.type === 'story');
+    const chapterNo = storyPages.findIndex(item => item.id === page.id) + 1;
+    if (chapterNo < 1) return undefined;
+    return sections.find(section => Number(section.chapter.match(/\d+/)?.[0]) === chapterNo) ?? sections[chapterNo - 1];
+  };
+
+  useEffect(() => {
+    setTeacherGuideData(null);
+    setSelfStudyGuideData(null);
+    setIsTeacherGuideOpen(false);
+    setIsSelfStudyOpen(false);
+  }, [currentDefinition?.storyId, currentLevel]);
+
+  useEffect(() => {
+    if (!currentDefinition || !currentLevel || !currentBookPair) return;
+
+    const timer = window.setTimeout(() => {
+      loadTeacherGuideData(currentDefinition.storyId, currentLevel)
+        .then(setTeacherGuideData)
+        .catch(() => undefined);
+      loadSelfStudyGuideData(currentDefinition.storyId, currentLevel)
+        .then(setSelfStudyGuideData)
+        .catch(() => undefined);
+    }, 1500);
+
+    return () => window.clearTimeout(timer);
+  }, [currentDefinition?.storyId, currentLevel, currentBookPair]);
+
+  const openTeacherGuide = () => {
+    if (!currentDefinition || !currentLevel) return;
+    setIsMenuOpen(false);
+    if (teacherGuideData) {
+      setIsTeacherGuideOpen(true);
+      return;
+    }
+    loadTeacherGuideData(currentDefinition.storyId, currentLevel)
+      .then(data => {
+        setTeacherGuideData(data);
+        setIsTeacherGuideOpen(true);
+      })
+      .catch(error => console.error('[Teacher Guide] Unable to load guide data.', error));
+  };
+
+  // The home page's Teacher Guide shortcut opens the book and then its guide once the book is in.
+  const [pendingTeacherGuide, setPendingTeacherGuide] = useState(false);
+  useEffect(() => {
+    if (!pendingTeacherGuide || !currentBook || !currentDefinition || !currentLevel) return;
+    setPendingTeacherGuide(false);
+    openTeacherGuide();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [pendingTeacherGuide, currentBook, currentDefinition, currentLevel]);
+
+  const handleOpenTeacherGuideFromHome = (prophetId: string, level: Level) => {
+    setPendingTeacherGuide(true);
+    handleStartJourney(prophetId, level);
+  };
+
+  // "Save this book offline": every image and audio file of both language editions, stored by the service worker.
+  const [offlineSaveState, setOfflineSaveState] = useState<'idle' | 'saving' | 'saved' | 'failed'>('idle');
+  useEffect(() => { setOfflineSaveState('idle'); }, [currentBookPair]);
+  const offlineBookSizeMb = selectedProphetId && currentLevel ? OFFLINE_BOOK_SIZE_MB[`${selectedProphetId}:${currentLevel}`] : undefined;
+  const offlineBookHasAudio = Boolean(currentBookPair?.en.pages.some(page => page.type === 'story' && page.audioUrl));
+  const canSaveOffline = import.meta.env.PROD && typeof navigator !== 'undefined' && 'serviceWorker' in navigator;
+  const handleSaveOffline = () => {
+    if (!currentBookPair || offlineSaveState === 'saving') return;
+    const urls = new Set<string>();
+    [currentBookPair.en, currentBookPair.ar].forEach(book => {
+      book.pages.forEach(page => {
+        // Only story pages show pictures; learning pages carry unused (some dead) image links.
+        if (page.type !== 'story') return;
+        if (page.image) urls.add(page.image);
+        if (page.audioUrl) urls.add(page.audioUrl);
+      });
+    });
+    setOfflineSaveState('saving');
+    saveBookOffline([...urls])
+      .then(result => setOfflineSaveState(result.failed === 0 ? 'saved' : 'failed'))
+      .catch(() => setOfflineSaveState('failed'));
+  };
+
+  const openSelfStudyGuide = () => {
+    if (!currentDefinition || !currentLevel) return;
+    setIsMenuOpen(false);
+    if (selfStudyGuideData) {
+      setIsSelfStudyOpen(true);
+      return;
+    }
+    loadSelfStudyGuideData(currentDefinition.storyId, currentLevel)
+      .then(data => {
+        setSelfStudyGuideData(data);
+        setIsSelfStudyOpen(true);
+      })
+      .catch(error => console.error('[Self-Study Guide] Unable to load guide data.', error));
+  };
+
+  // Dynamic UI theme classes based on active collection
+  // One palette for the reader chrome. The collection only changes the accent tokens the root
+  // publishes (see collectionVisuals[...].readerTokens); the class names never change.
+  const themeClasses = useMemo(() => ({
+    headerBg: "bg-chrome/85 border-accent/20",
+    headerSubtitle: "text-accent",
+    buttonSec: "bg-accent/10 border-accent/30 text-parchment hover:bg-accent/20",
+    progressTrack: "bg-accent/10",
+    progressBar: "bg-accent",
+    percentageText: "text-accent/80",
+    mainBg: !showSummary && (currentLevel === 'A2' || currentLevel === 'B1' ? "bg-page/95" : "bg-page-deep/95"),
+    cardBorder: "border-accent/20",
+    navButton: "bg-accent-strong border-accent text-white hover:brightness-110 hover:scale-110",
+    goldText: "text-accent",
+    quoteLine: "via-accent/40",
+    // Side-menu specific
+    menuOverlayBg: "bg-chrome/60",
+    menuBg: "bg-chrome-menu/95",
+    menuBorder: "border-accent/10",
+    menuAccentText: "text-accent",
+    menuHoverBg: "hover:bg-accent/10",
+    menuSectionHeader: "text-accent/40",
+    menuItemActive: "bg-accent-strong text-white",
+    menuItemHover: "hover:bg-accent/5 text-parchment/60",
+    menuCloseButton: "text-accent/40 hover:text-accent",
+    menuLogoContainer: "border-accent/20 bg-accent/10 shadow-[0_2px_10px_rgba(0,0,0,0.2)]",
+  }), [currentLevel, showSummary]);
+
+  // The collection's tokens go on <html>, so portaled tooltips and overlays read the same variables as the reader.
+  useEffect(() => {
+    const root = document.documentElement;
+    const variables = readerTokenVariables(collectionVisuals[currentCollection ?? 'prophets'].readerTokens);
+    Object.entries(variables).forEach(([name, value]) => root.style.setProperty(name, value));
+    root.setAttribute('data-collection', currentCollection ?? 'prophets');
+    return () => {
+      Object.keys(variables).forEach(name => root.style.removeProperty(name));
+      root.removeAttribute('data-collection');
+    };
+  }, [currentCollection]);
+
+  // One name per book everywhere: the same translated story name the library shows.
   const currentBookTitle = useMemo(() => {
     if (!currentDefinition) return currentBook?.title ?? '';
-    return currentDefinition.titles[language];
+    const key = `prophet.${currentDefinition.storyId}`;
+    const translated = t(key);
+    if (translated && translated !== key) return translated;
+    return getStoryMeta(currentDefinition.storyId)?.name ?? currentBook?.title ?? '';
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentBook, currentDefinition, language]);
 
   // --- Handlers ---
-  const handleStartJourney = (prophetId: string, level: Level) => {
+  const handleStartJourney = (
+    prophetId: string,
+    level: Level,
+    options?: { resume?: boolean; pageIndex?: number },
+  ) => {
     setSelectedProphetId(prophetId);
     setCurrentLevel(level);
-    setCurrentPageIndex(0);
+    setCurrentPageIndex(
+      options?.pageIndex ?? (options?.resume ? readReaderPosition(prophetId, level)?.pageIndex ?? 0 : 0),
+    );
     setUserAnswers({});
     setIsMenuOpen(false);
     setShowSummary(false);
@@ -249,17 +464,80 @@ const AppContent = () => {
     setShowSummary(false);
   };
 
-  const handleNextPage = () => {
+  // Moving on with the chapter's Quick Challenge still open: one reminder per chapter, then the reader decides.
+  const [isQuickReminderOpen, setIsQuickReminderOpen] = useState(false);
+  const remindedPagesRef = useRef<Set<string>>(new Set());
+
+  const advancePage = () => {
+    setIsQuickReminderOpen(false);
     if (currentPageIndex < totalPages - 1) {
       setCurrentPageIndex(prev => prev + 1);
     }
   };
+
+  const handleNextPage = () => {
+    if (isQuickReminderOpen) {
+      advancePage();
+      return;
+    }
+    const quickExercise = currentPage?.type === 'story' ? currentPage.exercises?.[0] : undefined;
+    const reminderKey = `${selectedProphetId}:${currentLevel}:${currentPage?.id}`;
+    if (
+      quickExercise &&
+      currentPageIndex < totalPages - 1 &&
+      !doneExerciseSet.has(quickExercise.id) &&
+      !remindedPagesRef.current.has(reminderKey)
+    ) {
+      remindedPagesRef.current.add(reminderKey);
+      setIsQuickReminderOpen(true);
+      return;
+    }
+    advancePage();
+  };
+
+  const handleGoToQuickChallenge = () => {
+    setIsQuickReminderOpen(false);
+    window.dispatchEvent(new Event('reader:focus-quick-challenge'));
+  };
+
+  useEffect(() => {
+    setIsQuickReminderOpen(false);
+  }, [currentPageIndex, selectedProphetId, currentLevel]);
+
+  useEffect(() => {
+    if (!isQuickReminderOpen) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setIsQuickReminderOpen(false);
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [isQuickReminderOpen]);
 
   const handlePrevPage = () => {
     if (currentPageIndex > 0) {
       setCurrentPageIndex(prev => prev - 1);
     }
   };
+
+  useEffect(() => {
+    const applyHash = () => {
+      const route = parseHashRoute(window.location.hash);
+      const current = currentRouteRef.current;
+      if (!route) {
+        if (current) handleReturnToLibrary();
+        return;
+      }
+      if (current && current.storyId === route.storyId && current.level === route.level) {
+        if (current.pageIndex !== route.pageIndex) setCurrentPageIndex(route.pageIndex);
+        setShowSummary(false);
+        return;
+      }
+      handleStartJourney(route.storyId, route.level, { pageIndex: route.pageIndex });
+    };
+    window.addEventListener('hashchange', applyHash);
+    return () => window.removeEventListener('hashchange', applyHash);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -276,8 +554,8 @@ const AppContent = () => {
       }
 
       // Only navigate if a story is active, no overlays are open, and summary is not shown
-      if (!selectedProphetId || showSummary) return;
-      if (isMenuOpen || isTeacherGuideOpen || isSelfStudyOpen || isQuickTOCOpen) return;
+      if (!selectedProphetId || showSummary || isFinalChallengePage) return;
+      if (isMenuOpen || isAboutOpen || isHowToUseOpen || isUsageGuideOpen || isMyWordsOpen || isTeacherGuideOpen || isSelfStudyOpen || isQuickTOCOpen || isReaderSettingsOpen) return;
 
       if (e.key === 'ArrowRight') {
         if (language === 'ar') {
@@ -302,16 +580,47 @@ const AppContent = () => {
     selectedProphetId,
     showSummary,
     isMenuOpen,
+    isAboutOpen,
+    isHowToUseOpen,
+    isUsageGuideOpen,
+    isMyWordsOpen,
     isTeacherGuideOpen,
     isSelfStudyOpen,
     isQuickTOCOpen,
+    isReaderSettingsOpen,
     currentPageIndex,
     totalPages,
-    language
+    language,
+    isFinalChallengePage
   ]);
 
+  // A horizontal swipe on a touch screen turns the page; sliders, inputs and open overlays are left alone.
+  const swipeStartRef = useRef<{ x: number; y: number; ignore: boolean } | null>(null);
+  const handleSwipeStart = (e: React.TouchEvent) => {
+    const touch = e.touches[0];
+    const target = e.target as HTMLElement | null;
+    const ignore =
+      !touch ||
+      Boolean(target?.closest('input, textarea, select, [role="slider"], [draggable="true"], [data-no-swipe]')) ||
+      showSummary || isFinalChallengePage ||
+      isMenuOpen || isAboutOpen || isHowToUseOpen || isUsageGuideOpen || isMyWordsOpen || isTeacherGuideOpen || isSelfStudyOpen || isQuickTOCOpen || isReaderSettingsOpen;
+    swipeStartRef.current = touch ? { x: touch.clientX, y: touch.clientY, ignore } : null;
+  };
+  const handleSwipeEnd = (e: React.TouchEvent) => {
+    const start = swipeStartRef.current;
+    swipeStartRef.current = null;
+    const touch = e.changedTouches[0];
+    if (!start || start.ignore || !touch) return;
+    const dx = touch.clientX - start.x;
+    const dy = touch.clientY - start.y;
+    if (Math.abs(dx) < 70 || Math.abs(dy) > 50 || Math.abs(dx) < Math.abs(dy) * 1.5) return;
+    const forward = isRTL ? dx > 0 : dx < 0;
+    if (forward) handleNextPage();
+    else handlePrevPage();
+  };
+
   const handleProgressBarClick = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (totalPages <= 1) return;
+    if (totalPages <= 1 || isFinalChallengePage) return;
     const rect = e.currentTarget.getBoundingClientRect();
     const clickX = e.clientX - rect.left;
     const width = rect.width;
@@ -329,86 +638,59 @@ const AppContent = () => {
 
   // --- Render Helpers ---
   if (!isAuthenticated) {
+    const gateCopy = language === 'ar'
+      ? { welcome: 'أَهْلًا بِكَ', text: 'اكْتُبْ رَمْزَ الدُّخُولِ الَّذِي أُعْطِيَ لَكَ لِتَفْتَحَ الْمَكْتَبَة.', label: 'رَمْزُ الدُّخُول', open: 'افْتَحِ الْمَكْتَبَة', wrong: 'الرَّمْزُ غَيْرُ صَحِيح. حَاوِلْ مَرَّةً أُخْرَى.', show: 'أَظْهِرِ الرَّمْز', hide: 'أَخْفِ الرَّمْز' }
+      : { welcome: 'Welcome', text: 'Enter the access code you were given to open the library.', label: 'Access code', open: 'Open the library', wrong: 'That code is not right. Please try again.', show: 'Show code', hide: 'Hide code' };
     return (
-      <div 
-        dir={isRTL ? 'rtl' : 'ltr'}
-        lang={language}
-        className={cn(
-          "min-h-screen bg-wood flex flex-col items-center justify-center relative overflow-hidden page-texture p-4",
-          isDyslexic && "font-dyslexic-mode"
-        )}
-      >
-        <ParchmentEffect />
-
-        {/* Background Elements */}
-        <div className="fixed inset-0 pointer-events-none opacity-20">
-          <div className="absolute top-0 left-0 w-96 h-96 bg-gold rounded-full blur-[120px] -translate-x-1/2 -translate-y-1/2" />
-          <div className="absolute bottom-0 right-0 w-96 h-96 bg-gold rounded-full blur-[120px] translate-x-1/2 translate-y-1/2" />
-        </div>
-
-        <div className="relative z-10 w-full max-w-md bg-[#1e1915]/95 rounded-2xl p-8 border-2 border-gold/40 shadow-[0_0_50px_rgba(212,175,55,0.15)] text-center backdrop-blur-sm">
-          {/* Decorative corners */}
-          <div className="absolute top-3 left-3 w-4 h-4 border-t-2 border-l-2 border-gold/40" />
-          <div className="absolute top-3 right-3 w-4 h-4 border-t-2 border-r-2 border-gold/40" />
-          <div className="absolute bottom-3 left-3 w-4 h-4 border-b-2 border-l-2 border-gold/40" />
-          <div className="absolute bottom-3 right-3 w-4 h-4 border-b-2 border-r-2 border-gold/40" />
-
-          <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gold/10 text-gold mb-6 border border-gold/20 shadow-[0_0_15px_rgba(212,175,55,0.1)]">
-            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-          </div>
-
-          <h2 className="font-display text-2xl tracking-wide text-gold uppercase mb-2">Access Required</h2>
-          <p className="font-serif text-[#F5EDD6]/70 text-[14px] leading-relaxed mb-6">
-            Please enter the access code provided to you to unlock the application.
-          </p>
-
-          <form onSubmit={handlePasswordSubmit} className="space-y-4">
-            <div className="relative flex items-center">
-              <input 
-                type={showPassword ? "text" : "password"}
-                value={passwordInput}
-                onChange={(e) => {
-                  setPasswordInput(e.target.value);
-                  setErrorMsg('');
-                }}
-                placeholder="Access Code"
-                className="w-full bg-[#120F0D]/90 border border-gold/30 rounded-xl pl-5 pr-12 py-3.5 text-center text-white placeholder-[#F5EDD6]/30 font-mono text-base focus:outline-none focus:border-gold/70 focus:ring-1 focus:ring-gold/50 transition-all shadow-inner"
-                autoFocus
-              />
-              <button
-                type="button"
-                onClick={() => setShowPassword(prev => !prev)}
-                className="absolute right-3.5 text-gold/60 hover:text-gold p-1 transition-colors cursor-pointer"
-                title={showPassword ? "Hide password" : "Show password"}
-              >
-                {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
-              </button>
-            </div>
-
-            {errorMsg && (
-              <p className="text-red-400 font-serif text-[12px] animate-pulse">
-                {errorMsg}
-              </p>
-            )}
-
-            <button 
-              type="submit"
-              className="w-full bg-gold/10 hover:bg-gold/20 text-gold border border-gold/50 rounded-xl px-6 py-3.5 font-display text-[12px] uppercase tracking-widest font-bold transition-all duration-300 shadow-[0_4px_12px_rgba(0,0,0,0.5)] hover:shadow-[0_4px_20px_rgba(212,175,55,0.15)] active:scale-95"
+      <BrandedEntry>
+        <h2 className={cn('mt-6 text-[40px] font-semibold leading-[1.1] text-[#FFF9EC]', language !== 'ar' && 'tracking-[-0.03em]')}>{gateCopy.welcome}</h2>
+        <p className="mt-3 text-[15px] leading-relaxed text-[#EDE5D4]/70">{gateCopy.text}</p>
+        <form onSubmit={handlePasswordSubmit} className="mt-7 flex flex-col">
+          <label htmlFor="access-code" className="text-[12px] font-semibold text-[#EDE5D4]/70">{gateCopy.label}</label>
+          <div className="relative mt-2 flex items-center">
+            <input
+              id="access-code"
+              type={showPassword ? 'text' : 'password'}
+              value={passwordInput}
+              onChange={(e) => {
+                setPasswordInput(e.target.value);
+                setErrorMsg('');
+              }}
+              placeholder={gateCopy.label}
+              dir="ltr"
+              className="w-full rounded-2xl border border-[#D8B35C]/35 bg-white/[0.05] py-4 pe-12 ps-5 text-base text-[#FFF9EC] placeholder-[#EDE5D4]/35 transition-all focus:border-[#F3D58A] focus:outline-none focus:ring-[3px] focus:ring-[#D8B35C]/20"
+              autoFocus
+            />
+            <button
+              type="button"
+              onClick={() => setShowPassword(prev => !prev)}
+              className="absolute end-3.5 cursor-pointer p-1 text-[#D8B35C]/70 transition-colors hover:text-[#F3D58A]"
+              aria-label={showPassword ? gateCopy.hide : gateCopy.show}
             >
-              Unlock App
+              {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
             </button>
-          </form>
-
-          <div className="mt-8 pt-6 border-t border-gold/10 flex justify-center gap-4">
-            <span className="font-display text-[9px] uppercase tracking-widest text-[#F5EDD6]/40">Interactive E-Book Series</span>
           </div>
-        </div>
-      </div>
+          {errorMsg && (
+            <p role="alert" className="mt-3 text-[13px] text-red-300">{gateCopy.wrong}</p>
+          )}
+          <button
+            type="submit"
+            className="mt-4 inline-flex items-center justify-center gap-2.5 rounded-full bg-[linear-gradient(135deg,#ECCD7E,#B98A36)] px-7 py-4 text-[15px] font-semibold text-[#16130c] shadow-[0_18px_50px_rgba(216,179,92,0.26)] transition-all hover:-translate-y-0.5 hover:shadow-[0_22px_60px_rgba(216,179,92,0.36)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F3D58A] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0b0e0c] active:scale-[0.99]"
+          >
+            {gateCopy.open}
+            <ArrowRight size={16} mirrored={isRTL} />
+          </button>
+        </form>
+      </BrandedEntry>
     );
   }
 
+  if (!role) {
+    return <RolePicker />;
+  }
+
   if (!selectedProphetId || !currentLevel) {
-    return <HomePage onStart={handleStartJourney} />;
+    return <HomePage onStart={handleStartJourney} onOpenTeacherGuide={isTeacher ? handleOpenTeacherGuideFromHome : undefined} />;
   }
 
   if (bookLoadError) {
@@ -437,13 +719,15 @@ const AppContent = () => {
   const renderPage = () => {
     if (showSummary) {
       return (
-        <SummaryDashboard 
-          bookData={currentBook!} 
-          onFinish={handleReturnToLibrary}
-          onReviewStory={handleReviewStory}
-          onReadAgain={handleReadAgain}
-          onStartJourney={handleStartJourney}
-        />
+        <Suspense fallback={null}>
+          <SummaryDashboard 
+            bookData={currentBook!} 
+            onFinish={handleReturnToLibrary}
+            onReviewStory={handleReviewStory}
+            onReadAgain={handleReadAgain}
+            onStartJourney={handleStartJourney}
+          />
+        </Suspense>
       );
     }
 
@@ -457,22 +741,45 @@ const AppContent = () => {
             allPages={currentBook?.pages || []}
             currentIndex={currentPageIndex}
             isDyslexic={isDyslexic} 
-            fontSize={currentBook?.baseFontSize || 12}
+            showHighlights={showHighlights}
+            followAlong={followAlong}
+            fontSize={(currentBook?.baseFontSize || 12) * readerScale * (isLargeDesktop ? 1.15 : 1) * (classMode ? 1.3 : 1)}
             level={currentLevel}
+            storyId={currentDefinition?.storyId}
             collectionId={currentCollection || 'prophets'}
+            lessonSection={isTeacher ? lessonSectionFor(currentPage) : undefined}
           />
         );
       case 'map':
         return (
-          <InteractiveMapPage 
+          <Suspense fallback={null}>
+            <StoryMapPage page={currentPage} />
+          </Suspense>
+        );
+      case 'places':
+        return (
+          <Suspense fallback={null}>
+            <PlacesPage
+              page={currentPage}
+              pages={currentBook?.pages ?? []}
+              onOpenPage={index => setCurrentPageIndex(index)}
+            />
+          </Suspense>
+        );
+      case 'glossary':
+        return (
+          <MasterGlossary
+            bookData={currentBook}
             page={currentPage}
             collectionId={currentCollection || 'prophets'}
           />
         );
-      case 'glossary':
-        return <MasterGlossary bookData={currentBook!} page={currentPage} collectionId={currentCollection || 'prophets'} />;
       case 'final-challenge':
-        return <FinalChallenge bookData={currentBook!} onComplete={() => setShowSummary(true)} />;
+        return (
+          <Suspense fallback={null}>
+            <FinalChallenge bookData={currentBook!} onComplete={() => setShowSummary(true)} />
+          </Suspense>
+        );
       default:
         return (
           <ExercisePage 
@@ -481,6 +788,18 @@ const AppContent = () => {
             handleAnswer={handleAnswer} 
             level={currentLevel}
             collectionId={currentCollection || 'prophets'}
+            onReviewComplete={currentPage.type === 'exercises' ? handleNextPage : undefined}
+            onReviewGlossary={
+              currentPage.type === 'vocabulary-match'
+                ? () => {
+                    const glossaryIndexes = currentBook.pages
+                      .map((page, index) => page.type === 'glossary' ? index : -1)
+                      .filter(index => index >= 0);
+                    const targetIndex = glossaryIndexes[glossaryIndexes.length - 1];
+                    if (typeof targetIndex === 'number') setCurrentPageIndex(targetIndex);
+                  }
+                : undefined
+            }
           />
         );
     }
@@ -490,158 +809,393 @@ const AppContent = () => {
     <div 
       dir={isRTL ? 'rtl' : 'ltr'}
       lang={language}
+      data-reader-wide={isWideView ? 'true' : undefined}
       className={cn(
         "h-dvh max-h-dvh bg-wood flex flex-col relative overflow-hidden page-texture",
-        isDyslexic && "font-dyslexic-mode"
+        isDyslexic && language !== 'ar' && "font-dyslexic-mode"
       )}
     >
-      {/* Living Parchment Effect */}
-      <ParchmentEffect />
-
       {/* Background Elements */}
       <div className="fixed inset-0 pointer-events-none opacity-10">
-        <div className="absolute top-0 left-0 w-96 h-96 bg-gold rounded-full blur-[120px] -translate-x-1/2 -translate-y-1/2" />
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-gold rounded-full blur-[120px] translate-x-1/2 translate-y-1/2" />
+        <div className="absolute top-0 left-0 w-96 h-96 bg-accent rounded-full blur-[120px] -translate-x-1/2 -translate-y-1/2" />
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-accent rounded-full blur-[120px] translate-x-1/2 translate-y-1/2" />
       </div>
 
-      {/* Navigation Header */}
+      {/* Reader Header */}
       {!showSummary && (
         <header className={cn(
-          "relative z-50 h-12 sm:h-14 md:h-16 border-b px-2.5 sm:px-5 md:px-8 flex items-center justify-between transition-colors duration-500 shrink-0 gap-2 sm:gap-4",
+          "relative z-50 min-h-14 sm:min-h-16 px-3 sm:px-5 md:px-8 flex items-center transition-colors duration-500 shrink-0",
           themeClasses.headerBg
         )}>
-          {/* Left: Menu button + Title & Level */}
-          <div className="flex items-center gap-1.5 sm:gap-3 min-w-0 shrink">
-            <button 
-              onClick={() => setIsMenuOpen(true)}
-              className="p-1.5 sm:p-2 rounded-full transition-colors shrink-0 hover:bg-white/10 text-parchment cursor-pointer"
-              title={t('nav.menu')}
-              aria-label={t('nav.menu')}
-              aria-expanded={isMenuOpen}
-            >
-              <Menu className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
-            </button>
-
-            <div className="h-5 sm:h-6 w-px bg-gold/20 shrink-0 hidden sm:block" />
-
-            <div className="flex flex-col min-w-0">
-              <h2 className={cn(
-                "font-display text-[11px] sm:text-[15px] md:text-[18px] tracking-tight leading-snug truncate max-w-[100px] xs:max-w-[140px] sm:max-w-xs md:max-w-sm lg:max-w-md",
-                "text-parchment"
-              )} title={currentBookTitle}>{currentBookTitle}</h2>
-              <span className={cn(
-                "font-serif italic text-[8px] sm:text-[10px] uppercase tracking-widest leading-none mt-0.5",
-                themeClasses.headerSubtitle
-              )}>
-                {t('nav.level')} {formatNumber(currentLevel || '')}
-              </span>
-            </div>
-          </div>
-
-          {/* Center / Inline Language Toggle */}
-          <div className="shrink-0 flex items-center">
-            <LanguageToggle />
-          </div>
-
-          {/* Right Action Controls */}
-          <div className="flex items-center gap-1.5 sm:gap-2.5 md:gap-3 shrink-0">
-            {/* Download PDF button */}
-            <button 
-              onClick={() => currentBook && generateBookPDF(currentBook)}
-              className={cn(
-                "flex items-center gap-1.5 px-2 sm:px-3 py-1 sm:py-1.5 rounded-full transition-all border shrink-0 text-xs",
-                themeClasses.buttonSec
-              )}
-              title={t('nav.downloadPdf')}
-              aria-label={t('nav.downloadPdf')}
-            >
-              <Download className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-              <span className="hidden lg:inline font-display text-[10px] sm:text-[11px] uppercase tracking-wider">
-                {t('nav.downloadPdf')}
-              </span>
-            </button>
-
-            {/* Progress Bar & Percentage */}
-            <div className="hidden md:flex items-center gap-2 shrink-0">
-              <div 
-                onClick={handleProgressBarClick}
-                className={cn(
-                  "w-20 sm:w-28 md:w-36 lg:w-40 h-2 sm:h-2.5 rounded-full overflow-hidden border border-white/10 shadow-inner flex items-center p-[1px] cursor-pointer hover:scale-105 active:scale-95 transition-transform", 
-                  themeClasses.progressTrack
-                )}
-                title={language === 'ar' ? "انقر للانتقال السريع للصفحة" : "Click to quick-jump to page"}
+          <div className="relative z-50 flex w-full items-center justify-between gap-3">
+            <div className="flex min-w-0 items-center gap-2 sm:gap-3">
+              <button 
+                onClick={() => setIsMenuOpen(true)}
+                className="touch-target flex items-center justify-center rounded-full text-parchment transition-colors hover:bg-white/10"
+                title={t('nav.menu')}
+                aria-label={t('nav.menu')}
+                aria-expanded={isMenuOpen}
               >
-                <motion.div 
-                  initial={{ width: 0 }}
-                  animate={{ width: `${progress * 100}%` }}
-                  className={cn("h-full rounded-full shadow-sm shadow-black/20", themeClasses.progressBar)}
-                />
+                <Menu className="h-5 w-5 sm:h-6 sm:w-6" />
+              </button>
+
+              <div className="min-w-0">
+                <h2
+                  className="clip-room max-w-[150px] truncate font-display text-[12px] font-semibold leading-tight tracking-[-0.01em] text-parchment sm:max-w-xs sm:text-[15px] md:max-w-md md:text-[17px]"
+                  title={currentBookTitle}
+                >
+                  <span className="sm:hidden">{currentPage?.title || currentBookTitle}</span>
+                  <span className="hidden sm:inline">{currentBookTitle}</span>
+                </h2>
+                <span className={cn(
+                  "ui-label mt-0.5 block sm:text-xs",
+                  themeClasses.headerSubtitle
+                )}>
+                  {t('nav.level')} {currentLevel} · {t('nav.page')} {formatNumber(currentPageIndex + 1)}
+                </span>
               </div>
-              <span className={cn("font-display text-[10px] sm:text-[12px] font-bold tracking-wider", themeClasses.percentageText)}>
-                {formatNumber(Math.round(progress * 100))}%
-              </span>
             </div>
 
-            {/* Return to Library (Home) */}
-            <button 
-              onClick={handleReturnToLibrary}
-              className={cn(
-                "p-1.5 sm:p-2 rounded-full transition-all duration-300 hover:scale-110 active:scale-95 shadow-md flex items-center justify-center border shrink-0",
-                "bg-amber-950/40 border-amber-400/30 text-gold hover:text-parchment hover:bg-amber-400/25 hover:border-amber-400/60 cursor-pointer",
-                currentCollection === 'history' && "bg-emerald-950/40 border-emerald-500/30 text-emerald-400 hover:text-parchment hover:bg-emerald-500/25 hover:border-emerald-500/60",
-                currentCollection === 'turkish' && "bg-[#0D1D2C]/40 border-[#22D3EE]/30 text-[#22D3EE] hover:text-parchment hover:bg-[#22D3EE]/25 hover:border-[#22D3EE]/60"
+            <div className="flex shrink-0 items-center gap-1.5 sm:gap-2">
+              <div className="relative">
+                <button
+                  type="button"
+                  onClick={() => setIsReaderSettingsOpen(prev => !prev)}
+                  className={cn(
+                    "touch-target flex items-center justify-center rounded-full border text-[13px] font-semibold tracking-[-0.03em] transition-colors",
+                    themeClasses.buttonSec
+                  )}
+                  aria-label={language === 'ar' ? 'إعدادات القراءة' : 'Reading settings'}
+                  aria-expanded={isReaderSettingsOpen}
+                  title={language === 'ar' ? 'إعدادات القراءة' : 'Reading settings'}
+                >
+                  Aa
+                </button>
+
+                <AnimatePresence>
+                  {isReaderSettingsOpen && (
+                    <motion.div
+                      initial={{ opacity: 0, y: -8, scale: 0.97 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
+                      exit={{ opacity: 0, y: -8, scale: 0.97 }}
+                      transition={{ duration: 0.16, ease: 'easeOut' }}
+                      className={cn(
+                        "absolute top-[calc(100%+0.65rem)] z-[80] w-72 rounded-2xl border p-4 shadow-2xl backdrop-blur-2xl max-sm:fixed max-sm:inset-x-3 max-sm:top-[3.9rem] max-sm:w-auto",
+                        isRTL ? "sm:left-0" : "sm:right-0",
+                        themeClasses.menuBg,
+                        themeClasses.menuBorder
+                      )}
+                    >
+                      <div className="flex items-center justify-between gap-4">
+                        <div>
+                          <p className="font-display text-[12px] font-semibold text-parchment">
+                            {language === 'ar' ? 'حجم النص' : 'Text size'}
+                          </p>
+                          <p className="mt-0.5 text-[11px] text-parchment/62">
+                            {language === 'ar' ? 'اضبط النص للقراءة المريحة' : 'Tune the story text for comfortable reading'}
+                          </p>
+                        </div>
+                        <span className={cn("font-display text-[11px] font-semibold", themeClasses.goldText)}>
+                          {Math.round(readerScale * 100)}%
+                        </span>
+                      </div>
+
+                      <div className="mt-3 grid grid-cols-3 gap-2">
+                        <button
+                          type="button"
+                          onClick={() => setReaderScale(prev => Math.max(0.85, Number((prev - 0.1).toFixed(2))))}
+                          disabled={readerScale <= 0.85}
+                          className="touch-target rounded-xl bg-white/[0.06] font-display text-lg text-parchment transition-colors hover:bg-white/[0.11] disabled:opacity-30"
+                          aria-label={language === 'ar' ? 'تصغير النص' : 'Decrease text size'}
+                        >
+                          −
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => setReaderScale(1)}
+                          className="touch-target rounded-xl bg-white/[0.06] font-display text-[11px] font-semibold text-parchment transition-colors hover:bg-white/[0.11]"
+                        >
+                          {language === 'ar' ? 'إعادة' : 'Reset'}
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => setReaderScale(prev => Math.min(1.3, Number((prev + 0.1).toFixed(2))))}
+                          disabled={readerScale >= 1.3}
+                          className="touch-target rounded-xl bg-white/[0.06] font-display text-lg text-parchment transition-colors hover:bg-white/[0.11] disabled:opacity-30"
+                          aria-label={language === 'ar' ? 'تكبير النص' : 'Increase text size'}
+                        >
+                          +
+                        </button>
+                      </div>
+
+                      <button
+                        type="button"
+                        onClick={() => setIsDyslexic(prev => !prev)}
+                        className="mt-3 flex w-full items-center justify-between gap-4 rounded-xl bg-white/[0.045] px-3 py-3 text-start transition-colors hover:bg-white/[0.08]"
+                        aria-pressed={isDyslexic}
+                      >
+                        <span>
+                          <span className="block font-display text-[11px] font-semibold text-parchment">
+                            {language === 'ar' ? 'خط سهل للقراءة' : 'Dyslexia-friendly font'}
+                          </span>
+                          <span className="mt-0.5 block text-[11px] text-parchment/62">
+                            OpenDyslexic
+                          </span>
+                        </span>
+                        <span
+                          dir="ltr"
+                          className={cn(
+                            "flex h-6 w-11 shrink-0 items-center rounded-full p-1 transition-colors",
+                            isDyslexic ? themeClasses.progressBar : "bg-white/15",
+                            isDyslexic ? "justify-end" : "justify-start"
+                          )}
+                        >
+                          <span className="h-4 w-4 rounded-full bg-white shadow" />
+                        </span>
+                      </button>
+
+                      <button
+                        type="button"
+                        onClick={() => setShowHighlights(prev => !prev)}
+                        className="mt-2 flex w-full items-center justify-between gap-4 rounded-xl bg-white/[0.045] px-3 py-3 text-start transition-colors hover:bg-white/[0.08]"
+                        aria-pressed={showHighlights}
+                        data-highlights-toggle
+                      >
+                        <span>
+                          <span className="block font-display text-[11px] font-semibold text-parchment">
+                            {language === 'ar' ? 'الكلمات الملونة' : 'Highlighted words'}
+                          </span>
+                          <span className="mt-0.5 block text-[11px] text-parchment/62">
+                            {language === 'ar' ? 'أوقفها لقراءة النص بلون واحد' : 'Turn off to read plain text'}
+                          </span>
+                        </span>
+                        <span
+                          dir="ltr"
+                          className={cn(
+                            "flex h-6 w-11 shrink-0 items-center rounded-full p-1 transition-colors",
+                            showHighlights ? themeClasses.progressBar : "bg-white/15",
+                            showHighlights ? "justify-end" : "justify-start"
+                          )}
+                        >
+                          <span className="h-4 w-4 rounded-full bg-white shadow" />
+                        </span>
+                      </button>
+
+                      <button
+                        type="button"
+                        onClick={() => setFollowAlong(prev => !prev)}
+                        className="mt-2 flex w-full items-center justify-between gap-4 rounded-xl bg-white/[0.045] px-3 py-3 text-start transition-colors hover:bg-white/[0.08]"
+                        aria-pressed={followAlong}
+                        data-follow-along-toggle
+                      >
+                        <span>
+                          <span className="block font-display text-[11px] font-semibold text-parchment">
+                            {language === 'ar' ? 'تتبع القراءة' : 'Follow along'}
+                          </span>
+                          <span className="mt-0.5 block text-[11px] text-parchment/62">
+                            {language === 'ar' ? 'تتلوّن الكلمة المقروءة مع الصوت' : 'The word being read fills with colour'}
+                          </span>
+                        </span>
+                        <span
+                          dir="ltr"
+                          className={cn(
+                            "flex h-6 w-11 shrink-0 items-center rounded-full p-1 transition-colors",
+                            followAlong ? themeClasses.progressBar : "bg-white/15",
+                            followAlong ? "justify-end" : "justify-start"
+                          )}
+                        >
+                          <span className="h-4 w-4 rounded-full bg-white shadow" />
+                        </span>
+                      </button>
+
+                      <button
+                        type="button"
+                        onClick={() => setIsWideView(prev => !prev)}
+                        className="mt-2 hidden w-full items-center justify-between gap-4 rounded-xl bg-white/[0.045] px-3 py-3 text-start transition-colors hover:bg-white/[0.08] lg:flex"
+                        aria-pressed={isWideView}
+                        data-wide-view-toggle
+                      >
+                        <span>
+                          <span className="block font-display text-[11px] font-semibold text-parchment">
+                            {language === 'ar' ? 'عرض واسع' : 'Wide view'}
+                          </span>
+                          <span className="mt-0.5 block text-[11px] text-parchment/62">
+                            {language === 'ar' ? 'يملأ النص واللوحات الشاشة' : 'Text and panels fill the screen'}
+                          </span>
+                        </span>
+                        <span
+                          dir="ltr"
+                          className={cn(
+                            "flex h-6 w-11 shrink-0 items-center rounded-full p-1 transition-colors",
+                            isWideView ? themeClasses.progressBar : "bg-white/15",
+                            isWideView ? "justify-end" : "justify-start"
+                          )}
+                        >
+                          <span className="h-4 w-4 rounded-full bg-white shadow" />
+                        </span>
+                      </button>
+
+                      {isTeacher && (
+                        <button
+                          type="button"
+                          onClick={() => setClassMode(!classMode)}
+                          className="mt-2 flex w-full items-center justify-between gap-4 rounded-xl bg-white/[0.045] px-3 py-3 text-start transition-colors hover:bg-white/[0.08]"
+                          aria-pressed={classMode}
+                          data-class-mode-toggle
+                        >
+                          <span className="flex items-start gap-2.5">
+                            <SECTION_ICONS.classMode.icon size={17} className="mt-0.5 shrink-0 text-parchment/80" />
+                            <span>
+                              <span className="block font-display text-[11px] font-semibold text-parchment">
+                                {SECTION_ICONS.classMode[language === 'ar' ? 'ar' : 'en']}
+                              </span>
+                              <span className="mt-0.5 block text-[11px] text-parchment/62">
+                                {language === 'ar' ? 'نَصٌّ أَكْبَرُ لِلسَّبُّورَةِ، وَالإِجَابَاتُ وَالأَمْثِلَةُ عِنْدَ الطَّلَبِ' : 'Bigger text for the board, answers and examples on demand'}
+                              </span>
+                            </span>
+                          </span>
+                          <span
+                            dir="ltr"
+                            className={cn(
+                              "flex h-6 w-11 shrink-0 items-center rounded-full p-1 transition-colors",
+                              classMode ? themeClasses.progressBar : "bg-white/15",
+                              classMode ? "justify-end" : "justify-start"
+                            )}
+                          >
+                            <span className="h-4 w-4 rounded-full bg-white shadow" />
+                          </span>
+                        </button>
+                      )}
+
+                      {canFullscreen && (
+                        <button
+                          type="button"
+                          onClick={() => { void toggleFullscreen(); }}
+                          className="mt-2 flex w-full items-center justify-between gap-4 rounded-xl bg-white/[0.045] px-3 py-3 text-start transition-colors hover:bg-white/[0.08]"
+                          aria-pressed={isFullscreen}
+                        >
+                          <span className="block font-display text-[11px] font-semibold text-parchment">
+                            {isFullscreen
+                              ? (language === 'ar' ? 'الخروج من ملء الشاشة' : 'Exit full screen')
+                              : (language === 'ar' ? 'ملء الشاشة' : 'Full screen')}
+                          </span>
+                          <span className="text-parchment/70"><FullscreenIcon size={17} /></span>
+                        </button>
+                      )}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+
+              {isFinalChallengePage ? (
+                <span
+                  className={cn(
+                    "min-w-11 h-11 px-3 flex items-center justify-center rounded-full border font-display text-[11px] font-semibold uppercase",
+                    themeClasses.buttonSec
+                  )}
+                  title={language === 'ar' ? 'لغة التحدي ثابتة أثناء المحاولة' : 'Challenge language is locked during the attempt'}
+                  aria-label={language === 'ar' ? 'لغة التحدي: العربية' : 'Challenge language: English'}
+                >
+                  {language.toUpperCase()}
+                </span>
+              ) : isEnglishOnlyBook ? null : (
+                <>
+                  <button
+                    type="button"
+                    onClick={() => setLanguage(language === 'en' ? 'ar' : 'en')}
+                    className={cn(
+                      "ui-control ui-label sm:hidden",
+                      themeClasses.buttonSec
+                    )}
+                    aria-label={language === 'en' ? 'Switch to Arabic' : 'Switch to English'}
+                  >
+                    {language === 'en' ? 'AR' : 'EN'}
+                  </button>
+
+                  <div className="hidden shrink-0 sm:block">
+                    <LanguageToggle />
+                  </div>
+                </>
               )}
-              title={t('nav.returnToLibrary')}
-              aria-label={t('nav.returnToLibrary')}
-            >
-              <Home className="w-4 h-4 sm:w-5 sm:h-5 stroke-[2.5]" />
-            </button>
+
+              <button 
+                onClick={handleReturnToLibrary}
+                className={cn(
+                  "ui-control",
+                  themeClasses.buttonSec
+                )}
+                title={t('nav.returnToLibrary')}
+                aria-label={t('nav.returnToLibrary')}
+              >
+                <Home className="h-4 w-4 sm:h-5 sm:w-5" />
+              </button>
+            </div>
           </div>
+
+          <div
+            className="pointer-events-none absolute left-1/2 top-1/2 hidden w-[360px] -translate-x-1/2 -translate-y-1/2 flex-col items-center text-center xl:flex 2xl:w-[520px]"
+            aria-label="Surah Yusuf 12:111"
+          >
+            <p
+              dir="rtl"
+              lang="ar"
+              className={cn("text-[13px] font-semibold leading-tight 2xl:text-[15px]", themeClasses.goldText)}
+              style={{ fontFamily: 'Arakom, sans-serif' }}
+            >
+              ﴿لَقَدْ كَانَ فِي قَصَصِهِمْ عِبْرَةٌ لِأُولِي الْأَلْبَابِ﴾
+            </p>
+            {language === 'ar' ? (
+              <p dir="rtl" lang="ar" className="mt-0.5 text-[11px] font-medium leading-tight text-parchment/62 2xl:text-xs">
+                سُورَةُ يُوسُف، الآيَة ١١١
+              </p>
+            ) : (
+              <p
+                dir="ltr"
+                lang="en"
+                className="mt-0.5 text-[11px] font-medium leading-tight text-parchment/70 2xl:text-xs"
+                style={{ fontFamily: 'Poppins, sans-serif' }}
+              >
+                “In their stories there is truly a lesson for people of understanding.”
+                <span className="ms-1 whitespace-nowrap text-parchment/50">Yusuf 12:111</span>
+              </p>
+            )}
+          </div>
+
+          <div className="absolute inset-x-0 bottom-0 h-[2px] bg-white/[0.06]" aria-hidden="true">
+            <motion.div
+              initial={false}
+              animate={{ width: `${progress * 100}%` }}
+              transition={{ duration: 0.3, ease: 'easeOut' }}
+              className={cn("h-full", themeClasses.progressBar)}
+              style={{ marginInlineStart: isRTL ? 'auto' : 0 }}
+            />
+          </div>
+
+          {isReaderSettingsOpen && (
+            <button
+              type="button"
+              className="fixed inset-0 z-40 cursor-default"
+              aria-label={language === 'ar' ? 'إغلاق إعدادات القراءة' : 'Close reading settings'}
+              onClick={() => setIsReaderSettingsOpen(false)}
+            />
+          )}
         </header>
       )}
 
       {/* Main Content Area */}
-      <main className="flex-1 relative z-10 flex flex-col overflow-hidden min-h-0">
+      <main
+        className="flex-1 relative z-10 flex flex-col overflow-hidden min-h-0"
+        onTouchStart={handleSwipeStart}
+        onTouchEnd={handleSwipeEnd}
+      >
         <div className={cn(
           "flex-1 w-full relative page-texture transition-all duration-500 flex flex-col overflow-hidden min-h-0",
           themeClasses.mainBg
         )}>
-          {/* Page Navigation Controls - Floating Side Buttons on Desktop (lg+) */}
-          {!showSummary && (
-            <div className="hidden lg:flex absolute inset-y-0 left-0 right-0 items-center justify-between pointer-events-none z-30 px-2 lg:px-3 xl:px-5">
-              <button 
-                onClick={handlePrevPage}
-                disabled={currentPageIndex === 0}
-                className={cn(
-                  "pointer-events-auto p-2.5 lg:p-3 rounded-full shadow-xl transition-all border-2 backdrop-blur-md",
-                  currentPageIndex === 0 ? "opacity-0 cursor-default" : "opacity-90 hover:opacity-100 hover:scale-110 active:scale-95 cursor-pointer",
-                  themeClasses.navButton
-                )}
-                title={t('nav.back')}
-                aria-label={t('nav.back')}
-              >
-                <ChevronLeft className="w-5 h-5 lg:w-6 lg:h-6" strokeWidth={3} />
-              </button>
-              <button 
-                onClick={handleNextPage}
-                disabled={currentPageIndex === totalPages - 1}
-                className={cn(
-                  "pointer-events-auto p-2.5 lg:p-3 rounded-full shadow-xl transition-all border-2 backdrop-blur-md",
-                  currentPageIndex === totalPages - 1 ? "opacity-0 cursor-default" : "opacity-90 hover:opacity-100 hover:scale-110 active:scale-95 cursor-pointer",
-                  themeClasses.navButton
-                )}
-                title={t('nav.next')}
-                aria-label={t('nav.next')}
-              >
-                <ChevronRight className="w-5 h-5 lg:w-6 lg:h-6" strokeWidth={3} />
-              </button>
-            </div>
-          )}
-
           <div className="flex-1 overflow-hidden min-h-0 flex flex-col">
             <div className={cn(
-              currentPage?.type === 'map' ? "w-full h-full" : "w-full max-w-[1700px] mx-auto h-full flex flex-col min-h-0",
-              !showSummary && currentPage?.type !== 'map' && "p-3 sm:p-5 md:p-8 lg:py-8 lg:px-20 xl:px-24 2xl:px-28"
+              "w-full max-w-[1700px] desk:max-w-[1900px] wide:max-w-none mx-auto h-full flex flex-col min-h-0",
+              !showSummary && "p-3 sm:p-5 md:p-7 lg:py-7 lg:px-10 xl:px-14 2xl:px-18 wide:lg:px-6 wide:xl:px-8 wide:2xl:px-10"
             )}>
               <AnimatePresence mode="wait">
                 <motion.div
@@ -660,125 +1214,123 @@ const AppContent = () => {
         </div>
       </main>
 
-      {/* Footer */}
-      {!showSummary && (
+      {/* Reader Navigation Dock */}
+      {!showSummary && !isFinalChallengePage && (
         <footer className={cn(
-          "relative z-50 h-11 sm:h-13 md:h-14 border-t px-2.5 sm:px-5 md:px-8 flex items-center justify-between transition-colors duration-500 shrink-0 gap-2",
+          "relative z-50 min-h-[52px] sm:min-h-14 px-2.5 sm:px-5 md:px-8 grid grid-cols-[1fr_auto_1fr] items-center gap-2 transition-colors duration-500 shrink-0",
           themeClasses.headerBg
         )}>
-          {/* Left: TOC button */}
-          <div className="flex items-center gap-2 relative shrink-0">
+          <div className="relative flex min-w-0 items-center justify-start">
             <button 
               onClick={() => setIsQuickTOCOpen(prev => !prev)}
-              className={cn(
-                "flex items-center gap-1.5 cursor-pointer group/page px-2 sm:px-2.5 py-1 rounded-lg border border-transparent transition-all duration-300",
-                "hover:bg-white/10 hover:border-gold/20 select-none active:scale-95"
-              )}
+              className="touch-target flex max-w-full items-center gap-2 rounded-xl px-2.5 text-parchment/80 transition-colors hover:bg-white/[0.08] hover:text-parchment"
               title={t('nav.tableOfContents')}
               aria-label={t('nav.tableOfContents')}
               aria-expanded={isQuickTOCOpen}
             >
-              <BookMarked className={cn(themeClasses.goldText, "w-3.5 h-3.5 sm:w-4 sm:h-4 stroke-[2] shrink-0")} />
-              <span className={cn(
-                "font-serif italic text-xs sm:text-sm font-medium transition-colors whitespace-nowrap flex items-center gap-1",
-                "text-parchment/80 group-hover/page:text-parchment"
-              )}>
-                {t('nav.page')} {formatNumber(currentPageIndex + 1)} {t('nav.of')} {formatNumber(totalPages)}
-                <ChevronUp className={cn("w-3 h-3 opacity-40 transition-transform duration-300 shrink-0", isQuickTOCOpen && "rotate-180")} />
+              <BookMarked className={cn(themeClasses.goldText, "h-4 w-4 shrink-0")} />
+              <span className="truncate font-display text-[12px] font-semibold sm:text-[13px] md:text-[14px]">
+                <span className="hidden sm:inline">{t('nav.page')} </span>
+                {formatNumber(currentPageIndex + 1)} / {formatNumber(totalPages)}
               </span>
+              <ChevronUp className={cn("h-3 w-3 shrink-0 opacity-45 transition-transform", isQuickTOCOpen && "rotate-180")} />
             </button>
 
-            {/* Quick Table of Contents Popover */}
             <AnimatePresence>
               {isQuickTOCOpen && (
                 <>
-                  {/* Backdrop to close click outside */}
-                  <div 
-                    className="fixed inset-0 z-40 bg-transparent" 
-                    onClick={() => setIsQuickTOCOpen(false)} 
+                  <button
+                    type="button"
+                    className="fixed inset-0 z-40 cursor-default"
+                    aria-label={language === 'ar' ? 'إغلاق الفهرس' : 'Close table of contents'}
+                    onClick={() => setIsQuickTOCOpen(false)}
                   />
                   <motion.div
-                    initial={{ opacity: 0, y: 15, scale: 0.95 }}
+                    initial={{ opacity: 0, y: 12, scale: 0.97 }}
                     animate={{ opacity: 1, y: 0, scale: 1 }}
-                    exit={{ opacity: 0, y: 15, scale: 0.95 }}
-                    transition={{ duration: 0.2, ease: "easeOut" }}
+                    exit={{ opacity: 0, y: 12, scale: 0.97 }}
+                    transition={{ duration: 0.18, ease: "easeOut" }}
                     className={cn(
-                      "absolute bottom-14 left-0 z-50 w-72 sm:w-80 md:w-96 rounded-2xl shadow-2xl border backdrop-blur-2xl p-3 sm:p-4 flex flex-col gap-3",
+                      "absolute bottom-[calc(100%+0.7rem)] z-50 w-[min(25rem,calc(100vw-1.5rem))] rounded-2xl border p-3 shadow-2xl backdrop-blur-2xl sm:p-4",
                       themeClasses.menuBg,
                       themeClasses.menuBorder,
-                      language === 'ar' ? "left-auto right-0 origin-bottom-right" : "origin-bottom-left"
+                      isRTL ? "right-0" : "left-0"
                     )}
                   >
-                    <div className="flex items-center justify-between border-b border-white/10 pb-2">
-                      <h4 className={cn("font-display text-xs md:text-sm uppercase tracking-wider font-semibold", themeClasses.goldText)}>
+                    <div className="mb-2 flex items-center justify-between gap-4 px-1">
+                      <h4 className={cn("font-display text-[12px] sm:text-[13px] font-semibold uppercase tracking-[0.14em]", themeClasses.goldText)}>
                         {t('nav.tableOfContents')}
                       </h4>
-                      <span 
-                        style={{ fontFamily: "'Poppins', sans-serif" }} 
-                        className="text-[11px] text-white/50 font-medium"
-                      >
-                        {formatNumber(totalPages)} {language === 'ar' ? "صفحات" : "pages"}
+                      <span className="font-display text-[11px] sm:text-[12px] text-white/50">
+                        {formatNumber(totalPages)} {language === 'ar' ? (totalPages === 2 ? 'صفحتان' : totalPages >= 3 && totalPages <= 10 ? 'صفحات' : 'صفحة') : "pages"}
                       </span>
                     </div>
 
-                    <div className="space-y-1.5 max-h-64 sm:max-h-72 overflow-y-auto custom-scrollbar pr-1.5 scroll-smooth">
+                    <div className="max-h-[min(58vh,24rem)] space-y-1 overflow-y-auto pe-1 custom-scrollbar">
                       {currentBook?.pages.map((page, idx) => {
                         const isActive = currentPageIndex === idx;
+                        const isStorySection = page.type === 'story' || page.type === 'map';
+                        const prevPage = idx > 0 ? currentBook.pages[idx - 1] : null;
+                        const prevIsStorySection = prevPage ? prevPage.type === 'story' || prevPage.type === 'map' : null;
+                        const sectionHeading = prevIsStorySection === isStorySection
+                          ? null
+                          : (isStorySection ? t('nav.tocStory') : t('nav.tocPractice'));
                         return (
+                          <React.Fragment key={page.id}>
+                          {sectionHeading && (
+                            <div
+                              role="presentation"
+                              className={cn(
+                                "flex items-center gap-3 px-1 pb-1 font-display text-[11px] font-semibold uppercase tracking-[0.16em]",
+                                idx === 0 ? "pt-0.5" : "pt-4",
+                                isStorySection ? "text-white/45" : themeClasses.goldText
+                              )}
+                            >
+                              <span>{sectionHeading}</span>
+                            </div>
+                          )}
                           <button
-                            key={page.id}
+                            type="button"
+                            aria-current={isActive ? 'page' : undefined}
                             onClick={() => {
                               setCurrentPageIndex(idx);
                               setIsQuickTOCOpen(false);
                             }}
                             className={cn(
-                              "w-full p-2 sm:p-2.5 rounded-xl text-left font-serif text-xs sm:text-[14px] flex items-center justify-between gap-2.5 transition-all",
-                              language === 'ar' && "text-right flex-row-reverse",
-                              isActive 
-                                ? "bg-gold/25 text-white font-semibold border border-gold/30" 
-                                : "hover:bg-white/5 text-parchment/70 hover:text-white border border-transparent"
+                              "flex min-h-11 w-full items-center gap-3 rounded-xl px-3 py-2 text-start transition-colors",
+                              isRTL && "text-right",
+                              isActive
+                                ? themeClasses.menuItemActive
+                                : "text-parchment/68 hover:bg-white/[0.06] hover:text-white"
                             )}
                           >
-                            <div className={cn("flex items-center gap-2 min-w-0", language === 'ar' && "flex-row-reverse")}>
-                              <span 
-                                style={{ fontFamily: "'Poppins', sans-serif" }}
-                                className={cn(
-                                  "text-[10px] sm:text-[11px] px-1.5 py-0.5 rounded-md min-w-[20px] text-center font-medium shrink-0",
-                                  isActive ? "bg-gold/40 text-white" : "bg-white/5 text-white/40"
-                                )}
-                              >
-                                {formatNumber(idx + 1)}
+                            <span
+                              className={cn(
+                                "w-8 shrink-0 text-center font-display text-[11px] sm:text-[12px] font-semibold",
+                                readPageSet.has(idx) && !isActive ? "text-emerald-300" : "opacity-65"
+                              )}
+                              aria-label={readPageSet.has(idx) ? (language === 'ar' ? 'مقروءة' : 'Read') : undefined}
+                            >
+                              {readPageSet.has(idx) && !isActive ? '✓' : page.type === 'map' ? <MapPin size={15} className="mx-auto" aria-label={t('map.label')} /> : formatNumber(idx + 1)}
+                            </span>
+                            <span className="min-w-0 flex-1 truncate font-display text-[13px] font-medium sm:text-[14px]">
+                              {page.title}
+                            </span>
+                            {allDone(page.exercises?.map(exercise => exercise.id)) && (
+                              <span className="shrink-0 rounded-full bg-emerald-500/15 px-1.5 py-0.5 font-display text-[11px] font-semibold text-emerald-300">
+                                {page.type === 'story' ? 'QC ✓' : '✓'}
                               </span>
-                              <span className="truncate">{page.title}</span>
-                            </div>
-                            
-                            {/* Page Type Badge/Indicator */}
-                            <div className="flex items-center gap-1 shrink-0">
-                              {(page.type === 'quiz' || page.type === 'vocabulary-match' || page.type === 'sequencing' || page.type === 'game') && (
-                                <span className="text-[10px] bg-emerald-500/10 text-emerald-400/90 border border-emerald-500/20 px-1.5 py-0.5 rounded font-display">
-                                  {language === 'ar' ? 'معرفة' : 'Kc'}
-                                </span>
-                              )}
-                              {page.type === 'exercises' && (
-                                <span className="text-[10px] bg-amber-500/10 text-amber-400/90 border border-amber-500/20 px-1.5 py-0.5 rounded font-display">
-                                  {language === 'ar' ? 'تمارين' : 'Ex'}
-                                </span>
-                              )}
-                              {page.type === 'glossary' && (
-                                <span className="text-[10px] bg-sky-500/10 text-sky-400/90 border border-sky-500/20 px-1.5 py-0.5 rounded font-display">
-                                  {language === 'ar' ? 'قاموس' : 'Gl'}
-                                </span>
-                              )}
-                              {page.type === 'final-challenge' && (
-                                <span className="text-[10px] bg-red-500/10 text-red-400/90 border border-red-500/20 px-1.5 py-0.5 rounded font-display">
-                                  {language === 'ar' ? 'تحدي' : 'Ch'}
-                                </span>
-                              )}
-                              {isActive && (
-                                <div className="w-1.5 h-1.5 rounded-full bg-gold animate-pulse shrink-0" />
-                              )}
-                            </div>
+                            )}
+                            {allDone(page.languageFocusExercises?.map(exercise => exercise.id)) && (
+                              <span className="shrink-0 rounded-full bg-emerald-500/15 px-1.5 py-0.5 font-display text-[11px] font-semibold text-emerald-300">
+                                LF ✓
+                              </span>
+                            )}
+                            {isActive && (
+                              <span className={cn("h-2 w-2 shrink-0 rounded-full", themeClasses.progressBar)} />
+                            )}
                           </button>
+                          </React.Fragment>
                         );
                       })}
                     </div>
@@ -788,198 +1340,309 @@ const AppContent = () => {
             </AnimatePresence>
           </div>
 
-          {/* Center: Integrated Responsive Navigation Controls */}
-          <div className="flex items-center gap-1.5 sm:gap-2.5 shrink-0">
+          <div className="relative flex items-center gap-2">
+            <AnimatePresence>
+              {isQuickReminderOpen && (
+                <motion.div
+                  initial={{ opacity: 0, y: 8, scale: 0.98 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={{ opacity: 0, y: 8, scale: 0.98 }}
+                  transition={{ duration: 0.18 }}
+                  role="dialog"
+                  aria-labelledby="quick-reminder-title"
+                  data-quick-reminder
+                  className="absolute bottom-[calc(100%+10px)] left-1/2 z-50 w-[min(300px,calc(100vw-24px))] -translate-x-1/2 rounded-panel bg-white p-4 text-start shadow-[0_18px_48px_rgba(0,0,0,0.28)] ring-1 ring-black/10"
+                >
+                  <p id="quick-reminder-title" className="font-display text-[14px] font-semibold text-wood">{t('nav.quickChallengeFirst')}</p>
+                  <p className="mt-1 font-serif text-[13px] leading-snug text-wood/70">{t('nav.quickChallengeFirstHint')}</p>
+                  <div className="mt-3 flex flex-wrap gap-2">
+                    <button
+                      type="button"
+                      onClick={handleGoToQuickChallenge}
+                      className="inline-flex min-h-10 flex-1 items-center justify-center rounded-full bg-brand-700 px-4 font-display text-[12px] font-semibold text-white transition-colors hover:bg-brand-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2"
+                    >
+                      {t('nav.goToQuickChallenge')}
+                    </button>
+                    <button
+                      type="button"
+                      onClick={advancePage}
+                      className="inline-flex min-h-10 items-center justify-center rounded-full px-4 font-display text-[12px] font-semibold text-wood/70 ring-1 ring-black/10 transition-colors hover:bg-black/[0.04] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
+                    >
+                      {t('nav.skipForNow')}
+                    </button>
+                  </div>
+                  <span aria-hidden="true" className="absolute left-1/2 top-full h-3 w-3 -translate-x-1/2 -translate-y-1/2 rotate-45 bg-white ring-1 ring-black/10" />
+                </motion.div>
+              )}
+            </AnimatePresence>
             <button 
               onClick={handlePrevPage}
               disabled={currentPageIndex === 0}
               className={cn(
-                "flex items-center gap-1 px-2 sm:px-3 py-1 rounded-lg border text-xs font-bold transition-all disabled:opacity-25 disabled:cursor-not-allowed shadow-sm active:scale-95 cursor-pointer",
+                "ui-control disabled:cursor-not-allowed disabled:opacity-25 active:scale-95",
                 themeClasses.buttonSec
               )}
               title={t('nav.back')}
+              aria-label={t('nav.back')}
             >
-              <ChevronLeft className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-              <span className="hidden sm:inline">{t('nav.back')}</span>
+              <ChevronLeft className={cn("h-5 w-5", isRTL && "rotate-180")} />
             </button>
 
             <button 
               onClick={handleNextPage}
               disabled={currentPageIndex === totalPages - 1}
               className={cn(
-                "flex items-center gap-1 px-2.5 sm:px-3 py-1 rounded-lg border text-xs font-bold transition-all disabled:opacity-25 disabled:cursor-not-allowed shadow-md active:scale-95 cursor-pointer",
+                "ui-control disabled:cursor-not-allowed disabled:opacity-25 active:scale-95",
                 themeClasses.navButton
               )}
               title={t('nav.next')}
+              aria-label={t('nav.next')}
             >
-              <span className="hidden sm:inline">{t('nav.next')}</span>
-              <ChevronRight className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+              <ChevronRight className={cn("h-5 w-5", isRTL && "rotate-180")} />
             </button>
           </div>
 
-          {/* Right: Quranic Quote or Collection Title */}
-          <div className="hidden md:flex items-center gap-3 shrink-0">
-            {/* Quranic Quote - Yusuf 111 - Shown on 2XL+ */}
-            <div className="hidden 2xl:flex flex-col items-center">
-              <div className="flex items-center gap-2">
-                <p className={cn(
-                  "tracking-wide drop-shadow-sm text-center font-medium text-xs",
-                  themeClasses.goldText,
-                  language === 'ar' ? "text-sm font-bold" : "font-serif italic text-xs"
-                )} dir={language === 'ar' ? "rtl" : "ltr"}>
-                  {language === 'ar' 
-                    ? "لَقَدْ كَانَ فِي قَصَصِهِمْ عِبْرَةٌ لِأُولِي الْأَلْبَابِ"
-                    : "\"In their stories is a lesson for those who have intelligence.\""}
-                </p>
-              </div>
-            </div>
-
-            <p className="font-display text-[10px] sm:text-[11px] tracking-[0.15em] text-white/70 font-semibold uppercase truncate max-w-[120px] lg:max-w-none">
+          <div className="hidden min-w-0 items-center justify-end md:flex">
+            <span className="truncate font-display text-[11px] font-semibold uppercase tracking-[0.14em] text-parchment/55 lg:text-[12px]">
               {currentCollection === 'history' ? t('home.collection2') : currentCollection === 'turkish' ? t('home.collection3') : t('home.collection1')}
-            </p>
+            </span>
           </div>
         </footer>
       )}
 
-      {/* Side Menu */}
+      {/* Reader Menu */}
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className={cn("fixed inset-0 backdrop-blur-sm z-[200]", themeClasses.menuOverlayBg)}
+            className={cn("fixed inset-0 z-[200] backdrop-blur-sm", themeClasses.menuOverlayBg)}
             onClick={() => setIsMenuOpen(false)}
           >
-            <motion.div 
-              initial={{ x: -300 }}
+            <motion.aside
+              initial={{ x: isRTL ? 340 : -340 }}
               animate={{ x: 0 }}
-              exit={{ x: -300 }}
-              className={cn("w-80 h-full backdrop-blur-2xl shadow-2xl p-8 flex flex-col border-r", themeClasses.menuBg, themeClasses.menuBorder)}
+              exit={{ x: isRTL ? 340 : -340 }}
+              transition={{ duration: 0.24, ease: [0.22, 1, 0.36, 1] }}
+              className={cn(
+                "flex h-full w-[min(22rem,88vw)] flex-col border-r p-5 shadow-2xl backdrop-blur-2xl sm:p-7",
+                isRTL && "ml-auto border-l border-r-0",
+                themeClasses.menuBg,
+                themeClasses.menuBorder
+              )}
               onClick={e => e.stopPropagation()}
+              aria-label={t('nav.mainMenu')}
             >
-              <div className="flex justify-between items-center mb-12">
-                <div className="flex items-center gap-3">
-                  <div className={cn("w-10 h-10 rounded-xl border flex items-center justify-center overflow-hidden p-1.5", themeClasses.menuLogoContainer)}>
-                    <img 
-                      src="https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/home_icon.png?alt=media&token=d8075082-0856-42d8-bc20-db4d7ce86c99"
-                      alt=""
-                      className="w-full h-full object-contain"
-                      referrerPolicy="no-referrer"
-                    />
-                  </div>
-                  <h3 className="font-display text-xl text-parchment tracking-tight">
+              <div className="flex items-center justify-between gap-4">
+                <div className="min-w-0">
+                  <p className={cn("font-display text-[11px] sm:text-[12px] font-semibold uppercase tracking-[0.16em]", themeClasses.menuAccentText)}>
                     {t('nav.mainMenu')}
+                  </p>
+                  <h3 className="mt-1 truncate font-display text-lg font-semibold text-parchment">
+                    {currentBookTitle}
                   </h3>
+                  <p className="mt-1 text-[13px] text-parchment/55">
+                    {t('nav.level')} {currentLevel} · {t('nav.page')} {formatNumber(currentPageIndex + 1)} / {formatNumber(totalPages)}
+                  </p>
                 </div>
-                <button onClick={() => setIsMenuOpen(false)} className={cn("transition-colors", themeClasses.menuCloseButton)} aria-label="Close menu">
-                  <X size={24} />
+                <button
+                  type="button"
+                  onClick={() => setIsMenuOpen(false)}
+                  className={cn("touch-target flex items-center justify-center rounded-full transition-colors hover:bg-white/[0.06]", themeClasses.menuCloseButton)}
+                  aria-label="Close menu"
+                >
+                  <X size={22} />
                 </button>
               </div>
 
-              <div className="lg:hidden mb-8">
-                <LanguageToggle />
-              </div>
-
-              <div className="space-y-2 flex-1">
+              <div className="mt-7 space-y-2">
                 <button 
                   onClick={handleReturnToLibrary}
-                  className={cn("w-full p-4 rounded-xl flex items-center gap-4 text-parchment transition-all group", themeClasses.menuHoverBg)}
+                  className={cn("touch-target flex w-full items-center gap-4 rounded-xl px-4 text-parchment transition-colors", themeClasses.menuHoverBg)}
                 >
-                  <Home size={20} className={cn("group-hover:scale-110 transition-transform", themeClasses.menuAccentText)} />
-                  <span className="font-serif font-bold">{t('nav.libraryHome')}</span>
+                  <Home size={21} className={themeClasses.menuAccentText} />
+                  <span className="font-display text-[14px] sm:text-[15px] font-semibold">{t('nav.libraryHome')}</span>
                 </button>
-                
-                <div className="py-4">
-                  <h4 className={cn("font-display text-[10px] uppercase tracking-widest mb-4 px-4", themeClasses.menuSectionHeader)}>
-                    {t('nav.guidesResources')}
-                  </h4>
-                  <button 
+              </div>
+
+              <div className="mt-7">
+                <h4 className={cn("px-4 font-display text-[11px] sm:text-[12px] font-semibold uppercase tracking-[0.16em]", themeClasses.menuSectionHeader)}>
+                  {t('nav.guidesResources')}
+                </h4>
+
+                <div className="mt-2 space-y-1">
+                  <button
+                    type="button"
                     onClick={() => {
-                      setIsTeacherGuideOpen(true);
                       setIsMenuOpen(false);
+                      setIsHowToUseOpen(true);
                     }}
-                    className={cn("w-full p-4 rounded-xl flex items-center gap-4 text-parchment transition-all group", themeClasses.menuHoverBg)}
+                    className={cn("touch-target flex w-full items-center gap-4 rounded-xl px-4 text-parchment transition-colors", themeClasses.menuHoverBg)}
+                    data-how-to-use-link
                   >
-                    <GraduationCap size={20} className={cn("group-hover:scale-110 transition-transform", themeClasses.menuAccentText)} />
-                    <span className="font-serif font-bold">{t('nav.teacherGuide')}</span>
+                    <HelpCircle size={21} className={themeClasses.menuAccentText} />
+                    <span className="font-display text-[14px] sm:text-[15px] font-semibold">{language === 'ar' ? 'كَيْفَ تَسْتَخْدِمُ هٰذَا الكِتَابَ' : 'How to use this book'}</span>
                   </button>
-                  <button 
+
+                  <button
+                    type="button"
                     onClick={() => {
-                      setIsSelfStudyOpen(true);
                       setIsMenuOpen(false);
+                      setIsUsageGuideOpen(true);
                     }}
-                    className={cn("w-full p-4 rounded-xl flex items-center gap-4 text-parchment transition-all group", themeClasses.menuHoverBg)}
+                    className={cn("touch-target flex w-full items-center gap-4 rounded-xl px-4 text-parchment transition-colors", themeClasses.menuHoverBg)}
+                    data-usage-guide-link
                   >
-                    <ClipboardList size={20} className={cn("group-hover:scale-110 transition-transform", themeClasses.menuAccentText)} />
-                    <span className="font-serif font-bold">{t('nav.selfStudyGuide')}</span>
+                    <FileText size={21} className={themeClasses.menuAccentText} />
+                    <span className="font-display text-[14px] sm:text-[15px] font-semibold">{USAGE_GUIDES[role ?? 'student'][language === 'ar' ? 'ar' : 'en'].title}</span>
                   </button>
-                  <button 
+
+                  <button
+                    type="button"
                     onClick={() => {
-                      currentBook && generateBookPDF(currentBook);
                       setIsMenuOpen(false);
+                      setIsMyWordsOpen(true);
                     }}
-                    className={cn("w-full p-4 rounded-xl flex items-center gap-4 text-parchment transition-all group", themeClasses.menuHoverBg)}
+                    className={cn("touch-target flex w-full items-center gap-4 rounded-xl px-4 text-parchment transition-colors", themeClasses.menuHoverBg)}
+                    data-my-words-link
                   >
-                    <Download size={20} className={cn("group-hover:scale-110 transition-transform", themeClasses.menuAccentText)} />
-                    <span className="font-serif font-bold">{t('nav.downloadPdf')}</span>
+                    <SECTION_ICONS.myWords.icon size={21} className={themeClasses.menuAccentText} />
+                    <span className="font-display text-[14px] sm:text-[15px] font-semibold">{SECTION_ICONS.myWords[language === 'ar' ? 'ar' : 'en']}</span>
                   </button>
+
+                  {isTeacher ? (
+                    <button 
+                      onClick={openTeacherGuide}
+                      className={cn("touch-target flex w-full items-center gap-4 rounded-xl px-4 text-parchment transition-colors", themeClasses.menuHoverBg)}
+                    >
+                      <SECTION_ICONS.teacherGuide.icon size={21} className={themeClasses.menuAccentText} />
+                      <span className="font-display text-[14px] sm:text-[15px] font-semibold">{t('nav.teacherGuide')}</span>
+                    </button>
+                  ) : (
+                    <button 
+                      onClick={openSelfStudyGuide}
+                      className={cn("touch-target flex w-full items-center gap-4 rounded-xl px-4 text-parchment transition-colors", themeClasses.menuHoverBg)}
+                    >
+                      <SECTION_ICONS.selfStudy.icon size={21} className={themeClasses.menuAccentText} />
+                      <span className="font-display text-[14px] sm:text-[15px] font-semibold">{t('nav.selfStudyGuide')}</span>
+                    </button>
+                  )}
+
+                  {canSaveOffline && (
+                    <button
+                      type="button"
+                      onClick={handleSaveOffline}
+                      disabled={offlineSaveState === 'saving' || offlineSaveState === 'saved'}
+                      aria-live="polite"
+                      data-save-offline={offlineSaveState}
+                      className={cn("touch-target flex w-full items-center gap-4 rounded-xl px-4 text-parchment transition-colors disabled:opacity-80", themeClasses.menuHoverBg)}
+                    >
+                      {offlineSaveState === 'saved'
+                        ? <CheckCircle size={21} className="text-emerald-400" />
+                        : offlineSaveState === 'saving'
+                          ? <LoaderCircle size={21} className={cn('animate-spin', themeClasses.menuAccentText)} />
+                          : <Layers size={21} className={themeClasses.menuAccentText} />}
+                      <span className="font-display text-[14px] sm:text-[15px] font-semibold">
+                        {offlineSaveState === 'saved' ? t('nav.savedOffline')
+                          : offlineSaveState === 'saving' ? t('nav.savingOffline')
+                          : offlineSaveState === 'failed' ? t('nav.saveOfflineFailed')
+                          : t('nav.saveOffline')}
+                      </span>
+                    </button>
+                  )}
+                  {canSaveOffline && offlineBookSizeMb && (
+                    <p className="px-4 pb-1 pl-[3.3rem] rtl:pl-4 rtl:pr-[3.3rem] text-[12px] sm:text-[13px] leading-snug text-parchment/70" data-save-offline-hint>
+                      {t(offlineBookHasAudio ? 'nav.saveOfflineHint' : 'nav.saveOfflineHintImages').replace('{size}', formatNumber(offlineBookSizeMb))}
+                    </p>
+                  )}
                 </div>
 
-                <div className="py-4">
-                  <h4 className={cn("font-display text-[10px] uppercase tracking-widest mb-4 px-4", themeClasses.menuSectionHeader)}>
-                    {t('nav.tableOfContents')}
-                  </h4>
-                  <div className="space-y-1 max-h-64 overflow-y-auto custom-scrollbar pr-2">
-                    {currentBook?.pages.map((page, idx) => (
-                      <button 
-                        key={page.id}
-                        onClick={() => {
-                          setCurrentPageIndex(idx);
-                          setIsMenuOpen(false);
-                        }}
-                        className={cn(
-                          "w-full p-3 rounded-lg text-left font-serif text-sm flex items-center gap-3 transition-all",
-                          isRTL && "text-right",
-                          currentPageIndex === idx ? themeClasses.menuItemActive : themeClasses.menuItemHover
-                        )}
-                      >
-                        <span className="font-display text-[10px] opacity-40">{formatNumber(idx + 1)}</span>
-                        <span className="truncate">{page.title}</span>
-                      </button>
-                    ))}
-                  </div>
-                </div>
+                {selectedProphetId && currentLevel && !isHiddenStory(selectedProphetId) && (
+                  <>
+                    <h4 className={cn("mt-6 px-4 font-display text-[11px] sm:text-[12px] font-semibold uppercase tracking-[0.16em]", themeClasses.menuSectionHeader)}>
+                      {BOOK_PDF_LABELS[language === 'ar' ? 'ar' : 'en'].heading}
+                    </h4>
+                    <div className="mt-2 space-y-1" data-book-pdfs>
+                      {(['story', isTeacher ? 'teachers-book' : 'self-study-guide'] as const).map(kind => (
+                        <a
+                          key={kind}
+                          href={bookPdfUrl(selectedProphetId, currentLevel, language, kind)}
+                          target="_blank"
+                          rel="noopener"
+                          onClick={() => setIsMenuOpen(false)}
+                          className={cn("touch-target flex w-full items-center gap-4 rounded-xl px-4 text-parchment transition-colors", themeClasses.menuHoverBg)}
+                          data-book-pdf={kind}
+                        >
+                          <Download size={21} className={themeClasses.menuAccentText} />
+                          <span className="font-display text-[14px] sm:text-[15px] font-semibold">{BOOK_PDF_LABELS[language === 'ar' ? 'ar' : 'en'][kind]}</span>
+                        </a>
+                      ))}
+                      <p className="px-4 pt-1 text-[12px] text-parchment/50">{BOOK_PDF_LABELS[language === 'ar' ? 'ar' : 'en'].hint}</p>
+                    </div>
+                  </>
+                )}
               </div>
-            </motion.div>
+
+              <div className="mt-auto pt-6">
+                <button
+                  type="button"
+                  onClick={() => {
+                    setIsMenuOpen(false);
+                    setIsAboutOpen(true);
+                  }}
+                  className={cn("touch-target flex w-full items-center gap-4 rounded-xl px-4 text-parchment/80 transition-colors", themeClasses.menuHoverBg)}
+                  data-about-link
+                >
+                  <Info size={21} className={themeClasses.menuAccentText} />
+                  <span className="font-display text-[14px] sm:text-[15px] font-semibold">{t('nav.aboutSources')}</span>
+                </button>
+              </div>
+
+            </motion.aside>
           </motion.div>
         )}
       </AnimatePresence>
 
+      <AboutPage isOpen={isAboutOpen} onClose={() => setIsAboutOpen(false)} />
+      <HowToUse isOpen={isHowToUseOpen} onClose={() => setIsHowToUseOpen(false)} isTeacher={isTeacher} />
+      <UsageGuide isOpen={isUsageGuideOpen} onClose={() => setIsUsageGuideOpen(false)} />
+      <MyWordsPanel isOpen={isMyWordsOpen} onClose={() => setIsMyWordsOpen(false)} />
+
       {/* Teacher Guide Overlay */}
-      <TeacherGuide 
-        isOpen={isTeacherGuideOpen} 
-        onClose={() => setIsTeacherGuideOpen(false)} 
-        content={currentBook?.teacherGuide || []}
-        pages={currentBook?.pages || []}
-        metadata={currentBook?.teacherGuideMetadata}
-        bookId={currentBook?.id}
-        level={currentLevel || undefined}
-        collectionId={currentCollection || 'prophets'}
-      />
+      {isTeacher && (
+        <Suspense fallback={null}>
+          <TeacherGuide 
+            isOpen={isTeacherGuideOpen} 
+            onClose={() => setIsTeacherGuideOpen(false)} 
+            content={currentTeacherGuide?.content || []}
+            pages={currentBook?.pages || []}
+            bookTitle={currentBookTitle}
+            metadata={currentTeacherGuide?.metadata}
+            bookId={currentBook?.id}
+            level={currentLevel || undefined}
+            collectionId={currentCollection || 'prophets'}
+            pdfUrl={selectedProphetId && currentLevel && !isHiddenStory(selectedProphetId) ? bookPdfUrl(selectedProphetId, currentLevel, language, 'teachers-book') : undefined}
+          />
+        </Suspense>
+      )}
 
       {/* Self-Study Guide Overlay (Student Guide) */}
       <SelfStudyGuide 
         isOpen={isSelfStudyOpen} 
         onClose={() => setIsSelfStudyOpen(false)} 
-        content={currentBook?.selfStudyGuide || []}
-        studentGuideText={currentBook?.studentGuideText}
-        studentGuideSections={currentBook?.studentGuideSections}
-        metadata={currentBook?.studentGuideMetadata}
+        content={currentSelfStudyGuide?.content || []}
+        pages={currentBook?.pages || []}
+        bookTitle={currentBookTitle}
+        studentGuideText={currentSelfStudyGuide?.text}
+        studentGuideSections={currentSelfStudyGuide?.sections}
+        metadata={currentSelfStudyGuide?.metadata}
         title={t('nav.studentSelfStudyGuide')}
         subtitle={t('nav.reflectionPractice')}
         footerText={t('nav.interactiveEbookSeries')}
         collectionId={currentCollection || 'prophets'}
+        level={currentLevel}
+        pdfUrl={selectedProphetId && currentLevel && !isHiddenStory(selectedProphetId) ? bookPdfUrl(selectedProphetId, currentLevel, language, 'self-study-guide') : undefined}
       />
 
       {/* Background PDF Generation Notification Card */}
@@ -999,7 +1662,7 @@ const AppContent = () => {
               </svg>
             </div>
             <div className="flex-1 min-w-0">
-              <h5 className="font-display font-medium text-[10px] uppercase tracking-widest text-amber-400">Background Download</h5>
+              <h5 className="font-display font-medium text-[11px] uppercase tracking-widest text-amber-400">Background Download</h5>
               <p className="font-serif text-[13px] text-slate-200 truncate mt-0.5" title={name}>
                 Generating PDF for {name}...
               </p>

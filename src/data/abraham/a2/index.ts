@@ -1,5 +1,11 @@
 import type { BookData, PageData } from '../../../types';
+import { withPlacesLayer } from '../../../features/historical-entities';
 import { applyHistoricalEntitiesToPage } from '../../../features/historical-entities';
+import { applyChapterExtras } from '../../../lib/chapterExtras';
+import { abrahamA2ChapterExtrasEn } from './en/chapterExtras';
+import { abrahamA2GroupTasksEn } from './en/groupTasks';
+import { abrahamA2ChapterExtrasAr } from './ar/chapterExtras';
+import { abrahamA2GroupTasksAr } from './ar/groupTasks';
 import { abrahamA2PagesEn } from './en/pages';
 import { abrahamA2PagesAr } from './ar/pages';
 import { abrahamA2FinalChallengeExercisesPolished, abrahamA2KnowledgeCheckExercisesPolished, abrahamA2QuickChallengesPolished, abrahamA2VocabularyChallengePairsPolished, abrahamA2LanguageReviewExercises } from './en/exercises';
@@ -10,14 +16,39 @@ import { abrahamA2LanguageFocusExercisesPart7, abrahamA2LanguageFocusExercisesPa
 import { abrahamA2LanguageFocusExercisesAr } from './ar/languageFocus';
 import { abrahamA2LanguageFocusExercisesArPart2, abrahamA2LanguageFocusExercisesArPart3, abrahamA2LanguageFocusExercisesArPart4, abrahamA2LanguageFocusExercisesArPart5, abrahamA2LanguageFocusExercisesArPart6 } from './ar/languageFocus2';
 import { abrahamA2LanguageFocusExercisesArPart7, abrahamA2LanguageFocusExercisesArPart8, abrahamA2LanguageFocusExercisesArPart9, abrahamA2LanguageFocusExercisesArPart10, abrahamA2LanguageFocusExercisesArPart11 } from './ar/languageFocus3';
-import { abrahamA2TeacherGuideEn, abrahamA2TeacherGuideMetadataEn } from './en/teacherGuide';
-import { abrahamA2TeacherGuideAr, abrahamA2TeacherGuideMetadataAr } from './ar/teacherGuide';
-import { abrahamA2SelfStudyGuideEn, abrahamA2StudentGuideSectionsPreview, abrahamA2StudentGuideMetadataPreview, abrahamA2StudentGuideTextPreview } from './en/selfStudyGuide';
-import { abrahamA2SelfStudyGuideAr, abrahamA2StudentGuideSectionsPreviewAr, abrahamA2StudentGuideMetadataPreviewAr, abrahamA2StudentGuideTextPreviewAr } from './ar/selfStudyGuide';
+import { buildStoryMap } from '../../../features/story-maps/buildStoryMap';
+import { abrahamA2StoryMapLayout } from './storyMap';
+import { abrahamA2StoryMapCopyEn } from './en/storyMap';
+import { abrahamA2StoryMapCopyAr } from './ar/storyMap';
 
 const STORY_IDS = new Set(Array.from({ length: 14 }, (_, index) => index + 1));
 
-const buildEnglishPages = (): PageData[] => abrahamA2PagesEn.map(sourcePage => {
+// Interactive map page, placed after the last chapter: the story is read without a break, then the whole journey is seen on the map.
+const MAP_PAGE_ID = 101;
+const MAP_AFTER_CHAPTER = 14;
+
+const withMapPage = (pages: PageData[], mapPage: PageData): PageData[] =>
+  pages.flatMap(page => (page.id === MAP_AFTER_CHAPTER ? [page, mapPage] : [page]));
+
+const mapPageEn: PageData = {
+  id: MAP_PAGE_ID,
+  type: 'map',
+  title: 'Abraham’s Journey',
+  subtitle: 'Map · Chapters 1–14',
+  content: '',
+  map: buildStoryMap(abrahamA2StoryMapLayout, abrahamA2StoryMapCopyEn, 'Abraham A2 EN'),
+};
+
+const mapPageAr: PageData = {
+  id: MAP_PAGE_ID,
+  type: 'map',
+  title: 'رِحْلَةُ إِبْراهيمَ عَلَيْهِ السَّلامُ',
+  subtitle: 'خَريطَة · الفُصولُ مِنْ 1 إِلى 14',
+  content: '',
+  map: buildStoryMap(abrahamA2StoryMapLayout, abrahamA2StoryMapCopyAr, 'Abraham A2 AR'),
+};
+
+const buildEnglishPages = (): PageData[] => withMapPage(abrahamA2PagesEn.map(sourcePage => {
   const page = applyHistoricalEntitiesToPage(sourcePage, 'abraham-a2', 'en');
   if (STORY_IDS.has(page.id)) {
     const languageFocusExercises = abrahamA2LanguageFocusExercises[page.id] ?? abrahamA2LanguageFocusExercisesPart2[page.id] ?? abrahamA2LanguageFocusExercisesPart3[page.id] ?? abrahamA2LanguageFocusExercisesPart4[page.id] ?? abrahamA2LanguageFocusExercisesPart5[page.id] ?? abrahamA2LanguageFocusExercisesPart6[page.id] ?? abrahamA2LanguageFocusExercisesPart7[page.id] ?? abrahamA2LanguageFocusExercisesPart8[page.id] ?? abrahamA2LanguageFocusExercisesPart9[page.id] ?? abrahamA2LanguageFocusExercisesPart10[page.id] ?? abrahamA2LanguageFocusExercisesPart11[page.id];
@@ -28,9 +59,9 @@ const buildEnglishPages = (): PageData[] => abrahamA2PagesEn.map(sourcePage => {
   if (page.id === 17) return { ...page, title: 'Language Review', content: 'Review and use the grammar patterns and language functions from all fourteen chapters.', exercises: abrahamA2LanguageReviewExercises };
   if (page.id === 20) return { ...page, exercises: abrahamA2FinalChallengeExercisesPolished };
   return page;
-});
+}), mapPageEn);
 
-const buildArabicPages = (): PageData[] => abrahamA2PagesAr.map(sourcePage => {
+const buildArabicPages = (): PageData[] => withMapPage(abrahamA2PagesAr.map(sourcePage => {
   const page = applyHistoricalEntitiesToPage(sourcePage, 'abraham-a2', 'ar');
   if (STORY_IDS.has(page.id)) {
     const languageFocusExercises = abrahamA2LanguageFocusExercisesAr[page.id] ?? abrahamA2LanguageFocusExercisesArPart2[page.id] ?? abrahamA2LanguageFocusExercisesArPart3[page.id] ?? abrahamA2LanguageFocusExercisesArPart4[page.id] ?? abrahamA2LanguageFocusExercisesArPart5[page.id] ?? abrahamA2LanguageFocusExercisesArPart6[page.id] ?? abrahamA2LanguageFocusExercisesArPart7[page.id] ?? abrahamA2LanguageFocusExercisesArPart8[page.id] ?? abrahamA2LanguageFocusExercisesArPart9[page.id] ?? abrahamA2LanguageFocusExercisesArPart10[page.id] ?? abrahamA2LanguageFocusExercisesArPart11[page.id];
@@ -41,18 +72,18 @@ const buildArabicPages = (): PageData[] => abrahamA2PagesAr.map(sourcePage => {
   if (page.id === 17) return { ...page, title: 'مراجعة اللغة', content: 'راجع واستعمل تراكيب القواعد والوظائف اللغوية التي تعلمتها في الفصول الأربعة عشر.', exercises: abrahamA2LanguageReviewExercisesAr };
   if (page.id === 20) return { ...page, exercises: abrahamA2FinalChallengeExercisesArPolished };
   return page;
-});
+}), mapPageAr);
 
 export const abrahamA2BookDataEn: BookData = {
   id: 'a2-abraham-en', title: 'Stories of the Prophets: Abraham (A2)', level: 'A2', baseFontSize: 13,
-  pages: buildEnglishPages(), teacherGuide: abrahamA2TeacherGuideEn, teacherGuideMetadata: abrahamA2TeacherGuideMetadataEn,
-  selfStudyGuide: abrahamA2SelfStudyGuideEn, studentGuideSections: abrahamA2StudentGuideSectionsPreview, studentGuideMetadata: abrahamA2StudentGuideMetadataPreview, studentGuideText: abrahamA2StudentGuideTextPreview,
+  pages: applyChapterExtras(withPlacesLayer(buildEnglishPages(), 'abraham-a2', 'en'), { ...abrahamA2ChapterExtrasEn, groupTasks: abrahamA2GroupTasksEn }), teacherGuide: [],
+  selfStudyGuide: [],
 };
 
 export const abrahamA2BookDataAr: BookData = {
-  id: 'a2-abraham-ar', title: 'قصص الأنبياء: إبراهيم (عليه السلام) (A2)', level: 'A2', baseFontSize: 14,
-  pages: buildArabicPages(), teacherGuide: abrahamA2TeacherGuideAr, teacherGuideMetadata: abrahamA2TeacherGuideMetadataAr,
-  selfStudyGuide: abrahamA2SelfStudyGuideAr, studentGuideSections: abrahamA2StudentGuideSectionsPreviewAr, studentGuideMetadata: abrahamA2StudentGuideMetadataPreviewAr, studentGuideText: abrahamA2StudentGuideTextPreviewAr,
+  id: 'a2-abraham-ar', title: 'قصص الأنبياء: إبراهيم عليه السلام (A2)', level: 'A2', baseFontSize: 14,
+  pages: applyChapterExtras(withPlacesLayer(buildArabicPages(), 'abraham-a2', 'ar'), { ...abrahamA2ChapterExtrasAr, groupTasks: abrahamA2GroupTasksAr }), teacherGuide: [],
+  selfStudyGuide: [],
 };
 
 export const abrahamA2BookData = abrahamA2BookDataEn;

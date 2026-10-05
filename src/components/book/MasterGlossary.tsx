@@ -7,14 +7,13 @@ import {
   X,
   RotateCcw,
   BookOpenCheck,
-  BrainCircuit,
-  Target,
   Clock,
   CheckCircle,
   ChevronLeft,
   ChevronRight,
 } from '../ui/icons';
 import { PageData, BookData, VocabularyItem } from '../../types';
+import { SECTION_ICONS } from '../../lib/sectionIcons';
 import { cn } from '../../lib/utils';
 import { useLanguage } from '../../contexts/LanguageContext';
 
@@ -62,7 +61,11 @@ const pickPreferredVoice = (lang: string) => {
     ?? candidates[0];
 };
 
-export const MasterGlossary: React.FC<MasterGlossaryProps> = ({ bookData, page, collectionId }) => {
+export const MasterGlossary: React.FC<MasterGlossaryProps> = ({
+  bookData,
+  page,
+  collectionId,
+}) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [playingWord, setPlayingWord] = useState<string | null>(null);
   const [knownMap, setKnownMap] = useState<Record<string, KnownState>>({});
@@ -80,7 +83,7 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({ bookData, page, 
     if (isRTL) {
       return isA2
         ? {
-            eyebrow: 'كلماتي',
+            eyebrow: 'المعجم الرئيسي',
             subtitle: 'تعلّم كلمات القصة واختر الكلمات التي تريد أن تتدرّب عليها مرة أخرى.',
             progressTitle: 'تقدّمي',
             progressHint: 'يوضح هذا الكلمات التي تعرفها الآن.',
@@ -112,8 +115,8 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({ bookData, page, 
             ofLabel: 'من',
           }
         : {
-            eyebrow: 'مركز المفردات',
-            subtitle: 'راجِعْ الكلمات، قيِّمْ ثقتك، وحدِّدْ ما يحتاج إلى مزيد من التدرّب.',
+            eyebrow: 'المعجم الرئيسي',
+            subtitle: 'راجِعِ الكلمات، وقيِّمْ ثقتك، وحدِّدْ ما يحتاج إلى مزيد من التدرّب.',
             progressTitle: 'خريطة الثقة',
             progressHint: 'يعكس هذا المؤشر تقييمك الذاتي الحالي للكلمات.',
             total: 'كل الكلمات',
@@ -147,7 +150,7 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({ bookData, page, 
 
     return isA2
       ? {
-          eyebrow: 'My Words',
+          eyebrow: 'Story words',
           subtitle: 'Learn the words from the story and choose the words you want to practise again.',
           progressTitle: 'My Progress',
           progressHint: 'This shows the words you know now.',
@@ -212,68 +215,24 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({ bookData, page, 
         };
   }, [isRTL, bookData.level]);
 
-  const colTheme = useMemo(() => {
-    if (collectionId === 'history') {
-      return {
-        brand600: 'bg-emerald-600',
-        brand700: 'bg-emerald-700',
-        brandText: 'text-emerald-700',
-        brandTextStrong: 'text-emerald-950',
-        brandSoft: 'bg-emerald-50',
-        brandSoftStrong: 'bg-emerald-100',
-        border: 'border-emerald-100',
-        borderStrong: 'border-emerald-200',
-        hoverBorder: 'hover:border-emerald-300',
-        progressTrack: 'bg-emerald-100',
-        progressFill: 'bg-emerald-500',
-        audio: 'bg-emerald-100 text-emerald-700 hover:bg-emerald-200',
-        audioPlaying: 'bg-emerald-600 text-white',
-        hero: 'from-emerald-50/95 via-white/80 to-teal-50/70',
-        heroGlow: 'bg-emerald-300/20',
-        accentBorder: 'border-emerald-200/70',
-      };
-    }
-
-    if (collectionId === 'turkish') {
-      return {
-        brand600: 'bg-sky-700',
-        brand700: 'bg-sky-800',
-        brandText: 'text-sky-700',
-        brandTextStrong: 'text-sky-950',
-        brandSoft: 'bg-sky-50',
-        brandSoftStrong: 'bg-sky-100',
-        border: 'border-sky-100',
-        borderStrong: 'border-sky-200',
-        hoverBorder: 'hover:border-sky-300',
-        progressTrack: 'bg-sky-100',
-        progressFill: 'bg-sky-600',
-        audio: 'bg-sky-100 text-sky-700 hover:bg-sky-200',
-        audioPlaying: 'bg-sky-700 text-white',
-        hero: 'from-sky-50/95 via-white/80 to-cyan-50/70',
-        heroGlow: 'bg-sky-300/20',
-        accentBorder: 'border-sky-200/70',
-      };
-    }
-
-    return {
-      brand600: 'bg-amber-600',
-      brand700: 'bg-amber-700',
-      brandText: 'text-amber-700',
-      brandTextStrong: 'text-amber-950',
-      brandSoft: 'bg-amber-50',
-      brandSoftStrong: 'bg-amber-100',
-      border: 'border-amber-100',
-      borderStrong: 'border-amber-200',
-      hoverBorder: 'hover:border-amber-300',
-      progressTrack: 'bg-amber-100',
-      progressFill: 'bg-amber-500',
-      audio: 'bg-amber-100 text-amber-700 hover:bg-amber-200',
-      audioPlaying: 'bg-amber-600 text-white',
-      hero: 'from-amber-50/95 via-white/80 to-orange-50/70',
-      heroGlow: 'bg-amber-300/20',
-      accentBorder: 'border-amber-200/70',
+  const colTheme = {
+      brand600: 'bg-brand-600',
+      brand700: 'bg-brand-700',
+      brandText: 'text-brand-700',
+      brandTextStrong: 'text-brand-950',
+      brandSoft: 'bg-brand-50',
+      brandSoftStrong: 'bg-brand-100',
+      border: 'border-brand-100',
+      borderStrong: 'border-brand-200',
+      hoverBorder: 'hover:border-brand-300',
+      progressTrack: 'bg-brand-100',
+      progressFill: 'bg-brand-500',
+      audio: 'bg-brand-100 text-brand-700 hover:bg-brand-200',
+      audioPlaying: 'bg-brand-600 text-white',
+      hero: 'from-brand-50/95 via-white/80 to-brand-50/70',
+      heroGlow: 'bg-brand-300/20',
+      accentBorder: 'border-brand-200/70',
     };
-  }, [collectionId]);
 
   useEffect(() => {
     try {
@@ -459,7 +418,7 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({ bookData, page, 
       key: 'unknown' as FilterMode,
       label: copy.practice,
       value: reviewCount,
-      icon: Target,
+      icon: RotateCcw,
       className: 'bg-rose-50 text-rose-700 border-rose-100',
     },
     {
@@ -472,7 +431,7 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({ bookData, page, 
   ];
 
   return (
-    <div className="flex-1 min-h-0 flex flex-col gap-3 overflow-hidden lg:-my-3 lg:h-[calc(100%+1.5rem)]">
+    <div className="flex-1 min-h-0 flex flex-col gap-3 overflow-hidden">
       <section className={cn(
         'shrink-0 relative overflow-hidden rounded-[1.6rem] border bg-gradient-to-br px-4 py-4 sm:px-5 sm:py-4 shadow-sm',
         colTheme.hero,
@@ -485,10 +444,10 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({ bookData, page, 
               'w-11 h-11 sm:w-12 sm:h-12 rounded-2xl text-white flex items-center justify-center shadow-lg shrink-0',
               colTheme.brand600
             )}>
-              <BrainCircuit size={23} />
+              <SECTION_ICONS.glossary.icon size={23} />
             </div>
             <div className="min-w-0">
-              <div className={cn('text-[10px] sm:text-xs uppercase tracking-[0.18em] font-black mb-1', colTheme.brandText)}>
+              <div className={cn('text-[11px] sm:text-xs uppercase tracking-[0.18em] font-black mb-1', colTheme.brandText)}>
                 {copy.eyebrow}
               </div>
               <h2 className={cn('text-2xl sm:text-3xl font-black tracking-tight leading-none', colTheme.brandTextStrong)}>
@@ -506,7 +465,7 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({ bookData, page, 
                 <div className={cn('text-xs font-black uppercase tracking-[0.12em]', colTheme.brandText)}>
                   {copy.progressTitle}
                 </div>
-                <p className="text-[11px] sm:text-xs text-wood/45 mt-0.5">
+                <p className="text-[11px] sm:text-xs text-wood/60 mt-0.5">
                   {copy.progressHint}
                 </p>
               </div>
@@ -525,8 +484,8 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({ bookData, page, 
             </div>
 
             <div className="flex items-center justify-between gap-2 mt-2">
-              <span className="text-[11px] sm:text-xs text-wood/45">
-                {formatNumber(knownCount)} / {formatNumber(allVocabulary.length)} {copy.confident.toLowerCase()}
+              <span className="text-[11px] sm:text-xs text-wood/60">
+                {formatNumber(knownCount)} / {formatNumber(allVocabulary.length)} {copy.confident === 'I Know' ? 'I know' : copy.confident.toLowerCase()}
               </span>
               {(knownCount > 0 || reviewCount > 0) && (
                 <button
@@ -602,7 +561,7 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({ bookData, page, 
                 className={cn(
                   'px-3 py-2 rounded-xl text-xs font-bold transition-all border whitespace-nowrap',
                   filter === opt.value
-                    ? `${colTheme.brand600} text-white ${colTheme.brand600.replace('bg-', 'border-')} shadow-sm`
+                    ? `${colTheme.brand600} text-white ${colTheme.brand600.replace('bg-', 'border-')}`
                     : cn('bg-white/60 hover:bg-white', colTheme.brandText, colTheme.border)
                 )}
               >
@@ -641,7 +600,7 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({ bookData, page, 
           <div className="mt-2.5 pt-2.5 border-t border-black/5 flex flex-wrap items-center gap-2">
             {activeCategory && (
               <>
-                <span className="text-[10px] font-black uppercase tracking-[0.1em] text-wood/35">
+                <span className="text-[11px] font-black uppercase tracking-[0.1em] text-wood/55">
                   {copy.categoryLabel}
                 </span>
                 <button
@@ -660,7 +619,7 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({ bookData, page, 
             )}
             {activeChapter !== null && (
               <>
-                <span className="text-[10px] font-black uppercase tracking-[0.1em] text-wood/35">
+                <span className="text-[11px] font-black uppercase tracking-[0.1em] text-wood/55">
                   {copy.chapterLabel}
                 </span>
                 <button
@@ -682,7 +641,7 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({ bookData, page, 
 
       </section>
 
-      <div className="flex-1 min-h-0 overflow-y-auto custom-scrollbar pr-2 -mr-2">
+      <div className="flex-1 min-h-0 overflow-y-auto custom-scrollbar pe-2 -me-2">
         <div className="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 gap-3.5 pb-2 items-start">
           <AnimatePresence mode="popLayout">
             {paginatedVocab.map((v, index) => {
@@ -722,11 +681,11 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({ bookData, page, 
                   <div className="flex items-start justify-between gap-3">
                     <div className="min-w-0 flex-1">
                       <div className="flex items-center gap-2 mb-1.5">
-                        <span className="text-[10px] font-black tabular-nums text-wood/25">
-                          {String((currentPage - 1) * WORDS_PER_PAGE + index + 1).padStart(2, '0')}
+                        <span className="text-[11px] font-black tabular-nums text-wood/55">
+                          {formatNumber(String((currentPage - 1) * WORDS_PER_PAGE + index + 1).padStart(2, '0'))}
                         </span>
                         <span className={cn(
-                          'px-2 py-0.5 rounded-full text-[9px] sm:text-[10px] font-black uppercase tracking-[0.08em]',
+                          'px-2 py-0.5 rounded-full text-[11px] sm:text-xs font-black uppercase tracking-[0.08em]',
                           state === 'known'
                             ? 'bg-emerald-50 text-emerald-700'
                             : state === 'unknown'
@@ -746,7 +705,7 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({ bookData, page, 
                       </h3>
 
                       {(v.pronunciation || v.partOfSpeech || v.chapter) && (
-                        <div className="flex flex-wrap items-center gap-x-1.5 gap-y-1 mt-1.5 text-[10px] sm:text-[11px] text-wood/45">
+                        <div className="flex flex-wrap items-center gap-x-1.5 gap-y-1 mt-1.5 text-[11px] sm:text-xs text-wood/60">
                           {v.pronunciation && <span className="font-serif">{v.pronunciation}</span>}
                           {v.partOfSpeech && <span className="font-semibold">{v.partOfSpeech}</span>}
                           {v.chapter && (
@@ -793,7 +752,7 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({ bookData, page, 
                             onClick={() => setActiveCategory(activeCategory === v.category ? null : v.category)}
                             title={activeCategory === v.category ? v.category : `${copy.categoryLabel}: ${v.category}`}
                             className={cn(
-                              'px-2 py-1 rounded-lg text-[10px] font-black uppercase tracking-[0.08em] border transition-all',
+                              'px-2 py-1 rounded-lg text-[11px] font-black uppercase tracking-[0.08em] border transition-all',
                               activeCategory === v.category
                                 ? `${colTheme.brand600} text-white ${colTheme.brand600.replace('bg-', 'border-')} shadow-sm`
                                 : cn(colTheme.brandSoft, colTheme.brandText, colTheme.border)
@@ -826,14 +785,14 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({ bookData, page, 
                           >
                             <div className={cn('mt-2.5 rounded-xl border bg-white/60 p-3', colTheme.border)}>
                               {v.chapterTitle && (
-                                <div className="text-[11px] font-bold text-wood/45 mb-2">
+                                <div className="text-[11px] font-bold text-wood/60 mb-2">
                                   {copy.chapterLabel} {v.chapter ? formatNumber(v.chapter) : ''}{v.chapter ? ' · ' : ''}{v.chapterTitle}
                                 </div>
                               )}
 
                               {v.storyExample && (
                                 <div className="mb-3">
-                                  <div className={cn('text-[10px] font-black uppercase tracking-[0.1em] mb-1', colTheme.brandText)}>
+                                  <div className={cn('text-[11px] font-black uppercase tracking-[0.1em] mb-1', colTheme.brandText)}>
                                     {copy.inStory}
                                   </div>
                                   <p className="font-serif italic text-sm text-wood/65 leading-relaxed">
@@ -845,25 +804,25 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({ bookData, page, 
                               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                                 {v.wordFamily?.length ? (
                                   <div>
-                                    <div className="text-[10px] font-black uppercase tracking-[0.08em] text-wood/35 mb-1">{copy.wordFamilyLabel}</div>
+                                    <div className="text-[11px] font-black uppercase tracking-[0.08em] text-wood/55 mb-1">{copy.wordFamilyLabel}</div>
                                     <p className="text-xs text-wood/65 leading-relaxed">{v.wordFamily.join(' · ')}</p>
                                   </div>
                                 ) : null}
                                 {v.collocations?.length ? (
                                   <div>
-                                    <div className="text-[10px] font-black uppercase tracking-[0.08em] text-wood/35 mb-1">{copy.collocationsLabel}</div>
+                                    <div className="text-[11px] font-black uppercase tracking-[0.08em] text-wood/55 mb-1">{copy.collocationsLabel}</div>
                                     <p className="text-xs text-wood/65 leading-relaxed">{v.collocations.join(' · ')}</p>
                                   </div>
                                 ) : null}
                                 {v.synonyms?.length ? (
                                   <div>
-                                    <div className="text-[10px] font-black uppercase tracking-[0.08em] text-wood/35 mb-1">{copy.synonymsLabel}</div>
+                                    <div className="text-[11px] font-black uppercase tracking-[0.08em] text-wood/55 mb-1">{copy.synonymsLabel}</div>
                                     <p className="text-xs text-wood/65 leading-relaxed">{v.synonyms.join(' · ')}</p>
                                   </div>
                                 ) : null}
                                 {v.antonyms?.length ? (
                                   <div>
-                                    <div className="text-[10px] font-black uppercase tracking-[0.08em] text-wood/35 mb-1">{copy.antonymsLabel}</div>
+                                    <div className="text-[11px] font-black uppercase tracking-[0.08em] text-wood/55 mb-1">{copy.antonymsLabel}</div>
                                     <p className="text-xs text-wood/65 leading-relaxed">{v.antonyms.join(' · ')}</p>
                                   </div>
                                 ) : null}
@@ -961,6 +920,7 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({ bookData, page, 
           </button>
         </div>
       )}
+
 
     </div>
   );

@@ -1,4 +1,10 @@
-import type { BookData, Exercise, PageData } from '../../../types';
+import type { BookData, Exercise, PageData, VocabularyChallengePair } from '../../../types';
+import { withPlacesLayer } from '../../../features/historical-entities';
+import { applyChapterExtras } from '../../../lib/chapterExtras';
+import { yunusEmreB1ChapterExtrasEn } from './en/chapterExtras';
+import { yunusEmreB1GroupTasksEn } from './en/groupTasks';
+import { yunusEmreB1ChapterExtrasAr } from './ar/chapterExtras';
+import { yunusEmreB1GroupTasksAr } from './ar/groupTasks';
 import { yunusB1Pages } from './en/pages';
 import { yunusEmreB1PagesAr } from './ar/pages';
 import {
@@ -45,13 +51,37 @@ import {
   yunusB1LanguageFocusChapter12Ar,
   yunusB1LanguageFocusChapter13Ar,
 } from './ar/languageFocus3';
-import { yunusB1TeacherGuide, yunusB1TeacherGuideMetadata } from './en/teacherGuide';
-import { yunusB1SelfStudyGuide, yunusB1StudentGuideMetadata } from './en/selfStudyGuide';
-import { yunusEmreB1TeacherGuideAr, yunusEmreB1TeacherGuideMetadataAr } from './ar/teacherGuide';
-import { yunusEmreB1SelfStudyGuideAr, yunusEmreB1StudentGuideMetadataAr } from './ar/selfStudyGuide';
+import { buildStoryMap } from '../../../features/story-maps/buildStoryMap';
+import { yunusB1StoryMapLayout } from './storyMap';
+import { yunusB1StoryMapCopyEn } from './en/storyMap';
+import { yunusB1StoryMapCopyAr } from './ar/storyMap';
 
 const STORY_IDS = new Set(Array.from({ length: 13 }, (_, index) => index + 1));
-const ENGLISH_GLOSSARY_EXCLUSIONS = new Set(['sûfî', 'tawhid']);
+
+// Interactive map page, placed after the last chapter: the story is read without a break, then the whole journey is seen on the map.
+const MAP_PAGE_ID = 101;
+const MAP_AFTER_CHAPTER = 13;
+
+const withMapPage = (pages: PageData[], mapPage: PageData): PageData[] =>
+  pages.flatMap(page => (page.id === MAP_AFTER_CHAPTER ? [page, mapPage] : [page]));
+
+const mapPageEn: PageData = {
+  id: MAP_PAGE_ID,
+  type: 'map',
+  title: 'Anatolia in Yunus Emre’s Time',
+  subtitle: 'Map · 1240–1320',
+  content: '',
+  map: buildStoryMap(yunusB1StoryMapLayout, yunusB1StoryMapCopyEn, 'Yunus Emre B1 EN'),
+};
+
+const mapPageAr: PageData = {
+  id: MAP_PAGE_ID,
+  type: 'map',
+  title: 'الأَنَاضُولُ في زَمَنِ يُونُسَ إِمْرَه',
+  subtitle: 'خَرِيطَة · مِنْ عامِ 1240 إِلى عامِ 1320',
+  content: '',
+  map: buildStoryMap(yunusB1StoryMapLayout, yunusB1StoryMapCopyAr, 'Yunus Emre B1 AR'),
+};
 
 const englishLanguageFocus: Record<number, Exercise[]> = {
   ...yunusB1LanguageFocusExercises,
@@ -86,7 +116,7 @@ const buildPages = (
   quickChallenges: Record<number, Exercise>,
   languageFocus: Record<number, Exercise[]>,
   knowledgeCheck: Exercise[],
-  vocabularyPairs: { word: string; meaning: string }[],
+  vocabularyPairs: VocabularyChallengePair[],
   review: Exercise[],
   finalChallenge: Exercise[],
 ): PageData[] => pages.map((page) => {
@@ -102,15 +132,7 @@ const buildPages = (
   return page;
 });
 
-const cleanEnglishGlossary = (pages: PageData[]): PageData[] => pages.map(page => {
-  if (page.type !== 'glossary' || !page.vocabulary?.length) return page;
-  return {
-    ...page,
-    vocabulary: page.vocabulary.filter(item => !ENGLISH_GLOSSARY_EXCLUSIONS.has(item.word.trim().toLocaleLowerCase())),
-  };
-});
-
-const englishPages = cleanEnglishGlossary(buildPages(
+const englishPages = withMapPage(buildPages(
   yunusB1Pages,
   yunusB1QuickChallenges,
   englishLanguageFocus,
@@ -118,8 +140,8 @@ const englishPages = cleanEnglishGlossary(buildPages(
   yunusB1VocabularyChallengePairs,
   yunusB1LanguageReviewExercises,
   yunusB1FinalChallengeExercises,
-));
-const arabicPages = buildPages(
+), mapPageEn);
+const arabicPages = withMapPage(buildPages(
   yunusEmreB1PagesAr,
   yunusB1QuickChallengesAr,
   arabicLanguageFocus,
@@ -127,18 +149,16 @@ const arabicPages = buildPages(
   yunusB1VocabularyChallengePairsAr,
   yunusB1LanguageReviewExercisesAr,
   yunusB1FinalChallengeExercisesAr,
-);
+), mapPageAr);
 
 export const yunusEmreB1BookDataEn: BookData = {
   id: 'yunusEmre-b1-en',
   title: 'Yunus Emre: History, Poetry, and Moral Thought (B1)',
   level: 'B1',
   baseFontSize: 13,
-  pages: englishPages,
-  teacherGuide: yunusB1TeacherGuide,
-  teacherGuideMetadata: yunusB1TeacherGuideMetadata,
-  selfStudyGuide: yunusB1SelfStudyGuide,
-  studentGuideMetadata: yunusB1StudentGuideMetadata,
+  pages: applyChapterExtras(withPlacesLayer(englishPages, 'yunusEmre-b1', 'en'), { ...yunusEmreB1ChapterExtrasEn, groupTasks: yunusEmreB1GroupTasksEn }),
+  teacherGuide: [],
+  selfStudyGuide: [],
 };
 
 export const yunusEmreB1BookDataAr: BookData = {
@@ -146,11 +166,9 @@ export const yunusEmreB1BookDataAr: BookData = {
   title: 'يونس إمره: التاريخ والشعر والفكر الأخلاقي (B1)',
   level: 'B1',
   baseFontSize: 14,
-  pages: arabicPages,
-  teacherGuide: yunusEmreB1TeacherGuideAr,
-  teacherGuideMetadata: yunusEmreB1TeacherGuideMetadataAr,
-  selfStudyGuide: yunusEmreB1SelfStudyGuideAr,
-  studentGuideMetadata: yunusEmreB1StudentGuideMetadataAr,
+  pages: applyChapterExtras(withPlacesLayer(arabicPages, 'yunusEmre-b1', 'ar'), { ...yunusEmreB1ChapterExtrasAr, groupTasks: yunusEmreB1GroupTasksAr }),
+  teacherGuide: [],
+  selfStudyGuide: [],
 };
 
 export const yunusEmreB1BookData = yunusEmreB1BookDataEn;

@@ -6,18 +6,18 @@ export const meccaA2Pages: PageData[] = [
     id: 1,
     type: 'story',
     title: 'Bilal Ibn Rabah’s Place in Islam',
-    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Fimages%2Fmecca_a2_ch1-clean.png?alt=media&token=9f45ea9c-848e-4ed6-ac3a-86676de78194',
+    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Fimages%2Fmecca_a2_ch1.png?alt=media&token=20e4bbdd-4474-4c82-aa54-3ff1cef617d1',
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Faudio%2F00_Chapter_1.mp3?alt=media&token=76a7c1bd-fa29-41ba-a587-4846ce823fc8',
     content: `Bilal ibn Rabah was one of the first seven people who openly said they were Muslims in Mecca. After becoming a Muslim, he never left Prophet Muhammad (pbuh) until his death. He was also the first person to give the Adhan, the call to prayer, in the history of Islam.
 
-Bilal was a black slave. He was born in Mecca. His mother was an Ethiopian woman. His father, Rebâh, and his mother, Hamâme, were also slaves. So Bilal was born into slavery.
+Bilal was a black slave. He was born in Mecca. His mother was an Ethiopian woman. His father, Rabah, and his mother, Hamama, were also slaves. So Bilal was born into slavery.
 
 Without Islam, he would always be a slave. People in Mecca thought Bilal was just a poor slave. They thought he had no power and would never become someone important. But Islam made him a free and great man. His story teaches us that skin color or being a slave does not make a person less valuable.`,
     vocabulary: [
       { word: 'openly', definition: 'In a way that is not hidden.' },
       { word: 'Adhan', definition: 'The call to prayer in Islam.' },
-      { word: 'slave', definition: 'A person forced to work for another person.' },
-      { word: 'valuable', definition: 'Important and worthy.' },
+      { word: 'slave', definition: 'A person who is owned by another person and must work for them.' },
+      { word: 'valuable', definition: 'Worth a lot; very important.' },
     ],
     hotspots: [
       { id: 'mecca-a2-en-h1a', x: 31, y: 42, title: 'Bilal ibn Rabah', description: 'Bilal was among the first people who openly said they were Muslims in Mecca.' },
@@ -28,13 +28,13 @@ Without Islam, he would always be a slave. People in Mecca thought Bilal was jus
     id: 2,
     type: 'story',
     title: 'The Age of Ignorance',
-    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Fimages%2Fmecca_a2_ch2-clean.png?alt=media&token=a1df72fc-0e5d-4b20-a63f-d720d0739ddc',
+    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Fimages%2Fmecca_a2_ch2.png?alt=media&token=9b4da4cd-2f99-4e5e-b0f3-5a7d27d3bd72',
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Faudio%2F01_Chapter_2_The_Age_of_Ignorance.mp3?alt=media&token=f9a3c4c4-545a-4fb2-8b1a-d21e02b030e9',
     content: `The period before Islam was called the Age of Ignorance, or Jahiliyyah. Many people did not believe in the One and Only Allah. They left the true belief and worshipped idols. There was no real peace and justice in society.
 
 There was a big gap between rich and poor people. Rich people had a lot of money and lived in luxury. They used gold plates and silver cups. But many poor people lived in need. Life was very hard for them.
 
-Mecca was a business city. People bought and sold things there. Some rich people lent money to the poor and wanted more money back. This unfair extra money was called faiz. Because of this, the rich became richer and the poor became poorer.`,
+Mecca was a business city. People bought and sold things there. Some rich people lent money to the poor and wanted more money back. This unfair extra money was called riba. Because of this, the rich became richer and the poor became poorer.`,
     vocabulary: [
       { word: 'ignorance', definition: 'Not knowing or not following the truth.' },
       { word: 'idols', definition: 'Objects that people wrongly worship.' },
@@ -50,16 +50,16 @@ Mecca was a business city. People bought and sold things there. Some rich people
     id: 3,
     type: 'story',
     title: 'Slaves in Mecca',
-    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Fimages%2Fmecca_a2_ch3-clean.png?alt=media&token=8d71fcc0-8ce6-4df3-b6ab-56547cb53fb2',
+    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Fimages%2Fmecca_a2_ch3.png?alt=media&token=29c10d59-3866-480e-8c92-5fb618c95e39',
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Faudio%2F02_Chapter_3_Slaves_in_Mecca.mp3?alt=media&token=6ccce6ef-b016-4a99-8915-213d3f3579b7',
     content: `In this unfair system, the poor were getting poorer and the rich were getting richer. The people with money were the most powerful people in the city.
 
 Slave markets were very common in Arabia. Mecca was a center for buying and selling slaves. Many slaves from different lands, especially from Abyssinia, lived in the homes of Meccan people.
 
-One of those slaves was Bilal ibn Rebâh. His master was Umayya b. Halef. Umayya was one of the richest and most powerful leaders in Mecca. He worshipped idols and became a major enemy of Islam. When Prophet Muhammad (pbuh) started teaching Islam, Umayya wanted this message to stop.`,
+One of those slaves was Bilal ibn Rabah. His master was Umayya ibn Khalaf. Umayya was one of the richest and most powerful leaders in Mecca. He worshipped idols and became a major enemy of Islam. When Prophet Muhammad (pbuh) started teaching Islam, Umayya wanted this message to stop.`,
     vocabulary: [
       { word: 'system', definition: 'A way that society or work is organized.' },
-      { word: 'Slave markets', definition: 'Places where slaves were bought and sold.' },
+      { word: 'slave markets', definition: 'Places where slaves were bought and sold.' },
       { word: 'Abyssinia', definition: 'An old name for Ethiopia and nearby areas.' },
       { word: 'master', definition: 'A person who owns a slave.' },
     ],
@@ -72,9 +72,9 @@ One of those slaves was Bilal ibn Rebâh. His master was Umayya b. Halef. Umayya
     id: 4,
     type: 'story',
     title: 'Bilal’s Hard Life',
-    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Fimages%2Fmecca_a2_ch4-clean.png?alt=media&token=fb69563f-c9cc-4ea6-9e78-3cae12485941',
+    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Fimages%2Fmecca_a2_ch4.png?alt=media&token=973d7f83-3ddb-4692-87c6-62963772b371',
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Faudio%2F03_Chapter_4_Bilal%E2%80%99s_Hard_Life.mp3?alt=media&token=12a37c49-7c5f-4635-bd3e-dbb88eae6146',
-    content: `Umayya never gave up his hatred of Islam and Muslims. Bilal was a slave of Umayya b. Halef. Umayya was always very unkind to Bilal. Every member of the family was rude to him. They did not respect him as a person.
+    content: `Umayya never gave up his hatred of Islam and Muslims. Bilal was a slave of Umayya ibn Khalaf. Umayya was always very unkind to Bilal. Every member of the family was rude to him. They did not respect him as a person.
 
 They called Bilal “the son of the black woman” to hurt his feelings. He had a very difficult life at his master’s house. He looked after his master’s camels and worked under the hot sun in the desert of Mecca all day.
 
@@ -83,7 +83,7 @@ In the evening, his job was to bring food and wine to his master. His master was
       { word: 'hatred', definition: 'A very strong feeling of dislike.' },
       { word: 'rude', definition: 'Not polite or respectful.' },
       { word: 'harsh', definition: 'Cruel, strict, or unkind.' },
-      { word: 'patient', definition: 'Able to wait or suffer calmly.' },
+      { word: 'patient', definition: 'Calm when you must wait or when life is hard.' },
     ],
     hotspots: [
       { id: 'mecca-a2-en-h4a', x: 39, y: 35, title: 'Hard Work', description: 'Bilal cared for camels and worked under the hot sun all day.' },
@@ -94,7 +94,7 @@ In the evening, his job was to bring food and wine to his master. His master was
     id: 5,
     type: 'story',
     title: 'A New Message',
-    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Fimages%2Fmecca_a2_ch5-clean.png?alt=media&token=56aa7a00-7ad1-4d2a-844c-351a72517da0',
+    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Fimages%2Fmecca_a2_ch5.png?alt=media&token=3bc48909-db40-4b68-a142-69f6863f7f84',
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Faudio%2F04_Chapter_5_A_New_Message.mp3?alt=media&token=be177f14-9655-4a2a-8797-60455716e29a',
     content: `Umayya liked Bilal because he was an obedient and hardworking servant. Bilal had to work very hard to please his master and protect himself from his master’s anger.
 
@@ -109,14 +109,14 @@ One day, Bilal heard people talking about a new Prophet, Muhammad (pbuh). The Pr
     ],
     hotspots: [
       { id: 'mecca-a2-en-h5a', x: 29, y: 61, title: 'No Freedom', description: 'Bilal had no money to pay for his freedom.' },
-      { id: 'mecca-a2-en-h5b', x: 74, y: 33, title: 'The New Message', description: 'The Prophet taught that people must be fair and equal.' },
+      { id: 'mecca-a2-en-h5b', x: 74, y: 33, title: 'The New Message', description: 'The Prophet (pbuh) taught that people must be fair and equal.' },
     ],
   },
   {
     id: 6,
     type: 'story',
     title: 'Visiting Abu Bakr',
-    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Fimages%2Fmecca_a2_ch6-clean.png?alt=media&token=9294f69d-6b10-4c09-a74e-953c786ff27b',
+    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Fimages%2Fmecca_a2_ch6.png?alt=media&token=7cf6f58f-a546-4cac-8d5c-278289477fff',
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Faudio%2F05_Chapter_6_Visiting_Abu_Bakr.mp3?alt=media&token=b325dbbd-1f2e-4f9d-8dbb-a33f7bdc2f1b',
     content: `Bilal thought about the message of Islam for many days. He walked in the desert all day and thought deeply about the Creator and the creation.
 
@@ -138,7 +138,7 @@ Bilal knew that Abu Bakr believed in Muhammad’s (pbuh) message. When he arrive
     id: 7,
     type: 'story',
     title: 'Bilal Accepts Islam',
-    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Fimages%2Fmecca_a2_ch7-clean.png?alt=media&token=a83b470e-50be-48b1-bc00-81541c8e8979',
+    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Fimages%2Fmecca_a2_ch7.png?alt=media&token=80500b12-4498-4ad9-aaec-b93667802336',
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Faudio%2F06_Chapter_7_Bilal_Accepts_Islam.mp3?alt=media&token=3b1a9462-b2de-4dca-999a-b9adf440beaf',
     content: `Abu Bakr told Bilal about the new religion. Islam says there is no god but Allah. Allah has no partners or equals, not even a rich master or powerful people.
 
@@ -146,21 +146,21 @@ Bilal told Abu Bakr that he wanted to be a Muslim, too. Abu Bakr supported Bilal
 
 After Bilal met Abu Bakr, he went back home. He could not sleep during the night. He stayed awake and thought about his life. He knew that life would be difficult after becoming a Muslim. But he also knew that the religion of Allah was the truth. Following this religion was the right thing to do. In the end, he accepted Islam. When Umayya learned this, he became very angry.`,
     vocabulary: [
-      { word: 'partners', definition: 'People or things joined with another.' },
+      { word: 'partners', definition: 'Others who share power or work with someone.' },
       { word: 'equals', definition: 'People or things with the same value or power.' },
       { word: 'supported', definition: 'Helped and encouraged.' },
       { word: 'truth', definition: 'What is real and right.' },
     ],
     hotspots: [
-      { id: 'mecca-a2-en-h7a', x: 25, y: 47, title: 'No God but Allah', description: 'Abu Bakr explains that Allah has no partners or equals.' },
-      { id: 'mecca-a2-en-h7b', x: 76, y: 54, title: 'A Brave Choice', description: 'Bilal accepts Islam even though he knows life may become difficult.' },
+      { id: 'mecca-a2-en-h7a', x: 25, y: 47, title: 'No God but Allah', description: 'Abu Bakr explained that Allah has no partners or equals.' },
+      { id: 'mecca-a2-en-h7b', x: 76, y: 54, title: 'A Brave Choice', description: 'Bilal accepted Islam, even though he knew that life would be difficult.' },
     ],
   },
   {
     id: 8,
     type: 'story',
     title: 'Allah Is One',
-    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Fimages%2Fmecca_a2_ch8-clean.png?alt=media&token=1a188aa4-e27a-4510-a956-80754b70d6d6',
+    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Fimages%2Fmecca_a2_ch8.png?alt=media&token=694894dc-dc04-4bd1-b486-65d05451f524',
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Faudio%2F07_Chapter_8_Allah_Is_One.mp3?alt=media&token=18a91bc7-23ff-4b9e-a238-15bca0cc7266',
     content: `Umayya asked Bilal angrily, “Is it true? Did you leave our religion and believe in this magic man Muhammad?” Bilal answered with a strong and sure voice: “Yes, Allah helped me to find the right way. Now I believe in the true religion.”
 
@@ -168,21 +168,21 @@ When Umayya heard this, he went mad with anger. He locked Bilal in a house witho
 
 Umayya told children to tie ropes around Bilal’s neck and pull him through the city of Mecca. He whipped Bilal and put a huge burning rock on his chest in the hot sun. He told him, “If you speak well of our idols, you will be free.” But Bilal only said, “Allah is One, Allah is One.”`,
     vocabulary: [
-      { word: 'angrily', definition: 'In an angry way.' },
-      { word: 'refused', definition: 'Said no.' },
+      { word: 'angrily', definition: 'In a way that shows you are very upset with someone.' },
+      { word: 'refused', definition: 'Said no; did not agree to do something.' },
       { word: 'whipped', definition: 'Hit with a whip.' },
       { word: 'Allah is One', definition: 'There is no god but Allah.' },
     ],
     hotspots: [
-      { id: 'mecca-a2-en-h8a', x: 42, y: 30, title: 'Bilal’s Patience', description: 'Umayya hurts Bilal and tries to force him to worship idols.' },
-      { id: 'mecca-a2-en-h8b', x: 61, y: 70, title: 'Allah Is One', description: 'Bilal continues to say that Allah is One.' },
+      { id: 'mecca-a2-en-h8a', x: 42, y: 30, title: 'Umayya’s Anger', description: 'Umayya hurt Bilal and tried to force him to worship idols.' },
+      { id: 'mecca-a2-en-h8b', x: 61, y: 70, title: 'Bilal Stays Strong', description: 'Bilal only said, “Allah is One, Allah is One.”' },
     ],
   },
   {
     id: 9,
     type: 'story',
     title: 'Abu Bakr Saves Bilal',
-    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Fimages%2Fmecca_a2_ch9-clean.png?alt=media&token=297efa85-e2a4-46c7-844d-aa4aa516b5cd',
+    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Fimages%2Fmecca_a2_ch9.png?alt=media&token=de7d6436-0cd2-4eed-af16-d0b9e83b84bc',
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Faudio%2F08_Chapter_9_Abu_Bakr_Saves_Bilal.mp3?alt=media&token=c24a2fef-492b-438b-b1fa-e6e56fe427c0',
     content: `Umayya wanted Bilal to feel sorry and leave his new religion. But Bilal never said the words that Umayya wanted to hear.
 
@@ -190,21 +190,21 @@ Abu Bakr heard that Umayya was hurting Bilal very badly. He went to see Umayya r
 
 Abu Bakr asked, “What did he do wrong? Is it a crime to believe in the one true Allah?” But Umayya said, “He is my slave. I can do whatever I want with him.” Again, Abu Bakr asked Umayya to sell Bilal to him.`,
     vocabulary: [
-      { word: 'pain', definition: 'A bad feeling in the body.' },
+      { word: 'pain', definition: 'The feeling you have when your body is hurt.' },
       { word: 'right away', definition: 'Immediately, without waiting.' },
       { word: 'price', definition: 'The money needed to buy something.' },
       { word: 'crime', definition: 'A wrong action against the law.' },
     ],
     hotspots: [
-      { id: 'mecca-a2-en-h9a', x: 32, y: 34, title: 'Abu Bakr Arrives', description: 'Abu Bakr goes to Umayya right away after hearing about Bilal’s pain.' },
-      { id: 'mecca-a2-en-h9b', x: 72, y: 66, title: 'A Request for Freedom', description: 'Abu Bakr asks Umayya to sell Bilal to him.' },
+      { id: 'mecca-a2-en-h9a', x: 32, y: 34, title: 'Abu Bakr Arrives', description: 'Abu Bakr heard that Umayya was hurting Bilal, and he went to Umayya right away.' },
+      { id: 'mecca-a2-en-h9b', x: 72, y: 66, title: 'An Offer to Buy', description: 'Abu Bakr asked Umayya to sell Bilal to him.' },
     ],
   },
   {
     id: 10,
     type: 'story',
     title: 'A Free Muslim',
-    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Fimages%2Fmecca_a2_ch10-clean.png?alt=media&token=8accce66-25e5-4c3c-94f7-b21a6c2ea8eb',
+    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Fimages%2Fmecca_a2_ch10.png?alt=media&token=43996fc5-3581-49f6-99f8-dc3ffd9e01d0',
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Faudio%2F09_Chapter_10_A_Free_Muslim.mp3?alt=media&token=b1a30907-9298-431f-9b5c-3b81397ff881',
     content: `Finally, Umayya agreed to sell Bilal for five pieces of gold. He laughed at Abu Bakr and said, “If you offered me only one piece of gold, I would still sell him to you.” Abu Bakr replied, “If you asked me for one hundred pieces of gold, I would still pay that price for him.”
 
@@ -218,15 +218,15 @@ Abu Bakr told Bilal that he was now a free man and no longer a slave. Abu Bakr b
       { word: 'freely', definition: 'Without being forced or stopped.' },
     ],
     hotspots: [
-      { id: 'mecca-a2-en-h10a', x: 38, y: 63, title: 'Freedom', description: 'Abu Bakr tells Bilal that he is now a free man.' },
-      { id: 'mecca-a2-en-h10b', x: 64, y: 36, title: 'Rescue', description: 'Abu Bakr buys Bilal and rescues him from his master.' },
+      { id: 'mecca-a2-en-h10a', x: 38, y: 63, title: 'Freedom', description: 'Abu Bakr told Bilal that he was now a free man.' },
+      { id: 'mecca-a2-en-h10b', x: 64, y: 36, title: 'Rescue', description: 'Abu Bakr bought Bilal and rescued him from his master.' },
     ],
   },
   {
     id: 11,
     type: 'story',
     title: 'The First Call to Prayer',
-    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Fimages%2Fmecca_a2_ch11-clean.png?alt=media&token=48ccd3a6-bf4e-4de6-b041-97eed9ef3a2e',
+    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Fimages%2Fmecca_a2_ch11.png?alt=media&token=2a892d1b-9ec9-4806-b178-d9e9f60c8f9d',
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Faudio%2F10_Chapter_11_The_First_Call_to_Prayer.mp3?alt=media&token=fb41878e-d306-4c7b-9266-39747d70edeb',
     content: `After Bilal became free, he became one of the Prophet’s most beloved and respected friends. When the Prophet (pbuh) wanted to be alone, he often allowed only Bilal to stay with him.
 
@@ -236,41 +236,41 @@ Bilal was a very brave man. Even when people hurt him, he shouted fearlessly, �
     vocabulary: [
       { word: 'beloved', definition: 'Loved very much.' },
       { word: 'hardship', definition: 'A difficult time or problem.' },
-      { word: 'Hijrah', definition: 'The migration of Muslims from Mecca to Medina.' },
-      { word: 'fearlessly', definition: 'Without fear.' },
+      { word: 'Hijrah', definition: 'The move of the Muslims from Mecca to Medina.' },
+      { word: 'fearlessly', definition: 'Bravely, not afraid of anyone.' },
     ],
     hotspots: [
-      { id: 'mecca-a2-en-h11a', x: 28, y: 68, title: 'Hijrah', description: 'The Muslims move from Mecca to Medina after years of hardship.' },
-      { id: 'mecca-a2-en-h11b', x: 75, y: 32, title: 'First Adhan', description: 'The Prophet chooses Bilal to call people to prayer.' },
+      { id: 'mecca-a2-en-h11a', x: 28, y: 68, title: 'Hijrah', description: 'The Muslims moved from Mecca to Medina after years of hardship.' },
+      { id: 'mecca-a2-en-h11b', x: 75, y: 32, title: 'The First Adhan', description: 'The Prophet (pbuh) chose Bilal to call people to prayer.' },
     ],
   },
   {
     id: 12,
     type: 'story',
     title: 'Prayer Is Better Than Sleep',
-    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Fimages%2Fmecca_a2_ch12-clean.png?alt=media&token=e8a10ab8-e855-42ba-a970-adaf466f52a9',
+    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Fimages%2Fmecca_a2_ch12.png?alt=media&token=6d17b5ad-0612-4921-afb1-a8a8d7464ea0',
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Faudio%2F11_Chapter_12_Prayer_Is_Better_Than_Sleep.mp3?alt=media&token=a9931375-9370-4267-8d5f-422bf60a91f5',
-    content: `Bilal used to start the morning call to prayer very early. He added the words “es-Salâtü hayrün mine’n-nevm,” which means “Prayer is better than sleep.” The Prophet (pbuh) was pleased with this and told him to repeat it every morning.
+    content: `Bilal used to start the morning call to prayer very early. He added the words “as-salatu khayrun minan-nawm,” which means “Prayer is better than sleep.” The Prophet (pbuh) was pleased with this and told him to repeat it every morning.
 
 Prophet Muhammad (pbuh) taught that all people are equal. No skin color is better than another. Before he died in 632, he gave his last speech. This speech is called the Farewell Sermon.
 
 In this speech, he said it is wrong to dislike or disrespect people because of the color of their skin. He taught that all people come from the same parents, Adam and Eve.`,
     vocabulary: [
-      { word: 'morning', definition: 'The early part of the day.' },
-      { word: 'equal', definition: 'Having the same value.' },
-      { word: 'speech', definition: 'Words spoken to people.' },
-      { word: 'disrespect', definition: 'To treat someone without respect.' },
+      { word: 'pleased', definition: 'Happy about something.' },
+      { word: 'repeat', definition: 'To say or do something again.' },
+      { word: 'speech', definition: 'A talk given to a group of people.' },
+      { word: 'disrespect', definition: 'To treat someone rudely, as if they are not important.' },
     ],
     hotspots: [
-      { id: 'mecca-a2-en-h12a', x: 40, y: 29, title: 'Morning Adhan', description: 'Bilal adds the words “Prayer is better than sleep” to the morning call to prayer.' },
-      { id: 'mecca-a2-en-h12b', x: 62, y: 69, title: 'Farewell Sermon', description: 'The Prophet teaches that people should not be disrespected because of skin color.' },
+      { id: 'mecca-a2-en-h12a', x: 40, y: 29, title: 'The Morning Adhan', description: 'Bilal added the words “Prayer is better than sleep” to the morning call to prayer.' },
+      { id: 'mecca-a2-en-h12b', x: 62, y: 69, title: 'The Farewell Sermon', description: 'The Prophet (pbuh) taught that it is wrong to disrespect people because of their skin color.' },
     ],
   },
   {
     id: 13,
     type: 'story',
     title: 'Everyone Is Equal',
-    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Fimages%2Fmecca_a2_ch13-clean.png?alt=media&token=799ccedc-b9ce-4408-90af-f2e8096bc991',
+    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Fimages%2Fmecca_a2_ch13.png?alt=media&token=8c78587d-ea7d-48ec-815c-666ad38a66ac',
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Faudio%2F12_Chapter_13_Everyone_Is_Equal.mp3?alt=media&token=746f98e6-3e86-4e1e-8cab-7cb0ab7899c8',
     content: `No person is better than another because of skin color. Arabs are not better than non-Arabs, and white people are not better than black people. The only way to be better is to be good and do good actions.
 
@@ -278,7 +278,7 @@ Bilal loved the Prophet (pbuh) very much. When the Prophet (pbuh) died, Bilal wa
 
 Bilal’s story shows that in Islam, everyone is equal. His life teaches us that it is unfair to behave badly to people because of their skin color or nationality. A person’s skin color or past is not important. What matters is the heart and good actions.`,
     vocabulary: [
-      { word: 'skin color', definition: 'The color of a person’s skin.' },
+      { word: 'behave badly', definition: 'To act in a wrong or unkind way.' },
       { word: 'nationality', definition: 'The country or people someone belongs to.' },
       { word: 'Damascus', definition: 'A historic city in Syria.' },
       { word: 'matters', definition: 'Is important.' },
@@ -288,9 +288,9 @@ Bilal’s story shows that in Islam, everyone is equal. His life teaches us that
       { id: 'mecca-a2-en-h13b', x: 69, y: 66, title: 'Heart and Actions', description: 'The story ends by saying that the heart and good actions are what matter.' },
     ],
   },
-  { id: 14, type: 'quiz', title: 'Knowledge Check: Mecca A2 - Bilal ibn Rabah', image: 'https://picsum.photos/seed/quiz-mecca-a2/1200/800', audioUrl: '', content: 'Test your understanding of the A2 story of Bilal ibn Rabah and Mecca before Islam.' },
+  { id: 14, type: 'quiz', title: 'Knowledge Check', image: 'https://picsum.photos/seed/quiz-mecca-a2/1200/800', audioUrl: '', content: 'Test your understanding of the A2 story of Bilal ibn Rabah and Mecca before Islam.' },
   { id: 15, type: 'vocabulary-match', title: 'Vocabulary Challenge', image: 'https://picsum.photos/seed/vocab-match-mecca-a2/1200/800', audioUrl: '', content: 'Match important words from the story with their meanings.' },
-  { id: 16, type: 'exercises', title: 'Retrieval Review', image: 'https://picsum.photos/seed/mecca-a2-exercises/1200/800', content: 'Retrieve, reconnect, and use the most important learning from Bilal’s story.' },
+  { id: 16, type: 'exercises', title: 'Language Review', image: 'https://picsum.photos/seed/mecca-a2-exercises/1200/800', content: 'Review and use the language patterns from across the book.' },
   { id: 17, type: 'glossary', title: 'Master Glossary', image: 'https://picsum.photos/seed/mecca-a2-glossary/1200/800', content: 'Review all key vocabulary from the story in one place.', vocabulary: [
     {
         "word": "openly",
@@ -322,7 +322,7 @@ Bilal’s story shows that in Islam, everyone is equal. His life teaches us that
         "pronunciation": "/ˈɑːðɑːn/",
         "collocations": [
             "give the Adhan",
-            "call to prayer"
+            "the first Adhan"
         ],
         "chapter": 1,
         "chapterTitle": "Bilal Ibn Rabah’s Place in Islam",
@@ -331,7 +331,7 @@ Bilal’s story shows that in Islam, everyone is equal. His life teaches us that
     },
     {
         "word": "slave",
-        "definition": "A person forced to work for another person.",
+        "definition": "A person who is owned by another person and must work for them.",
         "partOfSpeech": "noun",
         "level": "A2",
         "pronunciation": "/sleɪv/",
@@ -353,7 +353,7 @@ Bilal’s story shows that in Islam, everyone is equal. His life teaches us that
     },
     {
         "word": "valuable",
-        "definition": "Important and worthy.",
+        "definition": "Worth a lot; very important.",
         "partOfSpeech": "adjective",
         "level": "A2",
         "pronunciation": "/ˈvæljuəbəl/",
@@ -482,7 +482,7 @@ Bilal’s story shows that in Islam, everyone is equal. His life teaches us that
         "category": "Society"
     },
     {
-        "word": "Slave markets",
+        "word": "slave markets",
         "definition": "Places where slaves were bought and sold.",
         "partOfSpeech": "noun phrase",
         "level": "A2",
@@ -527,7 +527,7 @@ Bilal’s story shows that in Islam, everyone is equal. His life teaches us that
         ],
         "chapter": 3,
         "chapterTitle": "Slaves in Mecca",
-        "storyExample": "His master was Umayya b. Halef.",
+        "storyExample": "His master was Umayya ibn Khalaf.",
         "category": "People & Society"
     },
     {
@@ -609,7 +609,7 @@ Bilal’s story shows that in Islam, everyone is equal. His life teaches us that
     },
     {
         "word": "patient",
-        "definition": "Able to wait or suffer calmly.",
+        "definition": "Calm when you must wait or when life is hard.",
         "partOfSpeech": "adjective",
         "level": "A2",
         "pronunciation": "/ˈpeɪʃənt/",
@@ -823,7 +823,7 @@ Bilal’s story shows that in Islam, everyone is equal. His life teaches us that
     },
     {
         "word": "partners",
-        "definition": "People or things joined with another.",
+        "definition": "Others who share power or work with someone.",
         "partOfSpeech": "noun",
         "level": "A2",
         "pronunciation": "/ˈpɑːrtnərz/",
@@ -910,7 +910,7 @@ Bilal’s story shows that in Islam, everyone is equal. His life teaches us that
     },
     {
         "word": "angrily",
-        "definition": "In an angry way.",
+        "definition": "In a way that shows you are very upset with someone.",
         "partOfSpeech": "adverb",
         "level": "A2",
         "pronunciation": "/ˈæŋɡrəli/",
@@ -933,7 +933,7 @@ Bilal’s story shows that in Islam, everyone is equal. His life teaches us that
     },
     {
         "word": "refused",
-        "definition": "Said no.",
+        "definition": "Said no; did not agree to do something.",
         "partOfSpeech": "verb",
         "level": "A2",
         "pronunciation": "/rɪˈfjuːzd/",
@@ -993,7 +993,7 @@ Bilal’s story shows that in Islam, everyone is equal. His life teaches us that
     },
     {
         "word": "pain",
-        "definition": "A bad feeling in the body.",
+        "definition": "The feeling you have when your body is hurt.",
         "partOfSpeech": "noun",
         "level": "A2",
         "pronunciation": "/peɪn/",
@@ -1147,9 +1147,6 @@ Bilal’s story shows that in Islam, everyone is equal. His life teaches us that
             "live freely",
             "worship freely"
         ],
-        "antonyms": [
-            "under force"
-        ],
         "chapter": 10,
         "chapterTitle": "A Free Muslim",
         "storyExample": "He could worship Allah freely.",
@@ -1201,7 +1198,7 @@ Bilal’s story shows that in Islam, everyone is equal. His life teaches us that
     },
     {
         "word": "Hijrah",
-        "definition": "The migration of Muslims from Mecca to Medina.",
+        "definition": "The move of the Muslims from Mecca to Medina.",
         "partOfSpeech": "proper noun",
         "level": "A2",
         "pronunciation": "/ˈhɪdʒrə/",
@@ -1216,7 +1213,7 @@ Bilal’s story shows that in Islam, everyone is equal. His life teaches us that
     },
     {
         "word": "fearlessly",
-        "definition": "Without fear.",
+        "definition": "Bravely, not afraid of anyone.",
         "partOfSpeech": "adverb",
         "level": "A2",
         "pronunciation": "/ˈfɪrləsli/",
@@ -1241,27 +1238,56 @@ Bilal’s story shows that in Islam, everyone is equal. His life teaches us that
         "category": "Character & Values"
     },
     {
-        "word": "morning",
-        "definition": "The early part of the day.",
-        "partOfSpeech": "noun",
+        "word": "pleased",
+        "definition": "Happy about something.",
+        "partOfSpeech": "adjective",
         "level": "A2",
-        "pronunciation": "/ˈmɔːrnɪŋ/",
-        "wordFamily": [
-            "morning",
-            "mornings"
-        ],
+        "pronunciation": "/pliːzd/",
         "collocations": [
-            "every morning",
-            "morning prayer"
+            "be pleased with something",
+            "very pleased"
+        ],
+        "synonyms": [
+            "happy"
+        ],
+        "antonyms": [
+            "unhappy"
+        ],
+        "wordFamily": [
+            "please",
+            "pleased",
+            "pleasure"
         ],
         "chapter": 12,
         "chapterTitle": "Prayer Is Better Than Sleep",
-        "storyExample": "Bilal used to start the morning call to prayer very early.",
-        "category": "Time"
+        "storyExample": "The Prophet (pbuh) was pleased with this and told him to repeat it every morning.",
+        "category": "Feelings"
+    },
+    {
+        "word": "repeat",
+        "definition": "To say or do something again.",
+        "partOfSpeech": "verb",
+        "level": "A2",
+        "pronunciation": "/rɪˈpiːt/",
+        "collocations": [
+            "repeat the words",
+            "repeat something every day"
+        ],
+        "synonyms": [
+            "say again"
+        ],
+        "wordFamily": [
+            "repeat",
+            "repetition"
+        ],
+        "chapter": 12,
+        "chapterTitle": "Prayer Is Better Than Sleep",
+        "storyExample": "The Prophet (pbuh) was pleased with this and told him to repeat it every morning.",
+        "category": "Communication"
     },
     {
         "word": "speech",
-        "definition": "Words spoken to people.",
+        "definition": "A talk given to a group of people.",
         "partOfSpeech": "noun",
         "level": "A2",
         "pronunciation": "/spiːtʃ/",
@@ -1280,7 +1306,7 @@ Bilal’s story shows that in Islam, everyone is equal. His life teaches us that
     },
     {
         "word": "disrespect",
-        "definition": "To treat someone without respect.",
+        "definition": "To treat someone rudely, as if they are not important.",
         "partOfSpeech": "verb",
         "level": "A2",
         "pronunciation": "/ˌdɪsrɪˈspekt/",
@@ -1302,19 +1328,26 @@ Bilal’s story shows that in Islam, everyone is equal. His life teaches us that
         "category": "Values & Conduct"
     },
     {
-        "word": "skin color",
-        "definition": "The color of a person’s skin.",
-        "partOfSpeech": "noun phrase",
+        "word": "behave badly",
+        "definition": "To act in a wrong or unkind way.",
+        "partOfSpeech": "verb phrase",
         "level": "A2",
-        "pronunciation": "/skɪn ˈkʌlər/",
+        "pronunciation": "/bɪˈheɪv ˈbædli/",
         "collocations": [
-            "skin color",
-            "because of skin color"
+            "behave badly to people",
+            "behave well"
+        ],
+        "antonyms": [
+            "behave well"
+        ],
+        "wordFamily": [
+            "behave",
+            "behaviour"
         ],
         "chapter": 13,
         "chapterTitle": "Everyone Is Equal",
-        "storyExample": "No person is better than another because of skin color.",
-        "category": "People & Identity"
+        "storyExample": "His life teaches us that it is unfair to behave badly to people because of their skin color or nationality.",
+        "category": "Character & Conduct"
     },
     {
         "word": "nationality",

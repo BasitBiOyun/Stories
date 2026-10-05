@@ -1,4 +1,10 @@
 import type { BookData, PageData } from '../../../types';
+import { withPlacesLayer } from '../../../features/historical-entities';
+import { applyChapterExtras } from '../../../lib/chapterExtras';
+import { yunusEmreA2ChapterExtrasEn } from './en/chapterExtras';
+import { yunusEmreA2GroupTasksEn } from './en/groupTasks';
+import { yunusEmreA2ChapterExtrasAr } from './ar/chapterExtras';
+import { yunusEmreA2GroupTasksAr } from './ar/groupTasks';
 import { yunusA2Pages } from './en/pages';
 import { yunusEmreA2PagesAr } from './ar/pages';
 import {
@@ -21,14 +27,39 @@ import { yunusA2LanguageFocusExercisesPart3 } from './en/languageFocus3';
 import { yunusA2LanguageFocusExercisesAr } from './ar/languageFocus';
 import { yunusA2LanguageFocusExercisesArPart2 } from './ar/languageFocus2';
 import { yunusA2LanguageFocusExercisesArPart3 } from './ar/languageFocus3';
-import { yunusA2TeacherGuide, yunusA2TeacherGuideMetadata } from './en/teacherGuide';
-import { teacherGuide as yunusA2TeacherGuideAr, teacherGuideMetadata as yunusA2TeacherGuideMetadataAr } from './ar/teacherGuide';
-import { yunusA2SelfStudyGuide } from './en/selfStudyGuide';
-import { yunusEmreA2SelfStudyGuideAr } from './ar/selfStudyGuide';
+import { buildStoryMap } from '../../../features/story-maps/buildStoryMap';
+import { yunusA2StoryMapLayout } from './storyMap';
+import { yunusA2StoryMapCopyEn } from './en/storyMap';
+import { yunusA2StoryMapCopyAr } from './ar/storyMap';
 
 const STORY_IDS = new Set(Array.from({ length: 8 }, (_, index) => index + 1));
 
-const buildEnglishPages = (): PageData[] => yunusA2Pages.map(page => {
+// Interactive map page, placed after the last chapter: the story is read without a break, then the whole journey is seen on the map.
+const MAP_PAGE_ID = 101;
+const MAP_AFTER_CHAPTER = 8;
+
+const withMapPage = (pages: PageData[], mapPage: PageData): PageData[] =>
+  pages.flatMap(page => (page.id === MAP_AFTER_CHAPTER ? [page, mapPage] : [page]));
+
+const mapPageEn: PageData = {
+  id: MAP_PAGE_ID,
+  type: 'map',
+  title: 'Yunus Emre’s World',
+  subtitle: 'Map · 1240–1320',
+  content: '',
+  map: buildStoryMap(yunusA2StoryMapLayout, yunusA2StoryMapCopyEn, 'Yunus Emre A2 EN'),
+};
+
+const mapPageAr: PageData = {
+  id: MAP_PAGE_ID,
+  type: 'map',
+  title: 'عالَمُ يونُس إِمْرَه',
+  subtitle: 'خَريطَة · مِنْ عامِ 1240 إِلى عامِ 1320',
+  content: '',
+  map: buildStoryMap(yunusA2StoryMapLayout, yunusA2StoryMapCopyAr, 'Yunus Emre A2 AR'),
+};
+
+const buildEnglishPages = (): PageData[] => withMapPage(yunusA2Pages.map(page => {
   if (STORY_IDS.has(page.id)) {
     const languageFocusExercises = yunusA2LanguageFocusExercises[page.id]
       ?? yunusA2LanguageFocusExercisesPart2[page.id]
@@ -49,9 +80,9 @@ const buildEnglishPages = (): PageData[] => yunusA2Pages.map(page => {
   };
   if (page.id === 14) return { ...page, exercises: yunusA2ManualFinalChallengeExercises };
   return page;
-});
+}), mapPageEn);
 
-const buildArabicPages = (): PageData[] => yunusEmreA2PagesAr.map(page => {
+const buildArabicPages = (): PageData[] => withMapPage(yunusEmreA2PagesAr.map(page => {
   if (STORY_IDS.has(page.id)) {
     const languageFocusExercises = yunusA2LanguageFocusExercisesAr[page.id]
       ?? yunusA2LanguageFocusExercisesArPart2[page.id]
@@ -72,17 +103,16 @@ const buildArabicPages = (): PageData[] => yunusEmreA2PagesAr.map(page => {
   };
   if (page.id === 14) return { ...page, exercises: yunusA2ManualFinalChallengeExercisesAr };
   return page;
-});
+}), mapPageAr);
 
 export const yunusEmreA2BookDataEn: BookData = {
   id: 'yunusEmre-a2-en',
   title: 'Yunus Emre: Faith, Character, and Poetry (A2)',
   level: 'A2',
   baseFontSize: 13,
-  pages: buildEnglishPages(),
-  teacherGuide: yunusA2TeacherGuide,
-  teacherGuideMetadata: yunusA2TeacherGuideMetadata,
-  selfStudyGuide: yunusA2SelfStudyGuide,
+  pages: applyChapterExtras(withPlacesLayer(buildEnglishPages(), 'yunusEmre-a2', 'en'), { ...yunusEmreA2ChapterExtrasEn, groupTasks: yunusEmreA2GroupTasksEn }),
+  teacherGuide: [],
+  selfStudyGuide: [],
 };
 
 export const yunusEmreA2BookDataAr: BookData = {
@@ -90,10 +120,9 @@ export const yunusEmreA2BookDataAr: BookData = {
   title: 'يونس إمره: الإيمان والأخلاق والشعر (A2)',
   level: 'A2',
   baseFontSize: 14,
-  pages: buildArabicPages(),
-  teacherGuide: yunusA2TeacherGuideAr,
-  teacherGuideMetadata: yunusA2TeacherGuideMetadataAr,
-  selfStudyGuide: yunusEmreA2SelfStudyGuideAr,
+  pages: applyChapterExtras(withPlacesLayer(buildArabicPages(), 'yunusEmre-a2', 'ar'), { ...yunusEmreA2ChapterExtrasAr, groupTasks: yunusEmreA2GroupTasksAr }),
+  teacherGuide: [],
+  selfStudyGuide: [],
 };
 
 export const yunusEmreA2BookData = yunusEmreA2BookDataEn;

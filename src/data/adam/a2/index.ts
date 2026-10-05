@@ -1,4 +1,9 @@
 import type { BookData, PageData } from '../../../types';
+import { applyChapterExtras } from '../../../lib/chapterExtras';
+import { adamA2ChapterExtrasEn } from './en/chapterExtras';
+import { adamA2GroupTasksEn } from './en/groupTasks';
+import { adamA2ChapterExtrasAr } from './ar/chapterExtras';
+import { adamA2GroupTasksAr } from './ar/groupTasks';
 import { adamA2Pages } from './en/pages';
 import { adamA2PagesAr } from './ar/pages';
 import {
@@ -19,20 +24,6 @@ import { adamA2LanguageFocusExercisesPart3, adamA2LanguageReviewExercises } from
 import { adamA2LanguageFocusExercisesAr } from './ar/languageFocus';
 import { adamA2LanguageFocusExercisesArPart2 } from './ar/languageFocus2';
 import { adamA2LanguageFocusExercisesArPart3, adamA2LanguageReviewExercisesAr } from './ar/languageFocus3';
-import { adamA2TeacherGuide, adamA2TeacherGuideMetadata } from './en/teacherGuide';
-import { adamA2TeacherGuideAr, adamA2TeacherGuideMetadataAr } from './ar/teacherGuide';
-import {
-  adamA2SelfStudyGuide,
-  adamA2StudentGuideMetadata,
-  adamA2StudentGuideSections,
-  adamA2StudentGuideText,
-} from './en/selfStudyGuide';
-import {
-  adamA2SelfStudyGuideAr,
-  adamA2StudentGuideMetadataAr,
-  adamA2StudentGuideSectionsAr,
-  adamA2StudentGuideTextAr,
-} from './ar/selfStudyGuide';
 
 const STORY_IDS = new Set(Array.from({ length: 10 }, (_, index) => index + 1));
 
@@ -83,27 +74,19 @@ export const adamA2BookDataEn: BookData = {
   title: 'Stories of the Prophets: Adam (A2)',
   level: 'A2',
   baseFontSize: 13,
-  pages: buildEnglishPages(),
-  teacherGuide: adamA2TeacherGuide,
-  teacherGuideMetadata: adamA2TeacherGuideMetadata,
-  selfStudyGuide: adamA2SelfStudyGuide,
-  studentGuideSections: adamA2StudentGuideSections,
-  studentGuideMetadata: adamA2StudentGuideMetadata,
-  studentGuideText: adamA2StudentGuideText,
+  pages: applyChapterExtras(buildEnglishPages(), { ...adamA2ChapterExtrasEn, groupTasks: adamA2GroupTasksEn }),
+  teacherGuide: [],
+  selfStudyGuide: [],
 };
 
 export const adamA2BookDataAr: BookData = {
   id: 'adam-a2-ar',
-  title: 'قصص الأنبياء: آدم (عليه السلام)',
+  title: 'قصص الأنبياء: آدم عليه السلام',
   level: 'A2',
   baseFontSize: 14,
-  pages: buildArabicPages(),
-  teacherGuide: adamA2TeacherGuideAr,
-  teacherGuideMetadata: adamA2TeacherGuideMetadataAr,
-  selfStudyGuide: adamA2SelfStudyGuideAr,
-  studentGuideSections: adamA2StudentGuideSectionsAr,
-  studentGuideMetadata: adamA2StudentGuideMetadataAr,
-  studentGuideText: adamA2StudentGuideTextAr,
+  pages: applyChapterExtras(buildArabicPages(), { ...adamA2ChapterExtrasAr, groupTasks: adamA2GroupTasksAr }),
+  teacherGuide: [],
+  selfStudyGuide: [],
 };
 
 export const adamA2BookData = adamA2BookDataEn;

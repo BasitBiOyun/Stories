@@ -6,6 +6,9 @@ export interface LearningLevelPolicy {
   level: Level;
   knowledgeCount: number;
   vocabularyCount: number;
+  vocabularyContextCount: number;
+  vocabularyRecallCount: number;
+  vocabularyRecallMode: 'choice' | 'guided' | 'independent';
   reviewCount: number;
   finalCount: number;
   quickPattern: readonly LearningExerciseVariant[];
@@ -30,6 +33,9 @@ export const LEARNING_LEVEL_POLICIES: Record<Level, LearningLevelPolicy> = {
     level: 'A2',
     knowledgeCount: 8,
     vocabularyCount: 6,
+    vocabularyContextCount: 5,
+    vocabularyRecallCount: 4,
+    vocabularyRecallMode: 'choice',
     reviewCount: 8,
     finalCount: 10,
     quickPattern: ['tap-reveal', 'fill-blanks', 'matching', 'multiple-choice', 'true-false'],
@@ -52,6 +58,9 @@ export const LEARNING_LEVEL_POLICIES: Record<Level, LearningLevelPolicy> = {
     level: 'B1',
     knowledgeCount: 8,
     vocabularyCount: 10,
+    vocabularyContextCount: 6,
+    vocabularyRecallCount: 5,
+    vocabularyRecallMode: 'guided',
     reviewCount: 8,
     finalCount: 10,
     quickPattern: ['multiple-choice', 'matching', 'fill-blanks', 'true-false', 'tap-reveal'],
@@ -74,6 +83,9 @@ export const LEARNING_LEVEL_POLICIES: Record<Level, LearningLevelPolicy> = {
     level: 'B2',
     knowledgeCount: 8,
     vocabularyCount: 10,
+    vocabularyContextCount: 7,
+    vocabularyRecallCount: 6,
+    vocabularyRecallMode: 'independent',
     reviewCount: 8,
     finalCount: 10,
     quickPattern: ['multiple-choice', 'true-false', 'tap-reveal', 'matching', 'fill-blanks'],

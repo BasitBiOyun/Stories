@@ -1,256 +1,324 @@
-import type { StudentGuideMetadata, StudentGuideSection, TeacherGuideSection } from '../../../../types';
-import { mosesA2Pages } from './pages';
-import { mosesA2TeacherGuide } from './teacherGuide';
-import { mosesA2QuickChallengesPolished } from './exercises';
+import type { TeacherGuideSection, StudentGuideMetadata, StudentGuideSection } from '../../../../types';
+
+// Learner-facing A2 study path, written by hand for each chapter of the Moses A2 story.
+// "Language Focus" and "Quick Challenge" refer to the activities as they exist on each chapter page.
+// Each English chapter is one block of text, so the plans point to its start, middle and end.
+type SelfPlan = {
+  chapter: string;
+  hotspots: [string, string];
+  goals: string[];
+  notice: string[];
+  read: string[];
+  find: string[];
+  words: string[];
+  languageFocus: string;
+  sayIt: string;
+  quick: string;
+  wrong: string[];
+  check: string[];
+  use: string;
+  reflect: string;
+};
+
+const selfPlans: SelfPlan[] = [
+  {
+    chapter: 'Chapter 1: The Cruel King',
+    hotspots: ['Pharaoh', 'Children of Israel'],
+    goals: ['I can say who Pharaoh was and who the Children of Israel were.', 'I can say why the king was rude to them.', 'I can use was, were and did not + verb.'],
+    notice: ['The chapter shows two sides: A cruel king and a big group who believed in one Allah.', 'Look at “He thought he was a god.” After thought, we hear the king’s idea. It was not true.'],
+    read: ['Look at the title and the picture. Who is the cruel king?', 'Listen to the chapter once. Follow the text with your eyes.', 'Read the last four sentences again. What did the king fear? What did he do?'],
+    find: ['Start: Find two words that tell us what kind of ruler Pharaoh was.', 'Middle: Find who the Children of Israel were and what they believed.', 'End: Find the sentence that starts with “Because of his fear”.'],
+    words: ['Word Notes: messenger, cruel, ruler, believe.', '“He was an unfair and cruel ruler.” Was he kind to people? Say yes or no.', 'Write one sentence with believe, for example: I believe that …'],
+    languageFocus: 'Complete story sentences with was, were and believed. Fix two mistakes after did not: did not believe, did not think. Then build “Because of his fear, he was rude to the Children of Israel.” Remember: was for one person, were for more than one.',
+    sayIt: 'Say the stress: MES-sen-ger, CRU-el, RU-ler, be-LIEVE. Say “the Children of Israel” as one group.',
+    quick: 'The question asks why the king was rude to the Children of Israel. Read the end of the chapter before you choose.',
+    wrong: ['Go back to the end of the chapter.', 'Find “Because of his fear” and read the two sentences before it.', 'Try again.'],
+    check: ['Can I say who Pharaoh was?', 'Can I say what the king feared?', 'Can I say “He did not believe …” correctly?'],
+    use: 'Language Focus, last activity: write or say three or four short sentences about new people, for example a new team or a new neighbour. Use was or were, believed or thought, did not + verb and because of.',
+    reflect: 'The king was afraid, so he was unfair to a whole group. How can you be fair to a new person you do not know?',
+  },
+  {
+    chapter: 'Chapter 2: The King’s Dream',
+    hotspots: ['Fire in the Dream', 'A Cruel Order'],
+    goals: ['I can tell the king’s dream and his order in the right order.', 'I can say what the magicians said about a boy.', 'I can use past verbs and will + verb.'],
+    notice: ['A dream made the king afraid, and his fear led to a cruel order.', 'Look at “A boy will be born from the Children of Israel”. will talks about the future.'],
+    read: ['Look at the title and the picture. What can you see in the fire?', 'Listen to the chapter once. Follow the text with your eyes.', 'Read the chapter again and stop at One day, Then and When. What happens at each word?'],
+    find: ['Start: Find where the fire came from and what it burnt.', 'Middle: Find what the helpers and magicians said.', 'End: Find the king’s order to his soldiers and what the soldiers did.'],
+    words: ['Word Notes: despotic, magicians, searched, heartless.', '“They were unkind and heartless.” Did the soldiers feel sorry for the families?', 'Write one sentence with searched: I searched for my … everywhere.'],
+    languageFocus: 'Match past verbs with their base forms: had → have, saw → see, came → come, found → find, told → tell. Choose burnt and will. Then put five story sentences in order with One day, Then and When.',
+    sayIt: 'Say the stress: des-POT-ic, ma-GI-cians, HEART-less. The -ed in searched sounds like /t/. Say “will be born” as one group.',
+    quick: 'You will put four events in order. Follow the chapter from the first sentence to the last.',
+    wrong: ['Read the chapter again from the start.', 'Stop at One day, woke up, They said and Then.', 'Put the events in that order. Try again.'],
+    check: ['Can I say what the king saw in his dream?', 'Can I say what the magicians said?', 'Can I say one sentence with will + verb?'],
+    use: 'Language Focus, last activity: Write or say three short sentences about a safe, new situation, like a picnic day. Use will + verb for a prediction, one safe instruction, and When + past, past.',
+    reflect: 'The king’s fear led to a very bad order. What can you do when fear makes you want to act fast?',
+  },
+  {
+    chapter: 'Chapter 3: A Baby in a Basket',
+    hotspots: ['The Basket', 'The River Nile'],
+    goals: ['I can say why Moses’s mother was afraid.', 'I can say what Allah told her to do.', 'I can use could, could not and “told … to”.'],
+    notice: ['Moses’s mother was sad and worried, but she trusted Allah.', 'Look at “Allah was kinder to the baby Moses than she was.” kinder than compares two.'],
+    read: ['Look at the title and the picture. Where is the baby?', 'Listen to the chapter once. Follow the text with your eyes.', 'Read Allah’s words in quotation marks (“ ”) again. How many instructions can you find?'],
+    find: ['Start: Find why the mother could not sleep.', 'Middle: Find the four sentences Allah said to her.', 'End: Find who followed the basket.'],
+    words: ['Word Notes: basket, protect, worried, follow.', '“Allah will protect him.” Will the baby be safe or in danger?', 'Write one sentence with worried: I feel worried when …'],
+    languageFocus: 'Choose could or could not: Soldiers could find her baby, but she could not sleep. Complete lines with put, took and carried. Then fix two mistakes: told her daughter to follow, and kinder than (not more kind).',
+    sayIt: 'Say the stress: BAS-ket, pro-TECT, WOR-ried, FOL-low. The -ed in carried sounds like /d/.',
+    quick: 'The question asks why the mother put her baby in the River Nile. Read the middle of the chapter, where Allah speaks to her.',
+    wrong: ['Go back to the middle of the chapter.', 'Find “Allah said to her” and read the words after it.', 'Try again.'],
+    check: ['Can I say why the mother could not sleep?', 'Can I say what the mother told her daughter?', 'Can I say “Allah was kinder … than …” correctly?'],
+    use: 'Language Focus, last activity: Write or say three short sentences about a hard but safe moment, like a lost cat. Use could or could not, one instruction, will + verb and told … to.',
+    reflect: 'Moses’s mother did a hard thing because she trusted Allah. Who helps you feel calm when you are worried?',
+  },
+  {
+    chapter: 'Chapter 4: The Queen’s Love',
+    hotspots: ['Queen Asiye', 'The King’s Palace'],
+    goals: ['I can say who found the basket and what the queen decided.', 'I can say how the queen was different from the king.', 'I can use different from, I will and an order like Find ….'],
+    notice: ['Many people help baby Moses in this chapter: the servants, the queen and his sister.', 'Look at “The queen was different from her husband.” We say different from.'],
+    read: ['Look at the title and the picture. Who is the queen?', 'Listen to the chapter once. Follow the text with your eyes.', 'Read the words in quotation marks (“ ”) again. Who says each part?'],
+    find: ['Start: Find where the basket came.', 'Middle: Find three words about the queen.', 'End: Find what Moses’s sister said to the queen.'],
+    words: ['Word Notes: palace, servants, kind-hearted, nurse.', '“She was good and kind-hearted.” Was the queen like her husband?', 'Write one sentence: My … is kind-hearted because …'],
+    languageFocus: 'Sort parts of the chapter: Going to a place (came to, took it to, ran to) or where something is (near, nearby). Match words like different from and accepted. Then choose I will take and Find a nurse.',
+    sayIt: 'Say the stress: PAL-ace, SER-vants, kind-HEART-ed. Say the queen’s order in a clear voice: “Find a nurse for the baby.”',
+    quick: 'You will match four people with what they did. Look for each person: the servants, the queen, the king and Moses’s sister.',
+    wrong: ['Read the chapter again, one person at a time.', 'Start with “The palace servants” and end with “Moses’s sister saw everything.”', 'Match again.'],
+    check: ['Can I say who took the basket to the king and the queen?', 'Can I say one way the queen was different from the king?', 'Can I say “I will …” to make a decision?'],
+    use: 'Language Focus, last activity: Write or say four short sentences about a helpful person and a plan. Use be + adjective, different from, I will … and one safe order.',
+    reflect: 'The queen and Moses’s sister helped a baby. What small help can you give to someone younger than you?',
+  },
+  {
+    chapter: 'Chapter 5: Back to His Mother',
+    hotspots: ['His Mother’s Arms', 'The Bazaar'],
+    goals: ['I can say how Allah sent Moses back to his mother.', 'I can say why Moses loved the Children of Israel.', 'I can use always, because and was walking.'],
+    notice: ['Moses grew up in the king’s house, but he always loved Allah.', 'Look at “One day he was walking in the bazaar. He saw two men fighting.” He was walking, and then he saw.'],
+    read: ['Look at the title and the picture. Who is holding the baby?', 'Listen to the chapter once. Follow the text with your eyes.', 'Read the last three sentences again. What did Moses see?'],
+    find: ['Start: Find who brought the mother to the palace.', 'Middle: Find two things that were always true about Moses.', 'End: Find where Moses was walking one day.'],
+    words: ['Word Notes: take care of, safe, grew up, weak.', '“He was always ready to help the weak people.” Did Moses help strong people or weak people?', 'Write one sentence: I grew up in …'],
+    languageFocus: 'Match words like take care of, grew up and became with their meanings. Complete lines with always and because. Then decide: Was Moses walking first, or did he see the men first?',
+    sayIt: 'Say the stress: ba-ZAAR, al-WAYS, be-CAUSE. Say “take care of” and “grew up” as one group each.',
+    quick: 'The question asks why Moses loved the Children of Israel. Read the middle of the chapter and look for the word because.',
+    wrong: ['Go back to the middle of the chapter.', 'Find “He loved the Children of Israel” and read to the end of that sentence.', 'Try again.'],
+    check: ['Can I say who looked after baby Moses?', 'Can I say why Moses loved the Children of Israel?', 'Can I use was walking and saw in one short story?'],
+    use: 'Language Focus, last activity: write or say three or four short sentences about someone who helps others. Use look after or take care of, became, always and because.',
+    reflect: 'Moses was always ready to help the weak people. Who needs a little help in your home or class?',
+  },
+  {
+    chapter: 'Chapter 6: A Mistake in the Bazaar',
+    hotspots: ['Not on Purpose', 'The Warning'],
+    goals: ['I can say what happened in the bazaar.', 'I can say how Moses felt and what he asked Allah.', 'I can use to + verb, because and are going to.'],
+    notice: ['Moses wanted to help, but a man died. Moses was very sorry.', 'Look at “Moses ran to help him.” to help tells us why he ran.'],
+    read: ['Look at the title and the picture. What mistake happened?', 'Listen to the chapter once. This chapter is sad, so take your time.', 'Read the man’s warning at the end again. What must Moses do?'],
+    find: ['Start: Find what the weak man shouted.', 'Middle: Find Moses’s dua to Allah.', 'End: Find what the king’s soldiers are going to do.'],
+    words: ['Word Notes: shouted, upset, accidentally, forgave.', '“Moses was very upset.” Was he happy or sad?', 'Write one sentence with accidentally: I accidentally dropped my …'],
+    languageFocus: 'Choose what accidentally means. Choose to help and because: Ran to help him, forgave him because He is Kind and Loving. Then fix a friend’s warning: Are looking for you, are going to catch you.',
+    sayIt: 'Say the stress: ac-ci-DEN-tal-ly, up-SET, for-GAVE. Say “Help me!” loudly, and say the dua calmly.',
+    quick: 'The sentence is about how the death happened. Read the middle of the chapter before you decide.',
+    wrong: ['Go back to the middle of the chapter.', 'Find the word accidentally and read that sentence again.', 'Ask yourself: Did Moses plan it? Then try again.'],
+    check: ['Can I say why Moses ran to the two men?', 'Can I say what Moses asked Allah?', 'Can I say “they are going to …” correctly?'],
+    use: 'Language Focus, last activity: Write or say four short sentences with a safe warning, like a wet floor at school. Use to + verb, because, are + -ing, are going to and one order.',
+    reflect: 'Moses made a mistake, felt sorry and asked Allah to forgive him. What can you do after you make a mistake?',
+  },
+  {
+    chapter: 'Chapter 7: Escape to Midian',
+    hotspots: ['Midian', 'The Well'],
+    goals: ['I can say why Moses left Egypt.', 'I can say what Moses saw at the well.', 'I can use there were, were + -ing and arrived at.'],
+    notice: ['Moses was alone on the road, but the story says Allah guided him.', 'Look at “Two girls were sitting far from the water.” were sitting shows what they were doing at that moment.'],
+    read: ['Look at the title and the picture. Where is Moses going?', 'Listen to the chapter once. Follow the text with your eyes.', 'Read the sentences about the well again. Who is near the water? Who is far?'],
+    find: ['Start: Find why Moses escaped.', 'Middle: Find two sentences about Midian.', 'End: Find Moses’s question to the girls.'],
+    words: ['Word Notes: escaped, guided, thirsty, well.', '“Moses was tired and thirsty.” What did he need?', 'Write one sentence: I am thirsty, so I …'],
+    languageFocus: 'Choose was or were for the people at the well: There were, They were watering, Two girls were sitting. Complete arrived at, So and looked for. Then match journey words like escaped from and shepherds.',
+    sayIt: 'Say the stress: es-CAPED, GUI-ded, THIRS-ty, SHEP-herds. The -ed in guided is an extra part, but the -ed in escaped sounds like /t/.',
+    quick: 'The question asks why Midian was a safe place. Read the sentences about Midian in the middle of the chapter.',
+    wrong: ['Go back to the middle of the chapter.', 'Find “Midian was near Egypt.” and read the next sentence too.', 'Try again.'],
+    check: ['Can I say why Moses left Egypt?', 'Can I say who was at the well?', 'Can I say “There were many …” correctly?'],
+    use: 'Language Focus, last activity: Write or say four short sentences about a safe trip. Use After …, arrived at, so, looked for, there were and was or were + -ing.',
+    reflect: 'Moses was tired and far from home, but he was not alone. Who helps you when you are in a new place?',
+  },
+  {
+    chapter: 'Chapter 8: The Two Sisters',
+    hotspots: ['Waiting for Their Turn', 'Water for the Sheep'],
+    goals: ['I can say why the two sisters waited at the well.', 'I can say how Moses helped them.', 'I can ask a question with Why aren’t you …?'],
+    notice: ['The sisters had a problem, and Moses understood it quickly.', 'Look at “He cannot come with us.” cannot means he is not able.'],
+    read: ['Look at the title and the picture. What are the sisters doing?', 'Listen to the chapter once. Follow the text with your eyes.', 'Read the sisters’ words again. Why do they wait?'],
+    find: ['Start: Find Moses’s question.', 'Middle: Find the girls’ answer and why they wait for their turn.', 'End: Find what the father asked and what the sisters said.'],
+    words: ['Word Notes: turn, understood, early, shepherds.', '“We wait for our turn.” Do the sisters go first or last?', 'Write one sentence: I came home early because …'],
+    languageFocus: 'Choose what cannot come means. Build Moses’s question “Why aren’t you taking your sheep to drink water?” Then fix the sisters’ words: There are no young men, and wait for the other shepherds to leave.',
+    sayIt: 'Say the stress: un-der-STOOD, EAR-ly, SHEP-herds. Let your voice go down at the end of “Why aren’t you taking your sheep to drink water?”',
+    quick: 'You will put four events in order. Follow the chapter from the well to the sisters’ home.',
+    wrong: ['Read the chapter again from the start.', 'Stop after the girls speak, after Moses helps, and after they go home.', 'Put the events in that order. Try again.'],
+    check: ['Can I say why the father did not come?', 'Can I say what Moses did for the sisters?', 'Can I ask “Why aren’t you …?” correctly?'],
+    use: 'Language Focus, last activity: Write or say four short sentences about a shared job at home. Use Why aren’t you …?, cannot, There are no …, so and wait for.',
+    reflect: 'Moses saw that the sisters needed help, and he helped them. How can you see when a friend needs help?',
+  },
+  {
+    chapter: 'Chapter 9: A New Life',
+    hotspots: ['Prophet Shu’ayb', 'A Home in Midian'],
+    goals: ['I can say who the sisters’ father was.', 'I can say why Moses accepted the job.', 'I can use want to, decided to and because.'],
+    notice: ['A kind act at the well gave Moses a new home and a new family.', 'Look at Later and “After ten years”. These words move the story forward in time.'],
+    read: ['Look at the title and the picture. Where does Moses live now?', 'Listen to the chapter once. Follow the text with your eyes.', 'Read the last four sentences again. How long did Moses stay?'],
+    find: ['Start: Find who the father was and why he couldn’t help his daughters.', 'Middle: Find what Shu’ayb (pbuh) offered Moses.', 'End: Find what Moses decided after ten years.'],
+    words: ['Word Notes: offered, accepted, stranger, married.', '“he was a stranger in Midian”: did people in Midian know Moses?', 'Write one sentence: My friend offered me …'],
+    languageFocus: 'Complete lines with couldn’t, because and needed. Choose to thank and to go after want and decided. Then put four sentences in order with Later and After ten years.',
+    sayIt: 'Say the stress: OF-fered, ac-CEP-ted, STRAN-ger, MAR-ried. The -ed in accepted is an extra part.',
+    quick: 'The question asks why Moses accepted Shu’ayb’s (pbuh) offer. Read the middle of the chapter before you choose.',
+    wrong: ['Go back to the middle of the chapter.', 'Find “Moses accepted the job” and read to the end of the next sentence.', 'Try again.'],
+    check: ['Can I say who Shu’ayb (pbuh) was?', 'Can I say two things Moses needed?', 'Can I say “I want to …” correctly?'],
+    use: 'Language Focus, last activity: Write or say four short sentences about a new chance, like a new club. Use need, because, want to, offer or accept, later and decided to.',
+    reflect: 'Shu’ayb (pbuh) wanted to thank Moses for his work. How can you thank someone who helped you?',
+  },
+  {
+    chapter: 'Chapter 10: The Voice on the Mountain',
+    hotspots: ['Fire on the Hillside', 'The Walking Stick'],
+    goals: ['I can describe the cold, dark night in the valley.', 'I can say what Allah told Moses on the mountain.', 'I can use It was, There was and to + verb.'],
+    notice: ['The night was dark, cold and very quiet. Then Moses heard a loud voice.', 'Look at “It was getting dark and cold.” getting shows a slow change.'],
+    read: ['Look at the title and the picture. What is on the hillside?', 'Listen to the chapter once. Listen well for the voice in the silence.', 'Read the last three sentences again. What happened to the walking stick?'],
+    find: ['Start: Find two sentences about the season and the time.', 'Middle: Find what Moses said to his family.', 'End: Find Allah’s words to Moses.'],
+    words: ['Word Notes: hillside, silence, walking stick, snake.', '“Everywhere was very quiet.” Which Word Note means the same?', 'Write one sentence: My grandfather has a walking stick.'],
+    languageFocus: 'Choose It or There: It was winter, There was nobody on the way, It was getting dark. Build Moses’s words “Wait here. I will get some fire to get warm.” Then match words like valley, Suddenly and turned into.',
+    sayIt: 'Say the stress: HILL-side, SI-lence, SUD-den-ly. Say “walking stick” with the stress on WALK.',
+    quick: 'The question asks why Moses went up the mountain. Read the middle of the chapter: What did he say before he climbed?',
+    wrong: ['Go back to the middle of the chapter.', 'Find “Wait here.” and read Moses’s next words.', 'Try again.'],
+    check: ['Can I say what the weather was like?', 'Can I say what the walking stick turned into?', 'Can I say “It was getting …” correctly?'],
+    use: 'Language Focus, last activity: Write or say four short sentences about a cold evening. Use getting + adjective, there is or there are, one instruction, I will … and to + verb.',
+    reflect: 'Moses went to get fire to keep his family warm. What do you do to take care of your family?',
+  },
+  {
+    chapter: 'Chapter 11: The Signs of Allah',
+    hotspots: ['The Shining Hand', 'Harun'],
+    goals: ['I can say what happened to Moses’s hand.', 'I can say who went with Moses to the palace.', 'I can tell an instruction from a story event.'],
+    notice: ['Moses became a prophet in this chapter. Now he has a big job.', 'Look at “Go to the king”. An instruction starts with the verb and has no subject.'],
+    read: ['Look at the title and the picture. What is shining?', 'Listen to the chapter once. Follow the text with your eyes.', 'Read the last two sentences again. Who was sitting? Who was standing?'],
+    find: ['Start: Find Allah’s instructions about Moses’s hand.', 'Middle: Find what Moses became.', 'End: Find who went with Moses, and why.'],
+    words: ['Word Notes: shining, signs, prophet, throne.', '“The king was sitting on his throne.” Is a throne a bed or a chair?', 'Write one sentence with shining: The sun is shining …'],
+    languageFocus: 'Sort parts of the chapter: Allah tells Moses what to do (Put …, Go …) or the story tells what happened (Moses went, He met). Choose became, did not and made. Then complete the last sentence with with and to.',
+    sayIt: 'Say the stress: SHI-ning, PROPH-et, THRONE. Say “the signs of My power” slowly and clearly.',
+    quick: 'You will match four parts with what the chapter says. The hand and the message are at the start. Harun and the king are at the end.',
+    wrong: ['Read the start of the chapter again for the hand and the message.', 'Then read the end of the chapter for Harun and the king.', 'Match again.'],
+    check: ['Can I say what happened to Moses’s hand?', 'Can I say who Harun (pbuh) was?', 'Can I give an instruction like Go to …?'],
+    use: 'Language Focus, last activity: Write or say four short sentences about a small job, like taking a note to the school office with a friend. Use one instruction, take … with me, to + verb and became or made.',
+    reflect: 'Moses took his brother with him for a big job. Who do you want with you when you do something hard?',
+  },
+  {
+    chapter: 'Chapter 12: The King’s Magicians',
+    hotspots: ['Two Miracles', 'The King Laughed'],
+    goals: ['I can say the two miracles Moses showed.', 'I can say what the king thought about Moses.', 'I can use told … about, decided to and can + verb.'],
+    notice: ['The king listened to Moses, but he did not believe him.', 'Look at “He thought Moses was crazy.” This is the king’s idea, not a fact.'],
+    read: ['Look at the title and the picture. What are the people doing?', 'Listen to the chapter once. Follow the text with your eyes.', 'Read the king’s words at the end again. What does he say about the signs?'],
+    find: ['Start: Find what Moses said to the king.', 'Middle: Find the two miracles and the word Then.', 'End: Find how the king and his helpers answered.'],
+    words: ['Word Notes: universe, crazy, decided, laughed at.', '“The king and his helpers laughed at him.” Were they kind to Moses?', 'Write one sentence: I decided to … today.'],
+    languageFocus: 'Match words like universe, miracles and made fun of. Choose told, to show and do: told him about Allah, decided to show, can do. Then put the two signs in order with Then.',
+    sayIt: 'Say the stress: U-ni-verse, MIR-a-cles, de-CI-ded. Read “Look! It was shining white!” with surprise in your voice.',
+    quick: 'The sentence is about what the king said. Read the king’s words at the end of the chapter.',
+    wrong: ['Go back to the end of the chapter.', 'Find “The king said to Moses (pbuh)” and read his words again.', 'Try again.'],
+    check: ['Can I say the two miracles?', 'Can I say what the king thought about Moses?', 'Can I say “… decided to …” correctly?'],
+    use: 'Language Focus, last activity: Write or say four short sentences about showing a skill, like making a paper plane. Use I thought …, I decided to …, turned into, then and can + verb.',
+    reflect: 'The king laughed at Moses, but Moses did not stop. What can you do when someone laughs at what you believe?',
+  },
+  {
+    chapter: 'Chapter 13: The Magicians Believe',
+    hotspots: ['The Huge Snake', 'Bowing Down'],
+    goals: ['I can tell what happened with the sticks and the snakes.', 'I can say what the magicians did and said.', 'I can use still, because and continued to.'],
+    notice: ['The magicians changed and believed. The king did not change.', 'Look at “The king still did not believe in Allah”. still shows no change.'],
+    read: ['Look at the title and the picture. What are the magicians doing?', 'Listen to the chapter once. Follow the text with your eyes.', 'Read the last three sentences again. Why did the king still not believe?'],
+    find: ['Start: Find what the magicians had in their hands.', 'Middle: Find what Moses’s stick did.', 'End: Find what the magicians shouted, and what the king did.'],
+    words: ['Word Notes: ropes, huge, bowed down, arrogant.', '“he was arrogant”: did the king think he was better than other people?', 'Write one sentence with huge: I saw a huge …'],
+    languageFocus: 'Sort parts of the chapter: A finished action (came, put down, bowed down) or an action in progress (were holding, were moving). Fix two mistakes: threw, not throwed, and quickly, not quick. Then complete with still, because and to.',
+    sayIt: 'Say the stress: AR-ro-gant, con-TIN-ued. Say bowed like now. Say the magicians’ words in a strong voice.',
+    quick: 'You will put four events in order. Follow the chapter from the magicians’ sticks to their words at the end.',
+    wrong: ['Read the chapter again from the start.', 'Stop at They put down, Throw your stick, ate all the snakes and They shouted.', 'Put the events in that order. Try again.'],
+    check: ['Can I say what Moses’s stick did?', 'Can I say what the magicians shouted?', 'Can I say why the king still did not believe?'],
+    use: 'Language Focus, last activity: Write or say four short sentences about a small science show at school. Use came with, was or were + -ing, one instruction, turned into, quickly and still or continued to.',
+    reflect: 'The magicians saw the truth and changed. Why do we need courage to say, I was wrong?',
+  },
+  {
+    chapter: 'Chapter 14: The Night Journey',
+    hotspots: ['Leaving at Night', 'The Caravan'],
+    goals: ['I can say why Moses and his people left at night.', 'I can say why the caravan moved slowly.', 'I can use must, could not and slowly.'],
+    notice: ['Moses had a plan: Leave Egypt at night and keep it secret.', 'Look at “you must keep it secret”. must shows it is necessary.'],
+    read: ['Look at the title and the picture. Is it day or night?', 'Listen to the chapter once. Follow the text with your eyes.', 'Read Moses’s words to his people again. Find must two times.'],
+    find: ['Start: Find the king’s order to his helpers and soldiers.', 'Middle: Find what Allah told Moses, and what Moses told his people.', 'End: Find who was in the group and where they arrived.'],
+    words: ['Word Notes: journey, secret, caravan, army.', '“Their caravan moved slowly.” Was the caravan fast?', 'Write one sentence: My family went on a journey to …'],
+    languageFocus: 'Decide if the people were already far from Egypt when Moses spoke. Match words like keep it secret, caravan and rose. Then choose could not, slowly and When.',
+    sayIt: 'Say the stress: JOUR-ney, SE-cret, CAR-a-van, AR-my. Say “We will leave at night.” in a quiet voice, like a secret.',
+    quick: 'The question asks why the caravan moved slowly. Read the end of the chapter, just before “Their caravan moved slowly.”',
+    wrong: ['Go back to the end of the chapter.', 'Read the two sentences before “Their caravan moved slowly.”', 'Try again.'],
+    check: ['Can I say why they left at night?', 'Can I say who could not walk fast?', 'Can I say “We must …” correctly?'],
+    use: 'Language Focus, last activity: Write or say four short sentences to plan a quiet trip, like a surprise visit to your grandparents. Use Get ready for …, must, will, could not and slowly or quickly.',
+    reflect: 'Moses asked Allah for help when life became harder. What can you do when life feels hard?',
+  },
+  {
+    chapter: 'Chapter 15: The Sea Opens',
+    hotspots: ['The Stick and the Sea', 'Walls of Water'],
+    goals: ['I can say where the sea and the army were.', 'I can say what happened when Moses hit the sea.', 'I can use in front of, behind and will + verb.'],
+    notice: ['Moses’s people were afraid. Then Allah showed His power.', 'Look at “The sea was in front of them. The king and his army were behind them.” They had no place to escape.'],
+    read: ['Look at the title and the picture. What is happening to the sea?', 'Listen to the chapter once. Follow the text with your eyes.', 'Read the last four sentences again. Find three things that changed.'],
+    find: ['Start: Find what Moses said when his people panicked.', 'Middle: Find where the sea and the army were.', 'End: Find what Moses did with his stick and what happened.'],
+    words: ['Word Notes: panicked, caught up with, parted, walls.', '“He hit the sea and the sea parted!” Did the sea open or close?', 'Write one sentence: I felt calm when …'],
+    languageFocus: 'Complete lines with in front of, behind and with. Put four sentences in order after Moses hit the sea. Then fix two verbs: will help, not will helps, and caught, not catched.',
+    sayIt: 'Say the stress: PAN-icked, PAR-ted, SAFE-ly. Say “The waves became high walls!” with surprise in your voice.',
+    quick: 'The question asks what Moses said to his people. Read the start of the chapter, right after his people panicked.',
+    wrong: ['Go back to the start of the chapter.', 'Find “His people panicked.” and read the next sentence.', 'Try again.'],
+    check: ['Can I say where the sea and the army were?', 'Can I say what the waves became?', 'Can I say will + verb, like will help, correctly?'],
+    use: 'Language Focus, last activity: Write or say four short sentences about finding a safe way through a busy place, like a station. Use in front of, behind, one instruction, will, became and between.',
+    reflect: 'Moses stayed calm when his people were afraid. What calm words can you say to a scared friend?',
+  },
+  {
+    chapter: 'Chapter 16: The Cruel King Died in the Water',
+    hotspots: ['The Closed Sea', 'Only Allah'],
+    goals: ['I can say what the king said about the sea.', 'I can say what happened to the king and his soldiers.', 'I can say two lessons of the story with It tells us that … and It shows that ….'],
+    notice: ['This chapter has the end of the king and the lessons of the whole story.', 'Look at “It tells us that no one can own another person.” This is a lesson, so it is in the present.'],
+    read: ['Look at the title and the picture. What is happening to the sea?', 'Listen to the chapter once. Follow the text with your eyes.', 'Read the last three sentences again. How many lessons can you find?'],
+    find: ['Start: Find what the king said to his soldiers.', 'Middle: Find what Allah did when they were midway.', 'End: Find the two sentences with It tells us that and It shows that.'],
+    words: ['Word Notes: midway, lessons, own, power.', '“only Allah has power over us”: does the king have this power?', 'Write one sentence: One lesson from this story is …'],
+    languageFocus: 'Choose what the last two sentences give us. Fix said to his soldiers and told the sea to open. Then match place and time words: very close behind, midway, In the end, no one.',
+    sayIt: 'Say the stress: MID-way, LES-sons, POW-er. Say the last lesson slowly: “It shows that only Allah has power over us.”',
+    quick: 'The sentence is about the king’s words. Read the start of the chapter before you decide.',
+    wrong: ['Go back to the start of the chapter.', 'Find “The king said to his soldiers” and read his words again.', 'Try again.'],
+    check: ['Can I say what the king said about the sea?', 'Can I say what happened in the end?', 'Can I say one lesson with “It shows that …”?'],
+    use: 'Language Focus, last activity: Write or say four short sentences about a short everyday story and its lesson. Use in the middle of, when, in the end, said to or told … to, and It tells us that or It shows that.',
+    reflect: 'The story says no one can own another person. How can you show respect to every person this week?',
+  },
+];
+
+export const mosesA2SelfStudyGuide: TeacherGuideSection[] = selfPlans.map(p => ({
+  chapter: p.chapter,
+  timing: 'About 20 minutes',
+  objectives: p.goals,
+  pedagogy: 'Look, listen and read first. Then find the answer sentences, do the Quick Challenge, and use the chapter’s Language Focus.',
+  grammarFocus: p.languageFocus,
+  pronunciationFocus: p.sayIt,
+  lessonPlan: p.read.join(' '),
+  discussionPoints: [p.reflect],
+  interactiveTips: [`Tap the picture hotspots “${p.hotspots[0]}” and “${p.hotspots[1]}”.`],
+  differentiation: { strugglingLearners: p.wrong.join(' '), fastFinishers: p.use },
+  whatToNotice: p.notice,
+  readListen: [...p.read, `Tap the picture hotspots “${p.hotspots[0]}” and “${p.hotspots[1]}”.`],
+  findAnswerInStory: p.find,
+  vocabularyInContext: p.words,
+  quickChallengeGuide: p.quick,
+  wrongAnswerSupport: p.wrong,
+  selfCheck: p.check,
+  useWhatYouLearned: p.use,
+  reflectionPrompt: p.reflect,
+}));
+
+export const mosesA2StudentGuideSections: StudentGuideSection[] = [
+  { title: '1. One Chapter at a Time', icon: 'Target', text: 'Study one chapter in one sitting. It takes about 20 minutes. Open “Study Path” to see the steps for your chapter.', points: ['Look at the title and the picture.', 'Listen and follow the text.', 'Read a few sentences at a time.', 'Do the Quick Challenge.', 'Do the Language Focus.'] },
+  { title: '2. Listen and Read', icon: 'Ear', text: 'Every chapter has audio. Listen first, then read.', points: ['First time: Listen for the main idea.', 'Second time: Follow the words with your eyes.', 'Stop the audio and say one short sentence again.'] },
+  { title: '3. Word Notes and Hotspots', icon: 'BookOpen', text: 'Each chapter has four underlined words. Tap a word to see its Word Note. Tap the hotspots on the picture for short notes.', points: ['Read the word in its sentence first.', 'Guess the meaning, then check the Word Note.', 'Write the word and one sentence in your notebook.'] },
+  { title: '4. Quick Challenge', icon: 'CheckCircle', text: 'Each chapter has one Quick Challenge. Answer first, then read the feedback.', points: ['Wrong answer? Find the answer sentence.', 'Read it again.', 'Try again.'] },
+  { title: '5. Language Focus', icon: 'Compass', text: 'Each chapter has four Language Focus activities. Do them after you understand the chapter. They use sentences from the story.', points: ['Activity 1: look at a story sentence and its meaning.', 'Activities 2 and 3: practise the words and forms.', 'Last activity: write or say three or four sentences of your own.'] },
+  { title: '6. When It Is Hard', icon: 'HelpCircle', text: 'It is fine to find a chapter hard. Change how you study, not your goal.', points: ['Listen to half of the chapter only.', 'Read two or three sentences at a time.', 'Look at the picture and the hotspots again.', 'Learn only two words today.'] },
+  { title: '7. Values in the Story', icon: 'Heart', text: 'The story of Moses (pbuh) is about trust in Allah, saying sorry, helping, thanks and fairness. Turn each value into one small action.', points: ['Trust: Moses’s mother trusted Allah when she was worried (Chapter 3).', 'Saying sorry: Say sorry and ask Allah to forgive you after a mistake (Chapter 6).', 'Helping: Help people who cannot do a job alone (Chapter 8).', 'Thanks: Thank people who help you (Chapter 9).', 'Calm: Stay calm and help scared people (Chapter 15).', 'Fairness: No one can own another person (Chapters 1 and 16).'] },
+  { title: '8. At the End of the Book', icon: 'Stars', text: 'After Chapter 16, do the review pages in this order. Go back to a chapter when an answer is not clear.', points: ['Knowledge Check', 'Vocabulary Challenge', 'Master Glossary', 'Language Review', 'Final Challenge'] },
+];
 
 export const mosesA2StudentGuideMetadata: StudentGuideMetadata = {
-  title: 'Moses A2 — Self-Study Guide', level: 'A2', language: 'English', estimatedStudyTime: '16 × 20–25 minutes',
-  whoIsThisFor: 'A2 learners studying the story independently.',
-  learningGoals: ['understand the main events and reasons', 'find evidence in the chapter', 'reuse key vocabulary', 'practice listening, speaking and short writing', 'turn values into practical actions'],
-  recommendedUse: ['read once for meaning', 'listen once for key events', 'complete the Quick Challenge', 'correct wrong answers by finding evidence', 'finish with one spoken or written retrieval sentence'],
-};
-
-export const mosesA2SelfStudyGuide: TeacherGuideSection[] = [
-  { chapter: 'Chapter 1: The Cruel King', timing: '20 minutes', objectives: ['Identify the setting and groups.', 'Explain Pharaoh’s fear with evidence.', 'Use cruel/ruler/believe.'], pedagogy: 'Read → find cause → say one evidence sentence.', lessonPlan: 'Read once. Listen for Pharaoh’s fear. Find the sentence explaining his unfair treatment. Complete Quick Challenge 1. Say: “Pharaoh was unfair because…”', discussionPoints: ['What did Pharaoh fear?', 'Which action was unfair?', 'What fair action could a powerful person take?'], differentiation: { fastFinishers: 'Write a four-sentence fair/unfair comparison.', strugglingLearners: 'Use: “Pharaoh was __ because __.”' }, interactiveTips: ['Use both hotspots.', 'If wrong, reread the final sentences before retrying.'] },
-  { chapter: 'Chapter 2: The King’s Dream', timing: '20 minutes', objectives: ['Sequence dream, explanation and order.', 'Understand fear → cruel action.', 'Reuse dream/heartless.'], pedagogy: 'Short sequence retrieval.', lessonPlan: 'Read/listen. Write three words: dream → explanation → order. Complete Quick Challenge 2. Retell the sequence aloud with then.', discussionPoints: ['What was the dream?', 'What happened after its explanation?', 'How can fear lead to a bad choice?'], differentiation: { fastFinishers: 'Write three first/then/finally sentences.', strugglingLearners: 'Say the three events using single phrases first.' }, interactiveTips: ['Replay the magicians’ explanation.', 'Check the cause, not only the dream detail.'] },
-  { chapter: 'Chapter 3: A Baby in a Basket', timing: '20 minutes', objectives: ['Identify problem, instruction and action.', 'Use basket/protect/worried.', 'See trust as action.'], pedagogy: 'Evidence + action reflection.', lessonPlan: 'Read/listen. Find what Allah instructed. Complete the only Tap & Reveal Quick Challenge. Close the answer and retell the action from memory.', discussionPoints: ['Why was the mother worried?', 'What did she do?', 'Which action shows trust?'], differentiation: { fastFinishers: 'Write four factual sentences from the mother’s point of view.', strugglingLearners: 'Use basket → Nile → sister as three cues.' }, interactiveTips: ['Use basket/Nile hotspots.', 'Do not reveal until you answer first.'] },
-  { chapter: 'Chapter 4: The Queen’s Love', timing: '20 minutes', objectives: ['Describe Asiye with evidence.', 'Compare her with Pharaoh.', 'Recognize care through action.'], pedagogy: 'Character evidence.', lessonPlan: 'Read/listen. Find two actions by Asiye. Complete Quick Challenge 4. Say one comparison: “Asiye was different from Pharaoh because…”', discussionPoints: ['What did Asiye believe?', 'What did she do for Moses?', 'How can care be shown in action?'], differentiation: { fastFinishers: 'Write three comparison sentences.', strugglingLearners: 'Choose kind/cruel for each character and explain one choice.' }, interactiveTips: ['Use Asiye hotspot.', 'Point to an action before naming a value.'] },
-  { chapter: 'Chapter 5: Back to His Mother', timing: '20 minutes', objectives: ['Follow how Moses returned to his mother.', 'Notice his growth.', 'Use protector/safe/weak.'], pedagogy: 'Transition retrieval.', lessonPlan: 'Read/listen. Retell the return in three steps. Complete Quick Challenge 5. Say one sentence about young Moses.', discussionPoints: ['How did he return?', 'What changed as he grew?', 'How can we help someone weaker safely?'], differentiation: { fastFinishers: 'Make a five-event oral timeline.', strugglingLearners: 'Complete: “Moses returned to __.” “He grew up in __.”' }, interactiveTips: ['Use mother and bazaar hotspots.', 'Retry after finding the transition sentence.'] },
-  { chapter: 'Chapter 6: A Mistake in the Bazaar', timing: '25 minutes', objectives: ['Understand accidental action vs intention.', 'Identify regret and forgiveness.', 'Practice responsibility language.'], pedagogy: 'Sensitive evidence recovery.', lessonPlan: 'Read calmly. Find “accidentally”, Moses’s feeling and his dua. Complete Quick Challenge 6. Say one responsible action after a mistake.', discussionPoints: ['Why was Moses sorry?', 'What did he ask Allah?', 'What can a person do after a mistake?'], differentiation: { fastFinishers: 'Write three responsible next steps.', strugglingLearners: 'Use: “It was accidental. Moses felt __. He asked __.”' }, interactiveTips: ['Use event and warning hotspots separately.', 'Do not focus on violent detail.'] },
-  { chapter: 'Chapter 7: Escape to Midian', timing: '20 minutes', objectives: ['Trace Egypt → Midian → well.', 'Explain why Midian was safer.', 'Reuse guided/thirsty/well.'], pedagogy: 'Route-and-reason retrieval.', lessonPlan: 'Read/listen. Draw or imagine three route points. Find the sentence about who did not rule Midian. Complete Quick Challenge 7.', discussionPoints: ['Why did Moses leave?', 'Why was Midian safer?', 'What did he need on arrival?'], differentiation: { fastFinishers: 'Give a six-sentence journey retell.', strugglingLearners: 'Use three labels: Egypt, Midian, well.' }, interactiveTips: ['Use Midian/well hotspots.', 'Find the safety reason before answering.'] },
-  { chapter: 'Chapter 8: The Two Sisters', timing: '20 minutes', objectives: ['Identify the sisters’ problem.', 'Explain Moses’s help.', 'Connect kindness to useful action.'], pedagogy: 'Problem → need → help.', lessonPlan: 'Read/listen to the dialogue. Answer why they waited and what Moses did. Complete Quick Challenge 8. Speak one useful helping action from daily life.', discussionPoints: ['Why did they wait?', 'How did Moses help?', 'What makes help useful?'], differentiation: { fastFinishers: 'Write a four-line factual dialogue.', strugglingLearners: 'Use: “They needed help because __.”' }, interactiveTips: ['Replay the dialogue.', 'Use the helping hotspot.'] },
-  { chapter: 'Chapter 9: A New Life', timing: '20 minutes', objectives: ['Sequence invitation, job and new life.', 'Explain why Moses accepted.', 'Recognize gratitude/work.'], pedagogy: 'Motivation and sequence.', lessonPlan: 'Read/listen. Find “because he was a stranger”. Complete Quick Challenge 9. Retell four events with later/after.', discussionPoints: ['Why did Şuayb invite him?', 'Why accept the job?', 'How can gratitude be shown?'], differentiation: { fastFinishers: 'Write a five-sentence summary.', strugglingLearners: 'Order helped → invited → worked → married.' }, interactiveTips: ['Use both hotspots.', 'Listen for the reason sentence.'] },
-  { chapter: 'Chapter 10: The Voice on the Mountain', timing: '25 minutes', objectives: ['Sequence fire, climb, call and sign.', 'Identify the central message.', 'Practice respectful listening.'], pedagogy: 'Source-faithful sacred-scene reading.', lessonPlan: 'Read/listen slowly. Note four events. Complete Quick Challenge 10. Retell without adding details not in the text.', discussionPoints: ['Why go to the fire?', 'What message did Moses hear?', 'What happened to the stick?'], differentiation: { fastFinishers: 'Retell in six past-simple sentences.', strugglingLearners: 'Use four event cues and first/then.' }, interactiveTips: ['Use the fire hotspot for setting.', 'Do not imagine or describe Allah visually.'] },
-  { chapter: 'Chapter 11: The Signs of Allah', timing: '20 minutes', objectives: ['Identify the hand sign and Harun’s role.', 'Explain the mission.', 'Reuse sign/prophet/throne.'], pedagogy: 'Mission + support retrieval.', lessonPlan: 'Read/listen. Find the sign, mission and companion. Complete Quick Challenge 11. Say one sentence about how Harun supported Moses.', discussionPoints: ['What sign appeared?', 'Where was Moses sent?', 'Who went with him?'], differentiation: { fastFinishers: 'Write three mission sentences.', strugglingLearners: 'Complete: “His hand __. He went to __. Harun went __ him.”' }, interactiveTips: ['Use both hotspots.', 'Replay the mission line.'] },
-  { chapter: 'Chapter 12: The King’s Magicians', timing: '20 minutes', objectives: ['Identify the message and signs.', 'Recognize Pharaoh’s rejection.', 'Separate story description from Pharaoh’s claim.'], pedagogy: 'Speaker-and-claim reading.', lessonPlan: 'Read/listen. Make two headings: story / Pharaoh. Put “miracles” and “magic” under the correct speaker. Complete Quick Challenge 12.', discussionPoints: ['What did Moses say?', 'What did the story call the signs?', 'What did Pharaoh call them?'], differentiation: { fastFinishers: 'Write two contrast sentences.', strugglingLearners: 'Say “story” or “Pharaoh” for teacher/self-read statements.' }, interactiveTips: ['Use snake/king hotspots.', 'Focus on response, not repeating the snake detail.'] },
-  { chapter: 'Chapter 13: The Magicians Believe', timing: '25 minutes', objectives: ['Identify the turning point.', 'Compare magicians and Pharaoh.', 'Connect evidence with changing a response.'], pedagogy: 'Response comparison.', lessonPlan: 'Read/listen. Find what the magicians did and what Pharaoh did. Complete Quick Challenge 13. Say: “The magicians __, but Pharaoh __.”', discussionPoints: ['Why did they believe?', 'Why did Pharaoh refuse?', 'What can we do when evidence corrects us?'], differentiation: { fastFinishers: 'Write four comparison sentences.', strugglingLearners: 'Use the but sentence frame.' }, interactiveTips: ['Use both hotspots.', 'Find response evidence before naming arrogance/belief.'] },
-  { chapter: 'Chapter 14: The Night Journey', timing: '20 minutes', objectives: ['Explain secret night departure.', 'Explain slow caravan movement.', 'Practice prediction from evidence.'], pedagogy: 'Journey cause-result.', lessonPlan: 'Read/listen. Find why they left at night and why they moved slowly. Complete Quick Challenge 14. Predict the next problem from the final sentence.', discussionPoints: ['Why secret?', 'Why slow?', 'What danger appears?'], differentiation: { fastFinishers: 'Write three facts plus one prediction.', strugglingLearners: 'Complete: “They left at __. They moved slowly because __.”' }, interactiveTips: ['Use both hotspots.', 'Replay old people/children sentence.'] },
-  { chapter: 'Chapter 15: The Sea Opens', timing: '25 minutes', objectives: ['Identify problem, instruction and rescue.', 'Sequence the crossing.', 'Compare fear and calm trust.'], pedagogy: 'Problem → response → rescue.', lessonPlan: 'Read/listen. State “sea ahead / army behind”. Find Allah’s instruction. Complete Quick Challenge 15. Retell the crossing in three steps.', discussionPoints: ['Why panic?', 'What did Moses say?', 'What action changed the situation?'], differentiation: { fastFinishers: 'Write a five-sentence problem-solution summary.', strugglingLearners: 'Use army behind → sea ahead → road opens.' }, interactiveTips: ['Use sea/water-wall hotspots.', 'Leave full ending sequence for review.'] },
-  { chapter: 'Chapter 16: The Cruel King Died in the Water', timing: '25 minutes', objectives: ['Retell the final events.', 'Find the two stated lessons.', 'Connect dignity/freedom to action.'], pedagogy: 'Whole-story retrieval and value transfer.', lessonPlan: 'Read/listen. Find the two final lesson sentences. Complete Quick Challenge 16. Do the Retrieval Review, then the Final Challenge. Correct each error by returning to evidence.', discussionPoints: ['What happened after Pharaoh entered?', 'What lessons are stated?', 'What action respects another person’s dignity?'], differentiation: { fastFinishers: 'Give a six-event whole-story summary.', strugglingLearners: 'Order five major events, then reread the final two sentences.' }, interactiveTips: ['Use final hotspots.', 'Do review before Final Challenge so retrieval is supported.'] },
-];
-
-const valueActions = [
-  'Fairness — use strength fairly and protect someone weaker.',
-  'Responsible decisions — check facts before acting from fear.',
-  'Trust with action — combine hope with one safe practical step.',
-  'Mercy — protect someone who needs care.',
-  'Care — help a younger or weaker person feel safe.',
-  'Responsibility — stop, tell the truth, seek help and repair what can be repaired.',
-  'Helpfulness — notice who may need help before acting.',
-  'Service — offer useful help without showing off.',
-  'Gratitude — respond to help through useful contribution.',
-  'Attentive listening — stop, listen carefully and repeat an important instruction before acting.',
-  'Responsible use of ability — use an ability or resource for a helpful purpose.',
-  'Source awareness — say who made a claim before repeating it.',
-  'Openness to evidence — change an answer when clear evidence changes what you know.',
-  'Careful planning — include children, older people and slower members in a group plan.',
-  'Calm action under pressure — identify the next safe instruction before reacting to fear.',
-  'Human dignity — respect another person’s freedom and rights.',
-];
-
-const storyPages = mosesA2Pages.filter(page => page.type === 'story').slice(0, 16);
-const baseGuide = mosesA2SelfStudyGuide;
-
-export const mosesA2SelfStudyGuidePreview: TeacherGuideSection[] = baseGuide.map((section, index) => {
-  const page = storyPages[index];
-  const teacher = mosesA2TeacherGuide[index];
-  const quick = mosesA2QuickChallengesPolished[index + 1] ?? page?.exercises?.[0];
-  const words = (page?.vocabulary || []).slice(0, 5).map(item => item.word);
-  const hotspots = (page?.hotspots || []).map(item => item.title);
-  const valueAction = valueActions[index];
-  const isSensitive = [1, 5, 15].includes(index);
-
-  return {
-    ...section,
-    grammarFocus: teacher?.grammarFocus || 'Notice one useful pattern in the real Language Focus after understanding the chapter.',
-    pronunciationFocus: teacher?.pronunciationFocus || (words.length ? words.slice(0, 3).join(', ') : undefined),
-    whatToNotice: [
-      ...(section.objectives || []).slice(0, 2),
-      ...(hotspots.length ? [`Use the real hotspot(s) as evidence anchors: ${hotspots.join(', ')}.`] : []),
-      quick?.question ? `The Quick Challenge asks: ${quick.question}` : 'Notice the question in the current Quick Challenge.',
-    ],
-    readListen: [
-      'Listen once for the main event without stopping at every unknown word.',
-      'Read again in 2–4-line parts and mark the sentence that answers the current chapter question.',
-      isSensitive ? 'Keep the retelling calm and age-appropriate; focus on cause, consequence, responsibility and the lesson rather than graphic detail.' : 'Keep the retelling tied to the source text.',
-    ],
-    findAnswerInStory: [
-      quick?.question ? `Answer “${quick.question}” from memory first, then find the exact supporting sentence.` : 'Answer from memory first, then locate the supporting sentence.',
-      'Use only the current chapter unless a review task explicitly asks you to connect chapters.',
-    ],
-    vocabularyInContext: words.length
-      ? [`Choose 3–5 source words: ${words.join(', ')}.`, 'Guess from the story sentence first, check the definition, say the word, then reuse one word in a short sentence.']
-      : ['Choose 3–5 words from the current chapter and learn them in context.'],
-    quickChallengeGuide: quick
-      ? `Try ${quick.title || 'the Quick Challenge'} before reading feedback. ${quick.question || ''}`.trim()
-      : 'Try the real current-page activity before reading feedback.',
-    wrongAnswerSupport: [
-      quick?.feedback?.incorrect || 'Use the retry hint and return to the related sentence.',
-      'Explain why the corrected answer fits the text, then try again.',
-    ],
-    selfCheck: [
-      'Can I tell the main event in one or two sentences?',
-      words.length ? `Can I understand and use at least three of these words: ${words.slice(0, 3).join(', ')}?` : 'Can I use three chapter words?',
-      `Can I understand or use this language focus: ${teacher?.grammarFocus || 'one real pattern from the chapter'}?`,
-      'Can I support my answer with evidence and name my next step?',
-    ],
-    useWhatYouLearned: valueAction,
-    reflectionPrompt: teacher?.discussionPoints?.[teacher.discussionPoints.length - 1] || section.discussionPoints?.[0] || 'What did you learn and what will you do next?',
-    assessmentTools: {
-      rubric: ['Main idea', '3–5 source words', 'One Language Focus pattern', 'Evidence and self-correction', '2–4 sentence production'],
-      exitTicket: ['One fact', 'One language pattern', 'One value/action', 'My next step'],
-    },
-  };
-});
-
-export const mosesA2StudentGuideSectionsPreview: StudentGuideSection[] = [
-  { title: '1. Start With a Goal', icon: 'Target', text: 'Choose one small goal before each of the sixteen story chapters.', points: ['Main idea', '3–5 words', 'One Language Focus pattern', 'One repaired mistake', 'One value/action'] },
-  { title: '2. Preview', icon: 'Eye', text: 'Use the chapter title, image and real hotspots to make one simple prediction.', points: ['Predict one idea', 'Use only real page features'] },
-  { title: '3. Listen for Meaning', icon: 'Ear', text: 'Listen once for the main event, then listen again while following the text.', points: ['Gist first', 'Evidence second', 'Repeat one short sentence'] },
-  { title: '4. Read and Find Evidence', icon: 'BookOpen', text: 'Read 2–4 lines at a time and locate the sentence that supports your answer.', points: ['What happened?', 'Why?', 'What happened next?', 'Which sentence proves it?'] },
-  { title: '5. Language Focus', icon: 'Compass', text: 'The preview book contains Language Focus activities. Use them after the story meaning is clear.', points: ['Notice the real example', 'Understand its meaning', 'Make one short new sentence'] },
-  { title: '6. Vocabulary', icon: 'BookOpen', text: 'Learn 3–5 source words in context, not as a long isolated list.', points: ['Guess', 'Check', 'Say', 'Reuse'] },
-  { title: '7. Quick Challenge and Repair', icon: 'CheckCircle', text: 'Try first, read feedback second, return to evidence, then retry.', points: ['Try', 'Check', 'Find proof', 'Repair', 'Try again'] },
-  { title: '8. Say or Write', icon: 'PenTool', text: 'Finish with 2–4 simple sentences that show what you understood.', points: ['One fact', 'One language sentence', 'One short reflection'] },
-  { title: '9. Need More Help?', icon: 'HelpCircle', text: 'Change the strategy, not the learning goal.', points: ['Real hotspot', 'Short replay', '2–3 lines', 'Three words', 'Sentence frame'] },
-  { title: '10. Ready for a Challenge?', icon: 'Stars', text: 'Deepen the chapter using evidence and connected language.', points: ['3–5 connected sentences', 'Retell with sequence words', 'Explain with evidence'] },
-  { title: '11. Values in Action', icon: 'Heart', text: 'Connect the story-supported value with one observable action.', points: ['Fairness', 'Responsibility', 'Helpfulness', 'Mercy', 'Gratitude', 'Human dignity'] },
-  { title: '12. Review and Final', icon: 'Clock', text: 'After Chapter 16, use the real review pages in the preview book.', points: ['Knowledge Check', 'Vocabulary Challenge', 'Language Review', 'Master Glossary Parts 1–2', 'Final Challenge'] },
-];
-
-export const mosesA2StudentGuideMetadataPreview: StudentGuideMetadata = {
-  title: 'Self-Study Guide — Prophet Moses (A2)',
-  subtitle: 'Understand • Notice • Use • Check • Repair • Reflect',
+  title: 'Moses A2 — Self-Study Guide',
+  subtitle: 'Look • Listen • Read • Check • Use',
   level: 'A2',
   language: 'English',
-  estimatedStudyTime: '20–25 minutes per story chapter plus final review',
-  whoIsThisFor: 'A2 learners studying the sixteen-chapter Prophet Moses interactive story independently or with light support.',
-  learningGoals: ['Understand the main events and reasons', 'Use listening and reading together', 'Learn source vocabulary', 'Use the real Language Focus', 'Find evidence and repair mistakes', 'Produce short A2 speaking/writing', 'Turn story-supported values into practical actions'],
-  recommendedUse: ['One chapter per session', 'Chapter Support for exact guidance', 'Quick Challenge before feedback', 'Language Focus after comprehension', 'Review after Chapter 16'],
+  estimatedStudyTime: 'About 20 minutes per chapter, plus the review pages at the end',
+  whoIsThisFor: 'A2 learners who study the story of Prophet Moses (pbuh) at home or on their own.',
+  learningGoals: ['Understand the 16 chapters of the story of Moses (pbuh).', 'Find the answer sentence in the story.', 'Learn the Word Notes of each chapter.', 'Use each chapter’s Language Focus in your own sentences.', 'Turn trust, helping and fairness into small actions.'],
+  recommendedUse: ['Study one chapter at a time.', 'Listen first, then read.', 'Answer the Quick Challenge before you read the feedback.', 'Do the Language Focus after you understand the chapter.', 'Do the review pages after Chapter 16.'],
 };
-
-const chapterMap = mosesA2SelfStudyGuidePreview.map((section, index) => `### Chapter ${index + 1} — ${storyPages[index]?.title || section.chapter}\n**Goals:** ${(section.objectives || []).slice(0, 2).join(' ')}  \n**Language:** ${section.grammarFocus || 'Use one real pattern from the chapter.'}  \n**Check:** ${section.quickChallengeGuide || 'Complete the real Quick Challenge and repair any mistake.'}  \n**Action:** ${valueActions[index]}`).join('\n\n');
-
-export const mosesA2StudentGuideTextPreview = `# A2 Self-Study Guide — Prophet Moses
-
-This guide follows the **16 real story chapters** in the preview book. It uses the real audio, hotspots, source vocabulary, Quick Challenges, Language Focus activities and final review pages.
-
-The study rule is:
-
-**understand → notice → use → check → repair → reflect**
-
----
-
-## 1. One Goal Before Every Chapter
-
-Choose one:
-- understand the main idea,
-- learn 3–5 source words,
-- use one Language Focus pattern,
-- repair one mistake,
-- connect one value with one real action.
-
-**My goal today: __________**  
-**My next step: __________**
-
----
-
-## 2. The A2 Study Cycle
-
-1. Preview the title, image and real hotspots.
-2. Listen once for the main event.
-3. Read 2–4 lines at a time.
-4. Choose 3–5 source words.
-5. Try the real Quick Challenge.
-6. Check feedback and find the supporting sentence.
-7. Repair the answer if needed.
-8. Open the real Language Focus and notice one pattern.
-9. Say or write 2–4 simple sentences.
-10. Connect the chapter lesson with one practical action.
-
----
-
-## 3. Evidence and Feedback
-
-Use:
-
-**Try → Check → Find proof → Repair → Try again**
-
-Do not reread the whole book after one mistake. Return to the chapter and the sentence connected with the question.
-
----
-
-## 4. Language Focus
-
-The preview version of Moses A2 contains student-facing Language Focus activities attached to the story chapters. Use them after comprehension:
-
-1. Notice the real example.
-2. Understand what it means in this chapter.
-3. Make one short new sentence.
-
-The goal is meaningful A2 use, not memorising long grammar rules.
-
----
-
-## 5. Sixteen-Chapter Study Map
-
-${chapterMap}
-
----
-
-## 6. Sensitive Chapters
-
-Some chapters include oppression, the death in the bazaar and the final death of Pharaoh and his soldiers. Study these calmly:
-- focus on cause, consequence, responsibility, protection and the lesson,
-- do not add graphic detail,
-- do not role-play violence,
-- use age-appropriate language,
-- return to the exact source sentence when unsure.
-
----
-
-## 7. Need More Help?
-
-Use a real hotspot, replay one short part, read only 2–3 lines, choose three key words or use a sentence frame. Keep the learning goal the same.
-
----
-
-## 8. Ready for a Challenge?
-
-Write 3–5 connected sentences, retell with sequence words, use two source words, make one new Language Focus sentence or explain an answer with evidence.
-
----
-
-## 9. Chapter Self-Check
-
-- [ ] I can tell the main event.
-- [ ] I can use 3–5 chapter words.
-- [ ] I completed the real Quick Challenge.
-- [ ] I found evidence for my answer.
-- [ ] I repaired a mistake if needed.
-- [ ] I can understand or use one Language Focus pattern.
-- [ ] I can say or write 2–4 simple sentences.
-- [ ] I can connect one value with one action.
-- [ ] I know my next step.
-
----
-
-## 10. Review After Chapter 16
-
-Use the actual preview-book sequence:
-
-### Knowledge Check
-Answer the key story questions and repair mistakes from the relevant chapter.
-
-### Vocabulary Challenge
-Match source words with their meanings and mark words that need another review.
-
-### Language Review
-Review and use language patterns from all sixteen chapters.
-
-### Master Glossary — Parts 1 and 2
-Review vocabulary from both halves of the story.
-
-### Final Challenge
-Complete the final scored set after review, then choose your next learning goal.
-`;

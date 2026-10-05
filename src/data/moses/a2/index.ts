@@ -1,4 +1,10 @@
 import type { BookData, PageData } from '../../../types';
+import { withPlacesLayer } from '../../../features/historical-entities';
+import { applyChapterExtras } from '../../../lib/chapterExtras';
+import { mosesA2ChapterExtrasEn } from './en/chapterExtras';
+import { mosesA2GroupTasksEn } from './en/groupTasks';
+import { mosesA2ChapterExtrasAr } from './ar/chapterExtras';
+import { mosesA2GroupTasksAr } from './ar/groupTasks';
 import { mosesA2Pages as mosesA2PagesEn } from './en/pages';
 import { mosesA2PagesAr } from './ar/pages';
 import {
@@ -45,24 +51,39 @@ import {
   mosesA2LanguageFocusExercisesPart10Ar,
   mosesA2LanguageFocusExercisesPart11Ar,
 } from './ar/languageFocus3';
-import { mosesA2TeacherGuide, mosesA2TeacherGuideMetadata } from './en/teacherGuide';
-import { mosesA2TeacherGuideAr, mosesA2TeacherGuideMetadataAr } from './ar/teacherGuide';
-import {
-  mosesA2SelfStudyGuidePreview as mosesA2SelfStudyGuide,
-  mosesA2StudentGuideMetadataPreview as mosesA2StudentGuideMetadata,
-  mosesA2StudentGuideSectionsPreview as mosesA2StudentGuideSections,
-  mosesA2StudentGuideTextPreview as mosesA2StudentGuideText,
-} from './en/selfStudyGuide';
-import {
-  mosesA2SelfStudyGuidePreviewAr as mosesA2SelfStudyGuideAr,
-  mosesA2StudentGuideMetadataPreviewAr as mosesA2StudentGuideMetadataAr,
-  mosesA2StudentGuideSectionsPreviewAr as mosesA2StudentGuideSectionsAr,
-  mosesA2StudentGuideTextPreviewAr as mosesA2StudentGuideTextAr,
-} from './ar/selfStudyGuide';
+import { buildStoryMap } from '../../../features/story-maps/buildStoryMap';
+import { mosesA2StoryMapLayout } from './storyMap';
+import { mosesA2StoryMapCopyEn } from './en/storyMap';
+import { mosesA2StoryMapCopyAr } from './ar/storyMap';
 
 const STORY_IDS = new Set(Array.from({ length: 16 }, (_, index) => index + 1));
 
-const buildEnglishPages = (): PageData[] => mosesA2PagesEn.map(page => {
+// Interactive map page, placed after the last chapter: the story is read without a break, then the whole journey is seen on the map.
+const MAP_PAGE_ID = 101;
+const MAP_AFTER_CHAPTER = 16;
+
+const withMapPage = (pages: PageData[], mapPage: PageData): PageData[] =>
+  pages.flatMap(page => (page.id === MAP_AFTER_CHAPTER ? [page, mapPage] : [page]));
+
+const mapPageEn: PageData = {
+  id: MAP_PAGE_ID,
+  type: 'map',
+  title: 'Moses’s Journey',
+  subtitle: 'Map · Chapters 1–16',
+  content: '',
+  map: buildStoryMap(mosesA2StoryMapLayout, mosesA2StoryMapCopyEn, 'Moses A2 EN'),
+};
+
+const mapPageAr: PageData = {
+  id: MAP_PAGE_ID,
+  type: 'map',
+  title: 'رِحْلَةُ مُوسَى عَلَيْهِ السَّلَامُ',
+  subtitle: 'خَريطَة · مِنَ الفَصْلِ 1 إِلى الفَصْلِ 16',
+  content: '',
+  map: buildStoryMap(mosesA2StoryMapLayout, mosesA2StoryMapCopyAr, 'Moses A2 AR'),
+};
+
+const buildEnglishPages = (): PageData[] => withMapPage(mosesA2PagesEn.map(page => {
   if (STORY_IDS.has(page.id)) {
     const languageFocusExercises = mosesA2LanguageFocusExercises[page.id] ?? mosesA2LanguageFocusExercisesPart2[page.id] ?? mosesA2LanguageFocusExercisesPart3[page.id] ?? mosesA2LanguageFocusExercisesPart4[page.id] ?? mosesA2LanguageFocusExercisesPart5[page.id] ?? mosesA2LanguageFocusExercisesPart6[page.id] ?? mosesA2LanguageFocusExercisesPart7[page.id] ?? mosesA2LanguageFocusExercisesPart8[page.id] ?? mosesA2LanguageFocusExercisesPart9[page.id] ?? mosesA2LanguageFocusExercisesPart10[page.id] ?? mosesA2LanguageFocusExercisesPart11[page.id];
     return {
@@ -81,9 +102,9 @@ const buildEnglishPages = (): PageData[] => mosesA2PagesEn.map(page => {
   };
   if (page.id === 22) return { ...page, exercises: mosesA2FinalChallengeExercisesPolished };
   return page;
-});
+}), mapPageEn);
 
-const buildArabicPages = (): PageData[] => mosesA2PagesAr.map(page => {
+const buildArabicPages = (): PageData[] => withMapPage(mosesA2PagesAr.map(page => {
   if (STORY_IDS.has(page.id)) {
     const languageFocusExercises = mosesA2LanguageFocusExercisesAr[page.id] ?? mosesA2LanguageFocusExercisesPart2Ar[page.id] ?? mosesA2LanguageFocusExercisesPart3Ar[page.id] ?? mosesA2LanguageFocusExercisesPart4Ar[page.id] ?? mosesA2LanguageFocusExercisesPart5Ar[page.id] ?? mosesA2LanguageFocusExercisesPart6Ar[page.id] ?? mosesA2LanguageFocusExercisesPart7Ar[page.id] ?? mosesA2LanguageFocusExercisesPart8Ar[page.id] ?? mosesA2LanguageFocusExercisesPart9Ar[page.id] ?? mosesA2LanguageFocusExercisesPart10Ar[page.id] ?? mosesA2LanguageFocusExercisesPart11Ar[page.id];
     return {
@@ -102,34 +123,26 @@ const buildArabicPages = (): PageData[] => mosesA2PagesAr.map(page => {
   };
   if (page.id === 22) return { ...page, exercises: mosesA2FinalChallengeExercisesArPolished };
   return page;
-});
+}), mapPageAr);
 
 export const mosesA2BookDataEn: BookData = {
   id: 'moses-a2-en',
   title: 'Stories of the Prophets: Moses (A2)',
   level: 'A2',
   baseFontSize: 13,
-  pages: buildEnglishPages(),
-  teacherGuide: mosesA2TeacherGuide,
-  teacherGuideMetadata: mosesA2TeacherGuideMetadata,
-  selfStudyGuide: mosesA2SelfStudyGuide,
-  studentGuideSections: mosesA2StudentGuideSections,
-  studentGuideMetadata: mosesA2StudentGuideMetadata,
-  studentGuideText: mosesA2StudentGuideText,
+  pages: applyChapterExtras(withPlacesLayer(buildEnglishPages(), 'moses-a2', 'en'), { ...mosesA2ChapterExtrasEn, groupTasks: mosesA2GroupTasksEn }),
+  teacherGuide: [],
+  selfStudyGuide: [],
 };
 
 export const mosesA2BookDataAr: BookData = {
   id: 'moses-a2-ar',
-  title: 'قصص الأنبياء: موسى (عليه السلام) (A2)',
+  title: 'قصص الأنبياء: موسى عليه السلام (A2)',
   level: 'A2',
   baseFontSize: 14,
-  pages: buildArabicPages(),
-  teacherGuide: mosesA2TeacherGuideAr,
-  teacherGuideMetadata: mosesA2TeacherGuideMetadataAr,
-  selfStudyGuide: mosesA2SelfStudyGuideAr,
-  studentGuideSections: mosesA2StudentGuideSectionsAr,
-  studentGuideMetadata: mosesA2StudentGuideMetadataAr,
-  studentGuideText: mosesA2StudentGuideTextAr,
+  pages: applyChapterExtras(withPlacesLayer(buildArabicPages(), 'moses-a2', 'ar'), { ...mosesA2ChapterExtrasAr, groupTasks: mosesA2GroupTasksAr }),
+  teacherGuide: [],
+  selfStudyGuide: [],
 };
 
 export const mosesA2BookData = mosesA2BookDataEn;

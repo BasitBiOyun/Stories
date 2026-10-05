@@ -4,6 +4,7 @@ const checksOnly = process.argv.includes('--checks-only') || process.argv.includ
 
 const baseChecks = [
   { id: 'TYPECHECK', label: 'TypeScript typecheck', command: 'npm', args: ['run', 'typecheck', '--', '--pretty', 'false'] },
+  { id: 'EXERCISE_STRUCTURE', label: 'Exercise structure integrity', command: 'npm', args: ['run', 'validate:exercises'] },
 ];
 
 const checks = checksOnly

@@ -1,12 +1,12 @@
 import type { Exercise, PageData } from '../../../../types';
+import { highlightPhraseOccurs } from '../../../../lib/highlightTextMatch';
 import { adamB2QuickChallenges, adamB2KnowledgeCheckExercises, adamB2VocabularyChallengePairs, adamB2LanguageReviewExercises, adamB2FinalChallengeExercises } from './exercises';
 import { adamB2LanguageFocusExercises } from './languageFocus';
 import { adamB2LanguageFocusExercisesPart2 } from './languageFocus2';
 import { adamB2LanguageFocusExercisesPart3 } from './languageFocus3';
 const B='https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/';
-const IMG=['','','','','','', '2c7f06f0-1c7b-4f72-bbdc-220aebe0f3eb','888f74ef-8ab1-4399-b94f-499f280488d9','b1edc4c5-1feb-41b7-8c59-3919406cd8a4','02398d91-13a7-4809-b9a5-7e7d10e9b6c0','ccb788e1-98ea-43fc-9397-aecc67ff8d34','c520bb71-bf37-4f3e-a7fd-752ee62d8125','ea7397e9-5206-4dec-80ae-4f5fae82309d','ed61f9d6-f850-4a84-9f2f-acb6a00fc6a3','4399b928-a16f-4bdd-a697-b274b27d32c2','b599808a-3de8-4dc1-a9e0-ad6067e1903b','7a5a94a7-cbb8-458b-b865-f7281e454742','fb1cf4bc-7a18-4dab-8cde-2eab06c1ff0a'];
 const AUD=['','0b8932e8-d415-4e1b-846d-5b43c5e6c8a5','a7ec7e2d-f33f-41c3-b6c8-5816abceea1a','0dcc80e8-706d-4b22-85bd-2c269180bd8b','c077f30d-5f0e-4030-a373-069abf985246','88331cdd-99ae-459f-a260-5b3f2351635f','6abb93df-41c0-4d46-81a4-bf52e53ff672','802716e0-1e3e-4f5f-99a4-a481ac28491c','7350d4c8-c0f2-4474-8c59-3919406cd8a4','81c54390-7d2e-4d99-9d10-6935c85a3bbe','be3bea4e-5ae6-488c-9a07-46e885b5d89c','2d3f4f6a-09fd-4706-bfab-b2f4b2287cd9','ecfdfa30-32b7-485c-bdf4-957a49eae96a','faef98f2-8ab5-4d08-85be-e2e9f1ae33a3','f976eee6-6b6d-4aa5-9b81-79a43cb62a61','8488bff3-a880-47ab-ba15-98e03a50b37d','f6e0a555-131a-43b3-84fc-3ef6af30ba97','260216c5-5979-433c-8ac7-a42db758c207'];
-const img=(n:number)=>n<6?'':`${B}adam_b2%2Fimages%2Fadam_b2_chapter${n}.png?alt=media&token=${IMG[n]}`;
+const img=(n:number)=>`${B}adam_b2%2Fimages%2Fadam_b2_chapter${n}.png?alt=media`;
 const aud=(n:number)=>`${B}adam_b2%2Faudio%2Fadam_b2_ch${n}.mp3?alt=media&token=${AUD[n]}`;
 const clean=(content:string)=>content.replace(/^\/\/ anchor-[^\n]*(?:\n|$)/gm,'');
 const S=(id:number,title:string,content:string,vocabulary:{word:string;definition:string}[],hotspots:NonNullable<PageData['hotspots']>):PageData=>({id,type:'story',title,image:img(id),audioUrl:aud(id),content:clean(content),vocabulary,hotspots});
@@ -18,22 +18,22 @@ export const adamB2Pages:PageData[]=[
 // anchor-1b
 // anchor-1c
 // anchor-1d
-S(1,'Introduction',`Adam (pbuh) was the first human being to be created, and the first prophet who served as a guide and example for mankind. We learn his story from the Holy Qur'an. Based on the Holy Qur'an, the creation of Adam (pbuh) is not like the creation of other humans. He was created from clay without parents, as a miraculous sign of Allah's unlimited power. The story of Adam (pbuh) is told in several chapters (surahs) of the Holy Qur'an. These are Surah Baqarah, Surah Al-Imran, Surah A’raf, Surah Hijr, Surah Isra, Surah Kahf, Surah Taha, and Surah Sâd. In these surahs, Satan is portrayed as a rebel against Allah’s command but also as a rival and enemy of Adam (pbuh) rather than Allah.
+S(1,'Introduction',`Adam (pbuh) was the first human being to be created, and the first prophet who served as a guide and example for mankind. We learn his story from the Holy Qur’an. Based on the Holy Qur’an, the creation of Adam (pbuh) is not like the creation of other humans. He was created from clay without parents, as a miraculous sign of Allah's unlimited power. The story of Adam (pbuh) is told in several chapters (surahs) of the Holy Qur’an. These are Surah Baqarah, Surah Al-Imran, Surah A’raf, Surah Hijr, Surah Isra, Surah Kahf, Surah Taha, and Surah Sad. In these surahs, Satan is portrayed as a rebel against Allah’s command but also as a rival and enemy of Adam (pbuh) rather than Allah.
 
-Adam (pbuh)’s tale (kıssa) is not symbolic or imaginary, but it is an original factual tale with historical correctness and reality from which many lessons and morals we can take. It also includes the Unseen (gaybî), and this makes the story fabulous. The tale provides us a uniquely key and deeply philosophical understanding of life. It clearly appears that human beings' earthly life is the scene of a division and contrast between good and evil as opposed to each other.`,V(['miraculous','Beyond ordinary natural processes through divine power.'],['fabulous','Remarkable or extraordinary in character.'],['philosophical','Concerned with basic questions of knowledge and existence.'],['Unseen','Reality beyond direct human perception.'],['contrast','A clear difference between opposing ideas.']),H(['h1a',28,36,'The First Prophet','Adam is presented as the first human and prophet.'],['h1b',72,58,'Creation and Moral Choice','The chapter contrasts good and evil in human life.'])),
-S(2,'The Creation of Adam',`The material from which Adam (pbuh) was created is expressed in various verses (âyet) using different terms: earth (türâb), water (mâ’), clay (tîn), etc. These different expressions are used to describe both the composition and the various stages of mud, which is a mixture of water and soil. As an example, Surah Sâd, verse 71, informs that Allah created Adam (pbuh) out of clay, which is a humble material: “Your Lord said to the angels, ‘I am creating a human being from clay.’”
+Adam (pbuh)’s tale is not symbolic or imaginary, but it is an original factual tale with historical correctness and reality, from which we can take many lessons and morals. It also includes the Unseen (al-ghayb), and this makes the story fabulous. The tale gives us a unique and deeply philosophical understanding of life. It clearly appears that human beings' earthly life is the scene of a division and contrast between good and evil as opposed to each other.`,V(['miraculous','Beyond ordinary natural processes through divine power.'],['fabulous','Remarkable or extraordinary in character.'],['philosophical','Concerned with basic questions of knowledge and existence.'],['Unseen','The hidden reality that the human senses cannot perceive.'],['contrast','A clear difference between opposing ideas.']),H(['h1a',28,36,'The First Prophet','Adam (pbuh) was the first human being and the first prophet, a guide and example for mankind.'],['h1b',72,58,'Good Versus Evil','Human life on Earth is shown as a scene where good and evil stand against each other.'])),
+S(2,'The Creation of Adam',`The material from which Adam (pbuh) was created is expressed in various verses using different terms: earth (turab), water (ma’), clay (tin), etc. These different expressions are used to describe both the composition and the various stages of mud, which is a mixture of water and soil. As an example, Surah Sad, verse 71, informs that Allah created Adam (pbuh) out of clay, which is a humble material: “Your Lord said to the angels, ‘I am creating a human being from clay.’”
 
-Prophet Muhammad (pbuh) also said: "Allah created Adam (pbuh) from a handful of dust taken from different lands, so the children of Adam (pbuh) have been created according to the composition of the land. Therefore, from mankind we have white, red, black, and yellow ones; we have good and evil, ease and sorrow, and what comes in between them." (see Ebu Davud, Sünnet 16; Tirmizi, Tefsir 2/1) So, in essence, people are from the same soil and they have no superiority over one another due to the difference in their colors.
+Prophet Muhammad (pbuh) also said: "Allah created Adam (pbuh) from a handful of dust taken from different lands, so the children of Adam (pbuh) have been created according to the composition of the land. Therefore, from mankind we have white, red, black, and yellow ones; we have good and evil, ease and sorrow, and what comes in between them." (see Abu Dawud, Sunnah 16; Tirmidhi, Tafsir 2/1) So, in essence, people are from the same soil and they have no superiority over one another due to the difference in their colors.
 
-It is clear that Adam (pbuh) did not evolve from any other living being, but was created from the earth and was the first ancestor of a completely separate species of human being. He was given the necessary spiritual, moral, mental, and psychological abilities.`,V(['composition','The materials or elements that form something.'],['mixture','A whole formed by combining different substances.'],['superiority','The state of being regarded as higher or better.'],['ancestor','A person from whom later generations descend.'],['species','A distinct biological group of living beings.']),H(['h2a',34,63,'Shared Human Origin','The chapter stresses a common origin and human equality.'],['h2b',68,34,'Human Capacities','Adam receives spiritual, moral, mental, and psychological abilities.'])),
-S(3,'The Vicegerent & The Gift of Knowledge',`To be a representative, Adam (pbuh) needed some extraordinary qualities. Allah breathed His own spirit into Adam (pbuh) (see Sâd: 72). Also, he had to be taught by Allah. Breathing Allah’s spirit into Adam (pbuh) shows the value that Allah gave him. It also means giving Adam (pbuh) life and the beginning of human existence. This also distinguishes Adam (pbuh) from the rest of the creatures. Then, He (Allah) taught him all the names.
+It is clear that Adam (pbuh) did not evolve from any other living being, but was created from the earth and was the first ancestor of a completely separate species of human being. He was given the necessary spiritual, moral, mental, and psychological abilities.`,V(['composition','The materials or elements that form something.'],['mixture','A whole formed by combining different substances.'],['superiority','The state of being regarded as higher or better.'],['ancestor','A person from whom later generations descend.'],['species','A distinct biological group of living beings.']),H(['h2a',34,63,'Shared Human Origin','All people come from the same soil, so no colour makes anyone superior to another.'],['h2b',68,34,'Human Capacities','Adam (pbuh) was given the spiritual, moral, mental and psychological abilities he needed.'])),
+S(3,'The Vicegerent & The Gift of Knowledge',`To be a representative, Adam (pbuh) needed some extraordinary qualities. Allah breathed His own spirit into Adam (pbuh) (see Sad: 72). Also, he had to be taught by Allah. Breathing Allah’s spirit into Adam (pbuh) shows the value that Allah gave him. It also means giving Adam (pbuh) life and the beginning of human existence. This also distinguishes Adam (pbuh) from the rest of the creatures. Then, He (Allah) taught him all the names.
 
-“And He taught Adam the names, all of them; then He presented them to the angels and said, ‘Tell Me the names of these, if you are sincere.’ They said, ‘Glory be to You! We have no knowledge except what You have taught us. It is You who are the Knowledgeable, the Wise.’ He said, ‘O Adam, tell them their names.’ And when he (Adam) told them their names, He said, ‘Did I not tell you that I know the secrets of the heavens and the earth, and that I know what you reveal and what you conceal?’ (Baqarah: 31-33)
+“And He taught Adam the names, all of them; then He presented them to the angels and said, ‘Tell Me the names of these, if you are sincere.’ They said, ‘Glory be to You! We have no knowledge except what You have taught us. It is You who are the Knowledgeable, the Wise.’ He said, ‘O Adam, tell them their names.’ And when he (Adam) told them their names, He said, ‘Did I not tell you that I know the secrets of the heavens and the earth, and that I know what you reveal and what you conceal?’” (Baqarah: 31-33)
 
-The statement “Allah taught Adam (pbuh) all the names” points to the broadness of Adam (pbuh)’s knowledge. The names taught to Adam (pbuh) could be the fundamental knowledge of being human, thinking, forming logical judgments, and producing civilization and culture. The knowledge that was given to Adam (pbuh) means the beginning of the skill for learning and speaking language and using intelligence. The names refer to the fact that knowledge is the basis of science, technology, and culture.`,V(['representative','A person entrusted with responsibility on behalf of another.'],['extraordinary','Very unusual or remarkable.'],['fundamental','Basic and essential to a larger structure.'],['civilization','An organized society with developed culture and knowledge.'],['intelligence','The ability to learn, reason, and use knowledge.']),H(['h3a',25,52,'The Gift of Knowledge','Adam is distinguished through learning and knowledge.'],['h3b',74,42,'Knowledge and Civilization','Language and reasoning are linked with civilization and culture.'])),
+The statement “Allah taught Adam (pbuh) all the names” points to the broadness of Adam (pbuh)’s knowledge. The names taught to Adam (pbuh) could be the fundamental knowledge of being human, thinking, forming logical judgments, and producing civilization and culture. The knowledge that was given to Adam (pbuh) means the beginning of the skill for learning and speaking language and using intelligence. The names refer to the fact that knowledge is the basis of science, technology, and culture.`,V(['representative','A person entrusted with responsibility on behalf of another.'],['extraordinary','Very unusual or remarkable.'],['fundamental','Basic and essential to a larger structure.'],['civilization','An organized society with developed culture and knowledge.'],['intelligence','The ability to learn, reason, and use knowledge.']),H(['h3a',25,52,'Taught All the Names','Allah taught Adam (pbuh) all the names, which set him apart from the rest of creation.'],['h3b',74,42,'Knowledge and Civilization','Language and reasoning are linked with civilization and culture.'])),
 S(4,'Angels’ Prostration & Iblis’s Arrogance',`The reason why Adam (pbuh) and his offspring are considered higher and more valuable than other beings (see Isra: 70) is because of the power of knowledge that Allah gave them.
 
-However, in the Qur’an, Allah mentions another type of knowledge, which is the revelation (vahiy) (see Nisâ: 163-165). He delivers it to mankind through the prophets. It is clear that human beings need both types of knowledge. These two types of knowledge are not alternatives to each other, but rather they complete one another. One is necessary for mankind to maintain his worldly life, and revelation is essential to understand his role, duty, and the order established by Allah. Having such honour and privilege of knowledge required even the angels to prostrate themselves before Adam (pbuh). Here, the tale reaches its rising action: ‘And We said to the angels, “Bow down to (prostrate) Adam.” They bowed down, except for Satan. He refused, was arrogant, and was one of the disbelievers.’ (Baqarah: 34) ‘Except for Satan. He was too proud, and one of the faithless.’ (Sâd: 74) He said, ‘O Satan, what prevented you from prostrating before what I created with My own hands? Are you too proud, or were you one of the exalted?’ (Sâd: 75) He (Satan) said, ‘I am better than he (Adam); You created me from fire, and You created him from clay.’ (Sâd: 76)`,V(['offspring','A person’s children and later descendants.'],['revelation','Divine knowledge communicated through prophets.'],['essential','Absolutely necessary for an important purpose.'],['privilege','A special honour or advantage.'],['arrogant','Showing an exaggerated sense of superiority.']),H(['h4a',38,32,'Two Forms of Knowledge','Worldly knowledge and revelation complement each other.'],['h4b',66,65,'Iblis’s Arrogance','Iblis considers his origin superior to Adam’s.'])),
+However, in the Qur’an, Allah mentions another type of knowledge, which is the revelation (wahy) (see Nisa: 163-165). He delivers it to mankind through the prophets. It is clear that human beings need both types of knowledge. These two types of knowledge are not alternatives to each other, but rather they complete one another. One is necessary for mankind to maintain his worldly life, and revelation is essential to understand his role, duty, and the order established by Allah. Having such honour and privilege of knowledge required even the angels to prostrate themselves before Adam (pbuh). Here, the tale reaches its rising action: ‘And We said to the angels, “Bow down to (prostrate) Adam.” They bowed down, except for Satan. He refused, was arrogant, and was one of the disbelievers.’ (Baqarah: 34) ‘Except for Satan. He was too proud, and one of the faithless.’ (Sad: 74) He said, ‘O Satan, what prevented you from prostrating before what I created with My own hands? Are you too proud, or were you one of the exalted?’ (Sad: 75) He (Satan) said, ‘I am better than he (Adam); You created me from fire, and You created him from clay.’ (Sad: 76)`,V(['offspring','A person’s children and later descendants.'],['revelation','Divine knowledge communicated through prophets.'],['essential','Absolutely necessary for an important purpose.'],['privilege','A special honour or advantage.'],['arrogant','Showing an exaggerated sense of superiority.']),H(['h4a',38,32,'Two Forms of Knowledge','Worldly knowledge and revelation complete each other.'],['h4b',66,65,'Refusing to Bow Down','Iblis refused to prostrate, claiming that his origin of fire was better than Adam’s (pbuh) clay.'])),
 // anchor-1e
 // anchor-1f
 // anchor-1g
@@ -44,8 +44,8 @@ However, in the Qur’an, Allah mentions another type of knowledge, which is the
 // anchor-2d
 S(5,'Angels’ Prostration & Iblis’s Arrogance — Part II',`Angels admitted their inability and realized that Adam (pbuh) was the creature who knew what they did not know and that his capacity to learn was his most honourable quality. Adam (pbuh)’s knowledge included knowledge of the Creator, which is faith or Islam, as well as the knowledge he would need to inhabit and master the earth. All kinds of worldly knowledge are included in this. The prostration of angels to Adam (pbuh) is not a prostration of worship, because such prostration is solely to and for Allah. Angels’ prostration means obedience to Allah to show respect and admiration to Adam (pbuh), because the unique knowledge given to Adam (pbuh) is different from the knowledge of the angels that never changes.
 
-On the other hand, Iblis’ arrogance came from his belief that his origin was superior to Adam (pbuh)’s. Satan’s—in other words, Iblis’—unapparent arrogance came to the surface when Adam (pbuh) appeared on the scene. He underlines his superiority because of the material from which he was created, yet Adam (pbuh)’s humble origin shows that Allah does not focus on origins, that is, race, colour, or ethnicity, since all humans ultimately originate from dried mud.`,V(['inability','The condition of being unable to do something.'],['obedience','Willing compliance with a command or authority.'],['admiration','Respect and approval for someone’s qualities.'],['arrogance','Excessive pride or assumed superiority.'],['ethnicity','Identity linked to shared cultural or ancestral background.']),H(['h5a',22,44,'Knowledge and Obedience','The angels acknowledge their limits and obey Allah.'],['h5b',77,56,'False Superiority','The chapter rejects superiority based on material origin.'])),
-S(6,'The Command to Paradise',`Allah said: “O Mankind! Be respectful to your Lord, Who created you from a single person (Adam) and from Him (Adam) He created his wife (Eve), and from them both He created many men and women.” (Nisâ: 1)
+On the other hand, Iblis’ arrogance came from his belief that his origin was superior to Adam (pbuh)’s. Satan’s—in other words, Iblis’—unapparent arrogance came to the surface when Adam (pbuh) appeared on the scene. He underlines his superiority because of the material from which he was created, yet Adam (pbuh)’s humble origin shows that Allah does not focus on origins, that is, race, colour, or ethnicity, since all humans ultimately originate from dried mud.`,V(['inability','The condition of being unable to do something.'],['obedience','Willing compliance with a command or authority.'],['admiration','Respect and approval for someone’s qualities.'],['humble','Simple and low in status; not grand or important.'],['ethnicity','Identity linked to shared cultural or ancestral background.']),H(['h5a',22,44,'Knowledge and Obedience','The angels admitted their limits and bowed to Adam (pbuh) in obedience to Allah.'],['h5b',77,56,'False Superiority','The chapter rejects superiority based on material origin, race or colour.'])),
+S(6,'The Command to Paradise',`Allah said: “O Mankind! Be respectful to your Lord, Who created you from a single person (Adam) and from Him (Adam) He created his wife (Eve), and from them both He created many men and women.” (Nisa: 1)
 
 Adam (pbuh) was now in Paradise and not alone; he had his wife with him.
 
@@ -53,17 +53,17 @@ Allah spoke to Adam (pbuh) in A’raf, verse 19: “And you, Adam, inhabit the G
 
 The tale went on. While Satan reached the point of no return by challenging his Creator, Adam (pbuh) took a path completely different from him. Surah A’raf, verses 16-17: “Satan said, ‘Because You have put me in error, I will surely sit in wait for them (Adam’s children) on Your Straight Path. Then I will come to them from before them, and from behind them, and from their right, and from their left; and you will not find most of them grateful to You.’”
 
-The tale is unfolding through the verses 77-82 in Surah Sâd: Allah said, “Then get out of here! You (Satan) are an outcast! And My curse will be upon you until the Day of Judgment.” He said, “Lord, allow me until the Day they are raised up.” He said, “You are one of those allowed, until the Day of the Time Appointed.” He said, “By Your majesty, I will deceive them all.”`,V(['respectful','Showing due reverence and respect.'],['inhabit','To live in or occupy a place.'],['wrongdoers','People who violate a moral or religious command.'],['outcast','Someone rejected and excluded from a group.'],['deceive','To mislead someone into believing something false.']),H(['h6a',31,68,'Life in Paradise','Adam and his wife receive permission with a clear boundary.'],['h6b',70,30,'Satan’s Vow','Satan declares his intention to mislead humanity.'])),
+The tale is unfolding through the verses 77-82 in Surah Sad: Allah said, “Then get out of here! You (Satan) are an outcast! And My curse will be upon you until the Day of Judgment.” He said, “Lord, allow me until the Day they are raised up.” He said, “You are one of those allowed, until the Day of the Time Appointed.” He said, “By Your majesty, I will deceive them all.”`,V(['respectful','Showing honour and proper regard; here, mindful of one’s duty to Allah.'],['inhabit','To live in or occupy a place.'],['wrongdoers','People who violate a moral or religious command.'],['outcast','Someone rejected and excluded from a group.'],['grateful','Feeling or showing thanks for what one has been given.']),H(['h6a',31,68,'Life in the Garden','Adam (pbuh) and his wife were allowed to live in the Garden and eat freely, but not to approach one tree.'],['h6b',70,30,'Satan’s Vow','Satan swore by Allah’s majesty that he would lead humanity astray.'])),
 S(7,'The Whisper of Deception',`Adam (pbuh) and Eve understood that they were forbidden to eat the fruit of that tree. Adam (pbuh) was, however, a human being, and man tends to forget. His heart changes, and his determination weakens. On the other hand, Satan would seek a way to remove Adam (pbuh) from mercy, because he thought of Adam (pbuh) as the cause of his expulsion from Allah's mercy. He took advantage of Adam (pbuh)’s humanity to manipulate him. He started to whisper to them day after day, trying to persuade both:
 
-“But Satan whispered to them (Adam and Eve), to expose what was hidden of their nakedness. He said, ‘Your Lord has only forbidden you this tree, lest you become angels, or become immortals.’” (A’raf: 20) And he swore to them, “I am a sincere advisor to you.” (A’raf: 21) Upon Satan’s promise that he was their true friend, Adam (pbuh) started to ask himself: “What will happen if I eat from this tree? It might truly be the Tree of Immortality.” His dream was to live forever in the pure innocence of Paradise. Years went by, and Adam (pbuh) and Eve were preoccupied with thoughts of that tree. Then one day, they decided to eat of its fruit. They forgot that Allah had warned them not to approach it and that Iblis was their bitter enemy. Adam (pbuh) stretched out his hand, picked one of the fruits, and offered it to Eve. They both ate of the forbidden tree. As soon as Adam (pbuh) had finished eating, he felt his heart tighten and fill with pain, sadness, and shame. The surrounding atmosphere changed, and the internal harmony ceased.`,V(['determination','Firmness of purpose in following a decision.'],['whispered','Spoke softly; here, a subtle attempt to influence.'],['immortals','Beings believed to live forever.'],['sincere','Honest and genuine in intention.'],['preoccupied','Absorbed repeatedly in a particular thought.']),H(['h7a',26,35,'Weakening Determination','Satan exploits forgetfulness through repeated whispers.'],['h7b',73,62,'The Forbidden Tree','Adam and Eve eventually eat from the tree.'])),
+“But Satan whispered to them (Adam and Eve), to expose what was hidden of their nakedness. He said, ‘Your Lord has only forbidden you this tree, lest you become angels, or become immortals.’” (A’raf: 20) And he swore to them, “I am a sincere advisor to you.” (A’raf: 21) Upon Satan’s promise that he was their true friend, Adam (pbuh) started to ask himself: “What will happen if I eat from this tree? It might truly be the Tree of Immortality.” His dream was to live forever in the pure innocence of Paradise. Years went by, and Adam (pbuh) and Eve were preoccupied with thoughts of that tree. Then one day, they decided to eat of its fruit. They forgot that Allah had warned them not to approach it and that Iblis was their bitter enemy. Adam (pbuh) stretched out his hand, picked one of the fruits, and offered it to Eve. They both ate of the forbidden tree. As soon as Adam (pbuh) had finished eating, he felt his heart tighten and fill with pain, sadness, and shame. The surrounding atmosphere changed, and the internal harmony ceased.`,V(['determination','Firmness of purpose in following a decision.'],['whispered','Spoke very softly; here, secretly put tempting ideas into someone’s mind.'],['immortals','Beings believed to live forever.'],['sincere','Honest and genuine in intention.'],['preoccupied','Thinking about something so much that there is little room for anything else.']),H(['h7a',26,35,'Weakening Determination','Satan used human forgetfulness, whispering to Adam (pbuh) and Eve day after day.'],['h7b',73,62,'The Forbidden Tree','Adam (pbuh) and Eve eventually ate from the tree they had been warned about.'])),
 S(8,'The Realization & Repentance',`“So he (Satan) made them (Adam (pbuh) and Eve) fall through deception. And when they tasted the tree, their nakedness became evident to them, and they began covering themselves with the leaves of the Garden. And their Lord called out to them, ‘Did I not forbid you from this tree, and say to you that Satan is a clear enemy to you?’” (A’raf: 22)
 
-When they tasted the fruit, their private parts became visible to them. Adam (pbuh) discovered that he and his wife were unclad, so they both started cutting tree leaves in Paradise with which to cover themselves. They were in haste to hide their private parts, because the sense of shame (hayâ) is inborn human nature and nakedness is contrary to human nature.
+When they tasted the fruit, their private parts became visible to them. Adam (pbuh) discovered that he and his wife were unclad, so they both started cutting tree leaves in Paradise with which to cover themselves. They were in haste to hide their private parts, because the sense of shame (haya) is inborn human nature and nakedness is contrary to human nature.
 
 Adam (pbuh) bowed down, crying, “Forgiveness! Forgiveness!” so Allah asked, “Are you running away from Me?” Adam (pbuh) replied, “No, my Lord, but I am shy of You.”
 
-After Adam (pbuh) and Eve were placed in Paradise, they enjoyed Allah's blessings as they pleased. Allah warned them not to approach the forbidden tree. This tree is not described in the Holy Qur'an. It is only mentioned that Satan deceived Adam (pbuh) and Eve. According to Islamic scholars, this incident happened while Adam (pbuh) was in Paradise—that is, before he became a prophet.`,V(['deception','The act of making something false appear true.'],['evident','Clearly visible or understandable.'],['unclad','Without clothing or covering.'],['hayâ','A moral sense of modesty and shame.'],['forbidden','Not permitted because it has been prohibited.']),H(['h8a',36,57,'Recognition and Modesty','They become aware of their nakedness and cover themselves.'],['h8b',64,28,'Turning Back to Allah','Adam responds with shame and asks for forgiveness.'])),
+After Adam (pbuh) and Eve were placed in Paradise, they enjoyed Allah's blessings as they pleased. Allah warned them not to approach the forbidden tree. This tree is not described in the Holy Qur’an. It is only mentioned that Satan deceived Adam (pbuh) and Eve. According to Islamic scholars, this incident happened while Adam (pbuh) was in Paradise—that is, before he became a prophet.`,V(['deception','The act of making something false appear true.'],['evident','Clearly visible or understandable.'],['unclad','Without clothing or covering.'],['inborn','Present in a person from birth rather than learned.'],['forbidden','Not allowed by a clear command; here, the one tree Adam and Eve were told not to approach.']),H(['h8a',36,57,'Recognition and Modesty','Adam (pbuh) and Eve became aware of their nakedness and covered themselves with leaves.'],['h8b',64,28,'Turning Back to Allah','Adam (pbuh) bowed down in shame and asked Allah for forgiveness.'])),
 // anchor-2e
 // anchor-2f
 // anchor-2g
@@ -74,15 +74,15 @@ After Adam (pbuh) and Eve were placed in Paradise, they enjoyed Allah's blessing
 // anchor-3d
 S(9,'Repentance & Descent to Earth',`Adam (pbuh) severely regretted what he had done. He immediately turned towards Allah. His regret itself was the reason for Allah’s mercy upon him. “They said, ‘Our Lord, we have done wrong to ourselves. Unless You forgive us, and have mercy on us, we will be among the losers.’” (A’raf: 23) Then Adam (pbuh) received words from his Lord (to learn how to ask for forgiveness), so His Lord pardoned him (accepted his repentance). Verily, He is the One Who forgives (accepts repentance), the Most Merciful. (Baqarah: 37) We said, “Go down from it (the Paradise), all of you. Yet whenever guidance comes to you from Me, then whoever follows My guidance—they have nothing to fear, nor shall they grieve.” (Baqarah: 38)
 
-Allah taught Adam (pbuh) how to ask for forgiveness. This unintentional mistake committed by Adam (pbuh) was forgiven by Allah upon his repentance. This means that Allah did not abandon Adam (pbuh); He immediately turned towards Adam (pbuh), too. Adam (pbuh) and Eve left Paradise and descended upon Earth. At that time, there was neither a community nor a congregation. After a period of time following their descent to Earth, when a community emerged, Adam (pbuh) was given prophethood, thus becoming the first human, the first father, and the first prophet. We understand from the verses that humans are open to sinning and sometimes rebelling against their Lord. However, in order to remain an honoured human, they must recognize their mistakes, seek the fault within themselves, and immediately turn towards Allah.`,V(['regretted','Felt deep sorrow about a past action.'],['mercy','Compassion and forgiveness shown to someone.'],['repentance','Sincere regret followed by returning to what is right.'],['prophethood','The divinely appointed role of a prophet.'],['honoured','Regarded as having dignity and respected status.']),H(['h9a',24,64,'Repentance Accepted','Adam regrets his mistake and receives mercy.'],['h9b',76,38,'Life on Earth','Adam and Eve descend and human life on Earth begins.'])),
+Allah taught Adam (pbuh) how to ask for forgiveness. This unintentional mistake committed by Adam (pbuh) was forgiven by Allah upon his repentance. This means that Allah did not abandon Adam (pbuh); He immediately turned towards Adam (pbuh), too. Adam (pbuh) and Eve left Paradise and descended upon Earth. At that time, there was neither a community nor a congregation. After a period of time following their descent to Earth, when a community emerged, Adam (pbuh) was given prophethood, thus becoming the first human, the first father, and the first prophet. We understand from the verses that humans are open to sinning and sometimes rebelling against their Lord. However, in order to remain an honoured human, they must recognize their mistakes, seek the fault within themselves, and immediately turn towards Allah.`,V(['regretted','Felt deep sorrow about a past action.'],['mercy','Compassion and forgiveness shown to someone.'],['repentance','Sincere sorrow for a wrong, together with a return to what is right.'],['prophethood','The divinely appointed role of a prophet.'],['honoured','Regarded as having dignity and respected status.']),H(['h9a',24,64,'Forgiveness Granted','Adam (pbuh) regretted his mistake, and Allah accepted his repentance.'],['h9b',76,38,'Prophethood on Earth','Adam (pbuh) and Eve descended to Earth, and later Adam (pbuh) was given prophethood.'])),
 S(10,'The Settlement on Earth',`Allah knew that Adam (pbuh) and Eve would eat of the tree and descend to Earth. He knew that Satan would violate their innocence. That experience was essential for their life on Earth; it was a cornerstone of their vicegerency. It was meant to teach Adam (pbuh), Eve, and their offspring the knowledge that Satan is their enemy and that the right path is to act in accordance with what they have heard from the Creator. The Creator is Knower, Powerful, Just, and Merciful.
 
 Adam (pbuh)’s descending to Earth, then, did not imply dishonour or humiliation, but rather it was an honorable and respected settlement on Earth. And thus began the story of humankind and its struggle against Satan on Earth. There are many hadiths about the place of Adam (pbuh)’s descending upon Earth. Ibn Abbas, who narrated many hadiths, said: “Adam (pbuh) descended on land ‘Dihna’ between Mecca and Taif.”
 
 It is also reported that Adam (pbuh) descended with the Black Stone (a large black stone set into the wall of the Ka’ba in Mecca. It is said to have come from Paradise).
 
-Ibn Umar said that Adam (pbuh) descended on As-Safa and Eve on Al-Marwa (names of two mountains in the neighborhood of the Sacred House (Ka’ba) in Mecca. Part of the rites of pilgrimage (hajj) includes walking and running between these two hills in remembrance of Hajar's search for water).`,V(['innocence','A state of moral purity.'],['cornerstone','A basic part on which something depends.'],['vicegerency','Responsibility for stewardship and entrusted duties on Earth.'],['humiliation','The experience of being stripped of dignity.'],['pilgrimage','A religious journey to a spiritually important place.']),H(['h10a',33,31,'A Responsible Settlement','The descent begins responsibility rather than humiliation.'],['h10b',69,67,'Places of Descent','The chapter records traditional reports about places of descent.'])),
-S(11,'Adam (pbuh)’s Life on Earth',`Ebu Hureyre reported that the Prophet Muhammad (pbuh) said: “The best of days on which the sun has risen is Friday. On this day Adam (pbuh) was created, and on this day he was descended to Earth.” (see Müslim, Cuma 17, 18; also Tirmizî, Cuma 1, 2; Nesâî, Cuma 4, 45)
+Ibn Umar said that Adam (pbuh) descended on As-Safa and Eve on Al-Marwa (names of two mountains in the neighborhood of the Sacred House (Ka’ba) in Mecca. Part of the rites of pilgrimage (hajj) includes walking and running between these two hills in remembrance of Hagar's search for water).`,V(['innocence','A state of moral purity.'],['cornerstone','A basic part on which something depends.'],['vicegerency','Responsibility for stewardship and entrusted duties on Earth.'],['humiliation','The experience of being stripped of dignity.'],['pilgrimage','A religious journey to a spiritually important place.']),H(['h10a',33,31,'A Responsible Settlement','The descent was not a humiliation but the start of human responsibility on Earth.'],['h10b',69,67,'Places of Descent','Reports name Dihna, As-Safa and Al-Marwa as places where Adam (pbuh) and Eve came down.'])),
+S(11,'Adam (pbuh)’s Life on Earth',`Abu Hurayrah reported that the Prophet Muhammad (pbuh) said: “The best of days on which the sun has risen is Friday. On this day Adam (pbuh) was created, and on this day he was sent down to Earth.” (see Muslim, Jumu‘ah 17, 18; also Tirmidhi, Jumu‘ah 1, 2; Nasa’i, Jumu‘ah 4, 45)
 
 Adam (pbuh) knew he had said goodbye to peace, and he left Paradise. On Earth, he had to face conflict and struggle. No sooner had one ended than another began. He also had to work hard to keep himself alive. He had to protect himself with clothes and weapons and protect himself from the wild.
 
@@ -90,46 +90,46 @@ Above all, he had to struggle with the spirit of evil. Satan, the cause of his d
 
 The battle between good and evil is continuous, but those who follow Allah's guidance should fear nothing, while those who disobey Allah and follow Iblis will be away from the mercy of Allah along with him. Adam (pbuh) understood all this, and with the knowledge of this suffering, he started his life on Earth.
 
-The only thing that eased his grief was that he was master of the Earth and had to govern it. He had to maintain, cultivate, construct, and populate the Earth. He also had to reproduce and raise children who would change and improve the world.`,V(['conflict','A serious struggle between opposing forces.'],['struggle','A sustained effort to overcome difficulty.'],['guidance','Direction toward the right course of action.'],['cultivate','To prepare and use land for growing crops.'],['populate','To establish or increase a population in a place.']),H(['h11a',27,48,'Struggle on Earth','Adam faces physical hardship and moral struggle.'],['h11b',75,70,'Building Human Life','Cultivation, construction, and future generations shape life on Earth.'])),
+The only thing that eased his grief was that he was master of the Earth and had to govern it. He had to maintain, cultivate, construct, and populate the Earth. He also had to reproduce and raise children who would change and improve the world.`,V(['conflict','A serious struggle between opposing forces.'],['struggle','A sustained effort to overcome difficulty.'],['guidance','Direction toward the right course of action.'],['cultivate','To prepare and use land for growing crops.'],['populate','To establish or increase a population in a place.']),H(['h11a',27,48,'Struggle on Earth','On Earth, Adam (pbuh) faced hard physical work and a constant struggle against evil.'],['h11b',75,70,'Building Human Life','Adam (pbuh) had to cultivate, build and populate the Earth and raise children.'])),
 S(12,'The Conflict of Habil and Qabil',`One of their greatest joys on Earth came when Adam (pbuh) and Eve witnessed the birth of their first children. The children grew up to be strong and healthy young adults. Qabil cultivated the land while Habil raised cattle. In time, there arose a conflict between the two sons. Adam (pbuh) was in a difficult situation. He wanted peace and harmony in his family, so he prayed to Allah for help. Allah commanded that each son offer a sacrifice, and the one whose offering was accepted would be in the right. Habil offered his best cattle while Qabil offered his worst grain. Qabil’s sacrifice was not accepted by Allah because of his insincerity in his offering. This angered Qabil even further. “I will kill you! I refuse to see you happy while I remain unhappy!”
 
-The story of Habil and Qabil is narrated in the Holy Qur’an without mentioning names as follows: “Tell them in all truth the story of the two sons of Adam. When they made an offering and it was accepted from one of them and was not accepted from the other, the latter said: ‘I will surely kill you.’ Thereupon the former said: ‘Allah accepts offerings only from the God-fearing.’” (Maide: 27)
+The story of Habil and Qabil is narrated in the Holy Qur’an without mentioning names as follows: “Tell them in all truth the story of the two sons of Adam. When they made an offering and it was accepted from one of them and was not accepted from the other, the latter said: ‘I will surely kill you.’ Thereupon the former said: ‘Allah accepts offerings only from the God-fearing.’” (Ma’idah: 27)
 
-The Qur’an narrates this story in a simple manner. It does not openly mention any of the details found in the Torah, as, according to the Qur’an, the only thing that needs to be known is the wisdom of the story. Habil and Qabil are referred to as Adam (pbuh)’s two sons without their names being given. Although we don’t know the whole story, Adam (pbuh)’s children, Habil and Qabil, were involved in a conflict that resulted in Qabil killing Habil. Habil displayed his pious character in his response, saying:`,V(['blisses','Experiences of deep happiness or joy.'],['harmony','A peaceful state in which people fit well together.'],['sacrifice','An offering given for a religious purpose.'],['insincerity','Lack of genuine intention or honesty.'],['pious','Deeply committed to religious faith and conduct.']),H(['h12a',40,66,'The Two Offerings','Habil gives his best while Qabil’s offering lacks sincerity.'],['h12b',62,34,'From Conflict to Threat','Qabil’s anger develops into a threat.'])),
+The Qur’an narrates this story in a simple manner. It does not openly mention any of the details found in the Torah, as, according to the Qur’an, the only thing that needs to be known is the wisdom of the story. Habil and Qabil are referred to as Adam (pbuh)’s two sons without their names being given. Although we don’t know the whole story, Adam (pbuh)’s children, Habil and Qabil, were involved in a conflict that resulted in Qabil killing Habil.`,V(['witnessed','Saw an important event happen with one’s own eyes.'],['harmony','A peaceful state in which people fit well together.'],['sacrifice','An offering given for a religious purpose.'],['insincerity','Lack of genuine intention or honesty.']),H(['h12a',40,66,'The Two Offerings','Habil offered his best cattle, while Qabil offered his worst grain without sincerity.'],['h12b',62,34,'From Conflict to Threat','Qabil’s anger grew until he threatened to kill his brother.'])),
 // anchor-3e
 // anchor-3f
 // anchor-3g
 // anchor-3h
 // anchor-13a
 // anchor-13b
-S(13,'Habil’s Response & Human Moral Capacity',`“Even if you raise your hand against me to kill, I will not raise my hand to kill you. Surely, I fear Allah, the Lord of the entire universe.” (Maide: 28) It is understood from the above verses that although Qabil had the intention to kill, Habil did not adopt an aggressive attitude. Thus, he emphasizes that he does not take notice of the desires of his own self in the face of truth. At first glance, Qabil’s rebellious attitude may seem unacceptable. However, it is important to remember that humans have the potential for both good and evil. People can be jealous, selfish, greedy, and even damaging and harmful. The path to goodness is in controlling evil thoughts and actions and being moderate in desires. Thus, Allah tests us through our dual nature. Habil was intelligent, respectful, and always ready to obey the will of Allah. This contrasted sharply with his brother who was arrogant, selfish, and disobedient to his Lord. Habil did not fear his brother's threats, but he also did not want his brother to be hurt. Allah gave Habil purity and compassion. Hoping to lessen the hatred in his brother, Habil said, “My brother, you are turning away from the right path and are sinful in your decisions. It is better that you repent to Allah and forget about your foolish threat. But if you do not, then I will leave the matter in the hands of Allah. You alone will bear the consequence of your sin.”`,V(['aggressive','Ready to use hostility or force.'],['potential','The capacity to develop a quality or behaviour.'],['moderate','Kept within reasonable rather than extreme limits.'],['disobedient','Refusing to follow a command or authority.'],['purity and compassion','Moral purity together with concern for another person’s suffering.']),H(['h13a',23,30,'Habil Refuses Violence','Habil refuses to answer his brother’s threat with violence.'],['h13b',78,54,'Human Moral Capacity','The chapter stresses human capacity for good and evil and the need for self-control.'])),
+S(13,'Habil’s Response & Human Moral Capacity',`Habil displayed his pious character in his response, saying: “Even if you raise your hand against me to kill, I will not raise my hand to kill you. Surely, I fear Allah, the Lord of the entire universe.” (Ma’idah: 28) It is understood from the above verses that although Qabil had the intention to kill, Habil did not adopt an aggressive attitude. Thus, he emphasizes that he does not take notice of the desires of his own self in the face of truth. At first glance, Qabil’s rebellious attitude may seem unacceptable. However, it is important to remember that humans have the potential for both good and evil. People can be jealous, selfish, greedy, and even damaging and harmful. The path to goodness is in controlling evil thoughts and actions and being moderate in desires. Thus, Allah tests us through our dual nature. Habil was intelligent, respectful, and always ready to obey the will of Allah. This contrasted sharply with his brother who was arrogant, selfish, and disobedient to his Lord. Habil did not fear his brother's threats, but he also did not want his brother to be hurt. Allah gave Habil purity and compassion. Hoping to lessen the hatred in his brother, Habil said, “My brother, you are turning away from the right path and are sinful in your decisions. It is better that you repent to Allah and forget about your foolish threat. But if you do not, then I will leave the matter in the hands of Allah. You alone will bear the consequence of your sin.”`,V(['pious','Deeply committed to religious faith and conduct.'],['aggressive','Ready to use hostility or force.'],['potential','The capacity to develop a quality or behaviour.'],['moderate','Kept within reasonable rather than extreme limits.'],['disobedient','Refusing to follow a command or authority.'],['compassion','Deep concern for another person’s suffering and a wish to help.']),H(['h13a',23,30,'Habil Rejects Violence','Habil refused to answer his brother’s threat with violence.'],['h13b',78,54,'Good and Evil Within Us','Humans can do both good and evil, so they must control their desires.'])),
 // anchor-13c
 // anchor-13d
 // anchor-14a
 // anchor-14b
 S(14,'The First Murder & Burial',`This brotherly request did nothing to lessen the hatred in Qabil's heart, nor did he show fear of Allah's punishment. Even familial considerations were given up. Qabil hit his brother with a stone, killing him instantly. This was the first death and the first criminal act committed by man on Earth.
 
-Surah Maide concludes the story with Qabil’s tragic end:
+Surah Ma’idah concludes the story with Qabil’s tragic end:
 
-“At last his evil soul drove him (Qabil) to the murder of his brother, and he killed him, by which he himself became one of the losers.” (Maide: 30)
+“At last his evil soul drove him (Qabil) to the murder of his brother, and he killed him, by which he himself became one of the losers.” (Ma’idah: 30)
 
 // anchor-14c
 // anchor-14d
 When Habil had not appeared for some time, Adam (pbuh) began to search for him but found no trace of his beloved son. He asked Qabil about Habil's location. Qabil arrogantly replied that he was not his brother's keeper nor his protector. From these words, his father understood that Habil was dead, and Adam (pbuh) was filled with grief. Meanwhile, Qabil did not know what to do with his brother's corpse. He carried it on his back, wandering from place to place trying to hide it.
 // anchor-14e
 // anchor-14f
-His anger had now lessened, and his heart was burdened with guilt. He was getting tired under the burden of the corpse. It also started to have a stench. As a mercy, and to show that human dignity had to be preserved even after death, Allah sent two ravens that began fighting. At the end of the fight, one of the ravens died. The victorious bird used its beak and claws to dig a hole in the ground, rolled its victim into it, and covered it with sand.`,V(['familial','Relating to family relationships.'],['criminal','Relating to a serious unlawful act.'],['corpse','The body of a person who has died.'],['guilt','A sense of responsibility for wrongdoing.'],['victorious','Having won a contest or struggle.']),H(['h14a',35,69,'The Crime and Its Consequence','Qabil kills his brother and faces the weight of guilt.'],['h14b',67,40,'The Two Ravens','Qabil learns how burial works by observing two ravens.'])),
+His anger had now lessened, and his heart was burdened with guilt. He was getting tired under the burden of the corpse. It also started to have a stench. As a mercy, and to show that human dignity had to be preserved even after death, Allah sent two ravens that began fighting. At the end of the fight, one of the ravens died. The victorious bird used its beak and claws to dig a hole in the ground, rolled its victim into it, and covered it with sand.`,V(['familial','Relating to family relationships.'],['criminal','Relating to a serious unlawful act.'],['corpse','The body of a person who has died.'],['guilt','A sense of responsibility for wrongdoing.'],['victorious','Having won a contest or struggle.']),H(['h14a',35,69,'The Crime and Its Weight','Qabil killed his brother and was soon burdened with guilt.'],['h14b',67,40,'The Two Ravens','Allah sent two ravens, and the one that won buried the other in the ground.'])),
 // anchor-14g
 // anchor-14h
 // anchor-15a
 // anchor-15b
-S(15,'Qabil’s Regret & Adam (pbuh)’s Advice',`Qabil was in an extremely sorry state, as told in the Holy Qur’an: “Thereupon Allah sent a raven who began to dig at the earth to show him how he might cover the corpse of his brother. So seeing he cried: ‘Woe unto me! Was I unable even to be like this raven and find a way to cover the corpse of my brother?’ Then he became full of regret at his doing.” (Maide: 31)
+S(15,'Qabil’s Regret & Adam (pbuh)’s Advice',`Qabil was in an extremely sorry state, as told in the Holy Qur’an: “Thereupon Allah sent a raven who began to dig at the earth to show him how he might cover the corpse of his brother. So seeing he cried: ‘Woe unto me! Was I unable even to be like this raven and find a way to cover the corpse of my brother?’ Then he became full of regret at his doing.” (Ma’idah: 31)
 
 Witnessing this, Qabil was overcome with shame and guilt. “Woe unto me!” he exclaimed. “I was unable to do what this raven has done, that is to hide my brother's corpse.” Qabil then buried his brother. This was also the first burial of man.
 
 // anchor-15c
 // anchor-15d
-What is essentially being described here is the consequence of choosing evil. It arises from jealousy, which defeats the feelings of love and compassion of brotherhood. This story provides an example illustrating that with the guidance of revelation (vâhiy), choosing the truth over falsehood and goodness over evil will purify human nature of evil. In this example, Qabil represents the type of person dominated by evil, while Habil represents the righteous person who has love for goodness and kindness. Adam (pbuh) was in deep pain over the loss of his two sons. One was dead, the other was won over by Satan. Adam (pbuh) prayed for his son and turned to worldly matters, because he had to work hard for his daily bread.`,V(['regret','Sorrow about an action already taken.'],['falsehood','Something untrue or opposed to truth.'],['consequence','A result produced by an action or decision.'],['jealousy','Resentment caused by another person’s advantage or happiness.'],['righteous','Morally good and committed to what is right.']),H(['h15a',29,43,'Qabil’s Regret','Qabil becomes regretful after the crime and burial.'],['h15b',71,65,'Adam’s Continued Responsibility','Despite grief, Adam prays for his son and continues the responsibilities of daily life.'])),
+What is essentially being described here is the consequence of choosing evil. It arises from jealousy, which defeats the feelings of love and compassion of brotherhood. This story provides an example illustrating that with the guidance of revelation (wahy), choosing the truth over falsehood and goodness over evil will purify human nature of evil. In this example, Qabil represents the type of person dominated by evil, while Habil represents the righteous person who has love for goodness and kindness. Adam (pbuh) was in deep pain over the loss of his two sons. One was dead, the other was won over by Satan. Adam (pbuh) prayed for his son and turned to worldly matters, because he had to work hard for his daily bread.`,V(['purify','To make something clean by removing what is bad or harmful.'],['falsehood','Something untrue or opposed to truth.'],['consequence','A result produced by an action or decision.'],['jealousy','Resentment caused by another person’s advantage or happiness.'],['righteous','Morally good and committed to what is right.']),H(['h15a',29,43,'Shame and Guilt','Qabil was overcome with shame and guilt, and then he buried his brother.'],['h15b',71,65,'Adam’s (pbuh) Continued Responsibility','Despite his grief, Adam (pbuh) prayed for his son and kept working for his daily bread.'])),
 // anchor-15e
 // anchor-15f
 // anchor-16a
@@ -137,7 +137,7 @@ What is essentially being described here is the consequence of choosing evil. It
 S(16,'Adam (pbuh)’s Successor & Death',`At the same time, he was a prophet advising his children and grandchildren, telling them about Allah and calling them to believe in Him. He told them about Iblis and warned them by telling them about his own experience with Satan and how Satan had tempted Qabil to kill his brother. Years and years passed, Adam (pbuh) grew old and his children spread all over the Earth. It was narrated that when Adam (pbuh)’s death drew near, he appointed his son Seth to be his successor and taught him the hours of the day and night with their appropriate acts of worship. Prophet Muhammad (pbuh) said: “Allah sent down 104 scrolls, of which 50 were sent down to Seth.”
 // anchor-16c
 // anchor-16d
-Before his death, Adam (pbuh) told his children that Allah would not leave man alone on Earth, but would send His prophets to guide them. The prophets would have different names and miracles, but they would be united in one thing: the call to follow Allah’s straight path. This was Adam (pbuh)’s legacy to his children. Adam (pbuh) finished speaking and closed his eyes. Then the angels entered his room and surrounded him. When he recognized the Angel of Death among them, his heart filled with peace.`,V(['successor','A person who takes over another’s role.'],['scrolls','Written texts on rolled sheets or similar material.'],['miracles','Extraordinary signs associated with divine power.'],['legacy','Guidance or influence passed to later generations.'],['peace','A state of calm and freedom from fear.']),H(['h16a',37,34,'Seth’s Successorship','Adam appoints Seth as his successor and teaches him acts of worship.'],['h16b',63,71,'Adam’s Legacy','Adam leaves his children the call to follow Allah’s straight path.'])),
+Before his death, Adam (pbuh) told his children that Allah would not leave man alone on Earth, but would send His prophets to guide them. The prophets would have different names and miracles, but they would be united in one thing: The call to follow Allah’s straight path. This was Adam (pbuh)’s legacy to his children. Adam (pbuh) finished speaking and closed his eyes. Then the angels entered his room and surrounded him. When he recognized the Angel of Death among them, his heart filled with peace.`,V(['successor','A person who takes over another’s role.'],['scrolls','Written texts on rolled sheets or similar material.'],['tempted','Persuaded someone to do wrong by making it seem attractive.'],['legacy','Guidance or influence passed to later generations.'],['appropriate','Suitable or right for a particular time or situation.']),H(['h16a',37,34,'Seth Takes Over','Adam (pbuh) appointed Seth as his successor and taught him the times of worship.'],['h16b',63,71,'Adam’s (pbuh) Legacy','Adam (pbuh) left his children the call to follow Allah’s straight path.'])),
 // anchor-16e
 // anchor-16f
 // anchor-17a
@@ -153,7 +153,7 @@ He (Allah) said, ‘This is a right way with Me.’
 // anchor-17d
 Learning about Adam (pbuh)’s tale is to know the origin of humanity. Besides, to recognize Adam (pbuh) is to know the source of knowledge and the setting in which humanity came into being. The Holy Qur’an does not focus so much on Satan’s anti-God position (although he is unquestionably a rebel against Allah and surely personifies this disobedient character) but rather underlines his anti-human attitude and his constant attempts to tempt man away from his natural “straight” course. Satan alone is not strong; it is only man's weakness and lack of morals and carefulness that make Satan look so strong.
 In fact, all the events that Adam (pbuh) and Eve experienced are like a summary of the adventures of their descendants in worldly life.
-Each character in this Qur’anic story leaves behind a deterrent tale for humanity raising a key direct question: Where should man truly find his sense of value?`,V(['mislead','To cause someone to follow a wrong idea or path.'],['sincere servants','People genuinely devoted to Allah.'],['authority','Power or right to control or influence.'],['descendants','People who come from an earlier ancestor.'],['value','The importance or worth given to someone.']),H(['h17a',25,60,'Satan’s Limited Authority','Satan acknowledges that he has no authority over sincere servants.'],['h17b',74,32,'Human Value','The chapter asks where human beings should find their true sense of value.'])),
+Each character in this Qur’anic story leaves behind a deterrent tale for humanity raising a key direct question: Where should man truly find his sense of value?`,V(['mislead','To cause someone to follow a wrong idea or path.'],['acknowledges','Accepts or admits that something is true.'],['authority','Power or right to control or influence.'],['rebel','A person who refuses to obey authority and fights against it.'],['value','The importance or worth given to someone.']),H(['h17a',25,60,'Satan’s Limited Authority','Satan admits that he has no authority over Allah’s sincere servants.'],['h17b',74,32,'Where True Worth Lies','The chapter asks where human beings should find their true sense of value.'])),
 // anchor-17e
 // anchor-17f
 ];
@@ -507,20 +507,20 @@ const glossaryMetadata: Record<string, Omit<NonNullable<PageData['vocabulary']>[
     ],
     "category": "Feelings & Attitudes"
   },
-  "arrogance": {
-    "partOfSpeech": "noun",
-    "pronunciation": "/ˈærəɡəns/",
+  "humble": {
+    "partOfSpeech": "adjective",
+    "pronunciation": "/ˈhʌmbəl/",
     "wordFamily": [
-      "arrogant",
-      "arrogance",
-      "arrogantly"
+      "humble",
+      "humbly",
+      "humility"
     ],
     "collocations": [
-      "hidden arrogance",
-      "show arrogance"
+      "humble origin",
+      "humble material"
     ],
     "antonyms": [
-      "humility"
+      "grand"
     ],
     "category": "Character & Values"
   },
@@ -600,22 +600,22 @@ const glossaryMetadata: Record<string, Omit<NonNullable<PageData['vocabulary']>[
     ],
     "category": "People & Status"
   },
-  "deceive": {
-    "partOfSpeech": "verb",
-    "pronunciation": "/dɪˈsiːv/",
+  "grateful": {
+    "partOfSpeech": "adjective",
+    "pronunciation": "/ˈɡreɪtfəl/",
     "wordFamily": [
-      "deceive",
-      "deception",
-      "deceptive"
+      "grateful",
+      "gratefully",
+      "gratitude"
     ],
     "collocations": [
-      "deceive someone",
-      "deliberately deceive"
+      "grateful to someone",
+      "deeply grateful"
     ],
     "synonyms": [
-      "mislead"
+      "thankful"
     ],
-    "category": "Actions & Ethics"
+    "category": "Faith & Practice"
   },
   "determination": {
     "partOfSpeech": "noun",
@@ -746,14 +746,20 @@ const glossaryMetadata: Record<string, Omit<NonNullable<PageData['vocabulary']>[
     ],
     "category": "Description"
   },
-  "hayâ": {
-    "partOfSpeech": "noun",
-    "pronunciation": "/həˈjɑː/",
-    "collocations": [
-      "sense of hayâ",
-      "moral modesty"
+  "inborn": {
+    "partOfSpeech": "adjective",
+    "pronunciation": "/ˌɪnˈbɔːrn/",
+    "wordFamily": [
+      "inborn"
     ],
-    "category": "Values & Spiritual Life"
+    "collocations": [
+      "inborn nature",
+      "inborn sense"
+    ],
+    "synonyms": [
+      "innate"
+    ],
+    "category": "Human Nature"
   },
   "forbidden": {
     "partOfSpeech": "adjective",
@@ -987,21 +993,22 @@ const glossaryMetadata: Record<string, Omit<NonNullable<PageData['vocabulary']>[
     ],
     "category": "People & Society"
   },
-  "blisses": {
-    "partOfSpeech": "noun",
-    "pronunciation": "/ˈblɪsɪz/",
+  "witnessed": {
+    "partOfSpeech": "verb",
+    "pronunciation": "/ˈwɪtnəst/",
     "wordFamily": [
-      "bliss",
-      "blissful"
+      "witness",
+      "witnessed",
+      "witnessing"
     ],
     "collocations": [
-      "moments of bliss",
-      "great blisses"
+      "witness the birth",
+      "witness an event"
     ],
     "synonyms": [
-      "joys"
+      "saw"
     ],
-    "category": "Feelings"
+    "category": "Family & Events"
   },
   "harmony": {
     "partOfSpeech": "noun",
@@ -1127,20 +1134,22 @@ const glossaryMetadata: Record<string, Omit<NonNullable<PageData['vocabulary']>[
     ],
     "category": "Character & Conduct"
   },
-  "purity and compassion": {
-    "partOfSpeech": "noun phrase",
-    "pronunciation": "/ˈpjʊrəti ænd kəmˈpæʃən/",
+  "compassion": {
+    "partOfSpeech": "noun",
+    "pronunciation": "/kəmˈpæʃən/",
     "wordFamily": [
-      "pure",
-      "purity",
       "compassion",
-      "compassionate"
+      "compassionate",
+      "compassionately"
     ],
     "collocations": [
-      "moral purity",
-      "show compassion"
+      "show compassion",
+      "love and compassion"
     ],
-    "category": "Values & Character"
+    "synonyms": [
+      "kindness"
+    ],
+    "category": "Character & Values"
   },
   "familial": {
     "partOfSpeech": "adjective",
@@ -1210,18 +1219,22 @@ const glossaryMetadata: Record<string, Omit<NonNullable<PageData['vocabulary']>[
     ],
     "category": "Conflict & Outcome"
   },
-  "regret": {
-    "partOfSpeech": "noun",
-    "pronunciation": "/rɪˈɡret/",
+  "purify": {
+    "partOfSpeech": "verb",
+    "pronunciation": "/ˈpjʊrɪfaɪ/",
     "wordFamily": [
-      "regret",
-      "regretful"
+      "pure",
+      "purity",
+      "purify"
     ],
     "collocations": [
-      "feel regret",
-      "full of regret"
+      "purify the heart",
+      "purify human nature"
     ],
-    "category": "Feelings & Reflection"
+    "synonyms": [
+      "cleanse"
+    ],
+    "category": "Moral Growth"
   },
   "falsehood": {
     "partOfSpeech": "noun",
@@ -1312,18 +1325,22 @@ const glossaryMetadata: Record<string, Omit<NonNullable<PageData['vocabulary']>[
     ],
     "category": "Texts & History"
   },
-  "miracles": {
-    "partOfSpeech": "noun",
-    "pronunciation": "/ˈmɪrəkəlz/",
+  "tempted": {
+    "partOfSpeech": "verb",
+    "pronunciation": "/ˈtemptɪd/",
     "wordFamily": [
-      "miracle",
-      "miraculous"
+      "tempt",
+      "temptation",
+      "tempting"
     ],
     "collocations": [
-      "perform miracles",
-      "divine miracles"
+      "tempt someone to do something",
+      "be tempted"
     ],
-    "category": "Belief & Faith"
+    "synonyms": [
+      "lured"
+    ],
+    "category": "Good & Evil"
   },
   "legacy": {
     "partOfSpeech": "noun",
@@ -1338,22 +1355,22 @@ const glossaryMetadata: Record<string, Omit<NonNullable<PageData['vocabulary']>[
     ],
     "category": "History & Influence"
   },
-  "peace": {
-    "partOfSpeech": "noun",
-    "pronunciation": "/piːs/",
+  "appropriate": {
+    "partOfSpeech": "adjective",
+    "pronunciation": "/əˈproʊpriət/",
     "wordFamily": [
-      "peace",
-      "peaceful",
-      "peacefully"
+      "appropriate",
+      "appropriately",
+      "inappropriate"
     ],
     "collocations": [
-      "inner peace",
-      "live in peace"
+      "appropriate time",
+      "appropriate acts"
     ],
-    "antonyms": [
-      "conflict"
+    "synonyms": [
+      "suitable"
     ],
-    "category": "Feelings & Values"
+    "category": "Faith & Practice"
   },
   "mislead": {
     "partOfSpeech": "verb",
@@ -1372,19 +1389,22 @@ const glossaryMetadata: Record<string, Omit<NonNullable<PageData['vocabulary']>[
     ],
     "category": "Actions & Ethics"
   },
-  "sincere servants": {
-    "partOfSpeech": "noun phrase",
-    "pronunciation": "/sɪnˈsɪr ˈsɜːrvənts/",
+  "acknowledges": {
+    "partOfSpeech": "verb",
+    "pronunciation": "/əkˈnɑːlɪdʒɪz/",
     "wordFamily": [
-      "sincere",
-      "sincerity",
-      "servant"
+      "acknowledge",
+      "acknowledgement",
+      "acknowledged"
     ],
     "collocations": [
-      "sincere servants",
-      "devoted servants"
+      "acknowledge a fact",
+      "acknowledge the truth"
     ],
-    "category": "People & Faith"
+    "synonyms": [
+      "admits"
+    ],
+    "category": "Truth & Recognition"
   },
   "authority": {
     "partOfSpeech": "noun",
@@ -1402,21 +1422,19 @@ const glossaryMetadata: Record<string, Omit<NonNullable<PageData['vocabulary']>[
     ],
     "category": "Power & Influence"
   },
-  "descendants": {
+  "rebel": {
     "partOfSpeech": "noun",
-    "pronunciation": "/dɪˈsendənts/",
+    "pronunciation": "/ˈrebəl/",
     "wordFamily": [
-      "descend",
-      "descendant"
+      "rebel",
+      "rebellion",
+      "rebellious"
     ],
     "collocations": [
-      "future descendants",
-      "human descendants"
+      "a rebel against",
+      "rebel leader"
     ],
-    "synonyms": [
-      "offspring"
-    ],
-    "category": "Family & Humanity"
+    "category": "Good & Evil"
   },
   "value": {
     "partOfSpeech": "noun",
@@ -1441,13 +1459,9 @@ const glossary: NonNullable<PageData['vocabulary']> = adamB2Pages.flatMap(page =
   return (page.vocabulary ?? []).map(item => {
     const meta = glossaryMetadata[item.word];
     if (!meta) throw new Error(`Missing Adam B2 glossary metadata for: ${item.word}`);
-    const target = item.word.toLocaleLowerCase();
-    let storyExample = paragraphs
+    const storyExample = paragraphs
       .flatMap(paragraph => paragraph.split(/(?<=[.!?])\s+/))
-      .find(sentence => sentence.toLocaleLowerCase().includes(target));
-    if (item.word === 'blisses') {
-      storyExample = 'One of their greatest joys on Earth came when Adam (pbuh) and Eve witnessed the birth of their first children.';
-    }
+      .find(sentence => highlightPhraseOccurs(sentence, item.word, 'en'));
     if (!storyExample || !source.includes(storyExample)) {
       throw new Error(`Missing Adam B2 source example for: ${item.word}`);
     }
@@ -1467,4 +1481,4 @@ adamB2Pages.push(
 {id:19,type:'exercises',title:'Language Review',image:'',content:'Review the grammar, stance and discourse tools developed across the chapters.',exercises:adamB2LanguageReviewExercises},
 {id:20,type:'vocabulary-match',title:'Vocabulary Challenge',image:'',content:'Match key B2 words from the story with their meanings.',vocabularyPairs:adamB2VocabularyChallengePairs},
 {id:21,type:'glossary',title:'Master Glossary',image:'',content:'Review the active Word Notes from all seventeen chapters.',vocabulary:glossary},
-{id:22,type:'final-challenge',title:'B2 Final Challenge',image:'',content:'Complete the final challenge to demonstrate your mastery of Adam’s story.',exercises:adamB2FinalChallengeExercises});
+{id:22,type:'final-challenge',title:'Final Challenge',image:'',content:'Complete the final challenge to demonstrate your mastery of Adam’s story.',exercises:adamB2FinalChallengeExercises});

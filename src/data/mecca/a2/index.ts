@@ -1,4 +1,10 @@
 import type { BookData, PageData } from '../../../types';
+import { withPlacesLayer } from '../../../features/historical-entities';
+import { applyChapterExtras } from '../../../lib/chapterExtras';
+import { meccaA2ChapterExtrasEn } from './en/chapterExtras';
+import { meccaA2GroupTasksEn } from './en/groupTasks';
+import { meccaA2GroupTasksAr } from './ar/groupTasks';
+import { meccaA2ChapterExtrasAr } from './ar/chapterExtras';
 import { meccaA2Pages as meccaA2PagesEn } from './en/pages';
 import { meccaA2PagesAr } from './ar/pages';
 import {
@@ -47,21 +53,45 @@ import {
   meccaA2LanguageFocusExercisesArPart11,
   meccaA2LanguageFocusExercisesArPart12,
 } from './ar/languageFocus3';
-import { meccaA2TeacherGuide, meccaA2TeacherGuideMetadata } from './en/teacherGuide';
-import { meccaA2TeacherGuideAr, meccaA2TeacherGuideMetadataAr } from './ar/teacherGuide';
-import { meccaA2SelfStudyGuide, meccaA2StudentGuideMetadata } from './en/selfStudyGuide';
-import { meccaA2SelfStudyGuideAr, meccaA2StudentGuideMetadataAr } from './ar/selfStudyGuide';
+import { buildStoryMap } from '../../../features/story-maps/buildStoryMap';
+import { meccaA2StoryMapLayout } from './storyMap';
+import { meccaA2StoryMapCopyEn } from './en/storyMap';
+import { meccaA2StoryMapCopyAr } from './ar/storyMap';
 
 const STORY_IDS = new Set(Array.from({ length: 13 }, (_, index) => index + 1));
-const ENGLISH_GLOSSARY_EXCLUSIONS = new Set(['adhan', 'hijrah']);
-const normalizeTerm = (word: string) => word.trim().toLocaleLowerCase();
 
-const buildEnglishPages = (): PageData[] => meccaA2PagesEn.map(page => {
+// Interactive map page, placed after the last chapter: the story is read without a break, then the whole journey is seen on the map.
+const MAP_PAGE_ID = 101;
+const MAP_AFTER_CHAPTER = 13;
+
+const withMapPage = (pages: PageData[], mapPage: PageData): PageData[] =>
+  pages.flatMap(page => (page.id === MAP_AFTER_CHAPTER ? [page, mapPage] : [page]));
+
+const mapPageEn: PageData = {
+  id: MAP_PAGE_ID,
+  type: 'map',
+  title: 'Bilal’s World',
+  subtitle: 'Map · Chapters 1–13',
+  content: '',
+  map: buildStoryMap(meccaA2StoryMapLayout, meccaA2StoryMapCopyEn, 'Mecca A2 EN'),
+};
+
+const mapPageAr: PageData = {
+  id: MAP_PAGE_ID,
+  type: 'map',
+  title: 'عالَمُ بِلالٍ',
+  subtitle: 'خَريطَة · الفُصولُ مِنْ 1 إِلى 13',
+  content: '',
+  map: buildStoryMap(meccaA2StoryMapLayout, meccaA2StoryMapCopyAr, 'Mecca A2 AR'),
+};
+
+const buildEnglishPages = (): PageData[] => withMapPage(meccaA2PagesEn.map(page => {
   if (STORY_IDS.has(page.id)) {
     const languageFocus = meccaA2LanguageFocusExercisesPart12[page.id] ?? meccaA2LanguageFocusExercisesPart11[page.id] ?? meccaA2LanguageFocusExercisesPart10[page.id] ?? meccaA2LanguageFocusExercisesPart9[page.id] ?? meccaA2LanguageFocusExercisesPart8[page.id] ?? meccaA2LanguageFocusExercisesPart7[page.id] ?? meccaA2LanguageFocusExercisesPart6[page.id] ?? meccaA2LanguageFocusExercisesPart5[page.id] ?? meccaA2LanguageFocusExercisesPart4[page.id] ?? meccaA2LanguageFocusExercisesPart3[page.id] ?? meccaA2LanguageFocusExercisesPart2[page.id] ?? meccaA2LanguageFocusExercises[page.id] ?? [];
     return {
       ...page,
-      exercises: [meccaA2QuickChallengesPolished[page.id], ...languageFocus],
+      exercises: [meccaA2QuickChallengesPolished[page.id]],
+      languageFocusExercises: languageFocus,
     };
   }
   if (page.id === 14) return { ...page, exercises: meccaA2KnowledgeCheckExercisesPolished };
@@ -72,20 +102,17 @@ const buildEnglishPages = (): PageData[] => meccaA2PagesEn.map(page => {
     content: 'Review and use the grammar patterns and language functions from all thirteen chapters.',
     exercises: meccaA2LanguageReviewExercises,
   };
-  if (page.type === 'glossary' && page.vocabulary?.length) return {
-    ...page,
-    vocabulary: page.vocabulary.filter(item => !ENGLISH_GLOSSARY_EXCLUSIONS.has(normalizeTerm(item.word))),
-  };
   if (page.id === 19) return { ...page, exercises: meccaA2FinalChallengeExercisesPolished };
   return page;
-});
+}), mapPageEn);
 
-const buildArabicPages = (): PageData[] => meccaA2PagesAr.map(page => {
+const buildArabicPages = (): PageData[] => withMapPage(meccaA2PagesAr.map(page => {
   if (STORY_IDS.has(page.id)) {
     const languageFocus = meccaA2LanguageFocusExercisesArPart12[page.id] ?? meccaA2LanguageFocusExercisesArPart11[page.id] ?? meccaA2LanguageFocusExercisesArPart10[page.id] ?? meccaA2LanguageFocusExercisesArPart9[page.id] ?? meccaA2LanguageFocusExercisesArPart8[page.id] ?? meccaA2LanguageFocusExercisesArPart7[page.id] ?? meccaA2LanguageFocusExercisesArPart6[page.id] ?? meccaA2LanguageFocusExercisesArPart5[page.id] ?? meccaA2LanguageFocusExercisesArPart4[page.id] ?? meccaA2LanguageFocusExercisesArPart3[page.id] ?? meccaA2LanguageFocusExercisesArPart2[page.id] ?? meccaA2LanguageFocusExercisesAr[page.id] ?? [];
     return {
       ...page,
-      exercises: [meccaA2QuickChallengesArPolished[page.id], ...languageFocus],
+      exercises: [meccaA2QuickChallengesArPolished[page.id]],
+      languageFocusExercises: languageFocus,
     };
   }
   if (page.id === 14) return { ...page, exercises: meccaA2KnowledgeCheckExercisesArPolished };
@@ -98,18 +125,16 @@ const buildArabicPages = (): PageData[] => meccaA2PagesAr.map(page => {
   };
   if (page.id === 19) return { ...page, exercises: meccaA2FinalChallengeExercisesArPolished };
   return page;
-});
+}), mapPageAr);
 
 export const meccaA2BookDataEn: BookData = {
   id: 'mecca-a2-en',
   title: 'Bilal ibn Rabah and Mecca (A2)',
   level: 'A2',
   baseFontSize: 13,
-  pages: buildEnglishPages(),
-  teacherGuide: meccaA2TeacherGuide,
-  teacherGuideMetadata: meccaA2TeacherGuideMetadata,
-  selfStudyGuide: meccaA2SelfStudyGuide,
-  studentGuideMetadata: meccaA2StudentGuideMetadata,
+  pages: applyChapterExtras(withPlacesLayer(buildEnglishPages(), 'mecca-a2', 'en'), { ...meccaA2ChapterExtrasEn, groupTasks: meccaA2GroupTasksEn }),
+  teacherGuide: [],
+  selfStudyGuide: [],
 };
 
 export const meccaA2BookDataAr: BookData = {
@@ -117,11 +142,9 @@ export const meccaA2BookDataAr: BookData = {
   title: 'بلال بن رباح ومكة (A2)',
   level: 'A2',
   baseFontSize: 14,
-  pages: buildArabicPages(),
-  teacherGuide: meccaA2TeacherGuideAr,
-  teacherGuideMetadata: meccaA2TeacherGuideMetadataAr,
-  selfStudyGuide: meccaA2SelfStudyGuideAr,
-  studentGuideMetadata: meccaA2StudentGuideMetadataAr,
+  pages: applyChapterExtras(withPlacesLayer(buildArabicPages(), 'mecca-a2', 'ar'), { ...meccaA2ChapterExtrasAr, groupTasks: meccaA2GroupTasksAr }),
+  teacherGuide: [],
+  selfStudyGuide: [],
 };
 
 export const meccaA2BookData = meccaA2BookDataEn;

@@ -1,15 +1,26 @@
-import React, { useRef, useState, useMemo, useEffect } from 'react';
+import React, { useRef, useState, useMemo, useEffect, useLayoutEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { motion, useMotionValue, useTransform, useSpring, AnimatePresence } from 'motion/react';
-import { Play, Pause, Volume2, VolumeX, Info, Rocket, Book as BookIcon, Lock, ArrowLeftRight } from '../ui/icons';
-import { PageData, Hotspot, Exercise } from '../../types';
+import { Play, Pause, Volume2, VolumeX, Info, Rocket, Lock, ArrowLeftRight, ArrowRight, CheckCircle2 } from '../ui/icons';
+import { PageData, Hotspot, Exercise, TeacherGuideSection } from '../../types';
 import { VocabularyWord } from '../ui/VocabularyWord';
+import { getHistoricalEntityIdFromDefinition } from '../../features/historical-entities';
+import { ReaderTour, isReaderTourDone } from '../ui/ReaderTour';
 import { ExerciseModule } from '../ExerciseModule';
+import { BeforeYouReadPanel, GroupTaskPanel, ICanPanel, useBeforeYouRead } from './ChapterExtras';
+import { beforeYouReadSeconds } from '../../lib/chapterExtras';
+import { LessonCard } from './LessonCard';
 import { cn } from '../../lib/utils';
+import { SECTION_ICONS, type SectionKey } from '../../lib/sectionIcons';
+import { presentExerciseTitle } from '../../lib/exercisePresentation';
 import { highlightPhraseMatches, highlightTokenMatches, normalizeHighlightText } from '../../lib/highlightTextMatch';
+import { markQuranVerses, VERSE_CLOSE, VERSE_MARKS, VERSE_OPEN } from '../../lib/quranVerses';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { useStoryProgress } from '../../contexts/StoryProgressContext';
 import { fallbackDefinitions as rawFallbackDefinitions, arabicAnimatedDefinitions as rawArabicAnimatedDefinitions } from '../../data/fallbackVocab';
+import { MyWordsReminder } from './MyWordsPanel';
+import { useFollowAlong } from './useFollowAlong';
+import { timingsUrlFor } from '../../lib/followAlong';
 
 const HotspotButton = ({ 
   hotspot, 
@@ -25,38 +36,87 @@ const HotspotButton = ({
   const { language } = useLanguage();
   const buttonRef = useRef<HTMLButtonElement>(null);
   const tooltipRef = useRef<HTMLDivElement>(null);
-  const [coords, setCoords] = useState({ top: 0, left: 0 });
+  const [canShowTooltip, setCanShowTooltip] = useState(false);
+  const [coords, setCoords] = useState({
+    top: 12,
+    left: 12,
+    arrowOffset: 24,
+    isAbove: true,
+  });
 
   const updateCoords = () => {
-    if (buttonRef.current) {
-      const rect = buttonRef.current.getBoundingClientRect();
-      setCoords({
-        top: rect.top + window.scrollY - 12,
-        left: rect.left + window.scrollX + rect.width / 2
-      });
+    if (!buttonRef.current) {
+      setCanShowTooltip(false);
+      return;
     }
+
+    const rect = buttonRef.current.getBoundingClientRect();
+    const isVisibleTrigger =
+      buttonRef.current.getClientRects().length > 0 &&
+      rect.width > 0 &&
+      rect.height > 0;
+
+    if (!isVisibleTrigger) {
+      setCanShowTooltip(false);
+      return;
+    }
+
+    setCanShowTooltip(true);
+
+    const viewportWidth = window.innerWidth;
+    const viewportHeight = window.innerHeight;
+    const tooltipWidth = tooltipRef.current?.offsetWidth ?? Math.min(viewportWidth - 24, 352);
+    const tooltipHeight = tooltipRef.current?.offsetHeight ?? Math.min(viewportHeight - 24, 220);
+    const gap = 10;
+    const edge = 12;
+    const triggerCenterX = rect.left + rect.width / 2;
+
+    const unclampedLeft = triggerCenterX - tooltipWidth / 2;
+    const maxLeft = Math.max(edge, viewportWidth - tooltipWidth - edge);
+    const left = Math.min(Math.max(unclampedLeft, edge), maxLeft);
+
+    const spaceAbove = rect.top - edge;
+    const spaceBelow = viewportHeight - rect.bottom - edge;
+    const isAbove = spaceAbove >= tooltipHeight + gap || spaceAbove >= spaceBelow;
+    const desiredTop = isAbove
+      ? rect.top - gap - tooltipHeight
+      : rect.bottom + gap;
+    const maxTop = Math.max(edge, viewportHeight - tooltipHeight - edge);
+    const top = Math.min(Math.max(desiredTop, edge), maxTop);
+
+    const arrowOffset = Math.min(
+      Math.max(triggerCenterX - left, 18),
+      Math.max(18, tooltipWidth - 18),
+    );
+
+    setCoords({ top, left, arrowOffset, isAbove });
   };
 
-  useEffect(() => {
-    if (isActive) {
-      updateCoords();
-      window.addEventListener('resize', updateCoords);
-      window.addEventListener('scroll', updateCoords, true);
-      return () => {
-        window.removeEventListener('resize', updateCoords);
-        window.removeEventListener('scroll', updateCoords, true);
-      };
+  // Measured before paint (again once the card exists), so it opens in place instead of jumping.
+  useLayoutEffect(() => {
+    if (!isActive) {
+      setCanShowTooltip(false);
+      return;
     }
+
+    updateCoords();
+    window.addEventListener('resize', updateCoords);
+    window.addEventListener('scroll', updateCoords, true);
+
+    return () => {
+      window.removeEventListener('resize', updateCoords);
+      window.removeEventListener('scroll', updateCoords, true);
+    };
   }, [isActive]);
 
-  useEffect(() => {
-    if (isActive && tooltipRef.current && coords.top !== 0) {
-      const h = tooltipRef.current.offsetHeight;
-      const w = tooltipRef.current.offsetWidth;
-      tooltipRef.current.style.marginTop = `-${h}px`;
-      tooltipRef.current.style.marginLeft = `-${w / 2}px`;
-    }
-  }, [isActive, coords]);
+  useLayoutEffect(() => {
+    if (!isActive || !canShowTooltip || !tooltipRef.current) return;
+    updateCoords();
+    if (typeof ResizeObserver === 'undefined') return;
+    const resizeObserver = new ResizeObserver(updateCoords);
+    resizeObserver.observe(tooltipRef.current);
+    return () => resizeObserver.disconnect();
+  }, [isActive, canShowTooltip]);
 
   return (
     <div
@@ -65,15 +125,19 @@ const HotspotButton = ({
     >
       <button
         ref={buttonRef}
+        type="button"
         onClick={onToggle}
-        className="relative group/hotspot"
+        className="relative z-[80] -m-2 p-2 visible opacity-100 group/hotspot rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80"
+        data-hotspot
+        aria-expanded={isActive}
+        aria-label={hotspot.title}
       >
         <motion.div
-          animate={{ scale: [1, 1.2, 1] }}
+          animate={{ scale: [1, 1.16, 1] }}
           transition={{ duration: 2, repeat: Infinity }}
           className={cn(
             "w-6 h-6 rounded-full border-2 border-white shadow-lg flex items-center justify-center text-white",
-            collectionId === 'history' ? "bg-emerald-600/80" : collectionId === 'turkish' ? "bg-cyan-600/80" : "bg-amber-600/80"
+            "bg-brand-600/80"
           )}
         >
           <Info size={12} />
@@ -81,7 +145,7 @@ const HotspotButton = ({
 
         {createPortal(
           <AnimatePresence>
-            {isActive && (
+            {isActive && canShowTooltip && (
               <>
                 <div
                   className="fixed inset-0 z-[99998]"
@@ -89,38 +153,50 @@ const HotspotButton = ({
                 />
                 <motion.div
                   ref={tooltipRef}
-                  initial={{ opacity: 0, scale: 0.95 }}
+                  initial={{ opacity: 0, scale: 0.985 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.95 }}
+                  exit={{ opacity: 0, scale: 0.985 }}
+                  transition={{ duration: 0.2, ease: 'easeOut' }}
                   style={{
-                    position: 'absolute',
+                    position: 'fixed',
                     top: coords.top,
                     left: coords.left,
                     zIndex: 99999,
-                    pointerEvents: 'auto'
+                    pointerEvents: 'auto',
                   }}
                   className={cn(
-                    language === 'ar' ? "w-96 max-w-[90vw] p-4 sm:p-7" : "w-80 max-w-[85vw] p-3.5 sm:p-5",
-                    "bg-wood/95 backdrop-blur-md rounded-xl shadow-2xl border",
-                    collectionId === 'history' ? "border-emerald-500/40" : collectionId === 'turkish' ? "border-cyan-400/40" : "border-gold/30"
+                    "w-[calc(100vw-1.5rem)] max-w-[22rem] max-h-[calc(100vh-1.5rem)] overflow-y-auto overscroll-contain [scrollbar-width:none] [&::-webkit-scrollbar]:hidden",
+                    language === 'ar' ? "p-4 sm:p-6" : "p-3.5 sm:p-5",
+                    "bg-wood/95 backdrop-blur-md rounded-2xl shadow-2xl border",
+                    "border-brand-500/40"
                   )}
+                  dir={language === 'ar' ? 'rtl' : 'ltr'}
                   onClick={(e) => e.stopPropagation()}
                 >
                   <h4 className={cn(
                     "font-display mb-2",
-                    collectionId === 'history' ? "text-emerald-400" : collectionId === 'turkish' ? "text-cyan-400" : "text-gold",
-                    language === 'ar' ? "text-xl sm:text-3xl" : "text-base sm:text-lg"
+                    "text-brand-400",
+                    language === 'ar' ? "text-xl sm:text-2xl" : "text-base sm:text-lg"
                   )}>
                     {hotspot.title}
                   </h4>
                   <p className={cn(
                     "font-serif text-parchment/80 leading-relaxed",
                     language !== 'ar' && "italic",
-                    language === 'ar' ? "text-base sm:text-xl" : "text-xs sm:text-base"
+                    language === 'ar' ? "text-base sm:text-lg" : "text-xs sm:text-base"
                   )}>
                     {hotspot.description}
                   </p>
-                  <div className="absolute top-full left-1/2 -translate-x-1/2 border-8 border-transparent border-t-wood/95" />
+
+                  <div
+                    style={{ left: coords.arrowOffset }}
+                    className={cn(
+                      "pointer-events-none absolute -translate-x-1/2 border-8 border-transparent",
+                      coords.isAbove
+                        ? "top-full border-t-wood/95"
+                        : "bottom-full border-b-wood/95"
+                    )}
+                  />
                 </motion.div>
               </>
             )}
@@ -170,48 +246,83 @@ const PoemBlock = ({
   const { isRTL } = useLanguage();
   const [showOriginal, setShowOriginal] = useState(false);
   const hasOriginal = Boolean(turkish?.trim());
-  const displayedPoem = showOriginal && hasOriginal ? turkish! : english;
+
+  const poemFontSize = compact
+    ? `clamp(0.82rem, 0.74rem + 0.42vw, ${(fontSize * 1.08 * 1.3333).toFixed(1)}px)`
+    : `clamp(0.95rem, 0.8rem + 0.6vw, ${(fontSize * 1.25 * 1.3333).toFixed(1)}px)`;
+
+  const renderPoemLines = (
+    text: string,
+    useHighlights: boolean,
+  ) => text.split('\n').map((line, idx) => (
+    <div key={idx} className="my-1">
+      {useHighlights && renderTranslation ? renderTranslation(line.trim(), idx) : line.trim()}
+    </div>
+  ));
 
   return (
     <motion.div 
       initial={{ opacity: 0, y: 15 }}
       animate={{ opacity: 1, y: 0 }}
-      onClick={() => hasOriginal && setShowOriginal(!showOriginal)}
+      onClick={() => hasOriginal && setShowOriginal(current => !current)}
       className={cn(
         "w-auto p-4 md:py-4 rounded-2xl bg-parchment/45 border border-sky-300/60 border-l-4 border-r-4 border-sky-400 shadow-md relative overflow-hidden flex flex-col items-center justify-center text-center page-texture transition-all hover:shadow-lg hover:bg-parchment/55 hover:border-sky-500 select-none",
         inGrid ? "my-0 h-full min-h-[180px]" : "my-6",
-        hasOriginal ? "md:pl-10 md:pr-16 cursor-pointer" : "md:px-10"
+        hasOriginal ? "md:ps-10 md:pe-16 cursor-pointer" : "md:px-10"
       )}
     >
-      <AnimatePresence mode="wait">
+      <div className="grid w-full place-items-center">
         <motion.div
-          key={showOriginal ? 'tr' : 'en'}
-          initial={{ opacity: 0, scale: 0.98 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 0.98 }}
+          aria-hidden={showOriginal}
+          animate={{ opacity: showOriginal ? 0 : 1, scale: showOriginal ? 0.985 : 1 }}
           transition={{ duration: 0.15 }}
-          dir={showOriginal ? 'ltr' : isRTL ? 'rtl' : 'ltr'}
+          dir={isRTL ? 'rtl' : 'ltr'}
+          lang={isRTL ? 'ar' : 'en'}
           className={cn(
-            "font-serif leading-relaxed text-wood font-medium py-3 select-text selection:bg-gold/20",
-            (!isRTL || showOriginal) && "italic"
+            "col-start-1 row-start-1 py-3 select-text selection:bg-gold/20 leading-relaxed font-semibold italic",
+            showOriginal && "pointer-events-none"
           )}
-          style={{ 
-            fontSize: compact
-              ? `clamp(0.82rem, 0.74rem + 0.42vw, ${(fontSize * 1.08 * 1.3333).toFixed(1)}px)`
-              : `clamp(0.95rem, 0.8rem + 0.6vw, ${(fontSize * 1.25 * 1.3333).toFixed(1)}px)`
+          style={{
+            fontSize: poemFontSize,
+            fontFamily: isRTL ? "'Arakom', sans-serif" : "'Poppins', sans-serif",
           }}
         >
-          {displayedPoem.split('\n').map((line, idx) => (
-            <div key={idx} className="my-1">
-              {!showOriginal && renderTranslation ? renderTranslation(line.trim(), idx) : line.trim()}
-            </div>
-          ))}
+          {renderPoemLines(english, true)}
         </motion.div>
-      </AnimatePresence>
+
+        {hasOriginal && (
+          <motion.div
+            aria-hidden={!showOriginal}
+            animate={{ opacity: showOriginal ? 1 : 0, scale: showOriginal ? 1 : 0.985 }}
+            transition={{ duration: 0.15 }}
+            dir="ltr"
+            lang="tr"
+            className={cn(
+              "col-start-1 row-start-1 py-3 select-text selection:bg-gold/20 leading-relaxed font-semibold italic",
+              !showOriginal && "pointer-events-none"
+            )}
+            style={{
+              fontSize: poemFontSize,
+              fontFamily: "'Poppins', sans-serif",
+            }}
+          >
+            {renderPoemLines(turkish!, false)}
+          </motion.div>
+        )}
+      </div>
+
       {hasOriginal && (
-        <div className="absolute right-4 md:right-6 top-1/2 -translate-y-1/2 p-2.5 rounded-full bg-sky-50 hover:bg-sky-100 text-sky-600 transition-colors shadow-sm border border-sky-100 flex items-center justify-center">
+        <button
+          type="button"
+          onClick={(event) => {
+            event.stopPropagation();
+            setShowOriginal(current => !current);
+          }}
+          aria-label={showOriginal ? 'Show translation' : 'Show original Turkish'}
+          className="absolute end-4 md:end-6 top-1/2 -translate-y-1/2 p-2.5 rounded-full bg-sky-50 hover:bg-sky-100 text-sky-600 transition-colors shadow-sm border border-sky-100 flex items-center justify-center"
+        >
           <ArrowLeftRight size={16} />
-        </div>
+        </button>
       )}
     </motion.div>
   );
@@ -271,52 +382,114 @@ export const StoryPage = ({
   allPages,
   currentIndex,
   isDyslexic,
+  showHighlights = true,
+  followAlong = true,
   fontSize,
   level,
-  collectionId = 'prophets'
+  storyId = '',
+  collectionId = 'prophets',
+  lessonSection,
 }: { 
   page: PageData; 
   allPages: PageData[];
   currentIndex: number;
   isDyslexic: boolean;
+  /** Off: the story reads as plain text, without Word Note and place card highlights. */
+  showHighlights?: boolean;
+  /** On: while the audio plays, the word being read fills with the book colour (when timings exist). */
+  followAlong?: boolean;
   fontSize: number;
   level: string;
+  /** Book id from the catalogue (e.g. 'ibrahim'); finds the verse passages the verse rule cannot see. */
+  storyId?: string;
   collectionId?: string;
+  /** The Teacher Guide section for this chapter; given only to teachers. */
+  lessonSection?: TeacherGuideSection;
 }) => {
   const { language, t, formatNumber, isRTL } = useLanguage();
-  const { trackExerciseComplete } = useStoryProgress();
+  const { stats, trackExerciseComplete, trackChapterVisit, trackAudioChapter } = useStoryProgress();
   const audioRef = useRef<HTMLAudioElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
   const [volume, setVolume] = useState(1);
   const [speed, setSpeed] = useState(1);
+  const [audioMenu, setAudioMenu] = useState<'volume' | 'speed' | null>(null);
+  const audioControlsRef = useRef<HTMLDivElement>(null);
   const [activeHotspot, setActiveHotspot] = useState<Hotspot | null>(null);
   const [activeExercise, setActiveExercise] = useState<Exercise | null>(null);
-  const [completedExercises, setCompletedExercises] = useState<string[]>([]);
+  // Completion lives in the shared progress, so a finished Quick Challenge stays finished when the reader comes back.
+  const completedExercises = useMemo(() => [...stats.exercisesCompleted], [stats.exercisesCompleted]);
+  const [isLanguageFocusOpen, setIsLanguageFocusOpen] = useState(false);
+  const [isLessonCardOpen, setIsLessonCardOpen] = useState(false);
+  // First story page on this device: a three-step tour once the page has settled.
+  const [isTourActive, setIsTourActive] = useState(false);
+  useEffect(() => {
+    if (page.type !== 'story' || isReaderTourDone()) return;
+    const timer = window.setTimeout(() => setIsTourActive(true), 1100);
+    return () => window.clearTimeout(timer);
+  }, [page.type]);
+  // "What's next": the chapter's audio finished, or the reader scrolled to the end of the text.
+  const [audioEnded, setAudioEnded] = useState(false);
+  const [textEndReached, setTextEndReached] = useState(false);
+  const endSentinelsRef = useRef<Set<HTMLDivElement>>(new Set());
+
+  useEffect(() => {
+    if (page.type === 'story') trackChapterVisit(page.id);
+    setIsLanguageFocusOpen(false);
+    setAudioEnded(false);
+    setTextEndReached(false);
+  }, [page.id, page.type]);
+
+  useEffect(() => {
+    if (typeof IntersectionObserver === 'undefined') return;
+    const observer = new IntersectionObserver(entries => {
+      if (entries.some(entry => entry.isIntersecting)) setTextEndReached(true);
+    });
+    endSentinelsRef.current.forEach(node => observer.observe(node));
+    return () => observer.disconnect();
+  }, [page.id]);
+
+  const registerEndSentinel = (node: HTMLDivElement | null) => {
+    if (node) endSentinelsRef.current.add(node);
+    else endSentinelsRef.current.clear();
+  };
+
+  // The reader's footer asks for the Quick Challenge when the reader tries to move on without it.
+  useEffect(() => {
+    const focusQuickChallenge = () => {
+      const panels = Array.from(document.querySelectorAll<HTMLElement>('[data-quick-challenge]'));
+      const visible = panels.find(panel => panel.offsetParent !== null) ?? panels[0];
+      visible?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      const exercise = page.exercises?.[0];
+      if (exercise) window.setTimeout(() => setActiveExercise(exercise), 450);
+    };
+    window.addEventListener('reader:focus-quick-challenge', focusQuickChallenge);
+    return () => window.removeEventListener('reader:focus-quick-challenge', focusQuickChallenge);
+  }, [page.id, page.exercises]);
+
   const isArabic = language === 'ar';
+  const highlightVocabulary = showHighlights ? page.vocabulary : undefined;
+  const highlightAnimatedWords = showHighlights ? page.animatedWords : undefined;
   const highlightLanguage = isArabic ? 'ar' : 'en';
+  const followTextA = useRef<HTMLDivElement>(null);
+  const followTextB = useRef<HTMLDivElement>(null);
+  const followTextRefs = useMemo(() => [followTextA, followTextB], []);
+  useFollowAlong({
+    enabled: followAlong && page.type === 'story',
+    timingsUrl: timingsUrlFor(page.audioUrl),
+    audioRef,
+    textRefs: followTextRefs,
+    language: highlightLanguage,
+    isPlaying,
+  });
 
-  const vocabStyle = useMemo(() => {
-    if (collectionId === 'history') {
-      return "border-b-2 border-teal-600/40 hover:border-teal-700 font-bold text-teal-900 transition-colors cursor-help";
-    } else if (collectionId === 'turkish') {
-      return "border-b-2 border-sky-600/40 hover:border-sky-600 font-bold text-blue-950 transition-colors cursor-help";
-    } else {
-      return "border-b-2 border-gold/40 hover:border-gold font-bold text-wood transition-colors cursor-help";
-    }
-  }, [collectionId]);
+  const vocabStyle = "border-b-2 border-brand-600/40 hover:border-brand-700 font-bold text-brand-900 transition-colors cursor-help";
 
-  const animatedStyle = useMemo(() => {
-    if (collectionId === 'history') {
-      return "text-emerald-700 border-b-2 border-emerald-500/50 hover:border-emerald-605 transition-colors font-bold cursor-help";
-    } else if (collectionId === 'turkish') {
-      return "text-sky-700 border-b-2 border-sky-500/50 hover:border-sky-600 transition-colors font-bold cursor-help";
-    } else {
-      return "text-amber-600 border-b-2 border-amber-400/50 hover:border-amber-500 transition-colors font-bold cursor-help";
-    }
-  }, [collectionId]);
+  const animatedStyle = "text-brand-700 border-b-2 border-brand-500/50 hover:border-brand-600 transition-colors font-bold cursor-help";
 
+  // Place and history cards show in every chapter that lists them.
+  const isPlaceCard = (definition: string) => Boolean(getHistoricalEntityIdFromDefinition(definition));
   const seenHighlightedWords = useMemo(() => {
     const seen = new Set<string>();
     for (let i = 0; i < currentIndex; i++) {
@@ -325,7 +498,10 @@ export const StoryPage = ({
         prevPage.animatedWords.forEach(word => seen.add(word));
       }
       if (prevPage.vocabulary) {
-        prevPage.vocabulary.forEach(v => seen.add(v.word));
+        // Place and history cards stay tappable in every chapter they are listed for.
+        prevPage.vocabulary
+          .filter(v => !getHistoricalEntityIdFromDefinition(v.definition))
+          .forEach(v => seen.add(v.word));
       }
     }
     return seen;
@@ -498,6 +674,7 @@ export const StoryPage = ({
         audioRef.current.pause();
       } else {
         audioRef.current.play();
+        if (page.type === 'story') trackAudioChapter(page.id);
       }
       setIsPlaying(!isPlaying);
     }
@@ -543,25 +720,33 @@ export const StoryPage = ({
     }
   };
 
-  const handleSpeedChange = () => {
-    const nextSpeeds: Record<number, number> = {
-      1: 1.25,
-      1.25: 1.5,
-      1.5: 1.75,
-      1.75: 2,
-      2: 1
-    };
-    const newSpeed = nextSpeeds[speed] || 1;
+  const setPlaybackSpeed = (newSpeed: number) => {
     if (audioRef.current) {
       audioRef.current.playbackRate = newSpeed;
-      setSpeed(newSpeed);
     }
+    setSpeed(newSpeed);
+    setAudioMenu(null);
   };
+
+  useEffect(() => {
+    const closeAudioMenus = (event: PointerEvent) => {
+      if (!audioControlsRef.current?.contains(event.target as Node)) {
+        setAudioMenu(null);
+      }
+    };
+
+    document.addEventListener('pointerdown', closeAudioMenus);
+    return () => document.removeEventListener('pointerdown', closeAudioMenus);
+  }, []);
+
+  useEffect(() => {
+    setAudioMenu(null);
+  }, [page.id]);
 
   const formatTime = (time: number) => {
     const minutes = Math.floor(time / 60);
     const seconds = Math.floor(time % 60);
-    return `${minutes}:${seconds.toString().padStart(2, '0')}`;
+    return formatNumber(`${minutes}:${seconds.toString().padStart(2, '0')}`);
   };
 
   const chunksWithIndices = useMemo(() => {
@@ -577,6 +762,11 @@ export const StoryPage = ({
   }, [page.timedChunks]);
   void chunksWithIndices;
 
+  const storyText = useMemo(
+    () => markQuranVerses(page.content, /[\u0600-\u06FF]/.test(page.content) ? 'ar' : 'en', storyId, level, page.id),
+    [page.content, page.id, storyId, level],
+  );
+
   const renderContent = (content: string) => {
     const parts = content.split(/(\[POEM_GRID\][\s\S]*?\[\/POEM_GRID\]|\[POEM(?:\s+compact)?\][\s\S]*?\[\/POEM\])/g);
     const highlightWordCount = (value: string) => {
@@ -585,8 +775,8 @@ export const StoryPage = ({
     };
     const maxPhraseWords = Math.max(
       1,
-      ...(page.vocabulary ?? []).map(v => highlightWordCount(v.word)),
-      ...(page.animatedWords ?? []).map(highlightWordCount),
+      ...(highlightVocabulary ?? []).map(v => highlightWordCount(v.word)),
+      ...(highlightAnimatedWords ?? []).map(highlightWordCount),
     );
     const hasAlreadyBeenHighlighted = (requested: string, seen: Set<string>) => {
       const normalizedRequested = normalizeHighlightText(requested, highlightLanguage);
@@ -597,6 +787,8 @@ export const StoryPage = ({
     
     let globalWordCounter = 0;
     const seenOnCurrentPage = new Set<string>();
+    // Qur'an verses are printed in italics; a verse can run over several paragraphs.
+    let inVerse = false;
 
     const renderInlineHighlights = (text: string, keyPrefix: string): React.ReactNode[] => {
       const words = text.split(/(\s+)/);
@@ -616,7 +808,11 @@ export const StoryPage = ({
         }
 
         let foundPhrase: { vocab?: { word: string; definition: string }; animatedWord?: string; endIdx: number; text: string } | null = null;
-        const potentialPhrases: { text: string; endIdx: number }[] = [];
+        // A hyphenated word such as "Al-Andalus" or "middle-aged" is one surface
+        // token but two normalized words, so it is matched as a phrase too.
+        const potentialPhrases: { text: string; endIdx: number }[] = highlightWordCount(word) > 1
+          ? [{ text: word, endIdx: wIdx }]
+          : [];
         let currentPotential = word;
         let wordsInPotential = 1;
 
@@ -631,13 +827,13 @@ export const StoryPage = ({
 
         for (let i = potentialPhrases.length - 1; i >= 0; i -= 1) {
           const candidate = potentialPhrases[i];
-          const vocab = page.vocabulary?.find(v => (
+          const vocab = highlightVocabulary?.find(v => (
             highlightWordCount(v.word) > 1
-            && !hasAlreadyBeenHighlighted(v.word, seenHighlightedWords)
+            && (isPlaceCard(v.definition) || !hasAlreadyBeenHighlighted(v.word, seenHighlightedWords))
             && !hasAlreadyBeenHighlighted(v.word, seenOnCurrentPage)
             && highlightPhraseMatches(candidate.text, v.word, highlightLanguage)
           ));
-          const animatedWord = !vocab ? page.animatedWords?.find(aw => (
+          const animatedWord = !vocab ? highlightAnimatedWords?.find(aw => (
             highlightWordCount(aw) > 1
             && !hasAlreadyBeenHighlighted(aw, seenHighlightedWords)
             && !hasAlreadyBeenHighlighted(aw, seenOnCurrentPage)
@@ -673,13 +869,13 @@ export const StoryPage = ({
           continue;
         }
 
-        const vocab = page.vocabulary?.find(v => (
+        const vocab = highlightVocabulary?.find(v => (
           highlightWordCount(v.word) === 1
-          && !hasAlreadyBeenHighlighted(v.word, seenHighlightedWords)
+          && (isPlaceCard(v.definition) || !hasAlreadyBeenHighlighted(v.word, seenHighlightedWords))
           && !hasAlreadyBeenHighlighted(v.word, seenOnCurrentPage)
           && highlightTokenMatches(word, v.word, highlightLanguage)
         ));
-        const animatedWord = !vocab ? page.animatedWords?.find(aw => (
+        const animatedWord = !vocab ? highlightAnimatedWords?.find(aw => (
           highlightWordCount(aw) === 1
           && !hasAlreadyBeenHighlighted(aw, seenHighlightedWords)
           && !hasAlreadyBeenHighlighted(aw, seenOnCurrentPage)
@@ -711,7 +907,9 @@ export const StoryPage = ({
       return rendered;
     };
 
-    return parts.map((part, partIdx) => {
+    return parts.map((markedPart, partIdx) => {
+      // Poems are never verses, so their marks are dropped.
+      const part = /^\[POEM/.test(markedPart) ? markedPart.replace(VERSE_MARKS, '') : markedPart;
       if (part.startsWith('[POEM_GRID]') && part.endsWith('[/POEM_GRID]')) {
         const poemParts = [...part.matchAll(/\[POEM(?:\s+compact)?\][\s\S]*?\[\/POEM\]/gi)].map(match => match[0]);
         if (poemParts.length > 0) {
@@ -755,9 +953,20 @@ export const StoryPage = ({
       }
 
       // Normal text part
-      const paragraphs = part.split('\n\n').filter(p => p.trim().length > 0);
+      const paragraphs = part
+        .split('\n')
+        .filter(line => !/^\s*\/\/\s*c\d+[ab]?\s*$/.test(line))
+        .join('\n')
+        .split('\n\n')
+        .filter(p => p.trim().length > 0);
       return paragraphs.map((paragraph, pIdx) => {
-        const words = paragraph.split(/(\s+)/);
+        const verseWords = new Set<number>();
+        const words = paragraph.split(/(\s+)/).map((token, tIdx) => {
+          if (token.includes(VERSE_OPEN)) inVerse = true;
+          if (inVerse && !/^\s+$/.test(token)) verseWords.add(tIdx);
+          if (token.includes(VERSE_CLOSE)) inVerse = false;
+          return token.replace(VERSE_MARKS, '');
+        });
 
         const renderedElements: React.ReactNode[] = [];
         let skipCount = 0;
@@ -775,7 +984,10 @@ export const StoryPage = ({
           }
 
           let foundPhrase = null;
-          const potentialPhrases: { text: string; endIdx: number }[] = [];
+          // Hyphenated words ("Al-Andalus", "middle-aged") match as phrases too.
+          const potentialPhrases: { text: string; endIdx: number }[] = highlightWordCount(word) > 1
+            ? [{ text: word, endIdx: wIdx }]
+            : [];
           let currentPotential = word;
           let wordsInPotential = 1;
           
@@ -792,14 +1004,14 @@ export const StoryPage = ({
           // Check longest phrases first.
           for (let i = potentialPhrases.length - 1; i >= 0; i--) {
             const p = potentialPhrases[i];
-            const vocab = page.vocabulary?.find(v => (
+            const vocab = highlightVocabulary?.find(v => (
               highlightWordCount(v.word) > 1
-              && !hasAlreadyBeenHighlighted(v.word, seenHighlightedWords)
+              && (isPlaceCard(v.definition) || !hasAlreadyBeenHighlighted(v.word, seenHighlightedWords))
               && !hasAlreadyBeenHighlighted(v.word, seenOnCurrentPage)
               && highlightPhraseMatches(p.text, v.word, highlightLanguage)
             ));
 
-            const animatedWord = !vocab ? page.animatedWords?.find(aw => (
+            const animatedWord = !vocab ? highlightAnimatedWords?.find(aw => (
               highlightWordCount(aw) > 1
               && !hasAlreadyBeenHighlighted(aw, seenHighlightedWords)
               && !hasAlreadyBeenHighlighted(aw, seenOnCurrentPage)
@@ -851,20 +1063,20 @@ export const StoryPage = ({
             renderedElements.push(
               <motion.span
                 key={`${partIdx}-${pIdx}-${wIdx}`}
-                className="inline-block rounded px-0.5"
+                className={cn('inline-block rounded px-0.5', verseWords.has(wIdx) && 'quran-verse italic')}
               >
                 {element}
               </motion.span>
             );
           } else {
-            const vocab = page.vocabulary?.find(v => (
+            const vocab = highlightVocabulary?.find(v => (
               highlightWordCount(v.word) === 1
-              && !hasAlreadyBeenHighlighted(v.word, seenHighlightedWords)
+              && (isPlaceCard(v.definition) || !hasAlreadyBeenHighlighted(v.word, seenHighlightedWords))
               && !hasAlreadyBeenHighlighted(v.word, seenOnCurrentPage)
               && highlightTokenMatches(word, v.word, highlightLanguage)
             ));
             
-            const animatedWord = !vocab ? page.animatedWords?.find(aw => (
+            const animatedWord = !vocab ? highlightAnimatedWords?.find(aw => (
               highlightWordCount(aw) === 1
               && !hasAlreadyBeenHighlighted(aw, seenHighlightedWords)
               && !hasAlreadyBeenHighlighted(aw, seenOnCurrentPage)
@@ -905,7 +1117,7 @@ export const StoryPage = ({
             renderedElements.push(
               <motion.span
                 key={`${partIdx}-${pIdx}-${wIdx}`}
-                className="inline-block rounded px-0.5"
+                className={cn('inline-block rounded px-0.5', verseWords.has(wIdx) && 'quran-verse italic')}
               >
                 {element}
               </motion.span>
@@ -926,106 +1138,429 @@ export const StoryPage = ({
 
   const isAudioLocked = false;
 
+  // Before you read: one optional guess above the story; the text is always visible.
+  const extrasKey = `v2:${level}:${language}:${page.id}:${page.title}`;
+  const beforeYouRead = useBeforeYouRead(`${extrasKey}:byr`);
+  const renderBeforeYouRead = () => page.type === 'story' && page.beforeYouRead ? (
+    <BeforeYouReadPanel
+      data={page.beforeYouRead}
+      language={language}
+      state={beforeYouRead.state}
+      onGuess={beforeYouRead.guess}
+      onCheck={beforeYouRead.check}
+      seconds={beforeYouReadSeconds(page.content)}
+    />
+  ) : null;
+  const renderICan = () => page.type === 'story' && page.iCan?.length ? (
+    <ICanPanel items={page.iCan} language={language} storageKey={`${extrasKey}:ican`} />
+  ) : null;
+  const renderGroupTask = () => page.type === 'story' && page.groupTask ? (
+    <GroupTaskPanel key={extrasKey} task={page.groupTask} language={language} />
+  ) : null;
+
+  const quickExercise = page.exercises?.[0];
+  const quickDone = Boolean(quickExercise && completedExercises.includes(quickExercise.id));
+  const focusExercises = page.languageFocusExercises ?? [];
+  const focusDone = focusExercises.length > 0 && focusExercises.every(exercise => completedExercises.includes(exercise.id));
+  const listened = audioEnded || stats.audioChaptersPlayed.has(page.id);
+
+  // End of the text: a sentinel for the observer, and the call to the Quick Challenge once the reader is there.
+  const renderNextUp = () => (
+    <>
+      <div ref={registerEndSentinel} className="h-px w-full" aria-hidden="true" />
+      <AnimatePresence>
+        {quickExercise && !quickDone && (audioEnded || textEndReached) && (
+          <motion.div
+            initial={{ opacity: 0, y: 6 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 6 }}
+            transition={{ duration: 0.2 }}
+            className="mt-5 flex justify-end"
+          >
+            <button
+              type="button"
+              data-next-up
+              onClick={() => setActiveExercise(quickExercise)}
+              className="group inline-flex min-h-11 items-center gap-2 rounded-full bg-brand-700 px-5 font-display text-[12px] font-semibold text-white shadow-lg transition-colors hover:bg-brand-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2"
+            >
+              <Rocket size={15} />
+              {t('nav.nextUpQuickChallenge')}
+              <ArrowRight size={15} className={cn('transition-transform group-hover:translate-x-0.5', isRTL && 'rotate-180 group-hover:-translate-x-0.5')} />
+            </button>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
+  );
+
+  // Listen · Read · Quick Challenge · Language Focus: what this chapter asks for and what is done.
+  const renderChapterSteps = () => {
+    if (page.type !== 'story') return null;
+    const steps: { key: SectionKey; label: string; done: boolean; onClick?: () => void }[] = [];
+    if (page.audioUrl) steps.push({ key: 'listen', label: t('nav.stepListen'), done: listened });
+    steps.push({ key: 'read', label: t('nav.stepRead'), done: textEndReached });
+    if (quickExercise) {
+      steps.push({ key: 'quickChallenge', label: t('nav.quickChallenge'), done: quickDone, onClick: () => setActiveExercise(quickExercise) });
+    }
+    if (focusExercises.length > 0) {
+      steps.push({
+        key: 'languageFocus',
+        label: t('nav.languageFocus'),
+        done: focusDone,
+        onClick: () => {
+          setIsLanguageFocusOpen(true);
+          const panels = Array.from(document.querySelectorAll<HTMLElement>('[data-language-focus]'));
+          (panels.find(panel => panel.offsetParent !== null) ?? panels[0])?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        },
+      });
+    }
+    if (steps.length < 2 && !lessonSection) return null;
+    const LessonIcon = SECTION_ICONS.lessonCard.icon;
+    return (
+      <ol className="mt-1.5 flex flex-wrap items-center gap-1.5" aria-label={t('nav.chapterSteps')} data-chapter-steps>
+        {steps.map(step => {
+          const StepIcon = SECTION_ICONS[step.key].icon;
+          const chip = (
+            <span
+              className={cn(
+                'inline-flex items-center gap-1 rounded-full px-2 py-0.5 font-display text-[11px] font-semibold',
+                step.done ? 'bg-emerald-100 text-emerald-800' : 'bg-black/[0.05] text-wood/62',
+              )}
+            >
+              <StepIcon size={12} aria-hidden="true" />
+              {step.label}
+              {step.done && <span aria-hidden="true">✓</span>}
+            </span>
+          );
+          return (
+            <li key={step.key} className="flex">
+              {step.onClick ? (
+                <button type="button" onClick={step.onClick} className="rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500">
+                  {chip}
+                </button>
+              ) : chip}
+            </li>
+          );
+        })}
+        {lessonSection && (
+          <li className="flex">
+            <button
+              type="button"
+              onClick={() => setIsLessonCardOpen(true)}
+              data-lesson-card-open
+              className="inline-flex items-center gap-1 rounded-full border border-brand-300 bg-white px-2 py-0.5 font-display text-[11px] font-semibold text-brand-800 hover:bg-brand-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
+            >
+              <LessonIcon size={12} aria-hidden="true" />
+              {SECTION_ICONS.lessonCard[language === 'ar' ? 'ar' : 'en']}
+            </button>
+          </li>
+        )}
+      </ol>
+    );
+  };
+
+  const renderQuickChallengePanel = () => {
+    const exercise = page.exercises?.[0];
+    if (!exercise) return null;
+
+    const completed = completedExercises.includes(exercise.id);
+    const quickTheme = {
+          container: 'bg-gradient-to-br from-brand-50/95 via-white/90 to-brand-50/55 ring-brand-200/70',
+          rail: 'bg-brand-500',
+          icon: 'bg-brand-700 text-white shadow-brand-900/10',
+          title: 'text-brand-950',
+          copy: 'text-brand-950/58',
+          button: 'bg-brand-700 hover:bg-brand-800 focus-visible:ring-brand-500',
+          glow: 'bg-brand-300/20',
+        };
+
+    return (
+      <motion.section
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="w-full shrink-0 mt-6 scroll-mt-4"
+        aria-label={t('nav.quickChallenge')}
+        data-quick-challenge
+      >
+        <div className={cn(
+          'relative overflow-hidden rounded-[26px] ring-1 shadow-[0_22px_28px_-26px_rgba(63,49,28,0.45)]',
+          quickTheme.container
+        )}>
+          <div className={cn('absolute inset-y-0 start-0 w-1.5', quickTheme.rail)} aria-hidden="true" />
+          <div className={cn('pointer-events-none absolute -end-10 -top-12 h-36 w-36 rounded-full blur-3xl', quickTheme.glow)} aria-hidden="true" />
+
+          <div className="relative flex flex-col gap-5 p-5 sm:p-6 md:flex-row md:items-center md:justify-between md:gap-8">
+            <div className="flex min-w-0 items-start gap-4 text-start">
+              <div className={cn(
+                'flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl shadow-lg',
+                quickTheme.icon
+              )}>
+                {completed ? <CheckCircle2 size={23} /> : <SECTION_ICONS.quickChallenge.icon size={22} />}
+              </div>
+
+              <div className="min-w-0 pt-0.5">
+                <div className="flex flex-wrap items-center gap-2.5">
+                  <h4 className={cn(
+                    'font-display text-xl font-semibold tracking-[-0.025em] sm:text-2xl',
+                    quickTheme.title
+                  )}>
+                    {t('nav.quickChallenge')}
+                  </h4>
+                  {completed && (
+                    <span className="rounded-full bg-emerald-500/10 px-2.5 py-1 font-display text-[11px] font-semibold uppercase tracking-[0.14em] text-emerald-700">
+                      {t('nav.completed')}
+                    </span>
+                  )}
+                </div>
+                <p className={cn(
+                  'mt-1.5 max-w-2xl font-serif leading-relaxed',
+                  isArabic ? 'text-base' : 'text-sm',
+                  quickTheme.copy
+                )}>
+                  {t('nav.testUnderstanding')}
+                </p>
+              </div>
+            </div>
+
+            <button
+              type="button"
+              onClick={() => setActiveExercise(exercise)}
+              className={cn(
+                'group inline-flex min-h-12 w-full shrink-0 items-center justify-center gap-2 rounded-2xl px-5 font-display text-[12px] font-semibold text-white shadow-lg transition-all active:scale-[0.985] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 md:min-h-14 md:w-auto md:min-w-[205px] md:px-7 md:text-[13px]',
+                quickTheme.button
+              )}
+            >
+              {completed ? t('nav.completed') : t('nav.startExercise')}
+              {!completed && (
+                <ArrowRight
+                  size={16}
+                  className={cn('transition-transform group-hover:translate-x-0.5', isRTL && 'rotate-180 group-hover:-translate-x-0.5')}
+                />
+              )}
+            </button>
+          </div>
+        </div>
+      </motion.section>
+    );
+  };
+
   const renderLanguageFocusPanel = (mobile = false) => {
     const exercises = page.languageFocusExercises ?? [];
     if (!exercises.length) return null;
 
+    const completedCount = exercises.filter(exercise => completedExercises.includes(exercise.id)).length;
+    const focusTheme = {
+          container: 'bg-gradient-to-br from-brand-50/92 via-white/94 to-brand-50/65 ring-brand-200/65',
+          icon: 'bg-brand-800 text-white',
+          accent: 'text-brand-800',
+          title: 'text-brand-950',
+          copy: 'text-brand-950/58',
+          card: 'bg-white/82 hover:bg-white ring-brand-100/80 hover:ring-brand-300/90',
+          number: 'bg-brand-100 text-brand-800',
+          glow: 'bg-brand-300/18',
+          progress: 'bg-brand-700',
+          arrow: 'text-brand-700',
+        };
+
+    const typeLabel = (exercise: Exercise) => {
+      const labels: Record<string, { en: string; ar: string }> = {
+        matching: { en: 'Match', ar: 'مطابقة' },
+        'fill-blanks': { en: 'Complete', ar: 'أكمل' },
+        sequencing: { en: 'Order', ar: 'رتّب' },
+        reflection: { en: 'Use', ar: 'استخدم' },
+        'true-false': { en: 'Decide', ar: 'قرّر' },
+        'multiple-choice': { en: 'Choose', ar: 'اختر' },
+        'tap-reveal': { en: 'Explore', ar: 'استكشف' },
+        'drag-drop': { en: 'Classify', ar: 'صنّف' },
+        'choose-form': { en: 'Choose the form', ar: 'اختر الصيغة' },
+        'word-bank': { en: 'Complete', ar: 'أكمل' },
+        'error-correction': { en: 'Correct', ar: 'صحّح' },
+        'sentence-building': { en: 'Build', ar: 'ابنِ الجملة' },
+        transformation: { en: 'Rewrite', ar: 'أعد الصياغة' },
+      };
+      return labels[exercise.type]?.[language === 'ar' ? 'ar' : 'en']
+        ?? (language === 'ar' ? 'تدريب' : 'Practice');
+    };
+
     return (
-      <motion.div
+      <motion.section
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
-        className={cn('w-full shrink-0', mobile ? '' : 'mt-4')}
+        className={cn('w-full shrink-0 scroll-mt-4', mobile ? 'mt-1' : 'mt-4')}
+        aria-label={t('nav.languageFocus')}
+        data-language-focus
       >
         <div className={cn(
-          'rounded-2xl border shadow-sm p-4 sm:p-5',
-          collectionId === 'history'
-            ? 'bg-emerald-50/55 border-emerald-200'
-            : collectionId === 'turkish'
-            ? 'bg-cyan-50/65 border-cyan-200'
-            : 'bg-amber-50/60 border-amber-200'
+          'relative overflow-hidden rounded-[26px] ring-1 shadow-[0_22px_28px_-26px_rgba(63,49,28,0.4)]',
+          focusTheme.container
         )}>
-          <div className={cn('flex items-center gap-3 mb-4', mobile && 'justify-center text-center')}>
-            <div className={cn(
-              'w-11 h-11 rounded-xl flex items-center justify-center shadow-inner shrink-0',
-              collectionId === 'history'
-                ? 'bg-emerald-100 text-emerald-700'
-                : collectionId === 'turkish'
-                ? 'bg-cyan-100 text-cyan-700'
-                : 'bg-amber-100 text-amber-700'
-            )}>
-              <BookIcon size={22} />
-            </div>
-            <div>
-              <h4 className={cn(
-                'font-black text-lg sm:text-xl',
-                collectionId === 'history'
-                  ? 'text-emerald-950'
-                  : collectionId === 'turkish'
-                  ? 'text-sky-950'
-                  : 'text-amber-950'
-              )}>
-                {language === 'ar' ? 'التركيز اللغوي' : 'Language Focus'}
-              </h4>
-              <p className={cn(
-                'font-medium',
-                isArabic ? 'text-sm sm:text-base' : 'text-xs sm:text-sm',
-                collectionId === 'history'
-                  ? 'text-emerald-900/55'
-                  : collectionId === 'turkish'
-                  ? 'text-sky-950/55'
-                  : 'text-amber-900/55'
-              )}>
-                {language === 'ar' ? 'لاحظها. اربطها. استخدمها.' : 'Notice it. Connect it. Use it.'}
-              </p>
-            </div>
-          </div>
+          <div className={cn('pointer-events-none absolute -end-12 -top-12 h-36 w-36 rounded-full blur-3xl', focusTheme.glow)} aria-hidden="true" />
 
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-            {exercises.map((exercise, index) => {
-              const completed = completedExercises.includes(exercise.id);
-              return (
-                <button
-                  key={exercise.id}
-                  type="button"
-                  onClick={() => setActiveExercise(exercise)}
-                  className={cn(
-                    'rounded-xl border-2 p-3.5 text-left transition-all active:scale-[0.99] min-h-24',
-                    completed
-                      ? 'bg-green-50 border-green-300'
-                      : collectionId === 'history'
-                      ? 'bg-white border-emerald-100 hover:border-emerald-400 hover:shadow-md'
-                      : collectionId === 'turkish'
-                      ? 'bg-white border-cyan-100 hover:border-cyan-400 hover:shadow-md'
-                      : 'bg-white border-amber-100 hover:border-amber-400 hover:shadow-md'
-                  )}
-                >
-                  <div className="flex items-start gap-3">
-                    <span className={cn(
-                      'w-7 h-7 rounded-lg shrink-0 flex items-center justify-center font-black',
-                      isArabic ? 'text-sm' : 'text-xs',
-                      completed
-                        ? 'bg-green-500 text-white'
-                        : collectionId === 'history'
-                        ? 'bg-emerald-100 text-emerald-700'
-                        : collectionId === 'turkish'
-                        ? 'bg-cyan-100 text-cyan-700'
-                        : 'bg-amber-100 text-amber-700'
-                    )}>
-                      {completed ? '✓' : formatNumber(index + 1)}
+          <button
+            type="button"
+            onClick={() => setIsLanguageFocusOpen((open) => !open)}
+            aria-expanded={isLanguageFocusOpen}
+            className="relative w-full p-4 sm:p-5 text-start"
+          >
+            <div className="flex items-center gap-3 sm:gap-4">
+              <div className={cn(
+                'flex h-11 w-11 sm:h-12 sm:w-12 shrink-0 items-center justify-center rounded-2xl shadow-md',
+                focusTheme.icon
+              )}>
+                <SECTION_ICONS.languageFocus.icon size={21} />
+              </div>
+
+              <div className="min-w-0 flex-1">
+                <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
+                  <p className={cn(
+                    'font-display text-[11px] sm:text-xs font-semibold uppercase tracking-[0.18em]',
+                    focusTheme.accent
+                  )}>
+                    {language === 'ar' ? 'بعد القراءة' : 'After reading'}
+                  </p>
+                  <span className={cn('font-display text-[11px] sm:text-xs font-semibold', focusTheme.copy)}>
+                    {formatNumber(exercises.length)} {language === 'ar' ? (exercises.length === 1 ? 'نشاط' : exercises.length === 2 ? 'نشاطان' : exercises.length <= 10 ? 'أنشطة' : 'نشاطًا') : exercises.length === 1 ? 'activity' : 'activities'}
+                  </span>
+                </div>
+                <h4 className={cn(
+                  'mt-0.5 font-display text-lg sm:text-xl font-semibold tracking-[-0.02em]',
+                  focusTheme.title
+                )}>
+                  {language === 'ar' ? 'التركيز اللغوي' : 'Language Focus'}
+                </h4>
+                <p className={cn(
+                  'mt-1 font-serif leading-relaxed',
+                  isArabic ? 'text-[14px] sm:text-base' : 'text-[12px] sm:text-[13px]',
+                  focusTheme.copy
+                )}>
+                  {language === 'ar'
+                    ? 'افتح الأنشطة عندما تكون مستعدًا لملاحظة اللغة وربطها واستخدامها.'
+                    : 'Open when you are ready to notice, connect, and use the language.'}
+                </p>
+              </div>
+
+              <div className="shrink-0 flex items-center gap-3">
+                <div className="hidden sm:block min-w-[112px]">
+                  <div className="flex items-center justify-between gap-2">
+                    <span className={cn('font-display text-[11px] font-semibold uppercase tracking-[0.12em]', focusTheme.copy)}>
+                      {language === 'ar' ? 'التقدّم' : 'Progress'}
                     </span>
-                    <span className="min-w-0">
-                      <span className={cn('block font-bold text-wood leading-tight', isArabic ? 'text-base sm:text-lg' : 'text-sm sm:text-base')}>{exercise.title}</span>
-                      {exercise.instructions && (
-                        <span className={cn('block mt-1 text-wood/55 leading-snug', isArabic ? 'text-sm sm:text-base' : 'text-[11px] sm:text-xs')}>{exercise.instructions}</span>
-                      )}
+                    <span className={cn('font-display text-[11px] font-semibold', focusTheme.accent)}>
+                      {formatNumber(completedCount)} / {formatNumber(exercises.length)}
                     </span>
                   </div>
-                </button>
-              );
-            })}
-          </div>
+                  <div className="mt-1.5 h-1.5 overflow-hidden rounded-full bg-black/[0.06]">
+                    <motion.div
+                      initial={false}
+                      animate={{ width: `${exercises.length ? (completedCount / exercises.length) * 100 : 0}%` }}
+                      transition={{ duration: 0.3, ease: 'easeOut' }}
+                      className={cn('h-full rounded-full', focusTheme.progress)}
+                    />
+                  </div>
+                </div>
+                <span className={cn(
+                  'flex h-9 w-9 items-center justify-center rounded-xl ring-1 transition-transform',
+                  focusTheme.number,
+                  isLanguageFocusOpen && 'rotate-90'
+                )}>
+                  <ArrowRight size={16} className={cn(isRTL && 'rotate-180')} />
+                </span>
+              </div>
+            </div>
+
+            <div className="mt-3 flex items-center gap-2 sm:hidden">
+              <div className="h-1.5 flex-1 overflow-hidden rounded-full bg-black/[0.06]">
+                <motion.div
+                  initial={false}
+                  animate={{ width: `${exercises.length ? (completedCount / exercises.length) * 100 : 0}%` }}
+                  transition={{ duration: 0.3, ease: 'easeOut' }}
+                  className={cn('h-full rounded-full', focusTheme.progress)}
+                />
+              </div>
+              <span className={cn('font-display text-[11px] font-semibold', focusTheme.accent)}>
+                {formatNumber(completedCount)} / {formatNumber(exercises.length)}
+              </span>
+            </div>
+          </button>
+
+          <AnimatePresence initial={false}>
+            {isLanguageFocusOpen && (
+              <motion.div
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: 'auto', opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                transition={{ duration: 0.22, ease: 'easeOut' }}
+                className="overflow-hidden"
+              >
+                <div className="border-t border-black/[0.06] px-4 pb-4 pt-3 sm:px-5 sm:pb-5">
+                  <div className="space-y-2">
+                    {exercises.map((exercise, index) => {
+                      const completed = completedExercises.includes(exercise.id);
+
+                      return (
+                        <motion.button
+                          key={exercise.id}
+                          type="button"
+                          whileHover={{ x: isRTL ? -2 : 2 }}
+                          whileTap={{ scale: 0.995 }}
+                          onClick={() => setActiveExercise(exercise)}
+                          className={cn(
+                            'group flex w-full items-center gap-3 rounded-2xl p-3 sm:p-3.5 text-start ring-1 transition-all',
+                            focusTheme.card
+                          )}
+                        >
+                          <span className={cn(
+                            'flex h-9 min-w-9 items-center justify-center rounded-xl px-2 font-display text-[11px] font-semibold shrink-0',
+                            completed ? 'bg-emerald-600 text-white' : focusTheme.number
+                          )}>
+                            {completed ? '✓' : formatNumber(index + 1)}
+                          </span>
+
+                          <span className="min-w-0 flex-1">
+                            <span className="flex flex-wrap items-center gap-2">
+                              <span className={cn(
+                                'font-display font-semibold leading-tight',
+                                isArabic ? 'text-[15px] sm:text-base' : 'text-[13px] sm:text-[14px]',
+                                focusTheme.title
+                              )}>
+                                {presentExerciseTitle(exercise)}
+                              </span>
+                              <span className={cn(
+                                'rounded-full px-2 py-0.5 font-display text-[11px] font-semibold uppercase tracking-[0.12em]',
+                                completed ? 'bg-emerald-100 text-emerald-700' : focusTheme.number
+                              )}>
+                                {completed ? t('nav.completed') : typeLabel(exercise)}
+                              </span>
+                            </span>
+                            {exercise.instructions && (
+                              <span className={cn(
+                                'mt-1 block truncate font-serif',
+                                isArabic ? 'text-[13px] sm:text-[14px]' : 'text-[11px] sm:text-[12px]',
+                                focusTheme.copy
+                              )}>
+                                {exercise.instructions}
+                              </span>
+                            )}
+                          </span>
+
+                          <ArrowRight
+                            size={16}
+                            className={cn(
+                              'shrink-0 opacity-45 transition-all group-hover:opacity-90',
+                              focusTheme.arrow,
+                              isRTL && 'rotate-180'
+                            )}
+                          />
+                        </motion.button>
+                      );
+                    })}
+                  </div>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
-      </motion.div>
+      </motion.section>
     );
   };
 
@@ -1037,144 +1572,202 @@ export const StoryPage = ({
           "flex flex-col min-w-0",
           isRTL ? "text-right" : ""
         )}>
-          <h3 className="font-display text-xl sm:text-3xl lg:text-4xl text-wood tracking-tight uppercase leading-tight truncate">{page.title}</h3>
+          <h3 className="font-display text-xl sm:text-3xl lg:text-4xl text-wood font-semibold tracking-[-0.03em] leading-tight truncate clip-room">{page.title}</h3>
           <p className={cn(
             "font-serif text-xs sm:text-base lg:text-lg mt-0.5",
             language !== 'ar' && "italic",
-            collectionId === 'history' 
-              ? "text-teal-600" 
-              : collectionId === 'turkish' 
-              ? "text-cyan-600" 
-              : isA2 ? "text-amber-600" : "text-gold"
+            "text-brand-600"
           )}>
             {t('nav.chapter')} {formatNumber(page.id)}
           </p>
+          {renderChapterSteps()}
         </div>
 
         <div className="shrink-0 w-full sm:w-auto">
           {page.audioUrl && (
-            <div 
+            <div
+              ref={audioControlsRef}
               dir="ltr"
               className={cn(
-                "flex items-center gap-2 sm:gap-3 p-2 sm:p-2.5 rounded-xl sm:rounded-2xl border backdrop-blur-md shadow-md transition-all w-full sm:w-auto justify-between sm:justify-start",
-                collectionId === 'history'
-                  ? "bg-emerald-50/85 border-emerald-200 shadow-emerald-100/10"
-                  : collectionId === 'turkish'
-                  ? "bg-sky-50/85 border-sky-250 shadow-sky-100/10"
-                  : isA2 
-                    ? "bg-amber-50/80 border-amber-200" 
-                    : "bg-white/80 border-gold/20"
+                "relative z-[90] flex w-full items-center gap-2.5 rounded-2xl border px-2.5 py-2.5 shadow-[0_18px_24px_-22px_rgba(63,49,28,0.45)] backdrop-blur-md sm:w-[430px] sm:gap-3 sm:px-3 sm:py-3 lg:w-[500px]",
+                "bg-brand-50/88 border-brand-200/90"
               )}
             >
-              <audio 
-                ref={audioRef} 
-                src={page.audioUrl} 
-                onEnded={() => setIsPlaying(false)}
+              <audio
+                ref={audioRef}
+                src={page.audioUrl}
+                onEnded={() => { setIsPlaying(false); setAudioEnded(true); }}
                 onTimeUpdate={handleTimeUpdate}
                 onLoadedMetadata={handleLoadedMetadata}
               />
-              
+
               <button
+                type="button"
                 onClick={isAudioLocked ? undefined : toggleAudio}
                 disabled={isAudioLocked}
                 className={cn(
-                  "w-9 h-9 sm:w-11 sm:h-11 rounded-full flex items-center justify-center transition-all shadow-md shrink-0",
+                  "flex h-11 w-11 shrink-0 items-center justify-center rounded-full shadow-[0_7px_18px_rgba(63,49,28,0.16)] transition-all active:scale-[0.97] sm:h-12 sm:w-12",
                   isAudioLocked
                     ? "bg-gray-400 text-white cursor-not-allowed opacity-60"
-                    : collectionId === 'history'
-                    ? "bg-teal-600 text-white hover:bg-teal-700"
-                    : collectionId === 'turkish'
-                    ? "bg-sky-700 text-white hover:bg-sky-850"
-                    : isA2 ? "bg-amber-600 text-white hover:bg-amber-700" : "bg-gold text-white hover:bg-gold/80"
+                    : "bg-brand-700 text-white hover:bg-brand-800"
                 )}
+                aria-label={isPlaying ? (language === 'ar' ? 'إيقاف مؤقت' : 'Pause audio') : (language === 'ar' ? 'تشغيل' : 'Play audio')}
               >
-                {isAudioLocked ? <Lock size={16} /> : (isPlaying ? <Pause size={16} /> : <Play size={16} className="ml-0.5" />)}
+                {isAudioLocked
+                  ? <Lock size={17} />
+                  : isPlaying
+                  ? <Pause size={18} />
+                  : <Play size={19} className="translate-x-[1px]" />}
               </button>
 
-              <div className="flex flex-col flex-1 sm:w-36 md:w-44 gap-1">
-                <input
-                  type="range"
-                  min="0"
-                  max={duration || 0}
-                  value={currentTime}
-                  onChange={handleSeek}
-                  disabled={isAudioLocked}
-                  className={cn(
-                    "w-full h-1.5 rounded-lg appearance-none cursor-pointer accent-current",
-                    isAudioLocked 
-                      ? "opacity-30 cursor-not-allowed" 
-                      : collectionId === 'history'
-                      ? "text-teal-600 bg-teal-200"
-                      : collectionId === 'turkish'
-                      ? "text-sky-600 bg-sky-200"
-                      : isA2 ? "text-amber-600 bg-amber-200" : "text-gold bg-gold/20"
-                  )}
-                />
-                <div className="flex justify-between text-[10px] font-mono opacity-60">
-                  <span>{formatTime(currentTime)}</span>
-                  <span>{formatTime(duration)}</span>
-                </div>
-              </div>
+              <div className="min-w-0 flex-1">
+                <div className="flex items-center gap-2 sm:gap-2.5">
+                  <span className="w-9 shrink-0 text-start font-mono text-[11px] font-semibold tabular-nums text-wood/55 sm:w-10 sm:text-[11px]">
+                    {formatTime(currentTime)}
+                  </span>
 
-              <div className="flex items-center gap-1 group/vol">
-                <button 
-                  onClick={isAudioLocked ? undefined : toggleMute}
-                  disabled={isAudioLocked}
-                  className={cn(
-                    "p-2 rounded-full transition-colors shrink-0",
-                    isAudioLocked 
-                      ? "opacity-30 cursor-not-allowed" 
-                      : collectionId === 'history'
-                      ? "hover:bg-teal-100 text-teal-600"
-                      : collectionId === 'turkish'
-                      ? "hover:bg-sky-100 text-sky-600"
-                      : isA2 ? "hover:bg-amber-200/50 text-amber-600" : "hover:bg-gold/10 text-gold"
-                  )}
-                >
-                  {volume === 0 ? <VolumeX size={18} /> : <Volume2 size={18} />}
-                </button>
-                <div className="w-0 overflow-hidden group-hover/vol:w-24 transition-all duration-300 flex items-center">
                   <input
                     type="range"
                     min="0"
-                    max="1"
-                    step="0.01"
-                    value={volume}
-                    onChange={handleVolumeChange}
+                    max={duration || 0}
+                    value={currentTime}
+                    onChange={handleSeek}
                     disabled={isAudioLocked}
+                    aria-label={language === 'ar' ? 'تقدّم الصوت' : 'Audio progress'}
                     className={cn(
-                      "w-20 h-1.5 rounded-lg appearance-none cursor-pointer accent-current",
-                      isAudioLocked 
-                        ? "opacity-30 cursor-not-allowed" 
-                        : collectionId === 'history'
-                        ? "text-teal-600 bg-teal-200"
-                        : collectionId === 'turkish'
-                        ? "text-sky-600 bg-sky-200"
-                        : isA2 ? "text-amber-600 bg-amber-200" : "text-gold bg-gold/20"
+                      "h-1.5 min-w-0 flex-1 cursor-pointer appearance-none rounded-full accent-current",
+                      isAudioLocked
+                        ? "cursor-not-allowed opacity-30"
+                        : "bg-brand-200 text-brand-700"
                     )}
                   />
+
+                  <span className="w-9 shrink-0 text-end font-mono text-[11px] font-semibold tabular-nums text-wood/55 sm:w-10 sm:text-[11px]">
+                    {formatTime(duration)}
+                  </span>
                 </div>
               </div>
 
-              <div className="flex items-center gap-1">
+              <div className="relative shrink-0">
                 <button
-                  onClick={isAudioLocked ? undefined : handleSpeedChange}
+                  type="button"
+                  onClick={() => setAudioMenu(current => current === 'volume' ? null : 'volume')}
                   disabled={isAudioLocked}
                   className={cn(
-                    "px-2 py-0.5 text-xs font-bold rounded-lg transition-colors shrink-0",
-                    isAudioLocked 
-                      ? "opacity-30 cursor-not-allowed bg-gray-200 text-gray-500" 
-                      : collectionId === 'history'
-                      ? "bg-teal-100 text-teal-700 hover:bg-teal-200"
-                      : collectionId === 'turkish'
-                      ? "bg-sky-100 text-sky-700 hover:bg-sky-200"
-                      : isA2 
-                        ? "bg-amber-100/80 text-amber-700 hover:bg-amber-200" 
-                        : "bg-gold/10 text-gold hover:bg-gold/30"
+                    "flex h-9 w-9 items-center justify-center rounded-full transition-colors sm:h-10 sm:w-10",
+                    isAudioLocked
+                      ? "cursor-not-allowed opacity-30"
+                      : audioMenu === 'volume'
+                      ? "bg-brand-100 text-brand-800"
+                      : "text-brand-700 hover:bg-brand-100"
                   )}
+                  aria-label={language === 'ar' ? 'مستوى الصوت' : 'Volume'}
+                  aria-expanded={audioMenu === 'volume'}
                 >
-                  {speed}x
+                  {volume === 0 ? <VolumeX size={19} /> : <Volume2 size={19} />}
                 </button>
+
+                <AnimatePresence>
+                  {audioMenu === 'volume' && (
+                    <motion.div
+                      initial={{ opacity: 0, y: -6, scale: 0.97 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
+                      exit={{ opacity: 0, y: -6, scale: 0.97 }}
+                      transition={{ duration: 0.14, ease: 'easeOut' }}
+                      className="absolute end-0 top-[calc(100%+0.55rem)] z-50 w-48 rounded-2xl border border-black/[0.07] bg-white/96 p-3.5 shadow-2xl backdrop-blur-xl"
+                    >
+                      <div className="flex items-center gap-3">
+                        <button
+                          type="button"
+                          onClick={toggleMute}
+                          className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-black/[0.045] text-wood/65 transition-colors hover:bg-black/[0.08]"
+                          aria-label={volume === 0 ? (language === 'ar' ? 'إلغاء كتم الصوت' : 'Unmute') : (language === 'ar' ? 'كتم الصوت' : 'Mute')}
+                        >
+                          {volume === 0 ? <VolumeX size={17} /> : <Volume2 size={17} />}
+                        </button>
+
+                        <input
+                          type="range"
+                          min="0"
+                          max="1"
+                          step="0.01"
+                          value={volume}
+                          onChange={handleVolumeChange}
+                          aria-label={language === 'ar' ? 'مستوى الصوت' : 'Volume level'}
+                          className={cn(
+                            "h-1.5 min-w-0 flex-1 cursor-pointer appearance-none rounded-full accent-current",
+                            "bg-brand-200 text-brand-700"
+                          )}
+                        />
+
+                        <span className="w-9 shrink-0 text-end font-mono text-[11px] font-semibold tabular-nums text-wood/50">
+                          {Math.round(volume * 100)}%
+                        </span>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+
+              <div className="relative shrink-0">
+                <button
+                  type="button"
+                  onClick={() => setAudioMenu(current => current === 'speed' ? null : 'speed')}
+                  disabled={isAudioLocked}
+                  className={cn(
+                    "flex h-9 min-w-[46px] items-center justify-center rounded-full px-2.5 font-display text-[11px] font-semibold tabular-nums transition-colors sm:h-10 sm:min-w-[50px]",
+                    isAudioLocked
+                      ? "cursor-not-allowed bg-gray-100 text-gray-400"
+                      : audioMenu === 'speed'
+                      ? "bg-brand-100 text-brand-800"
+                      : "bg-brand-50 text-brand-800 hover:bg-brand-100"
+                  )}
+                  aria-label={language === 'ar' ? 'سرعة التشغيل' : 'Playback speed'}
+                  aria-expanded={audioMenu === 'speed'}
+                >
+                  {speed}×
+                </button>
+
+                <AnimatePresence>
+                  {audioMenu === 'speed' && (
+                    <motion.div
+                      initial={{ opacity: 0, y: -6, scale: 0.97 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
+                      exit={{ opacity: 0, y: -6, scale: 0.97 }}
+                      transition={{ duration: 0.14, ease: 'easeOut' }}
+                      className="absolute end-0 top-[calc(100%+0.55rem)] z-50 w-44 rounded-2xl border border-black/[0.07] bg-white/96 p-2 shadow-2xl backdrop-blur-xl"
+                    >
+                      {[
+                        { label: language === 'ar' ? 'أبطأ' : 'Slower', options: [0.25, 0.5, 0.75] },
+                        { label: language === 'ar' ? 'عادي وأسرع' : 'Normal and faster', options: [1, 1.25, 1.5, 1.75, 2] },
+                      ].map(group => (
+                        <div key={group.label} className="mb-1 last:mb-0">
+                          <p className="px-1.5 pb-1 pt-0.5 font-display text-[10px] font-semibold uppercase tracking-wide text-wood/45">
+                            {group.label}
+                          </p>
+                          <div className="grid grid-cols-3 gap-1">
+                            {group.options.map(option => (
+                              <button
+                                key={option}
+                                type="button"
+                                onClick={() => setPlaybackSpeed(option)}
+                                aria-pressed={speed === option}
+                                className={cn(
+                                  "flex h-9 items-center justify-center rounded-xl font-display text-[11px] font-semibold tabular-nums transition-colors",
+                                  speed === option
+                                    ? "bg-brand-700 text-white"
+                                    : "bg-black/[0.035] text-wood/70 hover:bg-brand-100 hover:text-brand-800"
+                                )}
+                              >
+                                {option}×
+                              </button>
+                            ))}
+                          </div>
+                        </div>
+                      ))}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </div>
             </div>
           )}
@@ -1184,17 +1777,17 @@ export const StoryPage = ({
       {/* Dynamic responsive layout container */}
       <div className="flex-1 min-h-0 overflow-hidden">
         {/* Mobile View: Vertical scrolling stack */}
-        <div className="block lg:hidden h-full overflow-y-auto custom-scrollbar pr-2 space-y-6">
+        <div className="block lg:hidden h-full overflow-y-auto custom-scrollbar px-0.5 sm:ps-0.5 sm:pe-4 space-y-6">
           {page.image && (
             <motion.div 
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
-              className="relative group perspective-1000 w-full max-w-lg mx-auto"
+              className="relative z-[60] group perspective-1000 w-full max-w-lg mx-auto"
               onMouseMove={handleMouseMove}
               onMouseLeave={handleMouseLeave}
               style={{ rotateX, rotateY }}
             >
-              <div className="relative aspect-[4/5] w-full rounded-[1.5rem] shadow-xl overflow-hidden">
+              <div className="relative aspect-[4/5] w-full rounded-[1.5rem] shadow-[0_24px_30px_-28px_rgba(0,0,0,0.55)] overflow-hidden">
                 <motion.img 
                   src={page.image} 
                   alt={page.title}
@@ -1203,7 +1796,7 @@ export const StoryPage = ({
                   style={{ x: imageX, y: imageY, scale: 1.1 }}
                 />
                 
-                <div className="absolute inset-0 p-4 pointer-events-none">
+                <div className="absolute inset-0 z-[70] p-4 pointer-events-none">
                   <div className="relative w-full h-full">
                      {page.hotspots?.map((hotspot) => (
                       <HotspotButton 
@@ -1216,97 +1809,53 @@ export const StoryPage = ({
                     ))}
                   </div>
                 </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-wood/40 to-transparent pointer-events-none" />
+                <div className="absolute inset-0 z-10 bg-gradient-to-t from-wood/40 to-transparent pointer-events-none" />
               </div>
             </motion.div>
           )}
 
           {/* Text Content */}
+          <div className="mx-auto max-w-[68ch] wide:max-w-none">
+          {renderBeforeYouRead()}
+          <div className="relative">
           <div 
             className={cn(
-              "font-serif leading-relaxed text-wood/90",
+              "font-serif leading-[1.72] text-wood/90",
               isDyslexic ? "font-sans tracking-wide" : "",
               isRTL && "text-right"
             )}
             style={getResponsiveStoryFontStyle(fontSize, isRTL, isDyslexic)}
           >
-            {renderContent(page.content)}
+            <div ref={followTextA}>{renderContent(storyText)}</div>
+            {renderNextUp()}
+          </div>
+          </div>
           </div>
 
-          {/* Mobile Quick Challenge */}
-          {page.exercises && page.exercises.length > 0 && (
-            <div className={cn(
-              "pt-6 border-t",
-              collectionId === 'history' ? "border-emerald-100" : collectionId === 'turkish' ? "border-sky-100" : "border-amber-100"
-            )}>
-              <div className={cn(
-                "flex flex-col items-center p-6 rounded-3xl border shadow-sm gap-4 text-center",
-                collectionId === 'history' 
-                  ? "bg-emerald-50/40 border-emerald-105" 
-                  : collectionId === 'turkish' 
-                  ? "bg-sky-50/45 border-sky-105" 
-                  : "bg-amber-50/50 border-amber-100"
-              )}>
-                <div className="flex flex-col items-center gap-3">
-                  <div className={cn(
-                    "w-12 h-12 rounded-xl flex items-center justify-center shadow-inner shrink-0",
-                    collectionId === 'history' ? "bg-emerald-100 text-emerald-600" : collectionId === 'turkish' ? "bg-sky-150 text-sky-600" : "bg-amber-100 text-amber-600"
-                  )}>
-                    <Rocket size={24} />
-                  </div>
-                  <div>
-                    <h4 className={cn(
-                      "font-black text-xl",
-                      collectionId === 'history' ? "text-[#064E3B]" : collectionId === 'turkish' ? "text-sky-950" : "text-amber-900"
-                    )}>
-                      {t('nav.quickChallenge')}
-                    </h4>
-                    <p className={cn(
-                      "font-medium",
-                      isArabic ? 'text-base' : 'text-sm',
-                      collectionId === 'history' ? "text-emerald-900/50" : collectionId === 'turkish' ? "text-sky-950/50" : "text-amber-900/50"
-                    )}>
-                      {t('nav.testUnderstanding')}
-                    </p>
-                  </div>
-                </div>
-                <button
-                  onClick={() => setActiveExercise(page.exercises![0])}
-                  className={cn(
-                    "w-full px-6 py-3.5 rounded-xl font-bold text-base transition-all shadow-md active:scale-95 shrink-0 cursor-pointer",
-                    completedExercises.includes(page.exercises[0].id)
-                      ? "bg-green-500 text-white"
-                      : collectionId === 'history'
-                      ? "bg-emerald-600 text-white hover:bg-emerald-700"
-                      : collectionId === 'turkish'
-                      ? "bg-sky-700 text-white hover:bg-sky-800"
-                      : "bg-amber-600 text-white hover:bg-amber-700"
-                  )}
-                >
-                  {completedExercises.includes(page.exercises[0].id) ? t('nav.completed') : t('nav.startExercise')}
-                </button>
-              </div>
-            </div>
-          )}
+          {renderQuickChallengePanel()}
 
           {renderLanguageFocusPanel(true)}
+
+          {renderGroupTask()}
+          {renderICan()}
+          {page.type === 'story' && page.id === 1 && <MyWordsReminder />}
         </div>
 
         {/* Desktop View: Grid layout with Quick Challenge spanning both columns at bottom */}
-        <div className="hidden lg:flex lg:flex-col h-full min-h-0 overflow-y-auto custom-scrollbar pr-2 pb-4">
-          <div className="grid grid-cols-12 gap-8 items-start">
+        <div className="hidden lg:flex lg:flex-col h-full min-h-0 overflow-y-auto custom-scrollbar ps-0.5 pe-3 xl:pe-4 pb-4">
+          <div className="grid grid-cols-12 gap-8 desk:gap-12 items-start">
             {/* Left side: Image */}
-            <div className="col-span-5">
+            <div className="col-span-5 self-start lg:sticky lg:top-0">
               {page.image && (
                 <motion.div 
                   initial={{ opacity: 0, x: isRTL ? 20 : -20 }}
                   animate={{ opacity: 1, x: 0 }}
-                  className="relative group perspective-1000 w-full"
+                  className="relative z-[60] group perspective-1000 w-full"
                   onMouseMove={handleMouseMove}
                   onMouseLeave={handleMouseLeave}
                   style={{ rotateX, rotateY }}
                 >
-                  <div className="relative aspect-[4/5] w-full rounded-[1.25rem] shadow-xl overflow-hidden border border-gold/15">
+                  <div className="relative aspect-[4/5] w-full rounded-[1.25rem] shadow-[0_24px_30px_-28px_rgba(0,0,0,0.55)] overflow-hidden border border-gold/15">
                     <motion.img 
                       src={page.image} 
                       alt={page.title}
@@ -1315,7 +1864,7 @@ export const StoryPage = ({
                       style={{ x: imageX, y: imageY, scale: 1.1 }}
                     />
                     
-                    <div className="absolute inset-0 p-4 pointer-events-none">
+                    <div className="absolute inset-0 z-[70] p-4 pointer-events-none">
                       <div className="relative w-full h-full">
                          {page.hotspots?.map((hotspot) => (
                           <HotspotButton 
@@ -1328,7 +1877,7 @@ export const StoryPage = ({
                         ))}
                       </div>
                     </div>
-                    <div className="absolute inset-0 bg-gradient-to-t from-wood/40 to-transparent pointer-events-none" />
+                    <div className="absolute inset-0 z-10 bg-gradient-to-t from-wood/40 to-transparent pointer-events-none" />
                   </div>
                 </motion.div>
               )}
@@ -1336,77 +1885,32 @@ export const StoryPage = ({
 
             {/* Right side: Story text scrolling content */}
             <div className="col-span-7">
+              <div className="w-full max-w-[72ch] desk:max-w-none">
+              {renderBeforeYouRead()}
+              <div className="relative">
               <div 
                 className={cn(
-                  "font-serif leading-relaxed text-wood/90",
+                  "font-serif leading-[1.72] text-wood/90",
                   isDyslexic ? "font-sans tracking-wide" : "",
                   isRTL && "text-right"
                 )}
                 style={getResponsiveStoryFontStyle(fontSize, isRTL, isDyslexic)}
-              >
-                {renderContent(page.content)}
+                  >
+                <div ref={followTextB}>{renderContent(storyText)}</div>
+                {renderNextUp()}
+              </div>
+                  </div>
               </div>
             </div>
           </div>
 
-          {/* Quick Challenge spanning across full width / both columns at the bottom */}
-          {page.exercises && page.exercises.length > 0 && (
-            <motion.div 
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="w-full mt-6 pt-6 border-t border-gold/15 shrink-0"
-            >
-              <div className={cn(
-                "flex items-center justify-between p-5 rounded-2xl border shadow-sm gap-4",
-                collectionId === 'history' 
-                  ? "bg-emerald-50/40 border-emerald-105" 
-                  : collectionId === 'turkish' 
-                  ? "bg-sky-50/45 border-sky-105" 
-                  : "bg-amber-50/50 border-amber-100"
-              )}>
-                <div className="flex items-center gap-4">
-                  <div className={cn(
-                    "w-12 h-12 rounded-xl flex items-center justify-center shadow-inner shrink-0",
-                    collectionId === 'history' ? "bg-emerald-100 text-emerald-600" : collectionId === 'turkish' ? "bg-sky-150 text-sky-600" : "bg-amber-100 text-amber-600"
-                  )}>
-                    <Rocket size={24} />
-                  </div>
-                  <div>
-                    <h4 className={cn(
-                      "font-black text-lg sm:text-xl",
-                      collectionId === 'history' ? "text-[#064E3B]" : collectionId === 'turkish' ? "text-sky-950" : "text-amber-900"
-                    )}>
-                      {t('nav.quickChallenge')}
-                    </h4>
-                    <p className={cn(
-                      "font-medium",
-                      isArabic ? 'text-base' : 'text-xs sm:text-sm',
-                      collectionId === 'history' ? "text-emerald-900/50" : collectionId === 'turkish' ? "text-sky-950/50" : "text-amber-900/50"
-                    )}>
-                      {t('nav.testUnderstanding')}
-                    </p>
-                  </div>
-                </div>
-                <button
-                  onClick={() => setActiveExercise(page.exercises![0])}
-                  className={cn(
-                    "px-6 py-3 rounded-xl font-bold text-base transition-all shadow-md active:scale-95 shrink-0 min-w-[160px] cursor-pointer",
-                    completedExercises.includes(page.exercises[0].id)
-                      ? "bg-green-500 text-white"
-                      : collectionId === 'history'
-                      ? "bg-emerald-600 text-white hover:bg-emerald-700"
-                      : collectionId === 'turkish'
-                      ? "bg-sky-700 text-white hover:bg-sky-800"
-                      : "bg-amber-600 text-white hover:bg-amber-700"
-                  )}
-                >
-                  {completedExercises.includes(page.exercises[0].id) ? t('nav.completed') : t('nav.startExercise')}
-                </button>
-              </div>
-            </motion.div>
-          )}
+          {renderQuickChallengePanel()}
 
           {renderLanguageFocusPanel()}
+
+          {renderGroupTask()}
+          {renderICan()}
+          {page.type === 'story' && page.id === 1 && <MyWordsReminder />}
         </div>
       </div>
 
@@ -1415,15 +1919,32 @@ export const StoryPage = ({
           <ExerciseModule
             exercise={activeExercise}
             onComplete={() => {
-              setCompletedExercises(prev => [...prev, activeExercise.id]);
               trackExerciseComplete(activeExercise.id);
               setActiveExercise(null);
             }}
             onClose={() => setActiveExercise(null)}
             collectionId={collectionId}
+            variant={
+              page.exercises?.[0]?.id === activeExercise.id
+                ? 'quick'
+                : page.languageFocusExercises?.some(exercise => exercise.id === activeExercise.id)
+                ? 'language'
+                : 'default'
+            }
           />
         )}
       </AnimatePresence>
+
+      <ReaderTour active={isTourActive} onFinish={() => setIsTourActive(false)} />
+      {lessonSection && (
+        <LessonCard
+          isOpen={isLessonCardOpen}
+          onClose={() => setIsLessonCardOpen(false)}
+          section={lessonSection}
+          groupTask={page.type === 'story' ? page.groupTask : undefined}
+          language={language}
+        />
+      )}
     </div>
   );
 };

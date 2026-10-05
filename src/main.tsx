@@ -5,12 +5,14 @@ import './index.css';
 import './loading.css';
 import './guideTheme.css';
 import './pdfLocked.css';
-import './layoutFixes.css';
 import './arabicTypography.css';
 import './lib/pdfDownloadLock';
 import { LanguageProvider } from './contexts/LanguageContext';
-import { FullscreenButton } from './components/ui/FullscreenButton';
 import { ArabicUiSanitizer } from './components/ArabicUiSanitizer';
+import { FullscreenButton } from './components/ui/FullscreenButton';
+import { UserRoleProvider } from './contexts/UserRoleContext';
+import { ClassModeProvider } from './contexts/ClassModeContext';
+import { registerServiceWorker } from './lib/pwa';
 
 const CHUNK_RELOAD_KEY = 'stories_chunk_reload_at';
 
@@ -34,12 +36,18 @@ window.setTimeout(() => {
   sessionStorage.removeItem(CHUNK_RELOAD_KEY);
 }, 30_000);
 
+registerServiceWorker();
+
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <LanguageProvider>
-      <App />
-      <FullscreenButton />
-      <ArabicUiSanitizer />
+      <UserRoleProvider>
+        <ClassModeProvider>
+          <App />
+          <FullscreenButton />
+          <ArabicUiSanitizer />
+        </ClassModeProvider>
+      </UserRoleProvider>
     </LanguageProvider>
   </StrictMode>,
 );

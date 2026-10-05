@@ -1,4 +1,10 @@
 import type { BookData, PageData } from '../../../types';
+import { withPlacesLayer } from '../../../features/historical-entities';
+import { applyChapterExtras } from '../../../lib/chapterExtras';
+import { abrahamB1ChapterExtrasEn } from './en/chapterExtras';
+import { abrahamB1GroupTasksEn } from './en/groupTasks';
+import { abrahamB1ChapterExtrasAr } from './ar/chapterExtras';
+import { abrahamB1GroupTasksAr } from './ar/groupTasks';
 import { abrahamB1Pages } from './en/pages';
 import { abrahamB1PagesAr } from './ar/pages';
 import {
@@ -47,13 +53,37 @@ import {
   abrahamB1LanguageFocusChapter12Ar,
   abrahamB1LanguageFocusChapter13Ar,
 } from './ar/languageFocus3';
-import { abrahamB1TeacherGuideEn, abrahamB1TeacherGuideMetadata } from './en/teacherGuide';
-import { abrahamB1TeacherGuideAr, abrahamB1TeacherGuideMetadataAr } from './ar/teacherGuide';
-import { abrahamB1SelfStudyGuideEn } from './en/selfStudyGuide';
-import { abrahamB1SelfStudyGuideAr } from './ar/selfStudyGuide';
+import { buildStoryMap } from '../../../features/story-maps/buildStoryMap';
+import { abrahamB1StoryMapLayout } from './storyMap';
+import { abrahamB1StoryMapCopyEn } from './en/storyMap';
+import { abrahamB1StoryMapCopyAr } from './ar/storyMap';
 
 const STORY_IDS = new Set(Array.from({ length: 13 }, (_, index) => index + 1));
-const ENGLISH_GLOSSARY_EXCLUSIONS = new Set(['mardukh']);
+
+// Interactive map page, placed after the last chapter: the story is read without a break, then the whole journey is seen on the map.
+const MAP_PAGE_ID = 101;
+const MAP_AFTER_CHAPTER = 13;
+
+const withMapPage = (pages: PageData[], mapPage: PageData): PageData[] =>
+  pages.flatMap(page => (page.id === MAP_AFTER_CHAPTER ? [page, mapPage] : [page]));
+
+const mapPageEn: PageData = {
+  id: MAP_PAGE_ID,
+  type: 'map',
+  title: 'Abraham’s Journey',
+  subtitle: 'Map · Chapters 1–13',
+  content: '',
+  map: buildStoryMap(abrahamB1StoryMapLayout, abrahamB1StoryMapCopyEn, 'Abraham B1 EN'),
+};
+
+const mapPageAr: PageData = {
+  id: MAP_PAGE_ID,
+  type: 'map',
+  title: 'رِحْلَةُ إِبْراهيمَ عَلَيْهِ السَّلامُ',
+  subtitle: 'خَريطَة · الفُصولُ مِنْ 1 إِلى 13',
+  content: '',
+  map: buildStoryMap(abrahamB1StoryMapLayout, abrahamB1StoryMapCopyAr, 'Abraham B1 AR'),
+};
 
 const englishLanguageFocus = {
   ...abrahamB1LanguageFocusExercises,
@@ -85,7 +115,7 @@ const arabicLanguageFocus = {
   ...abrahamB1LanguageFocusChapter13Ar,
 };
 
-const buildEnglishPages = (): PageData[] => abrahamB1Pages.map(page => {
+const buildEnglishPages = (): PageData[] => withMapPage(abrahamB1Pages.map(page => {
   if (STORY_IDS.has(page.id)) {
     const languageFocusExercises = englishLanguageFocus[page.id];
     return {
@@ -97,20 +127,16 @@ const buildEnglishPages = (): PageData[] => abrahamB1Pages.map(page => {
   if (page.id === 14) return { ...page, exercises: abrahamB1KnowledgeCheckExercisesPolished };
   if (page.id === 15) return {
     ...page,
-    title: 'B1 Language Review',
+    title: 'Language Review',
     content: 'Review and use the grammar patterns, discourse relationships, and communicative functions developed across all thirteen chapters.',
     exercises: abrahamB1LanguageReviewExercises,
   };
   if (page.id === 16) return { ...page, vocabularyPairs: abrahamB1VocabularyChallengePairsPolished };
-  if (page.id === 17) return {
-    ...page,
-    vocabulary: page.vocabulary?.filter(item => !ENGLISH_GLOSSARY_EXCLUSIONS.has(item.word.trim().toLocaleLowerCase())),
-  };
   if (page.id === 18) return { ...page, exercises: abrahamB1FinalChallengeExercisesPolished };
   return page;
-});
+}), mapPageEn);
 
-const buildArabicPages = (): PageData[] => abrahamB1PagesAr.map(page => {
+const buildArabicPages = (): PageData[] => withMapPage(abrahamB1PagesAr.map(page => {
   if (STORY_IDS.has(page.id)) {
     const languageFocusExercises = arabicLanguageFocus[page.id];
     return {
@@ -129,28 +155,26 @@ const buildArabicPages = (): PageData[] => abrahamB1PagesAr.map(page => {
   if (page.id === 16) return { ...page, vocabularyPairs: abrahamB1VocabularyChallengePairsArPolished };
   if (page.id === 18) return { ...page, exercises: abrahamB1FinalChallengeExercisesArPolished };
   return page;
-});
+}), mapPageAr);
 
 export const abrahamB1BookDataEn: BookData = {
   id: 'b1-abraham-en',
   title: 'Stories of the Prophets: Abraham (B1)',
   level: 'B1',
   baseFontSize: 12,
-  pages: buildEnglishPages(),
-  teacherGuide: abrahamB1TeacherGuideEn,
-  teacherGuideMetadata: abrahamB1TeacherGuideMetadata,
-  selfStudyGuide: abrahamB1SelfStudyGuideEn,
+  pages: applyChapterExtras(withPlacesLayer(buildEnglishPages(), 'abraham-b1', 'en'), { ...abrahamB1ChapterExtrasEn, groupTasks: abrahamB1GroupTasksEn }),
+  teacherGuide: [],
+  selfStudyGuide: [],
 };
 
 export const abrahamB1BookDataAr: BookData = {
   id: 'b1-abraham-ar',
-  title: 'قصص الأنبياء: إبراهيم (عليه السلام) (B1)',
+  title: 'قصص الأنبياء: إبراهيم عليه السلام (B1)',
   level: 'B1',
   baseFontSize: 14,
-  pages: buildArabicPages(),
-  teacherGuide: abrahamB1TeacherGuideAr,
-  teacherGuideMetadata: abrahamB1TeacherGuideMetadataAr,
-  selfStudyGuide: abrahamB1SelfStudyGuideAr,
+  pages: applyChapterExtras(withPlacesLayer(buildArabicPages(), 'abraham-b1', 'ar'), { ...abrahamB1ChapterExtrasAr, groupTasks: abrahamB1GroupTasksAr }),
+  teacherGuide: [],
+  selfStudyGuide: [],
 };
 
 export const abrahamB1BookData = abrahamB1BookDataEn;

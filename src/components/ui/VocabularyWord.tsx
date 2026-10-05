@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect, useMemo } from 'react';
+import React, { useState, useRef, useEffect, useLayoutEffect, useMemo } from 'react';
 import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'motion/react';
 import { cn } from '../../lib/utils';
@@ -6,6 +6,8 @@ import { useLanguage } from '../../contexts/LanguageContext';
 import { useStoryProgress } from '../../contexts/StoryProgressContext';
 import { getActiveBilingualCounterpart } from '../../data/bilingualHighlightCards';
 import { HistoricalEntityWord, getHistoricalEntityIdFromDefinition } from '../../features/historical-entities';
+import { BookMarked, Check } from './icons';
+import { isMyWord, toggleMyWord, useMyWords } from '../../lib/myWords';
 
 export const VocabularyWord = ({ 
   word, 
@@ -21,6 +23,9 @@ export const VocabularyWord = ({
   const { t, language } = useLanguage();
   const { trackWordClick } = useStoryProgress();
   const [isOpen, setIsOpen] = useState(false);
+  const myWords = useMyWords();
+  const wordLanguage = language === 'ar' ? 'ar' : 'en';
+  const isSaved = isMyWord(myWords, wordLanguage, word);
   const triggerRef = useRef<HTMLSpanElement>(null);
   const tooltipRef = useRef<HTMLDivElement>(null);
   const [coords, setCoords] = useState<{
@@ -42,87 +47,58 @@ export const VocabularyWord = ({
   ), [word, normalizedDefinition, language]);
   const pairedLanguage = pairedEntry?.language ?? (language === 'ar' ? 'en' : 'ar');
 
-  const highlightStyle = useMemo(() => {
-    if (collectionId === 'turkish') {
-      return 'text-sky-700 border-b-2 border-cyan-500/60 hover:border-cyan-600 font-bold transition-colors';
-    }
-    return customStyle || 'border-b-2 border-gold/40 hover:border-gold font-bold text-wood';
-  }, [collectionId, customStyle]);
+  const highlightStyle = customStyle || 'border-b-2 border-brand-600/40 hover:border-brand-700 font-bold text-brand-900 transition-colors';
 
-  const tooltipTheme = useMemo(() => {
-    if (collectionId === 'turkish') {
-      return {
-        border: 'border-cyan-300/30',
-        accent: 'text-cyan-300',
-        accentSoft: 'text-cyan-300/70',
-        divider: 'border-cyan-300/20',
-      };
-    }
-    if (collectionId === 'history') {
-      return {
-        border: 'border-emerald-300/30',
-        accent: 'text-emerald-300',
-        accentSoft: 'text-emerald-300/70',
-        divider: 'border-emerald-300/20',
-      };
-    }
-    return {
-      border: 'border-gold/20',
-      accent: 'text-gold',
-      accentSoft: 'text-gold/70',
-      divider: 'border-gold/20',
-    };
-  }, [collectionId]);
-
-  const updateCoords = () => {
-    if (triggerRef.current) {
-      const rect = triggerRef.current.getBoundingClientRect();
-      const viewportWidth = window.innerWidth;
-      const viewportHeight = window.innerHeight;
-      
-      const tooltipWidth = tooltipRef.current 
-        ? tooltipRef.current.offsetWidth 
-        : Math.min(viewportWidth - 24, 320);
-      const tooltipHeight = tooltipRef.current 
-        ? tooltipRef.current.offsetHeight 
-        : 100;
-
-      const triggerCenterX = rect.left + rect.width / 2;
-
-      const halfWidth = tooltipWidth / 2;
-      const minLeft = 12 + halfWidth;
-      const maxLeft = viewportWidth - 12 - halfWidth;
-      
-      let clampedLeft = triggerCenterX;
-      if (clampedLeft < minLeft) clampedLeft = minLeft;
-      if (clampedLeft > maxLeft) clampedLeft = maxLeft;
-
-      const arrowOffset = triggerCenterX - clampedLeft;
-
-      const spaceAbove = rect.top;
-      const isAbove = spaceAbove >= tooltipHeight + 16 || spaceAbove >= viewportHeight - rect.bottom;
-
-      const top = isAbove 
-        ? rect.top - 8
-        : rect.bottom + 8;
-
-      setCoords({
-        top,
-        left: clampedLeft,
-        arrowOffset,
-        isAbove
-      });
-    }
+  const tooltipTheme = {
+    border: 'border-brand-300/30',
+    accent: 'text-brand-300',
+    accentSoft: 'text-brand-300/70',
+    divider: 'border-brand-300/20',
   };
 
-  useEffect(() => {
+  const updateCoords = () => {
+    if (!triggerRef.current) return;
+
+    const rect = triggerRef.current.getBoundingClientRect();
+    const viewportWidth = window.innerWidth;
+    const viewportHeight = window.innerHeight;
+    const edge = 12;
+    const gap = 8;
+    const tooltipWidth = tooltipRef.current?.offsetWidth ?? Math.min(viewportWidth - edge * 2, 320);
+    const tooltipHeight = tooltipRef.current?.offsetHeight ?? Math.min(viewportHeight - edge * 2, 180);
+    const triggerCenterX = rect.left + rect.width / 2;
+
+    const unclampedLeft = triggerCenterX - tooltipWidth / 2;
+    const maxLeft = Math.max(edge, viewportWidth - tooltipWidth - edge);
+    const left = Math.min(Math.max(unclampedLeft, edge), maxLeft);
+
+    const spaceAbove = rect.top - edge;
+    const spaceBelow = viewportHeight - rect.bottom - edge;
+    const isAbove = spaceAbove >= tooltipHeight + gap || spaceAbove >= spaceBelow;
+    const desiredTop = isAbove
+      ? rect.top - gap - tooltipHeight
+      : rect.bottom + gap;
+    const maxTop = Math.max(edge, viewportHeight - tooltipHeight - edge);
+    const top = Math.min(Math.max(desiredTop, edge), maxTop);
+
+    const arrowOffset = Math.min(
+      Math.max(triggerCenterX - left, 18),
+      Math.max(18, tooltipWidth - 18),
+    );
+
+    setCoords({ top, left, arrowOffset, isAbove });
+  };
+
+  // Measured before paint, so the card opens in place instead of jumping from the screen corner.
+  useLayoutEffect(() => {
     if (isOpen && hasDefinition) {
       updateCoords();
-      const timer = setTimeout(updateCoords, 10);
+      const resizeObserver = typeof ResizeObserver !== 'undefined' ? new ResizeObserver(updateCoords) : null;
+      if (tooltipRef.current) resizeObserver?.observe(tooltipRef.current);
       window.addEventListener('resize', updateCoords);
       window.addEventListener('scroll', updateCoords, true);
       return () => {
-        clearTimeout(timer);
+        resizeObserver?.disconnect();
         window.removeEventListener('resize', updateCoords);
         window.removeEventListener('scroll', updateCoords, true);
       };
@@ -139,20 +115,34 @@ export const VocabularyWord = ({
 
   return (
     <span className="relative inline-block">
-      <span 
+      <span
         ref={triggerRef}
+        role={hasDefinition ? 'button' : undefined}
+        data-vocab-word={hasDefinition ? '' : undefined}
+        tabIndex={hasDefinition ? 0 : undefined}
+        aria-expanded={hasDefinition ? isOpen : undefined}
         onClick={(e) => {
           e.stopPropagation();
           if (!hasDefinition) return;
           setIsOpen(!isOpen);
           if (!isOpen) trackWordClick(word);
         }}
+        onKeyDown={(e) => {
+          if (!hasDefinition) return;
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            e.stopPropagation();
+            setIsOpen(!isOpen);
+            if (!isOpen) trackWordClick(word);
+          } else if (e.key === 'Escape' && isOpen) {
+            setIsOpen(false);
+          }
+        }}
         className={cn(
-          "transition-colors",
+          "transition-colors rounded-sm outline-none focus-visible:ring-2 focus-visible:ring-gold/70 focus-visible:ring-offset-1",
           hasDefinition ? "cursor-help" : "cursor-default",
           highlightStyle
         )}
-        aria-disabled={!hasDefinition}
       >
         {word}
       </span>
@@ -166,10 +156,10 @@ export const VocabularyWord = ({
               />
               <motion.div
                 ref={tooltipRef}
-                initial={{ opacity: 0, scale: 0.95, x: '-50%', y: coords.isAbove ? '-100%' : '0%' }}
-                animate={{ opacity: 1, scale: 1, x: '-50%', y: coords.isAbove ? '-100%' : '0%' }}
-                exit={{ opacity: 0, scale: 0.95, x: '-50%', y: coords.isAbove ? '-100%' : '0%' }}
-                transition={{ duration: 0.15, ease: 'easeOut' }}
+                initial={{ opacity: 0, scale: 0.985 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.985 }}
+                transition={{ duration: 0.2, ease: 'easeOut' }}
                 style={{ 
                   position: 'fixed',
                   top: coords.top,
@@ -178,7 +168,7 @@ export const VocabularyWord = ({
                   pointerEvents: 'auto'
                 }}
                 className={cn(
-                  "w-[calc(100vw-2rem)] max-w-xs sm:max-w-sm md:max-w-md p-3.5 sm:p-5",
+                  "w-[calc(100vw-1.5rem)] max-w-xs sm:max-w-sm md:max-w-md max-h-[calc(100vh-1.5rem)] overflow-y-auto overscroll-contain [scrollbar-width:none] [&::-webkit-scrollbar]:hidden p-3.5 sm:p-5",
                   "bg-wood text-parchment rounded-xl shadow-2xl border",
                   tooltipTheme.border,
                   language === 'ar' ? "text-right" : "text-left"
@@ -188,7 +178,7 @@ export const VocabularyWord = ({
                 <span className={cn(
                   "font-display uppercase tracking-widest mb-1 sm:mb-2 block",
                   tooltipTheme.accent,
-                  language === 'ar' ? "text-sm sm:text-base" : "text-[10px] sm:text-[11px]"
+                  language === 'ar' ? "text-sm sm:text-base" : "text-[11px] sm:text-xs"
                 )}>
                   {t('nav.meaning')}
                 </span>
@@ -230,9 +220,25 @@ export const VocabularyWord = ({
                   </div>
                 )}
 
+                <button
+                  type="button"
+                  data-my-word-toggle
+                  aria-pressed={isSaved}
+                  onClick={() => toggleMyWord({ word, definition: normalizedDefinition, language: wordLanguage })}
+                  className={cn(
+                    "mt-3.5 inline-flex min-h-9 items-center gap-2 rounded-full border px-3.5 font-display text-[12px] font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/70",
+                    isSaved ? "border-brand-300/50 bg-brand-300/15 text-brand-200" : "border-white/15 text-parchment/75 hover:border-brand-300/50 hover:text-parchment",
+                  )}
+                >
+                  {isSaved ? <Check size={14} /> : <BookMarked size={14} />}
+                  {isSaved
+                    ? (language === 'ar' ? 'فِي كَلِمَاتِي' : 'In My words')
+                    : (language === 'ar' ? 'احْفَظْ فِي كَلِمَاتِي' : 'Save to My words')}
+                </button>
+
                 <div 
                   style={{
-                    left: `calc(50% + ${coords.arrowOffset}px)`
+                    left: coords.arrowOffset
                   }}
                   className={cn(
                     "absolute -translate-x-1/2 border-8 border-transparent",

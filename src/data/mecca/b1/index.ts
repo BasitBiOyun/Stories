@@ -1,4 +1,10 @@
-import type { BookData, Exercise, PageData } from '../../../types';
+import type { BookData, Exercise, PageData, VocabularyChallengePair } from '../../../types';
+import { withPlacesLayer } from '../../../features/historical-entities';
+import { applyChapterExtras } from '../../../lib/chapterExtras';
+import { meccaB1ChapterExtrasEn } from './en/chapterExtras';
+import { meccaB1GroupTasksEn } from './en/groupTasks';
+import { meccaB1ChapterExtrasAr } from './ar/chapterExtras';
+import { meccaB1GroupTasksAr } from './ar/groupTasks';
 import { meccaB1Pages } from './en/pages';
 import {
   meccaB1FinalChallengeExercises,
@@ -25,8 +31,6 @@ import {
   meccaB1LanguageFocusChapter14,
   meccaB1LanguageFocusChapter15,
 } from './en/languageFocus3';
-import { meccaB1TeacherGuide, meccaB1TeacherGuideMetadata } from './en/teacherGuide';
-import { meccaB1SelfStudyGuide, meccaB1StudentGuideMetadata } from './en/selfStudyGuide';
 import { pages as meccaB1PagesAr } from './ar/pages';
 import {
   meccaB1FinalChallengeExercisesAr,
@@ -53,24 +57,35 @@ import {
   meccaB1LanguageFocusChapter14Ar,
   meccaB1LanguageFocusChapter15Ar,
 } from './ar/languageFocus3';
-import { meccaB1TeacherGuideAr, meccaB1TeacherGuideMetadataAr } from './ar/teacherGuide';
-import { meccaB1SelfStudyGuideAr, meccaB1StudentGuideMetadataAr } from './ar/selfStudyGuide';
+import { buildStoryMap } from '../../../features/story-maps/buildStoryMap';
+import { meccaB1StoryMapLayout } from './storyMap';
+import { meccaB1StoryMapCopyEn } from './en/storyMap';
+import { meccaB1StoryMapCopyAr } from './ar/storyMap';
 
-const ENGLISH_GLOSSARY_EXCLUSIONS = new Set([
-  'jahiliyyah',
-  'ka’ba',
-  'qiblah',
-  'arafat',
-]);
-const normalizeTerm = (word: string) => word.trim().toLocaleLowerCase();
+// Interactive map page, placed after the last chapter: the story is read without a break, then the whole journey is seen on the map.
+const MAP_PAGE_ID = 101;
+const MAP_AFTER_CHAPTER = 15;
 
-const cleanEnglishGlossary = (pages: PageData[]): PageData[] => pages.map(page => {
-  if (page.type !== 'glossary' || !page.vocabulary?.length) return page;
-  return {
-    ...page,
-    vocabulary: page.vocabulary.filter(item => !ENGLISH_GLOSSARY_EXCLUSIONS.has(normalizeTerm(item.word))),
-  };
-});
+const withMapPage = (pages: PageData[], mapPage: PageData): PageData[] =>
+  pages.flatMap(page => (page.id === MAP_AFTER_CHAPTER ? [page, mapPage] : [page]));
+
+const mapPageEn: PageData = {
+  id: MAP_PAGE_ID,
+  type: 'map',
+  title: 'Mecca and Its World',
+  subtitle: 'Map · Chapters 1–6',
+  content: '',
+  map: buildStoryMap(meccaB1StoryMapLayout, meccaB1StoryMapCopyEn, 'Mecca B1 EN'),
+};
+
+const mapPageAr: PageData = {
+  id: MAP_PAGE_ID,
+  type: 'map',
+  title: 'مَكَّةُ وعالَمُها',
+  subtitle: 'خَريطَة · الفُصولُ مِنْ 1 إِلى 6',
+  content: '',
+  map: buildStoryMap(meccaB1StoryMapLayout, meccaB1StoryMapCopyAr, 'Mecca B1 AR'),
+};
 
 const englishLanguageFocus = {
   ...meccaB1LanguageFocusExercises,
@@ -111,7 +126,7 @@ const attachLearning = (
   quickChallenges: Record<number, Exercise>,
   languageFocus: Record<number, Exercise[]>,
   knowledgeCheck: Exercise[],
-  vocabularyPairs: { word: string; meaning: string }[],
+  vocabularyPairs: VocabularyChallengePair[],
   review: Exercise[],
   finalChallenge: Exercise[],
 ): PageData[] => sourcePages.map((page) => {
@@ -135,11 +150,9 @@ export const meccaB1BookDataEn: BookData = {
   title: 'Islamic History & Civilization: Mecca (B1)',
   level: 'B1',
   baseFontSize: 13,
-  pages: cleanEnglishGlossary(attachLearning(meccaB1Pages, meccaB1QuickChallenges, englishLanguageFocus, meccaB1KnowledgeCheckExercises, meccaB1VocabularyChallengePairs, meccaB1LanguageReviewExercises, meccaB1FinalChallengeExercises)),
-  teacherGuide: meccaB1TeacherGuide,
-  teacherGuideMetadata: meccaB1TeacherGuideMetadata,
-  selfStudyGuide: meccaB1SelfStudyGuide,
-  studentGuideMetadata: meccaB1StudentGuideMetadata,
+  pages: applyChapterExtras(withPlacesLayer(withMapPage(attachLearning(meccaB1Pages, meccaB1QuickChallenges, englishLanguageFocus, meccaB1KnowledgeCheckExercises, meccaB1VocabularyChallengePairs, meccaB1LanguageReviewExercises, meccaB1FinalChallengeExercises), mapPageEn), 'mecca-b1', 'en'), { ...meccaB1ChapterExtrasEn, groupTasks: meccaB1GroupTasksEn }),
+  teacherGuide: [],
+  selfStudyGuide: [],
 };
 
 export const meccaB1BookDataAr: BookData = {
@@ -147,11 +160,9 @@ export const meccaB1BookDataAr: BookData = {
   title: 'التاريخ والحضارة الإسلامية: مكة قبل الإسلام (B1)',
   level: 'B1',
   baseFontSize: 14,
-  pages: attachLearning(meccaB1PagesAr, meccaB1QuickChallengesAr, arabicLanguageFocus, meccaB1KnowledgeCheckExercisesAr, meccaB1VocabularyChallengePairsAr, meccaB1LanguageReviewExercisesAr, meccaB1FinalChallengeExercisesAr),
-  teacherGuide: meccaB1TeacherGuideAr,
-  teacherGuideMetadata: meccaB1TeacherGuideMetadataAr,
-  selfStudyGuide: meccaB1SelfStudyGuideAr,
-  studentGuideMetadata: meccaB1StudentGuideMetadataAr,
+  pages: applyChapterExtras(withPlacesLayer(withMapPage(attachLearning(meccaB1PagesAr, meccaB1QuickChallengesAr, arabicLanguageFocus, meccaB1KnowledgeCheckExercisesAr, meccaB1VocabularyChallengePairsAr, meccaB1LanguageReviewExercisesAr, meccaB1FinalChallengeExercisesAr), mapPageAr), 'mecca-b1', 'ar'), { ...meccaB1ChapterExtrasAr, groupTasks: meccaB1GroupTasksAr }),
+  teacherGuide: [],
+  selfStudyGuide: [],
 };
 
 export const meccaB1BookData = meccaB1BookDataEn;

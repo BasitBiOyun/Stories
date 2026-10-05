@@ -7,62 +7,46 @@ import {
   HelpCircle,
   ArrowRight,
   RotateCcw,
-  MessageSquare,
-  Users,
-  GraduationCap,
   Lightbulb,
 } from './ui/icons';
 import { Exercise } from '../types';
 import { cn } from '../lib/utils';
+import { MODE_ICONS, modeKeyFor } from '../lib/sectionIcons';
+import { brandConfetti, collectionVisualFor } from '../core/content/storyCatalog';
 import confetti from 'canvas-confetti';
 import { useLanguage } from '../contexts/LanguageContext';
+import { useClassMode } from '../contexts/ClassModeContext';
 import { highlightPhraseMatches } from '../lib/highlightTextMatch';
 import {
+  presentDeranged,
+  presentExerciseTitle,
   presentMatchingMeanings,
   presentMultipleChoice,
   presentQuizOptions,
 } from '../lib/exercisePresentation';
+import { isLanguageItemType, scoreLanguageItems } from '../lib/exerciseScoring';
+import { LanguageItemExercise } from './exercises/LanguageItemExercises';
+import { MatchingBoard } from './exercises/MatchingBoard';
 
 interface ExerciseModuleProps {
   exercise: Exercise;
   onComplete: () => void;
   onClose: () => void;
   collectionId?: string;
+  variant?: 'default' | 'quick' | 'language' | 'review';
+  embedded?: boolean;
 }
 
-const themeFor = (collectionId: string) => {
-  if (collectionId === 'history') {
-    return {
-      accentBg: 'bg-emerald-600',
-      accentHover: 'hover:bg-emerald-700',
-      accentText: 'text-emerald-700',
-      title: 'text-emerald-950',
-      softBg: 'bg-emerald-50',
-      softBorder: 'border-emerald-200',
-      selected: 'border-emerald-500 bg-emerald-50 text-emerald-900',
-    };
-  }
-  if (collectionId === 'turkish') {
-    return {
-      accentBg: 'bg-sky-700',
-      accentHover: 'hover:bg-sky-800',
-      accentText: 'text-sky-700',
-      title: 'text-sky-950',
-      softBg: 'bg-sky-50',
-      softBorder: 'border-sky-200',
-      selected: 'border-sky-500 bg-sky-50 text-sky-950',
-    };
-  }
-  return {
-    accentBg: 'bg-amber-600',
-    accentHover: 'hover:bg-amber-700',
-    accentText: 'text-amber-700',
-    title: 'text-amber-950',
-    softBg: 'bg-amber-50',
-    softBorder: 'border-amber-200',
-    selected: 'border-amber-500 bg-amber-50 text-amber-950',
+// The collection's colours come from the brand-* tokens App publishes; the classes are the same for every collection.
+const theme = {
+    accentBg: 'bg-brand-600',
+    accentHover: 'hover:bg-brand-700',
+    accentText: 'text-brand-700',
+    title: 'text-brand-950',
+    softBg: 'bg-brand-50',
+    softBorder: 'border-brand-200',
+    selected: 'border-brand-500 bg-brand-50 text-brand-950',
   };
-};
 
 const normalizeText = (value: unknown) => String(value ?? '')
   .trim()
@@ -88,14 +72,18 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
   onComplete,
   onClose,
   collectionId = 'prophets',
+  variant = 'default',
+  embedded = false,
 }) => {
   const { language, t, formatNumber, isRTL } = useLanguage();
-  const theme = themeFor(collectionId);
-  const isArabic = language === 'ar';
+    const isArabic = language === 'ar';
+  const isQuick = variant === 'quick';
+  const isLanguage = variant === 'language';
+  const isReview = variant === 'review';
+  const displayExerciseTitle = React.useMemo(() => presentExerciseTitle(exercise), [exercise]);
   const [userAnswer, setUserAnswer] = React.useState<any>(null);
   const [isSubmitted, setIsSubmitted] = React.useState(false);
   const [showHint, setShowHint] = React.useState(false);
-  const [selectedMatchingLeft, setSelectedMatchingLeft] = React.useState<string | null>(null);
   const [matchingAssignments, setMatchingAssignments] = React.useState<Record<string, string>>({});
   const [localSequence, setLocalSequence] = React.useState<string[]>([]);
   const [selectedDragItem, setSelectedDragItem] = React.useState<string | null>(null);
@@ -106,6 +94,9 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
   const [quizAnswered, setQuizAnswered] = React.useState(false);
   const [quizWasCorrect, setQuizWasCorrect] = React.useState<boolean | null>(null);
   const [reflectionResponse, setReflectionResponse] = React.useState('');
+  const { classMode } = useClassMode();
+  const [shownExamples, setShownExamples] = React.useState<Set<number>>(new Set());
+  const [attempt, setAttempt] = React.useState(0);
 
   const reflectionNeedsWriting = exercise.type === 'reflection' && (
     /\bwrite\b/i.test(exercise.instructions ?? '')
@@ -124,7 +115,6 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
     setUserAnswer(null);
     setIsSubmitted(false);
     setShowHint(false);
-    setSelectedMatchingLeft(null);
     setMatchingAssignments({});
     setLocalSequence([]);
     setSelectedDragItem(null);
@@ -138,12 +128,13 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
   }, [exercise]);
 
   React.useEffect(() => {
+    if (embedded) return;
     const previous = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
     return () => {
       document.body.style.overflow = previous;
     };
-  }, []);
+  }, [embedded]);
 
   const isCorrectAnswer = (answer: any) => {
     if (exercise.type === 'matching') {
@@ -161,12 +152,20 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
       );
     }
     if (exercise.type === 'reflection' || exercise.type === 'tap-reveal') return true;
+    if (isLanguageItemType(exercise.type)) {
+      const results = scoreLanguageItems(exercise, answer);
+      return Boolean(results?.length) && results!.every(Boolean);
+    }
     if (exercise.type === 'fill-blanks') {
-      const normalizedMatch = normalizeText(answer) === normalizeText(exercise.correctAnswer);
-      const morphologyMatch = typeof answer === 'string' && typeof exercise.correctAnswer === 'string'
-        ? highlightPhraseMatches(answer, exercise.correctAnswer, language === 'ar' ? 'ar' : 'en')
-        : false;
-      return normalizedMatch || morphologyMatch;
+      if (typeof answer !== 'string') return false;
+      const expectedAnswers = Array.isArray(exercise.correctAnswer)
+        ? exercise.correctAnswer.map(String)
+        : [String(exercise.correctAnswer ?? '')];
+
+      return expectedAnswers.some((expected) => (
+        normalizeText(answer) === normalizeText(expected)
+        || highlightPhraseMatches(answer, expected, language === 'ar' ? 'ar' : 'en')
+      ));
     }
     return answer === exercise.correctAnswer;
   };
@@ -176,42 +175,25 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
     setIsSubmitted(true);
     if (isCorrectAnswer(answer)) {
       confetti({
-        particleCount: 110,
-        spread: 65,
+        particleCount: isQuick ? 60 : isLanguage ? 36 : isReview ? 22 : 110,
+        spread: isQuick ? 52 : isLanguage ? 42 : isReview ? 34 : 65,
         origin: { y: 0.65 },
-        colors: collectionId === 'history'
-          ? ['#059669', '#10B981', '#34D399']
-          : collectionId === 'turkish'
-            ? ['#0284C7', '#0EA5E9', '#38BDF8']
-            : ['#D97706', '#F59E0B', '#FCD34D'],
+        colors: brandConfetti(collectionVisualFor(collectionId).readerTokens.scale),
       });
     }
   };
 
   const retry = () => {
+    setAttempt((value) => value + 1);
     setUserAnswer(null);
     setIsSubmitted(false);
     setShowHint(false);
-    setSelectedMatchingLeft(null);
     setMatchingAssignments({});
     setLocalSequence([]);
     setSelectedDragItem(null);
     setDragAssignments({});
     setRevealedItems(new Set());
     setReflectionResponse('');
-  };
-
-  const selectMeaning = (meaning: string) => {
-    if (!selectedMatchingLeft || isSubmitted) return;
-    setMatchingAssignments((previous) => {
-      const next = { ...previous };
-      for (const [left, assignedMeaning] of Object.entries(next)) {
-        if (assignedMeaning === meaning) delete next[left];
-      }
-      next[selectedMatchingLeft] = meaning;
-      return next;
-    });
-    setSelectedMatchingLeft(null);
   };
 
   const assignDragItem = (groupName: string) => {
@@ -242,7 +224,7 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
     setQuizWasCorrect(isCorrect);
     if (isCorrect) {
       setQuizScore((score) => score + 1);
-      confetti({ particleCount: 70, spread: 55, origin: { y: 0.7 } });
+      confetti({ particleCount: isQuick ? 40 : isLanguage ? 28 : isReview ? 18 : 70, spread: isQuick ? 45 : isLanguage ? 38 : isReview ? 32 : 55, origin: { y: 0.7 } });
     }
   };
 
@@ -263,7 +245,7 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
         <div className="grid grid-cols-2 gap-3 sm:gap-4">
           {[true, false].map((value) => {
             const selected = userAnswer === value;
-            const revealCorrect = isSubmitted && exercise.correctAnswer === value;
+            const revealCorrect = revealAnswer && exercise.correctAnswer === value;
             const revealWrong = isSubmitted && selected && !revealCorrect;
             return (
               <button
@@ -299,7 +281,7 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
         <div className="grid grid-cols-1 gap-3">
           {presentedMcOptions.map((option, displayIndex) => {
             const selected = userAnswer === option.originalIndex;
-            const revealCorrect = isSubmitted && option.originalIndex === exercise.correctAnswer;
+            const revealCorrect = revealAnswer && option.originalIndex === exercise.correctAnswer;
             const revealWrong = isSubmitted && selected && !revealCorrect;
             return (
               <button
@@ -329,7 +311,7 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
                       ? `${theme.accentBg} text-white`
                       : `${theme.softBg} ${theme.accentText}`
                 )}>
-                  {String.fromCharCode(65 + displayIndex)}
+                  {isArabic ? (['أ', 'ب', 'ج', 'د', 'هـ', 'و'][displayIndex] ?? formatNumber(displayIndex + 1)) : String.fromCharCode(65 + displayIndex)}
                 </span>
                 <span className={cn(
                   'font-serif font-semibold leading-snug flex-1',
@@ -346,65 +328,18 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
 
     if (exercise.type === 'matching') {
       const pairs = exercise.matchingPairs ?? [];
-      const assignedMeanings = new Set(Object.values(matchingAssignments));
       const allAssigned = pairs.length > 0 && Object.keys(matchingAssignments).length === pairs.length;
       return (
         <div className="space-y-5">
-          <p className={cn('font-serif text-wood/55', isArabic ? 'text-base sm:text-lg' : 'text-sm sm:text-base')}>{t('nav.matchingInstructions')}</p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
-            <div className="space-y-2.5">
-              <p className={cn('font-display uppercase tracking-widest font-black', isArabic ? 'text-sm sm:text-base' : 'text-xs', theme.accentText)}>
-                {isArabic ? 'المفاهيم' : 'Concepts'}
-              </p>
-              {pairs.map((pair) => {
-                const selected = selectedMatchingLeft === pair.left;
-                const assigned = matchingAssignments[pair.left];
-                return (
-                  <button
-                    key={pair.left}
-                    type="button"
-                    disabled={isSubmitted}
-                    onClick={() => setSelectedMatchingLeft(selected ? null : pair.left)}
-                    className={cn(
-                      'w-full min-h-14 rounded-xl border-2 px-4 py-3 text-start font-serif font-bold transition-colors flex items-center justify-between gap-3',
-                      isArabic ? 'text-base sm:text-lg' : 'text-sm sm:text-base',
-                      selected ? theme.selected : `bg-white ${theme.softBorder}`
-                    )}
-                  >
-                    <span>{pair.left}</span>
-                    {assigned && <span className={cn('font-medium truncate max-w-[45%]', isArabic ? 'text-sm' : 'text-xs', theme.accentText)}>✓ {assigned}</span>}
-                  </button>
-                );
-              })}
-            </div>
-            <div className="space-y-2.5">
-              <p className={cn('font-display uppercase tracking-widest font-black', isArabic ? 'text-sm sm:text-base' : 'text-xs', theme.accentText)}>
-                {isArabic ? 'المعاني' : 'Meanings'}
-              </p>
-              {presentedMeanings.map((meaning) => {
-                const used = assignedMeanings.has(meaning);
-                return (
-                  <button
-                    key={meaning}
-                    type="button"
-                    disabled={isSubmitted || !selectedMatchingLeft}
-                    onClick={() => selectMeaning(meaning)}
-                    className={cn(
-                      'w-full min-h-14 rounded-xl border-2 px-4 py-3 text-start font-serif font-medium transition-colors',
-                      isArabic ? 'text-base sm:text-lg' : 'text-sm sm:text-base',
-                      used
-                        ? 'border-emerald-200 bg-emerald-50 text-emerald-800'
-                        : selectedMatchingLeft
-                          ? `bg-white ${theme.softBorder} hover:bg-gray-50`
-                          : 'bg-gray-50 border-gray-100 text-wood/45'
-                    )}
-                  >
-                    {meaning}
-                  </button>
-                );
-              })}
-            </div>
-          </div>
+          <MatchingBoard
+            pairs={pairs}
+            meanings={presentedMeanings}
+            assignments={matchingAssignments}
+            onAssignmentsChange={setMatchingAssignments}
+            submitted={isSubmitted}
+            headings={exercise.matchingHeadings}
+            instructions={exercise.matchingHeadings ? null : undefined}
+          />
           {!isSubmitted && (
             <button
               type="button"
@@ -420,6 +355,18 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
             </button>
           )}
         </div>
+      );
+    }
+
+    if (isLanguageItemType(exercise.type)) {
+      return (
+        <LanguageItemExercise
+          key={`${exercise.id}:${attempt}`}
+          exercise={exercise}
+          isSubmitted={isSubmitted}
+          onSubmit={(answer) => submit(answer)}
+          theme={theme}
+        />
       );
     }
 
@@ -481,20 +428,21 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
       return (
         <div className="rounded-2xl bg-white border-2 border-gray-100 p-4 sm:p-6 space-y-5">
           <div className={cn('font-serif leading-loose text-wood', isArabic ? 'text-lg sm:text-xl' : 'text-base sm:text-lg')}>
-            {(exercise.fillBlanksText ?? '').split('[blank]').map((part, index, pieces) => (
-              <React.Fragment key={index}>
-                {part}
-                {index < pieces.length - 1 && (
-                  <input
-                    type="text"
-                    disabled={isSubmitted}
-                    value={typeof userAnswer === 'string' ? userAnswer : ''}
-                    onChange={(event) => setUserAnswer(event.target.value)}
-                    className={cn('mx-2 px-3 py-1 border-b-2 bg-transparent outline-none min-w-32 text-center font-bold', theme.softBorder)}
-                  />
-                )}
-              </React.Fragment>
-            ))}
+            {(exercise.fillBlanksText ?? '').split(/(\[blank\]|_{3,})/g).map((part, index) => {
+              const isBlank = /^(?:\[blank\]|_{3,})$/.test(part);
+              if (!isBlank) return <React.Fragment key={index}>{part}</React.Fragment>;
+              return (
+                <input
+                  key={index}
+                  type="text"
+                  disabled={isSubmitted}
+                  value={typeof userAnswer === 'string' ? userAnswer : ''}
+                  onChange={(event) => setUserAnswer(event.target.value)}
+                  aria-label={isArabic ? 'إجابة الفراغ' : 'Blank answer'}
+                  className={cn('mx-2 px-3 py-1 border-b-2 bg-transparent outline-none min-w-32 text-center font-bold', theme.softBorder)}
+                />
+              );
+            })}
           </div>
           {!isSubmitted && (
             <button type="button" onClick={() => submit(userAnswer)} className={cn('w-full min-h-12 rounded-xl text-white font-bold', isArabic && 'text-base', theme.accentBg)}>
@@ -506,7 +454,8 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
     }
 
     if (exercise.type === 'drag-drop') {
-      const allItems = exercise.dragDropGroups?.flatMap((group) => group.items) ?? [];
+      // Authored groups list their items together; mix them so the order does not give the answer away.
+      const allItems = presentDeranged(exercise.dragDropGroups?.flatMap((group) => group.items) ?? [], `${exercise.id}:items`);
       const assigned = Object.values(dragAssignments).flat();
       const available = allItems.filter((item) => !assigned.includes(item));
       const allAssigned = allItems.length > 0 && available.length === 0;
@@ -584,10 +533,16 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
     if (exercise.type === 'reflection') {
       return (
         <div className="space-y-4">
-          {reflectionNeedsWriting && (
+          {exercise.type === 'reflection' && (
             <div className="rounded-2xl bg-white border-2 border-gray-100 p-4 sm:p-5">
+              {!reflectionNeedsWriting && (
+                <p className={cn('mb-2 flex items-center gap-1.5 font-display font-semibold uppercase tracking-widest text-wood/45', isArabic ? 'text-sm' : 'text-[11px]')}>
+                  <MODE_ICONS.sayOrWrite.icon size={15} aria-hidden="true" />
+                  {isArabic ? 'قُلْها أو اكتُبْها (اختياري)' : 'Say it or write it (optional)'}
+                </p>
+              )}
               <textarea
-                rows={5}
+                rows={reflectionNeedsWriting ? 5 : 3}
                 disabled={isSubmitted}
                 value={reflectionResponse}
                 onChange={(event) => setReflectionResponse(event.target.value)}
@@ -603,17 +558,42 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
           {exercise.discussionPrompts?.map((prompt, index) => (
             <div key={`${prompt.question}-${index}`} className="rounded-2xl bg-white border-2 border-gray-100 p-5">
               <div className="flex items-center gap-2 mb-2 text-wood/50">
-                {prompt.mode === 'Individual' ? <GraduationCap size={18} /> : prompt.mode === 'Pair' ? <MessageSquare size={18} /> : <Users size={18} />}
-                <span className={cn('font-display uppercase tracking-widest', isArabic ? 'text-sm' : 'text-xs')}>{isArabic ? (prompt.mode === 'Individual' ? 'فردي' : prompt.mode === 'Pair' ? 'ثنائي' : 'صفي') : prompt.mode}</span>
+                {(() => {
+                  const mode = MODE_ICONS[modeKeyFor(prompt.mode)];
+                  return (
+                    <>
+                      <mode.icon size={18} aria-hidden="true" />
+                      <span className={cn('font-display uppercase tracking-widest', isArabic ? 'text-sm' : 'text-xs')}>{isArabic ? mode.ar : mode.en}</span>
+                    </>
+                  );
+                })()}
               </div>
               <p className={cn('font-serif font-semibold text-wood', isArabic ? 'text-base sm:text-lg md:text-xl' : 'text-sm sm:text-base md:text-lg')}>{prompt.question}</p>
+              {classMode && !isSubmitted && prompt.example && !shownExamples.has(index) && (
+                <button
+                  type="button"
+                  data-class-show-example
+                  onClick={() => setShownExamples(prev => new Set(prev).add(index))}
+                  className={cn('mt-3 inline-flex min-h-9 items-center rounded-lg border border-emerald-300 bg-white px-3 font-display font-semibold text-emerald-800 hover:bg-emerald-50', isArabic ? 'text-sm' : 'text-[12px]')}
+                >
+                  {isArabic ? 'أَظْهِرِ المِثَالَ' : 'Show example'}
+                </button>
+              )}
+              {(isSubmitted || shownExamples.has(index)) && prompt.example && (
+                <div className="mt-3 rounded-xl border border-emerald-200 bg-emerald-50/70 px-3 py-2">
+                  <p className={cn('font-display font-semibold uppercase tracking-widest text-emerald-800', isArabic ? 'text-sm' : 'text-[11px]')}>
+                    {isArabic ? 'مِثَالٌ عَلَى إِجَابَةٍ' : 'Example answer'}
+                  </p>
+                  <p className={cn('mt-1 font-serif text-wood', isArabic ? 'text-base sm:text-lg' : 'text-sm sm:text-base')}>{prompt.example}</p>
+                </div>
+              )}
             </div>
           ))}
           {!isSubmitted && (
             <button
               type="button"
               disabled={reflectionNeedsWriting && !reflectionResponse.trim()}
-              onClick={() => submit(reflectionNeedsWriting ? reflectionResponse : true)}
+              onClick={() => submit(reflectionResponse.trim() ? reflectionResponse : true)}
               className={cn(
                 'w-full min-h-12 rounded-xl font-bold',
                 isArabic && 'text-base',
@@ -684,34 +664,121 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
   const correct = isSubmitted && (exercise.type === 'quiz-game'
     ? quizScore === (exercise.quizQuestions?.length ?? 0)
     : isCorrectAnswer(userAnswer));
+  // The first wrong try gets only the hint; the answer and explanation appear after a second try.
+  const revealAnswer = isSubmitted && (correct || attempt > 0);
+
+  const quickBackground =
+    'radial-gradient(circle at 14% 8%, color-mix(in srgb, var(--brand-500) 12%, transparent), transparent 34%), #FBFAF6';
+  const languageBackground =
+    'radial-gradient(circle at 88% 12%, color-mix(in srgb, var(--brand-500) 11%, transparent), transparent 32%), #FCFBF8';
 
   const dialog = (
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className={cn('fixed inset-0 z-[1000] bg-[#FDFBF7] flex flex-col', isRTL && 'font-arabic')}
+      className={cn(
+        embedded
+          ? 'relative flex min-h-0 w-full flex-col overflow-hidden rounded-[24px] bg-white/72 ring-1 ring-black/[0.06]'
+          : 'fixed inset-0 z-[1000] flex flex-col',
+        !embedded && (isQuick ? 'bg-[#FBFAF6]' : isLanguage ? 'bg-[#FCFBF8]' : 'bg-[#FDFBF7]'),
+        isRTL && 'font-arabic'
+      )}
+      style={!embedded ? (isQuick ? { background: quickBackground } : isLanguage ? { background: languageBackground } : undefined) : undefined}
       dir={isRTL ? 'rtl' : 'ltr'}
-      role="dialog"
-      aria-modal="true"
-      aria-label={exercise.title || exercise.question || t('nav.interactiveChallenge')}
+      role={embedded ? 'group' : 'dialog'}
+      aria-modal={embedded ? undefined : true}
+      aria-label={isQuick ? t('nav.quickChallenge') : isLanguage ? (language === 'ar' ? 'التركيز اللغوي' : 'Language Focus') : (displayExerciseTitle || exercise.question || t('nav.interactiveChallenge'))}
     >
-      <header className={cn('shrink-0 border-b-2 px-4 sm:px-6 md:px-10 py-4 sm:py-5 flex items-start justify-between gap-4', theme.softBg, theme.softBorder)}>
+      <header className={cn(
+        'shrink-0 px-4 sm:px-6 md:px-10 flex items-start justify-between gap-4',
+        embedded && isReview
+          ? 'border-b border-black/[0.05] bg-white/45 py-4 sm:py-5'
+          : isQuick
+          ? 'border-b border-black/[0.06] bg-white/45 py-4 sm:py-5 backdrop-blur-xl'
+          : isLanguage
+          ? 'border-b border-black/[0.05] bg-white/55 py-4 sm:py-5 backdrop-blur-xl'
+          : `border-b-2 py-4 sm:py-5 ${theme.softBg} ${theme.softBorder}`
+      )}>
         <div className="min-w-0">
-          <p className={cn('font-display uppercase tracking-[0.2em] font-black mb-1', isArabic ? 'text-sm sm:text-base' : 'text-[10px] sm:text-xs', theme.accentText)}>{t('nav.interactiveChallenge')}</p>
-          <h3 className={cn('font-display text-xl sm:text-2xl md:text-3xl font-black tracking-tight leading-tight', theme.title)}>{exercise.title}</h3>
-          {exercise.instructions && <p className={cn('font-serif mt-1', isArabic ? 'text-sm sm:text-base md:text-lg' : 'text-xs sm:text-sm md:text-base', theme.accentText)}>{exercise.instructions}</p>}
+          <p className={cn(
+            'font-display uppercase tracking-[0.2em] font-semibold',
+            isArabic ? 'text-sm sm:text-base' : 'text-[10px] sm:text-xs',
+            theme.accentText
+          )}>
+            {isQuick
+              ? t('nav.quickChallenge')
+              : isLanguage
+              ? (language === 'ar' ? 'التركيز اللغوي' : 'Language Focus')
+              : isReview
+              ? (language === 'ar' ? 'مهمة لغوية' : 'Language task')
+              : t('nav.interactiveChallenge')}
+          </p>
+
+          {!isQuick && (
+            <h3 className={cn(
+              'mt-1 font-display text-xl sm:text-2xl md:text-3xl leading-tight',
+              isLanguage ? 'font-semibold tracking-[-0.03em]' : 'font-black tracking-tight',
+              theme.title
+            )}>
+              {displayExerciseTitle}
+            </h3>
+          )}
+
+          {exercise.instructions && (
+            <p className={cn(
+              'font-serif',
+              isQuick ? 'mt-2 max-w-3xl desk:max-w-4xl wide:max-w-none text-wood/58' : isLanguage ? 'mt-2 max-w-3xl desk:max-w-4xl wide:max-w-none text-wood/55' : `mt-1 ${theme.accentText}`,
+              isArabic ? 'text-sm sm:text-base md:text-lg' : 'text-xs sm:text-sm md:text-base'
+            )}>
+              {exercise.instructions}
+            </p>
+          )}
         </div>
-        <button type="button" onClick={onClose} className={cn('p-2 rounded-full shrink-0 border-2 bg-white', theme.softBorder, theme.accentText)} aria-label={t('nav.close')}>
-          <XCircle className="w-6 h-6 sm:w-7 sm:h-7" />
-        </button>
+
+        {!embedded && (
+          <button
+            type="button"
+            onClick={onClose}
+            className={cn(
+              'touch-target flex shrink-0 items-center justify-center rounded-full transition-colors',
+              isQuick || isLanguage
+                ? 'bg-white/70 text-wood/55 shadow-sm ring-1 ring-black/[0.06] hover:bg-white hover:text-wood'
+                : `border-2 bg-white ${theme.softBorder} ${theme.accentText}`
+            )}
+            aria-label={t('nav.close')}
+          >
+            <XCircle className="w-6 h-6 sm:w-7 sm:h-7" />
+          </button>
+        )}
       </header>
 
-      <main className="flex-1 min-h-0 overflow-y-auto custom-scrollbar">
-        <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 md:px-10 py-5 sm:py-8 space-y-6">
+      <main className={cn('flex-1 min-h-0 custom-scrollbar', embedded ? 'overflow-visible' : 'overflow-y-auto')}>
+        <div className={cn(
+          'w-full mx-auto px-4 sm:px-6 md:px-10 space-y-6',
+          embedded && isReview
+            ? 'max-w-5xl desk:max-w-[84rem] wide:max-w-none py-5 sm:py-6 md:py-7'
+            : isQuick
+            ? 'max-w-4xl desk:max-w-[72rem] wide:max-w-none py-7 sm:py-10 md:py-12'
+            : isLanguage
+            ? 'max-w-5xl desk:max-w-[84rem] wide:max-w-none py-7 sm:py-9 md:py-10'
+            : 'max-w-6xl desk:max-w-[92rem] wide:max-w-none py-5 sm:py-8'
+        )}>
           {exercise.question && exercise.type !== 'quiz-game' && (
-            <h4 className="font-display text-xl sm:text-2xl md:text-3xl font-bold text-wood leading-snug">{exercise.question}</h4>
+            <h4 className={cn(
+              'font-display font-semibold text-wood leading-[1.16]',
+              isQuick
+                ? 'max-w-3xl desk:max-w-5xl wide:max-w-none text-2xl tracking-[-0.03em] sm:text-3xl md:text-[2.15rem] desk:text-[2.45rem]'
+                : isLanguage
+                ? 'max-w-4xl desk:max-w-5xl wide:max-w-none text-xl tracking-[-0.025em] sm:text-2xl md:text-[1.75rem] desk:text-[2rem]'
+                : isReview
+                ? 'max-w-4xl desk:max-w-5xl wide:max-w-none text-lg tracking-[-0.02em] sm:text-xl md:text-2xl desk:text-[1.75rem]'
+                : 'text-xl sm:text-2xl md:text-3xl desk:text-[2.15rem]'
+            )}>
+              {exercise.question}
+            </h4>
           )}
+
           {renderContent()}
 
           <AnimatePresence mode="wait">
@@ -719,7 +786,13 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
               <motion.section
                 initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
-                className={cn('rounded-2xl border-2 p-4 sm:p-6 space-y-4', correct ? 'bg-emerald-50 border-emerald-200' : 'bg-rose-50 border-rose-200')}
+                className={cn(
+                  'rounded-2xl p-4 sm:p-6 space-y-4',
+                  isQuick || isLanguage ? 'border ring-1 ring-inset' : 'border-2',
+                  correct
+                    ? 'bg-emerald-50 border-emerald-200 ring-emerald-100'
+                    : 'bg-rose-50 border-rose-200 ring-rose-100'
+                )}
               >
                 <div className="flex items-start gap-3">
                   {correct ? <CheckCircle2 className="text-emerald-600 shrink-0 mt-0.5" size={22} /> : <XCircle className="text-rose-600 shrink-0 mt-0.5" size={22} />}
@@ -732,22 +805,30 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
                     </p>
                   </div>
                 </div>
-                {exercise.explanation && (
+
+                {exercise.explanation && revealAnswer && (
                   <div className={cn('rounded-xl bg-white/70 border border-black/5 p-3 sm:p-4 font-serif text-wood/75 leading-relaxed', isArabic ? 'text-base sm:text-lg' : 'text-sm sm:text-base')}>
                     <span className={cn('block font-display uppercase tracking-widest text-wood/40 mb-1', isArabic ? 'text-sm' : 'text-[10px]')}>{t('nav.explanation')}</span>
                     {exercise.explanation}
                   </div>
                 )}
+
+                {!revealAnswer && (
+                  <p className={cn('font-serif text-wood/55', isArabic ? 'text-sm sm:text-base' : 'text-xs sm:text-sm')}>
+                    {t('nav.answerAfterNextTry')}
+                  </p>
+                )}
+
                 <div className={cn(
                   'grid grid-cols-1 gap-3 w-full',
                   correct ? 'sm:max-w-sm sm:mx-auto' : 'sm:grid-cols-2'
                 )}>
                   {!correct && (
-                    <button type="button" onClick={retry} className={cn('min-h-12 rounded-xl bg-white border-2 border-rose-200 text-rose-700 font-display uppercase tracking-widest font-bold flex items-center justify-center gap-2', isArabic ? 'text-sm sm:text-base' : 'text-xs')}>
+                    <button type="button" onClick={retry} className={cn('min-h-12 rounded-xl font-display uppercase tracking-widest font-bold flex items-center justify-center gap-2', isArabic ? 'text-sm sm:text-base' : 'text-xs', revealAnswer ? 'bg-white border-2 border-rose-200 text-rose-700' : `text-white ${theme.accentBg}`)}>
                       <RotateCcw size={16} /> {t('nav.tryAgain')}
                     </button>
                   )}
-                  <button type="button" onClick={onComplete} className={cn('min-h-12 rounded-xl text-white font-display uppercase tracking-widest font-bold flex items-center justify-center gap-2', isArabic ? 'text-sm sm:text-base' : 'text-xs', correct ? 'bg-emerald-600' : 'bg-rose-600')}>
+                  <button type="button" onClick={onComplete} className={cn('min-h-12 rounded-xl font-display uppercase tracking-widest font-bold flex items-center justify-center gap-2', isArabic ? 'text-sm sm:text-base' : 'text-xs', correct ? 'bg-emerald-600 text-white' : revealAnswer ? `text-white ${theme.accentBg}` : 'bg-white border-2 border-black/10 text-wood/70')}>
                     {t('nav.continue')} <ArrowRight className={cn('w-4 h-4', isRTL && 'rotate-180')} />
                   </button>
                 </div>
@@ -763,7 +844,14 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
         </div>
       </main>
 
-      <footer className="shrink-0 border-t border-gray-200 bg-white px-4 sm:px-6 md:px-10 py-3 flex items-center justify-between gap-3 safe-area-bottom">
+      <footer className={cn(
+        'shrink-0 px-4 sm:px-6 md:px-10 py-3 flex items-center justify-between gap-3 safe-area-bottom',
+        embedded && isReview
+          ? 'border-t border-black/[0.05] bg-white/38'
+          : isQuick || isLanguage
+          ? 'border-t border-black/[0.06] bg-white/55 backdrop-blur-xl'
+          : 'border-t border-gray-200 bg-white'
+      )}>
         <div>
           {exercise.hints?.length ? (
             <button type="button" onClick={() => setShowHint((value) => !value)} className={cn('flex items-center gap-2 font-display font-bold', isArabic ? 'text-sm' : 'text-xs', theme.accentText)}>
@@ -779,6 +867,6 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
       </footer>
     </motion.div>
   );
-
-  return typeof document === 'undefined' ? dialog : createPortal(dialog, document.body);
+  if (embedded || typeof document === 'undefined') return dialog;
+  return createPortal(dialog, document.body);
 };

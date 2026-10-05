@@ -1,14 +1,13 @@
 import type { Level } from '../../types';
-import type { BookDisplayTitles, BookPair, CollectionId, StoryId } from './contracts';
+import type { BookPair, CollectionId, StoryId } from './contracts';
 import { getStorageManifest } from '../storage/storageManifests';
 import type { BookAssetManifest } from '../storage/contracts';
-import { finalizeBookPairForUi } from './uiBookFinalization';
+import { finalizePreparedBookPairForUi } from './uiBookFinalization';
 
 export interface BookDefinition {
   storyId: StoryId;
   level: Level;
   collection: CollectionId;
-  titles: BookDisplayTitles;
   storage: BookAssetManifest;
   /** Canonical/prepared book data before the shared UI learning finalization layer. */
   loadSource: () => Promise<BookPair>;
@@ -54,162 +53,142 @@ const createDefinition = (
   storyId: StoryId,
   level: Level,
   collection: CollectionId,
-  titles: BookDisplayTitles,
   loadSource: () => Promise<BookPair>,
-  preservePreparedLearning = false,
-): BookDefinition => ({
-  storyId,
-  level,
-  collection,
-  titles,
-  storage: getStorageManifest(storyId, level),
-  loadSource,
-  load: async () => {
-    const source = await loadSource();
-    return preservePreparedLearning ? source : finalizeBookPairForUi(source);
-  },
-});
+): BookDefinition => {
+  let preparedPromise: Promise<BookPair> | null = null;
+
+  const load = () => {
+    if (!preparedPromise) {
+      preparedPromise = loadSource()
+        .then(source => finalizePreparedBookPairForUi(source))
+        .catch(error => {
+          preparedPromise = null;
+          throw error;
+        });
+    }
+    return preparedPromise;
+  };
+
+  return {
+    storyId,
+    level,
+    collection,
+    storage: getStorageManifest(storyId, level),
+    loadSource,
+    load,
+  };
+};
 
 export const bookRegistry: readonly BookDefinition[] = [
-  createDefinition('adam', 'A2', 'prophets', {
-    en: 'Stories of the Prophets: Adam (A2)',
-    ar: 'قصص الأنبياء: آدم (عليه السلام)',
-  }, () => loadBookPairFromModule(
+  createDefinition('adam', 'A2', 'prophets', () => loadBookPairFromModule(
     () => import('../../data/adam/a2'),
     'adamA2BookDataEn',
     'adamA2BookDataAr',
     'Adam A2',
-  ), true),
-  createDefinition('adam', 'B1', 'prophets', {
-    en: 'Stories of the Prophets: Adam (B1)',
-    ar: 'قصص الأنبياء: آدم (عليه السلام)',
-  }, () => loadBookPairFromModule(
+  )),
+  createDefinition('adam', 'B1', 'prophets', () => loadBookPairFromModule(
     () => import('../../data/adam/b1'),
     'adamB1BookDataEn',
     'adamB1BookDataAr',
     'Adam B1',
-  ), true),
-  createDefinition('adam', 'B2', 'prophets', {
-    en: 'Stories of the Prophets: Adam (B2)',
-    ar: 'قصص الأنبياء: آدم (عليه السلام)',
-  }, () => loadBookPairFromModule(
+  )),
+  createDefinition('adam', 'B2', 'prophets', () => loadBookPairFromModule(
     () => import('../../data/adam/b2'),
     'adamB2BookDataEn',
     'adamB2BookDataAr',
     'Adam B2',
-  ), true),
+  )),
 
-  createDefinition('ibrahim', 'A2', 'prophets', {
-    en: 'Stories of the Prophets: Abraham (A2)',
-    ar: 'قصص الأنبياء: إبراهيم (عليه السلام)',
-  }, () => loadBookPairFromModule(
+  createDefinition('ibrahim', 'A2', 'prophets', () => loadBookPairFromModule(
     () => import('../../data/abraham/a2'),
     'abrahamA2BookDataEn',
     'abrahamA2BookDataAr',
     'Abraham A2',
-  ), true),
-  createDefinition('ibrahim', 'B1', 'prophets', {
-    en: 'Stories of the Prophets: Abraham (B1)',
-    ar: 'قصص الأنبياء: إبراهيم (عليه السلام)',
-  }, () => loadBookPairFromModule(
+  )),
+  createDefinition('ibrahim', 'B1', 'prophets', () => loadBookPairFromModule(
     () => import('../../data/abraham/b1'),
     'abrahamB1BookDataEn',
     'abrahamB1BookDataAr',
     'Abraham B1',
-  ), true),
-  createDefinition('ibrahim', 'B2', 'prophets', {
-    en: 'Stories of the Prophets: Abraham (B2)',
-    ar: 'قصص الأنبياء: إبراهيم (عليه السلام)',
-  }, () => loadBookPairFromModule(
+  )),
+  createDefinition('ibrahim', 'B2', 'prophets', () => loadBookPairFromModule(
     () => import('../../data/abraham/b2'),
     'abrahamB2BookDataEn',
     'abrahamB2BookDataAr',
     'Abraham B2',
-  ), true),
+  )),
 
-  createDefinition('musa', 'A2', 'prophets', {
-    en: 'Stories of the Prophets: Moses (A2)',
-    ar: 'قصص الأنبياء: موسى (عليه السلام)',
-  }, () => loadBookPairFromModule(
+  createDefinition('musa', 'A2', 'prophets', () => loadBookPairFromModule(
     () => import('../../data/moses/a2'),
     'mosesA2BookDataEn',
     'mosesA2BookDataAr',
     'Moses A2',
-  ), true),
-  createDefinition('musa', 'B1', 'prophets', {
-    en: 'Stories of the Prophets: Moses (B1)',
-    ar: 'قصص الأنبياء: موسى (عليه السلام)',
-  }, () => loadBookPairFromModule(
+  )),
+  createDefinition('musa', 'B1', 'prophets', () => loadBookPairFromModule(
     () => import('../../data/moses/b1'),
     'mosesB1BookDataEn',
     'mosesB1BookDataAr',
     'Moses B1',
-  ), true),
-  createDefinition('musa', 'B2', 'prophets', {
-    en: 'Stories of the Prophets: Moses (B2)',
-    ar: 'قصص الأنبياء: موسى (عليه السلام)',
-  }, () => loadBookPairFromModule(
+  )),
+  createDefinition('musa', 'B2', 'prophets', () => loadBookPairFromModule(
     () => import('../../data/moses/b2'),
     'mosesB2BookDataEn',
     'mosesB2BookDataAr',
     'Moses B2',
-  ), true),
+  )),
 
-  createDefinition('mecca', 'A2', 'history', {
-    en: 'Islamic History & Civilization: Mecca',
-    ar: 'التاريخ والحضارة الإسلامية: مكة قبل الإسلام',
-  }, () => loadBookPairFromModule(
+  createDefinition('mecca', 'A2', 'history', () => loadBookPairFromModule(
     () => import('../../data/mecca/a2'),
     'meccaA2BookDataEn',
     'meccaA2BookDataAr',
     'Mecca A2',
-  ), true),
-  createDefinition('mecca', 'B1', 'history', {
-    en: 'Islamic History & Civilization: Mecca',
-    ar: 'التاريخ والحضارة الإسلامية: مكة قبل الإسلام',
-  }, () => loadBookPairFromModule(
+  )),
+  createDefinition('mecca', 'B1', 'history', () => loadBookPairFromModule(
     () => import('../../data/mecca/b1'),
     'meccaB1BookDataEn',
     'meccaB1BookDataAr',
     'Mecca B1',
-  ), true),
-  createDefinition('mecca', 'B2', 'history', {
-    en: 'Islamic History & Civilization: Mecca',
-    ar: 'التاريخ والحضارة الإسلامية: مكة قبل الإسلام',
-  }, () => loadBookPairFromModule(
+  )),
+  createDefinition('mecca', 'B2', 'history', () => loadBookPairFromModule(
     () => import('../../data/mecca/b2'),
     'meccaB2BookDataEn',
     'meccaB2BookDataAr',
     'Mecca B2',
-  ), true),
+  )),
 
-  createDefinition('yunusEmre', 'A2', 'turkish', {
-    en: 'Great Figures of Turkish-Islamic Heritage: Yunus Emre',
-    ar: 'أعلام التراث التركي الإسلامي: يونس إمره',
-  }, () => loadBookPairFromModule(
+  createDefinition('ibnJubayr', 'A2', 'history', () => loadBookPairFromModule(
+    () => import('../../data/ibnJubayr/a2'),
+    'ibnJubayrA2BookDataEn',
+    'ibnJubayrA2BookDataAr',
+    'Ibn Jubayr A2',
+  )),
+
+  createDefinition('yunusEmre', 'A2', 'turkish', () => loadBookPairFromModule(
     () => import('../../data/yunusEmre/a2'),
     'yunusEmreA2BookDataEn',
     'yunusEmreA2BookDataAr',
     'Yunus Emre A2',
-  ), true),
-  createDefinition('yunusEmre', 'B1', 'turkish', {
-    en: 'Great Figures of Turkish-Islamic Heritage: Yunus Emre',
-    ar: 'أعلام التراث التركي الإسلامي: يونس إمره',
-  }, () => loadBookPairFromModule(
+  )),
+  createDefinition('yunusEmre', 'B1', 'turkish', () => loadBookPairFromModule(
     () => import('../../data/yunusEmre/b1'),
     'yunusEmreB1BookDataEn',
     'yunusEmreB1BookDataAr',
     'Yunus Emre B1',
-  ), true),
-  createDefinition('yunusEmre', 'B2', 'turkish', {
-    en: 'Great Figures of Turkish-Islamic Heritage: Yunus Emre',
-    ar: 'أعلام التراث التركي الإسلامي: يونس إمره',
-  }, () => loadBookPairFromModule(
+  )),
+  createDefinition('yunusEmre', 'B2', 'turkish', () => loadBookPairFromModule(
     () => import('../../data/yunusEmre/b2'),
     'yunusEmreB2BookDataEn',
     'yunusEmreB2BookDataAr',
     'Yunus Emre B2',
-  ), true),
+  )),
+
+  // Hidden books (see hiddenStoryCatalog): English only until the Arabic edition arrives.
+  createDefinition('gevherNesibe', 'A2', 'turkish', () => loadBookPairFromModule(
+    () => import('../../data/gevherNesibe/a2'),
+    'gevherNesibeA2BookDataEn',
+    'gevherNesibeA2BookDataAr',
+    'Gevher Nesibe A2',
+  )),
 ] as const;
 
 const registryByKey = new Map(bookRegistry.map(definition => [definitionKey(definition.storyId, definition.level), definition]));

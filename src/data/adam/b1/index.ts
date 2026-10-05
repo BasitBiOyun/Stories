@@ -1,4 +1,9 @@
-import type { BookData, Exercise, PageData } from '../../../types';
+import type { BookData, Exercise, PageData, VocabularyChallengePair } from '../../../types';
+import { applyChapterExtras } from '../../../lib/chapterExtras';
+import { adamB1ChapterExtrasEn } from './en/chapterExtras';
+import { adamB1GroupTasksEn } from './en/groupTasks';
+import { adamB1ChapterExtrasAr } from './ar/chapterExtras';
+import { adamB1GroupTasksAr } from './ar/groupTasks';
 import { adamB1Pages } from './en/pages';
 import { adamB1PagesAr } from './ar/pages';
 import {
@@ -45,10 +50,6 @@ import {
   adamB1LanguageFocusExercisesArPart10,
   adamB1LanguageFocusExercisesArPart11,
 } from './ar/languageFocus3';
-import { adamB1TeacherGuide, adamB1TeacherGuideMetadata } from './en/teacherGuide';
-import { adamB1SelfStudyGuide, adamB1StudentGuideMetadata } from './en/selfStudyGuide';
-import { adamB1TeacherGuideAr, adamB1TeacherGuideMetadataAr } from './ar/teacherGuide';
-import { adamB1SelfStudyGuideAr, adamB1StudentGuideMetadataAr } from './ar/selfStudyGuide';
 
 const STORY_IDS = new Set(Array.from({ length: 12 }, (_, index) => index + 1));
 
@@ -85,7 +86,7 @@ const buildPages = (
   quickChallenges: Record<number, Exercise>,
   languageFocus: Record<number, Exercise[]>,
   knowledgeCheck: Exercise[],
-  vocabularyPairs: { word: string; meaning: string }[],
+  vocabularyPairs: VocabularyChallengePair[],
   languageReview: Exercise[],
   finalChallenge: Exercise[],
 ): PageData[] => pages.map((page) => {
@@ -129,23 +130,19 @@ export const adamB1BookDataEn: BookData = {
   title: 'Stories of the Prophets: Adam (B1)',
   level: 'B1',
   baseFontSize: 12,
-  pages: englishPages,
-  teacherGuide: adamB1TeacherGuide,
-  teacherGuideMetadata: adamB1TeacherGuideMetadata,
-  selfStudyGuide: adamB1SelfStudyGuide,
-  studentGuideMetadata: adamB1StudentGuideMetadata,
+  pages: applyChapterExtras(englishPages, { ...adamB1ChapterExtrasEn, groupTasks: adamB1GroupTasksEn }),
+  teacherGuide: [],
+  selfStudyGuide: [],
 };
 
 export const adamB1BookDataAr: BookData = {
   id: 'b1-prophets-ar',
-  title: 'قصص الأنبياء: آدم (عليه السلام)',
+  title: 'قصص الأنبياء: آدم عليه السلام',
   level: 'B1',
   baseFontSize: 14,
-  pages: arabicPages,
-  teacherGuide: adamB1TeacherGuideAr,
-  teacherGuideMetadata: adamB1TeacherGuideMetadataAr,
-  selfStudyGuide: adamB1SelfStudyGuideAr,
-  studentGuideMetadata: adamB1StudentGuideMetadataAr,
+  pages: applyChapterExtras(arabicPages, { ...adamB1ChapterExtrasAr, groupTasks: adamB1GroupTasksAr }),
+  teacherGuide: [],
+  selfStudyGuide: [],
 };
 
 export const adamB1BookData = adamB1BookDataEn;

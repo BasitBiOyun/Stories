@@ -4,9 +4,11 @@ import { getBookDefinition } from '../core/content/bookRegistry';
 import type { BookDefinition } from '../core/content/bookRegistry';
 import type { BookPair } from '../core/content/contracts';
 import { setActiveBilingualBookPair } from '../data/bilingualHighlightCards';
-import { localizeTeacherGuideTymmValues } from '../data/localizeTeacherGuideTymmValues';
-import { polishReviewedB2TeacherGuide } from '../data/polishB2TeacherGuide';
-import { normalizeTeacherGuideLessonTiming } from '../data/normalizeTeacherGuideLessonTiming';
+import {
+  applyResolvedAssets,
+  EMPTY_RESOLVED_ASSETS,
+  loadBookAssets,
+} from '../core/storage/storageAssetLoader';
 
 export interface BookBundleState {
   definition: BookDefinition | null;
@@ -30,6 +32,7 @@ export const useBookBundle = (storyId: string | null, level: Level | null): Book
 
   useEffect(() => {
     let cancelled = false;
+    let mediaTimer: number | null = null;
     setActiveBilingualBookPair(null);
     setPair(null);
     setError(null);
@@ -43,37 +46,52 @@ export const useBookBundle = (storyId: string | null, level: Level | null): Book
     }
 
     setLoading(true);
+    const loadStartedAt = performance.now();
 
     const load = async () => {
-      const [loadedPair, storageModule] = await Promise.all([
-        definition.load(),
-        import('../core/storage/storageAssetLoader'),
-      ]);
-      const loadedAssets = await storageModule.loadBookAssets(definition.storage);
-      const resolvedPair = storageModule.applyResolvedAssets(loadedPair, loadedAssets);
-      const localizedPair = localizeTeacherGuideTymmValues(resolvedPair);
-      const polishedPair = polishReviewedB2TeacherGuide(localizedPair);
-      return normalizeTeacherGuideLessonTiming(polishedPair);
+      const loadedPair = await definition.load();
+      if (cancelled) return;
+
+      // Open the book as soon as its reviewed content chunk is ready. Existing
+      // authored media URLs are validated immediately, while Firebase folder
+      // discovery continues without blocking the first render.
+      const immediatePair = applyResolvedAssets(loadedPair, EMPTY_RESOLVED_ASSETS);
+      setActiveBilingualBookPair(immediatePair);
+      setPair(immediatePair);
+      setLoading(false);
+      console.info(
+        `[Book performance] ${definition.storyId} ${definition.level} reader ready in ${Math.round(performance.now() - loadStartedAt)} ms`,
+      );
+
+      mediaTimer = window.setTimeout(() => {
+        loadBookAssets(definition.storage)
+          .then(loadedAssets => {
+            if (cancelled) return;
+            const resolvedPair = applyResolvedAssets(loadedPair, loadedAssets);
+            setActiveBilingualBookPair(resolvedPair);
+            setPair(resolvedPair);
+            console.info(
+              `[Book performance] ${definition.storyId} ${definition.level} media resolved in ${Math.round(performance.now() - loadStartedAt)} ms`,
+            );
+          })
+          .catch(reason => {
+            // Media discovery is an enhancement layer. The authored book remains
+            // usable even when Firebase listing is slow or temporarily unavailable.
+            console.warn('[Book media] Background media resolution failed.', reason);
+          });
+      }, 250);
     };
 
-    load()
-      .then(loadedPair => {
-        if (cancelled) return;
-        // Register before state publication so VocabularyWord sees the complete
-        // bilingual pair on its very first render for this book.
-        setActiveBilingualBookPair(loadedPair);
-        setPair(loadedPair);
-        setLoading(false);
-      })
-      .catch(reason => {
-        if (cancelled) return;
-        setActiveBilingualBookPair(null);
-        setError(reason instanceof Error ? reason : new Error(String(reason)));
-        setLoading(false);
-      });
+    load().catch(reason => {
+      if (cancelled) return;
+      setActiveBilingualBookPair(null);
+      setError(reason instanceof Error ? reason : new Error(String(reason)));
+      setLoading(false);
+    });
 
     return () => {
       cancelled = true;
+      if (mediaTimer !== null) window.clearTimeout(mediaTimer);
       setActiveBilingualBookPair(null);
     };
   }, [definition]);

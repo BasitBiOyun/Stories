@@ -1,4 +1,10 @@
 import type { BookData, PageData } from '../../../types';
+import { withPlacesLayer } from '../../../features/historical-entities';
+import { applyChapterExtras } from '../../../lib/chapterExtras';
+import { mosesB1ChapterExtrasEn } from './en/chapterExtras';
+import { mosesB1GroupTasksEn } from './en/groupTasks';
+import { mosesB1ChapterExtrasAr } from './ar/chapterExtras';
+import { mosesB1GroupTasksAr } from './ar/groupTasks';
 import { mosesB1Pages } from './en/pages';
 import { mosesB1PagesAr } from './ar/pages';
 import {
@@ -47,10 +53,10 @@ import {
   mosesB1LanguageFocusChapter12Ar,
   mosesB1LanguageFocusChapter13Ar,
 } from './ar/languageFocus3';
-import { mosesB1TeacherGuide as mosesB1TeacherGuideEn, mosesB1TeacherGuideMetadata } from './en/teacherGuide';
-import { mosesB1TeacherGuideAr, mosesB1TeacherGuideMetadataAr } from './ar/teacherGuide';
-import { mosesB1SelfStudyGuide as mosesB1SelfStudyGuideEn } from './en/selfStudyGuide';
-import { mosesB1SelfStudyGuideAr } from './ar/selfStudyGuide';
+import { buildStoryMap } from '../../../features/story-maps/buildStoryMap';
+import { mosesB1StoryMapLayout } from './storyMap';
+import { mosesB1StoryMapCopyEn } from './en/storyMap';
+import { mosesB1StoryMapCopyAr } from './ar/storyMap';
 
 const STORY_IDS = new Set(Array.from({ length: 13 }, (_, index) => index + 1));
 
@@ -84,7 +90,32 @@ const arabicLanguageFocus = {
   ...mosesB1LanguageFocusChapter13Ar,
 };
 
-const buildEnglishPages = (): PageData[] => mosesB1Pages.map(page => {
+// Interactive map page, placed after the last chapter: the story is read without a break, then the whole journey is seen on the map.
+const MAP_PAGE_ID = 101;
+const MAP_AFTER_CHAPTER = 13;
+
+const withMapPage = (pages: PageData[], mapPage: PageData): PageData[] =>
+  pages.flatMap(page => (page.id === MAP_AFTER_CHAPTER ? [page, mapPage] : [page]));
+
+const mapPageEn: PageData = {
+  id: MAP_PAGE_ID,
+  type: 'map',
+  title: 'Moses’ Journey',
+  subtitle: 'Map · Chapters 1–13',
+  content: '',
+  map: buildStoryMap(mosesB1StoryMapLayout, mosesB1StoryMapCopyEn, 'Moses B1 EN'),
+};
+
+const mapPageAr: PageData = {
+  id: MAP_PAGE_ID,
+  type: 'map',
+  title: 'رِحْلَةُ مُوسَى عَلَيْهِ السَّلَامُ',
+  subtitle: 'خَريطَة · مِنَ الفَصْلِ 1 إِلى الفَصْلِ 13',
+  content: '',
+  map: buildStoryMap(mosesB1StoryMapLayout, mosesB1StoryMapCopyAr, 'Moses B1 AR'),
+};
+
+const buildEnglishPages = (): PageData[] => withMapPage(mosesB1Pages.map(page => {
   if (STORY_IDS.has(page.id)) {
     return {
       ...page,
@@ -94,12 +125,12 @@ const buildEnglishPages = (): PageData[] => mosesB1Pages.map(page => {
   }
   if (page.id === 14) return { ...page, exercises: mosesB1PolishedKnowledgeCheckExercises };
   if (page.id === 15) return { ...page, vocabularyPairs: mosesB1PolishedVocabularyChallengePairs };
-  if (page.id === 18) return { ...page, title: 'B1 Language Review', content: 'Review and use the grammar patterns, discourse relationships, and communicative functions developed across all thirteen chapters.', exercises: mosesB1LanguageReviewExercises };
+  if (page.id === 18) return { ...page, title: 'Language Review', content: 'Review and use the grammar patterns, discourse relationships, and communicative functions developed across all thirteen chapters.', exercises: mosesB1LanguageReviewExercises };
   if (page.id === 19) return { ...page, exercises: mosesB1PolishedFinalChallengeExercises };
   return page;
-});
+}), mapPageEn);
 
-const buildArabicPages = (): PageData[] => mosesB1PagesAr.map(page => {
+const buildArabicPages = (): PageData[] => withMapPage(mosesB1PagesAr.map(page => {
   if (STORY_IDS.has(page.id)) {
     return {
       ...page,
@@ -112,28 +143,26 @@ const buildArabicPages = (): PageData[] => mosesB1PagesAr.map(page => {
   if (page.id === 18) return { ...page, title: 'مراجعة اللغة B1', content: 'راجع واستخدم التراكيب والعلاقات الخطابية والوظائف التواصلية التي تطورت عبر الفصول الثلاثة عشر.', exercises: mosesB1LanguageReviewExercisesAr };
   if (page.id === 19) return { ...page, exercises: mosesB1PolishedFinalChallengeExercisesAr };
   return page;
-});
+}), mapPageAr);
 
 export const mosesB1BookDataEn: BookData = {
   id: 'b1-moses-en',
   title: 'Stories of the Prophets: Moses (B1)',
   level: 'B1',
   baseFontSize: 12,
-  pages: buildEnglishPages(),
-  teacherGuide: mosesB1TeacherGuideEn,
-  teacherGuideMetadata: mosesB1TeacherGuideMetadata,
-  selfStudyGuide: mosesB1SelfStudyGuideEn,
+  pages: applyChapterExtras(withPlacesLayer(buildEnglishPages(), 'moses-b1', 'en'), { ...mosesB1ChapterExtrasEn, groupTasks: mosesB1GroupTasksEn }),
+  teacherGuide: [],
+  selfStudyGuide: [],
 };
 
 export const mosesB1BookDataAr: BookData = {
   id: 'b1-moses-ar',
-  title: 'قصص الأنبياء: موسى (عليه السلام) (B1)',
+  title: 'قصص الأنبياء: موسى عليه السلام (B1)',
   level: 'B1',
   baseFontSize: 14,
-  pages: buildArabicPages(),
-  teacherGuide: mosesB1TeacherGuideAr,
-  teacherGuideMetadata: mosesB1TeacherGuideMetadataAr,
-  selfStudyGuide: mosesB1SelfStudyGuideAr,
+  pages: applyChapterExtras(withPlacesLayer(buildArabicPages(), 'moses-b1', 'ar'), { ...mosesB1ChapterExtrasAr, groupTasks: mosesB1GroupTasksAr }),
+  teacherGuide: [],
+  selfStudyGuide: [],
 };
 
 export const mosesB1BookData = mosesB1BookDataEn;

@@ -2,14 +2,16 @@ import React from 'react';
 import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'motion/react';
 import {
-  GraduationCap,
   CheckCircle2,
   XCircle,
   Info,
   RotateCcw,
   Trophy,
+  ChevronLeft,
+  ChevronRight,
 } from '../ui/icons';
 import { Exercise } from '../../types';
+import { SECTION_ICONS } from '../../lib/sectionIcons';
 import { cn } from '../../lib/utils';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { presentMultipleChoice } from '../../lib/exercisePresentation';
@@ -24,44 +26,19 @@ type Props = {
   onReset?: () => void;
   level?: string;
   collectionId?: string;
+  onComplete?: (exerciseIds: string[]) => void;
 };
 
-const themeFor = (collectionId?: string) => {
-  if (collectionId === 'history') {
-    return {
-      border: 'border-emerald-200',
-      softBorder: 'border-emerald-100',
-      softBg: 'bg-emerald-50',
-      accentBg: 'bg-emerald-600',
-      accentText: 'text-emerald-700',
-      title: 'text-emerald-950',
-      progress: 'bg-emerald-500',
-      progressTrack: 'bg-emerald-100',
-    };
-  }
-  if (collectionId === 'turkish') {
-    return {
-      border: 'border-sky-200',
-      softBorder: 'border-sky-100',
-      softBg: 'bg-sky-50',
-      accentBg: 'bg-sky-700',
-      accentText: 'text-sky-700',
-      title: 'text-sky-950',
-      progress: 'bg-sky-600',
-      progressTrack: 'bg-sky-100',
-    };
-  }
-  return {
-    border: 'border-amber-200',
-    softBorder: 'border-amber-100',
-    softBg: 'bg-amber-50',
-    accentBg: 'bg-amber-600',
-    accentText: 'text-amber-700',
-    title: 'text-amber-950',
-    progress: 'bg-amber-500',
-    progressTrack: 'bg-amber-100',
+const theme = {
+    border: 'border-brand-200',
+    softBorder: 'border-brand-100',
+    softBg: 'bg-brand-50',
+    accentBg: 'bg-brand-600',
+    accentText: 'text-brand-700',
+    title: 'text-brand-950',
+    progress: 'bg-brand-500',
+    progressTrack: 'bg-brand-100',
   };
-};
 
 const isExerciseAnswerCorrect = (exercise: Exercise, answer: AnswerValue) => {
   if (answer === null || answer === undefined) return false;
@@ -89,7 +66,6 @@ const QuestionCard = ({
 }) => {
   const { t, formatNumber, isRTL, language } = useLanguage();
   const isArabic = language === 'ar';
-  const theme = themeFor(collectionId);
   const hasAnswer = answer !== null && answer !== undefined;
   const correct = isExerciseAnswerCorrect(exercise, answer);
   const presentedOptions = React.useMemo(
@@ -116,20 +92,20 @@ const QuestionCard = ({
       role={showResults && hasAnswer ? 'button' : undefined}
       tabIndex={showResults && hasAnswer ? 0 : undefined}
       className={cn(
-        'rounded-2xl border-2 bg-white p-4 sm:p-5 shadow-sm flex flex-col gap-4 min-w-0 self-start w-full',
+        'rounded-[24px] bg-white/85 p-4 sm:p-5 md:p-6 ring-1 flex flex-col gap-4 min-w-0 self-start w-full transition-all',
         showResults && hasAnswer && 'cursor-pointer',
         showResults && hasAnswer
           ? correct
-            ? 'border-emerald-400 bg-emerald-50/60'
-            : 'border-rose-400 bg-rose-50/60'
+            ? 'ring-emerald-300 bg-emerald-50/55'
+            : 'ring-rose-300 bg-rose-50/55'
           : active
-            ? theme.border
-            : theme.softBorder
+            ? 'ring-2 ring-amber-300'
+            : 'ring-black/[0.07]'
       )}
     >
       <div className="flex items-start gap-3 min-w-0">
         <span className={cn(
-          'w-7 h-7 shrink-0 rounded-full flex items-center justify-center text-xs font-black',
+          'h-8 min-w-8 shrink-0 rounded-xl px-2 flex items-center justify-center text-[11px] font-semibold font-display',
           showResults && hasAnswer
             ? correct
               ? 'bg-emerald-500 text-white'
@@ -139,8 +115,8 @@ const QuestionCard = ({
           {showResults && hasAnswer ? (correct ? '✓' : '✗') : formatNumber(index + 1)}
         </span>
         <p className={cn(
-          'font-serif font-semibold leading-snug text-wood flex-1 min-w-0',
-          isArabic ? 'text-[15px] sm:text-[17px] md:text-lg' : 'text-sm sm:text-base md:text-lg'
+          'font-serif font-semibold leading-[1.55] text-wood flex-1 min-w-0',
+          isArabic ? 'text-[17px] sm:text-lg md:text-xl desk:text-[1.45rem]' : 'text-base sm:text-[17px] md:text-lg desk:text-[1.3rem]'
         )}>
           {exercise.question}
         </p>
@@ -176,15 +152,15 @@ const QuestionCard = ({
                 disabled={showResults}
                 onClick={() => onAnswer(value)}
                 className={cn(
-                  'min-h-11 sm:min-h-12 rounded-xl border-2 px-3 py-2.5 font-display font-black uppercase tracking-wider transition-colors',
-                  isArabic ? 'text-sm sm:text-[15px] md:text-[17px]' : 'text-xs sm:text-sm md:text-base',
+                  'min-h-12 sm:min-h-14 rounded-2xl px-4 font-display font-semibold ring-1 transition-all',
+                  isArabic ? 'text-sm sm:text-[15px] md:text-[17px] desk:text-[1.2rem]' : 'text-xs sm:text-sm md:text-base desk:text-[1.15rem]',
                   revealCorrect
                     ? 'bg-emerald-500 border-emerald-500 text-white'
                     : revealWrong
                       ? 'bg-rose-500 border-rose-500 text-white'
                       : selected
-                        ? `${theme.accentBg} border-transparent text-white`
-                        : `bg-white ${theme.softBorder} text-wood/65 hover:${theme.softBg}`
+                        ? `${theme.accentBg} text-white ring-transparent`
+                        : `bg-white text-wood/65 ring-black/[0.07] hover:bg-black/[0.025]`
                 )}
               >
                 {value ? t('ex.true') : t('ex.false')}
@@ -207,29 +183,29 @@ const QuestionCard = ({
                 disabled={showResults}
                 onClick={() => onAnswer(option.originalIndex)}
                 className={cn(
-                  'w-full min-h-11 rounded-xl border-2 px-3 py-2.5 flex items-center gap-3 text-start transition-colors',
+                  'w-full min-h-12 rounded-2xl px-3.5 sm:px-4 py-3 flex items-center gap-3 text-start ring-1 transition-all',
                   revealCorrect
                     ? 'bg-emerald-500 border-emerald-500 text-white'
                     : revealWrong
                       ? 'bg-rose-500 border-rose-500 text-white'
                       : selected
-                        ? `${theme.softBg} ${theme.border}`
-                        : `bg-white ${theme.softBorder} hover:${theme.softBg}`
+                        ? `${theme.softBg} ${theme.accentText} ring-black/[0.08]`
+                        : `bg-white ring-black/[0.07] hover:bg-black/[0.025]`
                 )}
               >
                 <span className={cn(
-                  'w-7 h-7 rounded-full shrink-0 flex items-center justify-center text-xs font-black',
+                  'w-8 h-8 rounded-xl shrink-0 flex items-center justify-center text-[11px] font-semibold font-display',
                   revealCorrect || revealWrong
                     ? 'bg-white/20 text-white'
                     : selected
                       ? `${theme.accentBg} text-white`
                       : `${theme.softBg} ${theme.accentText}`
                 )}>
-                  {String.fromCharCode(65 + displayIndex)}
+                  {isArabic ? (['أ', 'ب', 'ج', 'د', 'هـ', 'و'][displayIndex] ?? formatNumber(displayIndex + 1)) : String.fromCharCode(65 + displayIndex)}
                 </span>
                 <span className={cn(
-                  'font-serif font-semibold leading-snug flex-1',
-                  isArabic ? 'text-sm sm:text-[15px] md:text-[17px]' : 'text-xs sm:text-sm md:text-base',
+                  'font-serif font-medium leading-relaxed flex-1',
+                  isArabic ? 'text-[15px] sm:text-[17px] desk:text-[1.2rem]' : 'text-sm sm:text-[15px] md:text-base desk:text-[1.15rem]',
                   isRTL && 'text-right'
                 )}>
                   {option.text}
@@ -250,10 +226,10 @@ export const KnowledgeCheck = ({
   handleAnswer,
   onReset,
   collectionId = 'prophets',
+  onComplete,
 }: Props) => {
   const { t, formatNumber, isRTL, language } = useLanguage();
   const isArabic = language === 'ar';
-  const theme = themeFor(collectionId);
   const supportedExercises = React.useMemo(
     () => exercises.filter((exercise) => exercise.type === 'true-false' || exercise.type === 'multiple-choice'),
     [exercises]
@@ -265,6 +241,8 @@ export const KnowledgeCheck = ({
   const [localAnswers, setLocalAnswers] = React.useState<Record<string, AnswerValue>>({});
   const [showResults, setShowResults] = React.useState(false);
   const [activeFeedback, setActiveFeedback] = React.useState<string | null>(null);
+  // One question on screen at a time, like the Final Challenge.
+  const [currentStep, setCurrentStep] = React.useState(0);
 
   React.useEffect(() => {
     let restored: Record<string, AnswerValue> = {};
@@ -284,6 +262,12 @@ export const KnowledgeCheck = ({
     setLocalAnswers(restored);
     setShowResults(false);
     setActiveFeedback(null);
+    const firstOpen = supportedExercises.findIndex((exercise) => {
+      const saved = restored[exercise.id];
+      return saved === null || saved === undefined;
+    });
+    setCurrentStep(firstOpen >= 0 ? firstOpen : 0);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [storageKey]);
 
   const answerFor = React.useCallback((exercise: Exercise): AnswerValue => {
@@ -302,13 +286,19 @@ export const KnowledgeCheck = ({
   const percentage = supportedExercises.length
     ? Math.round((correctCount / supportedExercises.length) * 100)
     : 0;
+  const safeStep = Math.min(currentStep, Math.max(0, supportedExercises.length - 1));
+  const currentExercise = supportedExercises[safeStep] ?? null;
+  const isLastStep = safeStep >= supportedExercises.length - 1;
   const activeExercise = supportedExercises.find((exercise) => exercise.id === activeFeedback) ?? null;
   const activeIsCorrect = activeExercise
     ? isExerciseAnswerCorrect(activeExercise, answerFor(activeExercise))
     : false;
 
+  const isAnswered = (exercise: Exercise) => answerFor(exercise) !== null;
+
+  // Each question is checked as soon as it is answered (formative feedback), then locked.
   const answerQuestion = (exercise: Exercise, answer: boolean | number) => {
-    if (showResults) return;
+    if (showResults || isAnswered(exercise)) return;
     setLocalAnswers((previous) => {
       const next = { ...previous, [exercise.id]: answer };
       if (typeof window !== 'undefined') {
@@ -327,6 +317,7 @@ export const KnowledgeCheck = ({
 
   const reset = () => {
     setLocalAnswers({});
+    setCurrentStep(0);
     setShowResults(false);
     setActiveFeedback(null);
     if (typeof window !== 'undefined') {
@@ -341,7 +332,7 @@ export const KnowledgeCheck = ({
 
   const feedbackOverlay = createPortal(
     <AnimatePresence>
-      {showResults && activeExercise && (
+      {activeExercise && isAnswered(activeExercise) && (
         <motion.div
           key={activeExercise.id}
           initial={{ opacity: 0 }}
@@ -358,8 +349,8 @@ export const KnowledgeCheck = ({
             transition={{ duration: 0.18, ease: 'easeOut' }}
             onClick={(event) => event.stopPropagation()}
             className={cn(
-              'w-full max-w-2xl max-h-[80vh] overflow-y-auto custom-scrollbar rounded-2xl sm:rounded-3xl bg-white border-2 shadow-2xl p-5 sm:p-7 md:p-8',
-              activeIsCorrect ? 'border-emerald-300' : 'border-rose-300'
+              'w-full max-w-2xl max-h-[calc(100vh-2rem)] overflow-y-auto overscroll-contain [scrollbar-width:none] [&::-webkit-scrollbar]:hidden rounded-[26px] bg-white shadow-2xl ring-1 p-5 sm:p-7 md:p-8',
+              activeIsCorrect ? 'ring-emerald-200' : 'ring-rose-200'
             )}
           >
             <div className="flex items-start gap-3 sm:gap-4">
@@ -407,7 +398,7 @@ export const KnowledgeCheck = ({
                 'rounded-xl sm:rounded-2xl bg-gray-50 border border-gray-100 p-4 sm:p-5 font-serif text-wood/80 leading-relaxed',
                 isArabic ? 'text-[15px] sm:text-[17px]' : 'text-sm sm:text-base'
               )}>
-                <span className={cn('block font-display uppercase tracking-widest text-wood/40 mb-1.5', isArabic ? 'text-sm' : 'text-[10px] sm:text-xs')}>
+                <span className={cn('block font-display uppercase tracking-widest text-wood/40 mb-1.5', isArabic ? 'text-sm' : 'text-[11px] sm:text-xs')}>
                   {t('ex.explanation')}
                 </span>
                 {activeExercise.explanation}
@@ -421,16 +412,26 @@ export const KnowledgeCheck = ({
   );
 
   return (
-    <section className="h-full min-h-0 overflow-y-auto custom-scrollbar pr-1">
-      <div className="space-y-5 pb-2">
-        <div className={cn('flex flex-wrap items-center justify-between gap-3 border-b-2 pb-4', theme.border)}>
+    <section className="h-full min-h-0 overflow-y-auto custom-scrollbar px-0.5 pt-0.5 pe-2">
+      <div className="mx-auto w-full max-w-5xl desk:max-w-[84rem] wide:max-w-none space-y-5 pb-4">
+        <div className={cn(
+          'relative overflow-hidden rounded-[28px] p-5 sm:p-6 flex flex-col gap-5 sm:flex-row sm:items-start sm:justify-between',
+          theme.softBg
+        )}>
           <div className="flex items-center gap-3 min-w-0">
-            <div className={cn('p-2.5 rounded-xl text-white shadow-md shrink-0', theme.accentBg)}>
-              <GraduationCap size={24} />
+            <div className={cn('flex h-12 w-12 items-center justify-center rounded-2xl text-white shadow-lg shrink-0', theme.accentBg)}>
+              <SECTION_ICONS.knowledgeCheck.icon size={23} />
             </div>
             <div className="min-w-0">
-              <h3 className={cn('font-display text-xl sm:text-2xl md:text-3xl tracking-tight leading-tight', theme.title)}>{title}</h3>
-              <p className={cn('font-serif text-wood/50 mt-0.5', isArabic ? 'text-sm sm:text-[15px]' : 'text-xs sm:text-sm')}>{t('nav.interactiveChallenge')}</p>
+              <p className={cn('font-display text-[11px] font-semibold uppercase tracking-[0.18em]', theme.accentText)}>
+                {isArabic ? 'بعد إكمال القصة' : 'After the story'}
+              </p>
+              <h3 className={cn('mt-1 font-display text-2xl sm:text-3xl font-semibold tracking-[-0.03em] leading-tight', theme.title)}>{title}</h3>
+              <p className={cn('font-serif text-wood/55 mt-2 max-w-2xl leading-relaxed', isArabic ? 'text-base sm:text-lg' : 'text-sm sm:text-base')}>
+                {isArabic
+                  ? 'اختبر فهمك للعلاقات والأحداث والأفكار الرئيسة في الكتاب كله.'
+                  : 'Check your understanding of the key relationships, events and ideas across the whole book.'}
+              </p>
             </div>
           </div>
           {showResults && (
@@ -444,71 +445,132 @@ export const KnowledgeCheck = ({
           )}
         </div>
 
-        <div className="flex items-center gap-3">
-          <span className={cn('font-display font-bold text-wood/50 tabular-nums shrink-0', isArabic ? 'text-[15px]' : 'text-sm')}>
-            {formatNumber(answeredCount)}/{formatNumber(supportedExercises.length)}
+        <div className="flex items-center justify-between gap-3 px-1" data-kc-progress>
+          <span className={cn('font-display font-semibold text-wood/60 tabular-nums shrink-0', isArabic ? 'text-sm' : 'text-xs')}>
+            {t('nav.question')} {formatNumber(safeStep + 1)} {t('nav.of')} {formatNumber(supportedExercises.length)}
           </span>
-          <div className={cn('h-2.5 rounded-full flex-1 overflow-hidden', theme.progressTrack)}>
-            <motion.div
-              className={cn('h-full rounded-full', theme.progress)}
-              animate={{ width: `${supportedExercises.length ? (answeredCount / supportedExercises.length) * 100 : 0}%` }}
-            />
-          </div>
-          <span className={cn('font-display font-bold text-emerald-600 shrink-0', isArabic ? 'text-[15px]' : 'text-sm')}>
-            {formatNumber(correctCount)} {t('ex.pts')}
+          <span className={cn('font-display font-semibold text-wood/45 tabular-nums shrink-0', isArabic ? 'text-sm' : 'text-xs')}>
+            {isArabic ? 'تمت الإجابة' : 'Answered'} {formatNumber(answeredCount)}/{formatNumber(supportedExercises.length)}
           </span>
         </div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 items-start">
+        <div className="flex gap-1.5 px-1" aria-hidden="true">
           {supportedExercises.map((exercise, index) => (
-            <QuestionCard
+            <span
               key={exercise.id}
-              exercise={exercise}
-              index={index}
-              answer={answerFor(exercise)}
-              showResults={showResults}
-              active={activeFeedback === exercise.id}
-              onAnswer={(answer) => answerQuestion(exercise, answer)}
-              onInfo={() => setActiveFeedback(activeFeedback === exercise.id ? null : exercise.id)}
-              collectionId={collectionId}
+              className={cn(
+                'h-1.5 flex-1 rounded-full transition-colors',
+                index === safeStep ? theme.progress : answerFor(exercise) !== null ? 'bg-brand-300' : theme.progressTrack,
+              )}
             />
           ))}
         </div>
 
-        {!showResults && (
+        {currentExercise && (
+          <AnimatePresence mode="wait" initial={false}>
+            <motion.div
+              key={currentExercise.id}
+              initial={{ opacity: 0, x: isRTL ? -16 : 16 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: isRTL ? 16 : -16 }}
+              transition={{ duration: 0.18 }}
+            >
+              <QuestionCard
+                exercise={currentExercise}
+                index={safeStep}
+                answer={answerFor(currentExercise)}
+                showResults={showResults || isAnswered(currentExercise)}
+                active={activeFeedback === currentExercise.id}
+                onAnswer={(answer) => answerQuestion(currentExercise, answer)}
+                onInfo={() => setActiveFeedback(activeFeedback === currentExercise.id ? null : currentExercise.id)}
+                collectionId={collectionId}
+              />
+              {isAnswered(currentExercise) && (() => {
+                const correctNow = isExerciseAnswerCorrect(currentExercise, answerFor(currentExercise));
+                return (
+                  <div className={cn(
+                    'mt-3 rounded-2xl border p-4 sm:p-5 font-serif leading-relaxed',
+                    isArabic ? 'text-[15px] sm:text-[17px]' : 'text-sm sm:text-base',
+                    correctNow ? 'bg-emerald-50 border-emerald-100 text-emerald-950' : 'bg-rose-50 border-rose-100 text-rose-950'
+                  )}>
+                    <p className={cn('flex items-center gap-2 font-display font-bold uppercase tracking-widest mb-1.5', isArabic ? 'text-sm' : 'text-xs', correctNow ? 'text-emerald-700' : 'text-rose-700')}>
+                      {correctNow ? <CheckCircle2 size={16} /> : <XCircle size={16} />}
+                      {correctNow ? t('ex.correct') : t('ex.notQuite')}
+                    </p>
+                    <p>{correctNow ? currentExercise.feedback.correct : currentExercise.feedback.incorrect}</p>
+                    <p className="mt-2 text-wood/70">
+                      <span className={cn('font-display uppercase tracking-widest text-wood/40 me-1.5', isArabic ? 'text-sm' : 'text-[11px]')}>{t('ex.explanation')}</span>
+                      {currentExercise.explanation}
+                    </p>
+                  </div>
+                );
+              })()}
+            </motion.div>
+          </AnimatePresence>
+        )}
+
+        <div className="flex items-center justify-between gap-3">
           <button
             type="button"
-            onClick={() => setShowResults(true)}
-            disabled={!allAnswered}
-            className={cn(
-              'w-full min-h-12 rounded-xl font-display uppercase tracking-widest font-bold flex items-center justify-center gap-2 transition-colors',
-              isArabic ? 'text-sm sm:text-[15px]' : 'text-xs sm:text-sm',
-              allAnswered
-                ? `${theme.accentBg} text-white shadow-md`
-                : 'bg-gray-100 text-gray-400 cursor-not-allowed'
-            )}
+            onClick={() => setCurrentStep((step) => Math.max(0, step - 1))}
+            disabled={safeStep === 0}
+            data-kc-prev
+            className="inline-flex min-h-12 items-center gap-1.5 rounded-xl px-4 font-display text-[12px] font-semibold text-wood/65 ring-1 ring-black/[0.08] transition-colors hover:bg-black/[0.04] disabled:cursor-not-allowed disabled:opacity-35"
           >
-            <CheckCircle2 size={16} /> {t('ex.seeResults')}
+            <ChevronLeft size={16} className={cn(isRTL && 'rotate-180')} />
+            {t('nav.back')}
           </button>
-        )}
+          {isLastStep && !showResults ? (
+            <button
+              type="button"
+              onClick={() => {
+                setShowResults(true);
+                onComplete?.(supportedExercises.map(exercise => exercise.id));
+              }}
+              disabled={!allAnswered}
+              data-kc-results
+              className={cn(
+                'inline-flex min-h-12 items-center justify-center gap-2 rounded-xl px-5 font-display uppercase tracking-[0.13em] font-semibold transition-all',
+                isArabic ? 'text-sm' : 'text-[12px]',
+                allAnswered ? `${theme.accentBg} text-white shadow-md` : 'bg-gray-100 text-gray-400 cursor-not-allowed'
+              )}
+            >
+              <CheckCircle2 size={16} /> {t('ex.seeResults')}
+            </button>
+          ) : (
+            <button
+              type="button"
+              onClick={() => setCurrentStep((step) => Math.min(supportedExercises.length - 1, step + 1))}
+              disabled={isLastStep || (!showResults && currentExercise !== null && answerFor(currentExercise) === null)}
+              data-kc-next
+              className={cn(
+                'inline-flex min-h-12 items-center gap-1.5 rounded-xl px-5 font-display text-[12px] font-semibold text-white transition-all disabled:cursor-not-allowed disabled:opacity-35',
+                theme.accentBg
+              )}
+            >
+              {t('nav.next')}
+              <ChevronRight size={16} className={cn(isRTL && 'rotate-180')} />
+            </button>
+          )}
+        </div>
 
         {showResults && (
           <div className={cn(
-            'rounded-2xl border-2 p-4 sm:p-5 flex items-center gap-4',
-            percentage >= 70 ? 'bg-emerald-50 border-emerald-200' : 'bg-amber-50 border-amber-200'
+            'rounded-[24px] ring-1 p-5 sm:p-6 flex items-center gap-4',
+            percentage >= 70 ? 'bg-emerald-50/85 ring-emerald-200' : 'bg-amber-50/85 ring-amber-200'
           )}>
             <Trophy className={percentage >= 70 ? 'text-emerald-600' : 'text-amber-600'} size={28} />
             <div className="flex-1">
-              <p className="font-display text-base sm:text-lg font-bold text-wood">
-                {formatNumber(correctCount)} / {formatNumber(supportedExercises.length)}
+              <p className="font-display text-xl sm:text-2xl font-semibold tracking-[-0.025em] text-wood">
+                {formatNumber(correctCount)} / {formatNumber(supportedExercises.length)} · {formatNumber(percentage)}%
               </p>
               <p className={cn('font-serif text-wood/60', isArabic ? 'text-[15px]' : 'text-sm')}>
                 {t('ex.feedbackHint').replace('{info}', 'ⓘ')}
               </p>
             </div>
             {onReset && (
-              <button type="button" onClick={reset} className="p-2.5 rounded-xl bg-white border border-gray-200 text-wood/60" aria-label={t('ex.tryAgain')}>
-                <RotateCcw size={18} />
+              <button type="button" onClick={reset} className="inline-flex min-h-11 items-center justify-center gap-2 rounded-xl bg-white px-4 font-display text-[11px] font-semibold uppercase tracking-[0.12em] text-wood/60 shadow-sm ring-1 ring-black/[0.07]" aria-label={t('ex.tryAgain')}>
+                <RotateCcw size={16} />
+                <span>{isArabic ? 'إعادة' : 'Try again'}</span>
               </button>
             )}
           </div>

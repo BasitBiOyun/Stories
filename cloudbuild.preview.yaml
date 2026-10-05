@@ -6,55 +6,237 @@ substitutions:
   _AR_REPOSITORY: cloud-run-source-deploy
   _IMAGE: stories-preview
   _SERVICE: stories-preview
+  # Bucket that holds the narration MP3s; a small tts-state/ folder there remembers the last complete TTS run.
+  _TTS_STATE_BUCKET: gen-lang-client-0373200489.firebasestorage.app
 
 steps:
+  # Skips the image build and deploy when nothing that goes into the app changed
+  # (for example a docs, promo or TTS-queue-only commit). The hash of the app inputs is
+  # stored as a label on the Cloud Run service by the deploy step and compared here.
+  # It also skips when a newer commit is already on the preview branch: that commit's own
+  # build deploys both changes, so quick successive pushes do not each pay for a full build.
+  # If GitHub cannot be reached the check is ignored and the build goes on as usual.
+  - id: check-app-changes
+    waitFor: ['-']
+    name: gcr.io/google.com/cloudsdktool/cloud-sdk:slim
+    entrypoint: bash
+    args:
+      - -c
+      - |
+        set -eu
+        head="$$(git ls-remote https://github.com/BasitBiOyun/Stories 2>/dev/null | awk '$$2 == "refs/heads/${BRANCH_NAME}" {print $$1}' || true)"
+        if [ -n "$$head" ] && [ "$$head" != "$COMMIT_SHA" ]; then
+          echo "[Stories] A newer commit ($$head) is already on ${BRANCH_NAME}; its build deploys this change too. Skipping."
+          touch /workspace/.skip-deploy
+          exit 0
+        fi
+        hash="$$(find src public deploy scripts/validation index.html package.json package-lock.json \
+          vite.config.ts tsconfig.json Dockerfile .dockerignore cloudbuild.preview.yaml \
+          -type f -print0 2>/dev/null | LC_ALL=C sort -z | xargs -0 sha256sum | sha256sum | cut -c1-40)"
+        echo "$$hash" > /workspace/.app-hash
+        deployed="$$(gcloud run services describe ${_SERVICE} --region=${_REGION} \
+          --format='value(metadata.labels.app-hash)' 2>/dev/null || true)"
+        if [ -n "$$deployed" ] && [ "$$deployed" = "$$hash" ]; then
+          echo "[Stories] App inputs unchanged ($$hash); skipping build and deploy."
+          touch /workspace/.skip-deploy
+        else
+          echo "[Stories] App inputs changed ($${deployed:-none} -> $$hash); building."
+        fi
+
+  # Runs alongside check-app-changes (and the narration steps) instead of after it: on a
+  # skipped build the pull is simply unused.
   - id: pull-cache
+    waitFor: ['-']
     name: gcr.io/cloud-builders/docker
     entrypoint: bash
     args:
       - -c
-      - >-
-        docker pull
-        ${_REGION}-docker.pkg.dev/$PROJECT_ID/${_AR_REPOSITORY}/${_IMAGE}:latest
-        || true
+      - |
+        docker pull ${_REGION}-docker.pkg.dev/$PROJECT_ID/${_AR_REPOSITORY}/${_IMAGE}:latest || true
+
+  # Chat-controlled narration queue. Normal preview commits do nothing here unless
+  # tts/requests.json exists. When it does, the build reads the ElevenLabs key
+  # directly from Secret Manager, generates Rowan narration, writes the MP3 to the
+  # exact approved Firebase Storage object, then removes verified old English
+  # duplicates for that same story/level/chapter. Arabic paths are never cleaned.
+  - id: tts-requests
+    waitFor: ['-']
+    name: gcr.io/google.com/cloudsdktool/cloud-sdk:slim
+    entrypoint: bash
+    args:
+      - -c
+      - |
+        set -euo pipefail
+        if [ ! -f tts/requests.json ]; then
+          echo "[Stories TTS] No tts/requests.json; skipping narration generation."
+          exit 0
+        fi
+        # The queue is walked only when it (or the narration scripts) changed since the last
+        # complete run: the hash of a finished run is kept in Storage, so ordinary app commits
+        # skip this step in seconds instead of re-checking every chapter's audio.
+        state="gs://${_TTS_STATE_BUCKET}/tts-state/en-queue-hash.txt"
+        hash="$$(cat tts/requests.json scripts/tts/expand_source_batch.py scripts/tts/process_requests.py scripts/tts/cleanup_duplicates.py | sha256sum | cut -c1-40)"
+        if [ "$$(gcloud storage cat "$$state" 2>/dev/null || true)" = "$$hash" ]; then
+          echo "[Stories TTS] Narration queue unchanged since the last complete run ($$hash); skipping."
+          exit 0
+        fi
+        export ELEVENLABS_API_KEY="$$(gcloud secrets versions access latest --secret=ELEVENLABS_API_KEY --project=$PROJECT_ID)"
+        # Narration never blocks the app deploy: on a failure (for example an exhausted
+        # ElevenLabs quota) the hash is not saved, so the queue is retried by the next build.
+        if python3 scripts/tts/expand_source_batch.py && python3 scripts/tts/process_requests.py; then
+          python3 scripts/tts/cleanup_duplicates.py || echo "[Stories TTS] Duplicate cleanup failed; the deploy continues."
+          printf '%s' "$$hash" | gcloud storage cp - "$$state" || echo "[Stories TTS] Could not save the queue hash; the next build checks the queue again."
+        else
+          echo "[Stories TTS] WARNING: narration generation failed; the deploy continues and the queue is retried on the next build."
+        fi
+
+  # Arabic narration queue (Eleven v4, slightly slowed). Uses its own key from the
+  # ELEVENLABS_ARABIC_API_KEY secret and only overwrites existing arabic_audio objects.
+  # If that secret is not set up yet, the step logs it and the deploy continues.
+  - id: tts-arabic-requests
+    waitFor: ['-']
+    name: gcr.io/google.com/cloudsdktool/cloud-sdk:slim
+    entrypoint: bash
+    args:
+      - -c
+      - |
+        set -euo pipefail
+        if [ ! -f tts/arabic_requests.json ]; then
+          echo "[Stories TTS Arabic] No tts/arabic_requests.json; skipping."
+          exit 0
+        fi
+        # Same as the English step: only a changed queue is walked again.
+        state="gs://${_TTS_STATE_BUCKET}/tts-state/ar-queue-hash.txt"
+        hash="$$(cat tts/arabic_requests.json scripts/tts/process_arabic_requests.py | sha256sum | cut -c1-40)"
+        if [ "$$(gcloud storage cat "$$state" 2>/dev/null || true)" = "$$hash" ]; then
+          echo "[Stories TTS Arabic] Arabic queue unchanged since the last complete run ($$hash); skipping."
+          exit 0
+        fi
+        if ! ELEVENLABS_ARABIC_API_KEY="$$(gcloud secrets versions access latest --secret=ELEVENLABS_ARABIC_API_KEY --project=$PROJECT_ID 2>/dev/null)"; then
+          echo "[Stories TTS Arabic] Secret ELEVENLABS_ARABIC_API_KEY is not readable; skipping Arabic narration."
+          exit 0
+        fi
+        export ELEVENLABS_ARABIC_API_KEY
+        if python3 scripts/tts/process_arabic_requests.py; then
+          printf '%s' "$$hash" | gcloud storage cp - "$$state" || echo "[Stories TTS Arabic] Could not save the queue hash; the next build checks the queue again."
+        else
+          echo "[Stories TTS Arabic] WARNING: Arabic narration failed; the deploy continues and the queue is retried on the next build."
+        fi
+
+  # Two builds so the dependency install (npm ci) is cached too: the first keeps the
+  # build stage as its own cache image, the second builds the small runtime image.
+  - id: audio-alignment
+    waitFor: ['tts-requests', 'tts-arabic-requests']
+    name: gcr.io/google.com/cloudsdktool/cloud-sdk:slim
+    entrypoint: bash
+    args:
+      - -c
+      - |
+        set -euo pipefail
+        if [ ! -f tts/alignment_requests.json ]; then
+          echo "[Stories Align] No tts/alignment_requests.json; skipping."
+          exit 0
+        fi
+        state="gs://${_TTS_STATE_BUCKET}/tts-state/align-queue-hash.txt"
+        hash="$$(cat tts/alignment_requests.json tts/requests.json tts/arabic_requests.json scripts/tts/align_audio.py | sha256sum | cut -c1-40)"
+        if [ "$$(gcloud storage cat "$$state" 2>/dev/null || true)" = "$$hash" ]; then
+          echo "[Stories Align] Alignment queue unchanged since the last complete run ($$hash); skipping."
+          exit 0
+        fi
+        if ! ELEVENLABS_ALIGN_API_KEY="$$(gcloud secrets versions access latest --secret=ELEVENLABS_ARABIC_API_KEY --project=$PROJECT_ID 2>/dev/null)"; then
+          echo "[Stories Align] Secret ELEVENLABS_ARABIC_API_KEY is not readable; skipping word timings."
+          exit 0
+        fi
+        export ELEVENLABS_ALIGN_API_KEY
+        if python3 scripts/tts/align_audio.py; then
+          printf '%s' "$$hash" | gcloud storage cp - "$$state" || echo "[Stories Align] Could not save the queue hash; the next build checks again."
+        else
+          echo "[Stories Align] WARNING: word timings incomplete; the deploy continues and the queue is retried on the next build."
+        fi
 
   - id: build
+    waitFor: ['check-app-changes', 'pull-cache']
     name: gcr.io/cloud-builders/docker
+    entrypoint: bash
     env:
       - DOCKER_BUILDKIT=1
     args:
-      - build
-      - --cache-from=${_REGION}-docker.pkg.dev/$PROJECT_ID/${_AR_REPOSITORY}/${_IMAGE}:latest
-      - --build-arg
-      - BUILDKIT_INLINE_CACHE=1
-      - -t
-      - ${_REGION}-docker.pkg.dev/$PROJECT_ID/${_AR_REPOSITORY}/${_IMAGE}:$COMMIT_SHA
-      - -t
-      - ${_REGION}-docker.pkg.dev/$PROJECT_ID/${_AR_REPOSITORY}/${_IMAGE}:latest
-      - .
+      - -c
+      - |
+        set -euo pipefail
+        [ -f /workspace/.skip-deploy ] && exit 0
+        docker build --target app-build \
+          --cache-from=${_REGION}-docker.pkg.dev/$PROJECT_ID/${_AR_REPOSITORY}/${_IMAGE}:build-cache \
+          --build-arg BUILDKIT_INLINE_CACHE=1 \
+          -t ${_REGION}-docker.pkg.dev/$PROJECT_ID/${_AR_REPOSITORY}/${_IMAGE}:build-cache .
+        docker build \
+          --cache-from=${_REGION}-docker.pkg.dev/$PROJECT_ID/${_AR_REPOSITORY}/${_IMAGE}:build-cache \
+          --cache-from=${_REGION}-docker.pkg.dev/$PROJECT_ID/${_AR_REPOSITORY}/${_IMAGE}:latest \
+          --build-arg BUILDKIT_INLINE_CACHE=1 \
+          -t ${_REGION}-docker.pkg.dev/$PROJECT_ID/${_AR_REPOSITORY}/${_IMAGE}:$COMMIT_SHA \
+          -t ${_REGION}-docker.pkg.dev/$PROJECT_ID/${_AR_REPOSITORY}/${_IMAGE}:latest .
 
   - id: push
+    waitFor: ['build']
     name: gcr.io/cloud-builders/docker
     entrypoint: bash
     args:
       - -c
-      - >-
+      - |
+        set -euo pipefail
+        [ -f /workspace/.skip-deploy ] && exit 0
         docker push ${_REGION}-docker.pkg.dev/$PROJECT_ID/${_AR_REPOSITORY}/${_IMAGE}:$COMMIT_SHA
-        && docker push ${_REGION}-docker.pkg.dev/$PROJECT_ID/${_AR_REPOSITORY}/${_IMAGE}:latest
+        docker push ${_REGION}-docker.pkg.dev/$PROJECT_ID/${_AR_REPOSITORY}/${_IMAGE}:latest
+        docker push ${_REGION}-docker.pkg.dev/$PROJECT_ID/${_AR_REPOSITORY}/${_IMAGE}:build-cache
 
   - id: deploy
+    waitFor: ['push']
     name: gcr.io/google.com/cloudsdktool/cloud-sdk:slim
-    entrypoint: gcloud
+    entrypoint: bash
     args:
-      - run
-      - deploy
-      - ${_SERVICE}
-      - --image=${_REGION}-docker.pkg.dev/$PROJECT_ID/${_AR_REPOSITORY}/${_IMAGE}:$COMMIT_SHA
-      - --region=${_REGION}
-      - --platform=managed
-      - --quiet
-      - --update-env-vars=APP_GIT_SHA=$COMMIT_SHA,APP_GIT_REF=$BRANCH_NAME
-      - --update-labels=git-sha=$SHORT_SHA,deployed-by=cloud-build
+      - -c
+      - |
+        set -euo pipefail
+        [ -f /workspace/.skip-deploy ] && exit 0
+        # A newer commit pushed while this one was building deploys itself; never put an older
+        # image over it.
+        head="$$(git ls-remote https://github.com/BasitBiOyun/Stories 2>/dev/null | awk '$$2 == "refs/heads/${BRANCH_NAME}" {print $$1}' || true)"
+        if [ -n "$$head" ] && [ "$$head" != "$COMMIT_SHA" ]; then
+          echo "[Stories] A newer commit ($$head) is on ${BRANCH_NAME}; its build deploys. Skipping this deploy."
+          exit 0
+        fi
+        gcloud run deploy ${_SERVICE} \
+          --image=${_REGION}-docker.pkg.dev/$PROJECT_ID/${_AR_REPOSITORY}/${_IMAGE}:$COMMIT_SHA \
+          --region=${_REGION} \
+          --platform=managed \
+          --quiet \
+          --update-env-vars=APP_GIT_SHA=$COMMIT_SHA,APP_GIT_REF=$BRANCH_NAME \
+          --update-labels=git-sha=$SHORT_SHA,deployed-by=cloud-build,app-hash=$$(cat /workspace/.app-hash)
+
+  # Keeps only the newest images of this service in Artifact Registry (plus the latest,
+  # build-cache and currently served ones). Never blocks: a failure only leaves old images.
+  # Runs in parallel with build/push/deploy, so it no longer adds to the build time. The image
+  # being pushed is the newest one and is never in the deleted tail.
+  - id: cleanup-old-images
+    waitFor: ['check-app-changes']
+    name: gcr.io/google.com/cloudsdktool/cloud-sdk:slim
+    entrypoint: bash
+    args:
+      - -c
+      - |
+        set -uo pipefail
+        [ -f /workspace/.skip-deploy ] && exit 0
+        keep=20
+        served="$$(gcloud run services describe ${_SERVICE} --region=${_REGION} \
+          --format='value(spec.template.spec.containers[0].image)' 2>/dev/null | sed 's/.*://')"
+        gcloud artifacts docker images list ${_REGION}-docker.pkg.dev/$PROJECT_ID/${_AR_REPOSITORY}/${_IMAGE} --include-tags \
+          --sort-by=~UPDATE_TIME --format='value(version,tags)' 2>/dev/null \
+          | tail -n +$$((keep + 1)) \
+          | awk -v served="$$served" '$$0 !~ /(latest|build-cache)/ && (served == "" || index($$0, served) == 0) {print $$1}' \
+          | head -n 60 \
+          | xargs -r -P 8 -I{} gcloud artifacts docker images delete ${_REGION}-docker.pkg.dev/$PROJECT_ID/${_AR_REPOSITORY}/${_IMAGE}@{} --delete-tags --quiet \
+          || echo "[Stories] Old image cleanup failed; the build continues."
+        exit 0
 
 options:
   logging: CLOUD_LOGGING_ONLY

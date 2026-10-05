@@ -1,14 +1,14 @@
 import React, { useRef, useState } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
-import { Play, Pause, Volume2, VolumeX, BrainCircuit, ArrowRight, CheckCircle2, Book as BookIcon } from '../ui/icons';
-import { PageData, Exercise } from '../../types';
+import { motion } from 'motion/react';
+import { Play, Pause, Volume2, VolumeX, CheckCircle2, ChevronLeft } from '../ui/icons';
+import { PageData, Level } from '../../types';
 import { KnowledgeCheck } from '../exercises/KnowledgeCheck';
-import { SequencingExercise } from '../exercises/SequencingExercise';
 import { VocabularyMatch } from '../exercises/VocabularyMatch';
-import { BoardGame } from './BoardGame';
 import { ExerciseModule } from '../ExerciseModule';
 import { useLanguage } from '../../contexts/LanguageContext';
+import { useStoryProgress } from '../../contexts/StoryProgressContext';
 
+import { SECTION_ICONS } from '../../lib/sectionIcons';
 import { cn } from '../../lib/utils';
 
 export const ExercisePage = ({ 
@@ -16,15 +16,20 @@ export const ExercisePage = ({
   userAnswers, 
   handleAnswer,
   level,
-  collectionId = 'prophets'
+  collectionId = 'prophets',
+  onReviewGlossary,
+  onReviewComplete,
 }: { 
   page: PageData; 
   userAnswers: Record<string, boolean | null>; 
   handleAnswer: (id: string, answer: boolean) => void;
-  level: string;
+  level: Level;
   collectionId?: string;
+  onReviewGlossary?: () => void;
+  onReviewComplete?: () => void;
 }) => {
   const { t, language, formatNumber } = useLanguage();
+  const { trackExerciseComplete } = useStoryProgress();
   const isArabic = language === 'ar';
   const audioRef = useRef<HTMLAudioElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -32,61 +37,24 @@ export const ExercisePage = ({
   const [duration, setDuration] = useState(0);
   const [volume, setVolume] = useState(1);
   const [speed, setSpeed] = useState(1);
-  const [activeExercise, setActiveExercise] = useState<Exercise | null>(null);
   const [completedExercises, setCompletedExercises] = useState<string[]>([]);
+  const [reviewIndex, setReviewIndex] = useState(0);
 
-  const colTheme = React.useMemo(() => {
-    if (collectionId === 'history') {
-      return {
-        audioBg: "bg-emerald-50/90 border-emerald-200 backdrop-blur-md shadow-lg",
-        audioBtn: "bg-emerald-600 hover:bg-emerald-700 text-white",
-        audioSlider: "text-emerald-600 bg-emerald-200",
-        audioIcon: "hover:bg-emerald-200/50 text-emerald-600",
-        speedBtn: "bg-emerald-100/80 text-emerald-700 hover:bg-emerald-200",
-        containerBorder: "border-emerald-200/60",
-        iconBg: "bg-emerald-600 text-white",
-        iconText: "text-emerald-600",
-        quizSectionBorder: "border-emerald-200/60",
-        exerciseTitle: "text-emerald-900",
-        exerciseBtnHover: "hover:border-emerald-400 hover:shadow-emerald-50/50",
-        exerciseIdxBg: "bg-emerald-100 text-emerald-700",
-        exerciseArrowColor: "text-emerald-400"
+  const colTheme = {
+        audioBg: "bg-brand-50/90 border-brand-200 backdrop-blur-md shadow-lg",
+        audioBtn: "bg-brand-600 hover:bg-brand-700 text-white",
+        audioSlider: "text-brand-600 bg-brand-200",
+        audioIcon: "hover:bg-brand-200/50 text-brand-600",
+        speedBtn: "bg-brand-100/80 text-brand-700 hover:bg-brand-200",
+        containerBorder: "border-brand-100",
+        iconBg: "bg-brand-600 text-white",
+        iconText: "text-brand-600",
+        quizSectionBorder: "border-brand-200/60",
+        exerciseTitle: "text-brand-900",
+        exerciseBtnHover: "hover:border-brand-400 hover:shadow-brand-50/50",
+        exerciseIdxBg: "bg-brand-100 text-brand-700",
+        exerciseArrowColor: "text-brand-400"
       };
-    } else if (collectionId === 'turkish') {
-      return {
-        audioBg: "bg-sky-50/90 border-sky-200 backdrop-blur-md shadow-lg",
-        audioBtn: "bg-sky-700 hover:bg-sky-850 text-white",
-        audioSlider: "text-sky-700 bg-sky-100",
-        audioIcon: "hover:bg-sky-100/60 text-sky-700",
-        speedBtn: "bg-sky-100/80 text-sky-850 hover:bg-sky-200",
-        containerBorder: "border-sky-200/60",
-        iconBg: "bg-sky-700 text-white",
-        iconText: "text-sky-700",
-        quizSectionBorder: "border-sky-200/60",
-        exerciseTitle: "text-sky-950",
-        exerciseBtnHover: "hover:border-sky-400 hover:shadow-sky-50/50",
-        exerciseIdxBg: "bg-sky-100 text-sky-700",
-        exerciseArrowColor: "text-sky-400"
-      };
-    } else {
-      // Default (prophets)
-      return {
-        audioBg: "bg-amber-50/90 border-amber-200 backdrop-blur-md shadow-lg",
-        audioBtn: "bg-amber-600 hover:bg-amber-700 text-white",
-        audioSlider: "text-amber-600 bg-amber-200",
-        audioIcon: "hover:bg-amber-200/50 text-amber-600",
-        speedBtn: "bg-amber-100/80 text-amber-700 hover:bg-amber-200",
-        containerBorder: "border-amber-100",
-        iconBg: "bg-amber-600 text-white",
-        iconText: "text-amber-600",
-        quizSectionBorder: "border-amber-200/60",
-        exerciseTitle: "text-amber-900",
-        exerciseBtnHover: "hover:border-amber-400 hover:shadow-amber-50/50",
-        exerciseIdxBg: "bg-amber-100 text-amber-700",
-        exerciseArrowColor: "text-amber-400"
-      };
-    }
-  }, [collectionId]);
 
   const toggleAudio = () => {
     if (audioRef.current) {
@@ -160,18 +128,37 @@ export const ExercisePage = ({
     return `${minutes}:${seconds.toString().padStart(2, '0')}`;
   };
 
-  const exerciseTypeLabel = (type: Exercise['type']) => {
-    if (type === 'matching') return isArabic ? 'مُطَابَقَة' : 'Matching';
-    if (type === 'fill-blanks') return isArabic ? 'مَلْءُ الْفَرَاغَات' : 'Fill in the Blanks';
-    return t(`ex.type.${type}`);
-  };
-
   // Remove audio for pages 11, 12, 13 (indices 10, 11, 12)
   const hideAudio = page.id === 11 || page.id === 12 || page.id === 13;
-  const showGenericHeader = page.type === 'sequencing' || page.type === 'game';
+
+  const languageReviewExercises = page.type === 'exercises' ? (page.exercises ?? []) : [];
+  const reviewTotal = languageReviewExercises.length;
+  const noticeCount = reviewTotal > 0 ? Math.max(2, Math.round(reviewTotal * 0.3)) : 0;
+  const useCount = reviewTotal > 0 ? Math.max(2, Math.round(reviewTotal * 0.25)) : 0;
+  const buildCount = Math.max(0, reviewTotal - noticeCount - useCount);
+  const buildStart = noticeCount;
+  const useStart = noticeCount + buildCount;
+  const reviewStageIndex = reviewIndex < buildStart ? 0 : reviewIndex < useStart ? 1 : 2;
+  const reviewStageStarts = [0, buildStart, useStart];
+  const reviewStageLabels = level === 'A2'
+    ? (isArabic ? ['انظر', 'تدرّب', 'استخدم'] : ['Look', 'Practice', 'Use'])
+    : (isArabic ? ['لاحظ', 'طبّق', 'استخدم'] : ['Notice', 'Build', 'Use']);
+
+  React.useEffect(() => {
+    setReviewIndex(0);
+    setCompletedExercises([]);
+  }, [page.id, language]);
+
+  const isReviewStageUnlocked = (stageIndex: number) => {
+    const start = reviewStageStarts[stageIndex] ?? 0;
+    if (start === 0) return true;
+    return languageReviewExercises
+      .slice(0, start)
+      .every(exercise => completedExercises.includes(exercise.id));
+  };
 
   return (
-    <div className="h-full relative flex flex-col lg:-my-3 lg:h-[calc(100%+1.5rem)]">
+    <div className="h-full relative flex flex-col">
       {/* Top Bar: Audio (Right) */}
       <div className="absolute top-0 right-0 z-50">
         {/* Fixed Audio Player - Top Right */}
@@ -210,7 +197,7 @@ export const ExercisePage = ({
                   colTheme.audioSlider
                 )}
               />
-              <div className="flex justify-between text-[9px] font-mono opacity-60">
+              <div className="flex justify-between text-[11px] font-mono opacity-80">
                 <span>{formatTime(currentTime)}</span>
                 <span>{formatTime(duration)}</span>
               </div>
@@ -246,7 +233,7 @@ export const ExercisePage = ({
               <button
                 onClick={handleSpeedChange}
                 className={cn(
-                  "px-2 py-0.5 text-[10px] font-bold rounded-lg transition-colors shrink-0",
+                  "px-2 py-0.5 text-[11px] font-bold rounded-lg transition-colors shrink-0",
                   colTheme.speedBtn
                 )}
               >
@@ -262,24 +249,9 @@ export const ExercisePage = ({
           className="relative group h-full flex flex-col justify-center w-full min-h-0 flex-1"
         >
           <div className={cn(
-            "relative bg-white/40 backdrop-blur-sm rounded-2xl sm:rounded-3xl border-2 p-3 sm:p-4 md:p-5 shadow-xl h-full flex flex-col overflow-y-auto custom-scrollbar",
+            "relative bg-white/40 backdrop-blur-sm rounded-2xl sm:rounded-3xl border-2 p-3 sm:p-4 md:p-5 h-full flex flex-col overflow-y-auto custom-scrollbar",
             colTheme.containerBorder
           )}>
-            {showGenericHeader && (
-              <div className="flex items-center gap-2 mb-2 sm:mb-3 shrink-0">
-                <div className={cn(
-                  "w-7 h-7 sm:w-8 sm:h-8 rounded-lg flex items-center justify-center shadow-sm shrink-0",
-                  colTheme.iconBg
-                )}>
-                  <BrainCircuit className="w-4 h-4" />
-                </div>
-                <h4 className={cn(
-                  "font-display uppercase tracking-[0.15em] font-black",
-                  isArabic ? 'text-sm sm:text-base' : 'text-[10px] sm:text-xs',
-                  colTheme.iconText
-                )}>{t('nav.interactiveChallenge')}</h4>
-              </div>
-            )}
             <div className="flex-1 min-h-0 flex flex-col h-full">
               {page.type === 'quiz' && page.exercises && (
                 <KnowledgeCheck 
@@ -288,134 +260,169 @@ export const ExercisePage = ({
                   userAnswers={userAnswers} 
                   handleAnswer={handleAnswer} 
                   collectionId={collectionId}
+                  onComplete={(exerciseIds) => exerciseIds.forEach(trackExerciseComplete)}
                 />
-              )}
-              {page.type === 'sequencing' && page.sequencingItems && (
-                <div className="h-full flex flex-col">
-                  <h3 className={cn(
-                    "font-display text-2xl sm:text-3xl md:text-4xl text-wood tracking-tight mb-3 border-b-2 pb-3",
-                    colTheme.quizSectionBorder
-                  )}>
-                    {page.title}
-                  </h3>
-                  <SequencingExercise 
-                    items={page.sequencingItems} 
-                    onComplete={(correct) => console.log('Sequence correct:', correct)} 
-                    collectionId={collectionId}
-                  />
-                </div>
               )}
               {page.type === 'vocabulary-match' && page.vocabularyPairs && (
                 <div className="h-full flex flex-col min-h-0">
-                  <h3 className={cn(
-                    "font-display text-2xl sm:text-3xl text-wood tracking-tight mb-3 border-b-2 pb-3 shrink-0",
-                    colTheme.quizSectionBorder
-                  )}>
-                    {page.title}
-                  </h3>
-                  <VocabularyMatch pairs={page.vocabularyPairs} collectionId={collectionId} />
-                </div>
-              )}
-              {page.type === 'game' && (
-                <div className="h-full flex flex-col">
-                  <h3 className={cn(
-                    "font-display text-2xl sm:text-3xl md:text-4xl text-wood tracking-tight mb-3 border-b-2 pb-3",
-                    colTheme.quizSectionBorder
-                  )}>
-                    {page.title}
-                  </h3>
-                  <BoardGame />
+                  <VocabularyMatch
+                    pairs={page.vocabularyPairs}
+                    collectionId={collectionId}
+                    level={level}
+                    onReviewGlossary={onReviewGlossary}
+                    onComplete={() => trackExerciseComplete(`vocabulary-${page.id}`)}
+                  />
                 </div>
               )}
               {page.type === 'exercises' && page.exercises && (
-                <div className="h-full min-h-0 flex flex-col">
-                  <div className="shrink-0 mb-4">
-                    <h3 className={cn(
-                      "font-display text-2xl sm:text-3xl text-wood tracking-tight mb-1",
-                      colTheme.exerciseTitle
+                <div className="h-full min-h-0 overflow-y-auto px-0.5 pt-0.5 pe-1 custom-scrollbar">
+                  <div className="mx-auto w-full max-w-5xl desk:max-w-[84rem] wide:max-w-none space-y-4 pb-4">
+                    <section className={cn(
+                      "rounded-[28px] bg-white/68 p-5 sm:p-6"
                     )}>
-                      {page.title}
-                    </h3>
-                    <p className={cn(
-                      "text-wood/60 leading-relaxed max-w-5xl",
-                      isArabic ? 'text-base sm:text-lg' : 'text-sm sm:text-base italic'
-                    )}>{page.content}</p>
-                  </div>
-                
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 content-start">
-                    {page.exercises.map((ex, idx) => (
-                      <motion.button
-                        key={ex.id}
-                        initial={{ opacity: 0, x: -20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: idx * 0.1 }}
-                        onClick={() => setActiveExercise(ex)}
-                        className={cn(
-                          "p-4 rounded-2xl border-2 text-left flex items-center justify-between group transition-all",
-                          completedExercises.includes(ex.id)
-                            ? "bg-green-50 border-green-200"
-                            : cn("bg-white border-gray-100 hover:shadow-md", colTheme.exerciseBtnHover)
-                        )}
-                      >
-                        <div className="flex items-center gap-4">
-                          <div className={cn(
-                            "w-10 h-10 rounded-xl flex items-center justify-center font-bold",
-                            completedExercises.includes(ex.id)
-                              ? "bg-green-500 text-white"
-                              : colTheme.exerciseIdxBg
+                      <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+                        <div className="min-w-0">
+                          <p className={cn(
+                            "font-display text-[11px] font-semibold uppercase tracking-[0.18em]",
+                            colTheme.iconText
                           )}>
-                            {completedExercises.includes(ex.id) ? <CheckCircle2 size={20} /> : formatNumber(idx + 1)}
+                            {isArabic ? 'بعد المفردات' : 'After vocabulary'}
+                          </p>
+                          <h3 className={cn(
+                            "mt-1 font-display text-2xl font-semibold tracking-[-0.03em] sm:text-3xl",
+                            "flex items-center gap-2.5",
+                            colTheme.exerciseTitle
+                          )}>
+                            <SECTION_ICONS.languageReview.icon size={26} aria-hidden="true" className="shrink-0" />
+                            {isArabic ? 'مراجعة اللغة' : 'Language Review'}
+                          </h3>
+                          <p className={cn(
+                            "mt-2 max-w-2xl font-serif leading-relaxed text-wood/58",
+                            isArabic ? 'text-base sm:text-lg' : 'text-sm sm:text-base'
+                          )}>
+                            {level === 'A2'
+                              ? (isArabic
+                                  ? 'انظر إلى لغة القصة، تدرّب عليها، ثم استخدمها بنفسك.'
+                                  : 'Look at language from the story, practise it, then use it yourself.')
+                              : page.content}
+                          </p>
+                        </div>
+
+                        <div className="shrink-0 sm:min-w-[170px]">
+                          <div className="flex items-center justify-between gap-3">
+                            <span className="font-display text-[11px] font-semibold uppercase tracking-[0.14em] text-wood/60">
+                              {isArabic ? 'المهمة' : 'Task'}
+                            </span>
+                            <span className={cn("font-display text-sm font-semibold tabular-nums", colTheme.iconText)}>
+                              {formatNumber(Math.min(reviewIndex + 1, reviewTotal))} / {formatNumber(reviewTotal)}
+                            </span>
                           </div>
-                          <div>
-                            <p className={cn(
-                              "font-bold",
-                              isArabic ? 'text-lg' : 'text-base',
-                              completedExercises.includes(ex.id) ? "text-green-800" : "text-gray-900"
-                            )}>{ex.title}</p>
-                            <p className={cn(
-                              'text-gray-500 uppercase tracking-widest font-medium',
-                              isArabic ? 'text-base' : 'text-xs'
-                            )}>{exerciseTypeLabel(ex.type)}</p>
+                          <div className="mt-2 h-1.5 overflow-hidden rounded-full bg-black/[0.06]">
+                            <motion.div
+                              initial={false}
+                              animate={{ width: `${reviewTotal ? ((reviewIndex + 1) / reviewTotal) * 100 : 0}%` }}
+                              className={cn("h-full rounded-full", 'bg-brand-600')}
+                            />
                           </div>
                         </div>
-                        <ArrowRight className={cn(
-                          "w-5 h-5 transition-transform group-hover:translate-x-1",
-                          completedExercises.includes(ex.id) ? "text-green-400" : colTheme.exerciseArrowColor
-                        )} />
-                      </motion.button>
-                    ))}
-                  </div>
+                      </div>
 
-                  {completedExercises.length === page.exercises.length && (
-                    <motion.div
-                      initial={{ opacity: 0, scale: 0.9 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      className="mt-6 p-5 bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl text-white text-center shadow-xl"
-                    >
-                      <h4 className="text-2xl font-black mb-1">{t('nav.masteryAchieved')}</h4>
-                      <p className="text-sm opacity-90 font-medium">{t('nav.masteryDesc')}</p>
-                    </motion.div>
-                  )}
+                      <div className="mt-5 grid grid-cols-3 gap-2">
+                        {reviewStageLabels.map((label, stageIndex) => {
+                          const unlocked = isReviewStageUnlocked(stageIndex);
+                          const active = reviewStageIndex === stageIndex;
+                          const complete = reviewStageStarts[stageIndex + 1] !== undefined
+                            ? languageReviewExercises
+                                .slice(reviewStageStarts[stageIndex], reviewStageStarts[stageIndex + 1])
+                                .every(exercise => completedExercises.includes(exercise.id))
+                            : languageReviewExercises
+                                .slice(reviewStageStarts[stageIndex])
+                                .every(exercise => completedExercises.includes(exercise.id));
+
+                          return (
+                            <button
+                              key={label}
+                              type="button"
+                              disabled={!unlocked}
+                              onClick={() => unlocked && setReviewIndex(reviewStageStarts[stageIndex])}
+                              className={cn(
+                                "min-h-11 rounded-xl px-2 py-2 font-display text-[11px] font-semibold transition-all ring-1 sm:text-xs md:text-sm",
+                                active
+                                  ? cn(colTheme.exerciseIdxBg, 'ring-current/15')
+                                  : complete
+                                  ? 'bg-emerald-50 text-emerald-700 ring-emerald-200'
+                                  : unlocked
+                                  ? 'bg-white text-wood/58 ring-black/[0.07] hover:bg-white/85'
+                                  : 'cursor-not-allowed bg-white/45 text-wood/25 ring-black/[0.04]'
+                              )}
+                            >
+                              {complete ? '✓ ' : ''}{label}
+                            </button>
+                          );
+                        })}
+                      </div>
+                    </section>
+
+                    {languageReviewExercises[reviewIndex] && (
+                      <div className="space-y-3">
+                        {reviewIndex > 0 && (
+                          <button
+                            type="button"
+                            onClick={() => setReviewIndex(index => Math.max(0, index - 1))}
+                            className="inline-flex min-h-9 items-center gap-1.5 rounded-full bg-white/70 px-3 font-display text-[11px] font-semibold uppercase tracking-[0.11em] text-wood/62 ring-1 ring-black/[0.06] transition-colors hover:bg-white"
+                          >
+                            <ChevronLeft size={14} className={cn(isArabic && 'rotate-180')} />
+                            {isArabic ? 'السابق' : 'Previous'}
+                          </button>
+                        )}
+
+                        <ExerciseModule
+                          key={languageReviewExercises[reviewIndex].id}
+                          exercise={languageReviewExercises[reviewIndex]}
+                          variant="review"
+                          embedded
+                          collectionId={collectionId}
+                          onClose={() => undefined}
+                          onComplete={() => {
+                            const exerciseId = languageReviewExercises[reviewIndex].id;
+                            trackExerciseComplete(exerciseId);
+                            setCompletedExercises(previous =>
+                              previous.includes(exerciseId) ? previous : [...previous, exerciseId]
+                            );
+                            if (reviewIndex < reviewTotal - 1) {
+                              setReviewIndex(index => index + 1);
+                            } else {
+                              onReviewComplete?.();
+                            }
+                          }}
+                        />
+
+                        {completedExercises.length === reviewTotal && reviewTotal > 0 && (
+                          <motion.div
+                            initial={{ opacity: 0, y: 8 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            className="rounded-[22px] bg-emerald-50/85 p-5 text-center ring-1 ring-emerald-200"
+                          >
+                            <CheckCircle2 className="mx-auto text-emerald-600" size={24} />
+                            <h4 className="mt-2 font-display text-xl font-semibold text-emerald-950">
+                              {isArabic ? 'اكتملت مراجعة اللغة' : 'Language Review complete'}
+                            </h4>
+                            <p className={cn("mt-1 font-serif text-emerald-900/60", isArabic ? 'text-base' : 'text-sm')}>
+                              {isArabic
+                                ? 'راجعت اللغة من الكتاب واستخدمتها في مهام جديدة.'
+                                : 'You reviewed the book’s language and used it in new tasks.'}
+                            </p>
+                          </motion.div>
+                        )}
+                      </div>
+                    )}
+                  </div>
                 </div>
               )}
             </div>
           </div>
         </motion.div>
 
-      {/* Exercise Modal */}
-      <AnimatePresence>
-        {activeExercise && (
-          <ExerciseModule
-            exercise={activeExercise}
-            onComplete={() => {
-              setCompletedExercises(prev => [...prev, activeExercise.id]);
-              setActiveExercise(null);
-            }}
-            onClose={() => setActiveExercise(null)}
-            collectionId={collectionId}
-          />
-        )}
-      </AnimatePresence>
     </div>
   );
 };

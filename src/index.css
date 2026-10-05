@@ -2,6 +2,9 @@
 @import url('https://cdn.jsdelivr.net/npm/open-dyslexic@1.0.3/dist/css/open-dyslexic.min.css');
 @import "tailwindcss";
 
+/* "Wide view" from the Aa menu: text and panels stretch to the full reader width. */
+@custom-variant wide (&:where([data-reader-wide], [data-reader-wide] *));
+
 @font-face {
   font-family: 'Arakom';
   src: url('/Arakom-Regular.ttf') format('truetype');
@@ -29,6 +32,8 @@
 
   /* The application already uses xs: utilities in its responsive shell. */
   --breakpoint-xs: 30rem;
+  /* Large desktop screens: the reader scales its text and panels up from here. */
+  --breakpoint-desk: 90rem;
   
   --color-parchment: #f4f1ea;
   --color-wood: #14221a; /* Calming sage green deep forest background */
@@ -47,6 +52,14 @@
   --color-emerald-605: #05905f;
   --color-emerald-650: #047a51;
 
+  /* Shape and label scale shared by the reader chrome and the home page. */
+  --radius-control: 9999px;
+  --radius-card: 1rem;
+  --radius-panel: 1.5rem;
+  --text-label: 0.6875rem;
+  --text-label--line-height: 1rem;
+  --text-label--letter-spacing: 0.16em;
+
   --animate-shake: shake 0.5s cubic-bezier(.36,.07,.19,.97) both;
 
   @keyframes shake {
@@ -55,6 +68,33 @@
     30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
     40%, 60% { transform: translate3d(4px, 0, 0); }
   }
+}
+
+/*
+ * Collection accent tokens. The values come from `collectionVisuals[...].readerTokens` in
+ * src/core/content/storyCatalog.ts: the reader root sets them as inline CSS variables, and these
+ * utilities (bg-accent, text-accent/60, bg-chrome/85, bg-page/95 ...) read them. The defaults are
+ * the Prophets palette, so anything rendered outside the reader still has a colour.
+ */
+@theme inline {
+  --color-accent: var(--accent, #c2aa6b);
+  --color-accent-strong: var(--accent-strong, #b7791f);
+  --color-chrome: var(--chrome, #2a1d0c);
+  --color-chrome-menu: var(--chrome-menu, #14221a);
+  --color-page: var(--page, #fff7ed);
+  --color-page-deep: var(--page-deep, #f4f1ea);
+  /* brand-50 … brand-950: the collection's scale on light surfaces (amber, emerald or sky). */
+  --color-brand-50: var(--brand-50, oklch(98.7% .022 95.277));
+  --color-brand-100: var(--brand-100, oklch(96.2% .059 95.617));
+  --color-brand-200: var(--brand-200, oklch(92.4% .12 95.746));
+  --color-brand-300: var(--brand-300, oklch(87.9% .169 91.605));
+  --color-brand-400: var(--brand-400, oklch(82.8% .189 84.429));
+  --color-brand-500: var(--brand-500, oklch(76.9% .188 70.08));
+  --color-brand-600: var(--brand-600, oklch(66.6% .179 58.318));
+  --color-brand-700: var(--brand-700, oklch(55.5% .163 48.998));
+  --color-brand-800: var(--brand-800, oklch(47.3% .137 46.201));
+  --color-brand-900: var(--brand-900, oklch(41.4% .112 45.904));
+  --color-brand-950: var(--brand-950, oklch(27.9% .077 45.635));
 }
 
 @layer base {
@@ -91,6 +131,11 @@
     font-family: var(--font-arabic) !important;
     font-style: normal !important;
   }
+
+  /* A Turkish place name inside Arabic text keeps the Latin type of the English cards. */
+  .learner-name {
+    font-family: "Poppins", sans-serif;
+  }
 }
 
 @layer components {
@@ -126,6 +171,29 @@
 
   .custom-scrollbar::-webkit-scrollbar-thumb {
     @apply bg-gold/40 rounded-full hover:bg-gold/60 transition-colors;
+  }
+
+  /* Small uppercase caption used for levels, sections and counters. */
+  .ui-label {
+    font-family: var(--font-display);
+    font-size: var(--text-label);
+    line-height: var(--text-label--line-height);
+    letter-spacing: var(--text-label--letter-spacing);
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+
+  /* Round chrome control: the header and footer buttons of the reader. */
+  .ui-control {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 2.75rem;
+    min-height: 2.75rem;
+    border-radius: var(--radius-control);
+    border-width: 1px;
+    transition-property: color, background-color, border-color, opacity, transform;
+    transition-duration: 200ms;
   }
 
   /* Shared primitives for the responsive pass. Opt-in only: existing layout is not changed globally. */
@@ -297,21 +365,22 @@
   }
 }
 
-/* Teacher/Self-Study overlays: horizontal, swipeable section navigation through tablet portrait. */
+/* Teacher/Self-Study overlays: horizontal, swipeable section navigation through tablet portrait.
+   Structure: shell > header, layout > aside (guide map + nav tabs), content (div or main). */
 @media (max-width: 1023px) {
-  div[class*="bg-wood/95"][class*="z-[100]"] > div:nth-child(2),
-  div[class*="bg-wood/98"][class*="z-[100]"] > div:nth-child(2) {
+  div[class*="bg-wood/95"][class*="z-[100]"] > :nth-child(2),
+  div[class*="bg-wood/98"][class*="z-[100]"] > :nth-child(2) {
     flex-direction: column;
   }
 
-  div[class*="bg-wood/95"][class*="z-[100]"] > div:first-child button,
-  div[class*="bg-wood/98"][class*="z-[100]"] > div:first-child button {
+  div[class*="bg-wood/95"][class*="z-[100]"] > :first-child button,
+  div[class*="bg-wood/98"][class*="z-[100]"] > :first-child button {
     min-width: 2.5rem;
     min-height: 2.5rem;
   }
 
-  div[class*="bg-wood/95"][class*="z-[100]"] > div:nth-child(2) > div:first-child,
-  div[class*="bg-wood/98"][class*="z-[100]"] > div:nth-child(2) > div:first-child {
+  div[class*="bg-wood/95"][class*="z-[100]"] > :nth-child(2) > aside,
+  div[class*="bg-wood/98"][class*="z-[100]"] > :nth-child(2) > aside {
     width: 100%;
     height: auto;
     max-height: 5rem;
@@ -322,16 +391,34 @@
     border-bottom: 1px solid color-mix(in srgb, var(--color-gold) 16%, transparent);
     scrollbar-width: none;
     scroll-snap-type: x proximity;
+    scroll-padding-inline: 0.5rem;
     overscroll-behavior-inline: contain;
+    /* A soft fade at the far edge shows the strip scrolls, instead of a hard cut through a tab. */
+    -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 2.5rem), transparent);
+    mask-image: linear-gradient(to right, #000 calc(100% - 2.5rem), transparent);
   }
 
-  div[class*="bg-wood/95"][class*="z-[100]"] > div:nth-child(2) > div:first-child::-webkit-scrollbar,
-  div[class*="bg-wood/98"][class*="z-[100]"] > div:nth-child(2) > div:first-child::-webkit-scrollbar {
+  [dir="rtl"] div[class*="bg-wood/95"][class*="z-[100]"] > :nth-child(2) > aside,
+  [dir="rtl"] div[class*="bg-wood/98"][class*="z-[100]"] > :nth-child(2) > aside,
+  div[dir="rtl"][class*="bg-wood/95"][class*="z-[100]"] > :nth-child(2) > aside,
+  div[dir="rtl"][class*="bg-wood/98"][class*="z-[100]"] > :nth-child(2) > aside {
+    -webkit-mask-image: linear-gradient(to left, #000 calc(100% - 2.5rem), transparent);
+    mask-image: linear-gradient(to left, #000 calc(100% - 2.5rem), transparent);
+  }
+
+  div[class*="bg-wood/95"][class*="z-[100]"] > :nth-child(2) > aside::-webkit-scrollbar,
+  div[class*="bg-wood/98"][class*="z-[100]"] > :nth-child(2) > aside::-webkit-scrollbar {
     display: none;
   }
 
-  div[class*="bg-wood/95"][class*="z-[100]"] > div:nth-child(2) > div:first-child > div,
-  div[class*="bg-wood/98"][class*="z-[100]"] > div:nth-child(2) > div:first-child > div {
+  /* The guide-map card has no room in a horizontal strip. */
+  div[class*="bg-wood/95"][class*="z-[100]"] > :nth-child(2) > aside > div,
+  div[class*="bg-wood/98"][class*="z-[100]"] > :nth-child(2) > aside > div {
+    display: none;
+  }
+
+  div[class*="bg-wood/95"][class*="z-[100]"] > :nth-child(2) > aside > nav,
+  div[class*="bg-wood/98"][class*="z-[100]"] > :nth-child(2) > aside > nav {
     display: flex;
     flex-direction: row;
     gap: 0.375rem;
@@ -339,19 +426,41 @@
     padding: 0.5rem;
   }
 
-  div[class*="bg-wood/95"][class*="z-[100]"] > div:nth-child(2) > div:first-child button,
-  div[class*="bg-wood/98"][class*="z-[100]"] > div:nth-child(2) > div:first-child button {
-    width: 4.75rem;
-    min-width: 4.75rem;
+  div[class*="bg-wood/95"][class*="z-[100]"] > :nth-child(2) > aside > nav > button,
+  div[class*="bg-wood/98"][class*="z-[100]"] > :nth-child(2) > aside > nav > button {
+    width: 4rem;
+    min-width: 4rem;
     min-height: 3.75rem;
+    margin: 0;
     padding: 0.5rem;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.25rem;
     scroll-snap-align: start;
   }
 
-  div[class*="bg-wood/95"][class*="z-[100]"] > div:nth-child(2) > div:nth-child(2),
-  div[class*="bg-wood/98"][class*="z-[100]"] > div:nth-child(2) > div:nth-child(2) {
+  /* Strip buttons show icon + number only; the text label belongs to the desktop sidebar. */
+  div[class*="bg-wood/95"][class*="z-[100]"] > :nth-child(2) > aside > nav > button > span:last-child,
+  div[class*="bg-wood/98"][class*="z-[100]"] > :nth-child(2) > aside > nav > button > span:last-child {
+    display: none;
+  }
+
+  div[class*="bg-wood/95"][class*="z-[100]"] > :nth-child(2) > aside > nav > button > span:nth-last-child(2),
+  div[class*="bg-wood/98"][class*="z-[100]"] > :nth-child(2) > aside > nav > button > span:nth-last-child(2) {
+    display: block;
+  }
+
+  div[class*="bg-wood/95"][class*="z-[100]"] > :nth-child(2) > :nth-child(2),
+  div[class*="bg-wood/98"][class*="z-[100]"] > :nth-child(2) > :nth-child(2) {
     min-height: 0;
     padding: clamp(1rem, 3vw, 2rem);
+  }
+
+  /* The section bar sticks flush to the top and full width, so text never scrolls past beside or above it. */
+  div[class*="bg-wood/95"][class*="z-[100]"] > :nth-child(2) > :nth-child(2) > .sticky,
+  div[class*="bg-wood/98"][class*="z-[100]"] > :nth-child(2) > :nth-child(2) > .sticky {
+    top: calc(-1 * clamp(1rem, 3vw, 2rem));
+    margin: calc(-1 * clamp(1rem, 3vw, 2rem)) calc(-1 * clamp(1rem, 3vw, 2rem)) 0;
   }
 }
 
@@ -365,6 +474,34 @@
   .custom-scrollbar::-webkit-scrollbar {
     display: none;
   }
+}
+
+/* Home page and entry screens: drifting cover wall, slow halo ring, staggered rise of the hero text. */
+@keyframes home-drift { to { transform: translateX(-25%); } }
+@keyframes home-spin { to { transform: translate(-50%, -50%) rotate(360deg); } }
+@keyframes home-rise { from { opacity: 0.001; transform: translateY(22px); } }
+@keyframes home-cue { 50% { transform: translateY(8px); opacity: 0.4; } }
+.home-drift { animation: home-drift 80s linear infinite; }
+.home-drift-reverse { animation: home-drift 80s linear infinite reverse; }
+.home-spin { animation: home-spin 120s linear infinite; }
+.home-rise { animation: home-rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.home-cue { animation: home-cue 2.2s ease-in-out infinite; }
+.home-gold-text {
+  background: linear-gradient(100deg, #F3D58A, #C9963F 60%, #F3D58A);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  /* Room for glyph overhangs: background-clip:text paints only inside the box, so the last letter's edge was cut. */
+  padding: 0.06em 0.08em 0.08em;
+  margin: -0.06em -0.08em 0;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+/* One-line titles that truncate: give accents, Arabic harakat and descenders room inside the clip box without moving the layout. */
+.clip-room {
+  padding-block: 0.5em 0.7em;
+  margin-block: -0.5em -0.7em;
 }
 
 /* Respect the operating system's reduced-motion preference without changing the default design. */

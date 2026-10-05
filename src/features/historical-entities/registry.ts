@@ -1,184 +1,25 @@
 import type { PageData } from '../../types';
-import type { HistoricalEntity, HistoricalEntityLocale } from './types';
+import { findPlaceName } from './placeMatch';
+import type { HistoricalEntity, HistoricalEntityCopy, HistoricalEntityLocale } from './types';
+import { BOOK_SETS } from './books';
 
 const HISTORICAL_ENTITY_MARKER = '__historical_entity__:';
-const ancientNearEastContextMap = new URL('./assets/maps/ancient-near-east-context-map.svg', import.meta.url).href;
-const abrahamA2BabylonMapEn = new URL('./assets/maps/abraham-a2/abraham-a2-babylon-map-en.webp', import.meta.url).href;
-const abrahamA2BabylonMapAr = new URL('./assets/maps/abraham-a2/abraham-a2-babylon-map-ar.webp', import.meta.url).href;
 
-export const historicalEntities: Record<string, HistoricalEntity> = {
-  babylon: {
-    id: 'babylon',
-    kind: 'kingdom',
-    aliases: {
-      en: ['Babylon'],
-      ar: ['بَابِلَ'],
-    },
-    copy: {
-      en: {
-        title: 'Babylon',
-        kindLabel: 'Ancient city and kingdom',
-        periodLabel: 'Ancient Mesopotamia',
-        summary: 'Babylon was an old kingdom in Mesopotamia.',
-        mapAlt: 'Historical map showing Babylon and important places.',
-      },
-      ar: {
-        title: 'بابل',
-        kindLabel: 'مدينة ومملكة قديمة',
-        periodLabel: 'بلاد ما بين النهرين القديمة',
-        summary: 'كانت بابل مملكةً قديمة في بلاد ما بين النهرين.',
-        mapAlt: 'خريطة تاريخية توضّح بابل وبعض الأماكن المهمة.',
-      },
-    },
-    mapAsset: {
-      en: abrahamA2BabylonMapEn,
-      ar: abrahamA2BabylonMapAr,
-    },
-    focus: { mode: 'area', x: 61, y: 38, width: 25, height: 36, rotate: 3 },
-    approximate: true,
-    sources: [
-      'https://www.britannica.com/place/Babylon-ancient-city-Mesopotamia-Asia',
-      'https://whc.unesco.org/en/list/278/',
-      'https://www.iranicaonline.org/articles/babylonia-index/babylonia-i/',
-    ],
-  },
-  mesopotamia: {
-    id: 'mesopotamia',
-    kind: 'region',
-    aliases: {
-      en: ['Mesopotamia'],
-      ar: ['بِلَادِ مَا بَيْنَ النَّهْرَيْنِ', 'النَّهْرَيْنِ'],
-    },
-    copy: {
-      en: {
-        title: 'Mesopotamia',
-        kindLabel: 'Historical region',
-        periodLabel: 'Ancient Near East',
-        summary: 'Mesopotamia was an old land between two rivers: the Tigris and the Euphrates.',
-        mapAlt: 'Map highlighting the approximate Mesopotamian region.',
-      },
-      ar: {
-        title: 'بلاد ما بين النهرين',
-        kindLabel: 'منطقة تاريخية',
-        periodLabel: 'الشرق الأدنى القديم',
-        summary: 'كانت بلاد ما بين النهرين أرضًا قديمة بين نهرَي دجلة والفرات.',
-        mapAlt: 'خريطة تبرز المنطقة التقريبية لبلاد ما بين النهرين.',
-      },
-    },
-    mapAsset: ancientNearEastContextMap,
-    focus: { mode: 'area', x: 59, y: 28, width: 18, height: 34, rotate: 8 },
-    approximate: true,
-    sources: [
-      'https://www.britannica.com/place/Mesopotamia-historical-region-Asia',
-      'https://www.metmuseum.org/toah/hd/meso/hd_meso.htm',
-    ],
-  },
-  syria: {
-    id: 'syria',
-    kind: 'region',
-    aliases: {
-      en: ['Syria'],
-      ar: ['بِلَادِ الشَّامِ'],
-    },
-    copy: {
-      en: {
-        title: 'Syria / al-Sham',
-        kindLabel: 'Historical region',
-        periodLabel: 'The Levant',
-        summary: 'Syria, or al-Sham, was a land west of Mesopotamia. Abraham travelled there after Babylon.',
-        mapAlt: 'Map highlighting the approximate Syrian or al-Sham region.',
-        approximateLabel: 'Historical regional extent shown approximately',
-      },
-      ar: {
-        title: 'بلاد الشام',
-        kindLabel: 'منطقة تاريخية',
-        periodLabel: 'بلاد الشام',
-        summary: 'كانت بلاد الشام أرضًا إلى الغرب من بلاد ما بين النهرين، وسافر إبراهيم إليها بعد بابل.',
-        mapAlt: 'خريطة تبرز بصورة تقريبية منطقة بلاد الشام.',
-        approximateLabel: 'النطاق التاريخي للمنطقة موضَّح بصورة تقريبية',
-      },
-    },
-    mapAsset: ancientNearEastContextMap,
-    focus: { mode: 'area', x: 46, y: 25, width: 13, height: 22, rotate: -7 },
-    approximate: true,
-    sources: [
-      'https://www.britannica.com/place/Syria',
-      'https://www.britannica.com/place/Levant',
-    ],
-  },
-  palestine: {
-    id: 'palestine',
-    kind: 'region',
-    aliases: {
-      en: ['Palestine'],
-      ar: ['فِلَسْطِينَ'],
-    },
-    copy: {
-      en: {
-        title: 'Palestine',
-        kindLabel: 'Historical region',
-        periodLabel: 'Eastern Mediterranean',
-        summary: 'Palestine was a land near the Mediterranean Sea. Abraham travelled there on his journey.',
-        mapAlt: 'Map highlighting the approximate historical region of Palestine.',
-        approximateLabel: 'Historical regional extent shown approximately',
-      },
-      ar: {
-        title: 'فلسطين',
-        kindLabel: 'منطقة تاريخية',
-        periodLabel: 'شرق البحر المتوسط',
-        summary: 'كانت فلسطين أرضًا قرب البحر المتوسط، وسافر إبراهيم إليها في رحلته.',
-        mapAlt: 'خريطة تبرز بصورة تقريبية المنطقة التاريخية لفلسطين.',
-        approximateLabel: 'النطاق التاريخي للمنطقة موضَّح بصورة تقريبية',
-      },
-    },
-    mapAsset: ancientNearEastContextMap,
-    focus: { mode: 'area', x: 38, y: 32, width: 5.5, height: 15, rotate: -5 },
-    approximate: true,
-    sources: [
-      'https://www.britannica.com/place/Palestine',
-    ],
-  },
-  mecca: {
-    id: 'mecca',
-    kind: 'city',
-    aliases: {
-      en: ['Mecca'],
-      ar: ['مَكَّةَ'],
-    },
-    copy: {
-      en: {
-        title: 'Mecca',
-        kindLabel: 'City',
-        periodLabel: 'Western Arabia',
-        summary: 'Mecca is a city in western Arabia. In the story, people built the city near Zamzam water.',
-        mapAlt: 'Map locating Mecca in western Arabia.',
-        approximateLabel: 'Location shown on a regional context map',
-      },
-      ar: {
-        title: 'مكة',
-        kindLabel: 'مدينة',
-        periodLabel: 'غرب الجزيرة العربية',
-        summary: 'مكة مدينة في غرب الجزيرة العربية، وتذكر القصة أن الناس بنوا المدينة قرب ماء زمزم.',
-        mapAlt: 'خريطة توضّح موقع مكة في غرب الجزيرة العربية.',
-        approximateLabel: 'الموقع موضَّح ضمن خريطة إقليمية',
-      },
-    },
-    mapAsset: ancientNearEastContextMap,
-    focus: { mode: 'point', x: 50, y: 64 },
-    approximate: false,
-    sources: [
-      'https://www.britannica.com/place/Mecca',
-    ],
-  },
-};
+export const historicalEntities: Record<string, HistoricalEntity> = Object.fromEntries(
+  BOOK_SETS.flatMap(set => set.entities).map(entity => [entity.id, entity]),
+);
 
-const ABRAHAM_A2_CHAPTER_ENTITIES: Record<number, string[]> = {
-  1: ['babylon', 'mesopotamia'],
-  10: ['babylon'],
-  11: ['babylon', 'syria', 'palestine'],
-  13: ['mecca'],
-  14: ['mecca'],
-};
+/** A book level, e.g. 'mecca-b1': which cards each story chapter offers. */
+export type HistoricalEntityBookKey = string;
+
+const BOOK_CHAPTER_ENTITIES: Record<HistoricalEntityBookKey, Record<number, string[]>> = Object.assign(
+  {},
+  ...BOOK_SETS.map(set => set.chapters),
+);
+
+
+export const isHistoricalEntityBookKey = (value: unknown): value is HistoricalEntityBookKey =>
+  typeof value === 'string' && value in BOOK_CHAPTER_ENTITIES;
 
 const normalizeForMerge = (value: string) => value
   .normalize('NFKD')
@@ -203,24 +44,73 @@ export const getHistoricalEntity = (entityId: string) => historicalEntities[enti
 export const resolveHistoricalMapAsset = (
   entity: HistoricalEntity,
   locale: HistoricalEntityLocale,
-): string => typeof entity.mapAsset === 'string' ? entity.mapAsset : entity.mapAsset[locale];
+): string | undefined => {
+  if (!entity.mapAsset) return undefined;
+  return typeof entity.mapAsset === 'string' ? entity.mapAsset : entity.mapAsset[locale];
+};
+
+export const resolveHistoricalCopy = (
+  entity: HistoricalEntity,
+  locale: HistoricalEntityLocale,
+): HistoricalEntityCopy => entity.copy[locale] ?? entity.copy.en;
+
+export interface BookEntityEntry {
+  entity: HistoricalEntity;
+  chapters: number[];
+}
+
+/** Every card a book offers, in order of first appearance, with its chapters. */
+export const getBookEntityIndex = (bookKey: HistoricalEntityBookKey): BookEntityEntry[] => {
+  const chapters = new Map<string, number[]>();
+  Object.entries(BOOK_CHAPTER_ENTITIES[bookKey])
+    .map(([chapter, ids]) => [Number(chapter), ids] as const)
+    .sort(([left], [right]) => left - right)
+    .forEach(([chapter, ids]) => {
+      ids.forEach(id => {
+        const list = chapters.get(id) ?? [];
+        if (!list.includes(chapter)) list.push(chapter);
+        chapters.set(id, list);
+      });
+    });
+
+  return [...chapters.entries()].flatMap(([id, list]) => {
+    const entity = historicalEntities[id];
+    return entity ? [{ entity, chapters: list }] : [];
+  });
+};
+
+/** The first book, built before Word Notes and cards shared chapters. */
+const BOOKS_WHERE_CARDS_REPLACE_WORD_NOTES = new Set(['ibnjubayr-a2']);
 
 export const applyHistoricalEntitiesToPage = (
   page: PageData,
-  bookKey: 'abraham-a2',
+  bookKey: HistoricalEntityBookKey,
   locale: HistoricalEntityLocale,
 ): PageData => {
-  if (bookKey !== 'abraham-a2' || page.type !== 'story') return page;
+  if (page.type !== 'story') return page;
 
-  const entityIds = ABRAHAM_A2_CHAPTER_ENTITIES[page.id] ?? [];
+  const entityIds = BOOK_CHAPTER_ENTITIES[bookKey]?.[page.id] ?? [];
   if (entityIds.length === 0) return page;
+
+  // Word Notes written by the teacher always win: in the bilingual books a
+  // place that is also a Word Note keeps its Word Note in that chapter, so the
+  // English and Arabic editions keep the same Word Notes.
+  const wordNotesFirst = !BOOKS_WHERE_CARDS_REPLACE_WORD_NOTES.has(bookKey);
+  const wordNotes = (page.vocabulary ?? []).filter(item => !getHistoricalEntityIdFromDefinition(item.definition));
+  const wordNoteKeys = new Set(wordNotes.map(item => normalizeForMerge(item.word)));
 
   const historicalVocabulary = entityIds.flatMap(entityId => {
     const entity = historicalEntities[entityId];
     if (!entity) return [];
 
-    const alias = entity.aliases[locale].find(candidate => page.content.includes(candidate));
+    // The name as the story writes it, so an Arabic name still matches with
+    // its vowels and attached letters (بِبَابِلَ, وَمِصْرَ).
+    const aliases = entity.aliases[locale] ?? [];
+    const alias = aliases
+      .map(candidate => findPlaceName(page.content, candidate, locale))
+      .find(Boolean);
     if (!alias) return [];
+    if (wordNotesFirst && [alias, ...aliases].some(name => wordNoteKeys.has(normalizeForMerge(name)))) return [];
 
     return [{ word: alias, definition: historicalEntityDefinition(entityId) }];
   });
@@ -231,12 +121,54 @@ export const applyHistoricalEntitiesToPage = (
     entityIds.flatMap(entityId => historicalEntities[entityId]?.aliases[locale] ?? [])
       .map(normalizeForMerge),
   );
-  const ordinaryVocabulary = (page.vocabulary ?? []).filter(
-    item => !historicalWords.has(normalizeForMerge(item.word)),
-  );
+  const ordinaryVocabulary = wordNotesFirst
+    ? wordNotes
+    : wordNotes.filter(item => !historicalWords.has(normalizeForMerge(item.word)));
 
   return {
     ...page,
     vocabulary: [...historicalVocabulary, ...ordinaryVocabulary],
   };
+};
+
+const PLACES_PAGE_ID = 102;
+
+const PLACES_PAGE_COPY: Record<HistoricalEntityLocale, { title: string; content: string }> = {
+  en: { title: 'Places & People', content: 'Find every city, land, sea and person from the story on the map.' },
+  ar: { title: 'الأَمَاكِنُ وَالأَشْخَاصُ', content: 'اِبْحَثْ عَلَى الخَرِيطَةِ عَنْ كُلِّ مَدِينَةٍ وَأَرْضٍ وَبَحْرٍ وَشَخْصٍ فِي القِصَّةِ.' },
+};
+
+/**
+ * Makes the story's places tappable and adds the Places & People page. The
+ * pages after the story then run Knowledge Check, Master Glossary, Places &
+ * People, Vocabulary Challenge, Language Review, Final Challenge.
+ */
+export const withPlacesLayer = (
+  pages: PageData[],
+  bookKey: HistoricalEntityBookKey,
+  locale: HistoricalEntityLocale,
+): PageData[] => {
+  if (!isHistoricalEntityBookKey(bookKey)) return pages;
+  const withCards = pages.map(page => applyHistoricalEntitiesToPage(page, bookKey, locale));
+  if (withCards.some(page => page.type === 'places')) return inBookEndOrder(withCards);
+
+  const placesPage: PageData = { id: PLACES_PAGE_ID, type: 'places', ...PLACES_PAGE_COPY[locale], entityBookKey: bookKey };
+  return inBookEndOrder([...withCards, placesPage]);
+};
+
+// The pages after the story run in the same order in every book. This matches
+// reorderPreparedLearningFlow (core/content/uiBookFinalization.ts), which later
+// puts Knowledge Check, Glossary, Vocabulary Challenge, Language Review and
+// Final Challenge back into these slots, so Places & People stays right after
+// the Master Glossary.
+const BOOK_END_ORDER: PageData['type'][] = ['quiz', 'glossary', 'places', 'vocabulary-match', 'exercises', 'final-challenge'];
+
+const inBookEndOrder = (pages: PageData[]): PageData[] => {
+  const isEnd = (page: PageData) => BOOK_END_ORDER.includes(page.type);
+  const firstEnd = pages.findIndex(isEnd);
+  if (firstEnd < 0) return pages;
+  const head = pages.slice(0, firstEnd);
+  const tail = pages.slice(firstEnd);
+  const ends = tail.filter(isEnd).sort((a, b) => BOOK_END_ORDER.indexOf(a.type) - BOOK_END_ORDER.indexOf(b.type));
+  return [...head, ...ends, ...tail.filter(page => !isEnd(page))];
 };

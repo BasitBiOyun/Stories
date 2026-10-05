@@ -83,6 +83,18 @@ export const storageManifests: Record<string, BookAssetManifest> = {
     ['mecca/b2/audio/arabic_audio', 'Mecca/b2/audio/arabic_audio', 'mecca/mecca_b2/audio/arabic_audio', 'Mecca/mecca_b2/audio/arabic_audio'],
   ),
 
+  [manifestKey('ibnJubayr', 'A2')]: media(
+    ['andulus/a2/images', 'Andulus/a2/images'],
+    ['andulus/a2/audio', 'Andulus/a2/audio'],
+    [],
+  ),
+
+  [manifestKey('gevherNesibe', 'A2')]: media(
+    ['gevher_nesibe/gevher_nesibe_a2/images', 'gevherNesibe/a2/images', 'GevherNesibe/a2/images'],
+    ['gevher_nesibe/gevher_nesibe_a2/audio', 'gevherNesibe/a2/audio', 'GevherNesibe/a2/audio'],
+    [],
+  ),
+
   [manifestKey('yunusEmre', 'A2')]: media(
     [
       'Yunus/a2/images', 'yunus/a2/images', 'Yunus/yunus_a2/images', 'yunus/yunus_a2/images',
