@@ -82,6 +82,28 @@ const sendMissingAsset = (res) => {
   res.end('Asset not found');
 };
 
+// Word timings for the reader's "follow along" marker live next to the chapter audio in
+// Firebase Storage. Storage downloads carry no CORS header, so the app reads them here,
+// on its own origin.
+const storageBucket = 'gen-lang-client-0373200489.firebasestorage.app';
+const sendAudioTimings = async (res, storagePath) => {
+  try {
+    const upstream = await fetch(
+      `https://firebasestorage.googleapis.com/v0/b/${storageBucket}/o/${encodeURIComponent(storagePath)}?alt=media`,
+    );
+    if (!upstream.ok) {
+      res.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8', 'Cache-Control': 'public, max-age=60' });
+      res.end('Timings not found');
+      return;
+    }
+    res.writeHead(200, { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'public, max-age=300' });
+    res.end(Buffer.from(await upstream.arrayBuffer()));
+  } catch {
+    res.writeHead(502, { 'Content-Type': 'text/plain; charset=utf-8', 'Cache-Control': 'no-store' });
+    res.end('Timings unavailable');
+  }
+};
+
 const server = http.createServer((req, res) => {
   const urlPath = decodeURIComponent((req.url || '/').split('?')[0]);
 
@@ -94,6 +116,17 @@ const server = http.createServer((req, res) => {
       'X-Stories-Revision': revision,
     });
     res.end(payload);
+    return;
+  }
+
+  if (urlPath.startsWith('/audio-timings/')) {
+    const storagePath = urlPath.slice('/audio-timings/'.length);
+    if (!storagePath.endsWith('.timings.json') || storagePath.split('/').includes('..')) {
+      res.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8' });
+      res.end('Not found');
+      return;
+    }
+    sendAudioTimings(res, storagePath);
     return;
   }
 

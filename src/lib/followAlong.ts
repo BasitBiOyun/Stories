@@ -23,7 +23,9 @@ export const timingsUrlFor = (audioUrl: string | undefined): string | null => {
   if (!match) return null;
   const path = decodeURIComponent(match[2]);
   if (!TIMED_AUDIO_PATHS.has(path)) return null;
-  return `${match[1]}${encodeURIComponent(path.replace(/\.mp3$/i, '.timings.json'))}?alt=media`;
+  // Served through the app's own server (deploy/server.mjs): Storage sends no CORS header.
+  const timingsPath = path.replace(/\.mp3$/i, '.timings.json');
+  return `/audio-timings/${timingsPath.split('/').map(encodeURIComponent).join('/')}`;
 };
 
 const comparable = (word: string, language: HighlightLanguage) =>
