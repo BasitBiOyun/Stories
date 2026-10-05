@@ -486,7 +486,17 @@
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  padding-bottom: 0.08em;
+  /* Room for glyph overhangs: background-clip:text paints only inside the box, so the last letter's edge was cut. */
+  padding: 0.06em 0.08em 0.08em;
+  margin: -0.06em -0.08em 0;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+/* One-line titles that truncate: give accents, Arabic harakat and descenders room inside the clip box without moving the layout. */
+.clip-room {
+  padding-block: 0.18em;
+  margin-block: -0.18em;
 }
 
 /* Respect the operating system's reduced-motion preference without changing the default design. */

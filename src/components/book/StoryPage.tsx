@@ -1556,7 +1556,7 @@ export const StoryPage = ({
           "flex flex-col min-w-0",
           isRTL ? "text-right" : ""
         )}>
-          <h3 className="font-display text-xl sm:text-3xl lg:text-4xl text-wood font-semibold tracking-[-0.03em] leading-tight truncate">{page.title}</h3>
+          <h3 className="font-display text-xl sm:text-3xl lg:text-4xl text-wood font-semibold tracking-[-0.03em] leading-tight truncate clip-room">{page.title}</h3>
           <p className={cn(
             "font-serif text-xs sm:text-base lg:text-lg mt-0.5",
             language !== 'ar' && "italic",

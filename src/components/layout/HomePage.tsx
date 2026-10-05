@@ -273,7 +273,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart, onOpenTeacherGuide 
               />
             </div>
             <div className="min-w-0 text-start">
-              <p className="line-clamp-2 text-[13px] font-semibold leading-tight tracking-[-0.01em] text-[#F7F1E5] sm:line-clamp-none sm:truncate sm:text-[15px]">
+              <p className="clip-room line-clamp-2 text-[13px] font-semibold leading-tight tracking-[-0.01em] text-[#F7F1E5] sm:line-clamp-none sm:truncate sm:text-[15px]">
                 {t('nav.homeTitle')}
               </p>
               <p className={cn('mt-0.5 hidden truncate text-[11px] font-semibold uppercase text-[#D8B35C]/68 sm:block', !isRTL && 'tracking-[0.18em]')}>

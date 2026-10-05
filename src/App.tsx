@@ -835,7 +835,7 @@ const AppContent = () => {
 
               <div className="min-w-0">
                 <h2
-                  className="max-w-[150px] truncate font-display text-[12px] font-semibold leading-tight tracking-[-0.01em] text-parchment sm:max-w-xs sm:text-[15px] md:max-w-md md:text-[17px]"
+                  className="clip-room max-w-[150px] truncate font-display text-[12px] font-semibold leading-tight tracking-[-0.01em] text-parchment sm:max-w-xs sm:text-[15px] md:max-w-md md:text-[17px]"
                   title={currentBookTitle}
                 >
                   <span className="sm:hidden">{currentPage?.title || currentBookTitle}</span>
