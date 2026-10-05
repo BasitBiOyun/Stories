@@ -15,7 +15,7 @@ export const gevherNesibeA2LanguageFocusExercises: Record<number, Exercise[]> = 
       options: ['the building and when it was built', 'the name of the builder', 'the people who live in it today'],
       correctAnswer: 0,
       explanation: '“Was built” (was + past participle) puts the building first. We do not need to say who built it. The same sentence form is on the front gate in Chapter 4: “the building was built in 1205–1206.”',
-      feedback: { correct: 'Good. Was + built: the building is important, not the builder.', incorrect: 'Look at the start of the sentence: “It” is the hospital. Is the sentence about the builder or about the building?' },
+      feedback: { correct: 'Good. Was + built: The building is important, not the builder.', incorrect: 'Look at the start of the sentence: “It” is the hospital. Is the sentence about the builder or about the building?' },
     },
     {
       id: 'gevhernesibe-a2-language-1-oldest-first', type: 'word-bank', title: 'Practise: The Oldest, the First',
@@ -63,8 +63,8 @@ export const gevherNesibeA2LanguageFocusExercises: Record<number, Exercise[]> = 
       fillBlanksText: 'When she was a young girl, she loved a young commander. [blank] her brother, Sultan Gıyâseddin Keyhusrev I, did not want this marriage. … At that time, Kayseri did not have a good hospital, [blank] she died at a young age.',
       wordBank: ['But', 'so', 'because', 'When'],
       correctAnswer: ['But', 'so'],
-      explanation: '“But” gives a different idea: she loved him, but her brother did not want the marriage. “However” does the same job in the chapter: “However, Gevher Nesibe did not accept this.” “So” gives a result: no good hospital, so she died young.',
-      feedback: { correct: 'Correct. But / however for a different idea; so for a result.', incorrect: 'Ask: does the next part say something different, or what happened because of it?' },
+      explanation: '“But” gives a different idea: She loved him, but her brother did not want the marriage. “However” does the same job in the chapter: “However, Gevher Nesibe did not accept this.” “So” gives a result: No good hospital, so she died young.',
+      feedback: { correct: 'Correct. But / however for a different idea; so for a result.', incorrect: 'Ask: Does the next part say something different, or what happened because of it?' },
     },
     {
       id: 'gevhernesibe-a2-language-2-family-wish', type: 'reflection', title: 'Use: What My Family Wants',
@@ -100,12 +100,12 @@ export const gevherNesibeA2LanguageFocusExercises: Record<number, Exercise[]> = 
         { sentence: 'This place [choice] free for everyone.', options: ['must be', 'must is', 'must being'], answer: 0 },
       ],
       correctAnswer: null,
-      explanation: '“Cannot” says something is not possible: doctors cannot help her. “Should” gives a rule: nobody should pay. “Must” is very strong. After cannot, should and must, use the base verb: must be, not must is.',
+      explanation: '“Cannot” says something is not possible: Doctors cannot help her. “Should” gives a rule: Nobody should pay. “Must” is very strong. After cannot, should and must, use the base verb: must be, not must is.',
       feedback: { correct: 'Well done. Cannot, should and must + base verb.', incorrect: 'Read her words in Chapter 3 again, then choose. Remember: must + be.' },
     },
     {
       id: 'gevhernesibe-a2-language-3-my-wish', type: 'reflection', title: 'Use: My Wish for My Town',
-      instructions: 'Write three sentences: a wish for a new place in your town.',
+      instructions: 'Write three sentences: A wish for a new place in your town.',
       question: 'What new place does your town need?',
       correctAnswer: null,
       explanation: 'Example: “My town needs a big library. Let this library help students and old people. It should be free, and it must be open every day.”',
@@ -133,7 +133,7 @@ export const gevherNesibeA2LanguageFocusExercises: Record<number, Exercise[]> = 
       fillBlanksText: 'The grave of Gevher Nesibe Sultan is [blank] the Gıyâsiye Medresesi. Because the two buildings are next [blank] each other, people call them the ‘Twin Madrasas.’ The words [blank] the big front gate of the hospital say that the building was built in 1205–1206.',
       wordBank: ['inside', 'to', 'on', 'under', 'from'],
       correctAnswer: ['inside', 'to', 'on'],
-      explanation: '“Inside” = in a building: the grave is inside the Gıyâsiye. “Next to” = side by side: the two buildings are next to each other. “On” = on a surface: the words are on the front gate.',
+      explanation: '“Inside” = in a building: The grave is inside the Gıyâsiye. “Next to” = side by side: The two buildings are next to each other. “On” = on a surface: The words are on the front gate.',
       feedback: { correct: 'Correct. Inside, next to and on tell us where things are.', incorrect: 'Read Chapter 4 again. Find the grave, the two buildings and the words on the gate.' },
     },
     {
@@ -208,7 +208,7 @@ export const gevherNesibeA2LanguageFocusExercises: Record<number, Exercise[]> = 
       fillBlanksText: 'Students read the most important medical books of that time, [blank] the books of İbn Sînâ. They also read books by ancient Greek doctors [blank] Hippocrates.',
       wordBank: ['especially', 'like', 'but', 'so'],
       correctAnswer: ['especially', 'like'],
-      explanation: '“Especially” gives the most important example from a group: especially the books of İbn Sînâ. “Like” gives an example: ancient Greek doctors like Hippocrates.',
+      explanation: '“Especially” gives the most important example from a group: especially the books of İbn Sînâ. “Like” gives an example: Ancient Greek doctors like Hippocrates.',
       feedback: { correct: 'Correct. Especially = the most important example; like = an example.', incorrect: 'Which books were the most important? Who is one example of a Greek doctor?' },
     },
     {
@@ -241,7 +241,7 @@ export const gevherNesibeA2LanguageFocusExercises: Record<number, Exercise[]> = 
       fillBlanksText: '[blank] the doors are small and open into covered walkways. [blank] of the rooms have fireplaces. There was [blank] kitchen space inside the center.',
       wordBank: ['All', 'None', 'no', 'Some', 'any'],
       correctAnswer: ['All', 'None', 'no'],
-      explanation: '“All” = every one: all the doors are small. “None of” = not one: none of the rooms have fireplaces. “No” + noun = not any: there was no kitchen space.',
+      explanation: '“All” = every one: all the doors are small. “None of” = not one: none of the rooms have fireplaces. “No” + noun = not any: There was no kitchen space.',
       feedback: { correct: 'Correct. All, none of, and no + noun.', incorrect: 'Read the first paragraph of Chapter 7 again. Were there fireplaces? Was there a kitchen?' },
     },
     {
@@ -274,8 +274,8 @@ export const gevherNesibeA2LanguageFocusExercises: Record<number, Exercise[]> = 
       fillBlanksText: 'There was also a bathhouse inside the building, and it had a [blank] roof. Inside, there were four round windows in the [blank] Seljuk style. The bathhouse also had a very [blank] wastewater system.',
       wordBank: ['round', 'old', 'good', 'new', 'bad'],
       correctAnswer: ['round', 'old', 'good'],
-      explanation: 'Adjectives come before the noun: a round roof, the old Seljuk style, a very good wastewater system. “Very” makes an adjective stronger.',
-      feedback: { correct: 'Well done. Adjective + noun: a round roof.', incorrect: 'Read the second paragraph of Chapter 8 again. Which words describe the roof, the style and the system?' },
+      explanation: 'Adjectives come before the noun: A round roof, the old Seljuk style, a very good wastewater system. “Very” makes an adjective stronger.',
+      feedback: { correct: 'Well done. Adjective + noun: A round roof.', incorrect: 'Read the second paragraph of Chapter 8 again. Which words describe the roof, the style and the system?' },
     },
     {
       id: 'gevhernesibe-a2-language-8-music-feelings', type: 'reflection', title: 'Use: Music and Me',
@@ -297,7 +297,7 @@ export const gevherNesibeA2LanguageFocusExercises: Record<number, Exercise[]> = 
       instructions: 'Read the sentence from Chapter 9. Then choose the best answer.',
       question: '“When they finished school, they got a diploma.” What happened first?',
       options: ['They got a diploma.', 'They finished school.', 'Both happened before school started.'], correctAnswer: 1,
-      explanation: '“When + past, past” shows two events in order: first they finished school, then they got a diploma.',
+      explanation: '“When + past, past” shows two events in order: First they finished school, then they got a diploma.',
       feedback: { correct: 'Correct. The when part happens first here.', incorrect: 'Can you get a diploma before you finish school?' },
     },
     {
@@ -307,8 +307,8 @@ export const gevherNesibeA2LanguageFocusExercises: Record<number, Exercise[]> = 
       fillBlanksText: 'Education at the hospital had [blank] parts. In the [blank] part, students took classes in mathematics, physics, languages, philosophy, and medicine. … In the [blank] part, students learned Islamic sciences.',
       wordBank: ['two', 'first', 'second', 'three', 'last'],
       correctAnswer: ['two', 'first', 'second'],
-      explanation: '“Two” tells us how many parts. “First” and “second” put the parts in order. Use “the” before first and second: in the first part, in the second part.',
-      feedback: { correct: 'Well done. Two parts: the first and the second.', incorrect: 'Read the second paragraph of Chapter 9 again. How many parts were there?' },
+      explanation: '“Two” tells us how many parts. “First” and “second” put the parts in order. Use “the” before first and second: In the first part, in the second part.',
+      feedback: { correct: 'Well done. Two parts: The first and the second.', incorrect: 'Read the second paragraph of Chapter 9 again. How many parts were there?' },
     },
     {
       id: 'gevhernesibe-a2-language-9-my-school-day', type: 'reflection', title: 'Use: My School Year',

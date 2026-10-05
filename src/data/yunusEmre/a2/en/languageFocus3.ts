@@ -23,7 +23,7 @@ export const yunusA2LanguageFocusExercisesPart3: Record<number, Exercise[]> = {
       explanation: '“One day” starts a story. Then the dervishes pick flowers and come back; Yunus comes back last, “in the late afternoon”. Some dervishes laugh at him, Taptuk asks about the daisy, and Yunus answers.',
       feedback: {
         correct: 'Correct. You told the story in the right order.',
-        incorrect: 'Read Chapter 7 again. Start with “One day”. Who comes back first: the other dervishes or Yunus?',
+        incorrect: 'Read Chapter 7 again. Start with “One day”. Who comes back first: The other dervishes or Yunus?',
       },
     },
     {
@@ -89,10 +89,10 @@ export const yunusA2LanguageFocusExercisesPart3: Record<number, Exercise[]> = {
         'They are the same.',
       ],
       correctAnswer: 1,
-      explanation: '“Must” is strong: it says something is necessary. “Should” is softer: it gives good advice. Both come before the base verb: “must be”, “should do”. In “Every job is important, so we should do it well”, “so” shows the result of the first idea.',
+      explanation: '“Must” is strong: It says something is necessary. “Should” is softer: It gives good advice. Both come before the base verb: “must be”, “should do”. In “Every job is important, so we should do it well”, “so” shows the result of the first idea.',
       feedback: {
         correct: 'Correct. “Must” is stronger than “should”.',
-        incorrect: 'Read the last paragraph of Chapter 8 again. Think: a school rule says “You must …”; a friend’s advice says “You should …”. Which one is stronger?',
+        incorrect: 'Read the last paragraph of Chapter 8 again. Think: A school rule says “You must …”; a friend’s advice says “You should …”. Which one is stronger?',
       },
     },
     {

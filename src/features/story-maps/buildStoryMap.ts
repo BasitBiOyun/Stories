@@ -3,7 +3,7 @@ import type { StoryMap, StoryMapCopy, StoryMapLayout } from './types';
 /** Joins the shared layout with one language's manually authored copy. Missing copy fails loudly. */
 export const buildStoryMap = (layout: StoryMapLayout, copy: StoryMapCopy, label: string): StoryMap => {
   const need = <T,>(value: T | undefined, what: string): T => {
-    if (value === undefined) throw new Error(`[Story Map] ${label}: missing ${what}.`);
+    if (value === undefined) throw new Error(`[Story Map] ${label}: Missing ${what}.`);
     return value;
   };
 

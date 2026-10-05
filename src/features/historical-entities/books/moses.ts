@@ -134,7 +134,7 @@ const entities = [
     id: "moses-red-sea", kind: "sea", tr: "Kızıldeniz",
     aliases: { en: ["Red Sea","arrived at the sea"], ar: ["البحر الأحمر","وصلوا إلى البحر"] },
     copy: {
-      en: { title: "The Red Sea", kindLabel: "Sea", periodLabel: "Between Africa and Arabia", summary: "The Red Sea is a long sea between Africa and Arabia. Allah opened a road in the sea for Moses (pbuh) and his people, and the Pharaoh’s army drowned in it.", more: "In the north, it splits into two gulfs: the Gulf of Suez and the Gulf of Aqaba." },
+      en: { title: "The Red Sea", kindLabel: "Sea", periodLabel: "Between Africa and Arabia", summary: "The Red Sea is a long sea between Africa and Arabia. Allah opened a road in the sea for Moses (pbuh) and his people, and the Pharaoh’s army drowned in it.", more: "In the north, it splits into two gulfs: The Gulf of Suez and the Gulf of Aqaba." },
       ar: { title: "الْبَحْرُ الْأَحْمَرُ", kindLabel: "بَحْرٌ", periodLabel: "بَيْنَ إِفْرِيقِيَا وَجَزِيرَةِ الْعَرَبِ", summary: "الْبَحْرُ الْأَحْمَرُ بَحْرٌ طَوِيلٌ بَيْنَ إِفْرِيقِيَا وَجَزِيرَةِ الْعَرَبِ. شَقَّهُ اللهُ لِمُوسَى عَلَيْهِ السَّلَامُ وَقَوْمِهِ فَعَبَرُوا، وَغَرِقَ فِيهِ فِرْعَوْنُ وَجَيْشُهُ.", more: "وَيَنْقَسِمُ فِي شَمَالِهِ إِلَى خَلِيجَيْنِ: خَلِيجِ السُّوَيْسِ وَخَلِيجِ الْعَقَبَةِ." },
     },
     focus: medFeature('red-sea', 22, 38, 1),

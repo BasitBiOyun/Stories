@@ -87,7 +87,7 @@ export const abrahamB2ChapterExtrasEn: ChapterExtras = {
       "The term “marathon” needs a precise definition. A marathon is a race which covers about 42 kilometres.",
       "The claim that the modern Olympics continue the ancient Games should be cautious. We may say that they are a new version of an old idea.",
       "Due to faster travel, athletes from every continent can now take part. So the Games changed from a Greek festival into a world event.",
-      "Yes. The core stayed the same: athletes compete in peace and the best win. The details changed: the sports, the countries and the rules for women.",
+      "Yes. The core stayed the same: Athletes compete in peace and the best win. The details changed: the sports, the countries and the rules for women.",
     ],
     3: [
       "The main purpose of a library has stayed the same. In fact, libraries have kept and shared knowledge for centuries.",
@@ -102,7 +102,7 @@ export const abrahamB2ChapterExtrasEn: ChapterExtras = {
       "Some researchers think it was a temple, while others believe it was a place for burials. Still others see it as a kind of calendar.",
     ],
     5: [
-      "In 1950, the village was still dry and poor. The dam was still in the future: workers were going to start building it two years later.",
+      "In 1950, the village was still dry and poor. The dam was still in the future: Workers were going to start building it two years later.",
       "Engineers predicted that the dam would bring water to every field. They also said that it would create jobs for young people.",
       "I will begin the second version with “According to another account”. In that account, the dam was planned mainly for electricity, not for farmers.",
       "The engineer, who had studied abroad, belongs in a “who” clause. The valley, where the river was narrow, belongs in a “where” clause.",
@@ -133,7 +133,7 @@ export const abrahamB2ChapterExtrasEn: ChapterExtras = {
     ],
     10: [
       "I will start with the old clock tower in our town square. It is covered with ivy and is admired by tourists.",
-      "“However” will introduce the problem: the clock has not shown the correct time for years.",
+      "“However” will introduce the problem: The clock has not shown the correct time for years.",
       "Firstly, the tower is no longer a useful clock. Secondly, it is a sign of the town’s history, so it should be kept as a monument.",
       "This reasoning leads to a debate in the town council. Some members want to repair the clock, while others want to turn the tower into a museum.",
     ],

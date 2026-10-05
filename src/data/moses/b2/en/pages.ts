@@ -257,7 +257,7 @@ const mosesB2StoryNotes: Record<number, Pick<PageData, 'vocabulary' | 'hotspots'
       { word: "sacred", partOfSpeech: "adjective", definition: "Holy; deserving special respect because it is connected with God." },
     ],
     hotspots: [
-      { id: 'mo-b2-hs-16-1', x: 37, y: 34, title: "The Shining Hand", description: "Moses’ (pbuh) hand came out white and shining: the second of his two great signs." },
+      { id: 'mo-b2-hs-16-1', x: 37, y: 34, title: "The Shining Hand", description: "Moses’ (pbuh) hand came out white and shining: The second of his two great signs." },
       { id: 'mo-b2-hs-16-2', x: 63, y: 71, title: "The Valley of Tuwa", description: "Allah told Moses (pbuh) to take off his shoes because he was standing in the sacred valley." },
     ],
   },

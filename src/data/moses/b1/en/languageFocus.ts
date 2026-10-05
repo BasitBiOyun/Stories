@@ -26,7 +26,7 @@ export const mosesB1LanguageFocusExercises: Record<number, Exercise[]> = {
         'Places the story in history': ['in the 13th century BC', 'over 3000 years ago', 'At that time, the Pharaoh ruled Egypt.'],
         'Moves the story on': ['Years passed', 'One day the Pharaoh had a dream.'],
       },
-      explanation: '“In the 13th century BC” and “over 3000 years ago” date the story; “ago” counts back from today. “At that time” points back to that same period and describes the situation in Egypt. “Years passed” jumps over a long period, and “One day” moves the story to one particular event: the dream.',
+      explanation: '“In the 13th century BC” and “over 3000 years ago” date the story; “ago” counts back from today. “At that time” points back to that same period and describes the situation in Egypt. “Years passed” jumps over a long period, and “One day” moves the story to one particular event: The dream.',
       feedback: {
         correct: 'Correct. You separated the expressions that date the story from the ones that move it forward.',
         incorrect: 'Look at the first sentences of Chapter 1, then at the last two. Which expressions give a date or a period, and which ones take us to a later time?',
@@ -81,10 +81,10 @@ export const mosesB1LanguageFocusExercises: Record<number, Exercise[]> = {
         },
       ],
       correctAnswer: null,
-      explanation: '“So” and “That’s why” both introduce a result. “That’s because” does the opposite: it introduces a reason. In the chapter, the belief and the fear are the reasons; not believing in the Pharaoh and the harsh treatment are the results. “Continue” is followed by “to + base verb” (or an -ing form): “continued to rule” shows that the situation went on for many years.',
+      explanation: '“So” and “That’s why” both introduce a result. “That’s because” does the opposite: It introduces a reason. In the chapter, the belief and the fear are the reasons; not believing in the Pharaoh and the harsh treatment are the results. “Continue” is followed by “to + base verb” (or an -ing form): “continued to rule” shows that the situation went on for many years.',
       feedback: {
         correct: 'Correct. You linked each reason to its result and showed that the situation continued.',
-        incorrect: 'Ask: is the next idea a reason or a result? Then check the second half of Chapter 1.',
+        incorrect: 'Ask: Is the next idea a reason or a result? Then check the second half of Chapter 1.',
       },
     },
     {
@@ -120,7 +120,7 @@ export const mosesB1LanguageFocusExercises: Record<number, Exercise[]> = {
       explanation: '“Will + base verb” is used here for a prediction: the advisors say what they believe is going to happen. “Will be born” is passive, because a baby does not do the action of being born. The prediction leads to the Pharaoh’s order, which uses an imperative with no subject: “Kill …”.',
       feedback: {
         correct: 'Correct. The advisors predict a future event, and the Pharaoh reacts to it.',
-        incorrect: 'Ask: has the boy been born yet when the advisors speak? Check what they said after the Pharaoh woke up.',
+        incorrect: 'Ask: Has the boy been born yet when the advisors speak? Check what they said after the Pharaoh woke up.',
       },
     },
     {
@@ -136,7 +136,7 @@ export const mosesB1LanguageFocusExercises: Record<number, Exercise[]> = {
         { id: '4', text: 'When they found baby boys, they killed them.' },
       ],
       correctAnswer: ['1', '2', '3', '4'],
-      explanation: '“When he woke up” links his first action to the moment the dream ended. “Then” moves the story to the next step: the order. The imperative “Kill …” has no subject because it tells someone what to do. “When they found baby boys, they killed them” shows what happened each time the soldiers found a boy.',
+      explanation: '“When he woke up” links his first action to the moment the dream ended. “Then” moves the story to the next step: The order. The imperative “Kill …” has no subject because it tells someone what to do. “When they found baby boys, they killed them” shows what happened each time the soldiers found a boy.',
       feedback: {
         correct: 'Correct. The time words guided you from the dream to the soldiers’ actions.',
         incorrect: 'Start with the moment the Pharaoh woke up. Which sentence begins with “Then”? What did the soldiers do before they found the boys? Check the first half of Chapter 2.',
@@ -169,7 +169,7 @@ export const mosesB1LanguageFocusExercises: Record<number, Exercise[]> = {
         },
       ],
       correctAnswer: null,
-      explanation: '“So + adjective + that …” links a strong feeling to its result: so frightened that she was unable to sleep. “Such” goes before a noun (such a strong fear). After a past verb like “was scared that”, “can” moves back to “could”. “What to do” (question word + to + base verb) shows that she could not decide on her next action.',
+      explanation: '“So + adjective + that …” links a strong feeling to its result: So frightened that she was unable to sleep. “Such” goes before a noun (such a strong fear). After a past verb like “was scared that”, “can” moves back to “could”. “What to do” (question word + to + base verb) shows that she could not decide on her next action.',
       feedback: {
         correct: 'Well done. You corrected the language of strong feeling, feared possibility and uncertainty.',
         incorrect: 'Compare each sentence with the end of Chapter 2, where Moses’s mother cannot sleep.',

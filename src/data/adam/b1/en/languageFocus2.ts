@@ -7,7 +7,7 @@ export const adamB1LanguageFocusExercisesPart2: Record<number, Exercise[]> = {
       type: 'drag-drop',
       title: 'Whose View Is It?',
       instructions: 'Is it a character’s view or the narrator’s words? Put each part in the right group.',
-      question: 'Who says it: a character, or the narrator?',
+      question: 'Who says it: A character, or the narrator?',
       dragDropGroups: [
         {
           group: 'A character’s view (thought / believed / said)',
@@ -177,7 +177,7 @@ export const adamB1LanguageFocusExercisesPart3: Record<number, Exercise[]> = {
       explanation: '“Wait for a chance to + verb” says what someone is waiting to be able to do. “Keep + person + away from + something” means stop that person from being close to it; the person comes between “keep” and “away from”. “Just as he himself was” compares Adam’s possible future with Iblis’s own situation.',
       feedback: {
         correct: 'Well done. You placed the person between “keep” and “away from”.',
-        incorrect: 'Start with the person and the verb. Then: what was he waiting for? Put the person after “keep”, and finish with the comparison. Check the second paragraph of Chapter 4.',
+        incorrect: 'Start with the person and the verb. Then: What was he waiting for? Put the person after “keep”, and finish with the comparison. Check the second paragraph of Chapter 4.',
       },
     },
     { id: 'adam-b1-language-4-build-warning-situation', type: 'reflection', title: 'Build a Warning Situation', instructions: 'Write or say four sentences about a bad habit and a warning.', question: 'What does the person keep doing, and who warns them?', correctAnswer: null, explanation: 'A strong response may use “continued + -ing”, “because of + noun”, “waited for a chance to ...”, “keep + object + away from ...”, and “warned + person + to be careful of ...”.', feedback: { correct: 'Keep the four sentences connected and make the reason and warning clear.', incorrect: '' }, discussionPrompts: [{ question: 'Sentence 1 — Say what someone kept doing: “… continued + -ing …”', mode: 'Individual' }, { question: 'Sentence 2 — Give a reason: “Because of + thing, …”', mode: 'Individual' }, { question: 'Sentence 3 — Say what they waited for: “… waited for a chance to …”', mode: 'Individual' }, { question: 'Sentence 4 — Give the warning: “… warned him to be careful of …”', mode: 'Pair' }] },
@@ -317,10 +317,10 @@ export const adamB1LanguageFocusExercisesPart5: Record<number, Exercise[]> = {
       fillBlanksText: 'Adam (pbuh) discovered that he and his wife were uncovered, [blank] they both started cutting tree leaves in Paradise [blank] cover themselves. They hurried to hide their private parts [blank] a sense of shame (haya) is part of inborn human nature …',
       wordBank: ['so', 'to', 'because', 'because of', 'for', 'although'],
       correctAnswer: ['so', 'to', 'because'],
-      explanation: '“So” introduces a result: they discovered they were uncovered, so they started cutting leaves. “To + verb” gives the purpose of the action (to cover themselves), not “for cover”. “Because” introduces a reason with a full clause; “because of” needs a noun.',
+      explanation: '“So” introduces a result: They discovered they were uncovered, so they started cutting leaves. “To + verb” gives the purpose of the action (to cover themselves), not “for cover”. “Because” introduces a reason with a full clause; “because of” needs a noun.',
       feedback: {
         correct: 'Correct. You linked the result, the purpose and the reason.',
-        incorrect: 'Read the last paragraph of Chapter 6. Ask: what happened as a result? Why did they cut leaves? Why did they hurry?',
+        incorrect: 'Read the last paragraph of Chapter 6. Ask: What happened as a result? Why did they cut leaves? Why did they hurry?',
       },
     },
     { id: 'adam-b1-language-6-build-consequence-chain', type: 'reflection', title: 'Build a Consequence Chain', instructions: 'Write or say four sentences about someone who forgets good advice.', question: 'What advice was forgotten, and what happened?', correctAnswer: null, explanation: 'A strong response may use “managed to ...”, “convinced + person + to ...”, “had + past participle”, “when ...”, “became ...”, “so ...”, “to + verb” for purpose, and “because ...”.', feedback: { correct: 'Keep the sequence easy to follow and make the purpose and cause explicit.', incorrect: '' }, discussionPrompts: [{ question: 'Sentence 1 — Give the earlier advice: “… had told them to …”', mode: 'Individual' }, { question: 'Sentence 2 — Say who got him to do it: “… convinced him to …”', mode: 'Individual' }, { question: 'Sentence 3 — Show a change: “Soon he became …, so …”', mode: 'Individual' }, { question: 'Sentence 4 — Say what he did and why: “He … to … because …”', mode: 'Pair' }] },
@@ -365,10 +365,10 @@ export const adamB1LanguageFocusExercisesPart6: Record<number, Exercise[]> = {
       fillBlanksText: 'They made a mistake, [blank] it wasn’t on purpose. … [blank], Iblis chose an opposite path. He never admitted he was wrong [blank] he was arrogant.',
       wordBank: ['but', 'On the other hand', 'because', 'so', 'In addition', 'because of'],
       correctAnswer: ['but', 'On the other hand', 'because'],
-      explanation: '“But” limits the first idea inside one sentence: there was a mistake, but it was not intentional. “On the other hand” starts a new part of the text and moves to a contrasting person or path. “Because” gives the reason with a full clause (he was arrogant); “because of” would need a noun.',
+      explanation: '“But” limits the first idea inside one sentence: There was a mistake, but it was not intentional. “On the other hand” starts a new part of the text and moves to a contrasting person or path. “Because” gives the reason with a full clause (he was arrogant); “because of” would need a noun.',
       feedback: {
         correct: 'Correct. You chose the right links for contrast and reason.',
-        incorrect: 'Ask for each gap: does it limit the first idea, move to a different person’s path, or give a reason? Then check Chapter 7.',
+        incorrect: 'Ask for each gap: Does it limit the first idea, move to a different person’s path, or give a reason? Then check Chapter 7.',
       },
     },
     {

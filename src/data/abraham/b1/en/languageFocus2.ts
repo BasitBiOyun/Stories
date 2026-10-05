@@ -33,7 +33,7 @@ export const abrahamB1LanguageFocusChapter3: Record<number, Exercise[]> = {
       explanation: '“Although + clause” holds two ideas together: Abraham still had questions about Allah, but he was sure of one thing. “On the other hand” moves from the people to Abraham’s different position. “To + verb” gives the purpose of an action (left his home to take a walk). “Because” gives the reason for a decision. “Despite” and “because of” cannot be followed by a full clause (subject + verb); they need a noun.',
       feedback: {
         correct: 'Correct. You chose the right link for contrast, viewpoint, purpose and reason.',
-        incorrect: 'For each gap, ask: is it a contrast, a new viewpoint, a purpose (why he left home), or a reason (why he will not worship the star)? Then check Chapter 3.',
+        incorrect: 'For each gap, ask: Is it a contrast, a new viewpoint, a purpose (why he left home), or a reason (why he will not worship the star)? Then check Chapter 3.',
       },
     },
     {
@@ -96,7 +96,7 @@ export const abrahamB1LanguageFocusChapter4: Record<number, Exercise[]> = {
         'Both sentences are promises to help someone.',
       ],
       correctAnswer: 0,
-      explanation: 'If + present simple, will + verb talks about a possible future situation and its result. The form is the same in both sentences, but the purpose depends on the speaker. Abraham is praying and asking for help, so his sentence shows his need for guidance. His father is angry, so his sentence is a threat: stop, or this will happen.',
+      explanation: 'If + present simple, will + verb talks about a possible future situation and its result. The form is the same in both sentences, but the purpose depends on the speaker. Abraham is praying and asking for help, so his sentence shows his need for guidance. His father is angry, so his sentence is a threat: Stop, or this will happen.',
       feedback: {
         correct: 'Correct. The same grammar can express a need or a threat, depending on who speaks and why.',
         incorrect: 'Look at what each speaker is doing: Abraham has just asked Allah for help, and his father “grew angry”. Both sentences are about the future.',
@@ -280,10 +280,10 @@ export const abrahamB1LanguageFocusChapter6: Record<number, Exercise[]> = {
       fillBlanksText: 'There was a big celebration soon. All the people [blank] went outside of town, [blank] he got an axe and waited [blank] the whole town was empty.',
       wordBank: ['usually', 'so', 'until', 'because', 'by'],
       correctAnswer: ['usually', 'so', 'until'],
-      explanation: '“Usually” describes what normally happened at celebrations (a habit). “So” introduces the result: the town would be empty, so Abraham got an axe. “Until” marks the point he had to wait for before he could act. “Because” would give a reason, not a result, and “by” cannot be followed by a clause here.',
+      explanation: '“Usually” describes what normally happened at celebrations (a habit). “So” introduces the result: The town would be empty, so Abraham got an axe. “Until” marks the point he had to wait for before he could act. “Because” would give a reason, not a result, and “by” cannot be followed by a clause here.',
       feedback: {
         correct: 'Correct. You showed the habit, the result and the time limit.',
-        incorrect: 'Ask: what normally happened, what did Abraham do as a result, and how long did he wait? Then check the first paragraph of Chapter 6.',
+        incorrect: 'Ask: What normally happened, what did Abraham do as a result, and how long did he wait? Then check the first paragraph of Chapter 6.',
       },
     },
     {
@@ -409,7 +409,7 @@ export const abrahamB1LanguageFocusChapter7: Record<number, Exercise[]> = {
         },
       ],
       correctAnswer: null,
-      explanation: '“Because” gives the reason for their shame. “So + adjective + that” shows a very strong quality and its result: they were so arrogant that they couldn’t accept the truth. “If … then …” shows the consequence they were afraid of; the story is in the past, so the result verb is also past (meant).',
+      explanation: '“Because” gives the reason for their shame. “So + adjective + that” shows a very strong quality and its result: They were so arrogant that they couldn’t accept the truth. “If … then …” shows the consequence they were afraid of; the story is in the past, so the result verb is also past (meant).',
       feedback: {
         correct: 'Correct. You linked the reason, the strong result and the consequence.',
         incorrect: 'Read the last paragraph of Chapter 7. Ask which word gives a reason, which word completes “so arrogant …”, and which tense fits a story told in the past.',
@@ -460,7 +460,7 @@ export const abrahamB1LanguageFocusChapter8: Record<number, Exercise[]> = {
       explanation: 'The passive (was/were + past participle: was collected, were tied, was thrown) puts the focus on what happened to Abraham or the firewood. The people who did these actions are not important here, so the chapter does not name them. In active sentences, the subject does the action: “It only burnt the ropes” – the fire did the burning.',
       feedback: {
         correct: 'Correct. You noticed that the passive focuses on what happened, not on who did it.',
-        incorrect: 'Look for was/were + past participle. Then ask: can I find the person who did the action in the sentence?',
+        incorrect: 'Look for was/were + past participle. Then ask: Can I find the person who did the action in the sentence?',
       },
     },
     {
@@ -472,7 +472,7 @@ export const abrahamB1LanguageFocusChapter8: Record<number, Exercise[]> = {
       fillBlanksText: 'The fire was [blank] big [blank] people couldn’t approach it. [blank], Abraham (pbuh) stayed calm [blank] he trusted Allah.',
       wordBank: ['so', 'that', 'However', 'because', 'such', 'Although'],
       correctAnswer: ['so', 'that', 'However', 'because'],
-      explanation: '“So + adjective + that” shows a very strong degree and its result: the fire was so big that people couldn’t approach it. (“Such” needs a noun: such a big fire that …). “However,” at the start of a sentence shows a contrast with the sentence before. “Because” gives the reason for Abraham’s calm. “Although” must join two clauses in one sentence, so it cannot stand alone with a comma.',
+      explanation: '“So + adjective + that” shows a very strong degree and its result: The fire was so big that people couldn’t approach it. (“Such” needs a noun: such a big fire that …). “However,” at the start of a sentence shows a contrast with the sentence before. “Because” gives the reason for Abraham’s calm. “Although” must join two clauses in one sentence, so it cannot stand alone with a comma.',
       feedback: {
         correct: 'Correct. You showed the degree, the result, the contrast and the reason.',
         incorrect: 'Check the second paragraph of Chapter 8. Which word goes with an adjective (big), and which contrast word can start a sentence followed by a comma?',

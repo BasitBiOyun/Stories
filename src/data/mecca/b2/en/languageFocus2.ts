@@ -39,7 +39,7 @@ export const meccaB2LanguageFocusExercisesPart2: Record<number, Exercise[]> = {
       'the 6th century CE as a period',
     ],
     correctAnswer: 2,
-    explanation: '“This” at the start of a sentence often sums up the whole situation in the previous sentence, so the writer can turn it into the cause of something new: the Silk Road became unusable → this made the other routes important. Using “This made …” links two causal steps into a chain instead of listing two separate facts.',
+    explanation: '“This” at the start of a sentence often sums up the whole situation in the previous sentence, so the writer can turn it into the cause of something new: The Silk Road became unusable → this made the other routes important. Using “This made …” links two causal steps into a chain instead of listing two separate facts.',
     feedback: {
       correct: 'Correct. “This” sums up the whole previous event and turns it into a cause.',
       incorrect: 'Ask what made the Red Sea route important. Was it the empires themselves, or what had happened to the Silk Road?',
@@ -72,7 +72,7 @@ export const meccaB2LanguageFocusExercisesPart2: Record<number, Exercise[]> = {
     explanation: '“Because” needs a clause (it had extensive trade activities); “because of” and “due to” need a noun phrase (its extensive trade activities, the safe environment …). A cause can also become the subject of a causing verb: “The wars made the Silk Road unusable.” B2 writers switch between these patterns to connect several causes without repeating the same structure.',
     feedback: {
       correct: 'Well done. You expressed the same causes with a clause, a noun phrase and a causing verb.',
-      incorrect: 'Look at what follows each gap: after “because”, write a full clause; after “the safe environment”, add a short participle phrase; before “the Silk Road unusable”, use a verb that means “caused it to be”.',
+      incorrect: 'Look at what follows each gap: After “because”, write a full clause; after “the safe environment”, add a short participle phrase; before “the Silk Road unusable”, use a verb that means “caused it to be”.',
     },
   },
   reflect('me-b2-lf6c','Explain Interacting Causes','How did war, holy months and pilgrimage help trade?',['Use “due to” or “because of”, “this made …”, “in addition” and “so”.'],'A B2 explanation should connect several mechanisms into one coherent causal account.','Write or say five or six sentences about why trade grew in Mecca.')
@@ -89,10 +89,10 @@ export const meccaB2LanguageFocusExercisesPart2: Record<number, Exercise[]> = {
       { group: 'Social result', items: ch7Result },
     ],
     correctAnswer: { 'Economic practice': ch7Practice, 'Social result': ch7Result },
-    explanation: 'The chapter first describes practices (lending at usury, imposing enormous borrowing rates) and then their effects on the whole society (a huge gap, extreme contrasts between luxury and survival). “This system was designed to make the rich richer and the poor poorer” is a result stated as a purpose: the two comparatives moving in opposite directions show a gap that widens both ways, and “was designed to” is the writer’s strong interpretation that the result was not an accident.',
+    explanation: 'The chapter first describes practices (lending at usury, imposing enormous borrowing rates) and then their effects on the whole society (a huge gap, extreme contrasts between luxury and survival). “This system was designed to make the rich richer and the poor poorer” is a result stated as a purpose: The two comparatives moving in opposite directions show a gap that widens both ways, and “was designed to” is the writer’s strong interpretation that the result was not an accident.',
     feedback: {
       correct: 'Correct. You separated what people did with money from what it did to society.',
-      incorrect: 'Ask of each sentence: is this something the Quraysh or money lenders did, or is it a picture of society as a result?',
+      incorrect: 'Ask of each sentence: Is this something the Quraysh or money lenders did, or is it a picture of society as a result?',
     },
   },
   {
@@ -107,7 +107,7 @@ export const meccaB2LanguageFocusExercisesPart2: Record<number, Exercise[]> = {
       { sentence: 'Because large amounts of wealth [choice] in the hands of certain individuals, there were extreme divisions between social classes.', options: ['were concentrated', 'was concentrated', 'were concentrating'], answer: 0 },
     ],
     correctAnswer: null,
-    explanation: '“As a result of + noun phrase” names a cause at the start of a sentence; “As a result” alone is followed by a comma and a full clause. “So + adjective + that …” links a high degree with its result; “such” needs a noun (such a common habit that …), and “too” means “more than enough” and does not take “that”. “Were concentrated” is passive: the writer describes the state of the wealth, not an action of the wealth itself.',
+    explanation: '“As a result of + noun phrase” names a cause at the start of a sentence; “As a result” alone is followed by a comma and a full clause. “So + adjective + that …” links a high degree with its result; “such” needs a noun (such a common habit that …), and “too” means “more than enough” and does not take “that”. “Were concentrated” is passive: The writer describes the state of the wealth, not an action of the wealth itself.',
     feedback: {
       correct: 'Well done. You linked each practice to its social result with the right form.',
       incorrect: 'Check the first two paragraphs of Chapter 7. What comes after each gap: a noun phrase, an adjective + that, or a description of where the wealth was?',
@@ -123,11 +123,11 @@ export const meccaB2LanguageFocusExercisesPart2: Record<number, Exercise[]> = {
     instructions: 'Sort the phrases from Chapter 8. Is the doer of the action left unnamed, or is the doer named?',
     question: 'How does the chapter keep attention on the people who were harmed?',
     dragDropGroups: [
-      { group: 'Doer not named: the focus is on who or what was harmed', items: ch8Harmed },
+      { group: 'Doer not named: The focus is on who or what was harmed', items: ch8Harmed },
       { group: 'Doer named', items: ch8Named },
     ],
     correctAnswer: {
-      'Doer not named: the focus is on who or what was harmed': ch8Harmed,
+      'Doer not named: The focus is on who or what was harmed': ch8Harmed,
       'Doer named': ch8Named,
     },
     explanation: 'Passive sentences without “by …” keep the orphans, the weak and the small sellers in focus and leave the oppressor unnamed. The writer names the oppressors separately and generally: “those who oppressed … were generally wealthy and powerful individuals”. “An agreement was made by some Quraysh tribes” is also passive, but the “by” phrase names the doers while the agreement stays at the front of the sentence.',
@@ -158,7 +158,7 @@ export const meccaB2LanguageFocusExercisesPart2: Record<number, Exercise[]> = {
     explanation: 'In the active version the Quraysh tribes become the subject, so the sentence is about who acted; the chapter’s passive keeps the agreement itself in the foreground. In reported speech the writer uses “if he did not pay, they would collect it”; when the merchant says the words directly, the tenses move forward again: “If you do not pay, they will collect it themselves.” The conditional shows that the pact had real pressure behind it.',
     feedback: {
       correct: 'Well done. You changed the focus and turned the reported warning into direct speech.',
-      incorrect: 'In the first frame, the tribes are the subject: what did they do? In the second, the merchant is speaking now, about the future: which form follows “If you do not pay, they …”?',
+      incorrect: 'In the first frame, the tribes are the subject: What did they do? In the second, the merchant is speaking now, about the future: Which form follows “If you do not pay, they …”?',
     },
   },
   reflect('me-b2-lf8c','Conditional Enforcement','How did the Hilf al-Fudul help the merchant?',['Use “If he did not pay …, they would …”, “… was forced to …” and “… to + verb”.'],'The chapter’s conditional shows that justice was backed by a stated consequence, not only moral advice.','Write or say four or five sentences about the merchant who was not paid.')
@@ -177,7 +177,7 @@ export const meccaB2LanguageFocusExercisesPart2: Record<number, Exercise[]> = {
       'The admirable qualities of the Arabs before Islam, like generosity, had nothing to do with arrogance.',
     ],
     correctAnswer: 1,
-    explanation: '“Mostly” limits the claim: arrogance was the main motive, but the writer does not say it was the only one. “Rather than” compares two possible motives and prefers one. The same balance runs through the whole chapter: the Hilfü’l-Fudûl and Arab hospitality are real positive evidence, yet the camel contest is also called “a type of gambling”. The writer praises the action and still questions the motive.',
+    explanation: '“Mostly” limits the claim: Arrogance was the main motive, but the writer does not say it was the only one. “Rather than” compares two possible motives and prefers one. The same balance runs through the whole chapter: The Hilfü’l-Fudûl and Arab hospitality are real positive evidence, yet the camel contest is also called “a type of gambling”. The writer praises the action and still questions the motive.',
     feedback: {
       correct: 'Correct. You kept both the qualifier “mostly” and the direction of the contrast.',
       incorrect: 'Look at the first sentence of paragraph 4. Which motive does the writer see as the main one, and is it described as the only motive?',

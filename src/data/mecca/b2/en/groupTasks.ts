@@ -78,7 +78,7 @@ export const meccaB2GroupTasksEn: Record<number, GroupTask> = {
       },
       {
         "name": "Pact Writer",
-        "job": "You write the pact: the problem, whom it protects, what members promise and what happens if a promise is not kept."
+        "job": "You write the pact: The problem, whom it protects, what members promise and what happens if a promise is not kept."
       },
       {
         "name": "Language Checker",
@@ -92,7 +92,7 @@ export const meccaB2GroupTasksEn: Record<number, GroupTask> = {
     "steps": [
       "Reread Chapters 8–9 and copy one sentence exactly, for example: “To prevent such incidents, an agreement was made by some Quraysh tribes to help people who had been oppressed in Mecca.”",
       "Choose one real problem at school that a pact could answer, such as students who are left out or not listened to. Do not name any real classmate.",
-      "Write a one-page pact: what problem it answers, whom it protects, what members promise to do and what happens if the promise is not kept. Use patterns such as a passive without ‘by’ (Students are left out …), ‘If …, we will …’ and ‘mostly … rather than …’.",
+      "Write a one-page pact: What problem it answers, whom it protects, what members promise to do and what happens if the promise is not kept. Use patterns such as a passive without ‘by’ (Students are left out …), ‘If …, we will …’ and ‘mostly … rather than …’.",
       "Read the pact aloud in your group and improve one sentence. Nobody speaks as a person from the story; you only quote the book and write your own pact."
     ],
     "share": "Each group presents its pact in two minutes, reads its quote from the book and explains which part of the pact the quote inspired.",

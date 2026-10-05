@@ -28,7 +28,7 @@ export const yunusEmreB1GroupTasksEn: Record<number, GroupTask> = {
     "steps": [
       "Read your chapter again. Note two key facts and one sentence from the book that supports them.",
       "Teach your facts to the group in your own words, then read your sentence aloud, for example: “one of the founders of Turkish Sûfî literature” or “a very difficult time in Anatolia”.",
-      "Listen to the others and build one short fact file together: who Yunus Emre was, how he learned, and what was happening around him.",
+      "Listen to the others and build one short fact file together: Who Yunus Emre was, how he learned, and what was happening around him.",
       "Together, complete this sentence with two reasons, each backed by a quote: “Yunus Emre’s time was hard for the people of Anatolia because …”."
     ],
     "share": "Each group reads its fact file to the class and says which facts the book gives as certain and which it reports with words like “around” or “Some sources say”.",
@@ -92,7 +92,7 @@ export const yunusEmreB1GroupTasksEn: Record<number, GroupTask> = {
     "steps": [
       "Choose one principle: patience, honesty or controlling anger.",
       "Copy the line from the book exactly, for example: “Whoever is filled with anger loses their faith” or “true morality is about giving up bad habits”.",
-      "Explain what the line means in clear English, then add two realistic school examples: one action to build and one habit to avoid.",
+      "Explain what the line means in clear English, then add two realistic school examples: One action to build and one habit to avoid.",
       "Make the poster or audio clip. Nobody speaks as Yunus Emre or Taptuk Emre; you only quote the book and explain it in your own words."
     ],
     "share": "Each group shows its poster or plays its audio clip, reads its quote aloud and explains one of its school examples.",

@@ -60,7 +60,7 @@ export const yunusEmreB2GroupTasksEn: Record<number, GroupTask> = {
     "steps": [
       "Read your chapter again. Note two key ideas and one sentence from the book that supports each idea.",
       "Teach your ideas to the group in your own words, then read your two sentences from the book aloud.",
-      "Listen to the others and build one chain together: the crisis in Anatolia → Yunus Emre’s response → the main ideas of his thought.",
+      "Listen to the others and build one chain together: The crisis in Anatolia → Yunus Emre’s response → the main ideas of his thought.",
       "Together, complete this sentence with two reasons, each backed by a quote: “In a time of crisis, Yunus Emre offered people …”. For example, he answered them “using poetry as his medium”, and he taught that “Love brings unity and harmony.”"
     ],
     "share": "Each group presents its chain and its sentence, and says which ideas the book gives as Yunus Emre’s own view, for example with “According to Yunus Emre …”.",
@@ -90,7 +90,7 @@ export const yunusEmreB2GroupTasksEn: Record<number, GroupTask> = {
       }
     ],
     "steps": [
-      "Choose one strand of Yunus Emre’s legacy as the book presents it: plain literary Turkish (Chapters 1–2), Sûfî thought (Chapters 7–10) or moral guidance (Chapters 11–13).",
+      "Choose one strand of Yunus Emre’s legacy as the book presents it: Plain literary Turkish (Chapters 1–2), Sûfî thought (Chapters 7–10) or moral guidance (Chapters 11–13).",
       "Copy two lines exactly, for example: “His writings are valuable not only as literary works but also as a moral guide for future generations.” or “Love brings unity and harmony.”",
       "Explain each line, then judge how strongly the book supports the legacy claim. Use patterns such as “According to …”, “not only … but also …” and “Whoever …”.",
       "Add one realistic example from school life. Nobody speaks as Yunus Emre, Taptuk Emre or any other person from the book; you only report and explain what the book says."

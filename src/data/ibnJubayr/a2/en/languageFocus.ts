@@ -21,7 +21,7 @@ export const ibnJubayrA2LanguageFocusExercises: Record<number, Exercise[]> = {
     {
       id: 'ibnjubayr-a2-language-1-because-so', type: 'word-bank', title: 'Practise: Because, Because of, So',
       instructions: 'Fill each gap from the word bank. Two words are not needed.',
-      question: 'Because, because of or so: which fits each gap?',
+      question: 'Because, because of or so: Which fits each gap?',
       fillBlanksText: 'Al-Andalus was in Europe [blank] its location and its people … Córdoba had 700,000 people, [blank] it was the largest city in Western Europe. This great culture surprised the people of that time [blank] Muslims lived a much better life than them.',
       wordBank: ['because of', 'so', 'because', 'but', 'when'],
       correctAnswer: ['because of', 'so', 'because'],
@@ -49,8 +49,8 @@ export const ibnJubayrA2LanguageFocusExercises: Record<number, Exercise[]> = {
       question: '“When he was young, Ibn Jubayr studied hard …” and “When he grew up, he got a job with the government …” What does “When …” tell us?',
       options: ['the time in his life', 'the reason for his job', 'the place of his school'],
       correctAnswer: 0,
-      explanation: '“When + past sentence” gives a time in a person’s life: when he was young, when he grew up. The main sentence tells what happened at that time: he studied hard, he got a job.',
-      feedback: { correct: 'Correct. “When …” gives the time; the other part gives the event.', incorrect: 'Ask: is “when he was young” about a time, a reason or a place?' },
+      explanation: '“When + past sentence” gives a time in a person’s life: When he was young, when he grew up. The main sentence tells what happened at that time: He studied hard, he got a job.',
+      feedback: { correct: 'Correct. “When …” gives the time; the other part gives the event.', incorrect: 'Ask: Is “when he was young” about a time, a reason or a place?' },
     },
     {
       id: 'ibnjubayr-a2-language-2-goals', type: 'word-bank', title: 'Practise: Dreams and Goals',
@@ -118,7 +118,7 @@ export const ibnJubayrA2LanguageFocusExercises: Record<number, Exercise[]> = {
       options: ['the storm', 'the sailing', 'both started at the same time'],
       correctAnswer: 1,
       explanation: '“While they were sailing” (was/were + -ing) is the longer action in the background. “A terrible storm caught them” (past simple) is the short event that happened in the middle of it.',
-      feedback: { correct: 'Correct. Were sailing = the longer action; caught = the short event.', incorrect: 'Imagine the ship: was it already sailing when the storm came?' },
+      feedback: { correct: 'Correct. Were sailing = the longer action; caught = the short event.', incorrect: 'Imagine the ship: Was it already sailing when the storm came?' },
     },
     {
       id: 'ibnjubayr-a2-language-4-sequence', type: 'word-bank', title: 'Practise: The Order of the Journey',
@@ -148,7 +148,7 @@ export const ibnJubayrA2LanguageFocusExercises: Record<number, Exercise[]> = {
       id: 'ibnjubayr-a2-language-5-so-that', type: 'multiple-choice', title: 'Look: So Safe That …',
       instructions: 'Read the sentence from Chapter 5. Then choose the best answer.',
       question: '“The roads were also so safe that people could travel day and night without any fear.” What does “so safe that …” show?',
-      options: ['a result: the roads were very safe, and because of this people could travel at any time', 'a question about the roads', 'a reason why the roads were dangerous'],
+      options: ['a result: The roads were very safe, and because of this people could travel at any time', 'a question about the roads', 'a reason why the roads were dangerous'],
       correctAnswer: 0,
       explanation: '“So + adjective + that …” makes the adjective very strong and then gives the result. The roads were very safe → people could travel day and night.',
       feedback: { correct: 'Correct. So + adjective + that + result.', incorrect: 'Read the part after “that”. What could people do because the roads were safe?' },
@@ -267,7 +267,7 @@ export const ibnJubayrA2LanguageFocusExercises: Record<number, Exercise[]> = {
         'stayed there for only five nights': 'how long',
       },
       explanation: '“To” shows where someone goes. “Through” means from one side to the other side of a place. “Near” means close to, not in it. “For” tells how long.',
-      feedback: { correct: 'Correct. You know the small words for moving and time.', incorrect: 'Think of a map: did he go into the river, or close to it? Did he cross the desert?' },
+      feedback: { correct: 'Correct. You know the small words for moving and time.', incorrect: 'Think of a map: Did he go into the river, or close to it? Did he cross the desert?' },
     },
     {
       id: 'ibnjubayr-a2-language-8-there-were', type: 'choose-form', title: 'Practise: Was or Were?',
@@ -304,7 +304,7 @@ export const ibnJubayrA2LanguageFocusExercises: Record<number, Exercise[]> = {
       options: ['because he is still alive', 'because the visit is happening now', 'because we are talking about what his book says, and we can still read it'],
       correctAnswer: 2,
       explanation: 'We often use the present simple to talk about what a book says: “He describes …”, “He also talks about …”. The book is still here, and we can read it today.',
-      feedback: { correct: 'Correct. A book “says” and “describes” in the present.', incorrect: 'Think: can we read his book today? What does the book do?' },
+      feedback: { correct: 'Correct. A book “says” and “describes” in the present.', incorrect: 'Think: Can we read his book today? What does the book do?' },
     },
     {
       id: 'ibnjubayr-a2-language-9-gifts', type: 'word-bank', title: 'Practise: Help for Students',
@@ -358,7 +358,7 @@ export const ibnJubayrA2LanguageFocusExercises: Record<number, Exercise[]> = {
       wordBank: ['to sail', 'attacked', 'to thank', 'sailing', 'thanked'],
       correctAnswer: ['to sail', 'attacked', 'to thank'],
       explanation: '“To + verb” gives the purpose: good winds to sail, went to Mecca to thank Allah. “Attacked” is the past event.',
-      feedback: { correct: 'Well done. To + verb for a purpose; -ed for a past event.', incorrect: 'Ask for each gap: is it a purpose (what for?) or an event?' },
+      feedback: { correct: 'Well done. To + verb for a purpose; -ed for a past event.', incorrect: 'Ask for each gap: Is it a purpose (what for?) or an event?' },
     },
     {
       id: 'ibnjubayr-a2-language-10-waiting', type: 'reflection', title: 'Use: Waiting for Something',
@@ -366,7 +366,7 @@ export const ibnJubayrA2LanguageFocusExercises: Record<number, Exercise[]> = {
       question: 'Can you talk about waiting, with a time and a reason?',
       correctAnswer: null,
       explanation: 'Example: “Last year, I waited for nearly an hour at the bus station because the bus was late. I went there to visit my aunt.”',
-      feedback: { correct: 'Check: waited for about / nearly …, because …, to + verb.', incorrect: '' },
+      feedback: { correct: 'Check: Waited for about / nearly …, because …, to + verb.', incorrect: '' },
       discussionPrompts: [
         { question: '“I waited for about / nearly …”', mode: 'Individual' },
         { question: '“… because …” and “I went there to …”', mode: 'Pair' },
@@ -380,7 +380,7 @@ export const ibnJubayrA2LanguageFocusExercises: Record<number, Exercise[]> = {
       question: '“Ibn Jubayr almost died, but he survived.” What happened to him?',
       options: ['He died near Sicily.', 'He was very near to death, but he stayed alive.', 'He was ill for a long time.'],
       correctAnswer: 1,
-      explanation: '“Almost died” means he nearly died, but it did not happen. “But” gives the different, happy result: he survived.',
+      explanation: '“Almost died” means he nearly died, but it did not happen. “But” gives the different, happy result: He survived.',
       feedback: { correct: 'Correct. Almost + verb = it nearly happened, but it did not.', incorrect: 'Read the part after “but”. Did he die?' },
     },
     {
@@ -413,7 +413,7 @@ export const ibnJubayrA2LanguageFocusExercises: Record<number, Exercise[]> = {
       question: '“Then, the travelers had to walk to find safety or die under the burning sun.” What does “had to walk” mean?',
       options: ['They wanted to walk for fun.', 'Walking was necessary; they had no other choice.', 'They walked in the past every day.'],
       correctAnswer: 1,
-      explanation: '“Had to + base verb” is the past of “have to”. It shows that something was necessary: the robbers took everything, so the travelers had no other choice.',
+      explanation: '“Had to + base verb” is the past of “have to”. It shows that something was necessary: The robbers took everything, so the travelers had no other choice.',
       feedback: { correct: 'Correct. Had to = it was necessary in the past.', incorrect: 'What did the robbers take? Could the travelers choose another way?' },
     },
     {
@@ -448,7 +448,7 @@ export const ibnJubayrA2LanguageFocusExercises: Record<number, Exercise[]> = {
       id: 'ibnjubayr-a2-language-13-should', type: 'multiple-choice', title: 'Look: Should',
       instructions: 'Read the sentences from Chapter 13. Then choose the best answer.',
       question: '“Ibn Jubayr thought that other people should do the same. He told young people to leave their home country and travel to look for knowledge.” What does “should” show?',
-      options: ['advice: a good idea for other people', 'a rule from the government', 'something in the past'],
+      options: ['advice: A good idea for other people', 'a rule from the government', 'something in the past'],
       correctAnswer: 0,
       explanation: '“Should + base verb” gives advice: it is a good idea. Ibn Jubayr learned a lot, so he gave this advice to young people. “Told + person + to + verb” reports the advice.',
       feedback: { correct: 'Correct. Should = advice; told … to … = reported advice.', incorrect: 'Is it a law, or a good idea from a wise person?' },
@@ -460,7 +460,7 @@ export const ibnJubayrA2LanguageFocusExercises: Record<number, Exercise[]> = {
       fillBlanksText: 'For him, learning was just as [blank] as Hajj. … In the end, he learned many things he [blank] learn at home in Granada. His journey made him a [blank] person.',
       wordBank: ['important', 'could not', 'wiser', 'more important', 'wise'],
       correctAnswer: ['important', 'could not', 'wiser'],
-      explanation: '“Just as + adjective + as” means the same: learning and Hajj were equally important. “Could not” = was not possible in the past. “Wiser” compares him before and after the journey.',
+      explanation: '“Just as + adjective + as” means the same: Learning and Hajj were equally important. “Could not” = was not possible in the past. “Wiser” compares him before and after the journey.',
       feedback: { correct: 'Well done. As important as, could not, wiser.', incorrect: 'Read the second paragraph of Chapter 13 again. After “just as” the adjective does not change.' },
     },
     {
@@ -473,7 +473,7 @@ export const ibnJubayrA2LanguageFocusExercises: Record<number, Exercise[]> = {
       discussionPrompts: [
         { question: '“You should … because …”', mode: 'Individual' },
         { question: '“You should not …”', mode: 'Individual' },
-        { question: 'Share with your partner: which advice is the most useful?', mode: 'Pair' },
+        { question: 'Share with your partner: Which advice is the most useful?', mode: 'Pair' },
       ],
     },
   ],

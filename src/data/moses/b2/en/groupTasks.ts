@@ -92,7 +92,7 @@ export const mosesB2GroupTasksEn: Record<number, GroupTask> = {
     "steps": [
       "Choose one chapter pair: Chapters 1–2, 18–19 or 22–23.",
       "Copy at least three sentences exactly, for example: “So the pharaoh who drowned at sea was probably Ramses II.” or “Look! The sea has opened at my command.”",
-      "Sort your sentences into three columns: what the book states, what it attributes to sources or characters, and what is interpretation. Use patterns such as “according to”, “probably”, “saw … as …”, “rather” and “not merely … but …”.",
+      "Sort your sentences into three columns: What the book states, what it attributes to sources or characters, and what is interpretation. Use patterns such as “according to”, “probably”, “saw … as …”, “rather” and “not merely … but …”.",
       "End with one lesson for reading news or social media today. Nobody speaks as a person from the story; you only report and analyse what the book says."
     ],
     "share": "Each group presents its poster or plays its audio report, reads one exact quote aloud and explains which column it belongs in.",

@@ -106,7 +106,7 @@ export const adamB1ChapterExtrasEn: ChapterExtras = {
   },
   reviewExamples: [
     "Last month, I had to bring my part of a group poster for science class. I forgot it at home because I was busy with a football match.",
-    "I realised that I had let my group down: it wasn’t on purpose, but they had to wait for me.",
+    "I realised that I had let my group down: It wasn’t on purpose, but they had to wait for me.",
     "However, I decided never to leave my work until the last day, and I managed to finish my part the next morning.",
     "This experience suggests that we should plan our work early. It shows the importance of keeping promises to our classmates.",
   ],

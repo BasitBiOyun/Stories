@@ -8,7 +8,7 @@ export const meccaB1LanguageFocusChapter9: Record<number, Exercise[]> = {
       instructions: 'Read the sentence from Chapter 9. Is the statement true or false?',
       question: '“Before Islam, the life of Arab women was very different depending on their wealth and family.” This means that a woman’s life changed according to how rich she was and which family she came from.',
       correctAnswer: true,
-      explanation: '“Depending on …” shows that one thing changes according to another factor. Here, women’s lives changed according to wealth and family. The next sentences give the two sides: what rich women like Khadija were able to do, and then, marked by “However”, the situation of many poor women.',
+      explanation: '“Depending on …” shows that one thing changes according to another factor. Here, women’s lives changed according to wealth and family. The next sentences give the two sides: What rich women like Khadija were able to do, and then, marked by “However”, the situation of many poor women.',
       feedback: { correct: 'Correct. “Depending on” tells us what made the difference between women’s lives.', incorrect: 'Read the next two sentences of Chapter 9. Were the lives of a rich woman and a poor woman the same or different? What made the difference?' },
     },
     {
@@ -99,7 +99,7 @@ export const meccaB1LanguageFocusChapter10: Record<number, Exercise[]> = {
       ],
       correctAnswer: null,
       explanation: '“Most” means the majority, not everyone; “all” would be an overclaim, because the next sentence names people who followed other religions. “Only a few” is used with countable nouns such as “people”; “a little” is for uncountable nouns. “Including” introduces some examples from a larger group; it does not give the full list.',
-      feedback: { correct: 'Correct. You described the groups accurately without overgeneralising.', incorrect: 'Ask: did everyone worship idols? Is “people” countable? Does the list give all 360 idols or only some examples? Then check the first paragraph of Chapter 10.' },
+      feedback: { correct: 'Correct. You described the groups accurately without overgeneralising.', incorrect: 'Ask: Did everyone worship idols? Is “people” countable? Does the list give all 360 idols or only some examples? Then check the first paragraph of Chapter 10.' },
     },
     {
       id: 'mecca-b1-language-10-belief-purpose-decision', type: 'transformation', title: 'Where and When',
@@ -135,13 +135,13 @@ export const meccaB1LanguageFocusChapter11: Record<number, Exercise[]> = {
       question: '“Politics, economics, and religion are connected. Beliefs shape how people live. That is why powerful groups in Mecca did not like Islam.” What does “That is why” do here?',
       options: [
         'It gives the reason why politics, economics and religion are connected.',
-        'It shows that the leaders’ dislike of Islam was a result of the ideas before it: a new belief could change how people live, and so affect power and wealth too.',
+        'It shows that the leaders’ dislike of Islam was a result of the ideas before it: A new belief could change how people live, and so affect power and wealth too.',
         'It introduces an example of a new belief.',
         'It shows a contrast with the sentence before it.',
       ],
       correctAnswer: 1,
       explanation: '“That is why” points back to the ideas already given and introduces their result. The writer first makes two general statements (in the present simple, because they are always true) and then applies them to history (in the past simple). A new belief could change how people lived, and so it could also change who had power and money.',
-      feedback: { correct: 'Correct. The dislike of Islam is presented as a result of the general ideas before it.', incorrect: '“That” refers back to what came before. Ask: is the last sentence a reason, an example, a contrast, or a result?' },
+      feedback: { correct: 'Correct. The dislike of Islam is presented as a result of the general ideas before it.', incorrect: '“That” refers back to what came before. Ask: Is the last sentence a reason, an example, a contrast, or a result?' },
     },
     {
       id: 'mecca-b1-language-11-future-community', type: 'choose-form', title: 'Looking Forward from the Past',
@@ -198,7 +198,7 @@ export const meccaB1LanguageFocusChapter12: Record<number, Exercise[]> = {
         },
       ],
       correctAnswer: null,
-      explanation: 'An -ing form can be the subject of a sentence (“Keeping their power … was very important”); “It was important + to + verb” says the same thing. Starting with “Keeping …” puts the leaders’ priority at the front. “Felt that …” reports the leaders’ own view of Islam: the writer shows this was how they saw it, and the “because” clause makes it the reason for their refusal.',
+      explanation: 'An -ing form can be the subject of a sentence (“Keeping their power … was very important”); “It was important + to + verb” says the same thing. Starting with “Keeping …” puts the leaders’ priority at the front. “Felt that …” reports the leaders’ own view of Islam: The writer shows this was how they saw it, and the “because” clause makes it the reason for their refusal.',
       feedback: { correct: 'Well done. You kept the priority and the reported view in new sentences.', incorrect: 'Item 1: use “to + verb” after “for them”. Item 2: start with “because they felt …”. Check the first two paragraphs of Chapter 12.' },
     },
     {
@@ -242,7 +242,7 @@ export const meccaB1LanguageFocusChapter13: Record<number, Exercise[]> = {
         { id: 'd', text: 'But when the Qur’an criticized the idols and warned against false worship, their opposition became violent.' },
       ],
       correctAnswer: ['b', 'd', 'a', 'c'],
-      explanation: '“At first” sets the earliest stage, and “only” shows it was limited to mockery. “But when …” marks a change caused by a new event. “Went further” tells the reader that the next action will be even stronger, and the boycott sentence gives that action. These markers show escalation: each step is more serious than the one before.',
+      explanation: '“At first” sets the earliest stage, and “only” shows it was limited to mockery. “But when …” marks a change caused by a new event. “Went further” tells the reader that the next action will be even stronger, and the boycott sentence gives that action. These markers show escalation: Each step is more serious than the one before.',
       feedback: { correct: 'Correct. You followed the opposition from mocking to violence to a boycott.', incorrect: 'Start with “At first”. “Went further” must come just before the stronger action it introduces.' },
     },
     {
@@ -270,7 +270,7 @@ export const meccaB1LanguageFocusChapter13: Record<number, Exercise[]> = {
         },
       ],
       correctAnswer: null,
-      explanation: '“Whenever + past simple, past simple” describes a reaction that happened every time: both verbs are in the past (“walked … laughed”). “Order + person + to + verb” reports a command. “To + verb” gives the purpose of an action: why did they spend their money? To support the Muslims.',
+      explanation: '“Whenever + past simple, past simple” describes a reaction that happened every time: Both verbs are in the past (“walked … laughed”). “Order + person + to + verb” reports a command. “To + verb” gives the purpose of an action: why did they spend their money? To support the Muslims.',
       feedback: { correct: 'Well done. You fixed the repeated action, the reported order and the purpose.', incorrect: 'Check the tense after “whenever”, the word after “ordered him”, and the word before “support”. Then compare with Chapter 13.' },
     },
     {
@@ -302,7 +302,7 @@ export const meccaB1LanguageFocusChapter14: Record<number, Exercise[]> = {
       options: [
         'Because nobody really heard the cries.',
         'Because only the leaders of Mecca heard them.',
-        'Because the cries are the important thing: anyone in the area could hear them, so the listener does not matter.',
+        'Because the cries are the important thing: Anyone in the area could hear them, so the listener does not matter.',
         'Because the children heard their own cries.',
       ],
       correctAnswer: 2,
@@ -405,7 +405,7 @@ export const meccaB1LanguageFocusChapter15: Record<number, Exercise[]> = {
         },
       ],
       correctAnswer: null,
-      explanation: '“So + adjective + that” links a strong degree to its result: loyalty was so strong that free choice was difficult (“such” is used before a noun: “such strong loyalty”). “Prevent + person + from + -ing” means “stop someone doing something”. “Tell + person + to + verb” reports advice or an instruction.',
+      explanation: '“So + adjective + that” links a strong degree to its result: Loyalty was so strong that free choice was difficult (“such” is used before a noun: “such strong loyalty”). “Prevent + person + from + -ing” means “stop someone doing something”. “Tell + person + to + verb” reports advice or an instruction.',
       feedback: { correct: 'Well done. You fixed the degree-result pattern, the prevention pattern and the reported instruction.', incorrect: 'Check what comes before an adjective + “that”, what follows “prevent … ”, and what follows “told people”. Then compare with Chapter 15.' },
     },
     {

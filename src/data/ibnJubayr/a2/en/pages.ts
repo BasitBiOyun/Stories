@@ -128,7 +128,7 @@ In Alexandria and Cairo, Ibn Jubayr saw many colleges and guesthouses. Saladin b
     content: `Then, he joined a group of travelers in a camel caravan to go to the Red Sea. Ibn Jubayr wrote about the caravans. He said that you could easily see who was rich and who was poor in caravans. You only needed to look at their tents. The tents of rich royal people were amazing. They were like beautiful moving palaces.`,
     vocabulary: [
       { word: "tents", definition: "Shelters made of cloth that people sleep in outside." },
-      { word: "moving palaces", definition: "Here: very big, beautiful tents that move with the caravan, like palaces." },
+      { word: "moving palaces", definition: "Here: Very big, beautiful tents that move with the caravan, like palaces." },
     ],
     hotspots: [
       { id: 'ibnjubayr-a2-en-h6a', x: 32, y: 42, title: "Moving Palaces", description: "The tents of rich royal people were like beautiful moving palaces." },
@@ -969,7 +969,7 @@ Ibn Jubayr thought that other people should do the same. He told young people to
       },
       {
           "word": "moving palaces",
-          "definition": "Here: very big, beautiful tents that move with the caravan, like palaces.",
+          "definition": "Here: Very big, beautiful tents that move with the caravan, like palaces.",
           "partOfSpeech": "noun",
           "level": "A2",
           "pronunciation": "/ˈmuːvɪŋ ˈpæləsɪz/",

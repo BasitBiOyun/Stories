@@ -57,7 +57,7 @@ export const gevherNesibeA2LanguageReviewExercises: Exercise[] = [
     question: 'Chapter 3: “Nobody should pay any money. This place must be free for everyone.” Chapter 10: “… doctors must make patients’ minds and hearts stronger.” What do “should” and “must” do here?',
     options: ['They tell us what happened in the past.', 'They say what is right or necessary.', 'They ask a question.'],
     correctAnswer: 1,
-    explanation: '“Must” and “should” say what is necessary or right. “Must” is very strong: the hospital must be free. “Should” gives a rule or good advice: nobody should pay. After must and should, use the base verb: must be, should pay, must make.',
+    explanation: '“Must” and “should” say what is necessary or right. “Must” is very strong: The hospital must be free. “Should” gives a rule or good advice: Nobody should pay. After must and should, use the base verb: must be, should pay, must make.',
     feedback: { correct: 'Correct. Must and should + base verb say what is necessary or right.', incorrect: 'Is Gevher Nesibe telling a story here, or saying what is right for the hospital?' },
   },
   {
@@ -86,8 +86,8 @@ export const gevherNesibeA2LanguageReviewExercises: Exercise[] = [
     fillBlanksText: 'At that time, Kayseri did not have a good hospital, [blank] she died at a young age. … [blank] the two buildings are next to each other, people call them the ‘Twin Madrasas.’ … Gevher Nesibe Sultan never married the love of her life. [blank] people loved her very much, and everyone remembers her today.',
     wordBank: ['so', 'Because', 'But', 'When', 'because of'],
     correctAnswer: ['so', 'Because', 'But'],
-    explanation: '“So” gives a result: no good hospital, so she died young. “Because” gives a reason, and it can start the sentence: Because the two buildings are next to each other, … “But” gives a different idea: she never married, but people loved her.',
-    feedback: { correct: 'Well done. You linked a result, a reason and a different idea.', incorrect: 'For each gap, ask: does the next part give a result, a reason or a different idea? Check Chapters 2, 4 and 11.' },
+    explanation: '“So” gives a result: No good hospital, so she died young. “Because” gives a reason, and it can start the sentence: Because the two buildings are next to each other, … “But” gives a different idea: She never married, but people loved her.',
+    feedback: { correct: 'Well done. You linked a result, a reason and a different idea.', incorrect: 'For each gap, ask: Does the next part give a result, a reason or a different idea? Check Chapters 2, 4 and 11.' },
   },
   {
     id: 'gevhernesibe-a2-language-review-5-past-forms', type: 'choose-form', title: 'Practise: Read, Taught, Got',
@@ -133,7 +133,7 @@ export const gevherNesibeA2LanguageReviewExercises: Exercise[] = [
     wordBank: ['is', 'older', 'are', 'should', 'oldest', 'was'],
     correctAnswer: ['is', 'older', 'are', 'should'],
     explanation: 'This text is about now, so it uses “there is” for one hospital and “there are” for many rooms. “Older than” compares two things. “Should + base verb” says what is right.',
-    feedback: { correct: 'Well done. You used the book’s language in a new place.', incorrect: 'Ask for each gap: one thing or many? Two things compared? What is right?' },
+    feedback: { correct: 'Well done. You used the book’s language in a new place.', incorrect: 'Ask for each gap: One thing or many? Two things compared? What is right?' },
   },
   {
     id: 'gevhernesibe-a2-language-review-9-transfer', type: 'reflection', title: 'Use: An Old Building I Know',

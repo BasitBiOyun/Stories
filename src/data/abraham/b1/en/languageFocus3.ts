@@ -9,16 +9,16 @@ export const abrahamB1LanguageFocusChapter9: Record<number, Exercise[]> = {
       instructions: 'Read the sentence from Chapter 9. Then choose what “yet” shows.',
       question: '“People felt embarrassed by the miracle, yet their anger and arrogance remained unchanged.” What does “yet” show here?',
       options: [
-        'The second idea is surprising after the first: they were embarrassed, but they did not change.',
+        'The second idea is surprising after the first: They were embarrassed, but they did not change.',
         'The second idea is the result of the first.',
         'The second idea has not happened until now.',
         'The second idea happened before the first.',
       ],
       correctAnswer: 0,
-      explanation: 'Between two clauses, “yet” means “but” and shows an unexpected contrast: after such a miracle, we expect people to change, but their anger stayed the same. “However” does the same job in the next sentence: “Prophet Abraham (pbuh) tried every way …; however, their rage didn’t calm down.” This is different from “not … yet” (= not until now).',
+      explanation: 'Between two clauses, “yet” means “but” and shows an unexpected contrast: After such a miracle, we expect people to change, but their anger stayed the same. “However” does the same job in the next sentence: “Prophet Abraham (pbuh) tried every way …; however, their rage didn’t calm down.” This is different from “not … yet” (= not until now).',
       feedback: {
         correct: 'Correct. “Yet” joins two ideas that do not fit together as we expect.',
-        incorrect: 'Ask: after a miracle, what would we expect people to do? Does the second part of the sentence follow that expectation or go against it?',
+        incorrect: 'Ask: After a miracle, what would we expect people to do? Does the second part of the sentence follow that expectation or go against it?',
       },
     },
     {
@@ -93,7 +93,7 @@ export const abrahamB1LanguageFocusChapter10: Record<number, Exercise[]> = {
       question: 'Does “to + verb” always show purpose?',
       dragDropGroups: [
         {
-          group: 'Purpose: why someone acts',
+          group: 'Purpose: Why someone acts',
           items: [
             '… travel to other lands to spread Allah’s message',
             '… so that his child could teach people about Allah',
@@ -108,7 +108,7 @@ export const abrahamB1LanguageFocusChapter10: Record<number, Exercise[]> = {
         },
       ],
       correctAnswer: {
-        'Purpose: why someone acts': [
+        'Purpose: Why someone acts': [
           '… travel to other lands to spread Allah’s message',
           '… so that his child could teach people about Allah',
         ],
@@ -117,7 +117,7 @@ export const abrahamB1LanguageFocusChapter10: Record<number, Exercise[]> = {
           '… told his wife to stay near one of the hills',
         ],
       },
-      explanation: '“To + verb” has two different jobs here. After an action, it can give the purpose (travel … to spread Allah’s message = in order to spread it). After command/tell + person, it gives the instruction (commanded Abraham to travel, told his wife to stay). “So that + could” also gives a purpose, with its own subject: so that his child could teach people.',
+      explanation: '“To + verb” has two different jobs here. After an action, it can give the purpose (travel … to spread Allah’s message = in order to spread it). After command/tell + person, it gives the instruction (commanded Abraham to travel, told his wife to stay). “So that + could” also gives a purpose, with its own subject: So that his child could teach people.',
       feedback: {
         correct: 'Correct. You separated purpose from instruction, even though both use “to”.',
         incorrect: 'Look before “to”: is there a verb like command or tell + a person? Then it is an instruction. Can you add “in order” before “to”? Then it is a purpose.',
@@ -150,7 +150,7 @@ export const abrahamB1LanguageFocusChapter10: Record<number, Exercise[]> = {
       explanation: '“Decide” is followed by to + verb (decided to leave … and travel). “During + noun” places an event inside a longer period (during his journey); “while” needs a clause (while he was travelling). “Finally” marks the end point after a long process; “at first” and “firstly” introduce a beginning.',
       feedback: {
         correct: 'Correct. You chose the forms for a decision, a time period and an end point.',
-        incorrect: 'Check what follows each gap: a verb, a noun (his journey), or a comma after a long time of travel. Then read the second and third paragraphs of Chapter 10.',
+        incorrect: 'Check what follows each gap: A verb, a noun (his journey), or a comma after a long time of travel. Then read the second and third paragraphs of Chapter 10.',
       },
     },
     {
@@ -245,7 +245,7 @@ export const abrahamB1LanguageFocusChapter11: Record<number, Exercise[]> = {
       fillBlanksText: 'This effort by Hagar [blank] “sa’y” in Hajj and Umrah rituals. Even today, Muslims [blank] complete the ritual “sa’y” [blank] performing the tawaf during Hajj or Umrah. This ritual [blank] walking back and forth between the hills of Safa and Marwa.',
       wordBank: ['is known as', 'must', 'after', 'involves', 'knows as', 'must to'],
       correctAnswer: ['is known as', 'must', 'after', 'involves'],
-      explanation: 'Explanations of a practice often use: the passive “is known as” to give its name; “must + base verb” (no “to”) for a rule; “after + -ing” to show which step comes first; and “involves + -ing” to say what the practice includes.',
+      explanation: 'Explanations of a practice often use: The passive “is known as” to give its name; “must + base verb” (no “to”) for a rule; “after + -ing” to show which step comes first; and “involves + -ing” to say what the practice includes.',
       feedback: {
         correct: 'Correct. You used the language of explaining a practice.',
         incorrect: 'Check the end of Chapter 11. The name is given with a passive form, and “must” is never followed by “to”.',
@@ -270,7 +270,7 @@ export const abrahamB1LanguageFocusChapter12: Record<number, Exercise[]> = {
         '“Started flowing” describes something that happened every day.',
       ],
       correctAnswer: 0,
-      explanation: '“While + past continuous” (was crying, was running) sets the background: actions already in progress. “Suddenly” + past simple (started flowing) introduces a new event that happens in the middle of them. The next sentence uses “When + past simple” for the moment that causes a reaction: “When Hagar saw this …, she shouted”.',
+      explanation: '“While + past continuous” (was crying, was running) sets the background: Actions already in progress. “Suddenly” + past simple (started flowing) introduces a new event that happens in the middle of them. The next sentence uses “When + past simple” for the moment that causes a reaction: “When Hagar saw this …, she shouted”.',
       feedback: {
         correct: 'Correct. The continuous forms set the background, and the past simple brings in the sudden event.',
         incorrect: 'Look at “While” and “suddenly”. Which actions were happening already, and which one was new?',
@@ -297,7 +297,7 @@ export const abrahamB1LanguageFocusChapter12: Record<number, Exercise[]> = {
         },
       ],
       correctAnswer: null,
-      explanation: '“When + past simple” marks a single moment that causes the next action: when Hagar saw this, she shouted. Verbs of perception and state, such as see and exist, are not normally used in the continuous. “Still + present simple” (still exists) shows that a situation continues from the past to now.',
+      explanation: '“When + past simple” marks a single moment that causes the next action: When Hagar saw this, she shouted. Verbs of perception and state, such as see and exist, are not normally used in the continuous. “Still + present simple” (still exists) shows that a situation continues from the past to now.',
       feedback: {
         correct: 'Well done. You used simple forms for a single moment and for a continuing state.',
         incorrect: 'See and exist are usually not used with -ing. Check the first and second paragraphs of Chapter 12.',
@@ -393,7 +393,7 @@ export const abrahamB1LanguageFocusChapter13: Record<number, Exercise[]> = {
       explanation: '“For + noun” shows who something is for (a place of worship for all people). “Over the years” shows change or continuity across a long period, here across generations. “To + verb” gives the purpose of an action (spread … to carry the message). “Since” needs a starting point, and “so” would introduce a result.',
       feedback: {
         correct: 'Correct. You showed who the Ka’ba was for, the long time period and the purpose.',
-        incorrect: 'Ask: who was the place for? How long did it take for children to have children? Why did they spread? Then check the last two paragraphs of Chapter 13.',
+        incorrect: 'Ask: Who was the place for? How long did it take for children to have children? Why did they spread? Then check the last two paragraphs of Chapter 13.',
       },
     },
     { id: 'abraham-b1-language-13-connected-production', type: 'reflection', title: 'Explain How a Legacy Continues', instructions: 'Write or say five sentences about a project or tradition that lives on.', question: 'How did the work start, and how does it continue?', correctAnswer: null, explanation: 'A strong response can use told/asked + person + to + verb, will, after, begin/start, to + verb for purpose, and over the years where natural.', feedback: { correct: 'Keep the five sentences connected as one explanation of how something continues over time.', incorrect: '' }, discussionPrompts: [{ question: 'Sentence 1 — Say what someone was asked to do.', mode: 'Individual' }, { question: 'Sentence 2 — Say what someone will do: “… will …”', mode: 'Individual' }, { question: 'Sentence 3 — Say how the work started or was finished.', mode: 'Individual' }, { question: 'Sentence 4 — Say what it is for: “… so that …” or “… for …”', mode: 'Individual' }, { question: 'Sentence 5 — Show how it continues over the years.', mode: 'Pair' }] },

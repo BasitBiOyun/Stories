@@ -20,13 +20,13 @@ const COPY = {
   en: {
     title: 'In the app for this chapter',
     selfTitle: 'Your extra steps in this chapter',
-    byrTeacher: 'Before you read: use it as a one-minute hook before listening. Learners guess, then check after reading.',
-    byrSelf: 'Before you read: make your guess first, then read and check it.',
+    byrTeacher: 'Before you read: Use it as a one-minute hook before listening. Learners guess, then check after reading.',
+    byrSelf: 'Before you read: Make your guess first, then read and check it.',
     answer: 'Answer',
-    iCanTeacher: 'I can: in the last minute, learners rate each line Yes, Almost or Not yet. Ask for hands on “Not yet”.',
-    iCanSelf: 'I can: at the end, rate each line honestly. If you choose “Not yet”, read the chapter again and try the Language Focus once more.',
+    iCanTeacher: 'I can: In the last minute, learners rate each line Yes, Almost or Not yet. Ask for hands on “Not yet”.',
+    iCanSelf: 'I can: At the end, rate each line honestly. If you choose “Not yet”, read the chapter again and try the Language Focus once more.',
     examples: (n: number) => `Example answers: ${n} discussion prompt${n === 1 ? ' has' : 's have'} a model answer. In class mode, show it with “Show example” after learners try.`,
-    examplesSelf: 'Example answers: after you answer a discussion prompt, compare your answer with the example.',
+    examplesSelf: 'Example answers: After you answer a discussion prompt, compare your answer with the example.',
     group: 'Group task after this chapter',
     groupNote: 'Turn on class mode so the task opens on the board. A learner on their own does the “On your own?” version.',
     solo: 'Group task, on your own',
@@ -141,12 +141,12 @@ const TOOLS = {
       intro: 'These tools are in the reader for every book.',
       items: [
         [SECTION_ICONS.lessonCard, 'Open “Lesson card” under the chapter title: aims, timed steps, the group task and the exit ticket on one screen.'],
-        [SECTION_ICONS.classMode, 'Reading settings (Aa) → Class mode: bigger text for the board, “Show the answer” for Before you read, “Show example” for discussion prompts, and group tasks open.'],
-        [SECTION_ICONS.beforeYouRead, 'Before you read: one guess per chapter, a one-minute hook before listening.'],
-        [SECTION_ICONS.iCan, 'I can: three lines at the end of each chapter for self-assessment.'],
-        [MODE_ICONS.group, 'Group tasks: three per book, with roles, steps and what each group shares. Nobody plays a prophet or a person from the story.'],
-        [SECTION_ICONS.resultCard, 'Result card: at the end of the book each learner opens a card with their scores and an 8-character code.'],
-        [SECTION_ICONS.checkCode, 'Check a result code: on the home page, type the code to see the same scores. It is a light check, not protection against cheating.'],
+        [SECTION_ICONS.classMode, 'Reading settings (Aa) → Class mode: Bigger text for the board, “Show the answer” for Before you read, “Show example” for discussion prompts, and group tasks open.'],
+        [SECTION_ICONS.beforeYouRead, 'Before you read: One guess per chapter, a one-minute hook before listening.'],
+        [SECTION_ICONS.iCan, 'I can: Three lines at the end of each chapter for self-assessment.'],
+        [MODE_ICONS.group, 'Group tasks: Three per book, with roles, steps and what each group shares. Nobody plays a prophet or a person from the story.'],
+        [SECTION_ICONS.resultCard, 'Result card: At the end of the book each learner opens a card with their scores and an 8-character code.'],
+        [SECTION_ICONS.checkCode, 'Check a result code: On the home page, type the code to see the same scores. It is a light check, not protection against cheating.'],
       ] as const,
     },
     ar: {
@@ -168,12 +168,12 @@ const TOOLS = {
       title: 'Tools for learning on your own',
       intro: 'You find these in every book.',
       items: [
-        [SECTION_ICONS.levelTest, 'Level test: choose “On my own” on the home page and take the ten-question test. The result is only a suggestion.'],
+        [SECTION_ICONS.levelTest, 'Level test: Choose “On my own” on the home page and take the ten-question test. The result is only a suggestion.'],
         [SECTION_ICONS.beforeYouRead, 'Before you read: guess first, then read and check your guess.'],
         [SECTION_ICONS.myWords, 'My words: tap a word, save it, and review your words with flashcards. A word is learned after you know it twice.'],
-        [SECTION_ICONS.iCan, 'I can: rate three lines at the end of each chapter. “Not yet” means read again.'],
-        [MODE_ICONS.sayOrWrite, 'Example answers: compare your answer with the example after you try.'],
-        [SECTION_ICONS.resultCard, 'Result card: at the end of the book, see your scores and a code you can show a teacher.'],
+        [SECTION_ICONS.iCan, 'I can: Rate three lines at the end of each chapter. “Not yet” means read again.'],
+        [MODE_ICONS.sayOrWrite, 'Example answers: Compare your answer with the example after you try.'],
+        [SECTION_ICONS.resultCard, 'Result card: At the end of the book, see your scores and a code you can show a teacher.'],
       ] as const,
     },
     ar: {
@@ -192,7 +192,7 @@ const TOOLS = {
 };
 
 /**
- * "Before you read: one guess…" → label "Before you read", body "one guess…", so the card title is not repeated in its text.
+ * "Before you read: One guess…" → label "Before you read", body "One guess…", so the card title is not repeated in its text.
  * A line without a short lead-in ("Open “Lesson card” under…", "Reading settings (Aa) → Class mode: …") keeps the section name as its title.
  */
 const splitToolLine = (line: string, fallback: string) => {

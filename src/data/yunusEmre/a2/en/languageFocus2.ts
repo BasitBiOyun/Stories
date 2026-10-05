@@ -19,7 +19,7 @@ export const yunusA2LanguageFocusExercisesPart2: Record<number, Exercise[]> = {
         { id: '4', text: 'This service taught him how to have a good heart and do the right thing.' },
       ],
       correctAnswer: ['1', '2', '3', '4'],
-      explanation: '“It looked like …” gives a first idea: what we see. “But in fact …” gives the true meaning. “Every time …” shows something that happens again and again. “This service taught him how to …” gives the result: what Yunus learned.',
+      explanation: '“It looked like …” gives a first idea: What we see. “But in fact …” gives the true meaning. “Every time …” shows something that happens again and again. “This service taught him how to …” gives the result: What Yunus learned.',
       feedback: {
         correct: 'Correct. You followed the chapter from the first idea to the true meaning and the result.',
         incorrect: 'Read the second paragraph of Chapter 5. Start with “It looked like”. Which sentence says what is true “in fact”?',
@@ -79,7 +79,7 @@ export const yunusA2LanguageFocusExercisesPart2: Record<number, Exercise[]> = {
         'If you look closely,': 'you find a deeper meaning in everything in nature.',
         'Everything': 'tells a story.',
       },
-      explanation: '“Are” + adjectives describes a place (quiet, far from people). “There are” + plural nouns says what is in a place. “If you look closely, you find …” has two parts: first what you do, then what happens. “Everything” is singular, so the verb takes -s: “tells”.',
+      explanation: '“Are” + adjectives describes a place (quiet, far from people). “There are” + plural nouns says what is in a place. “If you look closely, you find …” has two parts: First what you do, then what happens. “Everything” is singular, so the verb takes -s: “tells”.',
       feedback: {
         correct: 'Good. You rebuilt the sentences about the mountains.',
         incorrect: 'Read the last paragraph of Chapter 6. Which ending is a list of things? Which ending starts with “you find”?',

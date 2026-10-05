@@ -40,6 +40,6 @@ export const gevherNesibeA2GroupTasksEn: Record<number, GroupTask> = {
       'Check every fact with the book before you share.',
     ],
     share: 'Each group reads its museum guide aloud, like a real guide for visitors.',
-    solo: 'Write a short museum guide with five sentences: one about Gevher Nesibe, two about the buildings, one about the students and one about why the hospital is important.',
+    solo: 'Write a short museum guide with five sentences: One about Gevher Nesibe, two about the buildings, one about the students and one about why the hospital is important.',
   },
 };

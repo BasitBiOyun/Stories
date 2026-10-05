@@ -146,20 +146,20 @@ export const yunusB2LanguageFocusExercisesPart3: Record<number, Exercise[]> = {
       question: 'Does “must” always mean the same thing?',
       dragDropGroups: [
         {
-          group: 'must: something is necessary to reach a goal',
+          group: 'must: Something is necessary to reach a goal',
           items: [
             '… for a person to reach salvation, heart and reason must support one another.',
           ],
         },
         {
-          group: 'must: something will certainly happen to everyone',
+          group: 'must: Something will certainly happen to everyone',
           items: [
             'Whoever comes into this world must eventually leave it,',
             'A guest in this world, one day they must set out for their homeland',
           ],
         },
         {
-          group: 'may: a wish or prayer for someone',
+          group: 'may: A wish or prayer for someone',
           items: [
             'May your intelligence / wisdom save you from all troubles',
             'May happiness be yours for all the months and years to come',
@@ -167,22 +167,22 @@ export const yunusB2LanguageFocusExercisesPart3: Record<number, Exercise[]> = {
         },
       ],
       correctAnswer: {
-        'must: something is necessary to reach a goal': [
+        'must: Something is necessary to reach a goal': [
           '… for a person to reach salvation, heart and reason must support one another.',
         ],
-        'must: something will certainly happen to everyone': [
+        'must: Something will certainly happen to everyone': [
           'Whoever comes into this world must eventually leave it,',
           'A guest in this world, one day they must set out for their homeland',
         ],
-        'may: a wish or prayer for someone': [
+        'may: A wish or prayer for someone': [
           'May your intelligence / wisdom save you from all troubles',
           'May happiness be yours for all the months and years to come',
         ],
       },
-      explanation: 'In the prose sentence, “must” states a necessary condition: salvation needs heart and reason to work together. In the verse about death, “must” expresses inevitability: no one can avoid leaving this world. At the start of a sentence, “May …” expresses a wish or a prayer, not permission or possibility.',
+      explanation: 'In the prose sentence, “must” states a necessary condition: Salvation needs heart and reason to work together. In the verse about death, “must” expresses inevitability: No one can avoid leaving this world. At the start of a sentence, “May …” expresses a wish or a prayer, not permission or possibility.',
       feedback: {
         correct: 'Correct. You saw that “must” can express necessity or inevitability, and that “May …” can express a wish.',
-        incorrect: 'Ask what each line is about: a goal someone needs to reach, something that happens to every human, or a good wish for someone.',
+        incorrect: 'Ask what each line is about: A goal someone needs to reach, something that happens to every human, or a good wish for someone.',
       },
     },
     {
@@ -226,15 +226,15 @@ export const yunusB2LanguageFocusExercisesPart3: Record<number, Exercise[]> = {
       question: '“Additionally, by addressing negative traits such as arrogance, anger, stinginess, greed, envy, backbiting, and slander, he warned people to stay away from these harmful habits.” What does “by addressing …” tell us?',
       options: [
         'why people had these negative traits',
-        'the way he warned people: by speaking directly about these traits',
+        'the way he warned people: By speaking directly about these traits',
         'the time when he warned people about these traits',
-        'the result of the warning: people stopped these habits',
+        'the result of the warning: People stopped these habits',
       ],
       correctAnswer: 1,
-      explanation: '“By + -ing” shows the method: how someone does something. Yunus warned people by speaking directly about the negative traits. “Such as” then introduces examples of these traits. The sentence does not say why people had them or whether they stopped.',
+      explanation: '“By + -ing” shows the method: How someone does something. Yunus warned people by speaking directly about the negative traits. “Such as” then introduces examples of these traits. The sentence does not say why people had them or whether they stopped.',
       feedback: {
         correct: 'Correct. “By + -ing” tells us how he warned people.',
-        incorrect: 'Ask which question “by addressing …” answers: why, when, how, or with what result? Then read the first paragraph of Chapter 12.',
+        incorrect: 'Ask which question “by addressing …” answers: Why, when, how, or with what result? Then read the first paragraph of Chapter 12.',
       },
     },
     {
@@ -365,7 +365,7 @@ export const yunusB2LanguageReviewExercises: Exercise[] = [
       'The writer reports Yunus Emre’s own view': ['For, according to him, where love is absent, negative emotions such as anger, heartbreak and separation arise.', 'In his view, purity of the heart is essential for the proper performance of acts of worship.', 'According to Yunus, morality consists of abandoning behaviors unbecoming of humans.'],
       'The writer makes the claim in their own voice': ['Society was struggling to cope with these trials.', 'These events created an atmosphere of panic in Anatolia that had never been seen before.', 'Anatolia was experiencing total chaos.'],
     },
-    explanation: 'The book keeps three voices apart. “Some sources note”, “Sources say:” and “the widely accepted view” report historical sources or scholars, often where the details are uncertain. “According to him”, “In his view” and “According to Yunus” keep a religious or moral idea as Yunus’s own. Sentences with no frame are the writer’s own claims about the period. When you summarise the book, keep the frame: do not turn a source’s report or Yunus’s view into a plain fact.',
+    explanation: 'The book keeps three voices apart. “Some sources note”, “Sources say:” and “the widely accepted view” report historical sources or scholars, often where the details are uncertain. “According to him”, “In his view” and “According to Yunus” keep a religious or moral idea as Yunus’s own. Sentences with no frame are the writer’s own claims about the period. When you summarise the book, keep the frame: Do not turn a source’s report or Yunus’s view into a plain fact.',
     feedback: { correct: 'Well done. You separated the sources, Yunus’s view and the writer’s own voice.', incorrect: 'Look at the start of each sentence. Is there a frame such as “Some sources note” or “In his view”? If there is no frame, the writer is speaking.' },
   },
   {
@@ -399,7 +399,7 @@ export const yunusB2LanguageReviewExercises: Exercise[] = [
     wordBank: ['whereas', 'as a result of', 'led to', 'Therefore', 'because', 'despite'],
     correctAnswer: ['whereas', 'as a result of', 'led to', 'Therefore'],
     explanation: '“Whereas” sets two sides of one lifestyle against each other. “As a result of” + a noun phrase gives the cause of the hardships; “because” would need a full clause with a verb, and “despite” would make the assaults something that did not stop the hardships, which is illogical. “Led to” + a noun phrase links a cause (the weakening) to its result (the emergence). “Therefore” opens a sentence that draws a conclusion from the one before.',
-    feedback: { correct: 'Well done. You chose each linker for its relationship and its grammar.', incorrect: 'For each gap, ask two questions: which relationship is it (contrast, cause, result, conclusion)? And what follows the gap: a clause, a noun phrase or a new sentence?' },
+    feedback: { correct: 'Well done. You chose each linker for its relationship and its grammar.', incorrect: 'For each gap, ask two questions: Which relationship is it (contrast, cause, result, conclusion)? And what follows the gap: A clause, a noun phrase or a new sentence?' },
   },
   {
     id: 'yunus-b2-language-review-5-overclaims', type: 'error-correction', title: 'Build: No More Than the Book Says',
@@ -437,7 +437,7 @@ export const yunusB2LanguageReviewExercises: Exercise[] = [
       { sentence: 'Yunus Emre emphasizes not only the heart [choice] the intellect as a value, …', options: ['and also', 'as well', 'but also'], answer: 2 },
     ],
     correctAnswer: null,
-    explanation: '“Not just … but … also” and “not only … but also” keep the first side and add a second, often less expected one: tekkes were training places and also civil society organizations; Yunus values the heart and also the intellect. “Both … and” joins two equal parts. “Either … or” would offer a choice and “neither … nor” would reject both, so they cannot go with “and”.',
+    explanation: '“Not just … but … also” and “not only … but also” keep the first side and add a second, often less expected one: Tekkes were training places and also civil society organizations; Yunus values the heart and also the intellect. “Both … and” joins two equal parts. “Either … or” would offer a choice and “neither … nor” would reject both, so they cannot go with “and”.',
     feedback: { correct: 'Correct. Each sentence keeps two sides together.', incorrect: 'Look at the word that goes with the gap: “not just”, “and”, “not only”. Which word is its partner?' },
   },
   // USE — take the language into new, everyday contexts.
@@ -449,7 +449,7 @@ export const yunusB2LanguageReviewExercises: Exercise[] = [
     wordBank: ['According to', 'as a result of', 'Nevertheless', 'but also', 'because', 'Although', 'and also'],
     correctAnswer: ['According to', 'as a result of', 'Nevertheless', 'but also'],
     explanation: '“According to” names the source of a fact, and “Some older residents say that …” reports a memory without making it a certainty. “As a result of” + a noun phrase gives the cause (“because” would need a clause). “Nevertheless” accepts the closures and adds the craftspeople’s different choice. “Not only … but also” adds a second role. The last sentence qualifies the conclusion with “It seems that …” and “although …”, like the careful claims in the book.',
-    feedback: { correct: 'Well done. You used the book’s language in a new report.', incorrect: 'For each gap, ask: is it a source, a cause, a concession or a second role? Then check what follows: a noun phrase, a comma, or the second part of a pair.' },
+    feedback: { correct: 'Well done. You used the book’s language in a new report.', incorrect: 'For each gap, ask: Is it a source, a cause, a concession or a second role? Then check what follows: A noun phrase, a comma, or the second part of a pair.' },
   },
   {
     id: 'yunus-b2-language-review-9-new-context', type: 'transformation', title: 'Use: Careful Claims at School',
@@ -462,15 +462,15 @@ export const yunusB2LanguageReviewExercises: Exercise[] = [
     ],
     correctAnswer: null,
     explanation: 'Careful writers match the claim to the evidence. A quantifier (“Most students”) replaces “Everyone” when not all agree. “Contributed to” names one cause among others instead of “caused all”. A reporting verb such as “suggests” or “indicates” shows that evidence supports a claim without proving it. The book does the same with “Some sources note”, “A significant part of” and “tried to”.',
-    feedback: { correct: 'Well done. Your claims now match the evidence.', incorrect: 'Ask for each sentence: how many people, how much of the cause, and how sure can we be? Choose a word that says only that much.' },
+    feedback: { correct: 'Well done. Your claims now match the evidence.', incorrect: 'Ask for each sentence: How many people, how much of the cause, and how sure can we be? Choose a word that says only that much.' },
   },
   {
     id: 'yunus-b2-language-review-10-transfer', type: 'reflection', title: 'Use: Take a Position',
-    instructions: 'Write 6–8 sentences: should every class do a community project each term? Give your view carefully.',
+    instructions: 'Write 6–8 sentences: Should every class do a community project each term? Give your view carefully.',
     question: 'Should every class do a community project each term?',
     correctAnswer: null,
     explanation: 'Example: “In my view, a community project each term would be not only useful for our town but also good for us as learners. According to our class survey, most students would like to take part. Some teachers note that students who help others often feel more responsible. Last year, our book collection led to a new reading corner in a village school. As a result of this project, many of us understood our neighbours better. Nevertheless, a project every term could take time away from exams. Therefore, I suggest short projects that are planned together with teachers. Our experience suggests that community work can support learning, although it cannot replace lessons.”',
-    feedback: { correct: 'Check your paragraph: a clear position; not only … but also; a source (According to …, Some … note that …); cause and result (as a result of, led to, Therefore); a concession (Nevertheless, However); a careful claim (most, suggests, may) instead of an overclaim.', incorrect: '' },
+    feedback: { correct: 'Check your paragraph: A clear position; not only … but also; a source (According to …, Some … note that …); cause and result (as a result of, led to, Therefore); a concession (Nevertheless, However); a careful claim (most, suggests, may) instead of an overclaim.', incorrect: '' },
     discussionPrompts: [
       { question: 'Sentence 1 — Give your view with two sides: “In my view, … would be not only … but also …”', mode: 'Individual' },
       { question: 'Sentences 2–3 — Give evidence and its source: “According to …, …” / “Some … note that …”', mode: 'Individual' },

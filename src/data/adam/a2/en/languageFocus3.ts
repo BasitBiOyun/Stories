@@ -16,7 +16,7 @@ export const adamA2LanguageFocusExercisesPart3: Record<number, Exercise[]> = {
         'What the person was like': ['Habil was kind, gentle …', 'Qabil was mostly jealous.'],
         'The person’s job': ['When they grew up, Habil became a shepherd.', 'Qabil was a farmer.'],
       },
-      explanation: '“Was + adjective” describes what a person is like: was kind, was jealous. “Was / became + a + job” tells us a person’s job: was a farmer, became a shepherd. “Became” shows a change: when they grew up, Habil started this job.',
+      explanation: '“Was + adjective” describes what a person is like: was kind, was jealous. “Was / became + a + job” tells us a person’s job: was a farmer, became a shepherd. “Became” shows a change: When they grew up, Habil started this job.',
       feedback: { correct: 'Good. You saw the difference between “was kind” (what he was like) and “was a farmer” (his job).', incorrect: 'Look at the word after “was” or “became”. Is it a word like kind or jealous, or “a” + a job? Check the first paragraph of Chapter 8.' },
     },
     {
@@ -50,9 +50,9 @@ export const adamA2LanguageFocusExercisesPart3: Record<number, Exercise[]> = {
   9: [
     {
       id: 'adam-a2-language-9-future-intentions', type: 'multiple-choice', title: 'What Does “Won’t” Show?', instructions: 'Read Habil’s words from Chapter 9. Choose the best meaning.', question: 'Habil said, “I won’t fight back or harm you.” What does “won’t” show here?',
-      options: ['Habil says no: he will not do these things.', 'Habil was not able to fight because he was weak.', 'Habil talks about something he did before.'],
+      options: ['Habil says no: He will not do these things.', 'Habil was not able to fight because he was weak.', 'Habil talks about something he did before.'],
       correctAnswer: 0,
-      explanation: '“Won’t” = will not. “Won’t + verb” tells us about the future, and here it shows Habil’s clear choice: he refuses to fight back. He gives the reason: “You are my brother, and I fear Allah.”',
+      explanation: '“Won’t” = will not. “Won’t + verb” tells us about the future, and here it shows Habil’s clear choice: He refuses to fight back. He gives the reason: “You are my brother, and I fear Allah.”',
       feedback: { correct: 'Correct. “Won’t” shows Habil’s choice not to fight back.', incorrect: '“Won’t” is short for “will not”. It is about Habil’s choice now and in the future. Read his words in the first paragraph of Chapter 9.' },
     },
     {
@@ -70,7 +70,7 @@ export const adamA2LanguageFocusExercisesPart3: Record<number, Exercise[]> = {
         'he also started to panic': 'suddenly he felt very afraid',
         '“I am worse than this crow.”': 'Even this bird is better than me.',
       },
-      explanation: 'The chapter shows feelings that change: anger “cooled” (became less strong), and Qabil “started to panic”. “Worse than” is the opposite of “better than”: Qabil saw that even the crow knew what to do.',
+      explanation: 'The chapter shows feelings that change: Anger “cooled” (became less strong), and Qabil “started to panic”. “Worse than” is the opposite of “better than”: Qabil saw that even the crow knew what to do.',
       feedback: { correct: 'Good. You understood how Chapter 9 describes feelings.', incorrect: 'Find each phrase in Chapter 9 and read the sentence around it. What does it mean there?' },
     },
     {
@@ -114,7 +114,7 @@ export const adamA2LanguageFocusExercisesPart3: Record<number, Exercise[]> = {
         { sentence: 'This message [choice] advises people to love and respect Allah.', options: ['yet', 'ever', 'still'], answer: 2 },
       ],
       correctAnswer: null,
-      explanation: '“Should + verb” gives advice (no “to” after should). “Had to + verb” says something was necessary in the past. “Still” shows that something continues until now: the message did not stop.',
+      explanation: '“Should + verb” gives advice (no “to” after should). “Had to + verb” says something was necessary in the past. “Still” shows that something continues until now: The message did not stop.',
       feedback: { correct: 'Well done. You chose “should”, “had to” and “still”.', incorrect: 'Remember: should + verb, had to + verb. Which word means “it continues now”? Check Chapter 10.' },
     },
     {
@@ -151,7 +151,7 @@ export const adamA2LanguageReviewExercises: Exercise[] = [
       'It happened (past verb)': ['Angels got surprised.', 'They forgot Allah’s warning.', 'He got old over the years.'],
       'It is still to come (will / won’t / going to)': ['… you will never die.', 'They were going to build buildings for housing …', '“I won’t fight back or harm you.”'],
     },
-    explanation: 'Past verbs (got, forgot) tell us that something happened and finished. “Will” and “won’t” (= will not) talk about later: a promise or a clear choice. “Were going to + verb” is a plan for later, seen from the past: when Adam and Eve came to earth, this work was in front of them.',
+    explanation: 'Past verbs (got, forgot) tell us that something happened and finished. “Will” and “won’t” (= will not) talk about later: A promise or a clear choice. “Were going to + verb” is a plan for later, seen from the past: when Adam and Eve came to earth, this work was in front of them.',
     feedback: { correct: 'Well done. Past verbs for finished events; will, won’t and going to for later.', incorrect: 'Look at the verb. Is it a past form like got, or does it have will, won’t or going to before it?' },
   },
   {
@@ -191,8 +191,8 @@ export const adamA2LanguageReviewExercises: Exercise[] = [
     fillBlanksText: 'We are the grandchildren of Adam (pbuh), [blank] we can learn many lessons from this fantastic story. … They all admired him and respected him. [blank] Iblis didn’t think so. … They also warned their children against Iblis, [blank] Iblis was their enemy, not their friend.',
     wordBank: ['so', 'But', 'because', 'Because of', 'If'],
     correctAnswer: ['so', 'But', 'because'],
-    explanation: '“So” gives a result: we are Adam’s grandchildren, so we can learn from his story. “But” gives a different idea: the angels admired Adam, but Iblis did not. “Because” + a sentence gives a reason: Iblis was their enemy. “Because of” needs a noun after it (“because of Adam”), not a sentence.',
-    feedback: { correct: 'Well done. You linked a result, a different idea and a reason.', incorrect: 'For each gap, ask: does the next part give a result, a different idea or a reason? Check Chapters 1, 2 and 7.' },
+    explanation: '“So” gives a result: We are Adam’s grandchildren, so we can learn from his story. “But” gives a different idea: The angels admired Adam, but Iblis did not. “Because” + a sentence gives a reason: Iblis was their enemy. “Because of” needs a noun after it (“because of Adam”), not a sentence.',
+    feedback: { correct: 'Well done. You linked a result, a different idea and a reason.', incorrect: 'For each gap, ask: Does the next part give a result, a different idea or a reason? Check Chapters 1, 2 and 7.' },
   },
   {
     id: 'adam-a2-language-review-5-verb-patterns', type: 'choose-form', title: 'Practise: What Comes After the Verb?',
@@ -238,7 +238,7 @@ export const adamA2LanguageReviewExercises: Exercise[] = [
     wordBank: ['so', 'had to', 'to', 'harder', 'because', 'more hard'],
     correctAnswer: ['so', 'had to', 'to', 'harder'],
     explanation: '“So” gives the result of the rain. “Had to + verb” says that it was necessary. “Told us to + verb” gives the teacher’s instruction. “Hard” is a short word, so we say “harder than”, not “more hard than”. The text also uses “was going to” for a plan that changed.',
-    feedback: { correct: 'Well done. You used the book’s language in a new place.', incorrect: 'Ask for each gap: a result or a reason? Was it necessary? What comes after “told us”? How do we compare with a short word?' },
+    feedback: { correct: 'Well done. You used the book’s language in a new place.', incorrect: 'Ask for each gap: A result or a reason? Was it necessary? What comes after “told us”? How do we compare with a short word?' },
   },
   {
     id: 'adam-a2-language-review-9-transfer', type: 'reflection', title: 'Use: A Plan That Changed',

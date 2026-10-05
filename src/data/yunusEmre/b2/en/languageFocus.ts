@@ -75,7 +75,7 @@ export const yunusB2LanguageFocusExercises: Record<number, Exercise[]> = {
         },
       ],
       correctAnswer: null,
-      explanation: 'After a preposition (of, without, in addition to), English uses a noun or an -ing form: “the pursuit of becoming better people”, “giving generously without expecting any return”. “Without expecting any return” also sets an ethical condition: the giving is not an exchange.',
+      explanation: 'After a preposition (of, without, in addition to), English uses a noun or an -ing form: “the pursuit of becoming better people”, “giving generously without expecting any return”. “Without expecting any return” also sets an ethical condition: The giving is not an exchange.',
       feedback: {
         correct: 'Correct. Both prepositions are followed by an -ing form.',
         incorrect: 'Find the list of moral principles in the first paragraph of Chapter 1 and look at the verb form after “of” and “without”.',
@@ -123,7 +123,7 @@ export const yunusB2LanguageFocusExercises: Record<number, Exercise[]> = {
       explanation: 'Biographical details about a medieval poet are often uncertain, so the writer frames them: “According to historical accounts” attributes a claim, “Some sources note” limits the claim to part of the tradition, and “is considered” reports a general judgement. Descriptions of his philosophy and of tekkes are given directly.',
       feedback: {
         correct: 'Correct. You separated source-framed claims from direct statements.',
-        incorrect: 'Look at the start of each sentence: does it name a source, a view or a judgement (“is considered”), or does it simply state the fact?',
+        incorrect: 'Look at the start of each sentence: Does it name a source, a view or a judgement (“is considered”), or does it simply state the fact?',
       },
     },
     {
@@ -154,7 +154,7 @@ export const yunusB2LanguageFocusExercises: Record<number, Exercise[]> = {
       fillBlanksText: 'His style is [blank] too simple [blank] too complex. Thus, his works [blank] have literary value and are easy to understand. … However, his education was not [blank] to madrasas.',
       wordBank: ['neither', 'nor', 'both', 'limited', 'either', 'or', 'whether'],
       correctAnswer: ['neither', 'nor', 'both', 'limited'],
-      explanation: '“Neither … nor …” rejects both extremes and places the style in the middle. “Both … and …” gives the works two qualities at once. “Not limited to” widens the scope: his education included the madrasa but went beyond it, to the tekke. “Either … or” would offer a choice, which the text does not.',
+      explanation: '“Neither … nor …” rejects both extremes and places the style in the middle. “Both … and …” gives the works two qualities at once. “Not limited to” widens the scope: His education included the madrasa but went beyond it, to the tekke. “Either … or” would offer a choice, which the text does not.',
       feedback: {
         correct: 'Correct. The style avoids two extremes, the works have two qualities, and his education reaches beyond the madrasa.',
         incorrect: 'Check the first and third paragraphs of Chapter 2. Remember that “neither” pairs with “nor”, and “both” pairs with “and”.',
@@ -171,36 +171,36 @@ export const yunusB2LanguageFocusExercises: Record<number, Exercise[]> = {
       question: 'Does the sentence say when, why, or what happens “if …”?',
       dragDropGroups: [
         {
-          group: 'Time: what happened when',
+          group: 'Time: What happened when',
           items: [
             'The 13th and 14th centuries, the period in which Yunus Emre was born and lived, coincided with hard times.',
             'This was immediately followed by the defeat at Kösedağ.',
           ],
         },
         {
-          group: 'Cause and result: why something happened',
+          group: 'Cause and result: Why something happened',
           items: [
             'The defeat at Kösedağ facilitated the Mongols’ invasion of Anatolia.',
             'Anatolia faced political, economic, and social hardships as a result of these assaults.',
           ],
         },
         {
-          group: 'Condition: what careful study makes possible',
+          group: 'Condition: What careful study makes possible',
           items: [
             'If we take a closer look at this historical atmosphere, we can better understand Anatolia …',
           ],
         },
       ],
       correctAnswer: {
-        'Time: what happened when': [
+        'Time: What happened when': [
           'The 13th and 14th centuries, the period in which Yunus Emre was born and lived, coincided with hard times.',
           'This was immediately followed by the defeat at Kösedağ.',
         ],
-        'Cause and result: why something happened': [
+        'Cause and result: Why something happened': [
           'The defeat at Kösedağ facilitated the Mongols’ invasion of Anatolia.',
           'Anatolia faced political, economic, and social hardships as a result of these assaults.',
         ],
-        'Condition: what careful study makes possible': [
+        'Condition: What careful study makes possible': [
           'If we take a closer look at this historical atmosphere, we can better understand Anatolia …',
         ],
       },
@@ -256,7 +256,7 @@ export const yunusB2LanguageFocusExercises: Record<number, Exercise[]> = {
         'His failure and the chaos happened at different times.',
       ],
       correctAnswer: 1,
-      explanation: '“Even” before “worsened” shows intensification: the chaos already existed because of poor governance, population growth and migration, and the sultan’s failure added to it. The chapter does not give a single cause.',
+      explanation: '“Even” before “worsened” shows intensification: The chaos already existed because of poor governance, population growth and migration, and the sultan’s failure added to it. The chapter does not give a single cause.',
       feedback: {
         correct: 'Correct. “Even” shows that an already serious situation became worse.',
         incorrect: 'Look at the causes listed before this sentence in Chapter 4. Was the chaos already there before his failure?',
@@ -311,7 +311,7 @@ export const yunusB2LanguageFocusExercises: Record<number, Exercise[]> = {
       explanation: 'A noun phrase such as “his failure to manage” packs a whole event into a subject; after “because” you need a clause with a verb (“he failed to manage”). The passive “were turned upside down” focuses on the people affected; the active “they turned … upside down” puts the migrations first as the cause.',
       feedback: {
         correct: 'Well done. You kept each cause while changing the structure.',
-        incorrect: 'Ask who did what: who failed, and what turned people’s lives upside down? Then write the verb in the past simple.',
+        incorrect: 'Ask who did what: Who failed, and what turned people’s lives upside down? Then write the verb in the past simple.',
       },
     },
     refl('yu-b2-lf4-4', 'Multi-Cause Explanation', 'Write a paragraph about the causes of the Babai uprising.', 'Why did the Babai uprising happen?', ['Use “due to”, “when … was added” and “worsened” or “intensified”.'], 'B2 historical explanation should show interaction rather than list isolated facts.'),

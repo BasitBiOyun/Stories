@@ -24,7 +24,7 @@ export const abrahamB1LanguageFocusExercises: Record<number, Exercise[]> = {
       explanation: '“Could” changes its meaning with the context. In “a god which could help or harm him”, it describes a power people believed the statue had. The chapter shows the opposite: “They could not even move from one place to another on their own.” In “He could not understand how …”, “could not” shows that Abraham was unable to accept the idea.',
       feedback: {
         correct: 'Correct. “Could” here describes a power that people imagined, not a power the statue really had.',
-        incorrect: 'Read the end of the second paragraph: the statues “could not even move … on their own”. So who believed they could help or harm?',
+        incorrect: 'Read the end of the second paragraph: The statues “could not even move … on their own”. So who believed they could help or harm?',
       },
     },
     {
@@ -157,7 +157,7 @@ export const abrahamB1LanguageFocusExercises: Record<number, Exercise[]> = {
       explanation: 'Used to + base verb = a past habit (“used to watch”). “Was used to” means “was familiar with”, and “use to” is only correct after did/didn’t. While + was/were + -ing = an action in progress in the background (“while he was making idols”). One day + past simple = one finished event (“his father saw Abraham”).',
       feedback: {
         correct: 'Correct. You chose the right form for a habit, a background action and one event.',
-        incorrect: 'Ask: was it repeated, was it in progress at that time, or did it happen once? Then check the first two paragraphs of Chapter 2.',
+        incorrect: 'Ask: Was it repeated, was it in progress at that time, or did it happen once? Then check the first two paragraphs of Chapter 2.',
       },
     },
     {

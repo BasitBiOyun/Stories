@@ -13,7 +13,7 @@ export const mosesB2StoryMapCopyEn: StoryMapCopy = {
     nile: {
       name: 'The Nile',
       kind: 'River',
-      text: '“Egypt is the gift of the Nile,” said the historian Herodotus: the fertile waters of the river were the source of life for Egypt. Moses’ mother put her baby into a basket on the waters of the Nile. The river carried him to the Pharaoh’s palace, where he was given the name “Musa”.',
+      text: '“Egypt is the gift of the Nile,” said the historian Herodotus: The fertile waters of the river were the source of life for Egypt. Moses’ mother put her baby into a basket on the waters of the Nile. The river carried him to the Pharaoh’s palace, where he was given the name “Musa”.',
       teacherNote: 'The text does not say where on the Nile the basket was found. The soft area only shows the river in Egypt. Chapter 4 explains the name: “mu” means water and “sa” means tree in the Coptic language.',
       question: 'Why was control of the Nile so important for the pharaohs?',
     },
@@ -28,7 +28,7 @@ export const mosesB2StoryMapCopyEn: StoryMapCopy = {
       name: 'Sinai',
       kind: 'Region',
       text: 'Moses left Midian with his family to return to Egypt across the Sinai. On a winter night, they reached Mount Sinai, also known as Mount Tur. There, in the sacred valley of Tuwa, Allah called Moses and gave him two signs. Later, after leading his people out of Egypt, Moses stayed on Mount Tur for forty days, and the Torah was given to him.',
-      teacherNote: 'The soft area shows the region, not an exact peak or valley: the text does not say where Mount Tur or Tuwa is. It also does not say directly that the Mount Tur of chapter 24 is the same place as in chapter 15, but chapter 15 says Mount Sinai is also known as Mount Tur.',
+      teacherNote: 'The soft area shows the region, not an exact peak or valley: The text does not say where Mount Tur or Tuwa is. It also does not say directly that the Mount Tur of chapter 24 is the same place as in chapter 15, but chapter 15 says Mount Sinai is also known as Mount Tur.',
       question: 'What did Allah tell Moses to take off in the sacred valley?',
     },
     redSea: {

@@ -151,7 +151,7 @@ export const mosesB2LanguageFocusExercisesPart2: Record<number, Exercise[]> = {
       explanation: 'The chapter separates what Moses chose to do from what followed. “Unintentionally” makes clear that the death was not his aim; “thus” and “was forced to” mark consequences. B2 readers keep intention and outcome apart.',
       feedback: {
         correct: 'Correct. You kept the chosen actions separate from their consequences.',
-        incorrect: 'Ask: did someone decide to do this, or did it happen as a result? Look at “thus”, “instantly” and “was forced to” in Chapter 9.',
+        incorrect: 'Ask: Did someone decide to do this, or did it happen as a result? Look at “thus”, “instantly” and “was forced to” in Chapter 9.',
       },
     },
     {
@@ -186,7 +186,7 @@ export const mosesB2LanguageFocusExercisesPart2: Record<number, Exercise[]> = {
     },
     reflection('mo-b2-lf9-c', 'Serious, Even If Not Planned', [
       'Give a claim and an example, and use “although” or “even though” once.',
-    ], 'The task practises qualification: intention matters, but it does not erase the consequences described by the narrative.', {
+    ], 'The task practises qualification: Intention matters, but it does not erase the consequences described by the narrative.', {
       instructions: 'Explain in five sentences how harm can be serious without being planned.',
       question: 'Is harm less serious if nobody planned it?',
     }),
@@ -233,7 +233,7 @@ export const mosesB2LanguageFocusExercisesPart2: Record<number, Exercise[]> = {
       explanation: '“Plain” has several meanings. Before a noun that describes behaviour, it means “clear, obvious”: the man has now caused trouble two days in a row, so his character is evident. The context of repeated conflict decides the meaning.',
       feedback: {
         correct: 'Correct. Here “plain” means that his troublemaking is obvious.',
-        incorrect: 'Think about why Moses says this: the same man asked for help “the day before” and is fighting again. What does that make obvious?',
+        incorrect: 'Think about why Moses says this: The same man asked for help “the day before” and is fighting again. What does that make obvious?',
       },
     },
     reflection('mo-b2-lf10-c', 'Past Action → Future Principle', [
@@ -317,10 +317,10 @@ export const mosesB2LanguageFocusExercisesPart2: Record<number, Exercise[]> = {
         'The women watered their animals first and then the men watered theirs.',
         'The women could water their animals at any time but preferred to wait.',
         'The women refused to water their animals because of the crowd.',
-        'The women had to wait: watering was possible for them only once the men had finished.',
+        'The women had to wait: Watering was possible for them only once the men had finished.',
       ],
       correctAnswer: 3,
-      explanation: '“Could only … after …” limits the action to one time: not before the men had finished. “Due to + noun” gives the cause of the limit, and the past perfect “had taken” shows the men’s action came first.',
+      explanation: '“Could only … after …” limits the action to one time: Not before the men had finished. “Due to + noun” gives the cause of the limit, and the past perfect “had taken” shows the men’s action came first.',
       feedback: {
         correct: 'Correct. “Only … after” makes the waiting a restriction, not a choice.',
         incorrect: 'Notice “only” and the past perfect “had taken”. Which action had to happen first?',
@@ -353,7 +353,7 @@ export const mosesB2LanguageFocusExercisesPart2: Record<number, Exercise[]> = {
       explanation: 'A reported offer after “asked if” moves back in time: “if he could help”. “Until + clause” shows how long the waiting lasts; “by” and “during” cannot introduce a clause. “Surprised that + clause” introduces what caused the reaction.',
       feedback: {
         correct: 'Well done. You chose the forms for a reported offer, a time limit and a reaction.',
-        incorrect: 'Check what follows each gap: a verb after “if he …”, a whole clause after the time word, and a clause after “surprised”. Compare with Chapter 12.',
+        incorrect: 'Check what follows each gap: A verb after “if he …”, a whole clause after the time word, and a clause after “surprised”. Compare with Chapter 12.',
       },
     },
     reflection('mo-b2-lf12-c', 'Service Despite Need', [

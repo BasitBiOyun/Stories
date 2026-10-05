@@ -40,7 +40,7 @@ export const adamB2LanguageFocusExercisesPart2: Record<number, Exercise[]> = {
           'They both ate of the forbidden tree.',
         ],
       },
-      explanation: 'In a past-tense story, a sudden present simple (“man tends to forget”, “His heart changes”, “his determination weakens”) signals a general truth: what is true of human beings at any time. The past simple returns to particular events. The writer uses the general truth to explain why the particular events could happen.',
+      explanation: 'In a past-tense story, a sudden present simple (“man tends to forget”, “His heart changes”, “his determination weakens”) signals a general truth: What is true of human beings at any time. The past simple returns to particular events. The writer uses the general truth to explain why the particular events could happen.',
       feedback: {
         correct: 'Correct. The present simple gives the general truth; the past simple tells the events.',
         incorrect: 'Look at the verb tense in each part. In a story told in the past, which verbs suddenly move into the present, and why? Check the first paragraph of Chapter 7.',
@@ -98,7 +98,7 @@ export const adamB2LanguageFocusExercisesPart2: Record<number, Exercise[]> = {
       explanation: 'In a real (first) conditional, the if-clause uses the present simple, not “will”: “What will happen if I eat …?”. “Might” shows that Adam is not sure; “must” and “has to” would show certainty, which does not fit a man asking himself questions. The past perfect “had warned” places the warning before the moment they forgot it.',
       feedback: {
         correct: 'Correct. You chose the forms for condition, uncertainty and the earlier past.',
-        incorrect: 'Ask: is it an if-clause, is Adam sure or unsure, and which event happened first? Then check the second paragraph of Chapter 7.',
+        incorrect: 'Ask: Is it an if-clause, is Adam sure or unsure, and which event happened first? Then check the second paragraph of Chapter 7.',
       },
     },
     {
@@ -153,10 +153,10 @@ export const adamB2LanguageFocusExercisesPart2: Record<number, Exercise[]> = {
       fillBlanksText: '[blank] they tasted the fruit, their private parts became visible to them. Adam (pbuh) discovered that he and his wife were unclad, [blank] they both started cutting tree leaves in Paradise with which to cover themselves. They were in haste to hide their private parts, [blank] the sense of shame (haya) is inborn human nature and nakedness is contrary to human nature.',
       wordBank: ['When', 'so', 'because', 'Although', 'unless', 'but'],
       correctAnswer: ['When', 'so', 'because'],
-      explanation: '“When” sets the time point that starts the chain. “So” introduces the result of the discovery: they began to cover themselves. “Because” gives the reason for their haste: shame is part of human nature. The chain moves time → result → reason.',
+      explanation: '“When” sets the time point that starts the chain. “So” introduces the result of the discovery: They began to cover themselves. “Because” gives the reason for their haste: shame is part of human nature. The chain moves time → result → reason.',
       feedback: {
         correct: 'Correct. The paragraph now moves from time to result to reason.',
-        incorrect: 'Ask what each gap introduces: the moment something happened, what they did as a result, or why they hurried. Check the second paragraph of Chapter 8.',
+        incorrect: 'Ask what each gap introduces: The moment something happened, what they did as a result, or why they hurried. Check the second paragraph of Chapter 8.',
       },
     },
     {
@@ -196,7 +196,7 @@ export const adamB2LanguageFocusExercisesPart2: Record<number, Exercise[]> = {
       explanation: 'The writer marks the source of each claim. The quoted verse and the sentences “is not described …” and “It is only mentioned that …” report what the Qur’an contains and what it leaves out. “According to Islamic scholars” attributes the timing to scholars, and “that is, …” explains that same interpretation. A careful reader does not present the scholars’ view as words of the Qur’an.',
       feedback: {
         correct: 'Correct. You kept the text separate from the interpretation.',
-        incorrect: 'Look for source markers: a quotation, “not described in”, “only mentioned”, “According to …”. Which ones point to scholars? Check the last paragraph of Chapter 8.',
+        incorrect: 'Look for source markers: A quotation, “not described in”, “only mentioned”, “According to …”. Which ones point to scholars? Check the last paragraph of Chapter 8.',
       },
     },
     {
@@ -208,7 +208,7 @@ export const adamB2LanguageFocusExercisesPart2: Record<number, Exercise[]> = {
       correctAnswer: null,
       explanation: 'A strong B2 response makes source responsibility visible, avoids turning interpretation into fact, and uses dialogue or rhetorical questioning for a clear discourse purpose.',
       feedback: {
-        correct: 'Keep the evidence hierarchy clear: explicit source → unspecified detail → attributed interpretation → clarification.',
+        correct: 'Keep the evidence hierarchy clear: Explicit source → unspecified detail → attributed interpretation → clarification.',
         incorrect: '',
       },
       discussionPrompts: [
@@ -358,7 +358,7 @@ export const adamB2LanguageFocusExercisesPart2: Record<number, Exercise[]> = {
           'It is said to have come from Paradise.',
         ],
       },
-      explanation: '“X said: …” and “X said that …” attribute a claim to a named narrator, in direct or reported speech. “It is reported that …” and “It is said to …” are impersonal passives: they pass on a report without naming who made it, and they keep some distance between the writer and the claim. When you summarise such a text, keep these frames; do not turn a reported detail into a plain fact.',
+      explanation: '“X said: …” and “X said that …” attribute a claim to a named narrator, in direct or reported speech. “It is reported that …” and “It is said to …” are impersonal passives: They pass on a report without naming who made it, and they keep some distance between the writer and the claim. When you summarise such a text, keep these frames; do not turn a reported detail into a plain fact.',
       feedback: {
         correct: 'Correct. You separated named sources from impersonal reports.',
         incorrect: 'Look for a person’s name before “said”. If there is no name, look for “It is reported” or “It is said”. Check the last three paragraphs of Chapter 10.',
@@ -380,7 +380,7 @@ export const adamB2LanguageFocusExercisesPart2: Record<number, Exercise[]> = {
       explanation: '“Would” is the past form of “will”. After a past verb such as “knew”, it looks forward from that past moment: at the time of Allah’s knowledge, eating from the tree and descending to Earth were still to come. This is called the future in the past.',
       feedback: {
         correct: 'Correct. “Would” looks forward from a moment in the past.',
-        incorrect: 'Ask: at the moment described by “knew”, had Adam and Eve already eaten from the tree? Then read the first paragraph of Chapter 10.',
+        incorrect: 'Ask: At the moment described by “knew”, had Adam and Eve already eaten from the tree? Then read the first paragraph of Chapter 10.',
       },
     },
     {
@@ -465,10 +465,10 @@ export const adamB2LanguageFocusExercisesPart2: Record<number, Exercise[]> = {
       fillBlanksText: '[blank], he had to struggle with the spirit of evil. … the removal of Allah from the human mind [blank] the removal of meaning and purpose from human life. The battle between good and evil is continuous, but those who follow Allah\'s guidance should fear nothing, [blank] those who disobey Allah and follow Iblis will be away from the mercy of Allah along with him.',
       wordBank: ['Above all', 'means', 'while', 'After all', 'so that', 'unless'],
       correctAnswer: ['Above all', 'means', 'while'],
-      explanation: '“Above all” ranks the struggle against evil as the most important of Adam’s tasks; “after all” would instead give a reason. “X means Y” presents a wider consequence: removing Allah from the mind carries with it the loss of meaning. “While” sets the second group and its outcome against the first.',
+      explanation: '“Above all” ranks the struggle against evil as the most important of Adam’s tasks; “after all” would instead give a reason. “X means Y” presents a wider consequence: Removing Allah from the mind carries with it the loss of meaning. “While” sets the second group and its outcome against the first.',
       feedback: {
         correct: 'Correct. The paragraph now ranks, explains a consequence and contrasts two groups.',
-        incorrect: 'Ask what each gap does: put one task above the others, link a cause to its wider result, or contrast two groups. Check the third and fourth paragraphs of Chapter 11.',
+        incorrect: 'Ask what each gap does: Put one task above the others, link a cause to its wider result, or contrast two groups. Check the third and fourth paragraphs of Chapter 11.',
       },
     },
     {
@@ -508,9 +508,9 @@ export const adamB2LanguageFocusExercisesPart2: Record<number, Exercise[]> = {
       instructions: 'Write or say 8–10 sentences about someone who starts a hard new life somewhere.',
       question: 'What must the person do, and what matters most?',
       correctAnswer: null,
-      explanation: 'A strong B2 response uses grammar to organise a whole argument: pressure develops over time, responsibilities accumulate, priorities are ranked, and consequences are contrasted.',
+      explanation: 'A strong B2 response uses grammar to organise a whole argument: Pressure develops over time, responsibilities accumulate, priorities are ranked, and consequences are contrasted.',
       feedback: {
-        correct: 'Keep the paragraph coherent: each structure should advance the same situation rather than appear as an isolated grammar example.',
+        correct: 'Keep the paragraph coherent: Each structure should advance the same situation rather than appear as an isolated grammar example.',
         incorrect: '',
       },
       discussionPrompts: [

@@ -91,7 +91,7 @@ export const adamB1LanguageFocusExercisesPart7: Record<number, Exercise[]> = {
       fillBlanksText: '[blank], they [blank] protect themselves with clothes and weapons and protect themselves from dangers in the wild. … They had [blank] good and difficult times and they had many children.',
       wordBank: ['In addition', 'had to', 'both', 'However', 'must', 'either'],
       correctAnswer: ['In addition', 'had to', 'both'],
-      explanation: '“In addition” adds another point of the same kind: one more thing they needed to do. “Had to + verb” is the past of “must” when it means necessity; “must” is not used for the past. “Both … and …” joins two things and says that each one is true: their life had good times and difficult times.',
+      explanation: '“In addition” adds another point of the same kind: One more thing they needed to do. “Had to + verb” is the past of “must” when it means necessity; “must” is not used for the past. “Both … and …” joins two things and says that each one is true: Their life had good times and difficult times.',
       feedback: {
         correct: 'Correct. You added a need, showed past necessity and joined two experiences.',
         incorrect: 'Read the second and third paragraphs of Chapter 8. Does the first sentence add or contrast? Is the story in the past? Which word goes with “… and …”?',
@@ -111,8 +111,8 @@ export const adamB1LanguageFocusExercisesPart8: Record<number, Exercise[]> = {
       id: 'adam-b1-language-9-time-change-continuation',
       type: 'true-false',
       title: 'Stopped Doing or Stopped to Do?',
-      instructions: 'Read the sentence from Chapter 9. Then decide: true or false?',
-      question: '“Allah never stopped sending messengers and sacred texts to remind people of Him.” True or false: this means the same as “Allah never stopped to send messengers.”',
+      instructions: 'Read the sentence from Chapter 9. Then decide: True or false?',
+      question: '“Allah never stopped sending messengers and sacred texts to remind people of Him.” True or false: This means the same as “Allah never stopped to send messengers.”',
       correctAnswer: false,
       explanation: '“Stop + -ing” means that an activity ends: “never stopped sending” means the sending went on and never ended. “Stop + to + verb” means to pause one activity in order to do something else. So the two sentences have different meanings, and only “never stopped sending” fits the chapter.',
       feedback: {
@@ -288,24 +288,24 @@ export const adamB1LanguageFocusExercisesPart10: Record<number, Exercise[]> = {
       question: 'Is each line about the future, the past or now?',
       dragDropGroups: [
         {
-          group: 'The future: a threat or a refusal',
+          group: 'The future: A threat or a refusal',
           items: ['“I will kill you.”', '“I won’t fight back and harm you.”'],
         },
         {
-          group: 'The past: admitting what he did',
+          group: 'The past: Admitting what he did',
           items: ['“I killed my brother.”', '“I did the worst thing in life.”'],
         },
         {
-          group: 'Now: a present judgment or inability',
+          group: 'Now: A present judgment or inability',
           items: ['“I am worse than this raven.”', '“I cannot hide my brother’s dead body.”'],
         },
       ],
       correctAnswer: {
-        'The future: a threat or a refusal': ['“I will kill you.”', '“I won’t fight back and harm you.”'],
-        'The past: admitting what he did': ['“I killed my brother.”', '“I did the worst thing in life.”'],
-        'Now: a present judgment or inability': ['“I am worse than this raven.”', '“I cannot hide my brother’s dead body.”'],
+        'The future: A threat or a refusal': ['“I will kill you.”', '“I won’t fight back and harm you.”'],
+        'The past: Admitting what he did': ['“I killed my brother.”', '“I did the worst thing in life.”'],
+        'Now: A present judgment or inability': ['“I am worse than this raven.”', '“I cannot hide my brother’s dead body.”'],
       },
-      explanation: '“Will” and “won’t” look to the future: here “will” is a threat and “won’t” is a firm refusal. The past simple (killed, did) admits finished actions. The present (am, cannot) describes how Qabil sees himself and what he is unable to do at that moment. “Worst” compares with everything (the superlative); “worse than” compares two things.',
+      explanation: '“Will” and “won’t” look to the future: Here “will” is a threat and “won’t” is a firm refusal. The past simple (killed, did) admits finished actions. The present (am, cannot) describes how Qabil sees himself and what he is unable to do at that moment. “Worst” compares with everything (the superlative); “worse than” compares two things.',
       feedback: {
         correct: 'Correct. You connected each verb form with the time it talks about.',
         incorrect: 'Look at the verb in each quotation: will / won’t, killed / did, or am / cannot. Which time does each one point to?',
@@ -368,7 +368,7 @@ export const adamB1LanguageFocusExercisesPart10: Record<number, Exercise[]> = {
     },
     {
       id: 'adam-b1-language-11-reflect-and-revise', type: 'reflection', title: 'From a Bad Choice to a Better Next Step', instructions: 'Write or say four sentences about someone who makes a serious mistake.', question: 'What did the person do wrong, and what did they do next?', correctAnswer: null,
-      explanation: 'A strong response may use “because ...”, “I will ... / I won’t ...”, “when ...”, “started + -ing”, “I don’t know what I should ...”, “showed ... the way to ...”, “worse/better than ...”, or “cannot ...”. Keep the sentences connected around one new situation rather than retelling Chapter 11.', feedback: { correct: 'Keep the response coherent: show the choice, the reaction, the uncertainty, and the next step.', incorrect: '' },
+      explanation: 'A strong response may use “because ...”, “I will ... / I won’t ...”, “when ...”, “started + -ing”, “I don’t know what I should ...”, “showed ... the way to ...”, “worse/better than ...”, or “cannot ...”. Keep the sentences connected around one new situation rather than retelling Chapter 11.', feedback: { correct: 'Keep the response coherent: Show the choice, the reaction, the uncertainty, and the next step.', incorrect: '' },
       discussionPrompts: [{ question: 'Sentence 1 — Say what happened and why: “… because …”', mode: 'Individual' }, { question: 'Sentence 2 — Make a strong promise: “I will …” or “I won’t …”', mode: 'Individual' }, { question: 'Sentence 3 — Show they are not sure: “I don’t know what I should …”', mode: 'Individual' }, { question: 'Sentence 4 — Say what they learned: “… guided him to …” or “… is better than …”', mode: 'Pair' }],
     },
   ],
@@ -389,7 +389,7 @@ export const adamB1LanguageFocusExercisesPart11: Record<number, Exercise[]> = {
         'It gives advice that the writer takes from the story.',
       ],
       correctAnswer: 3,
-      explanation: '“The story suggests that …” introduces an interpretation: a lesson the writer draws from the events, not an event itself. “Should + verb” gives advice about the right way to act. Together they turn the story of the two brothers into a recommendation for readers today.',
+      explanation: '“The story suggests that …” introduces an interpretation: A lesson the writer draws from the events, not an event itself. “Should + verb” gives advice about the right way to act. Together they turn the story of the two brothers into a recommendation for readers today.',
       feedback: {
         correct: 'Correct. “Suggests that” gives the writer’s interpretation, and “should” gives advice.',
         incorrect: 'Look at the subject: “The story” suggests something. Is this an event in the story, or a lesson taken from it? What does “should” usually express?',

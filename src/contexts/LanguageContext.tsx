@@ -175,7 +175,7 @@ const translations: Record<Language, Record<string, string>> = {
     'nav.roleStudentHint': 'Read, listen and practise, with a Self-Study Guide for every book.',
     'nav.roleTeacherHint': "Everything students see, plus the Teacher's Book, a lesson card for each chapter, class mode for the board and a result-code check.",
     'nav.roleSelf': 'On my own',
-    'nav.roleSelfHint': 'Learn without a class: find your level, keep your words and get your next book.',
+    'nav.roleSelfHint': 'Learn without a class: Find your level, keep your words and get your next book.',
     'nav.roleSwitch': 'Student, teacher or on my own',
     'nav.aboutSources': 'About & Sources',
     'nav.teacherGuideFor': "Teacher's Book",

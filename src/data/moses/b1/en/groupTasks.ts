@@ -93,7 +93,7 @@ export const mosesB1GroupTasksEn: Record<number, GroupTask> = {
       "Read Chapters 6–8 again. Note how Moses (pbuh) arrived in Midian as a stranger and how people helped him, for example: “Shu’ayb (pbuh) offered Moses a job.”",
       "Now imagine a new student who arrives at your school and does not know anyone. List what he or she has to do on the first day, what he or she does not have to worry about, and who can help.",
       "Write a one-page guide or record a short audio clip in clear English. Use at least three patterns from the book, such as “have to”, “did not have to”, “because” and a sentence with “who”.",
-      "Check your guide: it is about your own school, not the story, and nobody in it speaks as a person from the story."
+      "Check your guide: It is about your own school, not the story, and nobody in it speaks as a person from the story."
     ],
     "share": "Each group presents its guide or plays its audio clip and explains which tip would help a newcomer most and why.",
     "solo": "Write a short welcome guide with five tips for a new student at your school. Use have to, did not have to, because and one sentence with who."

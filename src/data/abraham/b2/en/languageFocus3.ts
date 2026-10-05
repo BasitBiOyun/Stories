@@ -66,7 +66,7 @@ export const abrahamB2LanguageFocusChapter19: Record<number, Exercise[]> = {
       transformItems: [
         {
           source: 'This was exactly what he was aiming for, so that he could demonstrate to them in public that their beliefs were foolish.',
-          frame: 'This was exactly what he was aiming for: he wanted [blank] to them in public that their beliefs were foolish.',
+          frame: 'This was exactly what he was aiming for: He wanted [blank] to them in public that their beliefs were foolish.',
           answers: ['to demonstrate', 'to show', 'to prove'],
         },
         {
@@ -76,7 +76,7 @@ export const abrahamB2LanguageFocusChapter19: Record<number, Exercise[]> = {
         },
       ],
       correctAnswer: null,
-      explanation: '“So that + could” gives the purpose of accepting the arrest; “he wanted to demonstrate …” states the same aim directly. The verb “resist” can become the noun “resistance” in a fixed phrase: offer/put up/show no resistance. The narrator shows that Abraham’s calm was part of a plan: a public trial gave him a public audience.',
+      explanation: '“So that + could” gives the purpose of accepting the arrest; “he wanted to demonstrate …” states the same aim directly. The verb “resist” can become the noun “resistance” in a fixed phrase: offer/put up/show no resistance. The narrator shows that Abraham’s calm was part of a plan: A public trial gave him a public audience.',
       feedback: {
         correct: 'Well done. You kept the purpose and found a natural verb for “resistance”.',
         incorrect: 'Item 1: use want + to + verb. Item 2: which verb goes with “no resistance”? Check the last paragraph of Chapter 19.',
@@ -89,7 +89,7 @@ export const abrahamB2LanguageFocusChapter19: Record<number, Exercise[]> = {
       instructions: 'Write or say 8–10 sentences about a public claim that someone tests.',
       question: 'How can you test a claim in front of everyone?',
       correctAnswer: null,
-      explanation: 'A strong response should make the language do argumentative work: the condition tests the claim, the reversal shows a change in stance, the purpose clause explains the speaker’s strategy, and the final rhetorical question crystallizes the contradiction.',
+      explanation: 'A strong response should make the language do argumentative work: The condition tests the claim, the reversal shows a change in stance, the purpose clause explains the speaker’s strategy, and the final rhetorical question crystallizes the contradiction.',
       feedback: {
         correct: 'Check that every connector changes the relationship between ideas and that the final question is rhetorical, not a request for unknown information.',
         incorrect: '',
@@ -119,12 +119,12 @@ export const abrahamB2LanguageFocusChapter20: Record<number, Exercise[]> = {
       question: '“He told them that it must be the culprit!” What does “must” express?',
       options: [
         'A conclusion presented as the only logical one — said ironically, because Abraham knew the idol could not act.',
-        'An obligation: the idol had to accept the blame.',
+        'An obligation: The idol had to accept the blame.',
         'Uncertainty: Abraham was not sure who had broken the idols.',
         'A fact that the idol itself had admitted.',
       ],
       correctAnswer: 0,
-      explanation: '“Must be” is used for a strong conclusion (deduction), not only for obligation. Abraham uses it ironically: if the idols were gods, the biggest idol must be the one who did it. The people’s answer — the idol “could not speak or move” — shows that their own logic has failed.',
+      explanation: '“Must be” is used for a strong conclusion (deduction), not only for obligation. Abraham uses it ironically: If the idols were gods, the biggest idol must be the one who did it. The people’s answer — the idol “could not speak or move” — shows that their own logic has failed.',
       feedback: {
         correct: 'Correct. “Must” marks a strong, ironic deduction.',
         incorrect: 'Is Abraham giving an order, or drawing a conclusion? Read the people’s reply in the next sentence.',
@@ -139,10 +139,10 @@ export const abrahamB2LanguageFocusChapter20: Record<number, Exercise[]> = {
       fillBlanksText: 'All they [blank] do was use their authority as tyrants to punish Abraham (pbuh). … They decided [blank] Abraham (pbuh) into the biggest fire they could build. … They [blank] a deep pit, filled it with firewood, and set it on fire.',
       wordBank: ['could', 'to throw', 'dug', 'can', 'throwing', 'digged'],
       correctAnswer: ['could', 'to throw', 'dug'],
-      explanation: '“All they could do was …” narrows their options to one: they had no argument left, only force. “Should” would give advice, not ability. “Decide” is followed by to + verb (“decided to throw”). “Dig” is irregular: dig – dug – dug.',
+      explanation: '“All they could do was …” narrows their options to one: They had no argument left, only force. “Should” would give advice, not ability. “Decide” is followed by to + verb (“decided to throw”). “Dig” is irregular: dig – dug – dug.',
       feedback: {
         correct: 'Correct. You showed the narrowed choice, the decision and the preparation.',
-        incorrect: 'Ask: is the first gap about ability or advice? Which form follows “decided”? What is the past of “dig”? Check Chapter 20.',
+        incorrect: 'Ask: Is the first gap about ability or advice? Which form follows “decided”? What is the past of “dig”? Check Chapter 20.',
       },
     },
     {
@@ -218,7 +218,7 @@ export const abrahamB2LanguageFocusChapter21: Record<number, Exercise[]> = {
       instructions: 'Read the sentence from Chapter 21. Then choose the best explanation.',
       question: '“… he sat in the middle of the fire as if he were sitting in a garden.” What does “as if he were” show?',
       options: [
-        'It compares his real situation with an unreal one: he was in the fire, but it felt like a garden.',
+        'It compares his real situation with an unreal one: He was in the fire, but it felt like a garden.',
         'It shows that the fire had changed into a real garden.',
         'It shows that the narrator is not sure where Abraham was sitting.',
         'It shows that Abraham imagined a garden to forget the fire.',
@@ -272,7 +272,7 @@ export const abrahamB2LanguageFocusChapter21: Record<number, Exercise[]> = {
       explanation: '“But” contrasts what stayed the same (the flames were still there) with what changed (they did not burn him). “For” + clause gives the reason; “because of” needs a noun, not a clause, and “so” would give a result. “Only” limits the fire’s effect to one thing, his ropes; “also” would wrongly suggest that it burned something else too.',
       feedback: {
         correct: 'Correct. You showed the contrast, the reason and the limit.',
-        incorrect: 'Ask: what contrasts with the flames still being there? What introduces the reason (a full clause follows)? What did the fire burn and what did it not burn?',
+        incorrect: 'Ask: What contrasts with the flames still being there? What introduces the reason (a full clause follows)? What did the fire burn and what did it not burn?',
       },
     },
     {
@@ -282,7 +282,7 @@ export const abrahamB2LanguageFocusChapter21: Record<number, Exercise[]> = {
       instructions: 'Write or say 8–10 sentences about something that looks dangerous but actually helps.',
       question: 'How does it look, and what does it really do?',
       correctAnswer: null,
-      explanation: 'A strong response should make the contrast meaningful: the visible situation may remain similar while its consequence changes, and each connector or structure should perform a distinct discourse function.',
+      explanation: 'A strong response should make the contrast meaningful: The visible situation may remain similar while its consequence changes, and each connector or structure should perform a distinct discourse function.',
       feedback: {
         correct: 'Check that “but” reverses an expectation, the passive foregrounds the event, “only” narrows the result, and “as if” remains a comparison rather than a literal claim.',
         incorrect: '',
@@ -315,7 +315,7 @@ export const abrahamB2LanguageFocusChapter22: Record<number, Exercise[]> = {
         '“Consequently” gives a reason; “out of fear of rulers” gives a result.',
       ],
       correctAnswer: 0,
-      explanation: '“Consequently” (= as a result) links the sentence to the one before it: the rulers’ rage “remained uncooled”, and as a result people did not dare to follow Abraham. “Out of + noun” (out of fear, out of love) gives the motive for an action: they held back because they were afraid. One sentence gives both the result and the motive.',
+      explanation: '“Consequently” (= as a result) links the sentence to the one before it: The rulers’ rage “remained uncooled”, and as a result people did not dare to follow Abraham. “Out of + noun” (out of fear, out of love) gives the motive for an action: They held back because they were afraid. One sentence gives both the result and the motive.',
       feedback: {
         correct: 'Correct. One phrase gives a result, the other a motive.',
         incorrect: 'Replace “Consequently” with “As a result” and “out of fear of” with “because they feared”. Which one is a result and which a reason?',
@@ -335,7 +335,7 @@ export const abrahamB2LanguageFocusChapter22: Record<number, Exercise[]> = {
         'it would never be extinguished.',
       ],
       correctAnswer: null,
-      explanation: '“Such + a/an + (adjective) + noun + that …” links a degree to its result: the time was so long that the disbelievers thought the fire would never go out. “Kept + -ing” shows continuing action, and “would never be extinguished” is their expectation, seen from the past.',
+      explanation: '“Such + a/an + (adjective) + noun + that …” links a degree to its result: The time was so long that the disbelievers thought the fire would never go out. “Kept + -ing” shows continuing action, and “would never be extinguished” is their expectation, seen from the past.',
       feedback: {
         correct: 'Well done. The duration comes first, then its result with “that”.',
         incorrect: 'Start with the fire, then say how long it burned (for such a long time), then the result with “that …”.',
@@ -350,10 +350,10 @@ export const abrahamB2LanguageFocusChapter22: Record<number, Exercise[]> = {
       fillBlanksText: '[blank] the fire burnt out, they were shocked to see that Abraham (pbuh) had stepped out of the pit completely unharmed. The smoke blackened their faces, [blank] his face was bright. The burning fire [blank] cool for Abraham (pbuh) and had only blackened the ropes which held him.',
       wordBank: ['Once', 'yet', 'had become', 'Unless', 'so', 'has become'],
       correctAnswer: ['Once', 'yet', 'had become'],
-      explanation: '“Once” means “as soon as / after”: it marks the moment the fire ended and the next stage began. “Yet” sets two opposite results side by side: their faces were black, his was bright. The past perfect “had become” shows that the fire had changed for Abraham before he walked out; it matches “had only blackened”.',
+      explanation: '“Once” means “as soon as / after”: it marks the moment the fire ended and the next stage began. “Yet” sets two opposite results side by side: Their faces were black, his was bright. The past perfect “had become” shows that the fire had changed for Abraham before he walked out; it matches “had only blackened”.',
       feedback: {
         correct: 'Correct. You marked the turning point, the contrast and the earlier change.',
-        incorrect: 'Ask: which word means “after/as soon as”? Are the two faces similar or opposite? Look at “had only blackened” in the same sentence.',
+        incorrect: 'Ask: Which word means “after/as soon as”? Are the two faces similar or opposite? Look at “had only blackened” in the same sentence.',
       },
     },
     {
@@ -363,7 +363,7 @@ export const abrahamB2LanguageFocusChapter22: Record<number, Exercise[]> = {
       instructions: 'Write or say 8–10 sentences about a long problem that finally ends.',
       question: 'What changed at the turning point?',
       correctAnswer: null,
-      explanation: 'A strong response should make the timeline clear and keep discourse relations distinct: duration leads toward a turning point, contrast reverses an expectation, consequence follows from an event, and motive explains a person’s choice.',
+      explanation: 'A strong response should make the timeline clear and keep discourse relations distinct: Duration leads toward a turning point, contrast reverses an expectation, consequence follows from an event, and motive explains a person’s choice.',
       feedback: {
         correct: 'Check that your timeline is coherent and that consequence and motive are not treated as the same relationship.',
         incorrect: '',
@@ -519,10 +519,10 @@ export const abrahamB2LanguageFocusChapter24: Record<number, Exercise[]> = {
         'In the meantime': 'during the same period',
         'tried every means': 'used every possible way',
       },
-      explanation: '“Put forth” is a formal phrasal verb meaning “present, offer”. “Utterly” is an intensifier (= completely). “Leave + person + adjective” describes the state someone is left in. “In the meantime” links two things happening in the same period: people talked about Abraham while he continued his call. “Means” (always with -s) here means “way, method”.',
+      explanation: '“Put forth” is a formal phrasal verb meaning “present, offer”. “Utterly” is an intensifier (= completely). “Leave + person + adjective” describes the state someone is left in. “In the meantime” links two things happening in the same period: People talked about Abraham while he continued his call. “Means” (always with -s) here means “way, method”.',
       feedback: {
         correct: 'Correct. You matched each expression with its meaning.',
-        incorrect: 'Find each expression in Chapter 24 and read what happens around it: the debate with the king, its result, and Abraham’s efforts afterwards.',
+        incorrect: 'Find each expression in Chapter 24 and read what happens around it: The debate with the king, its result, and Abraham’s efforts afterwards.',
       },
     },
     {
@@ -572,7 +572,7 @@ export const abrahamB2LanguageFocusChapter24: Record<number, Exercise[]> = {
         'An imaginary situation that did not happen.',
       ],
       correctAnswer: 0,
-      explanation: '“Would” is the future seen from the past: at the moment Abraham gives his challenge, the narrator looks ahead to its effect. “Unquestionably and easily” show how sure the narrator is. The next sentences confirm it: “He was utterly defeated.”',
+      explanation: '“Would” is the future seen from the past: At the moment Abraham gives his challenge, the narrator looks ahead to its effect. “Unquestionably and easily” show how sure the narrator is. The next sentences confirm it: “He was utterly defeated.”',
       feedback: {
         correct: 'Correct. “Would” looks ahead from that moment to the challenge’s certain effect.',
         incorrect: 'Read the sentences after the challenge. Does the effect happen? Is “would” about habit, politeness, or a future seen from the past?',
@@ -642,7 +642,7 @@ export const abrahamB2LanguageFocusChapter25: Record<number, Exercise[]> = {
       explanation: 'The past simple moves the story forward: left, traveled, settled, gave birth. The past perfect steps back to explain the situation at that point: Hagar had been given to Sarah earlier in Egypt, and Abraham had aged over many years. This background explains why Sarah suggested the marriage.',
       feedback: {
         correct: 'Correct. You separated earlier background from the main events.',
-        incorrect: 'Look for had + past participle: it steps back to an earlier time. Past simple verbs carry the story forward.',
+        incorrect: 'Look for had + past participle: It steps back to an earlier time. Past simple verbs carry the story forward.',
       },
     },
     {
@@ -694,7 +694,7 @@ export const abrahamB2LanguageFocusChapter25: Record<number, Exercise[]> = {
       explanation: 'A thought reported in the past moves back in time: “She thought she could not have a child.” “Suggest” is never followed by person + to-infinitive. Use suggest (that) + person + base verb: “she suggested Abraham get married to Hagar”.',
       feedback: {
         correct: 'Well done. You corrected the reported thought and the pattern after “suggest”.',
-        incorrect: 'Ask: does the reported thought need a past form? Which form follows “suggested + person”? Check the end of Chapter 25.',
+        incorrect: 'Ask: Does the reported thought need a past form? Which form follows “suggested + person”? Check the end of Chapter 25.',
       },
     },
     {
@@ -735,7 +735,7 @@ export const abrahamB2LanguageFocusChapter26: Record<number, Exercise[]> = {
         'Both report things that had already happened.',
       ],
       correctAnswer: 0,
-      explanation: '“Tell someone that he should …” reports an instruction: what Abraham had to do. “Inform someone that … would …” reports a plan for the future, seen from that past moment: the city and the water. The instruction is Abraham’s test; the plan explains its purpose.',
+      explanation: '“Tell someone that he should …” reports an instruction: what Abraham had to do. “Inform someone that … would …” reports a plan for the future, seen from that past moment: The city and the water. The instruction is Abraham’s test; the plan explains its purpose.',
       feedback: {
         correct: 'Correct. “Should” reports what to do; “would” reports what was going to happen.',
         incorrect: 'Compare “should” and “would”. Which one tells Abraham what to do, and which one tells what will happen later?',
@@ -753,7 +753,7 @@ export const abrahamB2LanguageFocusChapter26: Record<number, Exercise[]> = {
       explanation: '“While” can set two parallel facts side by side (= whereas): one family line led to Prophet Muhammad, the other to Moses and Jesus. “Since” would wrongly give a reason. “Still” shows that a state continues: Ishmael was a baby who was still breastfeeding. “Until” marks the end point of the long walk.',
       feedback: {
         correct: 'Correct. You placed the contrast, the continuing state and the end point.',
-        incorrect: 'Ask: are the two family lines compared, or is one the reason for the other? Which word shows that a state continues? Which word marks where the walk ended?',
+        incorrect: 'Ask: Are the two family lines compared, or is one the reason for the other? Which word shows that a state continues? Which word marks where the walk ended?',
       },
     },
     {
@@ -821,7 +821,7 @@ export const abrahamB2LanguageFocusChapter27: Record<number, Exercise[]> = {
         'A contrast with her confidence.',
       ],
       correctAnswer: 0,
-      explanation: '“Since” has two meanings: time (since 2020, since he left) and reason (= because). Here it is followed by a present fact, “Allah is with us”, which explains why she is sure they will not be lost. Her answer turns her anxiety into reassurance.',
+      explanation: '“Since” has two meanings: Time (since 2020, since he left) and reason (= because). Here it is followed by a present fact, “Allah is with us”, which explains why she is sure they will not be lost. Her answer turns her anxiety into reassurance.',
       feedback: {
         correct: 'Correct. “Since” here means “because”.',
         incorrect: 'Replace “since” with “because” and with “from the time when”. Which keeps the meaning of Hagar’s words?',
@@ -885,7 +885,7 @@ export const abrahamB2LanguageFocusChapter27: Record<number, Exercise[]> = {
         },
       ],
       correctAnswer: null,
-      explanation: '“Not X but Y” rejects one explanation and puts the correct one in its place: not his own decision, but Allah’s command. A reported yes/no question uses if/whether, statement word order, and moves back in time: “has commanded” → “had commanded”; “you … us here” → “him … them there”.',
+      explanation: '“Not X but Y” rejects one explanation and puts the correct one in its place: Not his own decision, but Allah’s command. A reported yes/no question uses if/whether, statement word order, and moves back in time: “has commanded” → “had commanded”; “you … us here” → “him … them there”.',
       feedback: {
         correct: 'Well done. You made the correction clear and reported the question.',
         incorrect: 'Item 1: complete “not … but …”. Item 2: use if/whether and move the tense back. Check the middle of Chapter 27.',
@@ -974,7 +974,7 @@ export const abrahamB2LanguageFocusChapter28: Record<number, Exercise[]> = {
       explanation: '“Which” adds background about a thing (the Ka’ba). “One of them” picks one person from the group just mentioned (Ishmael’s descendants), and “They” keeps the same group as the subject of the next sentence. “To + verb” gives the purpose of spreading: to carry the message. “For carrying” is not used for the purpose of a person’s action.',
       feedback: {
         correct: 'Correct. You kept the reference clear and gave the purpose.',
-        incorrect: 'Ask: is the Ka’ba a person or a thing? Who is “one of …” chosen from? Which form shows purpose after a verb? Check the end of Chapter 28.',
+        incorrect: 'Ask: Is the Ka’ba a person or a thing? Who is “one of …” chosen from? Which form shows purpose after a verb? Check the end of Chapter 28.',
       },
     },
     {
@@ -1065,7 +1065,7 @@ export const abrahamB2LanguageFocusChapter29: Record<number, Exercise[]> = {
         },
       ],
       correctAnswer: null,
-      explanation: 'A noun phrase after a name (“Ibn Abbas, a companion of …”) is an appositive: a short relative clause without “who was”. Adding “who was” lets it join another verb (“and narrated …”). Naming the source this way makes the report reliable. The passive “was commemorated by Muslims” keeps her effort in focus; the active makes Muslims the subject.',
+      explanation: 'A noun phrase after a name (“Ibn Abbas, a companion of …”) is an appositive: A short relative clause without “who was”. Adding “who was” lets it join another verb (“and narrated …”). Naming the source this way makes the report reliable. The passive “was commemorated by Muslims” keeps her effort in focus; the active makes Muslims the subject.',
       feedback: {
         correct: 'Well done. You expanded the appositive and changed the focus.',
         incorrect: 'Item 1: add the relative pronoun and verb that are understood. Item 2: make Muslims the subject of an active verb. Check Chapter 29.',
@@ -1087,7 +1087,7 @@ export const abrahamB2LanguageFocusChapter29: Record<number, Exercise[]> = {
       explanation: '“Maybe there is a caravan …” is a possibility in Hagar’s mind, not a fact, and she “still saw nothing”. The later link to Hajj is the narrator’s, not Ibn Abbas’s. “Almost no difference” is a careful claim; “exactly the same” would overstate it.',
       feedback: {
         correct: 'Correct. This summary keeps the possibility, the later link and the careful comparison.',
-        incorrect: 'Check three things: was the caravan a fact or a possibility? Who links the search to Hajj? Does the narrator say “almost no difference” or “no difference”?',
+        incorrect: 'Check three things: Was the caravan a fact or a possibility? Who links the search to Hajj? Does the narrator say “almost no difference” or “no difference”?',
       },
     },
     {
@@ -1097,7 +1097,7 @@ export const abrahamB2LanguageFocusChapter29: Record<number, Exercise[]> = {
       instructions: 'Write or say 8–10 sentences about a rescue or a search from a news report.',
       question: 'What happened, and what did it mean later?',
       correctAnswer: null,
-      explanation: 'A strong B2 response should show a controlled discourse progression: attributed source → trigger → repeated or developing action → tentative possibility → contrastive result → later comparison/interpretation.',
+      explanation: 'A strong B2 response should show a controlled discourse progression: Attributed source → trigger → repeated or developing action → tentative possibility → contrastive result → later comparison/interpretation.',
       feedback: {
         correct: 'Check that the paragraph makes clear what was reported, what was only possible, what happened, and what was interpreted later.',
         incorrect: '',
@@ -1130,7 +1130,7 @@ export const abrahamB2LanguageFocusChapter30: Record<number, Exercise[]> = {
       instructions: 'Read the last sentence of Chapter 30. Is the statement true or false?',
       question: 'In “They had seen the unusual sight of a bird flying in its direction, which could only mean the presence of water”, the tribe had already seen the water itself before they stopped.',
       correctAnswer: false,
-      explanation: 'The tribe saw a bird, not the water. “Which could only mean …” marks a strong inference from that sign: the only possible explanation was water. The past perfect “had seen” shows that this sign came before their stop in the valley and explains it.',
+      explanation: 'The tribe saw a bird, not the water. “Which could only mean …” marks a strong inference from that sign: The only possible explanation was water. The past perfect “had seen” shows that this sign came before their stop in the valley and explains it.',
       feedback: {
         correct: 'Correct. They saw a sign and inferred the water from it.',
         incorrect: 'What exactly did the tribe see? Read the sentence again: “the unusual sight of a bird …”.',
@@ -1155,7 +1155,7 @@ export const abrahamB2LanguageFocusChapter30: Record<number, Exercise[]> = {
       explanation: '“Immediately” shows that the result followed the action at once; “lately” means “recently” and does not describe how fast something happened. “To + verb” gives the purpose of Hagar’s action: she made the basin to stop the water spreading. “Not long after that” moves the story forward by a short time; “Long before that” would move it back.',
       feedback: {
         correct: 'Correct. You showed the immediate result, the purpose and the short time gap.',
-        incorrect: 'Ask: how quickly did the water appear? Why did Hagar make the basin? Did the tribe arrive soon after or long before? Check Chapter 30.',
+        incorrect: 'Ask: How quickly did the water appear? Why did Hagar make the basin? Did the tribe arrive soon after or long before? Check Chapter 30.',
       },
     },
     {
@@ -1273,7 +1273,7 @@ export const abrahamB2LanguageFocusChapter31: Record<number, Exercise[]> = {
         },
       ],
       correctAnswer: null,
-      explanation: 'The participle clause “Growing up among the Jurham tribe” gives background: it can be expanded into a time clause with “as”, “while” or “after”. In reported speech, “must” for obligation often becomes “had to” in the past; the chapter keeps “must” to stress how strong the command was.',
+      explanation: 'The participle clause “Growing up among the Jurham tribe” gives background: It can be expanded into a time clause with “as”, “while” or “after”. In reported speech, “must” for obligation often becomes “had to” in the past; the chapter keeps “must” to stress how strong the command was.',
       feedback: {
         correct: 'Well done. You expanded the background and reported the obligation.',
         incorrect: 'Item 1: turn “Growing up” into a clause with a subject and a verb. Item 2: give the past form of “must” for obligation.',
@@ -1342,7 +1342,7 @@ export const abrahamB2LanguageFocusChapter32: Record<number, Exercise[]> = {
         'The knife stayed near Ishmael for a long time.',
       ],
       correctAnswer: 0,
-      explanation: '“Be about to + verb” describes something that is going to happen very soon. With “just as”, it marks the exact moment of the interruption: the voice came before the knife reached Ishmael. This timing creates the tension of the chapter.',
+      explanation: '“Be about to + verb” describes something that is going to happen very soon. With “just as”, it marks the exact moment of the interruption: The voice came before the knife reached Ishmael. This timing creates the tension of the chapter.',
       feedback: {
         correct: 'Correct. “Was about to” marks the moment just before the action.',
         incorrect: 'Did the knife reach Ishmael? What stopped Abraham, and when? Read the sentence again with “just as”.',
@@ -1357,10 +1357,10 @@ export const abrahamB2LanguageFocusChapter32: Record<number, Exercise[]> = {
       fillBlanksText: 'The Allah-fearing son of a faithful father promised [blank] Allah. … [blank] this, Allah made him the leader of humanity and brought Messengers from his children. … It was [blank] a test; the substitute was a ram or goat.',
       wordBank: ['to obey', 'Because of', 'only', 'obeying', 'Because', 'even'],
       correctAnswer: ['to obey', 'Because of', 'only'],
-      explanation: '“Promise” is followed by to + verb (“promised to obey”). “Because of” is followed by a noun or pronoun (this); “because” needs a full clause. “Only” limits the event: it was a test, not a real sacrifice, as the substitute animal shows. “Even” would suggest something surprising, not a limit.',
+      explanation: '“Promise” is followed by to + verb (“promised to obey”). “Because of” is followed by a noun or pronoun (this); “because” needs a full clause. “Only” limits the event: It was a test, not a real sacrifice, as the substitute animal shows. “Even” would suggest something surprising, not a limit.',
       feedback: {
         correct: 'Correct. You showed the promise, the consequence and the limit.',
-        incorrect: 'Ask: which form follows “promised”? Is “this” a noun or a clause? Which word limits the event to a test? Check Chapter 32.',
+        incorrect: 'Ask: Which form follows “promised”? Is “this” a noun or a clause? Which word limits the event to a test? Check Chapter 32.',
       },
     },
     {
@@ -1470,7 +1470,7 @@ export const abrahamB2LanguageFocusChapter33: Record<number, Exercise[]> = {
         },
       ],
       correctAnswer: null,
-      explanation: '“While” and “whereas” set two different practices side by side, and the contrast clause can come first or second. “Were going to” is the future seen from the past: at the moment of the reunion, building the House of Allah was the plan ahead of them.',
+      explanation: '“While” and “whereas” set two different practices side by side, and the contrast clause can come first or second. “Were going to” is the future seen from the past: At the moment of the reunion, building the House of Allah was the plan ahead of them.',
       feedback: {
         correct: 'Well done. You moved the contrast word and kept the plan.',
         incorrect: 'Item 1: use a contrast word at the start. Item 2: “were going to build” describes a plan; complete “their plan was …”.',
@@ -1495,7 +1495,7 @@ export const abrahamB2LanguageFocusChapter33: Record<number, Exercise[]> = {
         'embraced each other': 'held one another in their arms',
         'with longing': 'with a strong wish to be together again',
       },
-      explanation: '“Quite” before an adjective often means “fairly”. “Equivalent to” compares value, and in the chapter it is limited to Abraham’s religion and era. “Each other” shows a two-way action: father and son embraced each other. “Longing” is a strong wish for someone you have missed.',
+      explanation: '“Quite” before an adjective often means “fairly”. “Equivalent to” compares value, and in the chapter it is limited to Abraham’s religion and era. “Each other” shows a two-way action: Father and son embraced each other. “Longing” is a strong wish for someone you have missed.',
       feedback: {
         correct: 'Correct. You matched each expression with its meaning.',
         incorrect: 'Find each expression in Chapter 33: two are about old practices, and two are about the reunion of father and son.',
@@ -1598,7 +1598,7 @@ export const abrahamB2LanguageFocusChapter34: Record<number, Exercise[]> = {
       explanation: 'A building goes “on” its foundations. “No longer” shows that an earlier ability has stopped (“any longer” needs a negative verb: could not … any longer). “Carry on + -ing” means continue an activity: Ishmael kept handing him the stones while Abraham built.',
       feedback: {
         correct: 'Correct. You chose the right preposition, the change and the continuing action.',
-        incorrect: 'Ask: where does a building stand? Which phrase means “not any more” with a positive verb? Which form follows “carry on”?',
+        incorrect: 'Ask: Where does a building stand? Which phrase means “not any more” with a positive verb? Which form follows “carry on”?',
       },
     },
     {
@@ -1669,7 +1669,7 @@ export const abrahamB2LanguageFocusChapter35: Record<number, Exercise[]> = {
       explanation: 'The claim is limited in place and time: “those living in that region at that time”. It says Abraham invited people, not that everyone accepted. The chapter also calls Abraham “the restorer” of an older structure, so the evidence does not show he built the first Ka’ba.',
       feedback: {
         correct: 'Correct. This statement keeps the limits of place, time and invitation.',
-        incorrect: 'Check the limits in the sentence: which region, which time, and did people accept or were they invited? Also compare the first sentence of the chapter.',
+        incorrect: 'Check the limits in the sentence: Which region, which time, and did people accept or were they invited? Also compare the first sentence of the chapter.',
       },
     },
     {

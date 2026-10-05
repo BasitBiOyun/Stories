@@ -50,7 +50,7 @@ export const abrahamA2GroupTasksEn: Record<number, GroupTask> = {
       },
       {
         "name": "Reader C",
-        "job": "You know the end: a quiet valley near two small hills, Safa and Marwah."
+        "job": "You know the end: A quiet valley near two small hills, Safa and Marwah."
       },
       {
         "name": "Map Keeper",

@@ -36,10 +36,10 @@ export const meccaB1LanguageFocusExercises: Record<number, Exercise[]> = {
       fillBlanksText: 'The period before Islam was called the Age of Ignorance, or Jahiliyyah, [blank] religious and social disorder was common in society. … Powerful people controlled many parts of life, [blank] poor and weak people lived in misery.',
       wordBank: ['because', 'while', 'because of', 'during'],
       correctAnswer: ['because', 'while'],
-      explanation: '“Because” + subject + verb gives the reason for the name: disorder was common. “While” can put two situations that existed at the same time side by side to show a contrast: the powerful controlled life, but the poor and weak suffered. “Because of” and “during” need a noun, not a full clause (subject + verb).',
+      explanation: '“Because” + subject + verb gives the reason for the name: disorder was common. “While” can put two situations that existed at the same time side by side to show a contrast: The powerful controlled life, but the poor and weak suffered. “Because of” and “during” need a noun, not a full clause (subject + verb).',
       feedback: {
         correct: 'Correct. “Because” explains the name, and “while” contrasts the two groups.',
-        incorrect: 'Ask: does the second part explain why, or does it show a different group at the same time? Then check the first two paragraphs of Chapter 1.',
+        incorrect: 'Ask: Does the second part explain why, or does it show a different group at the same time? Then check the first two paragraphs of Chapter 1.',
       },
     },
     {
@@ -105,7 +105,7 @@ export const meccaB1LanguageFocusExercises: Record<number, Exercise[]> = {
       explanation: 'The writer first defines the period (“The Jahiliyyah was an age of barbarism”). “To understand the Jahiliyyah period, we must first …” refers back to that period and states the purpose and the first step of the next explanation. Then the new topic, Mecca, is introduced with a short definition. “This city” refers back to Mecca, so it must come after Mecca has been named.',
       feedback: {
         correct: 'Correct. Definition of the period, purpose and first step, the new topic, then a sentence that refers back to it.',
-        incorrect: 'Start with the sentence that defines the period. Then ask: which sentence says what we must do first, which names Mecca, and which refers back to “this city”?',
+        incorrect: 'Start with the sentence that defines the period. Then ask: Which sentence says what we must do first, which names Mecca, and which refers back to “this city”?',
       },
     },
     {

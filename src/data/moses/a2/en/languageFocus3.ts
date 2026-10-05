@@ -18,7 +18,7 @@ export const mosesA2LanguageFocusExercisesPart7: Record<number, Exercise[]> = {
         { sentence: 'It was [choice] dark and cold.', options: ['get', 'gets', 'getting'], answer: 2 },
       ],
       correctAnswer: null,
-      explanation: 'Use It was for the season, the weather or the time: It was winter. Use There was to say if something or someone is in a place: There was nobody on the way. It was getting + adjective shows a slow change: it was getting dark.',
+      explanation: 'Use It was for the season, the weather or the time: It was winter. Use There was to say if something or someone is in a place: There was nobody on the way. It was getting + adjective shows a slow change: It was getting dark.',
       feedback: {
         correct: 'Correct. It for the season, There for nobody on the way, and getting for a slow change.',
         incorrect: 'Read the start of Chapter 10 again. Is the sentence about the season, or about people on the way?',
@@ -59,7 +59,7 @@ export const mosesA2LanguageFocusExercisesPart7: Record<number, Exercise[]> = {
         chose: 'picked for a special job',
         'turned into': 'changed and became',
       },
-      explanation: 'Turn into + noun shows a change from one thing to another: the walking stick turned into a big snake. Suddenly shows that something happens with no warning.',
+      explanation: 'Turn into + noun shows a change from one thing to another: The walking stick turned into a big snake. Suddenly shows that something happens with no warning.',
       feedback: {
         correct: 'Correct. You know the key words of the scene on the mountain.',
         incorrect: 'Read Chapter 10 again. Find each word and look at the sentence around it.',
@@ -109,7 +109,7 @@ export const mosesA2LanguageFocusExercisesPart8: Record<number, Exercise[]> = {
         { sentence: 'Allah chose Moses and [choice] him His prophet.', options: ['make', 'did', 'made'], answer: 2 },
       ],
       correctAnswer: null,
-      explanation: 'Became + noun shows a change into a new role. Did not + base verb makes a past negative. Made + person + noun also shows a new role: made him His prophet.',
+      explanation: 'Became + noun shows a change into a new role. Did not + base verb makes a past negative. Made + person + noun also shows a new role: Made him His prophet.',
       feedback: {
         correct: 'Correct. Became, did not and made are all past forms.',
         incorrect: 'Read the middle of Chapter 11 again. The story is in the past.',
@@ -155,7 +155,7 @@ export const mosesA2LanguageFocusExercisesPart9: Record<number, Exercise[]> = {
         miracles: 'wonderful signs from Allah',
         'made fun of': 'said unkind jokes about',
       },
-      explanation: 'He thought Moses was crazy: thought + sentence tells us the king’s opinion, not a fact. The chapter shows he was wrong: the stick and the shining hand were miracles of Allah.',
+      explanation: 'He thought Moses was crazy: thought + sentence tells us the king’s opinion, not a fact. The chapter shows he was wrong: The stick and the shining hand were miracles of Allah.',
       feedback: {
         correct: 'Correct. You know the key words of the palace scene.',
         incorrect: 'Read Chapter 12 again. Find each word and look at the sentence around it.',
@@ -192,7 +192,7 @@ export const mosesA2LanguageFocusExercisesPart9: Record<number, Exercise[]> = {
         { id: '4', text: 'He took his hand out.' },
       ],
       correctAnswer: ['1', '2', '3', '4'],
-      explanation: 'Past verbs give the actions in order. Then shows the next step: after the stick, Moses showed the second sign.',
+      explanation: 'Past verbs give the actions in order. Then shows the next step: After the stick, Moses showed the second sign.',
       feedback: {
         correct: 'Correct. First the stick, then the hand.',
         incorrect: 'Read Chapter 12 again. Look for Then to find the second sign.',
@@ -292,7 +292,7 @@ export const mosesA2LanguageFocusExercisesPart10: Record<number, Exercise[]> = {
       correctAnswer: false,
       explanation: 'Get ready for is an instruction to prepare. We are going away (are + -ing) talks about a plan for the near future. The people had not left yet; they left Egypt at night.',
       feedback: {
-        correct: 'Correct. It was a plan: they were getting ready to leave.',
+        correct: 'Correct. It was a plan: They were getting ready to leave.',
         incorrect: 'Read Chapter 14 again. When did they leave Egypt? Get ready shows they had not left yet.',
       },
     },
@@ -356,7 +356,7 @@ export const mosesA2LanguageFocusExercisesPart11: Record<number, Exercise[]> = {
       fillBlanksText: 'The sea was [blank] them. The king and his army were [blank] them. They had no place to escape. But Allah was [blank] them.',
       wordBank: ['in front of', 'behind', 'with', 'between'],
       correctAnswer: ['in front of', 'behind', 'with'],
-      explanation: 'In front of and behind show position: the sea was ahead, and the army was at their back. With shows that Allah was helping them.',
+      explanation: 'In front of and behind show position: The sea was ahead, and the army was at their back. With shows that Allah was helping them.',
       feedback: {
         correct: 'Correct. The sea in front, the army behind, and Allah with them.',
         incorrect: 'Read Chapter 15 again. Where was the sea? Where did the army come from?',
@@ -446,7 +446,7 @@ export const mosesA2LanguageFocusExercisesPart11: Record<number, Exercise[]> = {
         },
       ],
       correctAnswer: null,
-      explanation: 'Say to + person: said to his soldiers. Tell + person/thing + to + base verb: told the sea to open. We do not say told to the sea.',
+      explanation: 'Say to + person: Said to his soldiers. Tell + person/thing + to + base verb: told the sea to open. We do not say told to the sea.',
       feedback: {
         correct: 'Well done. Said to his soldiers, and told the sea to open.',
         incorrect: 'Read the king’s words in Chapter 16 again. Said needs to before the person; told needs to before the verb.',
@@ -473,7 +473,7 @@ export const mosesA2LanguageFocusExercisesPart11: Record<number, Exercise[]> = {
         'In the end': 'finally',
         'no one': 'not a single person',
       },
-      explanation: 'Very close behind tells us where. When they were midway and In the end tell us when: in the end introduces the final result.',
+      explanation: 'Very close behind tells us where. When they were midway and In the end tell us when: In the end introduces the final result.',
       feedback: {
         correct: 'Correct. You know the place and time words of the final scene.',
         incorrect: 'Read Chapter 16 again. Find each word and look at the sentence around it.',

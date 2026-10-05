@@ -43,7 +43,7 @@ export const yunusA2LanguageFocusExercises: Record<number, Exercise[]> = {
       fillBlanksText: 'People could easily understand his poems [blank] he … them in simple Turkish. … [blank] he completed his madrasa education, he followed the way of the dervishes … Yunus was 33 or 34 years old [blank] Mevlana died.',
       wordBank: ['because', 'After', 'when', 'so', 'but'],
       correctAnswer: ['because', 'After', 'when'],
-      explanation: '“Because” gives a reason: people understood his poems because he used simple Turkish. “After” shows the order of events: first his madrasa education, then the dervish way. “When” links a fact to a time: Yunus was 33 or 34 at the time Mevlana died.',
+      explanation: '“Because” gives a reason: people understood his poems because he used simple Turkish. “After” shows the order of events: First his madrasa education, then the dervish way. “When” links a fact to a time: Yunus was 33 or 34 at the time Mevlana died.',
       feedback: {
         correct: 'Correct. You used because for a reason, after for the order of events and when for a time.',
         incorrect: 'Read the first and last paragraphs of Chapter 1 again. Ask: Is it a reason? Is it the next event? Is it a time?',
@@ -81,7 +81,7 @@ export const yunusA2LanguageFocusExercises: Record<number, Exercise[]> = {
         'They wanted people to give them charity.',
       ],
       correctAnswer: 1,
-      explanation: '“That is why” points back to the sentence before it. That sentence gives the reason: they knew they needed Allah. “Even if they were rich” means: also at times when they had money. So “poor” here is not about money.',
+      explanation: '“That is why” points back to the sentence before it. That sentence gives the reason: they knew they needed Allah. “Even if they were rich” means: Also at times when they had money. So “poor” here is not about money.',
       feedback: {
         correct: 'Correct. “That is why” points back to the reason: they needed Allah in every way.',
         incorrect: 'Look at the sentence before “That is why”. It gives the reason. And “even if they were rich” tells us they sometimes had money.',
@@ -111,7 +111,7 @@ export const yunusA2LanguageFocusExercises: Record<number, Exercise[]> = {
         },
       ],
       correctAnswer: null,
-      explanation: '“Not … but …” takes away one idea and gives the right one: not in their hearts, but in their hands. “Because of” comes before a noun (“because of the Creator”); “because” needs a full sentence after it. With an adjective in the past, use “were not”: “they were not cold or sulky”.',
+      explanation: '“Not … but …” takes away one idea and gives the right one: Not in their hearts, but in their hands. “Because of” comes before a noun (“because of the Creator”); “because” needs a full sentence after it. With an adjective in the past, use “were not”: “they were not cold or sulky”.',
       feedback: {
         correct: 'Well done. You chose the right linking word and the right past form.',
         incorrect: 'Read Chapter 2 again. Is there a noun after the gap or a full sentence? Is the word after the gap an adjective (cold, sulky)?',

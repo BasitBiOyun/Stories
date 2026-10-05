@@ -21,7 +21,7 @@ export const yunusB1StoryMapCopyEn: StoryMapCopy = {
       name: 'Kösedağ, 1243',
       kind: 'Battle',
       text: 'In 1243, the Anatolian Seljuk army and the Mongols clashed at Kösedağ, 80 km northeast of Sivas. The Mongols used a false retreat and then circled the army, so they won easily. After that, they destroyed and raided Sivas, Kayseri and Erzincan.',
-      teacherNote: 'The book gives the place as 80 km northeast of Sivas; the exact battlefield is not known, so the pin is approximate. Chapter 3 says this defeat caused the Mongols’ invasion of Anatolia. Chapter 6 continues: men were killed, women and children were taken captive, and the cities were deserted.',
+      teacherNote: 'The book gives the place as 80 km northeast of Sivas; the exact battlefield is not known, so the pin is approximate. Chapter 3 says this defeat caused the Mongols’ invasion of Anatolia. Chapter 6 continues: Men were killed, women and children were taken captive, and the cities were deserted.',
       question: 'Which three cities did the Mongols raid after the battle? Find them on the map.',
     },
     azerbaijan: {

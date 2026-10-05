@@ -190,7 +190,7 @@ export const mosesA2Pages: PageData[] = [
       { word: 'laughed at', definition: 'Made fun of someone.' },
     ],
     hotspots: [
-      { id: 'moses-a2-en-h12a', x: 35, y: 45, title: 'Two Miracles', description: 'Moses (pbuh) showed the king two miracles: the big snake and the shining white hand.' },
+      { id: 'moses-a2-en-h12a', x: 35, y: 45, title: 'Two Miracles', description: 'Moses (pbuh) showed the king two miracles: The big snake and the shining white hand.' },
       { id: 'moses-a2-en-h12b', x: 65, y: 35, title: 'The King Laughed', description: 'The king and his helpers laughed at Moses (pbuh). The king said the miracles were only magic.' },
     ],
   },

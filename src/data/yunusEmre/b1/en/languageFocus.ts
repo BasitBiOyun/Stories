@@ -21,7 +21,7 @@ export const yunusB1LanguageFocusExercises: Record<number, Exercise[]> = {
         'when a person starts to follow this path',
       ],
       correctAnswer: 1,
-      explanation: 'The sentence is built in three steps. “A person who …” defines a person by what they do. “Aims to + verb” gives the aim (to get closer to Allah). “By + -ing” gives the method: the way the aim is reached (by following Islamic mysticism). Compare: “She improved her English by reading every day.”',
+      explanation: 'The sentence is built in three steps. “A person who …” defines a person by what they do. “Aims to + verb” gives the aim (to get closer to Allah). “By + -ing” gives the method: The way the aim is reached (by following Islamic mysticism). Compare: “She improved her English by reading every day.”',
       feedback: {
         correct: 'Correct. “By + -ing” names the way or method used to reach an aim.',
         incorrect: 'Read the sentence again. The aim is “to get closer to Allah”. Does “by following …” give a reason, a time, or the way this aim is reached?',
@@ -87,7 +87,7 @@ export const yunusB1LanguageFocusExercises: Record<number, Exercise[]> = {
       explanation: '“By + -ing” gives the method; when the method comes first, “(in order) to + verb” gives the aim: “follows Islamic mysticism to get closer to Allah”. A “which/that” clause can describe the words and at the same time say what they did: “words and phrases which helped develop …”. “Help + verb” needs no “to”, but “help to + verb” is also correct. “Is known as” is the passive of “people know … as”.',
       feedback: {
         correct: 'Well done. You kept the meaning and changed the structure.',
-        incorrect: 'Look at each sentence from Chapter 1 again: what is the aim, what did his words do, and how do people see him? Then fit that meaning into the new frame.',
+        incorrect: 'Look at each sentence from Chapter 1 again: What is the aim, what did his words do, and how do people see him? Then fit that meaning into the new frame.',
       },
     },
     {
@@ -120,14 +120,14 @@ export const yunusB1LanguageFocusExercises: Record<number, Exercise[]> = {
       matchingHeadings: { left: 'From the chapter', right: 'Meaning' },
       matchingPairs: [
         { left: 'due to his style', right: 'because of the way he writes' },
-        { left: 'neither too simple nor too complex', right: 'in the middle: not basic and not hard' },
+        { left: 'neither too simple nor too complex', right: 'in the middle: Not basic and not hard' },
         { left: 'combine great literary quality with simple language', right: 'are artistic and plain at the same time' },
         { left: 'helps people understand his writings and sayings easily', right: 'lets readers follow his words without effort' },
         { left: 'still have a significant influence on Turkish culture and society', right: 'continue to shape Turkish life today' },
       ],
       correctAnswer: {
         'due to his style': 'because of the way he writes',
-        'neither too simple nor too complex': 'in the middle: not basic and not hard',
+        'neither too simple nor too complex': 'in the middle: Not basic and not hard',
         'combine great literary quality with simple language': 'are artistic and plain at the same time',
         'helps people understand his writings and sayings easily': 'lets readers follow his words without effort',
         'still have a significant influence on Turkish culture and society': 'continue to shape Turkish life today',
@@ -162,7 +162,7 @@ export const yunusB1LanguageFocusExercises: Record<number, Exercise[]> = {
         },
       ],
       correctAnswer: null,
-      explanation: '“According to + source” shows where the information comes from; “due to” gives a reason, not a source. “Around” shows an approximate date: the sources do not agree on one exact year, so the chapter gives a range. “Some sources say that …” shows that only part of the evidence reports this, so it is less certain. “Sources” is plural, so the verb is “say”; “tell” needs a person after it (tell someone).',
+      explanation: '“According to + source” shows where the information comes from; “due to” gives a reason, not a source. “Around” shows an approximate date: The sources do not agree on one exact year, so the chapter gives a range. “Some sources say that …” shows that only part of the evidence reports this, so it is less certain. “Sources” is plural, so the verb is “say”; “tell” needs a person after it (tell someone).',
       feedback: {
         correct: 'Correct. You kept the writer’s careful attitude to historical evidence.',
         incorrect: 'Read the second paragraph of Chapter 2 again. Notice how the writer names the source, gives approximate dates, and shows that only some sources report the education.',
@@ -177,7 +177,7 @@ export const yunusB1LanguageFocusExercises: Record<number, Exercise[]> = {
       fillBlanksText: '… he received a good madrasa education and had a strong knowledge of Arabic, Persian, and the Islamic sciences of his time. But he [blank] studied Allah’s love and morals at the tekke, [blank] was a place where Sûfî education was [blank] under the guidance of a sheikh (spiritual tutor).',
       wordBank: ['also', 'which', 'taught', 'who', 'teaching'],
       correctAnswer: ['also', 'which', 'taught'],
-      explanation: '“But … also” adds a second kind of learning without cancelling the first: he studied at the madrasa and at the tekke. “Which” (not “who”) introduces extra information about a place or thing. “Was taught” is passive: the focus is on the education, not on the person who taught it.',
+      explanation: '“But … also” adds a second kind of learning without cancelling the first: He studied at the madrasa and at the tekke. “Which” (not “who”) introduces extra information about a place or thing. “Was taught” is passive: The focus is on the education, not on the person who taught it.',
       feedback: {
         correct: 'Well done. You added the second kind of learning and explained the tekke correctly.',
         incorrect: 'Check the last sentence of Chapter 2. Remember: “who” is for people, and after “was” we need a past participle for the passive.',

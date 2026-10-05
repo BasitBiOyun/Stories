@@ -79,7 +79,7 @@ export const abrahamA2LanguageFocusExercisesPart8: Record<number, Exercise[]> = 
       explanation: '“From … to …” gives the start and end of a route, “on camels” tells us how they travelled, and “near” gives a place. “During” and “for a long time” are about time, and “Finally” shows the end of the journey.',
       feedback: {
         correct: 'Correct. You separated place and travel words from time words.',
-        incorrect: 'Ask: does this phrase answer “Where?” or “How?”, or does it answer “When?” or “How long?”',
+        incorrect: 'Ask: Does this phrase answer “Where?” or “How?”, or does it answer “When?” or “How long?”',
       },
     },
     {
@@ -246,7 +246,7 @@ export const abrahamA2LanguageFocusExercisesPart10: Record<number, Exercise[]> =
         'They tell the water what to do.',
       ],
       correctAnswer: 2,
-      explanation: '“Flow” and “stop” are imperatives: base verbs that tell someone or something what to do. There is no subject before them.',
+      explanation: '“Flow” and “stop” are imperatives: Base verbs that tell someone or something what to do. There is no subject before them.',
       feedback: {
         correct: 'Correct. “Flow slowly, stop!” tells the water what to do.',
         incorrect: 'Look at the verbs “Flow” and “stop”. Is there a question mark? Is there a past form?',
@@ -270,7 +270,7 @@ export const abrahamA2LanguageFocusExercisesPart11: Record<number, Exercise[]> =
         'He is not sure he can help.',
       ],
       correctAnswer: 1,
-      explanation: '“Will + base verb” can make a promise about the future. “For sure” means “certainly”, so Ishmael is very sure: he will help.',
+      explanation: '“Will + base verb” can make a promise about the future. “For sure” means “certainly”, so Ishmael is very sure: He will help.',
       feedback: {
         correct: 'Correct. “I will help you for sure” is a promise.',
         incorrect: 'Look at “will” and “for sure”. Is Ishmael talking about the past or the future? Is he sure?',
@@ -310,10 +310,10 @@ export const abrahamA2LanguageFocusExercisesPart11: Record<number, Exercise[]> =
       fillBlanksText: '[blank] Abraham (pbuh) built the Sacred Ka’ba, his mission was over. … Today, people [blank] visit the House of Allah to make Hajj. … After many years, Ishmael’s family grew and grew. [blank] them was Muhammad, the Prophet of Islam (pbuh).',
       wordBank: ['After', 'still', 'One of', 'Before', 'yet'],
       correctAnswer: ['After', 'still', 'One of'],
-      explanation: '“After + past event” shows what came first: first he built the Ka’ba, then his mission was over. “Still” shows that something continues today. “One of + plural” picks one person from a group.',
+      explanation: '“After + past event” shows what came first: First he built the Ka’ba, then his mission was over. “Still” shows that something continues today. “One of + plural” picks one person from a group.',
       feedback: {
         correct: 'Correct. You connected the past, today and the Prophet’s family.',
-        incorrect: 'Read Chapter 14 again. When was the mission over: before or after the building? Which word shows that Hajj continues today?',
+        incorrect: 'Read Chapter 14 again. When was the mission over: Before or after the building? Which word shows that Hajj continues today?',
       },
     },
     { id: 'abraham-a2-language-14-production', type: 'reflection', title: 'Say It: A Shared Task', instructions: 'Write or say four sentences about a job your class did together.', question: 'What did you do, and why?', correctAnswer: null, explanation: 'Use one time expression, purpose with “to”, “will” for help, and “still” for continuation.', feedback: { correct: 'Keep the four ideas connected.', incorrect: '' }, discussionPrompts: [{ question: 'Sentence 1 — Begin with the time: “Last week, …”', mode: 'Individual' }, { question: 'Sentence 2 — Say what for: “We … to …”', mode: 'Individual' }, { question: 'Sentence 3 — Add a promise: “I will help you …”', mode: 'Pair' }, { question: 'Sentence 4 — Say what still happens: “Today, we still …”', mode: 'Individual' }] }

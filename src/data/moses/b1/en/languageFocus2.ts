@@ -28,10 +28,10 @@ export const mosesB1LanguageFocusChapter3: Record<number, Exercise[]> = {
       fillBlanksText: 'She was so sad, [blank] she knew that Allah was kinder to the baby Moses than she could be. Allah was their Lord and [blank] the Lord of the Nile. Allah told the waves to be kind [blank] carrying the baby. [blank], the waves brought the basket ashore near the Pharaoh’s palace.',
       wordBank: ['so', 'also', 'during', 'while', 'but', 'Soon'],
       correctAnswer: ['but', 'also', 'while', 'Soon'],
-      explanation: '“But” shows contrast: she was sad, and at the same time she trusted Allah. “Also” adds a second, similar idea (their Lord, and the Lord of the Nile too). “While + -ing” links two things happening at the same time. “Soon” moves the story a short time forward. “During” is followed by a noun (during the journey), not by an -ing verb like this, and “so” would introduce a result.',
+      explanation: '“But” shows contrast: She was sad, and at the same time she trusted Allah. “Also” adds a second, similar idea (their Lord, and the Lord of the Nile too). “While + -ing” links two things happening at the same time. “Soon” moves the story a short time forward. “During” is followed by a noun (during the journey), not by an -ing verb like this, and “so” would introduce a result.',
       feedback: {
         correct: 'Correct. You showed contrast, addition, time and sequence.',
-        incorrect: 'Read the middle of Chapter 3 again: is her trust a contrast to her sadness or a result of it? Which word can come before “carrying”?',
+        incorrect: 'Read the middle of Chapter 3 again: Is her trust a contrast to her sadness or a result of it? Which word can come before “carrying”?',
       },
     },
     {
@@ -113,7 +113,7 @@ export const mosesB1LanguageFocusChapter4: Record<number, Exercise[]> = {
       explanation: '“To + base verb” gives the purpose of an action: why she brought her mother. “Because of” is followed by a noun phrase (her goodness and courage). “Because” is followed by a full clause with a subject and a verb (he was originally not …). “For be” is not possible, and “so” would introduce a result, not a reason.',
       feedback: {
         correct: 'Correct. You separated purpose (to) from reason (because / because of).',
-        incorrect: 'Look at what comes after each gap: a base verb, a noun phrase or a full clause? Then check Chapter 4.',
+        incorrect: 'Look at what comes after each gap: A base verb, a noun phrase or a full clause? Then check Chapter 4.',
       },
     },
     {
@@ -182,7 +182,7 @@ export const mosesB1LanguageFocusChapter5: Record<number, Exercise[]> = {
       instructions: 'Read the sentence from Chapter 5. Is the statement true or false?',
       question: '“One day, while Moses (pbuh) was walking in the bazaar, he saw two men fighting.” This means that Moses finished his walk first, and after that he saw the two men.',
       correctAnswer: false,
-      explanation: '“While + past continuous” (was walking) describes a longer action that was already in progress. The past simple (saw) is a shorter event that happened in the middle of it. So Moses was still walking when he saw the fight. After that, “Suddenly” brings in a new, unexpected action: the man calls out for help.',
+      explanation: '“While + past continuous” (was walking) describes a longer action that was already in progress. The past simple (saw) is a shorter event that happened in the middle of it. So Moses was still walking when he saw the fight. After that, “Suddenly” brings in a new, unexpected action: The man calls out for help.',
       feedback: {
         correct: 'Correct. The walking was still in progress when he saw the fight.',
         incorrect: 'Look at “while … was walking”. Was the walk finished, or still happening, when he saw the men? Check the first sentence of Chapter 5.',
@@ -212,7 +212,7 @@ export const mosesB1LanguageFocusChapter5: Record<number, Exercise[]> = {
         },
       ],
       correctAnswer: null,
-      explanation: 'The past simple “saw” reports a single finished event; “see” is not normally used in the continuous with this meaning. “Who” begins a relative clause about a person: the same man who Moses helped the day before. “Understood that …” introduces a conclusion that Moses reached from what he saw: the man was fighting again.',
+      explanation: 'The past simple “saw” reports a single finished event; “see” is not normally used in the continuous with this meaning. “Who” begins a relative clause about a person: The same man who Moses helped the day before. “Understood that …” introduces a conclusion that Moses reached from what he saw: The man was fighting again.',
       feedback: {
         correct: 'Correct. You reported the event, identified the man and introduced Moses’s conclusion.',
         incorrect: 'Read the second half of Chapter 5 again. Is the man a person or a thing? What comes after “understood” when a full clause follows?',
@@ -239,7 +239,7 @@ export const mosesB1LanguageFocusChapter5: Record<number, Exercise[]> = {
         'I have wronged myself.': 'admits having done something wrong',
         'Are you going to kill me too?': 'accuses someone by asking a question',
       },
-      explanation: 'Short imperatives (Help me! Forgive me!) make urgent requests. “On purpose” means deliberately, so “I didn’t do it on purpose” means it was an accident. “I have wronged myself” uses the present perfect: a past action whose result matters now, so Moses admits his mistake. “Are you going to …?” asks about a next action, but here it is an accusation, not a real question.',
+      explanation: 'Short imperatives (Help me! Forgive me!) make urgent requests. “On purpose” means deliberately, so “I didn’t do it on purpose” means it was an accident. “I have wronged myself” uses the present perfect: A past action whose result matters now, so Moses admits his mistake. “Are you going to …?” asks about a next action, but here it is an accusation, not a real question.',
       feedback: {
         correct: 'Correct. You recognised requests, an admission and an accusation.',
         incorrect: 'Read Moses’s prayer and the man’s last words in Chapter 5 again. Who is asking for help, who is sorry, and who is blaming someone?',
@@ -332,7 +332,7 @@ export const mosesB1LanguageFocusChapter6: Record<number, Exercise[]> = {
         },
       ],
       correctAnswer: null,
-      explanation: '“Where” begins a relative clause about a place: a well where many men gathered. “Who” is used for people: shepherds who were watering their sheep. In a question with a question word, the auxiliary comes before the subject: “Why are you sitting …?” Moses uses the present continuous because he is asking about what he can see at that moment.',
+      explanation: '“Where” begins a relative clause about a place: A well where many men gathered. “Who” is used for people: Shepherds who were watering their sheep. In a question with a question word, the auxiliary comes before the subject: “Why are you sitting …?” Moses uses the present continuous because he is asking about what he can see at that moment.',
       feedback: {
         correct: 'Well done. You corrected the place clause, the person clause and the question.',
         incorrect: 'Compare each sentence with the last paragraph of Chapter 6. Is the clause about a place or about people? Where does “are” go in a question?',
@@ -384,7 +384,7 @@ export const mosesB1LanguageFocusChapter7: Record<number, Exercise[]> = {
       fillBlanksText: 'Our father is very old. He [blank] come with us. There are no young men in our house to help us with the animals. [blank], we have to take the sheep to the water ourselves. We have to wait our turn. We have to be patient [blank] the other sheepmen go away.',
       wordBank: ['must not', 'cannot', 'Because', 'until', 'So', 'during'],
       correctAnswer: ['cannot', 'So', 'until'],
-      explanation: '“Cannot” shows that the father is not able to come. “So” introduces the result: nobody can help, so the girls have to do the work themselves. “Have to” shows necessity. “Until” gives the end point of the waiting. “Must not” would mean he is not allowed to come, and “when” would not show how long they wait.',
+      explanation: '“Cannot” shows that the father is not able to come. “So” introduces the result: Nobody can help, so the girls have to do the work themselves. “Have to” shows necessity. “Until” gives the end point of the waiting. “Must not” would mean he is not allowed to come, and “when” would not show how long they wait.',
       feedback: {
         correct: 'Correct. You linked the problem, its result and the end of the waiting.',
         incorrect: 'Read the first paragraph of Chapter 7 again. Is the father not able to come, or not allowed to come? How long do the girls wait?',
@@ -488,7 +488,7 @@ export const mosesB1LanguageFocusChapter8: Record<number, Exercise[]> = {
         hillside: 'the sloping side of a mountain',
         'burning sticks': 'pieces of wood that are on fire',
       },
-      explanation: '“A stranger” and “urgently” explain why Moses accepted the job: he was new in Midian and needed work and a home quickly. “With patience” describes how the family lived. “Hillside” and “burning sticks” build the winter scene and Moses’s plan to get warm.',
+      explanation: '“A stranger” and “urgently” explain why Moses accepted the job: He was new in Midian and needed work and a home quickly. “With patience” describes how the family lived. “Hillside” and “burning sticks” build the winter scene and Moses’s plan to get warm.',
       feedback: {
         correct: 'Correct. These words explain Moses’s decision and build the scene.',
         incorrect: 'Find each word in Chapter 8 and use the sentence around it to work out its meaning.',

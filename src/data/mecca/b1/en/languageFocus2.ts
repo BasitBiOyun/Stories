@@ -74,7 +74,7 @@ export const meccaB1LanguageFocusChapter3: Record<number, Exercise[]> = {
       explanation: '“Where” adds information about a place: in this valley, no crops grow. (“Which” would need a subject or object, as in “a valley which has no crops”.) “To + verb” gives the purpose of an action: why did Abraham come? To reconstruct the Ka’ba. “Help + object + base verb” shows that one thing supported a change: pilgrimage helped the city grow.',
       feedback: {
         correct: 'Correct. You chose the right form for place, purpose and growth.',
-        incorrect: 'Ask: does the gap describe a place, answer “why?”, or follow “helped the city”? Then check the first and last paragraphs of Chapter 3.',
+        incorrect: 'Ask: Does the gap describe a place, answer “why?”, or follow “helped the city”? Then check the first and last paragraphs of Chapter 3.',
       },
     },
     {
@@ -200,9 +200,9 @@ export const meccaB1LanguageFocusChapter5: Record<number, Exercise[]> = {
         'There is no difference; the writer only wanted some variety.',
       ],
       correctAnswer: 1,
-      explanation: 'Both give a reason. The difference is what follows: “because + subject + verb” (Mecca was …) and “because of + noun phrase” (this safe atmosphere). Both can start a sentence or come in the middle. The two sentences frame the chapter: location made Mecca rich, and safety brought more visitors.',
+      explanation: 'Both give a reason. The difference is what follows: “because + subject + verb” (Mecca was …) and “because of + noun phrase” (this safe atmosphere). Both can start a sentence or come in the middle. The two sentences frame the chapter: Location made Mecca rich, and safety brought more visitors.',
       feedback: {
-        correct: 'Correct. Look at what comes straight after each one: a clause or a noun phrase.',
+        correct: 'Correct. Look at what comes straight after each one: A clause or a noun phrase.',
         incorrect: 'Both sentences explain why something happened. Now look at the words straight after “because” and after “because of”. Is there a verb?',
       },
     },
@@ -357,11 +357,11 @@ export const meccaB1LanguageFocusChapter7: Record<number, Exercise[]> = {
       options: [
         'The writer thinks that rich people should be leaders.',
         'The leaders wanted information about the Prophet’s life.',
-        'The leaders were objecting: they thought money and status should decide who leads.',
+        'The leaders were objecting: They thought money and status should decide who leads.',
         'The leaders agreed that Muhammad should be the leader.',
       ],
       correctAnswer: 2,
-      explanation: '“Asked why …” reports a question, but here the question is really an objection. The words “while they were rich and important” show the leaders’ own view: wealth and status should give power. The writer reports this view; he does not agree with it. This fits the chapter’s picture of a society where wealth and tribe decided a person’s value.',
+      explanation: '“Asked why …” reports a question, but here the question is really an objection. The words “while they were rich and important” show the leaders’ own view: Wealth and status should give power. The writer reports this view; he does not agree with it. This fits the chapter’s picture of a society where wealth and tribe decided a person’s value.',
       feedback: {
         correct: 'Correct. The reported question shows the leaders’ objection, not the writer’s opinion.',
         incorrect: 'Look at who is asking and at the words “while they were rich and important”. Is this the writer speaking, or the leaders?',
@@ -404,7 +404,7 @@ export const meccaB1LanguageFocusChapter7: Record<number, Exercise[]> = {
       explanation: '“Could not + verb” shows that people were unable to do something. “Because of” + noun phrase (high interest) gives the cause; “because” would need a subject and verb. “Push + person + into” shows movement into a worse situation, and “deeper” shows that the situation became more serious.',
       feedback: {
         correct: 'Correct. You showed the inability, its cause and the worsening result.',
-        incorrect: 'Look at what follows each gap: a verb, a noun phrase, or the word “debt” after “deeper”. Then check the first paragraph of Chapter 7.',
+        incorrect: 'Look at what follows each gap: A verb, a noun phrase, or the word “debt” after “deeper”. Then check the first paragraph of Chapter 7.',
       },
     },
     { id: 'mecca-b1-language-7-production', type: 'reflection', title: 'Describe Inequality Without Retelling the Story', instructions: 'Write or say six sentences about a place where life was unfair for some people.', question: 'Who had a hard life, and who spoke up?', correctAnswer: null, explanation: 'A strong response should connect ideas with language such as “because of...”, “could not...”, “while...”, “the most important...”, “when...”, and “asked why...” or a natural equivalent.', feedback: { correct: 'Keep the paragraph connected and use each form to express a real relationship between ideas.', incorrect: '' }, discussionPrompts: [
@@ -454,7 +454,7 @@ export const meccaB1LanguageFocusChapter8: Record<number, Exercise[]> = {
       explanation: '“So” introduces a result (hard life → strength was important). “Because” + subject + verb gives a reason (why were men valued?). “To + verb” at the start of a sentence gives the purpose of the action that follows (why did families want many sons?). “For” and “because of” cannot be followed by a verb here.',
       feedback: {
         correct: 'Correct. You chose the right link for result, reason and purpose.',
-        incorrect: 'For each gap, ask: is this a result, a reason, or the aim of an action? Then check the first two paragraphs of Chapter 8.',
+        incorrect: 'For each gap, ask: Is this a result, a reason, or the aim of an action? Then check the first two paragraphs of Chapter 8.',
       },
     },
     {
@@ -471,7 +471,7 @@ export const meccaB1LanguageFocusChapter8: Record<number, Exercise[]> = {
         },
       ],
       correctAnswer: null,
-      explanation: '“Without + noun” is a short way to express a condition: “without a tribe” = “if people did not have a tribe”. “Could not easily” shows limited ability: protection was very difficult, not simply impossible. That is why the next sentence says a person outside tribal protection was “in great danger”.',
+      explanation: '“Without + noun” is a short way to express a condition: “without a tribe” = “if people did not have a tribe”. “Could not easily” shows limited ability: Protection was very difficult, not simply impossible. That is why the next sentence says a person outside tribal protection was “in great danger”.',
       feedback: {
         correct: 'Well done. You turned the “without” phrase into a condition and kept the limited ability.',
         incorrect: 'Keep “could not” and the word “easily” in your answer. Check the second paragraph of Chapter 8.',

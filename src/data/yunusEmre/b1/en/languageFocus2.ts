@@ -45,7 +45,7 @@ export const yunusB1LanguageFocusChapter4: Exercise[] = [
       },
     ],
     correctAnswer: null,
-    explanation: 'The superlative “the most + adjective” with “the” evaluates Alaeddin I’s rule as the highest point of the Seljuks. “However” turns the story in a new direction: after the strongest period comes a decline. “Where” begins a clause about a place (the land where he lived); “which” would need a subject or object after it, and “when” is for time.',
+    explanation: 'The superlative “the most + adjective” with “the” evaluates Alaeddin I’s rule as the highest point of the Seljuks. “However” turns the story in a new direction: After the strongest period comes a decline. “Where” begins a clause about a place (the land where he lived); “which” would need a subject or object after it, and “when” is for time.',
     feedback: {
       correct: 'Correct. You chose the superlative, the contrast word and the place word.',
       incorrect: 'Read the second paragraph of Chapter 4 again. Is the sentence praising the best period, turning to a change, or describing a place?',
@@ -112,7 +112,7 @@ export const yunusB1LanguageFocusChapter5: Exercise[] = [
       'The Turkmen politely asked the leaders to save them.',
     ],
     correctAnswer: 2,
-    explanation: '“Would” is the past form of “will”. After a past verb like “believed”, it shows a future that people expected at that time: they thought, “These leaders will save us.” The sentence does not say that the leaders really saved them. In fact, the chapter says the Seljuk forces put an end to the rebellion.',
+    explanation: '“Would” is the past form of “will”. After a past verb like “believed”, it shows a future that people expected at that time: They thought, “These leaders will save us.” The sentence does not say that the leaders really saved them. In fact, the chapter says the Seljuk forces put an end to the rebellion.',
     feedback: {
       correct: 'Correct. “Believed … would” reports what people expected, seen from that time in the past.',
       incorrect: 'Read the first paragraph of Chapter 5 again. Did the rebellion succeed in the end? So is “would save” a fact or an expectation?',
@@ -127,7 +127,7 @@ export const yunusB1LanguageFocusChapter5: Exercise[] = [
     fillBlanksText: '[blank], this situation gave the Mongols in Azerbaijan the courage to attack the Seljuk Empire. In 1242, the Mongols captured Erzurum and killed its people. This disaster [blank] deep sorrow and fear among the Seljuk people. … The Mongols used the classic false retreat and circling tactic. [blank], they easily defeated the Seljuks.',
     wordBank: ['caused', 'However', 'Thus', 'made', 'Because'],
     correctAnswer: ['However', 'caused', 'Thus'],
-    explanation: '“However” marks an unexpected turn: the Seljuks had just ended the rebellion, but this same situation gave the Mongols courage. “Cause + noun” shows what an event produced (“caused deep sorrow and fear”); we do not say “made sorrow”. “Thus” introduces a result of what was just described: the tactic worked, so they won easily. “Because” cannot stand alone with a comma before a sentence.',
+    explanation: '“However” marks an unexpected turn: The Seljuks had just ended the rebellion, but this same situation gave the Mongols courage. “Cause + noun” shows what an event produced (“caused deep sorrow and fear”); we do not say “made sorrow”. “Thus” introduces a result of what was just described: The tactic worked, so they won easily. “Because” cannot stand alone with a comma before a sentence.',
     feedback: {
       correct: 'Well done. You linked the turn, the emotional result and the military result.',
       incorrect: 'Read the second paragraph of Chapter 5 again. Which blank starts a surprising new development, and which one follows from the tactic?',
@@ -187,7 +187,7 @@ export const yunusB1LanguageFocusChapter6: Exercise[] = [
     question: 'Who does the action in each sentence?',
     dragDropGroups: [
       {
-        group: 'Active: the subject acts',
+        group: 'Active: The subject acts',
         items: [
           'They caused a lot of destruction, sadness, and misery everywhere they went.',
           'These events created an atmosphere of panic in Anatolia …',
@@ -195,7 +195,7 @@ export const yunusB1LanguageFocusChapter6: Exercise[] = [
         ],
       },
       {
-        group: 'Passive: the action happens to the subject',
+        group: 'Passive: The action happens to the subject',
         items: [
           'The men were killed by the sword.',
           'The women and children were taken captive …',
@@ -204,12 +204,12 @@ export const yunusB1LanguageFocusChapter6: Exercise[] = [
       },
     ],
     correctAnswer: {
-      'Active: the subject acts': [
+      'Active: The subject acts': [
         'They caused a lot of destruction, sadness, and misery everywhere they went.',
         'These events created an atmosphere of panic in Anatolia …',
         'After 1277, the Mongols began to administer Anatolia …',
       ],
-      'Passive: the action happens to the subject': [
+      'Passive: The action happens to the subject': [
         'The men were killed by the sword.',
         'The women and children were taken captive …',
         '… in 1308, the lands of Anatolia were directly attached to the Ilkhanate Empire …',
@@ -245,7 +245,7 @@ export const yunusB1LanguageFocusChapter6: Exercise[] = [
       },
     ],
     correctAnswer: null,
-    explanation: '“In time … became + adjective” shows a slow change of state in the past. “Almost like + noun” compares: the sultans were not really Mongol officials, but they behaved nearly as if they were. The income did not send anything; someone sent it, so the passive infinitive is needed: “began to be sent”.',
+    explanation: '“In time … became + adjective” shows a slow change of state in the past. “Almost like + noun” compares: The sultans were not really Mongol officials, but they behaved nearly as if they were. The income did not send anything; someone sent it, so the passive infinitive is needed: “began to be sent”.',
     feedback: {
       correct: 'Correct. You showed the change of state, the comparison and the passive process.',
       incorrect: 'Read the second paragraph of Chapter 6 again. Did the income send something, or was it sent? Is the chapter saying the sultans were officials, or nearly like them?',
@@ -302,7 +302,7 @@ export const yunusB1LanguageFocusChapter7: Exercise[] = [
       'The second sentence shows that Yunus disagreed with the earlier Sûfîs.',
     ],
     correctAnswer: 2,
-    explanation: '“Comes from” names the origin or foundation of something. “Was also inspired by” adds a second, additional influence: ideas and experiences that encouraged him. The word “also” shows that this influence is added to the foundation, not placed above it.',
+    explanation: '“Comes from” names the origin or foundation of something. “Was also inspired by” adds a second, additional influence: Ideas and experiences that encouraged him. The word “also” shows that this influence is added to the foundation, not placed above it.',
     feedback: {
       correct: 'Correct. “Comes from” gives the foundation, and “was also inspired by” adds another influence.',
       incorrect: 'Look at the verbs: “comes from” and “was also inspired by”. Which one names the origin, and which one adds something with “also”?',
@@ -350,7 +350,7 @@ export const yunusB1LanguageFocusChapter7: Exercise[] = [
     fillBlanksText: 'Anatolia was experiencing total chaos. [blank] the same period, the shaykhs from the regions of Turkestan, Khorasan and Iran came to Anatolia [blank] Mongol pressure. … So in [blank] an environment, Yunus Emre also appeared as a wise Sûfî and dervish and travelled around Anatolia. … Poetry was his [blank] influential tool.',
     wordBank: ['under', 'During', 'most', 'such', 'While', 'so', 'more'],
     correctAnswer: ['During', 'under', 'such', 'most'],
-    explanation: '“During + noun” places an event inside a period; “while” needs a clause (while + subject + verb). “Under … pressure” shows the force behind an action. “Such an environment” points back to everything described before: chaos, pressure and new teachers. “His most influential tool” is a superlative: poetry was the strongest of his ways of reaching people.',
+    explanation: '“During + noun” places an event inside a period; “while” needs a clause (while + subject + verb). “Under … pressure” shows the force behind an action. “Such an environment” points back to everything described before: chaos, pressure and new teachers. “His most influential tool” is a superlative: Poetry was the strongest of his ways of reaching people.',
     feedback: {
       correct: 'Well done. You placed the events in time and linked the situation with Yunus’s response.',
       incorrect: 'Check the first two paragraphs of Chapter 7. Remember: “during” comes before a noun, and a superlative after “his” needs “most”.',
@@ -403,7 +403,7 @@ export const yunusB1LanguageFocusChapter8: Exercise[] = [
     fillBlanksText: 'One of the most important basic spiritual principles in his works is the idea of Tawhid, [blank] means the Oneness of Allah. [blank] Yunus Emre, Allah, the Creator, is the source of all things. [blank] everything is connected to Him.',
     wordBank: ['So', 'which', 'According to', 'who', 'Due to', 'But'],
     correctAnswer: ['which', 'According to', 'So'],
-    explanation: '“…, which means …” adds a definition to a word or idea; “who” is only for people. “According to + person” shows whose view the writer is reporting; “due to” gives a reason, not a viewpoint. “So” draws a conclusion from the idea before it: if Allah is the source of all things, then everything is connected to Him. “But” would show a contrast that is not there.',
+    explanation: '“…, which means …” adds a definition to a word or idea; “who” is only for people. “According to + person” shows whose view the writer is reporting; “due to” gives a reason, not a viewpoint. “So” draws a conclusion from the idea before it: If Allah is the source of all things, then everything is connected to Him. “But” would show a contrast that is not there.',
     feedback: {
       correct: 'Well done. You defined the idea, reported the view and drew the conclusion.',
       incorrect: 'Read the second paragraph of Chapter 8 again. Which blank gives a definition, which names whose view it is, and which draws a conclusion?',
@@ -435,7 +435,7 @@ export const yunusB1LanguageFocusChapter8: Exercise[] = [
     },
   },
   {
-    id: 'yunus-b1-language-8-production', type: 'reflection', title: 'Explain an Idea from Definition to Conclusion', instructions: 'Write or say five or six sentences about an important idea, for example fair play.', question: 'What does the idea mean, and why does it matter?', correctAnswer: null, explanation: 'Useful language from the chapter includes “the idea of ... which means ...”, “according to ...”, “..., which is/was ...”, “so ...”, “there is only one ..., and that is ...”, and “whoever ...”.', feedback: { correct: 'Keep the paragraph connected: define the idea first, develop it, then move to a consequence or general statement.', incorrect: '' }, discussionPrompts: [
+    id: 'yunus-b1-language-8-production', type: 'reflection', title: 'Explain an Idea from Definition to Conclusion', instructions: 'Write or say five or six sentences about an important idea, for example fair play.', question: 'What does the idea mean, and why does it matter?', correctAnswer: null, explanation: 'Useful language from the chapter includes “the idea of ... which means ...”, “according to ...”, “..., which is/was ...”, “so ...”, “there is only one ..., and that is ...”, and “whoever ...”.', feedback: { correct: 'Keep the paragraph connected: Define the idea first, develop it, then move to a consequence or general statement.', incorrect: '' }, discussionPrompts: [
       { question: 'Sentence 1 — Explain the idea: “… is …, which means …”', mode: 'Individual' },
       { question: 'Sentence 2 — Give a view: “According to …, …”', mode: 'Individual' },
       { question: 'Sentence 3 — Add information: “This idea, which …, …”', mode: 'Pair' },

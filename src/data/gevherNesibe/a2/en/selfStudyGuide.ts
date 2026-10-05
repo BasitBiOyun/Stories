@@ -28,12 +28,12 @@ const selfPlans: SelfPlan[] = [
     read: ['Look at the title. What does “ahead of its time” mean? Guess.', 'Listen to the chapter once. Follow the text with your eyes.', 'Read paragraph 2 again. Find two times: Kayseri and Europe.'],
     find: ['Paragraph 1: find two reasons why the hospital is special.', 'Paragraph 3: find the capital city and the second capital.', 'Paragraph 3: find who built the medical center.'],
     words: ['Word Notes: still standing, medical, practical training, scientists.', '“Medical education in Anatolia had two parts: classroom education and practical training.” What is the second part?', 'Write one sentence: My town is the center of ….'],
-    languageFocus: 'Read “It was built in 1205–1206.” and say what is important: the building. Then complete three sentences with the oldest, the first and later.',
-    sayIt: 'Say the names: GEV-her ne-SI-be, KAY-se-ri, KON-ya. Say the year: twelve oh five.',
+    languageFocus: 'Read “It was built in 1205–1206.” and say what is important: The building. Then complete three sentences with the oldest, the first and later.',
+    sayIt: 'Say the names: GEV-her ne-SI-be, KAY-se-ri, KON-ya. Say the year: Twelve oh five.',
     quick: 'You will choose why the hospital is the first in the world. The answer is in paragraph 1.',
     wrong: ['Go back to paragraph 1.', 'Find the words “the first place in the world”.', 'Try again.'],
     check: ['Can I say where the hospital is?', 'Can I say who built it?', 'Can I say one sentence with “was built”?'],
-    use: 'Language Focus, last activity: describe an old building in your town in three sentences.',
+    use: 'Language Focus, last activity: Describe an old building in your town in three sentences.',
     reflect: 'Kayseri was a city of scientists. What is your town famous for?',
   },
   {
@@ -49,7 +49,7 @@ const selfPlans: SelfPlan[] = [
     quick: 'You will put four events in order. Read the whole chapter first.',
     wrong: ['Go back to the start of Chapter 2.', 'Look for “To separate them” and “Some time later”.', 'Try again.'],
     check: ['Can I tell the story in four sentences?', 'Can I say why she died young?', 'Can I use “wanted … to …”?'],
-    use: 'Language Focus, last activity: say three sentences about wishes in your family.',
+    use: 'Language Focus, last activity: Say three sentences about wishes in your family.',
     reflect: 'Her brother said sorry to her. Why is it important to say sorry?',
   },
   {
@@ -65,7 +65,7 @@ const selfPlans: SelfPlan[] = [
     quick: 'You will decide if a sentence is true or false. Read her last two sentences.',
     wrong: ['Go back to the end of her speech.', 'Find the word “everyone”.', 'Try again.'],
     check: ['Can I name three things in her wish?', 'Can I say who should pay?', 'Can I write one sentence with “let”?'],
-    use: 'Language Focus, last activity: write a wish for a new place in your town.',
+    use: 'Language Focus, last activity: Write a wish for a new place in your town.',
     reflect: 'She wanted to help people after her death. How can one person help many people?',
   },
   {
@@ -81,23 +81,23 @@ const selfPlans: SelfPlan[] = [
     quick: 'You will choose why people say “Twin Madrasas”. Find the word “Because” in paragraph 2.',
     wrong: ['Go back to paragraph 2.', 'Read the sentence that starts with “Because”.', 'Try again.'],
     check: ['Can I name the medical school and the hospital?', 'Can I say how long it took?', 'Can I use “next to”?'],
-    use: 'Language Focus, last activity: say three sentences about your school building.',
+    use: 'Language Focus, last activity: Say three sentences about your school building.',
     reflect: 'Her brother made her wish come true. Did someone ever help you with a wish?',
   },
   {
     chapter: 'Chapter 5: Learning Beside the Patients',
     hotspots: ['Warm Floors', 'Lessons in the Garden'],
     goals: ['I can say where students learned and worked.', 'I can describe the heating system.', 'I can use “probably”.'],
-    notice: ['Students learned in two buildings: lessons in one, patients in the other.', 'Look at “Students probably lived in small rooms.” Probably = not 100% sure.'],
+    notice: ['Students learned in two buildings: Lessons in one, patients in the other.', 'Look at “Students probably lived in small rooms.” Probably = not 100% sure.'],
     read: ['Look at the title. Where do students learn?', 'Listen to the chapter once.', 'Make three columns: Lessons / Patients / Summer. Fill them.'],
     find: ['Paragraph 1: find where students worked with real patients.', 'Paragraph 1: find what was under the floor.', 'Paragraph 2: find who was in the hospital team.'],
     words: ['Word Notes: heating system, steam, similar to.', '“It used hot steam from a bathhouse near the school.” Where did the steam come from?', 'Write one sentence: My school is similar to ….'],
-    languageFocus: 'Read the “probably” sentence and decide: sure or not sure? Then choose had, used and saw for three sentences.',
+    languageFocus: 'Read the “probably” sentence and decide: Sure or not sure? Then choose had, used and saw for three sentences.',
     sayIt: 'Say: HEAT-ing SYS-tem, STEAM, PHAR-ma-cist.',
     quick: 'You will match three places with what students did. Read the whole chapter first.',
     wrong: ['Go back to Chapter 5.', 'Find Gıyâsiye, Şifâiye and summer.', 'Try again.'],
     check: ['Can I say where students met patients?', 'Can I say how the floors were warm?', 'Can I say one sentence with “probably”?'],
-    use: 'Language Focus, last activity: say three sentences about lessons at your school.',
+    use: 'Language Focus, last activity: Say three sentences about lessons at your school.',
     reflect: 'Students learned with real patients. Is it better to learn from books or by doing? Why?',
   },
   {
@@ -113,7 +113,7 @@ const selfPlans: SelfPlan[] = [
     quick: 'You will choose whose books students read. Find the word “especially”.',
     wrong: ['Go back to the middle of Chapter 6.', 'Find the word “especially”.', 'Try again.'],
     check: ['Can I name one teacher?', 'Can I name the subjects?', 'Can I use “another”?'],
-    use: 'Language Focus, last activity: say three sentences about your teachers.',
+    use: 'Language Focus, last activity: Say three sentences about your teachers.',
     reflect: 'The students read books from many centuries. Which book is important to you?',
   },
   {
@@ -129,7 +129,7 @@ const selfPlans: SelfPlan[] = [
     quick: 'You will choose what connects the two buildings. Read the first sentence.',
     wrong: ['Go back to the first sentence of Chapter 7.', 'Read it slowly.', 'Try again.'],
     check: ['Can I describe one room?', 'Can I say why food came from outside?', 'Can I use “none of”?'],
-    use: 'Language Focus, last activity: describe your home in three sentences.',
+    use: 'Language Focus, last activity: Describe your home in three sentences.',
     reflect: 'The rooms had no fireplaces. How do you think people stayed warm? Look back at Chapter 5.',
   },
   {
@@ -145,7 +145,7 @@ const selfPlans: SelfPlan[] = [
     quick: 'You will choose how doctors helped these patients. Read paragraph 1.',
     wrong: ['Go back to paragraph 1.', 'Find the words “to help these patients”.', 'Try again.'],
     check: ['Can I say how music helped?', 'Can I describe the bathhouse?', 'Can I use one adjective + noun?'],
-    use: 'Language Focus, last activity: say three sentences about how music helps you.',
+    use: 'Language Focus, last activity: Say three sentences about how music helps you.',
     reflect: 'Doctors cared for the mind and the body. What helps you feel calm?',
   },
   {
@@ -161,7 +161,7 @@ const selfPlans: SelfPlan[] = [
     quick: 'You will choose what the diploma showed. Read paragraph 1.',
     wrong: ['Go back to paragraph 1.', 'Find the word “diploma”.', 'Try again.'],
     check: ['Can I name the two parts?', 'Can I say what the diploma showed?', 'Can I use “when”?'],
-    use: 'Language Focus, last activity: say three sentences about your school year.',
+    use: 'Language Focus, last activity: Say three sentences about your school year.',
     reflect: 'The diploma showed the names of teachers. Why are teachers important in your life?',
   },
   {
@@ -177,7 +177,7 @@ const selfPlans: SelfPlan[] = [
     quick: 'You will match three scientists with their ideas. Read the whole chapter first.',
     wrong: ['Go back to Chapter 10.', 'Find each name and read the words after it.', 'Try again.'],
     check: ['Can I say one idea of each scientist?', 'Can I say why doctors used music?', 'Can I use “should + verb”?'],
-    use: 'Language Focus, last activity: write three sentences of advice for a sad friend.',
+    use: 'Language Focus, last activity: Write three sentences of advice for a sad friend.',
     reflect: 'Good words from loved ones can help sick people. How can you help a sick friend?',
   },
   {
@@ -193,7 +193,7 @@ const selfPlans: SelfPlan[] = [
     quick: 'You will decide if a sentence about Gevher Nesibe is true or false. Read the last paragraph.',
     wrong: ['Go back to the last paragraph.', 'Find the word “never”.', 'Try again.'],
     check: ['Can I say why the hospital was important?', 'Can I tell the whole story in five sentences?', 'Can I use “never”?'],
-    use: 'Language Focus, last activity: say three sentences about a person people remember.',
+    use: 'Language Focus, last activity: Say three sentences about a person people remember.',
     reflect: 'Gevher Nesibe’s wish helped people for many centuries. What would you like people to remember about you?',
   },
 ];
@@ -222,12 +222,12 @@ export const gevherNesibeA2SelfStudyGuide: TeacherGuideSection[] = selfPlans.map
 
 export const gevherNesibeA2StudentGuideSections: StudentGuideSection[] = [
   { title: '1. One Chapter at a Time', icon: 'Target', text: 'Study one chapter in one sitting. It takes about 20 minutes. Open “Study Path” to see the steps for your chapter.', points: ['Look at the title.', 'Listen and follow the text.', 'Read one paragraph at a time.', 'Do the Quick Challenge.', 'Do the Language Focus.'] },
-  { title: '2. Listen and Read', icon: 'Ear', text: 'Listen first when audio is available, then read.', points: ['First time: listen or read for the main idea.', 'Second time: follow the words with your eyes.', 'Stop and say one short sentence again.'] },
+  { title: '2. Listen and Read', icon: 'Ear', text: 'Listen first when audio is available, then read.', points: ['First time: Listen or read for the main idea.', 'Second time: Follow the words with your eyes.', 'Stop and say one short sentence again.'] },
   { title: '3. Draw and Write', icon: 'Compass', text: 'This book is about a building and its people. Small drawings help you remember.', points: ['Draw the two buildings side by side.', 'Add a fact to each part.', 'Use your drawing to retell the story.'] },
   { title: '4. Word Notes and Hotspots', icon: 'BookOpen', text: 'Each chapter has underlined words. Tap a word to see its Word Note. Tap the hotspots on the picture for short notes.', points: ['Read the word in its sentence first.', 'Guess the meaning, then check the Word Note.', 'Write the word and one sentence in your notebook.'] },
   { title: '5. Quick Challenge and Language Focus', icon: 'CheckCircle', text: 'Each chapter has one Quick Challenge and three Language Focus activities.', points: ['Answer first, then read the feedback.', 'Wrong answer? Find the answer sentence and try again.', 'Activity 1: look. Activity 2: practise. Activity 3: use the language about your own life.'] },
   { title: '6. When It Is Hard', icon: 'HelpCircle', text: 'Some chapters have many names. Change how you study, not your goal.', points: ['Read one paragraph only.', 'Write the names in a list.', 'Look at the hotspots again.', 'Learn only two words today.'] },
-  { title: '7. Values in the Story', icon: 'Heart', text: 'This story shows compassion, responsibility and love of learning. Turn each value into one small action.', points: ['Compassion: a hospital free for everyone (Chapter 3).', 'Responsibility: a brother makes a wish come true (Chapter 4).', 'Learning: students learn from great teachers and books (Chapters 5–6).', 'Care: doctors help the mind and the body (Chapters 8 and 10).'] },
+  { title: '7. Values in the Story', icon: 'Heart', text: 'This story shows compassion, responsibility and love of learning. Turn each value into one small action.', points: ['Compassion: A hospital free for everyone (Chapter 3).', 'Responsibility: A brother makes a wish come true (Chapter 4).', 'Learning: Students learn from great teachers and books (Chapters 5–6).', 'Care: Doctors help the mind and the body (Chapters 8 and 10).'] },
   { title: '8. At the End of the Book', icon: 'Stars', text: 'After Chapter 11, do the review pages in this order. Go back to a chapter when an answer is not clear.', points: ['Knowledge Check', 'Vocabulary Challenge', 'Master Glossary', 'Language Review', 'Final Challenge'] },
 ];
 

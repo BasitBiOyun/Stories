@@ -29,11 +29,11 @@ const selfPlans: SelfPlan[] = [
     find: ['Paragraph 1: find three groups of people who lived side by side.', 'Paragraph 3: find why people traveled a lot.', 'Paragraph 4: find where and when Ibn Jubayr was born.'],
     words: ['Word Notes: traded, location, learning, rural.', '“They often worked, traded and studied together.” What did they buy and sell?', 'Write one sentence: My town is famous because of its ….'],
     languageFocus: 'Match four verbs with their past forms: build → built, take → took, bring → brought, have → had. Then complete three sentences with because of, so and because. Because of comes before a noun; because comes before a sentence; so gives the result.',
-    sayIt: 'Say the names: al-AN-da-lus, va-LEN-ci-a, gra-NA-da, COR-do-ba. Say the big number: seven hundred thousand.',
+    sayIt: 'Say the names: al-AN-da-lus, va-LEN-ci-a, gra-NA-da, COR-do-ba. Say the big number: Seven hundred thousand.',
     quick: 'You will match three cities with three facts. All the facts are in paragraph 4.',
     wrong: ['Go back to paragraph 4.', 'Find each city name and read the words after it.', 'Try again.'],
     check: ['Can I say what Al-Andalus was?', 'Can I say where Ibn Jubayr was born?', 'Can I say one sentence with because of?'],
-    use: 'Language Focus, last activity: describe a big city in three sentences with a fact, because of and so.',
+    use: 'Language Focus, last activity: Describe a big city in three sentences with a fact, because of and so.',
     reflect: 'In Al-Andalus, different people worked and studied together. How do people from different places work together in your school or town?',
   },
   {
@@ -49,7 +49,7 @@ const selfPlans: SelfPlan[] = [
     quick: 'You will choose his biggest dream. Read paragraph 1 before you answer.',
     wrong: ['Go back to paragraph 1.', 'Find the words “biggest dreams”.', 'Try again.'],
     check: ['Can I say what he studied?', 'Can I say his job?', 'Can I say one dream of mine with to + verb?'],
-    use: 'Language Focus, last activity: say three sentences about your own dreams: “One of my biggest dreams is to …”.',
+    use: 'Language Focus, last activity: Say three sentences about your own dreams: “One of my biggest dreams is to …”.',
     reflect: 'Ibn Jubayr wanted to learn new things on his journey. What do you want to learn this year?',
   },
   {
@@ -65,7 +65,7 @@ const selfPlans: SelfPlan[] = [
     quick: 'You will read a sentence about when he wrote. Is it true or false? Read paragraph 2.',
     wrong: ['Go back to paragraph 2.', 'Find the words “almost every day”.', 'Try again.'],
     check: ['Can I say what the Rihla is?', 'Can I say why the journey was dangerous?', 'Can I say how he traveled?'],
-    use: 'Language Focus, last activity: tell how you traveled on a real trip with by and on foot.',
+    use: 'Language Focus, last activity: Tell how you traveled on a real trip with by and on foot.',
     reflect: 'Ibn Jubayr wrote almost every day. What would you write about your day today?',
   },
   {
@@ -76,12 +76,12 @@ const selfPlans: SelfPlan[] = [
     read: ['Look at the title and the picture. What can you see?', 'Listen to the chapter once. Follow the route on a map.', 'Read paragraph 1 again. Find the dates.'],
     find: ['Paragraph 1: find where the storm caught the ship.', 'Paragraph 1: find why he traveled by sea.', 'Paragraph 2: find what amazed him in Alexandria.'],
     words: ['Word Note: amazed.', '“The very big size and beauty of the lighthouse amazed him.” Was he surprised in a good way?', 'Write one sentence: … amazed me.'],
-    languageFocus: 'Say which action was longer: the sailing or the storm. Then complete While, After, Then and finally in the route sentences.',
+    languageFocus: 'Say which action was longer: The sailing or the storm. Then complete While, After, Then and finally in the route sentences.',
     sayIt: 'Say the places: SEU-ta, sar-DIN-i-a, SIC-i-ly, al-ex-AN-dri-a. Say ROUTE like “root”.',
     quick: 'You will put four events in order. Read paragraph 1 from the beginning.',
     wrong: ['Go back to paragraph 1.', 'Look for There, While, After and finally.', 'Try again.'],
     check: ['Can I name the stops in order?', 'Can I say why he went by sea?', 'Can I use While and After?'],
-    use: 'Language Focus, last activity: retell his route, then your route to school, with First, Then and Finally.',
+    use: 'Language Focus, last activity: Retell his route, then your route to school, with First, Then and Finally.',
     reflect: 'The storm was terrible, but the ship continued. What helps you continue when something is difficult?',
   },
   {
@@ -97,14 +97,14 @@ const selfPlans: SelfPlan[] = [
     quick: 'You will choose why the bridge was high. Read paragraph 3.',
     wrong: ['Go back to paragraph 3.', 'Find the word “so” after “very high”.', 'Try again.'],
     check: ['Can I name three places in Cairo?', 'Can I give two reasons why he respected Saladin?', 'Can I use did not + base verb?'],
-    use: 'Language Focus, last activity: describe a good leader in three sentences.',
+    use: 'Language Focus, last activity: Describe a good leader in three sentences.',
     reflect: 'Saladin helped poor people, students and sick people. Who helps people in your town?',
   },
   {
     chapter: 'Chapter 6: The Caravan to Mecca',
     hotspots: ['Moving Palaces', 'A Long Line of Camels'],
     goals: ['I can say what a caravan is.', 'I can say how you could see rich and poor travelers.', 'I can use be like.'],
-    notice: ['This is a short chapter with one big picture: a camel caravan in the desert.', 'Look at “They were like beautiful moving palaces.” The tents were not palaces; they were like palaces.'],
+    notice: ['This is a short chapter with one big picture: A camel caravan in the desert.', 'Look at “They were like beautiful moving palaces.” The tents were not palaces; they were like palaces.'],
     read: ['Look at the picture first. Say three things you see.', 'Listen to the chapter once. Follow the text with your eyes.', 'Read it again and find the comparison with like.'],
     find: ['Find where the caravan was going.', 'Find what you needed to look at.', 'Find what the tents of royal people were like.'],
     words: ['Word Notes: tents, moving palaces.', '“The tents of rich royal people were amazing.” Why are they called moving palaces?', 'Write one sentence with is like.'],
@@ -113,7 +113,7 @@ const selfPlans: SelfPlan[] = [
     quick: 'You will read a sentence about rich and poor travelers. Is it true or false?',
     wrong: ['Read the chapter again.', 'Find the words “You only needed to look at …”.', 'Try again.'],
     check: ['Can I say what a caravan is?', 'Can I say how to see who was rich?', 'Can I use look like + noun?'],
-    use: 'Language Focus, last activity: describe the chapter picture with “It looks like …”.',
+    use: 'Language Focus, last activity: Describe the chapter picture with “It looks like …”.',
     reflect: 'In the caravan, rich and poor people traveled together. How can we make everyone feel welcome in a group?',
   },
   {
@@ -129,7 +129,7 @@ const selfPlans: SelfPlan[] = [
     quick: 'You will choose why Mecca is like a mother’s body. Read the quotation.',
     wrong: ['Read the quotation again.', 'Find “narrow valley” and “a very big crowd”.', 'Try again.'],
     check: ['Can I say when he arrived and how long he stayed?', 'Can I explain the comparison?', 'Can I use can and cannot?'],
-    use: 'Language Focus, last activity: describe a special place with “is located in” and “can”.',
+    use: 'Language Focus, last activity: Describe a special place with “is located in” and “can”.',
     reflect: 'Ibn Jubayr describes the holy places with respect. How do you show respect in a special place?',
   },
   {
@@ -145,7 +145,7 @@ const selfPlans: SelfPlan[] = [
     quick: 'You will read a sentence about Baghdad and the Mongols. Is it true or false?',
     wrong: ['Read the end of the chapter again.', 'Find the word “before”.', 'Try again.'],
     check: ['Can I name the stops in order?', 'Can I say two facts about Baghdad?', 'Can I use there were?'],
-    use: 'Language Focus, last activity: write three sentences about your town with there is and there are.',
+    use: 'Language Focus, last activity: Write three sentences about your town with there is and there are.',
     reflect: 'Ibn Jubayr counted mosques and bathhouses. What would a visitor count in your town?',
   },
   {
@@ -161,7 +161,7 @@ const selfPlans: SelfPlan[] = [
     quick: 'You will choose who the gifts of money helped. Read paragraph 2.',
     wrong: ['Go back to paragraph 2.', 'Find the words “These gifts helped …”.', 'Try again.'],
     check: ['Can I name four parts of the mosque?', 'Can I say why his book is useful?', 'Can I use could + base verb?'],
-    use: 'Language Focus, last activity: describe a building you know with a list.',
+    use: 'Language Focus, last activity: Describe a building you know with a list.',
     reflect: 'Gifts of money helped students from other countries. How can we help a new student?',
   },
   {
@@ -177,7 +177,7 @@ const selfPlans: SelfPlan[] = [
     quick: 'You will choose why he waited in Acre. Read paragraph 1.',
     wrong: ['Go back to paragraph 1.', 'Find the word “because”.', 'Try again.'],
     check: ['Can I say who controlled Palestine?', 'Can I say why he waited?', 'Can I use to + verb for a purpose?'],
-    use: 'Language Focus, last activity: tell about a time you waited for something, with because and to + verb.',
+    use: 'Language Focus, last activity: Tell about a time you waited for something, with because and to + verb.',
     reflect: 'Ibn Jubayr waited nearly two weeks for good winds. When do you need to be patient?',
   },
   {
@@ -193,7 +193,7 @@ const selfPlans: SelfPlan[] = [
     quick: 'You will choose why the ship hit the ground. Find “That’s why”.',
     wrong: ['Read the chapter again.', 'Find “That’s why” and read the sentence before it.', 'Try again.'],
     check: ['Can I retell the voyage in order?', 'Can I say who helped?', 'Can I use almost and In the end?'],
-    use: 'Language Focus, last activity: tell a short story about a hard day that ended well.',
+    use: 'Language Focus, last activity: Tell a short story about a hard day that ended well.',
     reflect: 'Ibn Jubayr was thankful when he arrived home safely. What are you thankful for today?',
   },
   {
@@ -209,7 +209,7 @@ const selfPlans: SelfPlan[] = [
     quick: 'You will match three places with three dangers.',
     wrong: ['Read the chapter again.', 'Find “By sea” and “By land”, then read about water.', 'Try again.'],
     check: ['Can I name three kinds of danger?', 'Can I say why caravans traveled at night?', 'Can I use had to?'],
-    use: 'Language Focus, last activity: write three safety tips for a school trip.',
+    use: 'Language Focus, last activity: Write three safety tips for a school trip.',
     reflect: 'Ibn Jubayr always wrote down where the wells were. How do you prepare for a trip?',
   },
   {
@@ -225,7 +225,7 @@ const selfPlans: SelfPlan[] = [
     quick: 'You will choose his advice to young people. Read the last paragraph.',
     wrong: ['Go back to the last paragraph.', 'Find the words “young people”.', 'Try again.'],
     check: ['Can I say where he died?', 'Can I say one lesson of his journey?', 'Can I give advice with should?'],
-    use: 'Language Focus, last activity: write three sentences of advice for a younger student.',
+    use: 'Language Focus, last activity: Write three sentences of advice for a younger student.',
     reflect: 'Ibn Jubayr said travel made him wiser. What has taught you the most this year?',
   },
 ];
@@ -254,12 +254,12 @@ export const ibnJubayrA2SelfStudyGuide: TeacherGuideSection[] = selfPlans.map(p 
 
 export const ibnJubayrA2StudentGuideSections: StudentGuideSection[] = [
   { title: '1. One Chapter at a Time', icon: 'Target', text: 'Study one chapter in one sitting. It takes about 20 minutes. Open “Study Path” to see the steps for your chapter.', points: ['Look at the title and the picture.', 'Listen and follow the text.', 'Read one paragraph at a time.', 'Do the Quick Challenge.', 'Do the Language Focus.'] },
-  { title: '2. Listen and Read', icon: 'Ear', text: 'Listen first when audio is available, then read.', points: ['First time: listen or read for the main idea.', 'Second time: follow the words with your eyes.', 'Stop and say one short sentence again.'] },
+  { title: '2. Listen and Read', icon: 'Ear', text: 'Listen first when audio is available, then read.', points: ['First time: Listen or read for the main idea.', 'Second time: Follow the words with your eyes.', 'Stop and say one short sentence again.'] },
   { title: '3. Follow the Route', icon: 'Compass', text: 'Ibn Jubayr traveled from Granada to Mecca and back. Keep a small route list in your notebook.', points: ['Write each new place.', 'Add one fact for each place.', 'Use the route to retell the story.'] },
   { title: '4. Word Notes and Hotspots', icon: 'BookOpen', text: 'Each chapter has underlined words. Tap a word to see its Word Note. Tap the two hotspots on the picture for short notes.', points: ['Read the word in its sentence first.', 'Guess the meaning, then check the Word Note.', 'Write the word and one sentence in your notebook.'] },
   { title: '5. Quick Challenge and Language Focus', icon: 'CheckCircle', text: 'Each chapter has one Quick Challenge and three Language Focus activities.', points: ['Answer first, then read the feedback.', 'Wrong answer? Find the answer sentence and try again.', 'Activity 1: look. Activity 2: practise. Activity 3: use the language about your own life.'] },
   { title: '6. When It Is Hard', icon: 'HelpCircle', text: 'Some chapters have many names and numbers. Change how you study, not your goal.', points: ['Read one paragraph only.', 'Write the names and numbers in a list.', 'Look at the picture and the hotspots again.', 'Learn only two words today.'] },
-  { title: '7. Values in the Story', icon: 'Heart', text: 'Ibn Jubayr’s journey shows respect, patience, helpfulness and love of learning. Turn each value into one small action.', points: ['Respect: different people lived side by side (Chapter 1).', 'Kindness and fairness: Saladin helped poor and sick people (Chapter 5).', 'Patience: he waited for good winds (Chapter 10).', 'Helpfulness: a king helped the passengers (Chapter 11).', 'Learning: travel and look for knowledge (Chapter 13).'] },
+  { title: '7. Values in the Story', icon: 'Heart', text: 'Ibn Jubayr’s journey shows respect, patience, helpfulness and love of learning. Turn each value into one small action.', points: ['Respect: Different people lived side by side (Chapter 1).', 'Kindness and fairness: Saladin helped poor and sick people (Chapter 5).', 'Patience: He waited for good winds (Chapter 10).', 'Helpfulness: A king helped the passengers (Chapter 11).', 'Learning: Travel and look for knowledge (Chapter 13).'] },
   { title: '8. At the End of the Book', icon: 'Stars', text: 'After Chapter 13, do the review pages in this order. Go back to a chapter when an answer is not clear.', points: ['Knowledge Check', 'Vocabulary Challenge', 'Master Glossary', 'Language Review', 'Final Challenge'] },
 ];
 

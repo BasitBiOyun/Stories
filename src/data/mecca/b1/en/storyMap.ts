@@ -61,7 +61,7 @@ export const meccaB1StoryMapCopyEn: StoryMapCopy = {
     3: 'The Jurhumites settle',
     4: 'Back to Palestine',
     5: 'Two powerful empires',
-    6: '6th century: a trade center',
+    6: '6th century: A trade center',
     7: 'Fairs and wealth',
   },
   legend: {

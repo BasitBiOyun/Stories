@@ -110,7 +110,7 @@ const entities = [
   }),
   card({
     id: 'gevher-complex', kind: 'landmark', tr: 'Gevher Nesibe Darüşşifası ve Tıp Medresesi (Çifte Medrese)', aliases: ['Gevher Nesibe Hospital and Medical School', 'Gevher Nesibe Hospital', 'Twin Madrasas'],
-    en: { title: 'Gevher Nesibe Hospital and Medical School', kindLabel: 'Building', periodLabel: 'Built in 1205–1206', summary: 'Two buildings side by side in Kayseri: a medical school and a hospital. People call them the Twin Madrasas.', more: 'It was the first school and hospital together. Today it is the Museum of the Seljuk Civilization.' },
+    en: { title: 'Gevher Nesibe Hospital and Medical School', kindLabel: 'Building', periodLabel: 'Built in 1205–1206', summary: 'Two buildings side by side in Kayseri: A medical school and a hospital. People call them the Twin Madrasas.', more: 'It was the first school and hospital together. Today it is the Museum of the Seljuk Civilization.' },
     focus: medPoint(38.72, 35.49, CITY_ZOOM),
     picture: pic('gevher-nesibe-complex'), sources: ['TDV İslâm Ansiklopedisi: Gevher Nesibe Dârüşşifâsı'],
   }),

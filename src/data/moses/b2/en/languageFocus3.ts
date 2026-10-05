@@ -26,8 +26,8 @@ export const mosesB2LanguageFocusExercisesPart3: Record<number, Exercise[]> = {
       correctAnswer: false,
       explanation: 'After a comma, “which” can refer to the whole previous clause. What surprised the father was the fact that the daughters came back unexpectedly early, not their home. This kind of relative clause adds a comment or reaction to an event.',
       feedback: {
-        correct: 'Correct. “Which” refers to the whole event: their unexpectedly early return.',
-        incorrect: 'What could surprise the father: the house, or the fact that his daughters came back so early?',
+        correct: 'Correct. “Which” refers to the whole event: Their unexpectedly early return.',
+        incorrect: 'What could surprise the father: The house, or the fact that his daughters came back so early?',
       },
     },
     {
@@ -135,7 +135,7 @@ export const mosesB2LanguageFocusExercisesPart3: Record<number, Exercise[]> = {
       explanation: '“Preparation for” names what the period prepares him for. “After a period of ten years” marks the end of the period. “During + noun” places his return inside a longer time span; “while” would need a clause, and “since” would need a perfect tense.',
       feedback: {
         correct: 'Correct. You chose the prepositions for purpose, sequence and time span.',
-        incorrect: 'Check what follows each gap: a noun (prophethood), a length of time, and a noun phrase (the early days). Compare with the end of Chapter 14.',
+        incorrect: 'Check what follows each gap: A noun (prophethood), a length of time, and a noun phrase (the early days). Compare with the end of Chapter 14.',
       },
     },
     reflection('mo-b2-lf14-d', 'Preparation or Delay?', [
@@ -184,7 +184,7 @@ export const mosesB2LanguageFocusExercisesPart3: Record<number, Exercise[]> = {
         },
       ],
       correctAnswer: null,
-      explanation: 'A purpose infinitive (“to make him focus”) can become a “so that” clause; in a past context use “would / could + verb”. “Was about to happen” means it was going to happen very soon: a future seen from a past moment, which signals the coming turning point.',
+      explanation: 'A purpose infinitive (“to make him focus”) can become a “so that” clause; in a past context use “would / could + verb”. “Was about to happen” means it was going to happen very soon: A future seen from a past moment, which signals the coming turning point.',
       feedback: {
         correct: 'Well done. You rewrote the purpose and the near future in the past.',
         incorrect: 'Item 1: after “so that” in the past, use “would” or “could”. Item 2: “about to” = “going to … very soon”, in the past. Check the second half of Chapter 15.',
@@ -250,7 +250,7 @@ export const mosesB2LanguageFocusExercisesPart3: Record<number, Exercise[]> = {
     },
     reflection('mo-b2-lf16-c', 'Evidence Creates Responsibility', [
       'Use “because …”, “commanded him to …” and “so that …”.',
-    ], 'The B2 target is to integrate grammar with the chapter’s meaning: signs are followed by a public responsibility.', {
+    ], 'The B2 target is to integrate grammar with the chapter’s meaning: Signs are followed by a public responsibility.', {
       instructions: 'Explain in 5–7 sentences how the two signs change Moses’ life.',
       question: 'How is Moses different after the two signs?',
     }),
@@ -475,7 +475,7 @@ export const mosesB2LanguageFocusExercisesPart4: Record<number, Exercise[]> = {
         },
       ],
       correctAnswer: null,
-      explanation: 'After a negative statement, “rather” replaces the rejected idea with the correct one: not a disbeliever; rather, it was an accident. “However” only signals a contrast, not a correction. “Have no choice but + to-infinitive” shows that only one action remains possible.',
+      explanation: 'After a negative statement, “rather” replaces the rejected idea with the correct one: Not a disbeliever; rather, it was an accident. “However” only signals a contrast, not a correction. “Have no choice but + to-infinitive” shows that only one action remains possible.',
       feedback: {
         correct: 'Well done. You chose the correcting linker and the right form after “no choice but”.',
         incorrect: 'Which word replaces a rejected claim with the true account? And which form follows “no choice but”? Check the middle and end of Chapter 19.',
@@ -508,7 +508,7 @@ export const mosesB2LanguageFocusExercisesPart4: Record<number, Exercise[]> = {
         'make him fail in his claim': 'show publicly that his message was untrue',
         'this was only an illusion': 'the snakes merely seemed real',
       },
-      explanation: 'These expressions show the advisers’ strategy: reduce the effect of the signs on public opinion and make Moses appear false. “However, this was only an illusion” then undercuts the magicians: “only” reduces their snakes to appearance.',
+      explanation: 'These expressions show the advisers’ strategy: Reduce the effect of the signs on public opinion and make Moses appear false. “However, this was only an illusion” then undercuts the magicians: “only” reduces their snakes to appearance.',
       feedback: {
         correct: 'Correct. You matched each expression with its meaning in the contest.',
         incorrect: 'Reread the advisers’ plan and the end of Chapter 20. Which expression is about the crowd, which about the plan, and which about the magicians’ snakes?',
@@ -660,7 +660,7 @@ export const mosesB2LanguageFocusExercisesPart4: Record<number, Exercise[]> = {
       explanation: 'Both groups speak with certainty, but about different things: “We are sure to be caught up with” is certain about the danger; “He will guide me” is certain about guidance. In the narrative, “However” marks the turn from panic to trust, and the reported “would show” looks forward to a way that is not yet visible.',
       feedback: {
         correct: 'Correct. You separated certainty about danger from certainty about guidance.',
-        incorrect: 'Ask what each line is sure about: being caught, or being guided? Check the end of Chapter 22 and the Qur’anic lines that close it.',
+        incorrect: 'Ask what each line is sure about: Being caught, or being guided? Check the end of Chapter 22 and the Qur’anic lines that close it.',
       },
     },
     {
@@ -890,15 +890,15 @@ export const mosesB2LanguageReviewExercises: Exercise[] = [
       'They present the second point as a result of the first one.',
     ],
     correctAnswer: 1,
-    explanation: '‘Not only A but also B’ and ‘not merely A, but B’ keep A (the river mattered; the magicians did perform) and add B, which carries more weight: the slaves’ manpower, the magicians’ status as scholars. Compare “rather” in Chapter 19: “he was not a disbeliever when he killed the Egyptian; rather, he had committed the act only by accident” — there the first idea is rejected completely and replaced.',
-    feedback: { correct: 'Correct. Both structures widen a description instead of cancelling it.', incorrect: 'Ask: is the first part still true? Did the river matter? Did the magicians perform? Then look at what the second part adds.' },
+    explanation: '‘Not only A but also B’ and ‘not merely A, but B’ keep A (the river mattered; the magicians did perform) and add B, which carries more weight: The slaves’ manpower, the magicians’ status as scholars. Compare “rather” in Chapter 19: “he was not a disbeliever when he killed the Egyptian; rather, he had committed the act only by accident” — there the first idea is rejected completely and replaced.',
+    feedback: { correct: 'Correct. Both structures widen a description instead of cancelling it.', incorrect: 'Ask: Is the first part still true? Did the river matter? Did the magicians perform? Then look at what the second part adds.' },
   },
   {
     id: 'mo-b2-language-review-3-participle-clauses', type: 'true-false', title: 'Notice: -ing Phrases Around Moses',
     instructions: 'Read the sentences. Is the statement true or false?',
-    question: 'Chapter 12: “Forgetting his thirst, Moses approached them …” Chapter 15: “… approached it, hoping to bring his family some fire …” Chapter 19: “Ignoring his irony, Moses (pbuh) explained that he was not a disbeliever …” — Statement: the -ing phrases describe actions that happen only after the main action is finished.',
+    question: 'Chapter 12: “Forgetting his thirst, Moses approached them …” Chapter 15: “… approached it, hoping to bring his family some fire …” Chapter 19: “Ignoring his irony, Moses (pbuh) explained that he was not a disbeliever …” — Statement: The -ing phrases describe actions that happen only after the main action is finished.',
     correctAnswer: false,
-    explanation: 'The -ing phrase and the main verb share one subject (Moses), and they happen at the same time: while he approaches, he forgets his thirst or hopes for fire; while he explains, he ignores the Pharaoh’s irony. The phrase adds his attitude or aim to the action without a second full clause. It does not mean “afterwards”.',
+    explanation: 'The -ing phrase and the main verb share one subject (Moses), and they happen at the same time: While he approaches, he forgets his thirst or hopes for fire; while he explains, he ignores the Pharaoh’s irony. The phrase adds his attitude or aim to the action without a second full clause. It does not mean “afterwards”.',
     feedback: { correct: 'Correct. The -ing phrases run alongside the main action and share its subject.', incorrect: 'Ask who forgets, who hopes and who ignores, and when. Is it the same person, at the same moment as approached / explained?' },
   },
   // BUILD — controlled practice in the book's own sentences.
@@ -926,7 +926,7 @@ export const mosesB2LanguageReviewExercises: Exercise[] = [
     ],
     correctAnswer: null,
     explanation: 'Quantifiers and stance verbs set the strength of a claim. “Almost the entire” and “most of the sources” leave room for exceptions; “the entire” and “all” do not. “It seemed that …” gives an impression at that moment; ‘It was certain that …’ turns it into a fact. Rewriting a text with stronger words than the source is overclaiming.',
-    feedback: { correct: 'Well done. You kept the writer’s careful degree of certainty.', incorrect: 'Compare with the book: the opening of Chapter 1, the end of Chapter 2 and the start of Chapter 22. Which word leaves room for doubt or exceptions?' },
+    feedback: { correct: 'Well done. You kept the writer’s careful degree of certainty.', incorrect: 'Compare with the book: The opening of Chapter 1, the end of Chapter 2 and the start of Chapter 22. Which word leaves room for doubt or exceptions?' },
   },
   {
     id: 'mo-b2-language-review-6-reporting', type: 'transformation', title: 'Build: Report What They Said',
@@ -939,7 +939,7 @@ export const mosesB2LanguageReviewExercises: Exercise[] = [
     ],
     correctAnswer: null,
     explanation: 'A reported question uses statement word order: “Who are you?” → ‘who she was’; “Why are you shepherding?” → ‘why they were shepherding’. After a past reporting verb, present forms move back (are → were, invites → invited, may → might), and pronouns change to fit the reporter’s point of view (you → she / they / him, our → their).',
-    feedback: { correct: 'Correct. You moved the tense back, changed the pronouns and used statement word order.', incorrect: 'Check three things: tense back (are → were), pronouns (you → she/they/him), and subject before verb in the reported question.' },
+    feedback: { correct: 'Correct. You moved the tense back, changed the pronouns and used statement word order.', incorrect: 'Check three things: Tense back (are → were), pronouns (you → she/they/him), and subject before verb in the reported question.' },
   },
   {
     id: 'mo-b2-language-review-7-impersonal-passive', type: 'sentence-building', title: 'Build: A Decision Without a Named Decider',
@@ -947,7 +947,7 @@ export const mosesB2LanguageReviewExercises: Exercise[] = [
     question: 'How can we give a decision without saying who made it?',
     sentenceChunks: ['It was decided', 'that a contest', 'would be held', 'between the magicians of Egypt', 'and Moses (pbuh).'],
     correctAnswer: null,
-    explanation: '“It was decided that …” is an impersonal passive: the decision is in focus and the deciders stay unnamed. Inside it, “would be held” is a passive seen from the past, looking forward to the contest. The book uses the passive in the same way elsewhere when what happens matters more than who acts: “He was placed in a basket” (Chapter 4), “the Torah was given to him by Allah” (Chapter 24).',
+    explanation: '“It was decided that …” is an impersonal passive: The decision is in focus and the deciders stay unnamed. Inside it, “would be held” is a passive seen from the past, looking forward to the contest. The book uses the passive in the same way elsewhere when what happens matters more than who acts: “He was placed in a basket” (Chapter 4), “the Torah was given to him by Allah” (Chapter 24).',
     feedback: { correct: 'Well done. The impersonal passive puts the decision first.', incorrect: 'Start with the empty subject “It” and the passive verb. Then say what was decided, and between whom.' },
   },
   // USE — transfer the language into the learners' own world.
@@ -955,11 +955,11 @@ export const mosesB2LanguageReviewExercises: Exercise[] = [
     id: 'mo-b2-language-review-8-new-context', type: 'word-bank', title: 'Use: A Report on a School Project',
     instructions: 'Complete this new text with words from the bank. Two are extra.',
     question: 'Which word fits each gap in the school report?',
-    fillBlanksText: 'Last term, our class started a recycling project at school. [blank] our survey, most students threw plastic bottles into ordinary bins. [blank] a lack of recycling boxes in the corridors, many bottles ended up in the rubbish. We placed new boxes on every floor, and the project helped not only the environment [blank] the school budget. The number of bottles in the ordinary bins fell by half, so the new boxes were [blank] the main reason for the change. However, we cannot be sure: some students were also away on a school trip that month.',
+    fillBlanksText: 'Last term, our class started a recycling project at school. [blank] our survey, most students threw plastic bottles into ordinary bins. [blank] a lack of recycling boxes in the corridors, many bottles ended up in the rubbish. We placed new boxes on every floor, and the project helped not only the environment [blank] the school budget. The number of bottles in the ordinary bins fell by half, so the new boxes were [blank] the main reason for the change. However, we cannot be sure: Some students were also away on a school trip that month.',
     wordBank: ['According to', 'Due to', 'but also', 'probably', 'certainly', 'Although'],
     correctAnswer: ['According to', 'Due to', 'but also', 'probably'],
-    explanation: '“According to our survey” attributes the evidence. “Due to” + a noun phrase gives the cause. “Not only … but also …” adds a second benefit. “Probably” hedges the conclusion, and the last sentence explains why: another cause is possible. “Certainly” would overclaim, and “although” needs a clause, not a noun.',
-    feedback: { correct: 'Well done. Your report is sourced, connected and careful.', incorrect: 'For each gap ask: is this a source, a cause before a noun, the second half of “not only”, or a hedge? Read the last sentence before you choose the hedge.' },
+    explanation: '“According to our survey” attributes the evidence. “Due to” + a noun phrase gives the cause. “Not only … but also …” adds a second benefit. “Probably” hedges the conclusion, and the last sentence explains why: Another cause is possible. “Certainly” would overclaim, and “although” needs a clause, not a noun.',
+    feedback: { correct: 'Well done. Your report is sourced, connected and careful.', incorrect: 'For each gap ask: Is this a source, a cause before a noun, the second half of “not only”, or a hedge? Read the last sentence before you choose the hedge.' },
   },
   {
     id: 'mo-b2-language-review-9-new-context', type: 'transformation', title: 'Use: Make the Claim More Careful',
@@ -971,7 +971,7 @@ export const mosesB2LanguageReviewExercises: Exercise[] = [
       { source: 'Our survey proves that students want a longer lunch break.', frame: 'Our survey [blank] that students want a longer lunch break.', answers: ['suggests', 'indicates', 'seems to show', 'appears to show', 'may show', 'might show', 'could show', 'seems to suggest'] },
     ],
     correctAnswer: null,
-    explanation: 'Careful writers limit a claim to what the evidence shows: a quantifier instead of “everyone” (many, most, some), a hedging adverb (probably, possibly), or a softer reporting verb instead of “proves” (suggests, indicates). This is the same care the book shows with “most of the sources”, “probably” and “it seemed”.',
+    explanation: 'Careful writers limit a claim to what the evidence shows: A quantifier instead of “everyone” (many, most, some), a hedging adverb (probably, possibly), or a softer reporting verb instead of “proves” (suggests, indicates). This is the same care the book shows with “most of the sources”, “probably” and “it seemed”.',
     feedback: { correct: 'Well done. Your sentences claim only what the evidence can support.', incorrect: 'Replace the absolute word: everyone → many/most/some; is → is probably; proves → suggests/indicates.' },
   },
   {
@@ -980,7 +980,7 @@ export const mosesB2LanguageReviewExercises: Exercise[] = [
     question: 'Can you give your view and support it?',
     correctAnswer: null,
     explanation: 'Example: “In my view, one hour of helpful work each month would probably be good for our school. According to our class survey, most students would like to help in the library or the school garden. The project would help not only the people we support but also the students themselves, because they would learn responsibility. Due to busy timetables, however, some students have little free time. It is possible that a few of them will see the hour as extra work. Although this worry is understandable, the hour would be short and flexible. It is not a punishment; rather, it is a chance to be useful.”',
-    feedback: { correct: 'Check your paragraph: a hedged position (probably / it seems), a source (according to), a cause (because / due to), not only … but also, a concession (although), and a correction with rather.', incorrect: '' },
+    feedback: { correct: 'Check your paragraph: A hedged position (probably / it seems), a source (according to), a cause (because / due to), not only … but also, a concession (although), and a correction with rather.', incorrect: '' },
     discussionPrompts: [
       { question: 'Your view — “In my view, … would probably …” or “It seems that …”', mode: 'Individual' },
       { question: 'A source and a reason — “According to …, …” / “because …” / “Due to …”', mode: 'Individual' },

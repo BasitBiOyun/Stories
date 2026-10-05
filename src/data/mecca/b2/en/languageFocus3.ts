@@ -47,7 +47,7 @@ export const meccaB2LanguageFocusExercisesPart3: Record<number, Exercise[]> = {
       'The tribe rarely did anything important.',
     ],
     correctAnswer: 2,
-    explanation: '“No matter what …” removes every condition: whatever the tribe did, the member had to defend it. Together with “in every circumstance”, it makes the duty unlimited. This prepares the chapter’s criticism of blind tribal loyalty. Notice the contrast with the next paragraph, where the writer carefully limits claims about women instead of making them unlimited.',
+    explanation: '“No matter what …” removes every condition: Whatever the tribe did, the member had to defend it. Together with “in every circumstance”, it makes the duty unlimited. This prepares the chapter’s criticism of blind tribal loyalty. Notice the contrast with the next paragraph, where the writer carefully limits claims about women instead of making them unlimited.',
     feedback: {
       correct: 'Correct. The phrase makes loyalty unconditional, even when the tribe was wrong.',
       incorrect: 'Look at “in every circumstance” in the same sentence. Does “no matter what the tribe did” add a condition, or remove all conditions?',
@@ -80,10 +80,10 @@ export const meccaB2LanguageFocusExercisesPart3: Record<number, Exercise[]> = {
     matchingHeadings: { left: 'From the chapter', right: 'Modern media role' },
     matchingPairs: ch11Pairs,
     correctAnswer: pairsToAnswer(ch11Pairs),
-    explanation: '“In a sense” is a hedge: it tells the reader that the comparison is partly true, not exact. Poetry kept records, celebrated heroes, promoted one side, stirred up conflict and, rarely, called for peace, as media can do today; but it had no modern technology and served the interests of a tribe. Notice too the passive “Poetry was used to …”, which puts poetry’s social function in focus rather than any single poet.',
+    explanation: '“In a sense” is a hedge: It tells the reader that the comparison is partly true, not exact. Poetry kept records, celebrated heroes, promoted one side, stirred up conflict and, rarely, called for peace, as media can do today; but it had no modern technology and served the interests of a tribe. Notice too the passive “Poetry was used to …”, which puts poetry’s social function in focus rather than any single poet.',
     feedback: {
       correct: 'Correct. You mapped each function of poetry onto a modern media role.',
-      incorrect: 'Reread the last paragraph of Chapter 11. For each line, ask what the poem did for the tribe: record, celebrate, promote and attack, inflame, or calm?',
+      incorrect: 'Reread the last paragraph of Chapter 11. For each line, ask what the poem did for the tribe: Record, celebrate, promote and attack, inflame, or calm?',
     },
   },
   {
@@ -98,7 +98,7 @@ export const meccaB2LanguageFocusExercisesPart3: Record<number, Exercise[]> = {
       { source: 'Tribes were honored in poems, and poets praised conflict and war rather than peace.', frame: 'Poets [blank] tribes in poems, and they praised conflict and war rather than peace.', answers: ['honored', 'honoured'] },
     ],
     correctAnswer: null,
-    explanation: 'The active version must name a doer (people, their owners, poets). The chapter’s passive leaves the doer out, so attention stays on the enslaved people and on how the institution treated them. For an institution, the passive often suits the writer better: it describes what regularly happened within a system rather than one person’s actions.',
+    explanation: 'The active version must name a doer (people, their owners, poets). The chapter’s passive leaves the doer out, so attention stays on the enslaved people and on how the institution treated them. For an institution, the passive often suits the writer better: It describes what regularly happened within a system rather than one person’s actions.',
     feedback: {
       correct: 'Well done. You turned the passive sentences into active ones and kept their meaning.',
       incorrect: 'Keep the past simple and use the same verb as the original: “were bought and sold” → “bought and sold”; “were employed” → “employed”; “were honored” → “honored”.',
@@ -134,7 +134,7 @@ export const meccaB2LanguageFocusExercisesPart3: Record<number, Exercise[]> = {
       { sentence: 'Before Islam, stones [choice] in front of the Ka’ba and people worshipped in groups.', options: ['were placed', 'placed', 'had placed'], answer: 0 },
     ],
     correctAnswer: null,
-    explanation: 'After a time noun such as “the pilgrimage season”, a “when” clause adds background: here it explains why the season brought temporary peace. “Who” identifies people (the Hanifs who believed …). “Stones were placed” is passive because the chapter describes a practice, not a particular person who did it.',
+    explanation: 'After a time noun such as “the pilgrimage season”, a “when” clause adds background: Here it explains why the season brought temporary peace. “Who” identifies people (the Hanifs who believed …). “Stones were placed” is passive because the chapter describes a practice, not a particular person who did it.',
     feedback: {
       correct: 'Well done. You chose the time clause, the relative pronoun and the passive correctly.',
       incorrect: 'Check paragraphs 1–3 of Chapter 12. Does the first gap follow a time, a place or a thing? Is the second about people? Did the stones place themselves?',
@@ -156,7 +156,7 @@ export const meccaB2LanguageFocusExercisesPart3: Record<number, Exercise[]> = {
       'It contrasts religion with politics and economics.',
     ],
     correctAnswer: 1,
-    explanation: '“So” introduces a conclusion that follows from what came before. The writer first states a general principle (the three areas are interconnected; religion shapes every aspect of life) and then applies it: a new religion was bound to affect political and economic power. “It is understandable that …” adds the writer’s evaluation: the opposition was predictable, though not justified.',
+    explanation: '“So” introduces a conclusion that follows from what came before. The writer first states a general principle (the three areas are interconnected; religion shapes every aspect of life) and then applies it: A new religion was bound to affect political and economic power. “It is understandable that …” adds the writer’s evaluation: The opposition was predictable, though not justified.',
     feedback: {
       correct: 'Correct. “So” turns the general principle into a conclusion about Mecca.',
       incorrect: 'Read the first two sentences again. Does the third sentence start a new topic, or does it follow logically from them?',
@@ -240,7 +240,7 @@ export const meccaB2LanguageFocusExercisesPart4: Record<number, Exercise[]> = {
       },
     ],
     correctAnswer: null,
-    explanation: '“No” comes before a noun (no leader); before “of” you need the pronoun “none”: “almost none of the tribal leaders”. “Whose” shows possession: the survival belonged to the upper class. A sentence with “Although …” already contains the contrast, so English does not add “but” in the main clause.',
+    explanation: '“No” comes before a noun (no leader); before “of” you need the pronoun “none”: “almost none of the tribal leaders”. “Whose” shows possession: The survival belonged to the upper class. A sentence with “Although …” already contains the contrast, so English does not add “but” in the main clause.',
     feedback: {
       correct: 'Well done. You corrected the quantifier, the possessive relative and the concession.',
       incorrect: 'Check paragraphs 2 and 3 of Chapter 14. Which word goes before “of the tribal leaders”? Whose survival is it? Does a sentence with “Although” also need “but”?',
@@ -262,7 +262,7 @@ export const meccaB2LanguageFocusExercisesPart4: Record<number, Exercise[]> = {
       { id: 'b', text: 'However, when the Qur’an began to speak ill of their idols, … they began to oppose him fiercely.' },
     ],
     correctAnswer: ['a', 'b', 'c', 'd'],
-    explanation: '“At first” marks the earliest, mildest stage (mockery). “However, when …” marks a turning point: once the idols were challenged, the opposition became fierce. The next sentence shows who paid the highest price. “Went further” signals a new, more extreme step: the boycott. These signals turn a list of events into an account of escalation.',
+    explanation: '“At first” marks the earliest, mildest stage (mockery). “However, when …” marks a turning point: Once the idols were challenged, the opposition became fierce. The next sentence shows who paid the highest price. “Went further” signals a new, more extreme step: The boycott. These signals turn a list of events into an account of escalation.',
     feedback: {
       correct: 'Well done. You traced the escalation from mockery to boycott.',
       incorrect: 'Start with “At first”. Which sentence marks the turning point with “However, when …”? Which one says the elites “went further”?',
@@ -302,7 +302,7 @@ export const meccaB2LanguageFocusExercisesPart4: Record<number, Exercise[]> = {
       'Even though he was brave',
     ],
     correctAnswer: 2,
-    explanation: '“Otherwise” means “if not” or “if the opposite happened”. Here it points back to the first sentence: if a member did find the courage to step outside the tribe’s views, he would lose its protection. “Would” then gives the imagined consequence. The writer adds “in today’s terms” to compare this loss with being stateless, a modern analogy that helps readers see the cost.',
+    explanation: '“Otherwise” means “if not” or “if the opposite happened”. Here it points back to the first sentence: If a member did find the courage to step outside the tribe’s views, he would lose its protection. “Would” then gives the imagined consequence. The writer adds “in today’s terms” to compare this loss with being stateless, a modern analogy that helps readers see the cost.',
     feedback: {
       correct: 'Correct. “Otherwise” introduces what would happen if the member broke with his tribe.',
       incorrect: 'Read the sentence before “Otherwise”. What would happen if the opposite of that sentence were true?',
@@ -353,7 +353,7 @@ export const meccaB2LanguageFocusExercisesPart4: Record<number, Exercise[]> = {
     matchingHeadings: { left: 'From the chapter', right: 'What the writer is doing' },
     matchingPairs: ch17Pairs,
     correctAnswer: pairsToAnswer(ch17Pairs),
-    explanation: '“Both … and also” holds the historical meaning and the wider meaning together. “Whether … or …” includes every group. “On the other hand” turns to the opposing side. “Has always … and will continue” joins past, present and future. “Reminds us of” marks a comparison between today and seventh-century Mecca: it is an analogy the writer draws, not historical evidence.',
+    explanation: '“Both … and also” holds the historical meaning and the wider meaning together. “Whether … or …” includes every group. “On the other hand” turns to the opposing side. “Has always … and will continue” joins past, present and future. “Reminds us of” marks a comparison between today and seventh-century Mecca: It is an analogy the writer draws, not historical evidence.',
     feedback: {
       correct: 'Correct. You followed how the conclusion extends, includes, contrasts, spans time and compares.',
       incorrect: 'Reread paragraphs 2–4 of Chapter 17. Focus on the key signals: both … and also, whether … or, on the other hand, has always … will continue, reminds us of.',
@@ -406,7 +406,7 @@ export const meccaB2LanguageReviewExercises: Exercise[] = [
       'The writer states the claim with certainty': ['No doubt, pilgrimage to the Ka’ba was the most popular and common form of worship.', '… it certainly doesn’t make sense to call the pre-Islamic era entirely negative.'],
     },
     explanation: 'A careful reader tracks how far the writer stands behind each claim. “Up to” gives an upper limit, a range (between … and …) admits that the exact number is unknown, and “in a sense” marks a comparison as only partly true. Verbs such as thought, viewed … as and were saying report the beliefs or words of other people, not the writer’s own view. “No doubt” and “certainly” present a claim as sure. If you remove these signals when you retell a text, you change what the writer actually claims.',
-    feedback: { correct: 'Well done. You separated limited claims, reported views and certain claims.', incorrect: 'Look for the signal in each sentence: a limit (up to, in a sense, between … and …), a reporting verb (thought, viewed, were saying) or a word of certainty (no doubt, certainly).' },
+    feedback: { correct: 'Well done. You separated limited claims, reported views and certain claims.', incorrect: 'Look for the signal in each sentence: A limit (up to, in a sense, between … and …), a reporting verb (thought, viewed, were saying) or a word of certainty (no doubt, certainly).' },
   },
   {
     id: 'me-b2-language-review-2-passive-focus', type: 'multiple-choice', title: 'Notice: Who Stays in Focus?',
@@ -420,15 +420,15 @@ export const meccaB2LanguageReviewExercises: Exercise[] = [
     ],
     correctAnswer: 1,
     explanation: 'In these passives the people who suffered (orphans, the weak, the poor, the children) stay at the centre of the sentence, and the doer is left out. The doers are not unknown: Chapter 8 names them in a separate sentence, “those who oppressed and treated people unfairly were generally wealthy and powerful individuals”. When the doer matters, the writer adds a “by” phrase: “an agreement was made by some Quraysh tribes”. So the choice between passive and active shows what the writer wants the reader to look at.',
-    feedback: { correct: 'Correct. The passive keeps the victims and what happened to them in focus.', incorrect: 'Ask what stands at the front of each sentence: the people who suffered, or the people who acted? Then look for the sentence in Chapter 8 that names the oppressors.' },
+    feedback: { correct: 'Correct. The passive keeps the victims and what happened to them in focus.', incorrect: 'Ask what stands at the front of each sentence: The people who suffered, or the people who acted? Then look for the sentence in Chapter 8 that names the oppressors.' },
   },
   {
     id: 'me-b2-language-review-3-would-from-the-past', type: 'true-false', title: 'Notice: What Does “Would” Tell Us?',
     instructions: 'Read the sentences from Chapters 15 and 16. Is the statement true or false?',
     question: 'Chapter 15: “They knew that the Prophet’s call to monotheism … would eventually bring them face to face with people who carried out these practices.” Chapter 16: “Leaders who built their authority on idols would lose both their political and economic influence if they lost their idols.” Statement: In both sentences, “would” reports something that had already happened.',
     correctAnswer: false,
-    explanation: 'False. In Chapter 15, “would” is the past form of “will”: after “They knew that …”, it shows what the leaders expected to happen later, seen from their point in the past. In Chapter 16, “would” gives an imagined result, and the if-clause uses the past simple (if they lost) for a situation that had not happened. In both sentences “would” looks forward from the past; it does not report a finished event. That is why the leaders were afraid: they could see what might happen.',
-    feedback: { correct: 'Correct. Here “would” looks forward: an expected future and an imagined result.', incorrect: 'Did the leaders already face these people, or lose their idols, at that moment? Read “They knew that …” and “if they lost …” again.' },
+    explanation: 'False. In Chapter 15, “would” is the past form of “will”: after “They knew that …”, it shows what the leaders expected to happen later, seen from their point in the past. In Chapter 16, “would” gives an imagined result, and the if-clause uses the past simple (if they lost) for a situation that had not happened. In both sentences “would” looks forward from the past; it does not report a finished event. That is why the leaders were afraid: They could see what might happen.',
+    feedback: { correct: 'Correct. Here “would” looks forward: An expected future and an imagined result.', incorrect: 'Did the leaders already face these people, or lose their idols, at that moment? Read “They knew that …” and “if they lost …” again.' },
   },
   // BUILD — controlled practice in the book's own sentences, mixing chapters.
   {
@@ -438,8 +438,8 @@ export const meccaB2LanguageReviewExercises: Exercise[] = [
     fillBlanksText: '… the Zamzam water had not yet been discovered, [blank] there was no population living there. … [blank] the surroundings of the city were not suitable for agriculture, people tried to make a living through trade. … [blank] they mainly worshipped idols, they believed “Allah” to be the creator. … These people, who saw themselves as superior to others [blank] their wealth, ignored the Qur’an’s commands …',
     wordBank: ['so', 'Since', 'Although', 'because of', 'Despite', 'However'],
     correctAnswer: ['so', 'Since', 'Although', 'because of'],
-    explanation: '“So” introduces a result: the water had not been found, so nobody lived there. “Since” can introduce a reason that the reader easily accepts, and it is followed by a clause with a subject and a verb. “Because of” is followed by a noun phrase (their wealth). “Although” admits one fact and then adds a second fact that seems to clash with it; it takes a clause, so “Despite”, which needs a noun phrase, does not fit. “However” links two separate sentences and cannot introduce a clause like these.',
-    feedback: { correct: 'Well done. You matched each link to its meaning and to what follows it.', incorrect: 'For each gap, ask two questions: is it a result, a reason or a contrast? And is it followed by a clause or by a noun phrase?' },
+    explanation: '“So” introduces a result: The water had not been found, so nobody lived there. “Since” can introduce a reason that the reader easily accepts, and it is followed by a clause with a subject and a verb. “Because of” is followed by a noun phrase (their wealth). “Although” admits one fact and then adds a second fact that seems to clash with it; it takes a clause, so “Despite”, which needs a noun phrase, does not fit. “However” links two separate sentences and cannot introduce a clause like these.',
+    feedback: { correct: 'Well done. You matched each link to its meaning and to what follows it.', incorrect: 'For each gap, ask two questions: Is it a result, a reason or a contrast? And is it followed by a clause or by a noun phrase?' },
   },
   {
     id: 'me-b2-language-review-5-claim-and-passive', type: 'error-correction', title: 'Build: Fix the Claim, Fix the Form',
@@ -452,7 +452,7 @@ export const meccaB2LanguageReviewExercises: Exercise[] = [
     ],
     correctAnswer: null,
     explanation: 'The chapter says “Many of the first Muslims …”: “many” describes a large part of the group, while “all” would claim that there were no exceptions, which is more than the evidence shows (“much” is for uncountable nouns). Festivals do not hold anything; people hold them, so the passive is needed: were also held. In the same way, a member who stepped outside his tribe’s views did not leave anyone; he was the one who would lose protection, so after “would” we need be + past participle: would be left unprotected.',
-    feedback: { correct: 'Well done. You removed the overclaim and chose the passive where the subject receives the action.', incorrect: 'First ask whether the claim is stronger than the chapter allows. Then ask who does the action: the festivals and the tribal member, or other people?' },
+    feedback: { correct: 'Well done. You removed the overclaim and chose the passive where the subject receives the action.', incorrect: 'First ask whether the claim is stronger than the chapter allows. Then ask who does the action: The festivals and the tribal member, or other people?' },
   },
   {
     id: 'me-b2-language-review-6-same-meaning-new-structure', type: 'transformation', title: 'Build: Same Meaning, New Structure',
@@ -465,7 +465,7 @@ export const meccaB2LanguageReviewExercises: Exercise[] = [
     ],
     correctAnswer: null,
     explanation: '“Due to” and “because of” are followed by a noun phrase (its fight against injustice); “because” is followed by a clause with its own subject and verb (it fought against injustice). A result can also open a new sentence with a linker such as As a result or Therefore. When direct speech is reported after a past verb (were saying that …), the present continuous moves back to the past continuous and the pronouns change: us → them. Reporting also reminds the reader that these are the Quraysh’s words, not the writer’s view.',
-    feedback: { correct: 'Well done. You kept the meaning and changed the structure correctly.', incorrect: 'Check what the frame needs: a clause after “because”, a result linker at the start of a sentence, and the past continuous with “them” after “were saying that”.' },
+    feedback: { correct: 'Well done. You kept the meaning and changed the structure correctly.', incorrect: 'Check what the frame needs: A clause after “because”, a result linker at the start of a sentence, and the past continuous with “them” after “were saying that”.' },
   },
   {
     id: 'me-b2-language-review-7-relative-words', type: 'choose-form', title: 'Build: Which Relative Word?',
@@ -478,7 +478,7 @@ export const meccaB2LanguageReviewExercises: Exercise[] = [
     ],
     correctAnswer: null,
     explanation: '“Who” refers to a person, and in a clause between commas we cannot use “that”. After a preposition, “which” refers to a thing (on which they depended); “whom” is only for people, and “that” cannot follow a preposition. “Where” replaces an adverbial of place (the places where the disbelievers were sitting), but in Chapter 17 the relative word is the subject of “was”, so the writer needs “which”.',
-    feedback: { correct: 'Correct. You chose the relative word by what it refers to and by its job in the clause.', incorrect: 'Ask what the word refers to (a person, a thing, a place) and what it does in its clause: is it the subject, or does it follow a preposition?' },
+    feedback: { correct: 'Correct. You chose the relative word by what it refers to and by its job in the clause.', incorrect: 'Ask what the word refers to (a person, a thing, a place) and what it does in its clause: Is it the subject, or does it follow a preposition?' },
   },
   // USE — take the language into new, everyday contexts.
   {
@@ -488,8 +488,8 @@ export const meccaB2LanguageReviewExercises: Exercise[] = [
     fillBlanksText: 'Last term, a recycling project was started at our school by the student council. [blank] 40 bags of paper were collected every week, but the number changed from month to month. [blank] the project, the school needed to buy less new paper. [blank] some classes joined enthusiastically, others took part only occasionally. It can be said that the project was [blank] successful, but it is too early to call it a complete success. Next year, the council hopes that every class will take part.',
     wordBank: ['Up to', 'As a result of', 'Although', 'mostly', 'Despite', 'entirely'],
     correctAnswer: ['Up to', 'As a result of', 'Although', 'mostly'],
-    explanation: 'Up to gives the highest weekly number, not the number for every week. As a result of + noun phrase names the cause of the saving. Although admits one fact and adds a contrasting one in the same sentence, without “but”; Despite would need a noun phrase. Mostly limits the success: the report praises the project but does not overclaim, which is why entirely does not fit. Like the writer of the book, a careful reporter keeps claims in proportion to the evidence.',
-    feedback: { correct: 'Well done. Your report is clear, fair and careful.', incorrect: 'For each gap, ask: is it a limit, a cause, a contrast or a degree? Then check what follows the gap: a number, a noun phrase or a clause.' },
+    explanation: 'Up to gives the highest weekly number, not the number for every week. As a result of + noun phrase names the cause of the saving. Although admits one fact and adds a contrasting one in the same sentence, without “but”; Despite would need a noun phrase. Mostly limits the success: The report praises the project but does not overclaim, which is why entirely does not fit. Like the writer of the book, a careful reporter keeps claims in proportion to the evidence.',
+    feedback: { correct: 'Well done. Your report is clear, fair and careful.', incorrect: 'For each gap, ask: Is it a limit, a cause, a contrast or a degree? Then check what follows the gap: A number, a noun phrase or a clause.' },
   },
   {
     id: 'me-b2-language-review-9-new-context', type: 'choose-form', title: 'Use: Say Only What the Evidence Shows',
@@ -497,11 +497,11 @@ export const meccaB2LanguageReviewExercises: Exercise[] = [
     question: 'Which form keeps each new sentence accurate and fair?',
     formChoices: [
       { sentence: 'In our class survey, 18 of 25 students said they read every day, so [choice] students in our class read daily.', options: ['all', 'almost no', 'most'], answer: 2 },
-      { sentence: 'Each class may borrow [choice] 30 books a week: some classes borrow 30, others borrow only 10 or 12.', options: ['exactly', 'up to', 'at least'], answer: 1 },
+      { sentence: 'Each class may borrow [choice] 30 books a week: Some classes borrow 30, others borrow only 10 or 12.', options: ['exactly', 'up to', 'at least'], answer: 1 },
       { sentence: 'Nobody saw who damaged the plants in the school garden, so the report says that the plants [choice] during the weekend.', options: ['damaged', 'were damaged', 'had damaging'], answer: 1 },
     ],
     correctAnswer: null,
-    explanation: 'Most matches 18 out of 25: a large part of the class, but not all of it. Up to gives the highest number allowed, so smaller numbers are still possible; exactly and at least do not fit a class that borrows only 10. When the doer is unknown, or less important than what happened, use the passive: the plants were damaged. The plants did not damage anything themselves.',
+    explanation: 'Most matches 18 out of 25: a large part of the class, but not all of it. Up to gives the highest number allowed, so smaller numbers are still possible; exactly and at least do not fit a class that borrows only 10. When the doer is unknown, or less important than what happened, use the passive: The plants were damaged. The plants did not damage anything themselves.',
     feedback: { correct: 'Well done. Each sentence now says exactly what the evidence shows.', incorrect: 'Compare each form with the evidence in the same sentence: how many, how much, and who did the action?' },
   },
   {
@@ -510,7 +510,7 @@ export const meccaB2LanguageReviewExercises: Exercise[] = [
     question: 'What do you think, and why?',
     correctAnswer: null,
     explanation: 'Example: “In my view, our school should set up a student committee to help classmates who are treated unfairly. At present, some students are left out or laughed at, and these problems are often not reported. Due to fear of being mocked, many students stay silent. As a result of this silence, small problems can grow into serious ones. Although our teachers already help, they cannot see everything that happens in the corridors. The committee would not replace the teachers; its role would be mostly to listen rather than to punish. If it worked fairly and respectfully, it would make our school a safer place for everyone.”',
-    feedback: { correct: 'Check your paragraph: a clear position; a reason with because, due to or as a result of; a limit such as mostly, many, not always or although; a passive without “by” (students are left out …); and an if … would … sentence for a possible result.', incorrect: '' },
+    feedback: { correct: 'Check your paragraph: A clear position; a reason with because, due to or as a result of; a limit such as mostly, many, not always or although; a passive without “by” (students are left out …); and an if … would … sentence for a possible result.', incorrect: '' },
     discussionPrompts: [
       { question: 'Sentence 1 — Your view: “In my view, our school should … because …”', mode: 'Individual' },
       { question: 'Sentences 2–3 — Reasons: “Some students are left out …”, “Due to …, …”', mode: 'Individual' },

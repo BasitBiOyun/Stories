@@ -107,7 +107,7 @@ export const abrahamA2LanguageFocusExercises: Record<number, Exercise[]> = {
         'Again and again': ['But Abraham played with these idols as toys', 'He rode on their backs', 'and sometimes kicked them'],
         'Only one time': ['One day, Abraham asked his father', 'One day, his father saw Abraham', 'He got angry'],
       },
-      explanation: 'The chapter first tells us about Abraham’s habits as a young boy: he played with the idols, rode on their backs and “sometimes” kicked them. “Sometimes” shows that it happened more than once. “One day” takes us to one special time in the story.',
+      explanation: 'The chapter first tells us about Abraham’s habits as a young boy: He played with the idols, rode on their backs and “sometimes” kicked them. “Sometimes” shows that it happened more than once. “One day” takes us to one special time in the story.',
       feedback: {
         correct: 'Correct. You separated the habits from the one-time events.',
         incorrect: 'Look for “sometimes” and “One day” in Chapter 2. What did Abraham do many times? What happened on one day?',
@@ -218,7 +218,7 @@ export const abrahamA2LanguageFocusExercises: Record<number, Exercise[]> = {
       fillBlanksText: '[blank], he stood up and looked at the beautiful sky. … But when it disappeared, he said, “I will not show respect to it, [blank] it sets and disappears.” … He understood that it [blank] be his Lord.',
       wordBank: ['Then', 'because', 'could not', 'can', 'did not'],
       correctAnswer: ['Then', 'because', 'could not'],
-      explanation: '“Then” moves the story to the next action. “Because” gives the reason for Abraham’s words. “Could not be” shows his conclusion: it was not possible for the star or the moon to be his Lord.',
+      explanation: '“Then” moves the story to the next action. “Because” gives the reason for Abraham’s words. “Could not be” shows his conclusion: It was not possible for the star or the moon to be his Lord.',
       feedback: {
         correct: 'Correct. You used a sequence word, a reason word and a conclusion.',
         incorrect: 'Read the second paragraph of Chapter 3 again. Which word gives the next action? Which word gives a reason? What did Abraham understand at the end?',

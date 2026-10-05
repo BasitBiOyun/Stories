@@ -24,7 +24,7 @@ export const abrahamB2LanguageFocusChapter1: Record<number, Exercise[]> = {
         'It shows that the description was true only in the past.',
       ],
       correctAnswer: 0,
-      explanation: '“Be presented as / be described as” frames a statement: it tells the reader where a description comes from. Here the frame “In the Holy Qur’an … is presented as” makes the Qur’an the source of the portrait. A frame like this does not express doubt; it shows the reader whose presentation is being reported. The chapter returns to the Qur’an as a source in its last sentence.',
+      explanation: '“Be presented as / be described as” frames a statement: It tells the reader where a description comes from. Here the frame “In the Holy Qur’an … is presented as” makes the Qur’an the source of the portrait. A frame like this does not express doubt; it shows the reader whose presentation is being reported. The chapter returns to the Qur’an as a source in its last sentence.',
       feedback: {
         correct: 'Correct. The frame names the source of the description; it does not weaken it.',
         incorrect: 'Look at the words before the verb: “In the Holy Qur’an”. Whose presentation of Abraham is the writer reporting?',
@@ -42,7 +42,7 @@ export const abrahamB2LanguageFocusChapter1: Record<number, Exercise[]> = {
       explanation: '“X means + -ing form” unpacks an abstract term into an action. (“Means that” needs a full clause with its own subject, not an -ing form.) “Also” adds a second role to the earlier description without replacing it; “instead” would cancel the first role. “Presents in detail” tells the reader that the Qur’an gives a fuller account, not just a short mention.',
       feedback: {
         correct: 'Correct. You chose the expressions that define, add and expand.',
-        incorrect: 'Check what follows each gap: an -ing form (bearing witness …), an extra role, and a whole account. Then compare with the first paragraph of Chapter 1.',
+        incorrect: 'Check what follows each gap: An -ing form (bearing witness …), an extra role, and a whole account. Then compare with the first paragraph of Chapter 1.',
       },
     },
     {
@@ -77,7 +77,7 @@ export const abrahamB2LanguageFocusChapter1: Record<number, Exercise[]> = {
       instructions: 'Write or say 7–9 sentences about a famous person or an important idea.',
       question: 'How can you explain a person or an idea clearly?',
       correctAnswer: null,
-      explanation: 'A strong B2 response should not merely include the target expressions. It should use each one for a clear discourse purpose: framing a source, unpacking meaning, adding a related point and foregrounding selected information.',
+      explanation: 'A strong B2 response should not merely include the target expressions. It should use each one for a clear discourse purpose: Framing a source, unpacking meaning, adding a related point and foregrounding selected information.',
       feedback: {
         correct: 'Check that every target expression has a real discourse function and that the paragraph develops in a clear sequence.',
         incorrect: '',
@@ -88,7 +88,7 @@ export const abrahamB2LanguageFocusChapter1: Record<number, Exercise[]> = {
         { question: 'Step 3 — Put the prize or title first: “She was awarded …”',
           mode: 'Pair',
         },
-        { question: 'Step 4 — Check: does each sentence name a source, explain, or add with “also”?', mode: 'Pair' },
+        { question: 'Step 4 — Check: Does each sentence name a source, explain, or add with “also”?', mode: 'Pair' },
       ],
     },
   ],
@@ -119,7 +119,7 @@ export const abrahamB2LanguageFocusChapter2: Record<number, Exercise[]> = {
         Hanifism: 'the belief in the oneness of Allah taught by Prophet Abraham (pbuh)',
         'the acts of worship': 'the only point where Abraham’s monotheism and the Islam taught by Muhammad differ',
       },
-      explanation: 'The chapter defines its terms in different ways: with a dash (“Tawhid—the belief that …”), with a relative clause (“a monotheist who is not …”), and with a participle phrase (“the belief … taught by Prophet Abraham”). Its last sentence limits the difference with “only”: the difference is “only in the acts of worship”. A hanîf is a person; Hanifism is the belief system.',
+      explanation: 'The chapter defines its terms in different ways: With a dash (“Tawhid—the belief that …”), with a relative clause (“a monotheist who is not …”), and with a participle phrase (“the belief … taught by Prophet Abraham”). Its last sentence limits the difference with “only”: the difference is “only in the acts of worship”. A hanîf is a person; Hanifism is the belief system.',
       feedback: {
         correct: 'Correct. You separated the person (a hanîf) from the belief (Hanifism) and read the limiting “only”.',
         incorrect: 'Find each term in Chapter 2 and read what comes straight after it: a dash, “who …”, or “taught by …”. The last sentence of the chapter says where the difference lies.',
@@ -138,7 +138,7 @@ export const abrahamB2LanguageFocusChapter2: Record<number, Exercise[]> = {
         'It shows that the writer disagrees with the claim.',
       ],
       correctAnswer: 0,
-      explanation: 'The first sentence is a direct definition with “is”. “We may say that …” is a stance marker: the modal “may” and the verb “say” show that the writer is offering a way of describing Hanifism, not a simple fact. Careful academic writers use this move for claims that are interpretations.',
+      explanation: 'The first sentence is a direct definition with “is”. “We may say that …” is a stance marker: The modal “may” and the verb “say” show that the writer is offering a way of describing Hanifism, not a simple fact. Careful academic writers use this move for claims that are interpretations.',
       feedback: {
         correct: 'Correct. “We may say that” marks a careful interpretation, not a plain definition.',
         incorrect: 'Compare the plain verb “is” in the definition with the modal “may” in the second sentence. Which one is more cautious?',
@@ -163,7 +163,7 @@ export const abrahamB2LanguageFocusChapter2: Record<number, Exercise[]> = {
         },
       ],
       correctAnswer: null,
-      explanation: '“As” at the start of a sentence often gives a reason, like “because” or “since”; when the cause moves to the end, “because” is the clearest choice. “That is” introduces a reformulation: it says the previous idea again in plainer words. The passive “can be found” focuses on the existence of Allah; the active “people can find” focuses on human ability, which matches “capable of discovering”.',
+      explanation: '“As” at the start of a sentence often gives a reason, like “because” or “since”; when the cause moves to the end, “because” is the clearest choice. “That is” introduces a reformulation: It says the previous idea again in plainer words. The passive “can be found” focuses on the existence of Allah; the active “people can find” focuses on human ability, which matches “capable of discovering”.',
       feedback: {
         correct: 'Well done. You kept the reason and the reformulation clear.',
         incorrect: 'In the first item, “As” gives a reason. In the second, change “can be found” into an active verb with “people” as the subject. Check the second paragraph of Chapter 2.',
@@ -211,7 +211,7 @@ export const abrahamB2LanguageFocusChapter3: Record<number, Exercise[]> = {
         'It means that Christianity was not corrupted at all in that period.',
       ],
       correctAnswer: 0,
-      explanation: 'The non-defining relative clause “which was the least corrupted religion” adds the writer’s evaluation of Christianity. “At that time” limits this evaluation to Waraqa’s period. Also note that “the least corrupted” is a comparison: it does not mean “not corrupted at all”.',
+      explanation: 'The non-defining relative clause “which was the least corrupted religion” adds the writer’s evaluation of Christianity. “At that time” limits this evaluation to Waraqa’s period. Also note that “the least corrupted” is a comparison: It does not mean “not corrupted at all”.',
       feedback: {
         correct: 'Correct. The time phrase limits the evaluation to one period.',
         incorrect: 'Read the whole relative clause again. What is being evaluated, and for which period? Does “least corrupted” mean “not corrupted”?',
@@ -259,7 +259,7 @@ export const abrahamB2LanguageFocusChapter3: Record<number, Exercise[]> = {
       instructions: 'Write or say 8–10 sentences about a place or an idea that changed but kept its main purpose.',
       question: 'How did it change, and what did it keep?',
       correctAnswer: null,
-      explanation: 'A strong response should show controlled progression: establish a point, mark change, locate events in time, add a qualified description, and widen the conclusion without overclaiming.',
+      explanation: 'A strong response should show controlled progression: Establish a point, mark change, locate events in time, add a qualified description, and widen the conclusion without overclaiming.',
       feedback: {
         correct: 'Check that each connector has a real discourse purpose and that your relative-clause evaluation is limited to the context you actually describe.',
         incorrect: '',
@@ -285,7 +285,7 @@ export const abrahamB2LanguageFocusChapter4: Record<number, Exercise[]> = {
       id: 'abraham-b2-language-4-source-status',
       type: 'drag-drop',
       title: 'Fact or Reported View?',
-      instructions: 'Put each part of Chapter 4 in the right group: stated directly, or reported.',
+      instructions: 'Put each part of Chapter 4 in the right group: Stated directly, or reported.',
       question: 'Is the writer sure, or passing on a view?',
       dragDropGroups: [
         {
@@ -371,10 +371,10 @@ export const abrahamB2LanguageFocusChapter4: Record<number, Exercise[]> = {
         },
       ],
       correctAnswer: null,
-      explanation: 'The past perfect “had existed” looks back from Abraham’s time to an even earlier period, and it matches “had been forgotten”. After “is believed”, a perfect infinitive (“to have lived”) is needed for a past time: the belief is present, the life is past. “Some people … still others …” divides society into groups; “others” is a pronoun here, so it needs the plural -s.',
+      explanation: 'The past perfect “had existed” looks back from Abraham’s time to an even earlier period, and it matches “had been forgotten”. After “is believed”, a perfect infinitive (“to have lived”) is needed for a past time: The belief is present, the life is past. “Some people … still others …” divides society into groups; “others” is a pronoun here, so it needs the plural -s.',
       feedback: {
         correct: 'Well done. You corrected the earlier past, the past-time infinitive and the pronoun.',
-        incorrect: 'Ask: is the time earlier than Abraham’s time? Is the belief present but the life past? Is the word standing alone as a pronoun? Then check the end of Chapter 4.',
+        incorrect: 'Ask: Is the time earlier than Abraham’s time? Is the belief present but the life past? Is the word standing alone as a pronoun? Then check the end of Chapter 4.',
       },
     },
     {
@@ -465,7 +465,7 @@ export const abrahamB2LanguageFocusChapter5: Record<number, Exercise[]> = {
         'Nimrod told other people about his dream.',
       ],
       correctAnswer: 0,
-      explanation: '“According to …” attributes information to a source. “Another narration” shows that the tradition tells the story in more than one way: in one account the astrologers predict the child, in the other Nimrod dreams about him. The writer reports both without choosing and without saying one happened after the other.',
+      explanation: '“According to …” attributes information to a source. “Another narration” shows that the tradition tells the story in more than one way: In one account the astrologers predict the child, in the other Nimrod dreams about him. The writer reports both without choosing and without saying one happened after the other.',
       feedback: {
         correct: 'Correct. The phrase introduces an alternative account of the same development.',
         incorrect: 'Compare the prediction of the astrologers with the dream. Does the chapter say both happened, or does it give two versions?',
@@ -598,7 +598,7 @@ export const abrahamB2LanguageFocusChapter6: Record<number, Exercise[]> = {
       fillBlanksText: '… sitting on their backs [blank] people sit on the backs of donkeys. … “What is this statue, father? It has big ears, [blank] [blank] ours.”',
       wordBank: ['as', 'bigger', 'than', 'such as', 'more', 'then'],
       correctAnswer: ['as', 'bigger', 'than'],
-      explanation: '“As” + clause compares two actions: he sat on the statues in the same way people sit on donkeys. “Such as” introduces examples, not a clause. Short adjectives form the comparative with -er + than: “bigger than ours”; “more big” is wrong, and “then” is a time word. The comparisons make the “god of gods” look like an ordinary object.',
+      explanation: '“As” + clause compares two actions: He sat on the statues in the same way people sit on donkeys. “Such as” introduces examples, not a clause. Short adjectives form the comparative with -er + than: “bigger than ours”; “more big” is wrong, and “then” is a time word. The comparisons make the “god of gods” look like an ordinary object.',
       feedback: {
         correct: 'Correct. You completed both comparisons.',
         incorrect: 'The first gap is followed by a full clause (people sit …). The second comparison needs a short adjective + -er and the word that introduces what is compared.',
@@ -677,7 +677,7 @@ export const abrahamB2LanguageFocusChapter7: Record<number, Exercise[]> = {
       explanation: 'The past perfect “had made” shows that making the statue came before worshipping it. After a preposition, English uses “which” for things (“in the middle of which”), never “that”. In a non-defining clause between commas, a person takes “who”; “that” is not used in non-defining clauses.',
       feedback: {
         correct: 'Correct. You chose the earlier past and the right relative words.',
-        incorrect: 'Ask: which action came first? What follows a preposition? Is the clause between commas? Then check the second paragraph of Chapter 7.',
+        incorrect: 'Ask: Which action came first? What follows a preposition? Is the clause between commas? Then check the second paragraph of Chapter 7.',
       },
     },
     {
@@ -757,13 +757,13 @@ export const abrahamB2LanguageFocusChapter8: Record<number, Exercise[]> = {
       instructions: 'Read the lines from Surah al-An’am in Chapter 8. Then choose the best answer.',
       question: '“Thus, We showed Abraham the empire of the heavens and the earth, that he might be one of those with certainty.” What does “that he might be …” express?',
       options: [
-        'The purpose of showing him the heavens and the earth: so that he would reach certainty.',
+        'The purpose of showing him the heavens and the earth: So that he would reach certainty.',
         'A doubt about whether Abraham was ever certain.',
         'A permission given to Abraham.',
         'A result that had happened before he was shown anything.',
       ],
       correctAnswer: 0,
-      explanation: '“That + subject + might/may …” is a formal way of expressing purpose, like “so that he would …”. In the verse, what Abraham was shown has a clear aim: his certainty. The chapter then tells how he looked at the planets and stars.',
+      explanation: '“That + subject + might/may …” is a formal way of expressing purpose, like “so that he would …”. In the verse, what Abraham was shown has a clear aim: His certainty. The chapter then tells how he looked at the planets and stars.',
       feedback: {
         correct: 'Correct. The clause gives the purpose of what Abraham was shown.',
         incorrect: 'Ask why Abraham was shown the heavens and the earth. The clause after “that” answers this question.',
@@ -824,7 +824,7 @@ export const abrahamB2LanguageFocusChapter8: Record<number, Exercise[]> = {
       instructions: 'Write or say 8–10 sentences about someone whose real talent shows over time.',
       question: 'What did others expect, and what did time show?',
       correctAnswer: null,
-      explanation: 'A strong response should make grammatical choices carry the reasoning: pressure is contrasted with persistence, an action has an intended result, and change over time becomes evidence for the final judgement.',
+      explanation: 'A strong response should make grammatical choices carry the reasoning: Pressure is contrasted with persistence, an action has an intended result, and change over time becomes evidence for the final judgement.',
       feedback: {
         correct: 'Check that every target structure contributes to the argument rather than appearing as an isolated grammar example.',
         incorrect: '',
@@ -877,7 +877,7 @@ export const abrahamB2LanguageFocusChapter9: Record<number, Exercise[]> = {
         'had created',
       ],
       correctAnswer: ['were worshipped', 'while in fact', 'had been created'],
-      explanation: 'The passive “were worshipped by people” keeps the heavenly bodies as the topic and shows how people treated them. “While in fact” marks a correction: it moves from human practice to the reality the writer asserts. The passive past perfect “had been created” shows that these bodies are the results of creation, not creators; the active “had created” would say the opposite.',
+      explanation: 'The passive “were worshipped by people” keeps the heavenly bodies as the topic and shows how people treated them. “While in fact” marks a correction: It moves from human practice to the reality the writer asserts. The passive past perfect “had been created” shows that these bodies are the results of creation, not creators; the active “had created” would say the opposite.',
       feedback: {
         correct: 'Correct. You separated human practice from the reality behind it.',
         incorrect: 'The heavenly bodies did not worship or create; something was done to them. Which linker corrects an appearance? Check the end of the first paragraph of Chapter 9.',
@@ -929,7 +929,7 @@ export const abrahamB2LanguageFocusChapter9: Record<number, Exercise[]> = {
       instructions: 'Write or say 8–10 sentences about a popular idea that turned out to be wrong.',
       question: 'What did people believe, and what did the evidence show?',
       correctAnswer: null,
-      explanation: 'A strong response should show reasoning developing across the paragraph: a possibility is examined, evidence changes the evaluation, and the final stance is expressed more explicitly.',
+      explanation: 'A strong response should show reasoning developing across the paragraph: A possibility is examined, evidence changes the evaluation, and the final stance is expressed more explicitly.',
       feedback: {
         correct: 'Check that each target structure advances the argument and that the final stance follows from the evidence.',
         incorrect: '',
@@ -972,7 +972,7 @@ export const abrahamB2LanguageFocusChapter10: Record<number, Exercise[]> = {
         'come and go': 'appear for a time and then disappear',
         'unworthy of worship': 'not deserving to be worshipped',
       },
-      explanation: 'The passive participles “created, controlled, managed, and made …” all present the heavenly bodies as things that something is done to: they do not act by themselves. “Evidently” means “clearly, as can be seen”. The prefix un- in “unworthy” means “not”. Together these words prepare the chapter’s conclusion that the sun and moon are signs, not gods.',
+      explanation: 'The passive participles “created, controlled, managed, and made …” all present the heavenly bodies as things that something is done to: They do not act by themselves. “Evidently” means “clearly, as can be seen”. The prefix un- in “unworthy” means “not”. Together these words prepare the chapter’s conclusion that the sun and moon are signs, not gods.',
       feedback: {
         correct: 'Correct. You matched each description with its meaning.',
         incorrect: 'Read the first two sentences of Chapter 10 again. Which words show dependence, which show purpose, and which show change?',
@@ -991,7 +991,7 @@ export const abrahamB2LanguageFocusChapter10: Record<number, Exercise[]> = {
         'Between what Abraham believed as a child and what he believed later.',
       ],
       correctAnswer: 0,
-      explanation: '“However” links two sentences that contrast. Before it: the heavenly bodies are created, controlled and temporary. After it: Allah sees and knows everything and is “everlasting without disappearance”. The contrast is between the created and the Creator.',
+      explanation: '“However” links two sentences that contrast. Before it: The heavenly bodies are created, controlled and temporary. After it: Allah sees and knows everything and is “everlasting without disappearance”. The contrast is between the created and the Creator.',
       feedback: {
         correct: 'Correct. “However” sets the limited, changing bodies against Allah.',
         incorrect: 'Read the sentence just before “However” and the sentences just after it. Who or what is described on each side?',
@@ -1016,7 +1016,7 @@ export const abrahamB2LanguageFocusChapter10: Record<number, Exercise[]> = {
         },
       ],
       correctAnswer: null,
-      explanation: '“Firstly … secondly …” lists two points in order. “Not only that … but also that …” joins the same two points and shows that the second adds something important: the heavenly bodies are rejected as gods but reinterpreted as signs. “…, and then …” can become a time clause with “After” or “Once”, which puts the first event in the background.',
+      explanation: '“Firstly … secondly …” lists two points in order. “Not only that … but also that …” joins the same two points and shows that the second adds something important: The heavenly bodies are rejected as gods but reinterpreted as signs. “…, and then …” can become a time clause with “After” or “Once”, which puts the first event in the background.',
       feedback: {
         correct: 'Well done. You kept both points and the order of events.',
         incorrect: 'Item 1 needs the first half of “not only … but also”. Item 2 needs a time word that shows the first event came before the conflict.',
@@ -1105,7 +1105,7 @@ export const abrahamB2LanguageFocusChapter11: Record<number, Exercise[]> = {
       explanation: '“Unless” means “except if”. It adds one narrow exception without cancelling the main claim. Abraham still rejects any fear of the false partners; the only power he recognises over what happens to him is his Lord’s will.',
       feedback: {
         correct: 'Correct. The exception points to his Lord’s will, not to the partners’ power.',
-        incorrect: 'Who is the subject of “wills” in the exception: the partners or his Lord? Does the exception give power to the partners?',
+        incorrect: 'Who is the subject of “wills” in the exception: The partners or his Lord? Does the exception give power to the partners?',
       },
     },
     {
@@ -1140,7 +1140,7 @@ export const abrahamB2LanguageFocusChapter11: Record<number, Exercise[]> = {
       instructions: 'Write or say 8–10 sentences about a disagreement at school or in your town.',
       question: 'Which side has better reasons?',
       correctAnswer: null,
-      explanation: 'A strong response should use language choices to organise reasoning: challenge an assumption, qualify a claim, distinguish evidence from inference, and end with an evaluative comparison.',
+      explanation: 'A strong response should use language choices to organise reasoning: Challenge an assumption, qualify a claim, distinguish evidence from inference, and end with an evaluative comparison.',
       feedback: {
         correct: 'Check that your questions advance the argument and that your inference is clearly marked as an inference.',
         incorrect: '',
@@ -1175,7 +1175,7 @@ export const abrahamB2LanguageFocusChapter12: Record<number, Exercise[]> = {
         },
       ],
       correctAnswer: ['1', '2', '3', '4', '5'],
-      explanation: 'Each line does something in the argument. Abraham opens with a challenging question. The people justify their worship with tradition (“We found our parents …”). Abraham answers the justification directly: the parents were also in error. The people then question his seriousness, and Abraham replies with a positive statement of belief and his own witness.',
+      explanation: 'Each line does something in the argument. Abraham opens with a challenging question. The people justify their worship with tradition (“We found our parents …”). Abraham answers the justification directly: The parents were also in error. The people then question his seriousness, and Abraham replies with a positive statement of belief and his own witness.',
       feedback: {
         correct: 'Correct. You followed the debate from question to justification, judgement, doubt and declaration.',
         incorrect: 'Look for links: “your parents” answers “our parents”, and “Are you telling us the truth” reacts to a strong judgement. Check the verses in Chapter 12.',
@@ -1202,7 +1202,7 @@ export const abrahamB2LanguageFocusChapter12: Record<number, Exercise[]> = {
         'in evident error': 'clearly mistaken',
         'a bitter struggle': 'a hard and painful conflict',
       },
-      explanation: 'Several of these expressions are fixed combinations: pay (no) heed to, be mindful of, be faithful to (in the verse the preposition moves to the front: “to which you are faithful”). Learn them with their prepositions. “Evident” means “clear, easy to see”, and “bitter” with “struggle” means painful and full of anger.',
+      explanation: 'Several of these expressions are fixed combinations: Pay (no) heed to, be mindful of, be faithful to (in the verse the preposition moves to the front: “to which you are faithful”). Learn them with their prepositions. “Evident” means “clear, easy to see”, and “bitter” with “struggle” means painful and full of anger.',
       feedback: {
         correct: 'Correct. You matched each expression with its meaning.',
         incorrect: 'Find each expression in Chapter 12 and read the sentence around it: a threat, a duty, statues, a judgement, and the relationship with his people.',
@@ -1227,7 +1227,7 @@ export const abrahamB2LanguageFocusChapter12: Record<number, Exercise[]> = {
         },
       ],
       correctAnswer: null,
-      explanation: '“Not only … but (also/as well)” adds a stronger second point: the father did more than worship idols, he made and sold them. When a sentence starts with “Not only”, the subject and auxiliary change places, as in a question: “Not only did he worship …”. A reported instruction (told them to + verb) becomes an imperative in direct speech.',
+      explanation: '“Not only … but (also/as well)” adds a stronger second point: The father did more than worship idols, he made and sold them. When a sentence starts with “Not only”, the subject and auxiliary change places, as in a question: “Not only did he worship …”. A reported instruction (told them to + verb) becomes an imperative in direct speech.',
       feedback: {
         correct: 'Well done. You used inversion after “Not only” and changed the instruction into direct speech.',
         incorrect: 'After “Not only” at the start, use question word order: did + subject + verb. For item 2, start with the base verb.',

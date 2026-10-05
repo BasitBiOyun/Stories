@@ -33,7 +33,7 @@ const selfPlans: SelfPlan[] = [
     quick: 'The question asks why people’s skin colors are not all the same. Read paragraph 3 before you choose.',
     wrong: ['Go back to paragraph 3.', 'Find the words “Because of this” and read the sentence before them again.', 'Try again.'],
     check: ['Can I say what Allah created Adam (pbuh) from?', 'Can I say why humans have different skin colors?', 'Can I say “He was going to …” correctly?'],
-    use: 'Language Focus, last activity: retell the start of the story in three or four short sentences. Use past forms like created and collected, one was going to sentence, and After that or Then.',
+    use: 'Language Focus, last activity: Retell the start of the story in three or four short sentences. Use past forms like created and collected, one was going to sentence, and After that or Then.',
     reflect: 'We are all children of Adam (pbuh), with many skin colors. How can you show respect to a person who looks different from you?',
   },
   {
@@ -97,7 +97,7 @@ const selfPlans: SelfPlan[] = [
     quick: 'You will put four events in order. The events go in the same order as paragraphs 1, 2 and 3.',
     wrong: ['Read the chapter again from the start.', 'Stop after each paragraph and say what happened.', 'Put the events in that order. Try again.'],
     check: ['Can I say Iblis’s lie?', 'Can I say two things Adam and Eve did after the mistake?', 'Can I say “They decided never to …” correctly?'],
-    use: 'Language Focus, last activity: write or say four short sentences about a small mistake, like forgetting a friend’s birthday. Use I made a mistake, it wasn’t on purpose, I learned … and I decided never to ….',
+    use: 'Language Focus, last activity: Write or say four short sentences about a small mistake, like forgetting a friend’s birthday. Use I made a mistake, it wasn’t on purpose, I learned … and I decided never to ….',
     reflect: 'Adam and Eve said sorry and learned. Iblis never said he was wrong. What can you do after you make a mistake?',
   },
   {
@@ -108,12 +108,12 @@ const selfPlans: SelfPlan[] = [
     read: ['Look at the picture. What work can you see on the land?', 'Listen to the chapter once. Follow the text with your eyes.', 'Read paragraph 1 again. Find the verbs after “They were going to”.'],
     find: ['Paragraph 1: find what Allah did first.', 'Paragraph 1: find two things they used land for.', 'Paragraph 2: find what Iblis wanted.'],
     words: ['Word Notes: crops, rule, planet, weak.', '“help the weak”: do weak people need help? Say yes or no.', 'Write one sentence: “I can help … because …”'],
-    languageFocus: 'Decide what were going to means here: work for the future, not walking to a place. Build “They were going to build buildings for housing, protect nature and help the weak.” Then choose to, to and not to. We say on earth to live there, not for live there.',
-    sayIt: 'Say the stress: PLAN-et, pro-TECT, NA-ture. Stop a little at each comma: build buildings for housing, / protect nature / and help the weak.',
+    languageFocus: 'Decide what were going to means here: Work for the future, not walking to a place. Build “They were going to build buildings for housing, protect nature and help the weak.” Then choose to, to and not to. We say on earth to live there, not for live there.',
+    sayIt: 'Say the stress: PLAN-et, pro-TECT, NA-ture. Stop a little at each comma: Build buildings for housing, / protect nature / and help the weak.',
     quick: 'The sentence is about Iblis on earth. Read the last paragraph before you decide.',
-    wrong: ['Go back to the last paragraph.', 'Find the word followed and read that sentence again.', 'Ask yourself: did Iblis stay far away? Then try again.'],
+    wrong: ['Go back to the last paragraph.', 'Find the word followed and read that sentence again.', 'Ask yourself: Did Iblis stay far away? Then try again.'],
     check: ['Can I say two things Adam and Eve were going to do?', 'Can I say what Iblis wanted?', 'Can I use to + verb to give a reason?'],
-    use: 'Language Focus, last activity: write or say four short sentences about a useful job, like caring for a garden. Say your plan with going to, give a reason with to + verb, and say one thing you want people to do or not to do.',
+    use: 'Language Focus, last activity: Write or say four short sentences about a useful job, like caring for a garden. Say your plan with going to, give a reason with to + verb, and say one thing you want people to do or not to do.',
     reflect: 'Adam and Eve were going to protect nature and help the weak. What is one thing you can do this week for nature or for a person who needs help?',
   },
   {
@@ -125,11 +125,11 @@ const selfPlans: SelfPlan[] = [
     find: ['Paragraph 1: find what Allah made Adam.', 'Paragraph 2: find what Adam and Eve taught their children.', 'Paragraph 3: find what happened after the death of Adam (pbuh).'],
     words: ['Word Notes: honest, behave, enemy, peace.', '“Some days brought them peace”: were those days calm or difficult?', 'Write one sentence: “An honest person …”'],
     languageFocus: 'Choose to, against and not. Match phrases like for many years and took the same way. Then put five sentences in order with Then and After. We say warn someone against a danger.',
-    sayIt: 'Say the stress: HON-est (the h is silent), be-HAVE, EN-e-my. Say the list slowly: be honest, / do good, / stop bad.',
+    sayIt: 'Say the stress: HON-est (the h is silent), be-HAVE, EN-e-my. Say the list slowly: Be honest, / do good, / stop bad.',
     quick: 'The question asks why Adam and Eve warned their children against Iblis. Read paragraph 2 before you choose.',
     wrong: ['Go back to paragraph 2.', 'Find the word because after “warned their children” and read that sentence again.', 'Try again.'],
     check: ['Can I say two things Adam taught people?', 'Can I say why Iblis was not their friend?', 'Can I say “They taught … to …” correctly?'],
-    use: 'Language Focus, last activity: write or say four short sentences of good advice for a friend or a family member. Use I teach … to …, I warn … against …, because and not ….',
+    use: 'Language Focus, last activity: Write or say four short sentences of good advice for a friend or a family member. Use I teach … to …, I warn … against …, because and not ….',
     reflect: 'Adam taught people to be honest and to remember Allah. What is one good thing you can teach a friend or a family member?',
   },
   {
@@ -145,7 +145,7 @@ const selfPlans: SelfPlan[] = [
     quick: 'You will match each brother’s work and each brother’s offering. The jobs are in paragraph 1 and the offerings are in paragraph 2.',
     wrong: ['Go back to paragraph 1 and find became and was a.', 'Then go to paragraph 2 and find brought.', 'Match again.'],
     check: ['Can I say each brother’s job?', 'Can I say how the two gifts were different?', 'Can I say “They had to …” correctly?'],
-    use: 'Language Focus, last activity: write or say four short sentences about a good choice you made. Say what you are like, one thing you had to do, why you did it, and how you gave your best.',
+    use: 'Language Focus, last activity: Write or say four short sentences about a good choice you made. Say what you are like, one thing you had to do, why you did it, and how you gave your best.',
     reflect: 'Habil gave his best. What is one thing you can do with your best effort this week?',
   },
   {
@@ -157,11 +157,11 @@ const selfPlans: SelfPlan[] = [
     find: ['Paragraph 1: find why Allah was pleased with Habil’s offering.', 'Paragraph 1: find Habil’s answer to his brother.', 'Paragraph 2: find what the crow did.'],
     words: ['Word Notes: crow, panic, digging, harm.', '“I won’t fight back or harm you.” Did Habil want to hurt his brother?', 'Write one sentence: “When I feel afraid, I do not panic. I …”'],
     languageFocus: 'Decide what won’t shows in Habil’s words. Match phrases like Qabil’s anger cooled. Then choose became, should and sent. We say became and sent, not becomed and sended.',
-    sayIt: 'Say won’t with a long o: it is not want. Say the stress: PAN-ic, DIG-ging. Say Habil’s words in a calm voice: “You are my brother, and I fear Allah.”',
+    sayIt: 'Say won’t with a long o: It is not want. Say the stress: PAN-ic, DIG-ging. Say Habil’s words in a calm voice: “You are my brother, and I fear Allah.”',
     quick: 'The question asks why Habil said he would not fight back. Read Habil’s words in paragraph 1 before you choose.',
     wrong: ['Go back to paragraph 1.', 'Find “I won’t fight back or harm you.” and read the next sentence.', 'Try again.'],
     check: ['Can I say Habil’s answer?', 'Can I say how Qabil’s feelings changed?', 'Can I say “I don’t know what I should do” correctly?'],
-    use: 'Language Focus, last activity: write or say four short sentences about a safe problem, like a lost key. Use I won’t …, I became …, I don’t know what I should do, and someone showed me how to ….',
+    use: 'Language Focus, last activity: Write or say four short sentences about a safe problem, like a lost key. Use I won’t …, I became …, I don’t know what I should do, and someone showed me how to ….',
     reflect: 'Habil said no to fighting. What can you do when you feel very angry? Who can you talk to?',
   },
   {
@@ -175,9 +175,9 @@ const selfPlans: SelfPlan[] = [
     languageFocus: 'Match verbs with their past forms (go → went, lose → lost, spread → spread). Choose should, had to and still. Then build “It tells them to be well-behaved and kind to others.” We say should stay, not should to stay.',
     sayIt: 'Say the stress: con-TROL, ad-VI-ses, world-WIDE, MES-sage. The -es in advises is an extra part: ad-VI-ses.',
     quick: 'The sentence is about Adam’s message. Read paragraph 2 before you decide.',
-    wrong: ['Go back to paragraph 2.', 'Find the word worldwide and read that sentence again.', 'Ask yourself: only the family, or many places? Then try again.'],
+    wrong: ['Go back to paragraph 2.', 'Find the word worldwide and read that sentence again.', 'Ask yourself: Only the family, or many places? Then try again.'],
     check: ['Can I say one lesson from paragraph 1?', 'Can I say who spread the message?', 'Can I say “People should …” correctly?'],
-    use: 'Language Focus, last activity: write or say four short sentences about advice and help in your life. Use should, had to, one change like I got older, and … helps me to ….',
+    use: 'Language Focus, last activity: Write or say four short sentences about advice and help in your life. Use should, had to, one change like I got older, and … helps me to ….',
     reflect: 'The story tells us to stay away from jealousy and to control our anger. Which one will you work on this week?',
   },
 ];
@@ -206,12 +206,12 @@ export const adamA2SelfStudyGuide: TeacherGuideSection[] = selfPlans.map(p => ({
 
 export const adamA2StudentGuideSections: StudentGuideSection[] = [
   { title: '1. One Chapter at a Time', icon: 'Target', text: 'Study one chapter in one sitting. It takes about 20 minutes. Open “Study Path” to see the steps for your chapter.', points: ['Look at the title and the picture.', 'Listen and follow the text.', 'Read one paragraph at a time.', 'Do the Quick Challenge.', 'Do the Language Focus.'] },
-  { title: '2. Listen and Read', icon: 'Ear', text: 'Every chapter has audio. Listen first, then read.', points: ['First time: listen for the main idea.', 'Second time: follow the words with your eyes.', 'Stop the audio and say one short sentence again.'] },
+  { title: '2. Listen and Read', icon: 'Ear', text: 'Every chapter has audio. Listen first, then read.', points: ['First time: Listen for the main idea.', 'Second time: Follow the words with your eyes.', 'Stop the audio and say one short sentence again.'] },
   { title: '3. Word Notes and Hotspots', icon: 'BookOpen', text: 'Each chapter has four underlined words. Tap a word to see its Word Note. Tap the hotspots on the picture for short notes.', points: ['Read the word in its sentence first.', 'Guess the meaning, then check the Word Note.', 'Write the word and one sentence in your notebook.'] },
   { title: '4. Quick Challenge', icon: 'CheckCircle', text: 'Each chapter has one Quick Challenge. Answer first, then read the feedback.', points: ['Wrong answer? Find the answer sentence.', 'Read it again.', 'Try again.'] },
   { title: '5. Language Focus', icon: 'Compass', text: 'Each chapter has four Language Focus activities. Do them after you understand the chapter. They use sentences from the story.', points: ['Activity 1: look at a story sentence and its meaning.', 'Activities 2 and 3: practise the words and forms.', 'Last activity: write or say three or four sentences of your own.'] },
   { title: '6. When It Is Hard', icon: 'HelpCircle', text: 'It is fine to find a chapter hard. Change how you study, not your goal.', points: ['Listen to one paragraph only.', 'Read two or three lines at a time.', 'Look at the picture and the hotspots again.', 'Learn only two words today.'] },
-  { title: '7. Values in the Story', icon: 'Heart', text: 'The story of Adam (pbuh) is about respect, humility, saying sorry, care and self-control. Turn each value into one small action.', points: ['Respect: all people are children of Adam, with many skin colors (Chapters 1 and 2).', 'Humility: do not think you are better than others (Chapters 3 and 5).', 'Saying sorry: learn from a mistake and do not repeat it (Chapter 5).', 'Care: protect nature and help the weak (Chapter 6).', 'Giving your best: give the best you have (Chapter 8).', 'Self-control: stay calm when you are angry (Chapters 9 and 10).'] },
+  { title: '7. Values in the Story', icon: 'Heart', text: 'The story of Adam (pbuh) is about respect, humility, saying sorry, care and self-control. Turn each value into one small action.', points: ['Respect: All people are children of Adam, with many skin colors (Chapters 1 and 2).', 'Humility: Do not think you are better than others (Chapters 3 and 5).', 'Saying sorry: Learn from a mistake and do not repeat it (Chapter 5).', 'Care: Protect nature and help the weak (Chapter 6).', 'Giving your best: Give the best you have (Chapter 8).', 'Self-control: Stay calm when you are angry (Chapters 9 and 10).'] },
   { title: '8. At the End of the Book', icon: 'Stars', text: 'After Chapter 10, do the review pages in this order. Go back to a chapter when an answer is not clear.', points: ['Knowledge Check', 'Vocabulary Challenge', 'Language Review', 'Master Glossary', 'Final Challenge'] },
 ];
 

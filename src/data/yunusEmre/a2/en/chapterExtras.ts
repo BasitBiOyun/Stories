@@ -3,14 +3,14 @@ import type { ChapterExtras } from '../../../../lib/chapterExtras';
 // Before you read, I can and example answers (V2). The story text is unchanged.
 export const yunusEmreA2ChapterExtrasEn: ChapterExtras = {
   beforeYouRead: {
-    1: { kind: 'guess', question: "Guess first: which lands did Yunus Emre travel to?", options: ["Syria and Azerbaijan", "Egypt and Spain", "India and China"], answer: 0, quote: "as well as Syria and Azerbaijan" },
-    2: { kind: 'guess', question: "Guess first: where did dervishes try to find Allah?", options: ["only in the mosque", "only in books", "everywhere"], answer: 2, quote: "Dervishes tried to find Allah everywhere" },
-    3: { kind: 'guess', question: "Guess first: what does a dervish need, says the poem?", options: ["a big house", "a wounded heart", "a fast horse"], answer: 1, quote: "A dervish needs a wounded heart." },
-    4: { kind: 'guess', question: "Guess first: what was behind Taptuk’s dervish house?", options: ["a mountain", "a river", "a market"], answer: 0, quote: "There was a mountain behind Taptuk’s dervish house." },
-    5: { kind: 'guess', question: "Guess first: what does carrying firewood every day do?", options: ["It makes you rich.", "It makes you sleepy.", "It hurts your back."], answer: 2, quote: "Carrying firewood every day hurts your back and leaves bad cuts." },
-    6: { kind: 'guess', question: "Guess first: what special language did Yunus learn?", options: ["the language of kings", "the language of all creatures", "the language of sailors"], answer: 1, quote: "He learned the special language of all creatures." },
-    7: { kind: 'guess', question: "Guess first: when did Yunus come back?", options: ["in the late afternoon", "early in the morning", "at midnight"], answer: 0, quote: "In the late afternoon, he returned with a single daisy." },
-    8: { kind: 'guess', question: "Guess first: what did the daisy ask Yunus to do?", options: ["to water it", "to leave it", "to pick it"], answer: 2, quote: "At least pick me" },
+    1: { kind: 'guess', question: "Guess first: Which lands did Yunus Emre travel to?", options: ["Syria and Azerbaijan", "Egypt and Spain", "India and China"], answer: 0, quote: "as well as Syria and Azerbaijan" },
+    2: { kind: 'guess', question: "Guess first: Where did dervishes try to find Allah?", options: ["only in the mosque", "only in books", "everywhere"], answer: 2, quote: "Dervishes tried to find Allah everywhere" },
+    3: { kind: 'guess', question: "Guess first: What does a dervish need, says the poem?", options: ["a big house", "a wounded heart", "a fast horse"], answer: 1, quote: "A dervish needs a wounded heart." },
+    4: { kind: 'guess', question: "Guess first: What was behind Taptuk’s dervish house?", options: ["a mountain", "a river", "a market"], answer: 0, quote: "There was a mountain behind Taptuk’s dervish house." },
+    5: { kind: 'guess', question: "Guess first: What does carrying firewood every day do?", options: ["It makes you rich.", "It makes you sleepy.", "It hurts your back."], answer: 2, quote: "Carrying firewood every day hurts your back and leaves bad cuts." },
+    6: { kind: 'guess', question: "Guess first: What special language did Yunus learn?", options: ["the language of kings", "the language of all creatures", "the language of sailors"], answer: 1, quote: "He learned the special language of all creatures." },
+    7: { kind: 'guess', question: "Guess first: When did Yunus come back?", options: ["in the late afternoon", "early in the morning", "at midnight"], answer: 0, quote: "In the late afternoon, he returned with a single daisy." },
+    8: { kind: 'guess', question: "Guess first: What did the daisy ask Yunus to do?", options: ["to water it", "to leave it", "to pick it"], answer: 2, quote: "At least pick me" },
   },
   iCan: {
     1: ["I can say who Yunus Emre was.", "I can say what happened in the past and why.", "I can give a short life story of a person."],

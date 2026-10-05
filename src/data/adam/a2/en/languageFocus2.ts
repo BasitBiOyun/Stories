@@ -70,7 +70,7 @@ export const adamA2LanguageFocusExercisesPart2: Record<number, Exercise[]> = {
         'it wasn’t on purpose': 'they did not plan to do it',
         'took an opposite direction': 'went a very different way',
       },
-      explanation: 'These words help us follow the story. “After a while” shows time. “Unfortunately” shows a sad fact. “Banned” means not allowed. “It wasn’t on purpose” means they did not plan the mistake. “Took an opposite direction” shows that Iblis did the opposite of Adam and Eve: he never said he was wrong.',
+      explanation: 'These words help us follow the story. “After a while” shows time. “Unfortunately” shows a sad fact. “Banned” means not allowed. “It wasn’t on purpose” means they did not plan the mistake. “Took an opposite direction” shows that Iblis did the opposite of Adam and Eve: He never said he was wrong.',
       feedback: {
         correct: 'Good. You understood the key words of Chapter 5.',
         incorrect: 'Find each word in Chapter 5 and read the sentence around it. What does it mean there?',
@@ -198,7 +198,7 @@ export const adamA2LanguageFocusExercisesPart2: Record<number, Exercise[]> = {
         },
       ],
       correctAnswer: null,
-      explanation: 'We “teach + person + to + verb”: teaching people to be honest. We “warn + person + against + danger”: warned their children against Iblis. “X, not Y” says one thing is true and the other is not: their enemy, not their friend.',
+      explanation: 'We “teach + person + to + verb”: teaching people to be honest. We “warn + person + against + danger”: warned their children against Iblis. “X, not Y” says one thing is true and the other is not: Their enemy, not their friend.',
       feedback: {
         correct: 'Well done. You chose “to”, “against” and “not”.',
         incorrect: 'Remember: teach someone to …, warn someone against …. Check the first two paragraphs of Chapter 7.',
@@ -223,7 +223,7 @@ export const adamA2LanguageFocusExercisesPart2: Record<number, Exercise[]> = {
         'After the death of Adam (pbuh)': 'when he was no longer alive',
         'took the same way': 'did the same thing',
       },
-      explanation: 'Time phrases such as “for many years” and “After the death of …” help us follow the story. “Hard” can mean difficult. “Took the same way” means all the prophets did the same work: they taught people to remember Allah.',
+      explanation: 'Time phrases such as “for many years” and “After the death of …” help us follow the story. “Hard” can mean difficult. “Took the same way” means all the prophets did the same work: They taught people to remember Allah.',
       feedback: {
         correct: 'Good. You understood the time and life phrases of Chapter 7.',
         incorrect: 'Find each phrase in Chapter 7 and read the sentence around it. What does it mean there?',
@@ -243,7 +243,7 @@ export const adamA2LanguageFocusExercisesPart2: Record<number, Exercise[]> = {
         { id: '5', text: 'All the prophets took the same way.' },
       ],
       correctAnswer: ['1', '2', '3', '4', '5'],
-      explanation: '“Then” shows the next step: after many years, Adam became the first Messenger, and he started teaching people. “After the death of Adam” moves to a later time, when other messengers came.',
+      explanation: '“Then” shows the next step: After many years, Adam became the first Messenger, and he started teaching people. “After the death of Adam” moves to a later time, when other messengers came.',
       feedback: {
         correct: 'Correct. You used the time words to put the story in order.',
         incorrect: 'Look for “Then” and “After the death of …”. Which event comes first? Check Chapter 7.',

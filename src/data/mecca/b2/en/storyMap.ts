@@ -60,9 +60,9 @@ export const meccaB2StoryMapCopyEn: StoryMapCopy = {
     2: 'Mecca in western Arabia',
     3: 'The holy city',
     4: 'The Jurhumites arrive',
-    5: '6th century: a trade center',
+    5: '6th century: A trade center',
     6: 'Trade by sea',
-    7: '7th century: the trade route',
+    7: '7th century: The trade route',
   },
   legend: {
     'route:hijra': 'The migration to Medina',

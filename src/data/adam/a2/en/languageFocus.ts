@@ -72,7 +72,7 @@ export const adamA2LanguageFocusExercises: Record<number, Exercise[]> = {
       fillBlanksText: '… cared about him very much [blank] he was the first human. … the sky and the earth. [blank], he told the angels … soil from different parts of the earth … [blank], humans have different skin colors.',
       wordBank: ['After that', 'because', 'But', 'Because of this'],
       correctAnswer: ['because', 'After that', 'Because of this'],
-      explanation: '“Because” gives a reason (why Allah cared about Adam). “After that” tells us what happened next. “Because of this” gives a result: soil from different places → different skin colors.',
+      explanation: '“Because” gives a reason (why Allah cared about Adam). “After that” tells us what happened next. “Because of this” gives a result: Soil from different places → different skin colors.',
       feedback: {
         correct: 'Correct. You used a reason word, an order word and a result word.',
         incorrect: 'Ask: Why? (reason) — What next? (order) — What happened as a result? Then check Chapter 1.',
@@ -132,7 +132,7 @@ export const adamA2LanguageFocusExercises: Record<number, Exercise[]> = {
       question: 'What did Iblis think about Adam?',
       sentenceChunks: ['Iblis', 'thought', 'Adam was', 'an unimportant creature', 'created from clay.'],
       correctAnswer: null,
-      explanation: '“Thought + sentence” tells us someone’s opinion. The angels thought Adam was amazing. “But Iblis didn’t think so.” His opinion was different: he thought Adam was unimportant.',
+      explanation: '“Thought + sentence” tells us someone’s opinion. The angels thought Adam was amazing. “But Iblis didn’t think so.” His opinion was different: He thought Adam was unimportant.',
       feedback: {
         correct: 'Correct. “Iblis thought …” shows that this is only his opinion.',
         incorrect: 'Start with the person, then “thought”, then what he thought. Check the last line of Chapter 2.',
@@ -235,7 +235,7 @@ export const adamA2LanguageFocusExercises: Record<number, Exercise[]> = {
       fillBlanksText: '… did not make anybody valuable. [blank] useful knowledge makes people great, [blank] with this knowledge, humans can do good and stop bad.',
       wordBank: ['If', 'But', 'After', 'because'],
       correctAnswer: ['But', 'because'],
-      explanation: '“But” shows a different idea: clay or fire does not make anybody valuable, but useful knowledge makes people great. “Because” gives the reason: with this knowledge, humans can do good and stop bad.',
+      explanation: '“But” shows a different idea: Clay or fire does not make anybody valuable, but useful knowledge makes people great. “Because” gives the reason: with this knowledge, humans can do good and stop bad.',
       feedback: {
         correct: 'Correct. “But” shows the different idea, and “because” gives the reason.',
         incorrect: 'Read the third paragraph of Chapter 3. Which word shows a different idea? Which word answers “Why?”',

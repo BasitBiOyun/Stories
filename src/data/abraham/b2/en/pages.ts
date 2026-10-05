@@ -430,7 +430,7 @@ const abrahamB2StoryNotes: Record<number, Pick<PageData, 'vocabulary' | 'hotspot
     ],
     hotspots: [
       { id: 'ab-b2-runtime-hs-2-1', x: 35, y: 54, title: "A Life Mission", description: "Abraham (pbuh) spent his life teaching people to believe in Allah alone, and he passed hard tests with full trust in Him." },
-      { id: 'ab-b2-runtime-hs-2-2', x: 60, y: 65, title: "The Hanif Path", description: "The Qur’an describes Abraham (pbuh) as a hanîf: a monotheist who was neither a Jew, a Christian nor an idolater." },
+      { id: 'ab-b2-runtime-hs-2-2', x: 60, y: 65, title: "The Hanif Path", description: "The Qur’an describes Abraham (pbuh) as a hanîf: A monotheist who was neither a Jew, a Christian nor an idolater." },
     ],
   },
   3: {
@@ -546,7 +546,7 @@ const abrahamB2StoryNotes: Record<number, Pick<PageData, 'vocabulary' | 'hotspot
       { word: "threatened", partOfSpeech: "verb", definition: "Said that they would cause harm or punishment to someone." },
     ],
     hotspots: [
-      { id: 'ab-b2-runtime-hs-11-1', x: 32, y: 60, title: "Who Deserves Security?", description: "Abraham (pbuh) asked which side had more right to security: those who worshipped Allah alone or those who gave Him partners." },
+      { id: 'ab-b2-runtime-hs-11-1', x: 32, y: 60, title: "Who Deserves Security?", description: "Abraham (pbuh) asked which side had more right to security: Those who worshipped Allah alone or those who gave Him partners." },
       { id: 'ab-b2-runtime-hs-11-2', x: 75, y: 52, title: "Empty Arguments", description: "His people tried to prove their beliefs, but their claims were so weak that the verses did not even mention them." },
     ],
   },
@@ -881,8 +881,8 @@ const abrahamB2LanguageReviewExercises: Exercise[] = [
       'The writer interprets or concludes': ['We may say that it is the former version of Islam.', 'It is understood from Abraham (pbuh)\'s statement … that his people threatened him with the punishment of their gods.', 'Reconstruction of the Ka’ba and the call to pilgrimage … are clear evidence that Prophet Abraham (pbuh) established the religion …'],
       'The narrator tells an event directly': ['A bitter struggle began between Abraham (pbuh) and his people.', 'Ishmael learned Arabic from them …', 'Abraham (pbuh) returned to Palestine.'],
     },
-    explanation: 'Framing words show where a claim comes from. “is often described as”, “is presented in Islamic sources as” and “According to another narration” pass on what a source or tradition says. “We may say that”, “It is understood from … that” and “are clear evidence that” mark the writer’s own reasoning: a view the writer offers, or a conclusion drawn from evidence. A past simple sentence with no frame (began, learned, returned) tells an event directly. A careful B2 reader keeps these three voices apart.',
-    feedback: { correct: 'Well done. You separated the source, the writer’s reasoning and the narrator’s account.', incorrect: 'Look at the start of each sentence: is there a source frame (described, presented, According to), a reasoning frame (may say, understood, evidence), or no frame at all?' },
+    explanation: 'Framing words show where a claim comes from. “is often described as”, “is presented in Islamic sources as” and “According to another narration” pass on what a source or tradition says. “We may say that”, “It is understood from … that” and “are clear evidence that” mark the writer’s own reasoning: A view the writer offers, or a conclusion drawn from evidence. A past simple sentence with no frame (began, learned, returned) tells an event directly. A careful B2 reader keeps these three voices apart.',
+    feedback: { correct: 'Well done. You separated the source, the writer’s reasoning and the narrator’s account.', incorrect: 'Look at the start of each sentence: Is there a source frame (described, presented, According to), a reasoning frame (may say, understood, evidence), or no frame at all?' },
   },
   {
     id: 'abraham-b2-language-review-2-future-in-the-past', type: 'multiple-choice', title: 'Notice: Looking Ahead from the Past',
@@ -915,8 +915,8 @@ const abrahamB2LanguageReviewExercises: Exercise[] = [
       'His father\'s harsh behavior towards Abraham (pbuh) did not stop him from carrying the message of truth.': 'presents a difficulty that did not change the action',
       'Because of this, Allah made him the leader of humanity …': 'points back to the previous sentence and presents what followed from it',
     },
-    explanation: 'Because of + noun gives the cause after the action: the heat made the people stand away. In search of + noun names the aim of a journey. Not stop someone from + -ing presents an obstacle that failed: his father’s harshness did not change what Abraham did. “Because of this” at the start of a sentence points back: this is the whole previous sentence, and the new sentence gives what followed from it.',
-    feedback: { correct: 'Correct. You matched each linker with its job.', incorrect: 'Ask where the cause is: after the action, in the sentence before, or is it an aim or an obstacle? Compare Chapters 3, 14, 21 and 32.' },
+    explanation: 'Because of + noun gives the cause after the action: The heat made the people stand away. In search of + noun names the aim of a journey. Not stop someone from + -ing presents an obstacle that failed: His father’s harshness did not change what Abraham did. “Because of this” at the start of a sentence points back: This is the whole previous sentence, and the new sentence gives what followed from it.',
+    feedback: { correct: 'Correct. You matched each linker with its job.', incorrect: 'Ask where the cause is: After the action, in the sentence before, or is it an aim or an obstacle? Compare Chapters 3, 14, 21 and 32.' },
   },
   // BUILD — controlled practice in the book's own sentences.
   {
@@ -929,8 +929,8 @@ const abrahamB2LanguageReviewExercises: Exercise[] = [
       { sentence: 'Abraham (pbuh) has aged and his hair was gray after many years spent in calling people to Allah.', error: 'has aged', options: ['is aging', 'have aged', 'had aged'], answer: 2 },
     ],
     correctAnswer: null,
-    explanation: 'A passive needs be + past participle: someone tied his hands and feet, so they were tied (were tying would mean the hands were doing the tying). The verb agrees with the plural subject Cries, so were heard. Had aged steps back from the moment of the story: by the time Sarah made her suggestion, Abraham had already grown old. The present perfect has aged belongs to the present, not to a past story.',
-    feedback: { correct: 'Well done. You fixed the passive, the agreement and the earlier past.', incorrect: 'Ask: who did the action, is the subject singular or plural, and does the verb look back from a past moment? Compare with Chapters 20, 22 and 25.' },
+    explanation: 'A passive needs be + past participle: Someone tied his hands and feet, so they were tied (were tying would mean the hands were doing the tying). The verb agrees with the plural subject Cries, so were heard. Had aged steps back from the moment of the story: By the time Sarah made her suggestion, Abraham had already grown old. The present perfect has aged belongs to the present, not to a past story.',
+    feedback: { correct: 'Well done. You fixed the passive, the agreement and the earlier past.', incorrect: 'Ask: Who did the action, is the subject singular or plural, and does the verb look back from a past moment? Compare with Chapters 20, 22 and 25.' },
   },
   {
     id: 'abraham-b2-language-review-5-reporting-words', type: 'transformation', title: 'Build: Report the Words',
@@ -955,8 +955,8 @@ const abrahamB2LanguageReviewExercises: Exercise[] = [
       'Abraham is believed to have lived in the 20th century BC; in the end, not a single person shared his belief.',
     ],
     correctAnswer: 2,
-    explanation: '“is believed to have lived” keeps a distance: it reports a belief about a date, so ‘It has been proven’ overstates it. “Only one woman and one man” gives an exact scope: ‘many’ inflates it, and ‘not a single person’ erases the two believers. A good B2 summary changes the words but keeps the strength of the claim and its scope.',
-    feedback: { correct: 'Correct. The summary keeps both the certainty and the size of each group.', incorrect: 'Check two things: does the summary make the date more certain than the book does, and does it keep many … but some …?' },
+    explanation: '“is believed to have lived” keeps a distance: It reports a belief about a date, so ‘It has been proven’ overstates it. “Only one woman and one man” gives an exact scope: ‘many’ inflates it, and ‘not a single person’ erases the two believers. A good B2 summary changes the words but keeps the strength of the claim and its scope.',
+    feedback: { correct: 'Correct. The summary keeps both the certainty and the size of each group.', incorrect: 'Check two things: Does the summary make the date more certain than the book does, and does it keep many … but some …?' },
   },
   {
     id: 'abraham-b2-language-review-7-link-limit-collocate', type: 'word-bank', title: 'Build: Link, Limit and Collocate',
@@ -965,8 +965,8 @@ const abrahamB2LanguageReviewExercises: Exercise[] = [
     fillBlanksText: '… he was determined to [blank] to these practices … Allah also will cause them to die and bring them back to life again. [blank], idolaters would not give up but held on tightly to their idols. … Sarah thought she could not have a child. [blank], she suggested Abraham (pbuh) get married to Hagar. … He built a place of worship for all people, [blank] people of a chosen race or color.',
     wordBank: ['put an end', 'However', 'Therefore', 'not just', 'give an end', 'Although'],
     correctAnswer: ['put an end', 'However', 'Therefore', 'not just'],
-    explanation: 'Put an end to + noun is a fixed collocation meaning ‘stop something completely’; give an end is not English. However turns to something unexpected: Allah’s power is described, yet the idolaters still refused to give up. Therefore gives a result: Sarah believed she could not have a child, so she made her suggestion. Not just widens the scope: the place is for everyone, not only for one group. Although needs a full clause after it (Although she thought …, she …), so it cannot stand alone before a comma.',
-    feedback: { correct: 'Well done. You chose the collocation, the contrast, the result and the scope marker.', incorrect: 'For each gap, ask: is it part of a fixed phrase, a surprise, a result, or a wider group? Check Chapters 14, 17, 25 and 35.' },
+    explanation: 'Put an end to + noun is a fixed collocation meaning ‘stop something completely’; give an end is not English. However turns to something unexpected: Allah’s power is described, yet the idolaters still refused to give up. Therefore gives a result: Sarah believed she could not have a child, so she made her suggestion. Not just widens the scope: The place is for everyone, not only for one group. Although needs a full clause after it (Although she thought …, she …), so it cannot stand alone before a comma.',
+    feedback: { correct: 'Well done. You chose the collocation, the contrast, the result and the scope marker.', incorrect: 'For each gap, ask: Is it part of a fixed phrase, a surprise, a result, or a wider group? Check Chapters 14, 17, 25 and 35.' },
   },
   // USE — take the language into new contexts from the learners' world.
   {
@@ -980,7 +980,7 @@ const abrahamB2LanguageReviewExercises: Exercise[] = [
     ],
     correctAnswer: null,
     explanation: 'A fountain does not build itself, so the passive is needed: was built. The source is named at the start (According to a sign …). Believe keeps the claim as a belief; prove or have shown would contradict the next words: no written record confirms this. Was going to close is a plan seen from the past, and however shows that the plan did not happen. In spite of needs a noun after it, not a comma and a clause.',
-    feedback: { correct: 'Well done. You used the book’s language in a new report.', incorrect: 'For each sentence, ask: who did the action? How sure can we be? Does the next part give a result or something unexpected?' },
+    feedback: { correct: 'Well done. You used the book’s language in a new report.', incorrect: 'For each sentence, ask: Who did the action? How sure can we be? Does the next part give a result or something unexpected?' },
   },
   {
     id: 'abraham-b2-language-review-9-new-context', type: 'transformation', title: 'Use: Say It More Carefully',

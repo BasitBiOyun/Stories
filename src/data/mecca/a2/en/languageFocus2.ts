@@ -22,7 +22,7 @@ export const meccaA2LanguageFocusExercisesPart2: Record<number, Exercise[]> = {
       explanation: '“Were getting + poorer/richer” shows a change that continued in the past. “The most + adjective” compares one group with all the others. “Wanted + thing + to + verb” shows what someone wished for.',
       feedback: {
         correct: 'Correct. You understood the change, the comparison and the wish.',
-        incorrect: 'Read each phrase in Chapter 3 again. Ask: is it about a change, about places, about power or about a wish?',
+        incorrect: 'Read each phrase in Chapter 3 again. Ask: Is it about a change, about places, about power or about a wish?',
       },
     },
     {
@@ -71,7 +71,7 @@ export const meccaA2LanguageFocusExercisesPart3: Record<number, Exercise[]> = {
   4: [
     {
       id: 'mecca-a2-language-4-frequency', type: 'drag-drop', title: 'How Often, or What Job?',
-      instructions: 'Put each part in the right group: how often, or his job.',
+      instructions: 'Put each part in the right group: How often, or his job.',
       question: 'Does it say how often, or what Bilal had to do?',
       dragDropGroups: [
         { group: 'How often or how long', items: ['Umayya was always very unkind to Bilal.', 'His master was often angry and harsh.', '… worked under the hot sun in the desert of Mecca all day.'] },
@@ -81,7 +81,7 @@ export const meccaA2LanguageFocusExercisesPart3: Record<number, Exercise[]> = {
         'How often or how long': ['Umayya was always very unkind to Bilal.', 'His master was often angry and harsh.', '… worked under the hot sun in the desert of Mecca all day.'],
         'Bilal’s job or duty': ['He looked after his master’s camels …', '… his job was to bring food and wine to his master.', 'Bilal had to be patient …'],
       },
-      explanation: '“Always”, “often” and “all day” tell us how often or how long. “His job was to + verb” and “had to + verb” tell us what Bilal must do. “Had to” shows a past duty: there was no other choice.',
+      explanation: '“Always”, “often” and “all day” tell us how often or how long. “His job was to + verb” and “had to + verb” tell us what Bilal must do. “Had to” shows a past duty: There was no other choice.',
       feedback: {
         correct: 'Correct. You separated time words from job and duty words.',
         incorrect: 'Look for “always”, “often” and “all day”. Then look for “his job was to” and “had to”.',

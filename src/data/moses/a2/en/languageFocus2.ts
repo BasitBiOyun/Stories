@@ -141,7 +141,7 @@ export const mosesA2LanguageFocusExercisesPart3: Record<number, Exercise[]> = {
         accepted: 'said yes',
         placed: 'put',
       },
-      explanation: 'The queen was different from her husband: she was not like him. She believed in Allah and was kind-hearted. Remember: we say different from, not different than or different of.',
+      explanation: 'The queen was different from her husband: She was not like him. She believed in Allah and was kind-hearted. Remember: we say different from, not different than or different of.',
       feedback: {
         correct: 'Correct. These words help us describe the queen and what happened.',
         incorrect: 'Read the sentences about Queen Asiye in Chapter 4 again. What did the king do when she asked to keep the baby?',
@@ -330,7 +330,7 @@ export const mosesA2LanguageFocusExercisesPart4: Record<number, Exercise[]> = {
       fillBlanksText: 'After many days, he arrived [blank] Midian. … Moses was tired and thirsty. [blank], he looked [blank] water.',
       wordBank: ['at', 'So', 'for', 'Because', 'to'],
       correctAnswer: ['at', 'So', 'for'],
-      explanation: 'We say arrive at a place, not arrive to. So introduces the result: he was thirsty, so he looked for water. Look for means try to find.',
+      explanation: 'We say arrive at a place, not arrive to. So introduces the result: He was thirsty, so he looked for water. Look for means try to find.',
       feedback: {
         correct: 'Correct. Arrived at, So, and looked for.',
         incorrect: 'Read Chapter 7 again. What did Moses do because he was thirsty? Which word goes after arrived?',

@@ -6,8 +6,8 @@ export const abrahamA2LanguageFocusExercisesPart2: Record<number, Exercise[]> = 
       id: 'abraham-a2-language-4-time-and-turning-points',
       type: 'true-false',
       title: 'What Does “Had To” Mean?',
-      instructions: 'Read the sentence from Chapter 4. Then decide: true or false?',
-      question: '“From then on, he had to guide his people.” True or false: guiding his people was now Abraham’s duty.',
+      instructions: 'Read the sentence from Chapter 4. Then decide: True or false?',
+      question: '“From then on, he had to guide his people.” True or false: Guiding his people was now Abraham’s duty.',
       correctAnswer: true,
       explanation: '“Had to + base verb” tells us about a duty or something necessary in the past. Allah made Abraham His Messenger, so now guiding his people was his job.',
       feedback: {
@@ -24,7 +24,7 @@ export const abrahamA2LanguageFocusExercisesPart2: Record<number, Exercise[]> = 
       fillBlanksText: 'Abraham stayed [blank]. [blank] the sun came out. It was shining and very bright. [blank] he saw the bright sun, he thought, “Could this be my Lord? It is bigger and brighter.”',
       wordBank: ['all night', 'In the morning', 'When', 'On the morning', 'during'],
       correctAnswer: ['all night', 'In the morning', 'When'],
-      explanation: '“All night” tells us how long Abraham stayed: from evening until morning. We say “in the morning”, not “on the morning”. “When” joins two actions: first he saw the sun, then he had a new thought.',
+      explanation: '“All night” tells us how long Abraham stayed: From evening until morning. We say “in the morning”, not “on the morning”. “When” joins two actions: First he saw the sun, then he had a new thought.',
       feedback: {
         correct: 'Well done. You used the time words to move the story forward.',
         incorrect: 'Read the first lines of Chapter 4 again. How long did Abraham stay? Which preposition goes with “the morning”?',
@@ -135,7 +135,7 @@ export const abrahamA2LanguageFocusExercisesPart3: Record<number, Exercise[]> = 
         'Somebody is bringing cold food.',
       ],
       correctAnswer: 1,
-      explanation: '“Get + adjective” means “become”. “It is getting cold” shows a change that is happening now: the food is slowly becoming colder. Abraham says it as a joke, because the idols cannot eat.',
+      explanation: '“Get + adjective” means “become”. “It is getting cold” shows a change that is happening now: The food is slowly becoming colder. Abraham says it as a joke, because the idols cannot eat.',
       feedback: {
         correct: 'Correct. “Is getting cold” shows a change happening now.',
         incorrect: 'Think about hot food on a plate. What happens to it when nobody eats it?',
@@ -199,7 +199,7 @@ export const abrahamA2LanguageFocusExercisesPart4: Record<number, Exercise[]> = 
         'Has a question word (Who? Why?)': ['Who did this?', 'Then, why do you worship these objects?'],
         'Yes or no question': ['Don’t you see that they …?', 'Don’t you understand?'],
       },
-      explanation: '“Who …?” asks for a person and “Why …?” asks for a reason. Questions that start with “Don’t …?” or “Are …?” can have a yes/no answer. Abraham’s yes/no questions make the people think: they know the answer.',
+      explanation: '“Who …?” asks for a person and “Why …?” asks for a reason. Questions that start with “Don’t …?” or “Are …?” can have a yes/no answer. Abraham’s yes/no questions make the people think: They know the answer.',
       feedback: {
         correct: 'Correct. You sorted the questions by their form.',
         incorrect: 'Look at each question. Does it have a question word like “Who” or “why”?',
@@ -289,7 +289,7 @@ export const abrahamA2LanguageFocusExercisesPart5: Record<number, Exercise[]> = 
         { sentence: 'Birds [choice] fly over the flames.', options: ['cannot', 'could not', 'did not could'], answer: 1 },
       ],
       correctAnswer: null,
-      explanation: '“So + adjective + that …” shows a result: the fire was so huge that it was dangerous. “To + base verb” tells us why people came: to watch. “Could not” shows that the birds were not able to fly over the flames in the past.',
+      explanation: '“So + adjective + that …” shows a result: The fire was so huge that it was dangerous. “To + base verb” tells us why people came: to watch. “Could not” shows that the birds were not able to fly over the flames in the past.',
       feedback: {
         correct: 'Well done. You completed the result, the purpose and the past ability.',
         incorrect: 'Read Chapter 8 again. Which word goes with “that”? Which small word shows why people came? The story is in the past.',
@@ -330,8 +330,8 @@ export const abrahamA2LanguageFocusExercisesPart6: Record<number, Exercise[]> = 
       id: 'abraham-a2-language-9-anything-nothing-only',
       type: 'true-false',
       title: 'Not Harmed at All',
-      instructions: 'Read the sentence from Chapter 9. Then decide: true or false?',
-      question: '“People were shocked to see that Abraham (pbuh) was not harmed at all.” True or false: the fire hurt Abraham a little.',
+      instructions: 'Read the sentence from Chapter 9. Then decide: True or false?',
+      question: '“People were shocked to see that Abraham (pbuh) was not harmed at all.” True or false: The fire hurt Abraham a little.',
       correctAnswer: false,
       explanation: '“Not … at all” makes a negative stronger. “Not harmed at all” means there was no harm, not even a little. The fire only burnt the ropes on his hands and feet.',
       feedback: {
@@ -348,7 +348,7 @@ export const abrahamA2LanguageFocusExercisesPart6: Record<number, Exercise[]> = 
       fillBlanksText: 'The fire [blank] cool and safe for him. … The fire [blank] a garden. … Abraham (pbuh) tried hard to show them the truth, but they were [blank] against him.',
       wordBank: ['became', 'turned into', 'still', 'become', 'never'],
       correctAnswer: ['became', 'turned into', 'still'],
-      explanation: '“Became + adjective” (became cool) and “turned into + noun” (turned into a garden) show a change. “Still” shows that a situation did not change: after the miracle, the people were against Abraham, the same as before.',
+      explanation: '“Became + adjective” (became cool) and “turned into + noun” (turned into a garden) show a change. “Still” shows that a situation did not change: After the miracle, the people were against Abraham, the same as before.',
       feedback: {
         correct: 'Well done. The fire changed, but the people did not.',
         incorrect: 'Read Chapter 9 again. “Turned into” goes before a noun. The story is in the past. Which word shows that something continued?',

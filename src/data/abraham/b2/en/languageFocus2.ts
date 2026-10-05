@@ -18,7 +18,7 @@ export const abrahamB2LanguageFocusChapter13: Record<number, Exercise[]> = {
       instructions: 'Read the line from Surah Maryam in Chapter 13. Is the statement true or false?',
       question: 'In “O my father, I fear that a punishment from the Most Beneficent (Allah) will afflict you …”, Abraham presents the punishment as certain.',
       correctAnswer: false,
-      explanation: '“I fear that …” frames the future as a worry, not as a fact. Abraham speaks with concern for his father: he warns him about a possible consequence instead of announcing a certain one. This fits the chapter’s picture of a kind, respectful son.',
+      explanation: '“I fear that …” frames the future as a worry, not as a fact. Abraham speaks with concern for his father: He warns him about a possible consequence instead of announcing a certain one. This fits the chapter’s picture of a kind, respectful son.',
       feedback: {
         correct: 'Correct. “I fear that” expresses concern about a possibility.',
         incorrect: 'Look at the words before “a punishment”. Does “I fear that” state a fact, or a worry?',
@@ -81,7 +81,7 @@ export const abrahamB2LanguageFocusChapter13: Record<number, Exercise[]> = {
       explanation: 'After “could not”, a list continues with “or”: could not hear, see, or protect. “Nor” is used after “neither” (as in the verse: “can neither hear, nor see, nor benefit you”). A reported question keeps statement word order and moves back in time: “why he worshipped”. After “before” in a past narrative, use the past simple (“got”), not “will”.',
       feedback: {
         correct: 'Correct. You chose the right negative list, reported question and time clause.',
-        incorrect: 'Ask: which word continues a list after “not”? Is the question direct or reported? Is the time clause in the past? Check the first paragraph of Chapter 13.',
+        incorrect: 'Ask: Which word continues a list after “not”? Is the question direct or reported? Is the time clause in the past? Check the first paragraph of Chapter 13.',
       },
     },
     {
@@ -145,10 +145,10 @@ export const abrahamB2LanguageFocusChapter14: Record<number, Exercise[]> = {
           'I hope I will not be disappointed in my prayer to my Lord.',
         ],
       },
-      explanation: 'The father uses a first conditional (If + present, will + verb) to threaten, and an imperative to demand. Abraham answers with “will” as well, but for his own future actions: he promises to pray for his father’s forgiveness and to turn away. “I hope …” shows a hopeful stance, not certainty. The same grammar serves opposite purposes.',
+      explanation: 'The father uses a first conditional (If + present, will + verb) to threaten, and an imperative to demand. Abraham answers with “will” as well, but for his own future actions: He promises to pray for his father’s forgiveness and to turn away. “I hope …” shows a hopeful stance, not certainty. The same grammar serves opposite purposes.',
       feedback: {
         correct: 'Correct. You separated the father’s threats from Abraham’s promises and hope.',
-        incorrect: 'Ask: who is the action aimed at, and is it harm or kindness? Check the verses at the start of Chapter 14.',
+        incorrect: 'Ask: Who is the action aimed at, and is it harm or kindness? Check the verses at the start of Chapter 14.',
       },
     },
     {
@@ -164,7 +164,7 @@ export const abrahamB2LanguageFocusChapter14: Record<number, Exercise[]> = {
         'The consequences had already happened before he went to the town.',
       ],
       correctAnswer: 0,
-      explanation: '“Might” expresses a possibility that is not certain. Together with “he knew well” and “he was determined”, it presents Abraham’s persistence as a conscious choice: he knew there was a real risk and still went to debate. “In fact” adds this as an important, perhaps surprising, point.',
+      explanation: '“Might” expresses a possibility that is not certain. Together with “he knew well” and “he was determined”, it presents Abraham’s persistence as a conscious choice: He knew there was a real risk and still went to debate. “In fact” adds this as an important, perhaps surprising, point.',
       feedback: {
         correct: 'Correct. “Might” marks a possible risk that he chose to accept.',
         incorrect: 'Does “might” show certainty, permission or possibility? Read the sentences before it about Abraham’s determination.',
@@ -191,7 +191,7 @@ export const abrahamB2LanguageFocusChapter14: Record<number, Exercise[]> = {
         'to uncover the truth': 'to find out what really happened',
         'to reveal the reality of their situation': 'to make the people see their true position',
       },
-      explanation: 'The sentence is built as “Just as A …, or B …, C …”. The doctor and the judge both ask questions for a purpose (to find the right cure, to uncover the truth), and Abraham does the same: he questions the people “to reveal the reality of their situation”. The comparison presents his questions as a careful method, not as an attack.',
+      explanation: 'The sentence is built as “Just as A …, or B …, C …”. The doctor and the judge both ask questions for a purpose (to find the right cure, to uncover the truth), and Abraham does the same: He questions the people “to reveal the reality of their situation”. The comparison presents his questions as a careful method, not as an attack.',
       feedback: {
         correct: 'Correct. You followed the comparison from the doctor and the judge to Abraham.',
         incorrect: 'Read the last sentence of Chapter 14. Each person asks or looks for something with a purpose (to + verb). What is each purpose?',
@@ -258,7 +258,7 @@ export const abrahamB2LanguageFocusChapter15: Record<number, Exercise[]> = {
           'Or are you just joking?',
         ],
       },
-      explanation: 'Abraham’s questions are rhetorical tests: they point to things people can check (Do the idols see? Do they benefit you?), and the expected answer is “No”. His challenge “see if …” turns the claim into an observable test. The people’s questions do not answer the test; they change the topic to disrespect (“criticizing our forefathers”) or try to reduce the challenge to a joke.',
+      explanation: 'Abraham’s questions are rhetorical tests: They point to things people can check (Do the idols see? Do they benefit you?), and the expected answer is “No”. His challenge “see if …” turns the claim into an observable test. The people’s questions do not answer the test; they change the topic to disrespect (“criticizing our forefathers”) or try to reduce the challenge to a joke.',
       feedback: {
         correct: 'Correct. Abraham’s questions test the idols; the people’s questions avoid the test.',
         incorrect: 'Ask whether each line invites people to check the idols’ power, or protects the belief from being checked. Read Chapter 15 again.',
@@ -322,10 +322,10 @@ export const abrahamB2LanguageFocusChapter15: Record<number, Exercise[]> = {
         },
       ],
       correctAnswer: null,
-      explanation: 'In a report in the past, an action that happened even earlier takes the past perfect: “their forefathers had worshipped them”. “Explain” cannot take the person directly as its object: say “explained that …” or “explained (something) to them”. “Give up” is followed by -ing: “did not give up arguing”. The people’s argument puts tradition (“but …”) against a fact they admit.',
+      explanation: 'In a report in the past, an action that happened even earlier takes the past perfect: “their forefathers had worshipped them”. “Explain” cannot take the person directly as its object: Say “explained that …” or “explained (something) to them”. “Give up” is followed by -ing: “did not give up arguing”. The people’s argument puts tradition (“but …”) against a fact they admit.',
       feedback: {
         correct: 'Well done. You corrected the earlier past, the verb pattern and the -ing form.',
-        incorrect: 'Ask: which action happened earlier? Can “explain” take the person directly as its object? Which form follows “give up”? Check Chapter 15.',
+        incorrect: 'Ask: Which action happened earlier? Can “explain” take the person directly as its object? Which form follows “give up”? Check Chapter 15.',
       },
     },
     {
@@ -379,7 +379,7 @@ export const abrahamB2LanguageFocusChapter16: Record<number, Exercise[]> = {
         'He who makes me die, and then revives me.': 'the One Who has power over death and new life',
         'He who, I hope, will forgive my sins on the Day of Resurrection?': 'the One Whose pardon is hoped for on the Last Day',
       },
-      explanation: 'The verses repeat “He who …” to build one long description: each line adds a new attribute in parallel form. The repetition contrasts with the idols, which “do not hear” and cannot benefit or harm. In the last line, “I hope” adds Abraham’s personal stance: forgiveness is hoped for, not claimed.',
+      explanation: 'The verses repeat “He who …” to build one long description: Each line adds a new attribute in parallel form. The repetition contrasts with the idols, which “do not hear” and cannot benefit or harm. In the last line, “I hope” adds Abraham’s personal stance: Forgiveness is hoped for, not claimed.',
       feedback: {
         correct: 'Correct. You followed the chain from creation to forgiveness.',
         incorrect: 'Look at the verb in each line (created, feeds, heals, makes … die, forgive) and find the matching attribute.',
@@ -423,7 +423,7 @@ export const abrahamB2LanguageFocusChapter16: Record<number, Exercise[]> = {
         'The Lord of the Worlds is also an enemy, but a less serious one.',
       ],
       correctAnswer: 0,
-      explanation: '“So” replaces the words already said (“an enemy to me”), and “but not so” excludes one case: all the things they worship are enemies to Abraham, except the Lord of the Worlds. The line sets a strong contrast between the idols and the Lord, which the “He who …” lines then explain.',
+      explanation: '“So” replaces the words already said (“an enemy to me”), and “but not so” excludes one case: All the things they worship are enemies to Abraham, except the Lord of the Worlds. The line sets a strong contrast between the idols and the Lord, which the “He who …” lines then explain.',
       feedback: {
         correct: 'Correct. “But not so” makes the Lord of the Worlds the exception.',
         incorrect: 'What does “so” stand for here? Read the words just before it: “They are enemies to me …”.',
@@ -467,7 +467,7 @@ export const abrahamB2LanguageFocusChapter17: Record<number, Exercise[]> = {
       instructions: 'Read Abraham’s words at the end of Chapter 17. Then choose the best explanation.',
       question: '“The food in front of you is getting cold. Why don\'t you eat?” Why does Abraham ask the statue this question?',
       options: [
-        'It is an ironic test: he knows the statue cannot eat, so its silence exposes its helplessness.',
+        'It is an ironic test: He knows the statue cannot eat, so its silence exposes its helplessness.',
         'He really wants to know whether statues eat the offerings.',
         'He is politely offering the food to the statue.',
         'He is asking the priests why the food is still there.',
@@ -534,7 +534,7 @@ export const abrahamB2LanguageFocusChapter17: Record<number, Exercise[]> = {
       explanation: '“Decide” is followed by to + verb: “decided to do”. In a past narrative, a time clause after “until” takes the past simple, not “will/would”: “waited until the city was empty”. The past perfect “had also gone” shows that the priests left before Abraham arrived, so the temple was empty.',
       feedback: {
         correct: 'Well done. You fixed the decision, the time clause and the earlier past.',
-        incorrect: 'Ask: which form follows “decide”? Which tense follows “until” in a past story? Did the priests leave before or after Abraham came? Check Chapter 17.',
+        incorrect: 'Ask: Which form follows “decide”? Which tense follows “until” in a past story? Did the priests leave before or after Abraham came? Check Chapter 17.',
       },
     },
     {
@@ -628,7 +628,7 @@ export const abrahamB2LanguageFocusChapter18: Record<number, Exercise[]> = {
       explanation: '“Hang” has two past forms: “hung” for objects (he hung the axe) and “hanged” only for executing a person. Adjectives of feeling are followed by to + verb: “shocked to see”. “Who had done that” uses the past perfect because the damage happened before the people returned and asked.',
       feedback: {
         correct: 'Correct. You chose the right past form, the feeling pattern and the earlier past.',
-        incorrect: 'Ask: is an object or a person being hung? Which form follows “shocked”? Did the destruction happen before the people asked? Check the middle of Chapter 18.',
+        incorrect: 'Ask: Is an object or a person being hung? Which form follows “shocked”? Did the destruction happen before the people asked? Check the middle of Chapter 18.',
       },
     },
     {
@@ -638,7 +638,7 @@ export const abrahamB2LanguageFocusChapter18: Record<number, Exercise[]> = {
       instructions: 'Write or say 8–10 sentences about someone who tests a false claim in an advert.',
       question: 'How can you show that a claim is false?',
       correctAnswer: null,
-      explanation: 'A strong response should make each discourse move purposeful: the rhetorical question tests a claim, the reason explains the test, the exception matters to the logic, the past perfect clarifies sequence, and the quotation is explicitly sourced rather than blended into the narrator’s voice.',
+      explanation: 'A strong response should make each discourse move purposeful: The rhetorical question tests a claim, the reason explains the test, the exception matters to the logic, the past perfect clarifies sequence, and the quotation is explicitly sourced rather than blended into the narrator’s voice.',
       feedback: {
         correct: 'Check that the quotation is clearly attributed and that each connector changes the relationship between ideas.',
         incorrect: '',

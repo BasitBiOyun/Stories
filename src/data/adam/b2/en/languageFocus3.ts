@@ -40,7 +40,7 @@ export const adamB2LanguageFocusExercisesPart3: Record<number, Exercise[]> = {
           'The path to goodness is in controlling evil thoughts and actions and being moderate in desires.',
         ],
       },
-      explanation: 'A concession admits a point without letting it become the main message. “Although” marks the conceded clause; the main clause carries the stress. “At first glance … may seem” presents a first impression, and “However, it is important to remember …” moves to the writer’s wider view. “People can be …” admits what humans are capable of, and the next sentence gives the writer’s answer: the path to goodness.',
+      explanation: 'A concession admits a point without letting it become the main message. “Although” marks the conceded clause; the main clause carries the stress. “At first glance … may seem” presents a first impression, and “However, it is important to remember …” moves to the writer’s wider view. “People can be …” admits what humans are capable of, and the next sentence gives the writer’s answer: The path to goodness.',
       feedback: {
         correct: 'Correct. You separated what the writer admits from what the writer stresses.',
         incorrect: 'Look for concession signals (although, at first glance, may seem, can be) and for the part that answers them. Check the first half of Chapter 13.',
@@ -191,7 +191,7 @@ export const adamB2LanguageFocusExercisesPart3: Record<number, Exercise[]> = {
         'fear of Allah\'s punishment.',
       ],
       correctAnswer: null,
-      explanation: '“Nor” adds a second negative to a first one. When “nor” begins a clause, the auxiliary comes before the subject, as in a question: “nor did he show fear”. The sentence stacks two failed restraints: the brother’s request had no effect, and fear of punishment did not stop him either.',
+      explanation: '“Nor” adds a second negative to a first one. When “nor” begins a clause, the auxiliary comes before the subject, as in a question: “nor did he show fear”. The sentence stacks two failed restraints: The brother’s request had no effect, and fear of punishment did not stop him either.',
       feedback: {
         correct: 'Well done. After “nor”, the auxiliary “did” comes before the subject.',
         incorrect: 'Start with the request and what it did not do. Then add “nor” and use question word order. Check the first sentence of Chapter 14.',
@@ -237,7 +237,7 @@ export const adamB2LanguageFocusExercisesPart3: Record<number, Exercise[]> = {
       instructions: 'Write or say 8–10 sentences about someone who ignores warnings until a problem grows.',
       question: 'How does the problem grow, and what helps in the end?',
       correctAnswer: null,
-      explanation: 'A strong B2 response should use the target structures to organise discourse: failed restraints → visible consequence → developing burden → purposeful learning moment.',
+      explanation: 'A strong B2 response should use the target structures to organise discourse: Failed restraints → visible consequence → developing burden → purposeful learning moment.',
       feedback: {
         correct: 'Keep the passive focused on information structure, make the developing state genuinely gradual, and ensure the purpose clause explains why the final example matters.',
         incorrect: '',
@@ -419,16 +419,16 @@ export const adamB2LanguageFocusExercisesPart3: Record<number, Exercise[]> = {
           answers: ['will not leave', 'won\'t leave'],
         },
         {
-          source: 'The prophets would have different names and miracles, but they would be united in one thing: the call to follow Allah’s straight path.',
+          source: 'The prophets would have different names and miracles, but they would be united in one thing: The call to follow Allah’s straight path.',
           frame: '“The prophets will have different names and miracles, but they [blank] in one thing.”',
           answers: ['will be united'],
         },
       ],
       correctAnswer: null,
-      explanation: 'In reported speech after a past verb (“told”), Adam’s “will” becomes “would”. In direct speech it goes back to “will”. The two “but” clauses organise his message: not abandonment but guidance, and different names and miracles but one shared call.',
+      explanation: 'In reported speech after a past verb (“told”), Adam’s “will” becomes “would”. In direct speech it goes back to “will”. The two “but” clauses organise his message: Not abandonment but guidance, and different names and miracles but one shared call.',
       feedback: {
         correct: 'Well done. You changed “would” back to “will” in direct speech.',
-        incorrect: 'Direct speech uses Adam’s own time: his future is “will”. Keep “not” in the first item and the passive “be united” in the second.',
+        incorrect: 'Direct speech uses Adam’s own time: His future is “will”. Keep “not” in the first item and the passive “be united” in the second.',
       },
     },
     {
@@ -471,7 +471,7 @@ export const adamB2LanguageFocusExercisesPart3: Record<number, Exercise[]> = {
         'Over My servants you have no authority': 'Allah denies Satan any power over those devoted to Him.',
         'except for the sinners who follow you.': 'Only wrongdoers who choose his way come under his influence.',
       },
-      explanation: 'A broad statement (“them all”, “no authority”) is immediately narrowed by “except for …”. The first exception comes from Satan himself; the second comes from Allah. Together they show that Satan’s claim is not absolute: his influence depends on who chooses to follow him.',
+      explanation: 'A broad statement (“them all”, “no authority”) is immediately narrowed by “except for …”. The first exception comes from Satan himself; the second comes from Allah. Together they show that Satan’s claim is not absolute: His influence depends on who chooses to follow him.',
       feedback: {
         correct: 'Correct. You matched each broad claim and each exception with its meaning.',
         incorrect: 'Ask who is speaking in each line and whether the line makes a broad claim or removes a group from it. Read the verses in Chapter 17 again.',
@@ -515,7 +515,7 @@ export const adamB2LanguageFocusExercisesPart3: Record<number, Exercise[]> = {
         'The Qur’an gives equal attention to Satan’s rebellion against Allah and to his hostility to humans.',
       ],
       correctAnswer: 2,
-      explanation: 'The bracketed “although …” concedes a point with strong certainty (“unquestionably”, “surely”). “Not so much … but rather …” does not deny the first point; it moves the emphasis to Satan’s anti-human attitude. A good summary keeps both: what is accepted and what is stressed.',
+      explanation: 'The bracketed “although …” concedes a point with strong certainty (“unquestionably”, “surely”). “Not so much … but rather …” does not deny the first point; it moves the emphasis to Satan’s anti-human attitude. A good summary keeps both: What is accepted and what is stressed.',
       feedback: {
         correct: 'Correct. The summary keeps the certain concession and the new emphasis.',
         incorrect: 'Notice “unquestionably” inside the brackets and “not so much … but rather” around it. Is anything denied, or is the emphasis moved? Read the third paragraph of Chapter 17.',

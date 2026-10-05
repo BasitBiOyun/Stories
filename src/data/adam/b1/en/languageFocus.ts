@@ -48,7 +48,7 @@ export const adamB1LanguageFocusExercises: Record<number, Exercise[]> = {
       explanation: 'The present simple (is, tells) and “can” describe things that are true today: Adam’s place as the first Messenger, what the Qur’an does, and what we can learn now. The past simple (created, gave, were) tells finished events inside the story. Even in the first paragraph, “Allah created him from soil” is past, because it is an event, not a present fact.',
       feedback: {
         correct: 'Correct. You separated present facts about Adam, the Qur’an and us from past story events.',
-        incorrect: 'Look at the verb in each part: is, tells, can learn, or created, gave, were? Then ask: is this still true today, or did it happen once in the story?',
+        incorrect: 'Look at the verb in each part: is, tells, can learn, or created, gave, were? Then ask: Is this still true today, or did it happen once in the story?',
       },
     },
     {
@@ -60,7 +60,7 @@ export const adamB1LanguageFocusExercises: Record<number, Exercise[]> = {
       fillBlanksText: '[blank] Allah created the sky and the earth, He [blank] the angels that He was going to create a human. … This ruler [blank] live there for many years.',
       wordBank: ['After', 'told', 'would', 'While', 'said', 'will'],
       correctAnswer: ['After', 'told', 'would'],
-      explanation: '“After + past simple” puts one finished event before the next: first the sky and the earth, then the announcement. We “tell someone” something, but we “say something” (not “said the angels”). “Would” and “was going to” look forward from a past moment: when the angels were told, the ruler’s long life on earth was still in the future. “Will” looks forward from now, so it does not fit a story told in the past.',
+      explanation: '“After + past simple” puts one finished event before the next: First the sky and the earth, then the announcement. We “tell someone” something, but we “say something” (not “said the angels”). “Would” and “was going to” look forward from a past moment: When the angels were told, the ruler’s long life on earth was still in the future. “Will” looks forward from now, so it does not fit a story told in the past.',
       feedback: {
         correct: 'Correct. You ordered the events, reported the announcement, and looked forward from the past.',
         incorrect: 'Check the second paragraph of Chapter 1. Which came first? Who was told? Is the ruler’s future seen from now or from that past moment?',
@@ -145,7 +145,7 @@ export const adamB1LanguageFocusExercises: Record<number, Exercise[]> = {
       explanation: '“To + base verb” gives the purpose of a gift: life and intellect were given so that Adam could learn and understand (not “for learn”). “Later” moves the account to the next stage. “More … than” compares two things; “more … as” is a common mistake.',
       feedback: {
         correct: 'Correct. You showed purpose, the next stage and a comparison.',
-        incorrect: 'Read the second paragraph of Chapter 2. Ask: why was intellect given? When did the teaching happen? What is Adam’s knowledge compared with?',
+        incorrect: 'Read the second paragraph of Chapter 2. Ask: Why was intellect given? When did the teaching happen? What is Adam’s knowledge compared with?',
       },
     },
     {

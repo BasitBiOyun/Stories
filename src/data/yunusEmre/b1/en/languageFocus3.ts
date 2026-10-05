@@ -65,11 +65,11 @@ export const yunusB1LanguageFocusChapter9: Exercise[] = [
     explanation: 'A superlative after a verb needs “the”: “It is the most important part”. It shows that love is above every other part of his philosophy. “Those who + verb” means “the people who …”, so the verb is plural (love). “Also” normally comes before the main verb: “… also love the Creator”. The two halves use the same pattern in reverse, which shows a relationship that works in both directions.',
     feedback: {
       correct: 'Well done. You corrected the superlative and kept the two halves balanced.',
-      incorrect: 'Read the last paragraph of Chapter 9 again. What small word comes before “most important”? Where does “also” go: before or after the verb?',
+      incorrect: 'Read the last paragraph of Chapter 9 again. What small word comes before “most important”? Where does “also” go: Before or after the verb?',
     },
   },
   {
-    id: 'yunus-b1-language-9-production', type: 'reflection', title: 'Explain a Goal and the Responsibilities Around It', instructions: 'Write or say five or six sentences about a goal at school or at home.', question: 'What is the goal, and what should people do?', correctAnswer: null, explanation: 'Useful language from the chapter includes “as a result of...”, “in this way...”, “the main goal is to...”, “for achieving...”, “remind us of...”, “anyone who... should...”, and “those who..., and those who... also...”.', feedback: { correct: 'Keep the paragraph connected: establish the situation, state the goal, explain what helps achieve it, and end with a broader responsibility or relationship.', incorrect: '' }, discussionPrompts: [
+    id: 'yunus-b1-language-9-production', type: 'reflection', title: 'Explain a Goal and the Responsibilities Around It', instructions: 'Write or say five or six sentences about a goal at school or at home.', question: 'What is the goal, and what should people do?', correctAnswer: null, explanation: 'Useful language from the chapter includes “as a result of...”, “in this way...”, “the main goal is to...”, “for achieving...”, “remind us of...”, “anyone who... should...”, and “those who..., and those who... also...”.', feedback: { correct: 'Keep the paragraph connected: Establish the situation, state the goal, explain what helps achieve it, and end with a broader responsibility or relationship.', incorrect: '' }, discussionPrompts: [
       { question: 'Sentence 1 — Give the situation: “As a result of …, …”', mode: 'Individual' },
       { question: 'Sentence 2 — Add the effect: “In this way, …”', mode: 'Individual' },
       { question: 'Sentence 3 — Give the goal: “The main goal is to …”', mode: 'Pair' },
@@ -174,7 +174,7 @@ export const yunusB1LanguageFocusChapter11: Exercise[] = [
     id: 'yunus-b1-language-11-purpose-necessity',
     type: 'drag-drop',
     title: 'Whose Words Are These?',
-    instructions: 'Who is speaking: the writer, a poem or the Prophet (pbuh)? Sort the parts.',
+    instructions: 'Who is speaking: The writer, a poem or the Prophet (pbuh)? Sort the parts.',
     question: 'Whose words are we reading?',
     dragDropGroups: [
       {
@@ -342,7 +342,7 @@ export const yunusB1LanguageFocusChapter12: Exercise[] = [
       },
     ],
     correctAnswer: null,
-    explanation: '“With these principles” shows the means: the principles are what Yunus uses to guide people. The subject “Yunus Emre” is singular, so the present simple verb takes -s: “teaches”. “Not only … but also …” is a fixed pair: it adds a second role (a moral guide) and gives it the same importance as the first (literary works).',
+    explanation: '“With these principles” shows the means: The principles are what Yunus uses to guide people. The subject “Yunus Emre” is singular, so the present simple verb takes -s: “teaches”. “Not only … but also …” is a fixed pair: It adds a second role (a moral guide) and gives it the same importance as the first (literary works).',
     feedback: {
       correct: 'Well done. You corrected the verb and completed the fixed pair.',
       incorrect: 'Read Chapter 12 again. Is “Yunus Emre” one person or many? Which word always goes with “not only … also”?',
@@ -416,7 +416,7 @@ export const yunusB1LanguageFocusChapter13: Exercise[] = [
     fillBlanksText: '[blank] another verse, he talks about “patience” and says: … In the following verse, he warns [blank] “rage and arrogance”: … It is clear that Yunus Emre was an important person of his era, and his poems are [blank] valuable today as a moral guide for future generations. His works are as [blank]:',
     wordBank: ['still', 'In', 'follows', 'against', 'following', 'yet', 'At'],
     correctAnswer: ['In', 'against', 'still', 'follows'],
-    explanation: 'We say “in a verse” (like “in a poem”, “in a book”). “Warn against + noun” names the danger someone tells us to avoid. “Still” shows that something from the past continues now: the poems were valuable then and are valuable today. “As follows:” is a fixed phrase that introduces a list.',
+    explanation: 'We say “in a verse” (like “in a poem”, “in a book”). “Warn against + noun” names the danger someone tells us to avoid. “Still” shows that something from the past continues now: The poems were valuable then and are valuable today. “As follows:” is a fixed phrase that introduces a list.',
     feedback: {
       correct: 'Well done. You linked the verses and brought the poems into the present.',
       incorrect: 'Read the lines between the poems and the last paragraph of Chapter 13 again. Which preposition goes with “verse”? Which fixed phrase introduces a list?',

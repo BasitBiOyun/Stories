@@ -24,7 +24,7 @@ export const yunusB2LanguageFocusExercisesPart2: Record<number, Exercise[]> = {
         { id: 'e', text: 'Following their easy victory at Kösedağ, the Mongols destroyed and plundered Sivas, Kayseri, and Erzincan …' },
       ],
       correctAnswer: ['a', 'b', 'c', 'd', 'e'],
-      explanation: '“In the end” closes the rebellion. “However” turns to an unexpected result: the Seljuk victory made them look weak, and this encouraged the Mongols. A date (“In late 1242”) moves the story on, “Finally” marks the decisive battle at the end of a long process, and “Following their easy victory” links the battle to what happened after it.',
+      explanation: '“In the end” closes the rebellion. “However” turns to an unexpected result: The Seljuk victory made them look weak, and this encouraged the Mongols. A date (“In late 1242”) moves the story on, “Finally” marks the decisive battle at the end of a long process, and “Following their easy victory” links the battle to what happened after it.',
       feedback: {
         correct: 'Correct. The connectors lead from the rebellion, through a turning point, to the battle and its aftermath.',
         incorrect: 'Ask what each connector needs before it: “However” needs a situation to turn from, “Finally” comes near the end, and “Following their victory” needs the battle first. Then check Chapter 5.',
@@ -74,7 +74,7 @@ export const yunusB2LanguageFocusExercisesPart2: Record<number, Exercise[]> = {
       explanation: '“As if” introduces a comparison with something that is not literally true, and the past form “were” marks it as unreal. “Almost” weakens it further. The sultans were still sultans, but their behaviour resembled that of subordinate officials, which shows how dependent the state had become.',
       feedback: {
         correct: 'Correct. “Almost as if” compares their behaviour to that of officials without saying they really became officials.',
-        incorrect: 'Look at the sentence before it: the Seljuks “became a dependent state of the Mongols”. Does “as if” state a fact or make a comparison?',
+        incorrect: 'Look at the sentence before it: The Seljuks “became a dependent state of the Mongols”. Does “as if” state a fact or make a comparison?',
       },
     },
     {
@@ -141,7 +141,7 @@ export const yunusB2LanguageFocusExercisesPart2: Record<number, Exercise[]> = {
         'through the lens of his Sûfî identity': 'seeing life from his mystical point of view',
         'using poetry as his medium': 'with verse as the way of sharing his message',
       },
-      explanation: '“Under … pressure” gives the circumstance that caused the shaykhs to move. “During the same period” links two events in time. “Through the lens of” is a metaphor: a lens is something you look through, so it means “from the point of view of”. The participle phrase “using poetry as his medium” adds the means by which he responded.',
+      explanation: '“Under … pressure” gives the circumstance that caused the shaykhs to move. “During the same period” links two events in time. “Through the lens of” is a metaphor: A lens is something you look through, so it means “from the point of view of”. The participle phrase “using poetry as his medium” adds the means by which he responded.',
       feedback: {
         correct: 'Correct. The chapter links a historical circumstance, a point of view and a means of communication.',
         incorrect: 'Read the first two paragraphs of Chapter 7 again. Which phrase gives a cause, which a time, which a point of view and which a tool?',
@@ -223,7 +223,7 @@ export const yunusB2LanguageFocusExercisesPart2: Record<number, Exercise[]> = {
         },
       ],
       correctAnswer: null,
-      explanation: '“From this perspective” shows that an idea follows from the viewpoint just described. “For this reason” links a cause (the wish to be known) to its result (creation). “Nonetheless” introduces something true in spite of what was just said: unity broke into many things, but these many things still reflect Allah’s names.',
+      explanation: '“From this perspective” shows that an idea follows from the viewpoint just described. “For this reason” links a cause (the wish to be known) to its result (creation). “Nonetheless” introduces something true in spite of what was just said: Unity broke into many things, but these many things still reflect Allah’s names.',
       feedback: {
         correct: 'Correct. Each expression shows how one idea follows from, or stands against, the previous one.',
         incorrect: 'Ask how the two ideas in each item are related: a viewpoint, a cause and its result, or a surprising contrast. Then read Chapter 8 again.',

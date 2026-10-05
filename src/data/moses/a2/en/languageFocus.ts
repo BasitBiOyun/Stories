@@ -130,7 +130,7 @@ export const mosesA2LanguageFocusExercises: Record<number, Exercise[]> = {
         { id: '5', text: 'When they found baby boys, they killed them.' },
       ],
       correctAnswer: ['1', '2', '3', '4', '5'],
-      explanation: 'Past verbs tell the events in order. One day starts the event, Then shows the next step, and When joins two past actions: first they found, then they killed.',
+      explanation: 'Past verbs tell the events in order. One day starts the event, Then shows the next step, and When joins two past actions: First they found, then they killed.',
       feedback: {
         correct: 'Correct. You followed the events from the dream to the soldiers’ actions.',
         incorrect: 'Read Chapter 2 again. Look for One day, Then and When to find the order.',

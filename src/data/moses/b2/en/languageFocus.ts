@@ -28,7 +28,7 @@ export const mosesB2LanguageFocusExercises: Record<number, Exercise[]> = {
       explanation: '“According to …” attributes a view to a source. Here the writer reports how three religious traditions see Moses; the phrase frames the claim rather than presenting historical proof. B2 writers use such framing to show whose view a statement expresses.',
       feedback: {
         correct: 'Correct. “According to” reports the view of these traditions; it does not present proof.',
-        incorrect: 'Look again at the opening sentence. Whose view does “according to …” introduce: the writer’s proof, or the traditions’ view?',
+        incorrect: 'Look again at the opening sentence. Whose view does “according to …” introduce: The writer’s proof, or the traditions’ view?',
       },
     },
     {
@@ -88,7 +88,7 @@ export const mosesB2LanguageFocusExercises: Record<number, Exercise[]> = {
       explanation: 'The chapter separates attribution (“according to the sources”), strong inference (“must have + past participle”), probability (“probably”), estimation (“approximately”) and an honest limit of knowledge (“unknown”). Together they stop the history from being overclaimed.',
       feedback: {
         correct: 'Correct. You distinguished attribution, deduction, probability, estimation and uncertainty.',
-        incorrect: 'Reread the last three sentences of Chapter 2. Ask for each expression: is it reporting, deducing, estimating, or admitting a gap?',
+        incorrect: 'Reread the last three sentences of Chapter 2. Ask for each expression: Is it reporting, deducing, estimating, or admitting a gap?',
       },
     },
     {
@@ -139,7 +139,7 @@ export const mosesB2LanguageFocusExercises: Record<number, Exercise[]> = {
     },
     reflection('mo-b2-lf2-d', 'Qualified Historical Summary', [
       'Use “According to the sources”, “probably”, and say one thing that is unknown.',
-    ], 'The task practises B2 qualification: evidence can support a conclusion without turning an uncertain point into a fixed fact.', {
+    ], 'The task practises B2 qualification: Evidence can support a conclusion without turning an uncertain point into a fixed fact.', {
       instructions: 'Sum up an event from history in five sentences.',
       question: 'What do the sources say, and what is unknown?',
     }),
@@ -158,7 +158,7 @@ export const mosesB2LanguageFocusExercises: Record<number, Exercise[]> = {
         'Modern oil companies and the temples of the pharaohs',
       ],
       correctAnswer: 2,
-      explanation: '“Just like …” introduces an analogy: it compares the function of two things, not the things themselves. Petrol today and the Nile then are both vital resources, and whoever controls them needs strong administration. An analogy clarifies; it does not claim the two are identical.',
+      explanation: '“Just like …” introduces an analogy: It compares the function of two things, not the things themselves. Petrol today and the Nile then are both vital resources, and whoever controls them needs strong administration. An analogy clarifies; it does not claim the two are identical.',
       feedback: {
         correct: 'Correct. The analogy compares the role of two strategic resources.',
         incorrect: 'Ask what petrol and the Nile have in common in this sentence. Look at the words “control” and “needed a strong administration”.',
@@ -380,7 +380,7 @@ export const mosesB2LanguageFocusExercises: Record<number, Exercise[]> = {
       explanation: '“Because” introduces the cause of the lost manpower. “So” introduces the result of the Pharaoh’s judgement. “For fear that + clause” gives the danger an action tries to avoid. “In case” is not followed by “that”, and “although” would signal a contrast the chapter does not make.',
       feedback: {
         correct: 'Correct. You chose the linkers for cause, result and feared danger.',
-        incorrect: 'For each gap, ask: does the next clause give a reason, a result, or something she was afraid of? Check the first and last paragraphs of Chapter 6.',
+        incorrect: 'For each gap, ask: Does the next clause give a reason, a result, or something she was afraid of? Check the first and last paragraphs of Chapter 6.',
       },
     },
     reflection('mo-b2-lf6-c', 'Explaining a Difficult Decision', [

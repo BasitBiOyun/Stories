@@ -63,7 +63,7 @@ export const adamB2ChapterExtrasEn: ChapterExtras = {
       "A dictionary and a conversation partner help a language learner in very different ways. A dictionary gives exact meanings. However, a partner shows how words are really used.",
       "Some people say you need either a dictionary or a partner. This is not a choice between two tools, but rather a way of using both.",
       "A dictionary is necessary for checking spelling and meaning. A partner is essential for practising listening and speaking in real time.",
-      "Both of them serve one larger goal: to communicate clearly and confidently in a new language.",
+      "Both of them serve one larger goal: To communicate clearly and confidently in a new language.",
     ],
     5: [
       "Many people judge a restaurant by its online popularity, that is, the number of likes and stars it has.",
@@ -135,13 +135,13 @@ export const adamB2ChapterExtrasEn: ChapterExtras = {
       "Mr Haddad was the founder of our town library, collecting old books and teaching children to read.",
       "It was reported in the local newspaper that he gave his own house to the library before he retired.",
       "He knew that his former students would take over the library one day and that they would keep it open for everyone.",
-      "The librarians after him have been different in age and style, but united in one aim: to make reading free for all.",
+      "The librarians after him have been different in age and style, but united in one aim: To make reading free for all.",
     ],
     17: [
       "Most students find it hard to put their phones away during homework, except for those who keep their phones in another room.",
       "Although phone apps are designed to catch our attention, they cannot control our hands.",
       "In fact, the strongest factor is not the phone, but rather our habits. It is our tiredness and lack of a plan that make the phone look so powerful.",
-      "So the real question is this: what simple habit could help each of us decide when to use our phones?",
+      "So the real question is this: What simple habit could help each of us decide when to use our phones?",
     ],
   },
   reviewExamples: [

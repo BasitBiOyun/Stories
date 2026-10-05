@@ -91,7 +91,7 @@ export const abrahamB1GroupTasksEn: Record<number, GroupTask> = {
     ],
     "steps": [
       "Start with one sentence from Chapter 12, for example: “More people came to settle there because of this sacred spring.”",
-      "Collect three facts about water in your own town or school: where it comes from, what changed when it arrived and what is still the same today.",
+      "Collect three facts about water in your own town or school: Where it comes from, what changed when it arrived and what is still the same today.",
       "Write five or six connected sentences about your town with background and event, cause, continuity and change over time. Your poster shows your own town and its water, not people from the story.",
       "Finish with one realistic water-saving action that your class can do this week."
     ],

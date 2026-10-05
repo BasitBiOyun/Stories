@@ -86,7 +86,7 @@ export const adamA2GroupTasksEn: Record<number, GroupTask> = {
       }
     ],
     "steps": [
-      "Choose one lesson: respect for difference (Chapter 1), useful knowledge (Chapter 3), learning from a mistake (Chapter 5), giving your best (Chapter 8) or controlling anger (Chapters 9–10).",
+      "Choose one lesson: Respect for difference (Chapter 1), useful knowledge (Chapter 3), learning from a mistake (Chapter 5), giving your best (Chapter 8) or controlling anger (Chapters 9–10).",
       "Copy one sentence from that chapter exactly, for example: “Real goodness is giving the best and the most loved.”",
       "Explain it in two short sentences and add two school examples.",
       "Use at least two patterns from the Language Focus, like “should”, “told … not to …” or “decided never to”."

@@ -98,7 +98,7 @@ export const adamB2LanguageFocusExercises: Record<number, Exercise[]> = {
         'Satan is shown as Allah’s rival rather than Adam’s enemy.',
       ],
       correctAnswer: 1,
-      explanation: 'The sentence makes two claims. “A rebel against Allah’s command” describes disobedience. “A rival and enemy of Adam (pbuh) rather than Allah” narrows the rivalry: the enemy he competes with is Adam, not Allah. A good summary keeps both claims and does not turn “rather than” into “and”.',
+      explanation: 'The sentence makes two claims. “A rebel against Allah’s command” describes disobedience. “A rival and enemy of Adam (pbuh) rather than Allah” narrows the rivalry: The enemy he competes with is Adam, not Allah. A good summary keeps both claims and does not turn “rather than” into “and”.',
       feedback: {
         correct: 'Correct. The summary keeps the rebellion and keeps the rivalry focused on Adam.',
         incorrect: 'Look closely at “rather than Allah” at the end of the first paragraph of Chapter 1. Whose rival is Satan?',
@@ -135,10 +135,10 @@ export const adamB2LanguageFocusExercises: Record<number, Exercise[]> = {
         'It introduces an example taken from a verse.',
       ],
       correctAnswer: 2,
-      explanation: 'A comma before “which” marks a non-defining relative clause: it adds extra information about a noun that is already clear. Here it defines “mud” for readers who may not know how the terms earth, water and clay fit together. Compare the first sentence of the chapter, “The material from which Adam (pbuh) was created …”: there is no comma, because the clause is needed to say which material is meant.',
+      explanation: 'A comma before “which” marks a non-defining relative clause: It adds extra information about a noun that is already clear. Here it defines “mud” for readers who may not know how the terms earth, water and clay fit together. Compare the first sentence of the chapter, “The material from which Adam (pbuh) was created …”: there is no comma, because the clause is needed to say which material is meant.',
       feedback: {
         correct: 'Correct. The comma shows extra, defining information about a word that is already clear.',
-        incorrect: 'Remove the clause and read the sentence again: is anything missing? Then compare it with the first sentence of Chapter 2, which has no comma.',
+        incorrect: 'Remove the clause and read the sentence again: Is anything missing? Then compare it with the first sentence of Chapter 2, which has no comma.',
       },
     },
     {
@@ -167,7 +167,7 @@ export const adamB2LanguageFocusExercises: Record<number, Exercise[]> = {
         },
       ],
       correctAnswer: null,
-      explanation: '“The material from which Adam was created” is formal: the preposition goes before “which”. In less formal English the preposition moves to the end (“the material which/that Adam was created from”), and “which/that” can be left out. In item 2 the passive “Adam was created … by Allah” makes Adam the subject, which suits a chapter whose topic is Adam’s creation.',
+      explanation: '“The material from which Adam was created” is formal: The preposition goes before “which”. In less formal English the preposition moves to the end (“the material which/that Adam was created from”), and “which/that” can be left out. In item 2 the passive “Adam was created … by Allah” makes Adam the subject, which suits a chapter whose topic is Adam’s creation.',
       feedback: {
         correct: 'Well done. You kept the meaning while changing the structure.',
         incorrect: 'Item 1: put “from” at the end of the relative clause. Item 2: use was + past participle, because “by Allah” is already in the sentence.',
@@ -182,10 +182,10 @@ export const adamB2LanguageFocusExercises: Record<number, Exercise[]> = {
       fillBlanksText: '[blank], Surah Sad, verse 71, informs that Allah created Adam (pbuh) out of clay, which is a humble material … [blank], in essence, people are from the same soil and they have no superiority over one another due to the difference in their colors. It is clear that Adam (pbuh) did not evolve from any other living being, [blank] was created from the earth …',
       wordBank: ['As an example', 'So', 'but', 'Otherwise', 'Although'],
       correctAnswer: ['As an example', 'So', 'but'],
-      explanation: '“As an example” moves from the general statement about different terms to one specific verse. “So, in essence” draws a conclusion from the hadith: people come from the same soil, so colour gives no one superiority. “did not …, but was …” rejects one idea (evolution from another being) and replaces it with the chapter’s claim.',
+      explanation: '“As an example” moves from the general statement about different terms to one specific verse. “So, in essence” draws a conclusion from the hadith: People come from the same soil, so colour gives no one superiority. “did not …, but was …” rejects one idea (evolution from another being) and replaces it with the chapter’s claim.',
       feedback: {
         correct: 'Correct. You linked the general point, the example, the conclusion and the correction.',
-        incorrect: 'Ask what each gap does: introduce a specific case, sum up what follows from the hadith, or replace a rejected idea. Then check the order of the three paragraphs in Chapter 2.',
+        incorrect: 'Ask what each gap does: Introduce a specific case, sum up what follows from the hadith, or replace a rejected idea. Then check the order of the three paragraphs in Chapter 2.',
       },
     },
     {
@@ -240,7 +240,7 @@ export const adamB2LanguageFocusExercises: Record<number, Exercise[]> = {
           '… could be the fundamental knowledge of being human, thinking, forming logical judgments …',
         ],
       },
-      explanation: 'Verbs such as “shows”, “means” and “refer to” present an interpretation as the writer’s direct reading. “Points to” is weaker: the wording indicates something without spelling it out. “Could be” is weaker still: it offers one possible interpretation, not a certain identification. Good B2 readers notice these differences and keep them when they report the text.',
+      explanation: 'Verbs such as “shows”, “means” and “refer to” present an interpretation as the writer’s direct reading. “Points to” is weaker: The wording indicates something without spelling it out. “Could be” is weaker still: It offers one possible interpretation, not a certain identification. Good B2 readers notice these differences and keep them when they report the text.',
       feedback: {
         correct: 'Correct. You separated direct statements of meaning from careful suggestions.',
         incorrect: 'Look at the verb in each part. Does it state a meaning (shows, means, refer to) or only suggest one (points to, could be)? Check the first and last paragraphs of Chapter 3.',
@@ -315,7 +315,7 @@ export const adamB2LanguageFocusExercises: Record<number, Exercise[]> = {
       type: 'true-false',
       title: 'Either/Or or Both?',
       instructions: 'Read the second paragraph of Chapter 4. Is the statement true or false?',
-      question: 'The writer presents worldly knowledge and revelation as alternatives: a person needs one or the other.',
+      question: 'The writer presents worldly knowledge and revelation as alternatives: A person needs one or the other.',
       correctAnswer: false,
       explanation: '“Not alternatives …, but rather they complete one another” rejects an either/or reading and replaces it with a both/and reading. The rest of the paragraph gives each type of knowledge its own job, one for worldly life and one for understanding role and duty, so the two are complementary, not competing.',
       feedback: {
@@ -344,7 +344,7 @@ export const adamB2LanguageFocusExercises: Record<number, Exercise[]> = {
         },
       ],
       correctAnswer: null,
-      explanation: '“Require” is followed by a person and a to-infinitive: require someone to do something. “Necessary” and “essential” take for + person + to-infinitive: necessary for someone to do something. The to-infinitive states what the knowledge makes possible or required.',
+      explanation: '“Require” is followed by a person and a to-infinitive: require someone to do something. “Necessary” and “essential” take for + person + to-infinitive: Necessary for someone to do something. The to-infinitive states what the knowledge makes possible or required.',
       feedback: {
         correct: 'Well done. You used the to-infinitive after require + person and necessary for + person.',
         incorrect: 'Both patterns need to + base verb. Check the middle of the second paragraph of Chapter 4.',
@@ -515,7 +515,7 @@ export const adamB2LanguageFocusExercises: Record<number, Exercise[]> = {
         'for fear that you become wrongdoers': 'warns what will follow disobedience',
         'Lord, allow me until the Day they are raised up.': 'asks for more time',
       },
-      explanation: 'The imperative can command, permit or forbid. “Inhabit” and “eat whatever you wish” open a wide space of freedom; “do not approach” sets a single limit inside it, and “for fear that …” gives the reason for that limit. Satan’s “allow me until …” is a different speech act: a request for permission with a time limit.',
+      explanation: 'The imperative can command, permit or forbid. “Inhabit” and “eat whatever you wish” open a wide space of freedom; “do not approach” sets a single limit inside it, and “for fear that …” gives the reason for that limit. Satan’s “allow me until …” is a different speech act: A request for permission with a time limit.',
       feedback: {
         correct: 'Correct. You identified permission, prohibition, warning and request.',
         incorrect: 'Read A’raf 19 and the verses from Surah Sad again in Chapter 6. Which line opens freedom, which one limits it, which one explains the limit, and who asks for something?',
@@ -559,7 +559,7 @@ export const adamB2LanguageFocusExercises: Record<number, Exercise[]> = {
         'a habit that the speaker had in the past',
       ],
       correctAnswer: 2,
-      explanation: '“Will” is not only a neutral future. With “surely” and the oath “By Your majesty”, it states determination: the speaker announces what he intends to do. Repeating it (“I will surely sit …”, “I will come …”, “I will deceive …”) makes the threat sound deliberate and continuous.',
+      explanation: '“Will” is not only a neutral future. With “surely” and the oath “By Your majesty”, it states determination: The speaker announces what he intends to do. Repeating it (“I will surely sit …”, “I will come …”, “I will deceive …”) makes the threat sound deliberate and continuous.',
       feedback: {
         correct: 'Correct. “Will” here declares a firm intention.',
         incorrect: 'Look at the words around “will”: “surely” and “By Your majesty”. Is the speaker predicting, offering, or declaring what he is determined to do?',

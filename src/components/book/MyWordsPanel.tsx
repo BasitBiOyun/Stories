@@ -104,7 +104,7 @@ export const MyWordsPanel: React.FC<MyWordsPanelProps> = ({ isOpen, onClose, sta
         knew: 'I knew it',
         notYet: 'Not yet',
         nothingToReview: 'Nothing to review now. You have learned all your words.',
-        done: (knew: string, total: string) => `Review done: you knew ${knew} of ${total}.`,
+        done: (knew: string, total: string) => `Review done: You knew ${knew} of ${total}.`,
         again: 'Review again',
         card: (n: string, total: string) => `${n} / ${total}`,
       };

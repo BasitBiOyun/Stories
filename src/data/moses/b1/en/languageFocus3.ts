@@ -87,7 +87,7 @@ export const mosesB1LanguageFocusChapter10: Record<number, Exercise[]> = { 10: [
     question: '“Moses (pbuh) had no choice but to display the miracles.” What does “had no choice but to” mean?',
     options: ['He did not want to show the miracles, so he stopped.', 'He could choose from many different ways.', 'Showing the miracles was the only thing he could still do.', 'Someone else showed the miracles for him.'],
     correctAnswer: 2,
-    explanation: '“Have no choice but to + base verb” means that the other options have failed, so only one action is left. The sentences before it explain why: talking and logical discussion did not work, and the Pharaoh went on refusing.',
+    explanation: '“Have no choice but to + base verb” means that the other options have failed, so only one action is left. The sentences before it explain why: Talking and logical discussion did not work, and the Pharaoh went on refusing.',
     feedback: {
       correct: 'Correct. Only one option was left for Moses.',
       incorrect: 'Read the sentences just before this one in Chapter 10. Did Moses’s first way of convincing the Pharaoh work?',
@@ -107,7 +107,7 @@ export const mosesB1LanguageFocusChapter10: Record<number, Exercise[]> = { 10: [
       { id: '5', text: 'The king and his advisors laughed at him.' },
     ],
     correctAnswer: ['1', '2', '3', '4', '5'],
-    explanation: 'Each action is followed by its result. “Then” moves to the second action, and “When he took his arm out” links that action to the new state (it was shining white). The last sentence is a contrast: the signs were real miracles, but the king and his advisors only laughed.',
+    explanation: 'Each action is followed by its result. “Then” moves to the second action, and “When he took his arm out” links that action to the new state (it was shining white). The last sentence is a contrast: The signs were real miracles, but the king and his advisors only laughed.',
     feedback: {
       correct: 'Correct. You followed each action to its result and to the king’s reaction.',
       incorrect: 'An action comes before its result. Which sentence begins with “Then”, and which one begins with “When”? Check the end of Chapter 10.',
@@ -185,7 +185,7 @@ export const mosesB1LanguageFocusChapter11: Record<number, Exercise[]> = { 11: [
       },
     ],
     correctAnswer: null,
-    explanation: '“Who” begins a relative clause about people: the magicians who witnessed this miracle. “Let + person + base verb” has no “to”: let them live. An order with “be” uses the base form at the start: “Be rude to them!”',
+    explanation: '“Who” begins a relative clause about people: The magicians who witnessed this miracle. “Let + person + base verb” has no “to”: let them live. An order with “be” uses the base form at the start: “Be rude to them!”',
     feedback: {
       correct: 'Well done. You corrected the person clause, the “let” structure and the order.',
       incorrect: 'Compare each sentence with the second half of Chapter 11. Are the magicians people or things? Which verbs are followed by a base verb without “to”?',
@@ -203,7 +203,7 @@ export const mosesB1LanguageFocusChapter11: Record<number, Exercise[]> = { 11: [
     explanation: '“Still” shows that the refusal continued even after the magicians believed. “Because” + a clause gives the reason (he was arrogant); “because of” would need a noun (because of his arrogance). “Continued to + base verb” shows an action going on over time.',
     feedback: {
       correct: 'Correct. You showed continuing refusal, its reason and a continuing action.',
-      incorrect: 'The magicians changed, but did the king? Look at what follows each gap: a clause or a verb? Then check the end of Chapter 11.',
+      incorrect: 'The magicians changed, but did the king? Look at what follows each gap: A clause or a verb? Then check the end of Chapter 11.',
     },
   },
   {id:'moses-b1-language-11-connected-production',type:'reflection',title:'Describe a Turning Point',instructions: 'Write or say five sentences about a new idea that most people accept.',question: 'Who changes their mind, and who does not?',correctAnswer:null,explanation:'Useful language includes “Once...”, “When...”, a direct imperative, “turned into/became...”, “who...”, “still...”, “continued to...”, and “because...”.',feedback:{correct:'Keep the five sentences connected around one situation and make the cause of the continued resistance clear.',incorrect:''},discussionPrompts:[{ question: 'Sentence 1 — Give an instruction: “Try …”',mode:'Individual'},{ question: 'Sentence 2 — Show the result: “When they …, they …”',mode:'Individual'},{ question: 'Sentence 3 — Say who changed: “Most of the students …”',mode:'Individual'},{ question: 'Sentence 4 — Say who did not: “But one boy still …”',mode:'Pair'},{ question: 'Sentence 5 — Say why: “He did not change because …”',mode:'Pair'}]}
@@ -234,7 +234,7 @@ export const mosesB1LanguageFocusChapter12: Record<number, Exercise[]> = { 12: [
     explanation: 'Moses uses the present continuous (We are going away) and “will” (We will leave) for a plan that has already been decided. For the rules he uses an imperative (Get ready), “must” for a strong obligation, and “should” for what it is important to avoid.',
     feedback: {
       correct: 'Correct. You separated the plan from the instructions and rules.',
-      incorrect: 'Ask: does the sentence say what will happen, or what the people must do or avoid? Look for “must”, “should” and a verb with no subject.',
+      incorrect: 'Ask: Does the sentence say what will happen, or what the people must do or avoid? Look for “must”, “should” and a verb with no subject.',
     },
   },
   {
@@ -301,7 +301,7 @@ export const mosesB1LanguageFocusChapter13: Record<number, Exercise[]> = { 13: [
     instructions: 'Read the two uses of “when” from Chapter 13. Is the statement true or false?',
     question: 'At the end of Chapter 13 we read, “… when we pray to Him, He always guides us on the right path.” Here “when” describes one moment in the story, just like “When the stick touched the waters of the sea”.',
     correctAnswer: false,
-    explanation: 'With the present simple and “always”, “when” means “every time”: it states a general truth (when we pray, He guides us). With the past simple, “when” marks one moment in the story that triggers the next event: when the stick touched the water, a miracle happened.',
+    explanation: 'With the present simple and “always”, “when” means “every time”: it states a general truth (when we pray, He guides us). With the past simple, “when” marks one moment in the story that triggers the next event: When the stick touched the water, a miracle happened.',
     feedback: {
       correct: 'Correct. The last “when” states a general truth, not one moment in the story.',
       incorrect: 'Compare the tenses: “touched” (past simple) and “pray … guides” (present simple with “always”). Which one is about every time?',
@@ -340,7 +340,7 @@ export const mosesB1LanguageFocusChapter13: Record<number, Exercise[]> = { 13: [
     explanation: '“Lessons for us to learn” uses “to + base verb” after a noun to say what we should do with the lessons. “Remind someone that + clause” introduces a general truth drawn from the story. “Sent prophets to show …” uses “to + base verb” for purpose. “For show” is not possible.',
     feedback: {
       correct: 'Correct. You moved from the events to the lessons and their purpose.',
-      incorrect: 'Look at what follows each gap: a full clause after “reminds us”, and a base verb after the last gap. Check the last paragraph of Chapter 13.',
+      incorrect: 'Look at what follows each gap: A full clause after “reminds us”, and a base verb after the last gap. Check the last paragraph of Chapter 13.',
     },
   },
   {id:'moses-b1-language-13-connected-production',type:'reflection',title:'From Event to Lesson',instructions: 'Write or say five sentences about an event and the lesson it teaches.',question: 'What happened, and what did you learn?',correctAnswer:null,explanation:'Useful language includes an imperative, “When...”, a clear result clause, “to + verb” for purpose, and “This reminds us that...” or “This shows that...”.',feedback:{correct:'Keep one clear situation and make the final lesson grow naturally from the earlier events.',incorrect:''},discussionPrompts:[{ question: 'Sentence 1 — Give an instruction: “Clean …”',mode:'Individual'},{ question: 'Sentence 2 — Say what happened: “When we started, …”',mode:'Individual'},{ question: 'Sentence 3 — Give the result: “As a result, …”',mode:'Individual'},{ question: 'Sentence 4 — Say what for: “We used … to …”',mode:'Pair'},{ question: 'Sentence 5 — Give the lesson: “This reminds us that …”',mode:'Pair'}]}

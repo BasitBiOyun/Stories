@@ -84,10 +84,10 @@ export const meccaB2LanguageFocusExercises: Record<number, Exercise[]> = {
     matchingHeadings: { left: 'From the chapter', right: 'What the writer is doing' },
     matchingPairs: ch2Pairs,
     correctAnswer: pairsToAnswer(ch2Pairs),
-    explanation: 'The chapter defines a difficult term in steps: it first rejects a misleading meaning (“is not the lack of science …”), then gives the intended reason (“because …”), then concedes the historical scope (“Although … essentially describes the pre-Islamic period …”) and finally extends it: “On the contrary” replaces the idea that Jahiliyyah belongs only to the past with the Prophet’s opposite view.',
+    explanation: 'The chapter defines a difficult term in steps: It first rejects a misleading meaning (“is not the lack of science …”), then gives the intended reason (“because …”), then concedes the historical scope (“Although … essentially describes the pre-Islamic period …”) and finally extends it: “On the contrary” replaces the idea that Jahiliyyah belongs only to the past with the Prophet’s opposite view.',
     feedback: {
       correct: 'Correct. You identified the rejection, explanation, concession and extension in the definition.',
-      incorrect: 'Reread the first and third paragraphs of Chapter 2. Ask of each part: does it reject, explain, accept a limit, or replace one view with another?',
+      incorrect: 'Reread the first and third paragraphs of Chapter 2. Ask of each part: Does it reject, explain, accept a limit, or replace one view with another?',
     },
   },
   {
@@ -99,7 +99,7 @@ export const meccaB2LanguageFocusExercises: Record<number, Exercise[]> = {
     fillBlanksText: 'The Qur’an points to the ignorance and barbarism of the pre-Islamic era, [blank] the violence, hatred, bloodshed, and other moral decline that dominated the lives of the pagan community. … The Jahiliyyah is the “age of barbarism.” [blank], the Prophet described Islam as the opposite of barbarism. An ignorant person is wild, is a slave to their desires, follows their animalistic feelings, and is brutal and aggressive; [blank], a “barbarian.”',
     wordBank: ['as well as', 'In fact', 'in other words', 'On the contrary', 'for example'],
     correctAnswer: ['as well as', 'In fact', 'in other words'],
-    explanation: '“As well as” adds further items to the same list (the violence, hatred …). “In fact” strengthens the previous claim with supporting evidence: the Prophet himself described Islam as the opposite of barbarism. “In other words” introduces a restatement: the long description of an ignorant person is summed up in one word, “barbarian”. “On the contrary” would need a denied idea before it, and “for example” would need a specific case, not a summary.',
+    explanation: '“As well as” adds further items to the same list (the violence, hatred …). “In fact” strengthens the previous claim with supporting evidence: The Prophet himself described Islam as the opposite of barbarism. “In other words” introduces a restatement: the long description of an ignorant person is summed up in one word, “barbarian”. “On the contrary” would need a denied idea before it, and “for example” would need a specific case, not a summary.',
     feedback: {
       correct: 'Correct. You chose the expressions that add, strengthen and restate.',
       incorrect: 'Check paragraphs 2 and 3 of Chapter 2. Is the writer adding to a list, supporting a claim, or summing up a description in one word?',
@@ -139,7 +139,7 @@ export const meccaB2LanguageFocusExercises: Record<number, Exercise[]> = {
       { sentence: 'When Prophet Abraham (pbuh) brought his son Ishmael and his wife Hagar to the city and left them there, the Zamzam water [choice] yet been discovered, so there was no population living there.', options: ['had not', 'has not', 'was not'], answer: 0 },
     ],
     correctAnswer: null,
-    explanation: 'The passive “Mecca is described in the Holy Qur’an as …” keeps Mecca in focus and tells us what the source says about it. “It was … in this city that …” is a cleft sentence: it puts “this city” in focus, and it always uses “that”. “Had not yet been discovered” (past perfect passive) shows that the water was still undiscovered before Abraham’s arrival, another past event.',
+    explanation: 'The passive “Mecca is described in the Holy Qur’an as …” keeps Mecca in focus and tells us what the source says about it. “It was … in this city that …” is a cleft sentence: It puts “this city” in focus, and it always uses “that”. “Had not yet been discovered” (past perfect passive) shows that the water was still undiscovered before Abraham’s arrival, another past event.',
     feedback: {
       correct: 'Well done. You chose the passive, the cleft sentence and the past perfect correctly.',
       incorrect: 'Check paragraphs 1, 4 and 5 of Chapter 3. Who describes Mecca? Which word follows “It was also in this city …”? Which past event came first?',
@@ -155,10 +155,10 @@ export const meccaB2LanguageFocusExercises: Record<number, Exercise[]> = {
     instructions: 'Read the sentence from Chapter 4. Then choose the meaning of “Since”.',
     question: '“Since the surroundings of the city were not suitable for agriculture, people tried to make a living through trade.” What does “Since” mean in this sentence?',
     options: [
-      'From the time when: it gives the starting point of trade.',
-      'Although: it introduces a surprising contrast.',
-      'Because: it gives the background reason for turning to trade.',
-      'After: it gives the next step in a sequence.',
+      'From the time when: It gives the starting point of trade.',
+      'Although: It introduces a surprising contrast.',
+      'Because: It gives the background reason for turning to trade.',
+      'After: It gives the next step in a sequence.',
     ],
     correctAnswer: 2,
     explanation: '“Since” can mean “because” or “from the time when”. Here it gives a reason that the reader can easily accept (the land was not suitable for farming), and the main clause gives the result (people turned to trade). The time meaning of “since” usually goes with a perfect tense: “People have traded here since the 5th century.”',
@@ -222,7 +222,7 @@ export const meccaB2LanguageFocusExercises: Record<number, Exercise[]> = {
     explanation: 'A fact or figure can be checked (a ship’s capacity, who owned ships, where trade went). A judgment evaluates or interprets: “This number shows us …” draws a conclusion from the caravan figures, and “played a key role” is the writer’s assessment of Hashim’s importance. Notice that even the figure is careful: “around 100–150 tons”.',
     feedback: {
       correct: 'Correct. You separated the evidence from the conclusions the writer draws from it.',
-      incorrect: 'Ask of each sentence: could I check this in a record, or is the writer telling me what something means or how important it was?',
+      incorrect: 'Ask of each sentence: Could I check this in a record, or is the writer telling me what something means or how important it was?',
     },
   },
   {
@@ -252,7 +252,7 @@ export const meccaB2LanguageFocusExercises: Record<number, Exercise[]> = {
       },
     ],
     correctAnswer: null,
-    explanation: '“Up to” gives an upper limit: the largest caravans reached 2,500 camels, not every caravan. “Approximately” marks a comparison as an estimate. “Gradually” presents Mecca’s growth as a process over time, which fits the chapter’s dates (from the mid-5th century to the early 6th century). Careful historical writing keeps claims in proportion to the evidence.',
+    explanation: '“Up to” gives an upper limit: The largest caravans reached 2,500 camels, not every caravan. “Approximately” marks a comparison as an estimate. “Gradually” presents Mecca’s growth as a process over time, which fits the chapter’s dates (from the mid-5th century to the early 6th century). Careful historical writing keeps claims in proportion to the evidence.',
     feedback: {
       correct: 'Well done. You replaced each overclaim with the chapter’s careful wording.',
       incorrect: 'Reread paragraphs 2–4 of Chapter 5. Does the writer give an exact number, an upper limit or an estimate? Did Mecca change quickly or over a long time?',
