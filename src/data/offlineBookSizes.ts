@@ -1,6 +1,6 @@
 /**
  * Download size (MB, rounded) of "Save this book offline": every story-page image and the English and
- * Arabic narration of a book, measured from the Firebase Storage files on 2026-10-04 (Adam B2, Abraham B1, Moses A2/B1/B2, Ibn Jubayr A2 on 2026-10-05).
+ * Arabic narration of a book, measured from the Firebase Storage files on 2026-10-04 (Adam B2, Abraham B1, Moses A2/B1/B2, Ibn Jubayr A2, Mecca A2 on 2026-10-05).
  * Re-measure when a book's pictures or audio are replaced.
  */
 export const OFFLINE_BOOK_SIZE_MB: Record<string, number> = {
@@ -13,7 +13,7 @@ export const OFFLINE_BOOK_SIZE_MB: Record<string, number> = {
   'musa:A2': 63,
   'musa:B1': 67,
   'musa:B2': 139,
-  'mecca:A2': 49,
+  'mecca:A2': 64,
   'mecca:B1': 52,
   'mecca:B2': 85,
   'ibnJubayr:A2': 76,

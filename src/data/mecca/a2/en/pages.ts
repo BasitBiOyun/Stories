@@ -6,7 +6,7 @@ export const meccaA2Pages: PageData[] = [
     id: 1,
     type: 'story',
     title: 'Bilal Ibn Rabah’s Place in Islam',
-    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Fimages%2Fmecca_a2_ch1-clean.png?alt=media&token=9f45ea9c-848e-4ed6-ac3a-86676de78194',
+    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Fimages%2Fmecca_a2_ch1.png?alt=media&token=20e4bbdd-4474-4c82-aa54-3ff1cef617d1',
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Faudio%2F00_Chapter_1.mp3?alt=media&token=76a7c1bd-fa29-41ba-a587-4846ce823fc8',
     content: `Bilal ibn Rabah was one of the first seven people who openly said they were Muslims in Mecca. After becoming a Muslim, he never left Prophet Muhammad (pbuh) until his death. He was also the first person to give the Adhan, the call to prayer, in the history of Islam.
 
@@ -28,7 +28,7 @@ Without Islam, he would always be a slave. People in Mecca thought Bilal was jus
     id: 2,
     type: 'story',
     title: 'The Age of Ignorance',
-    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Fimages%2Fmecca_a2_ch2-clean.png?alt=media&token=a1df72fc-0e5d-4b20-a63f-d720d0739ddc',
+    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Fimages%2Fmecca_a2_ch2.png?alt=media&token=9b4da4cd-2f99-4e5e-b0f3-5a7d27d3bd72',
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Faudio%2F01_Chapter_2_The_Age_of_Ignorance.mp3?alt=media&token=f9a3c4c4-545a-4fb2-8b1a-d21e02b030e9',
     content: `The period before Islam was called the Age of Ignorance, or Jahiliyyah. Many people did not believe in the One and Only Allah. They left the true belief and worshipped idols. There was no real peace and justice in society.
 
@@ -50,7 +50,7 @@ Mecca was a business city. People bought and sold things there. Some rich people
     id: 3,
     type: 'story',
     title: 'Slaves in Mecca',
-    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Fimages%2Fmecca_a2_ch3-clean.png?alt=media&token=8d71fcc0-8ce6-4df3-b6ab-56547cb53fb2',
+    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Fimages%2Fmecca_a2_ch3.png?alt=media&token=29c10d59-3866-480e-8c92-5fb618c95e39',
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Faudio%2F02_Chapter_3_Slaves_in_Mecca.mp3?alt=media&token=6ccce6ef-b016-4a99-8915-213d3f3579b7',
     content: `In this unfair system, the poor were getting poorer and the rich were getting richer. The people with money were the most powerful people in the city.
 
@@ -72,7 +72,7 @@ One of those slaves was Bilal ibn Rabah. His master was Umayya ibn Khalaf. Umayy
     id: 4,
     type: 'story',
     title: 'Bilal’s Hard Life',
-    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Fimages%2Fmecca_a2_ch4-clean.png?alt=media&token=fb69563f-c9cc-4ea6-9e78-3cae12485941',
+    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Fimages%2Fmecca_a2_ch4.png?alt=media&token=973d7f83-3ddb-4692-87c6-62963772b371',
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Faudio%2F03_Chapter_4_Bilal%E2%80%99s_Hard_Life.mp3?alt=media&token=12a37c49-7c5f-4635-bd3e-dbb88eae6146',
     content: `Umayya never gave up his hatred of Islam and Muslims. Bilal was a slave of Umayya ibn Khalaf. Umayya was always very unkind to Bilal. Every member of the family was rude to him. They did not respect him as a person.
 
@@ -94,7 +94,7 @@ In the evening, his job was to bring food and wine to his master. His master was
     id: 5,
     type: 'story',
     title: 'A New Message',
-    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Fimages%2Fmecca_a2_ch5-clean.png?alt=media&token=56aa7a00-7ad1-4d2a-844c-351a72517da0',
+    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Fimages%2Fmecca_a2_ch5.png?alt=media&token=3bc48909-db40-4b68-a142-69f6863f7f84',
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Faudio%2F04_Chapter_5_A_New_Message.mp3?alt=media&token=be177f14-9655-4a2a-8797-60455716e29a',
     content: `Umayya liked Bilal because he was an obedient and hardworking servant. Bilal had to work very hard to please his master and protect himself from his master’s anger.
 
@@ -116,7 +116,7 @@ One day, Bilal heard people talking about a new Prophet, Muhammad (pbuh). The Pr
     id: 6,
     type: 'story',
     title: 'Visiting Abu Bakr',
-    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Fimages%2Fmecca_a2_ch6-clean.png?alt=media&token=9294f69d-6b10-4c09-a74e-953c786ff27b',
+    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Fimages%2Fmecca_a2_ch6.png?alt=media&token=7cf6f58f-a546-4cac-8d5c-278289477fff',
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Faudio%2F05_Chapter_6_Visiting_Abu_Bakr.mp3?alt=media&token=b325dbbd-1f2e-4f9d-8dbb-a33f7bdc2f1b',
     content: `Bilal thought about the message of Islam for many days. He walked in the desert all day and thought deeply about the Creator and the creation.
 
@@ -138,7 +138,7 @@ Bilal knew that Abu Bakr believed in Muhammad’s (pbuh) message. When he arrive
     id: 7,
     type: 'story',
     title: 'Bilal Accepts Islam',
-    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Fimages%2Fmecca_a2_ch7-clean.png?alt=media&token=a83b470e-50be-48b1-bc00-81541c8e8979',
+    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Fimages%2Fmecca_a2_ch7.png?alt=media&token=80500b12-4498-4ad9-aaec-b93667802336',
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Faudio%2F06_Chapter_7_Bilal_Accepts_Islam.mp3?alt=media&token=3b1a9462-b2de-4dca-999a-b9adf440beaf',
     content: `Abu Bakr told Bilal about the new religion. Islam says there is no god but Allah. Allah has no partners or equals, not even a rich master or powerful people.
 
@@ -160,7 +160,7 @@ After Bilal met Abu Bakr, he went back home. He could not sleep during the night
     id: 8,
     type: 'story',
     title: 'Allah Is One',
-    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Fimages%2Fmecca_a2_ch8-clean.png?alt=media&token=1a188aa4-e27a-4510-a956-80754b70d6d6',
+    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Fimages%2Fmecca_a2_ch8.png?alt=media&token=694894dc-dc04-4bd1-b486-65d05451f524',
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Faudio%2F07_Chapter_8_Allah_Is_One.mp3?alt=media&token=18a91bc7-23ff-4b9e-a238-15bca0cc7266',
     content: `Umayya asked Bilal angrily, “Is it true? Did you leave our religion and believe in this magic man Muhammad?” Bilal answered with a strong and sure voice: “Yes, Allah helped me to find the right way. Now I believe in the true religion.”
 
@@ -182,7 +182,7 @@ Umayya told children to tie ropes around Bilal’s neck and pull him through the
     id: 9,
     type: 'story',
     title: 'Abu Bakr Saves Bilal',
-    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Fimages%2Fmecca_a2_ch9-clean.png?alt=media&token=297efa85-e2a4-46c7-844d-aa4aa516b5cd',
+    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Fimages%2Fmecca_a2_ch9.png?alt=media&token=de7d6436-0cd2-4eed-af16-d0b9e83b84bc',
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Faudio%2F08_Chapter_9_Abu_Bakr_Saves_Bilal.mp3?alt=media&token=c24a2fef-492b-438b-b1fa-e6e56fe427c0',
     content: `Umayya wanted Bilal to feel sorry and leave his new religion. But Bilal never said the words that Umayya wanted to hear.
 
@@ -204,7 +204,7 @@ Abu Bakr asked, “What did he do wrong? Is it a crime to believe in the one tru
     id: 10,
     type: 'story',
     title: 'A Free Muslim',
-    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Fimages%2Fmecca_a2_ch10-clean.png?alt=media&token=8accce66-25e5-4c3c-94f7-b21a6c2ea8eb',
+    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Fimages%2Fmecca_a2_ch10.png?alt=media&token=43996fc5-3581-49f6-99f8-dc3ffd9e01d0',
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Faudio%2F09_Chapter_10_A_Free_Muslim.mp3?alt=media&token=b1a30907-9298-431f-9b5c-3b81397ff881',
     content: `Finally, Umayya agreed to sell Bilal for five pieces of gold. He laughed at Abu Bakr and said, “If you offered me only one piece of gold, I would still sell him to you.” Abu Bakr replied, “If you asked me for one hundred pieces of gold, I would still pay that price for him.”
 
@@ -226,7 +226,7 @@ Abu Bakr told Bilal that he was now a free man and no longer a slave. Abu Bakr b
     id: 11,
     type: 'story',
     title: 'The First Call to Prayer',
-    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Fimages%2Fmecca_a2_ch11-clean.png?alt=media&token=48ccd3a6-bf4e-4de6-b041-97eed9ef3a2e',
+    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Fimages%2Fmecca_a2_ch11.png?alt=media&token=2a892d1b-9ec9-4806-b178-d9e9f60c8f9d',
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Faudio%2F10_Chapter_11_The_First_Call_to_Prayer.mp3?alt=media&token=fb41878e-d306-4c7b-9266-39747d70edeb',
     content: `After Bilal became free, he became one of the Prophet’s most beloved and respected friends. When the Prophet (pbuh) wanted to be alone, he often allowed only Bilal to stay with him.
 
@@ -248,7 +248,7 @@ Bilal was a very brave man. Even when people hurt him, he shouted fearlessly, �
     id: 12,
     type: 'story',
     title: 'Prayer Is Better Than Sleep',
-    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Fimages%2Fmecca_a2_ch12-clean.png?alt=media&token=e8a10ab8-e855-42ba-a970-adaf466f52a9',
+    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Fimages%2Fmecca_a2_ch12.png?alt=media&token=6d17b5ad-0612-4921-afb1-a8a8d7464ea0',
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Faudio%2F11_Chapter_12_Prayer_Is_Better_Than_Sleep.mp3?alt=media&token=a9931375-9370-4267-8d5f-422bf60a91f5',
     content: `Bilal used to start the morning call to prayer very early. He added the words “as-salatu khayrun minan-nawm,” which means “Prayer is better than sleep.” The Prophet (pbuh) was pleased with this and told him to repeat it every morning.
 
@@ -270,7 +270,7 @@ In this speech, he said it is wrong to dislike or disrespect people because of t
     id: 13,
     type: 'story',
     title: 'Everyone Is Equal',
-    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Fimages%2Fmecca_a2_ch13-clean.png?alt=media&token=799ccedc-b9ce-4408-90af-f2e8096bc991',
+    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Fimages%2Fmecca_a2_ch13.png?alt=media&token=8c78587d-ea7d-48ec-815c-666ad38a66ac',
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Faudio%2F12_Chapter_13_Everyone_Is_Equal.mp3?alt=media&token=746f98e6-3e86-4e1e-8cab-7cb0ab7899c8',
     content: `No person is better than another because of skin color. Arabs are not better than non-Arabs, and white people are not better than black people. The only way to be better is to be good and do good actions.
 

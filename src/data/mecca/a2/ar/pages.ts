@@ -6,7 +6,7 @@ export const meccaA2PagesAr: PageData[] = [
     id: 1,
     type: 'story',
     title: 'مَكَانَةُ بِلَالِ بْنِ رَبَاحٍ فِي الْإِسْلَامِ',
-    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Fimages%2Fmecca_a2_ch1-clean.png?alt=media&token=9f45ea9c-848e-4ed6-ac3a-86676de78194',
+    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Fimages%2Fmecca_a2_ch1.png?alt=media&token=20e4bbdd-4474-4c82-aa54-3ff1cef617d1',
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Faudio%2Farabic_audio%2Fcahiliyebilal1.mp3?alt=media&token=f088cbaa-3a91-4843-b897-5f56afaf87c3',
     content: `كَانَ بِلَالُ بْنُ رَبَاحٍ أَحَدَ السَّبْعَةِ الْأَوَّلِينَ الَّذِينَ جَهَرُوا بِإِسْلَامِهِمْ فِي مَكَّةَ. وَبَعْدَ إِسْلَامِهِ، لَزِمَ النَّبِيَّ مُحَمَّدًا صَلَّى اللهُ عَلَيْهِ وَسَلَّمَ فَلَمْ يُفَارِقْهُ حَتَّى وَفَاتِهِ. وَكَانَ أَيْضًا أَوَّلَ مَنْ أَقَامَ الْأَذَانَ، وَهُوَ نِدَاءُ الصَّلَاةِ، فِي تَارِيخِ الْإِسْلَامِ.
 
@@ -28,7 +28,7 @@ export const meccaA2PagesAr: PageData[] = [
     id: 2,
     type: 'story',
     title: 'عَصْرُ الْجاهِلِيَّةِ',
-    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Fimages%2Fmecca_a2_ch2-clean.png?alt=media&token=a1df72fc-0e5d-4b20-a63f-d720d0739ddc',
+    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Fimages%2Fmecca_a2_ch2.png?alt=media&token=9b4da4cd-2f99-4e5e-b0f3-5a7d27d3bd72',
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Faudio%2Farabic_audio%2FCahiliyeBilal2.mp3?alt=media&token=4dac74d0-1014-45da-910b-420da4187e18',
     content: `كانَتِ الْفَتْرَةُ قَبْلَ الْإِسْلامِ تُسَمَّى عَصْرَ الْجاهِلِيَّةِ. لَمْ يُؤْمِنْ كَثِيرٌ مِنَ النّاسِ بِاللهِ الْواحِدِ الْأَحَدِ. تَرَكُوا الْإِيمانَ الْحَقَّ وَعَبَدُوا الْأَصْنامَ. لَمْ يَكُنْ هُناكَ سَلامٌ وَلا عَدَالَةٌ فِي الْمُجْتَمَعِ.
 
@@ -50,7 +50,7 @@ export const meccaA2PagesAr: PageData[] = [
     id: 3,
     type: 'story',
     title: 'الْعَبِيدُ فِي مَكَّةَ',
-    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Fimages%2Fmecca_a2_ch3-clean.png?alt=media&token=8d71fcc0-8ce6-4df3-b6ab-56547cb53fb2',
+    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Fimages%2Fmecca_a2_ch3.png?alt=media&token=29c10d59-3866-480e-8c92-5fb618c95e39',
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Faudio%2Farabic_audio%2FCahiliyeBilal3.mp3?alt=media&token=ef0a0e62-ddf6-4dd4-9a17-33a5a3e67c63',
     content: `فِي هَذَا النِّظَامِ غَيْرِ الْعَادِلِ، كَانَ الْفَقِيرُ يَزْدَادُ فَقْرًا وَالْغَنِيُّ يَزْدَادُ غِنًى. وَكَانَ أَصْحَابُ الْمَالِ هُمُ الْأَقْوَى فِي الْمَدِينَةِ.
 
@@ -72,7 +72,7 @@ export const meccaA2PagesAr: PageData[] = [
     id: 4,
     type: 'story',
     title: 'حَيَاةُ بِلالٍ الشَّاقَّةُ',
-    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Fimages%2Fmecca_a2_ch4-clean.png?alt=media&token=fb69563f-c9cc-4ea6-9e78-3cae12485941',
+    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Fimages%2Fmecca_a2_ch4.png?alt=media&token=973d7f83-3ddb-4692-87c6-62963772b371',
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Faudio%2Farabic_audio%2FCahiliyeBilal4.mp3?alt=media&token=41d84ff1-41a5-438c-a468-0cebd3b3d11d',
     content: `لَمْ يَتْرُكْ أُمَيَّةُ أَبَدًا حِقْدَهُ عَلَى الْإِسْلَامِ وَالْمُسْلِمِينَ. كَانَ بِلالٌ عَبْدًا لِأُمَيَّةَ بْنِ خَلَفٍ. كَانَ أُمَيَّةُ غَيْرَ لَطِيفٍ جِدًّا مَعَ بِلالٍ. وَكَانَ كُلُّ فَرْدٍ مِنَ الْأُسْرَةِ غَلِيظًا مَعَهُ، وَلَمْ يَحْتَرِمُوهُ كَإِنْسَانٍ.
 
@@ -94,7 +94,7 @@ export const meccaA2PagesAr: PageData[] = [
     id: 5,
     type: 'story',
     title: 'رِسَالَةٌ جَدِيدَةٌ',
-    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Fimages%2Fmecca_a2_ch5-clean.png?alt=media&token=56aa7a00-7ad1-4d2a-844c-351a72517da0',
+    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Fimages%2Fmecca_a2_ch5.png?alt=media&token=3bc48909-db40-4b68-a142-69f6863f7f84',
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Faudio%2Farabic_audio%2FCahiliyeBilal5.mp3?alt=media&token=9eea5eac-93e3-442b-b1be-e485a5a25f27',
     content: `كَانَ أُمَيَّةُ يُحِبُّ بِلالًا لِأَنَّهُ كَانَ عَبْدًا مُطِيعًا وَمُجْتَهِدًا فِي عَمَلِهِ. كَانَ عَلَى بِلالٍ أَنْ يَعْمَلَ بِجِدٍّ لِيُرْضِيَ سَيِّدَهُ وَيَحْمِيَ نَفْسَهُ مِنْ غَضَبِهِ.
 
@@ -116,7 +116,7 @@ export const meccaA2PagesAr: PageData[] = [
     id: 6,
     type: 'story',
     title: 'زِيَارَةُ أَبِي بَكْرٍ',
-    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Fimages%2Fmecca_a2_ch6-clean.png?alt=media&token=9294f69d-6b10-4c09-a74e-953c786ff27b',
+    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Fimages%2Fmecca_a2_ch6.png?alt=media&token=7cf6f58f-a546-4cac-8d5c-278289477fff',
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Faudio%2Farabic_audio%2FCahiliyeBilal6.mp3?alt=media&token=bf317e92-689d-4f70-a846-f8b7779f15dd',
     content: `فَكَّرَ بِلالٌ فِي رِسَالَةِ الْإِسْلَامِ لِأَيَّامٍ كَثِيرَةٍ. وَمَشَى فِي الصَّحْرَاءِ طَوَالَ الْيَوْمِ وَفَكَّرَ عَمِيقًا فِي الْخَالِقِ وَالْمَخْلُوقَاتِ.
 
@@ -138,7 +138,7 @@ export const meccaA2PagesAr: PageData[] = [
     id: 7,
     type: 'story',
     title: 'بِلالٌ يَقْبَلُ الْإِسْلامَ',
-    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Fimages%2Fmecca_a2_ch7-clean.png?alt=media&token=a83b470e-50be-48b1-bc00-81541c8e8979',
+    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Fimages%2Fmecca_a2_ch7.png?alt=media&token=80500b12-4498-4ad9-aaec-b93667802336',
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Faudio%2Farabic_audio%2FCahiliyeBilal7.mp3?alt=media&token=fda69983-9238-4d5b-8cc9-2f84fe6a9129',
     content: `أَخْبَرَ أَبُو بَكْرٍ بِلالًا عَنِ الدِّينِ الْجَدِيدِ. فَالْإِسْلامُ يَقُولُ: لا إِلٰهَ إِلَّا اللهُ. لَيْسَ لِلهِ شَرِيكٌ وَلا مَثِيلٌ، لا سَيِّدٌ غَنِيٌّ وَلا نَاسٌ أَقْوِيَاءُ.
 
@@ -160,7 +160,7 @@ export const meccaA2PagesAr: PageData[] = [
     id: 8,
     type: 'story',
     title: 'اللَّهُ وَاحِدٌ',
-    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Fimages%2Fmecca_a2_ch8-clean.png?alt=media&token=1a188aa4-e27a-4510-a956-80754b70d6d6',
+    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Fimages%2Fmecca_a2_ch8.png?alt=media&token=694894dc-dc04-4bd1-b486-65d05451f524',
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Faudio%2Farabic_audio%2FCahiliyeBilal8.mp3?alt=media&token=237681d2-5663-4ed7-a4bd-87c8b0b90ea2',
     content: `سَأَلَ أُمَيَّةُ بِلالًا بِغَضَبٍ: «أَهٰذَا صَحِيحٌ؟ هَلْ تَرَكْتَ دِينَنَا وَآمَنْتَ بِهٰذَا الرَّجُلِ السَّاحِرِ مُحَمَّدٍ؟» أَجَابَ بِلالٌ بِصَوْتٍ قَوِيٍّ وَوَاثِقٍ: «نَعَمْ، سَاعَدَنِيَ اللَّهُ لِأَجِدَ الطَّرِيقَ الصَّحِيحَ. الْآنَ أُؤْمِنُ بِالدِّينِ الْحَقِّ».
 
@@ -182,7 +182,7 @@ export const meccaA2PagesAr: PageData[] = [
     id: 9,
     type: 'story',
     title: 'أَبُو بَكْرٍ يُنْقِذُ بِلالًا',
-    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Fimages%2Fmecca_a2_ch9-clean.png?alt=media&token=297efa85-e2a4-46c7-844d-aa4aa516b5cd',
+    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Fimages%2Fmecca_a2_ch9.png?alt=media&token=de7d6436-0cd2-4eed-af16-d0b9e83b84bc',
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Faudio%2Farabic_audio%2FCahiliyeBilal9.mp3?alt=media&token=f83fb608-4c95-4ae1-a856-73baa8977093',
     content: `أَرادَ أُمَيَّةُ أَنْ يَنْدَمَ بِلالٌ وَيَتْرُكَ دِينَهُ الْجَدِيدَ. وَلٰكِنَّ بِلالًا لَمْ يَقُلِ الْكَلِماتِ الَّتِي أَرادَ أُمَيَّةُ سَمَاعَها.
 
@@ -204,7 +204,7 @@ export const meccaA2PagesAr: PageData[] = [
     id: 10,
     type: 'story',
     title: 'مُسْلِمٌ حُرٌّ',
-    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Fimages%2Fmecca_a2_ch10-clean.png?alt=media&token=8accce66-25e5-4c3c-94f7-b21a6c2ea8eb',
+    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Fimages%2Fmecca_a2_ch10.png?alt=media&token=43996fc5-3581-49f6-99f8-dc3ffd9e01d0',
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Faudio%2Farabic_audio%2FCahiliyeBilal10.mp3?alt=media&token=e65c12e5-cf1f-4e40-a424-3a1b6d2e5e00',
     content: `وَأَخِيرًا، وافَقَ أُمَيَّةُ أَنْ يَبِيعَ بِلالًا بِخَمْسِ قِطَعٍ مِنَ الذَّهَبِ. ضَحِكَ مِنْ أَبي بَكْرٍ وَقالَ: «لَوْ أَعْطَيْتَنِي قِطْعَةً واحِدَةً فَقَطْ مِنَ الذَّهَبِ، لَبِعْتُهُ لَكَ». أَجَابَ أَبُو بَكْرٍ: «لَوْ طَلَبْتَ مِنِّي مِائَةَ قِطْعَةِ ذَهَبٍ لَدَفَعْتُ ذٰلِكَ الثَّمَنَ لِأَجْلِهِ».
 
@@ -226,7 +226,7 @@ export const meccaA2PagesAr: PageData[] = [
     id: 11,
     type: 'story',
     title: 'الْأَذَانُ الْأَوَّلُ',
-    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Fimages%2Fmecca_a2_ch11-clean.png?alt=media&token=48ccd3a6-bf4e-4de6-b041-97eed9ef3a2e',
+    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Fimages%2Fmecca_a2_ch11.png?alt=media&token=2a892d1b-9ec9-4806-b178-d9e9f60c8f9d',
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Faudio%2Farabic_audio%2FCahiliyeBilal11.mp3?alt=media&token=abe28893-584b-4918-ae96-b32e11f361fa',
     content: `بَعْدَ أَنْ أَصْبَحَ بِلالٌ حُرًّا، صَارَ مِنْ أَحَبِّ وَأَكْرَمِ أَصْحَابِ الرَّسُولِ. عِنْدَمَا أَرَادَ الرَّسُولُ صَلَّى اللهُ عَلَيْهِ وَسَلَّمَ أَنْ يَكُونَ وَحْدَهُ، كَانَ غَالِبًا يَسْمَحُ لِبِلالٍ فَقَطْ أَنْ يَبْقَى مَعَهُ.
 
@@ -248,7 +248,7 @@ export const meccaA2PagesAr: PageData[] = [
     id: 12,
     type: 'story',
     title: 'الصَّلاةُ خَيْرٌ مِنَ النَّوْمِ',
-    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Fimages%2Fmecca_a2_ch12-clean.png?alt=media&token=e8a10ab8-e855-42ba-a970-adaf466f52a9',
+    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Fimages%2Fmecca_a2_ch12.png?alt=media&token=6d17b5ad-0612-4921-afb1-a8a8d7464ea0',
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Faudio%2Farabic_audio%2FCahiliyeBilal12.mp3?alt=media&token=167812d7-fd5c-4335-b002-6a19215dd01c',
     content: `كانَ بِلالٌ يَبْدَأُ أَذانَ الصَّباحِ مُبَكِّرًا جِدًّا. أَضافَ كَلِماتِ «الصَّلاةُ خَيْرٌ مِنَ النَّوْمِ». وَفَرِحَ الرَّسولُ صَلَّى اللهُ عَلَيْهِ وَسَلَّمَ بِذٰلِكَ وَأَمَرَهُ أَنْ يُكَرِّرَها كُلَّ صَباحٍ.
 
@@ -270,7 +270,7 @@ export const meccaA2PagesAr: PageData[] = [
     id: 13,
     type: 'story',
     title: 'الْجَمِيعُ سَوَاءٌ',
-    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Fimages%2Fmecca_a2_ch13-clean.png?alt=media&token=799ccedc-b9ce-4408-90af-f2e8096bc991',
+    image: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Fimages%2Fmecca_a2_ch13.png?alt=media&token=8c78587d-ea7d-48ec-815c-666ad38a66ac',
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Faudio%2Farabic_audio%2FCahiliyeBilal13.mp3?alt=media&token=ca678e3b-64c0-4a88-931d-e4d7ca816c31',
     content: `لَا فَضْلَ لِإِنْسَانٍ عَلَى آخَرَ بِسَبَبِ لَوْنِ الْبَشَرَةِ. فَلَا فَضْلَ لِعَرَبِيٍّ عَلَى أَعْجَمِيٍّ، وَلَا لِأَبْيَضَ عَلَى أَسْوَدَ. الطَّرِيقُ الْوَحِيدُ لِتَكُونَ أَفْضَلَ هُوَ أَنْ تَكُونَ طَيِّبًا وَتَعْمَلَ أَعْمَالًا صَالِحَةً.
 
