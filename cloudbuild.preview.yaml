@@ -13,6 +13,9 @@ steps:
   # Skips the image build and deploy when nothing that goes into the app changed
   # (for example a docs, promo or TTS-queue-only commit). The hash of the app inputs is
   # stored as a label on the Cloud Run service by the deploy step and compared here.
+  # It also skips when a newer commit is already on the preview branch: that commit's own
+  # build deploys both changes, so quick successive pushes do not each pay for a full build.
+  # If GitHub cannot be reached the check is ignored and the build goes on as usual.
   - id: check-app-changes
     waitFor: ['-']
     name: gcr.io/google.com/cloudsdktool/cloud-sdk:slim
@@ -21,6 +24,12 @@ steps:
       - -c
       - |
         set -eu
+        head="$$(git ls-remote https://github.com/BasitBiOyun/Stories 2>/dev/null | awk '$$2 == "refs/heads/${BRANCH_NAME}" {print $$1}' || true)"
+        if [ -n "$$head" ] && [ "$$head" != "$COMMIT_SHA" ]; then
+          echo "[Stories] A newer commit ($$head) is already on ${BRANCH_NAME}; its build deploys this change too. Skipping."
+          touch /workspace/.skip-deploy
+          exit 0
+        fi
         hash="$$(find src public deploy scripts/validation index.html package.json package-lock.json \
           vite.config.ts tsconfig.json Dockerfile .dockerignore cloudbuild.preview.yaml \
           -type f -print0 2>/dev/null | LC_ALL=C sort -z | xargs -0 sha256sum | sha256sum | cut -c1-40)"
@@ -189,6 +198,13 @@ steps:
       - |
         set -euo pipefail
         [ -f /workspace/.skip-deploy ] && exit 0
+        # A newer commit pushed while this one was building deploys itself; never put an older
+        # image over it.
+        head="$$(git ls-remote https://github.com/BasitBiOyun/Stories 2>/dev/null | awk '$$2 == "refs/heads/${BRANCH_NAME}" {print $$1}' || true)"
+        if [ -n "$$head" ] && [ "$$head" != "$COMMIT_SHA" ]; then
+          echo "[Stories] A newer commit ($$head) is on ${BRANCH_NAME}; its build deploys. Skipping this deploy."
+          exit 0
+        fi
         gcloud run deploy ${_SERVICE} \
           --image=${_REGION}-docker.pkg.dev/$PROJECT_ID/${_AR_REPOSITORY}/${_IMAGE}:$COMMIT_SHA \
           --region=${_REGION} \
