@@ -15,7 +15,12 @@ const collectWords = (container: HTMLElement) => {
   const words: string[] = [];
   const walker = document.createTreeWalker(container, NodeFilter.SHOW_TEXT);
   let joinNext = false;
+  let previous: Text | null = null;
   for (let node = walker.nextNode() as Text | null; node; node = walker.nextNode() as Text | null) {
+    // Only a word split inside one element is joined; the last word of a paragraph and the
+    // first word of the next touch in the DOM text but are separate words.
+    if (previous && previous.parentElement !== node.parentElement) joinNext = false;
+    previous = node;
     const text = node.data;
     const re = /\S+/g;
     let m: RegExpExecArray | null;

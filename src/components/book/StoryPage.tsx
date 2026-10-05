@@ -1589,7 +1589,7 @@ export const StoryPage = ({
               ref={audioControlsRef}
               dir="ltr"
               className={cn(
-                "relative flex w-full items-center gap-2.5 rounded-2xl border px-2.5 py-2.5 shadow-[0_18px_24px_-22px_rgba(63,49,28,0.45)] backdrop-blur-md sm:w-[430px] sm:gap-3 sm:px-3 sm:py-3 lg:w-[500px]",
+                "relative z-[90] flex w-full items-center gap-2.5 rounded-2xl border px-2.5 py-2.5 shadow-[0_18px_24px_-22px_rgba(63,49,28,0.45)] backdrop-blur-md sm:w-[430px] sm:gap-3 sm:px-3 sm:py-3 lg:w-[500px]",
                 "bg-brand-50/88 border-brand-200/90"
               )}
             >
@@ -1735,23 +1735,35 @@ export const StoryPage = ({
                       animate={{ opacity: 1, y: 0, scale: 1 }}
                       exit={{ opacity: 0, y: -6, scale: 0.97 }}
                       transition={{ duration: 0.14, ease: 'easeOut' }}
-                      className="absolute end-0 top-[calc(100%+0.55rem)] z-50 w-28 rounded-2xl border border-black/[0.07] bg-white/96 p-1.5 shadow-2xl backdrop-blur-xl"
+                      className="absolute end-0 top-[calc(100%+0.55rem)] z-50 w-44 rounded-2xl border border-black/[0.07] bg-white/96 p-2 shadow-2xl backdrop-blur-xl"
                     >
-                      {[1, 1.25, 1.5, 1.75, 2].map(option => (
-                        <button
-                          key={option}
-                          type="button"
-                          onClick={() => setPlaybackSpeed(option)}
-                          className={cn(
-                            "flex min-h-10 w-full items-center justify-between rounded-xl px-3 font-display text-[11px] font-semibold tabular-nums transition-colors",
-                            speed === option
-                              ? "bg-brand-50 text-brand-800"
-                              : "text-wood/62 hover:bg-black/[0.045]"
-                          )}
-                        >
-                          <span>{option}×</span>
-                          {speed === option && <span aria-hidden="true">✓</span>}
-                        </button>
+                      {[
+                        { label: language === 'ar' ? 'أبطأ' : 'Slower', options: [0.25, 0.5, 0.75] },
+                        { label: language === 'ar' ? 'عادي وأسرع' : 'Normal and faster', options: [1, 1.25, 1.5, 1.75, 2] },
+                      ].map(group => (
+                        <div key={group.label} className="mb-1 last:mb-0">
+                          <p className="px-1.5 pb-1 pt-0.5 font-display text-[10px] font-semibold uppercase tracking-wide text-wood/45">
+                            {group.label}
+                          </p>
+                          <div className="grid grid-cols-3 gap-1">
+                            {group.options.map(option => (
+                              <button
+                                key={option}
+                                type="button"
+                                onClick={() => setPlaybackSpeed(option)}
+                                aria-pressed={speed === option}
+                                className={cn(
+                                  "flex h-9 items-center justify-center rounded-xl font-display text-[11px] font-semibold tabular-nums transition-colors",
+                                  speed === option
+                                    ? "bg-brand-700 text-white"
+                                    : "bg-black/[0.035] text-wood/70 hover:bg-brand-100 hover:text-brand-800"
+                                )}
+                              >
+                                {option}×
+                              </button>
+                            ))}
+                          </div>
+                        </div>
                       ))}
                     </motion.div>
                   )}
