@@ -10,7 +10,7 @@ export const yunusEmreA2ChapterExtrasEn: ChapterExtras = {
     5: { kind: 'guess', question: "Guess first: what does carrying firewood every day do?", options: ["It makes you rich.", "It makes you sleepy.", "It hurts your back."], answer: 2, quote: "Carrying firewood every day hurts your back and leaves bad cuts." },
     6: { kind: 'guess', question: "Guess first: what special language did Yunus learn?", options: ["the language of kings", "the language of all creatures", "the language of sailors"], answer: 1, quote: "He learned the special language of all creatures." },
     7: { kind: 'guess', question: "Guess first: when did Yunus come back?", options: ["in the late afternoon", "early in the morning", "at midnight"], answer: 0, quote: "In the late afternoon, he returned with a single daisy." },
-    8: { kind: 'guess', question: "Guess first: what called out to Yunus when it got dark?", options: ["a bird", "his teacher", "a daisy"], answer: 2, quote: "When it started to get dark, a daisy called out to me" },
+    8: { kind: 'guess', question: "Guess first: what did the daisy ask Yunus to do?", options: ["to water it", "to leave it", "to pick it"], answer: 2, quote: "At least pick me" },
   },
   iCan: {
     1: ["I can say who Yunus Emre was.", "I can say what happened in the past and why.", "I can give a short life story of a person."],

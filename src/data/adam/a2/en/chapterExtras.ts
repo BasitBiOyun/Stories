@@ -8,7 +8,7 @@ export const adamA2ChapterExtrasEn: ChapterExtras = {
     3: { kind: 'guess', question: "Guess first: what did Iblis say he was made from?", options: ["water", "fire", "gold"], answer: 1, quote: "You created me from fire" },
     4: { kind: 'guess', question: "Guess first: what did Allah tell Adam and Eve about one tree?", options: ["not to go near it", "to plant more trees like it", "to sit under it every day"], answer: 0, quote: "He told Adam and Eve not to go near one tree." },
     5: { kind: 'guess', question: "Guess first: what are people sometimes, says the story?", options: ["very tall", "always angry", "forgetful"], answer: 2, quote: "Unfortunately, people are sometimes forgetful." },
-    6: { kind: 'guess', question: "Guess first: what were Adam and Eve on earth?", options: ["its guests", "its rulers", "its servants"], answer: 1, quote: "They were the rulers of the planet Earth." },
+    6: { kind: 'guess', question: "Guess first: what did Iblis want people to forget?", options: ["their homes", "Allah", "their names"], answer: 1, quote: "He wanted people not to remember Allah in their daily lives." },
     7: { kind: 'guess', question: "Guess first: who are the children of Adam and Eve?", options: ["all of us", "only the prophets", "only the angels"], answer: 0, quote: "We are all their children." },
     8: { kind: 'guess', question: "Guess first: what did the two brothers have one day?", options: ["a big party", "a long trip", "a serious disagreement"], answer: 2, quote: "One day, they were in a serious disagreement." },
     9: { kind: 'guess', question: "Guess first: whose offering pleased Allah?", options: ["Qabil’s", "Habil’s", "nobody’s"], answer: 1, quote: "Allah was pleased with Habil’s offering" },

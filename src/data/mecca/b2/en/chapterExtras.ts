@@ -18,7 +18,7 @@ export const meccaB2ChapterExtrasEn: ChapterExtras = {
     13: { kind: 'find', question: "Find it fast: How did the leaders of the Quraysh view Islam?", options: ["as a threat to their authority", "as a way to grow their trade", "as a religion only for travellers"], answer: 0, quote: "The leaders of the Quraysh viewed Islam as a threat to their authority." },
     14: { kind: 'find', question: "Find it fast: For how many years did the Prophet (pbuh) teach Islam in Mecca?", options: ["13 years", "23 years", "40 years"], answer: 0, quote: "where the Prophet (pbuh) taught Islam for 13 years" },
     15: { kind: 'find', question: "Find it fast: What did some people eat during the boycott?", options: ["fresh fish", "dates from Medina", "tree leaves"], answer: 2, quote: "there were even those who ate tree leaves" },
-    16: { kind: 'find', question: "Find it fast: What did the rejection of idols mean for the Quraysh?", options: ["more visitors to Mecca", "the end of the trade they depended on", "a new treaty with Byzantium"], answer: 1, quote: "The rejection of idols meant, for the Quraysh, the end of the trade on which they depended for their wealth." },
+    16: { kind: 'find', question: "Find it fast: Besides leaving their old religions, what did the Qur’an call the Quraysh to do?", options: ["build a new Ka’ba", "worship a single Allah", "leave Mecca"], answer: 1, quote: "The other was the Qur’an’s call for them to worship a single Allah." },
     17: { kind: 'find', question: "Find it fast: According to the writer, what is at the heart of Islam?", options: ["human honor and dignity", "wealth and power", "tribe and family"], answer: 0, quote: "At the heart of Islam is human honor and dignity." },
   },
   iCan: {

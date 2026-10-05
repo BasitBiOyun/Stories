@@ -12,9 +12,9 @@ export const yunusEmreB2ChapterExtrasEn: ChapterExtras = {
     7: { kind: 'find', question: "Find it fast: Where did the shaykhs come from?", options: ["Egypt and Syria", "Turkestan, Khorasan, Iran and nearby lands", "Greece and Rome"], answer: 1, quote: "During the same period, the shaykhs from the regions of Turkestan, Transoxiana, Khorasan, Khwarezm and Iran came to Anatolia under Mongol pressure." },
     8: { kind: 'find', question: "Find it fast: What does the word “tawhid” mean?", options: ["the love of nature", "the absolute Oneness of Allah", "the study of history"], answer: 1, quote: "tawhid, which means the absolute Oneness of Allah" },
     9: { kind: 'find', question: "Find it fast: What does love bring?", options: ["wealth and fame", "fear and silence", "unity and harmony"], answer: 2, quote: "Love brings unity and harmony." },
-    10: { kind: 'find', question: "Find it fast: According to Yunus, what is essential for the proper performance of worship?", options: ["a loud voice", "purity of the heart", "a large mosque"], answer: 1, quote: "purity of the heart is essential for the proper performance of acts of worship" },
+    10: { kind: 'find', question: "Find it fast: How many types of intellect does Yunus describe?", options: ["two", "three", "five"], answer: 1, quote: "there are three types of intellect" },
     11: { kind: 'find', question: "Find it fast: What must support each other for a person to reach salvation?", options: ["heart and reason", "wealth and power", "poems and songs"], answer: 0, quote: "heart and reason must support one another" },
-    12: { kind: 'find', question: "Find it fast: What are Yunus Emre’s poems, besides literary works?", options: ["a history of wars", "a book of laws", "a moral guide"], answer: 2, quote: "Yunus Emre's poems are not only literary works but also a moral guide." },
+    12: { kind: 'find', question: "Find it fast: Which of these is a value in Yunus Emre’s works?", options: ["greed", "envy", "humility"], answer: 2, quote: "Values such as honesty, patience, humility, generosity" },
     13: { kind: 'skim', question: "Skim it: What is this chapter mainly about?", options: ["Yunus’s travels in Syria and Azerbaijan", "Yunus’s verses on patience and anger, and his lasting legacy", "the Mongol attacks on Anatolia"], answer: 1 },
   },
   iCan: {
