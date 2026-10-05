@@ -495,8 +495,8 @@
 
 /* One-line titles that truncate: give accents, Arabic harakat and descenders room inside the clip box without moving the layout. */
 .clip-room {
-  padding-block: 0.18em;
-  margin-block: -0.18em;
+  padding-block: 0.22em 0.36em;
+  margin-block: -0.22em -0.36em;
 }
 
 /* Respect the operating system's reduced-motion preference without changing the default design. */
