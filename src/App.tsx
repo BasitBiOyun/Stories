@@ -993,7 +993,7 @@ const AppContent = () => {
                             {language === 'ar' ? 'تتبع القراءة' : 'Follow along'}
                           </span>
                           <span className="mt-0.5 block text-[11px] text-parchment/62">
-                            {language === 'ar' ? 'علامة تحت الكلمة المقروءة أثناء الاستماع' : 'A marker under each word as it is read'}
+                            {language === 'ar' ? 'تتلوّن الكلمة المقروءة مع الصوت' : 'The word being read fills with colour'}
                           </span>
                         </span>
                         <span

@@ -41,16 +41,19 @@ const collectWords = (container: HTMLElement) => {
 
 const isVisible = (el: HTMLElement | null): el is HTMLElement => !!el && el.getClientRects().length > 0;
 
+const FILL_STYLES = ['background-image', 'background-clip', '-webkit-background-clip', '-webkit-text-fill-color', '--follow-rest'];
+
 /**
- * "Follow along": while the chapter audio plays, a marker slides under the word being read.
+ * "Follow along": while the chapter audio plays, the word being read fills with the book
+ * colour in step with the voice (right to left in Arabic), like karaoke lyrics.
  * Word times come from <audio>.timings.json; without that file nothing is shown.
+ * The fill is painted over the whole word element, so Arabic letter joining is untouched.
  */
 export function useFollowAlong({
   enabled,
   timingsUrl,
   audioRef,
   textRefs,
-  markerRefs,
   language,
   isPlaying,
 }: {
@@ -58,13 +61,11 @@ export function useFollowAlong({
   timingsUrl: string | null;
   audioRef: RefObject<HTMLAudioElement | null>;
   textRefs: RefObject<HTMLDivElement | null>[];
-  markerRefs: RefObject<HTMLDivElement | null>[];
   language: HighlightLanguage;
   isPlaying: boolean;
 }) {
   const [spoken, setSpoken] = useState<TimedWord[] | null>(null);
   const shownRef = useRef<ShownWords | null>(null);
-  const currentRef = useRef<number>(-1);
   const lastUserScrollRef = useRef(0);
 
   useEffect(() => {
@@ -84,15 +85,19 @@ export function useFollowAlong({
   }, [enabled, timingsUrl]);
 
   useEffect(() => {
-    const active = enabled && !!spoken?.length;
-    const hideAll = () => {
-      currentRef.current = -1;
-      markerRefs.forEach(ref => { if (ref.current) ref.current.style.opacity = '0'; });
+    if (!enabled || !spoken?.length) return;
+
+    let painted: HTMLElement | null = null;
+    const clear = () => {
+      if (painted) FILL_STYLES.forEach(prop => painted!.style.removeProperty(prop));
+      painted = null;
     };
-    if (!active || !spoken) { hideAll(); return; }
 
     const textEls = textRefs.map(ref => ref.current);
-    const observer = new MutationObserver(() => { shownRef.current = null; });
+    const observer = new MutationObserver(records => {
+      // Our own style changes are attribute mutations; only text or element changes count.
+      if (records.some(r => r.type !== 'attributes')) { clear(); shownRef.current = null; }
+    });
     textEls.forEach(el => el && observer.observe(el, { childList: true, subtree: true, characterData: true }));
 
     const shownWords = (): ShownWords | null => {
@@ -104,16 +109,15 @@ export function useFollowAlong({
       const rangeForSpoken = new Map<number, number>();
       spokenForShown.forEach((s, r) => { if (s >= 0) rangeForSpoken.set(s, r); });
       shownRef.current = { container, ranges, rangeForSpoken };
-      currentRef.current = -1;
       return shownRef.current;
     };
 
-    const place = (force = false) => {
+    const paint = () => {
       const audio = audioRef.current;
       const shown = shownWords();
-      if (!audio || !shown || audio.ended || (audio.paused && audio.currentTime === 0)) { hideAll(); return; }
+      if (!audio || !shown || audio.ended || (audio.paused && audio.currentTime === 0)) { clear(); return; }
       const t = audio.currentTime;
-      // Last spoken word that has started; it stays marked through the pause after it.
+      // Last spoken word that has started; it stays filled through the pause after it.
       let lo = 0;
       let hi = spoken.length - 1;
       let idx = -1;
@@ -121,52 +125,63 @@ export function useFollowAlong({
         const mid = (lo + hi) >> 1;
         if (spoken[mid].s <= t) { idx = mid; lo = mid + 1; } else hi = mid - 1;
       }
-      while (idx >= 0 && !shown.rangeForSpoken.has(idx)) idx--;
-      if (idx < 0) { hideAll(); return; }
+      let progress = idx >= 0 ? Math.min(1, Math.max(0, (t - spoken[idx].s) / Math.max(0.05, spoken[idx].e - spoken[idx].s))) : 0;
+      while (idx >= 0 && !shown.rangeForSpoken.has(idx)) { idx--; progress = 1; }
+      if (idx < 0) { clear(); return; }
       const rangeIdx = shown.rangeForSpoken.get(idx)!;
-      if (rangeIdx === currentRef.current && !force) return;
-      currentRef.current = rangeIdx;
+      const range = shown.ranges[rangeIdx];
+      const el = range.startContainer.parentElement;
+      if (!el || !el.isConnected) { shownRef.current = null; return; }
 
-      const markerIdx = textEls.findIndex(el => el === shown.container);
-      markerRefs.forEach((ref, i) => { if (i !== markerIdx && ref.current) ref.current.style.opacity = '0'; });
-      const marker = markerRefs[markerIdx]?.current;
-      const box = marker?.offsetParent as HTMLElement | null;
-      if (!marker || !box) return;
-      const rect = shown.ranges[rangeIdx].getBoundingClientRect();
-      if (!rect.width) { shownRef.current = null; return; }
-      const boxRect = box.getBoundingClientRect();
-      marker.style.width = `${rect.width}px`;
-      marker.style.transform = `translate(${rect.left - boxRect.left}px, ${rect.bottom - boxRect.top + 1}px)`;
-      marker.style.opacity = '1';
+      // A Word Note phrase is one element holding several words: fill it word by word.
+      const inElement: number[] = [];
+      for (let r = rangeIdx; r >= 0 && shown.ranges[r].startContainer.parentElement === el; r--) inElement.unshift(r);
+      for (let r = rangeIdx + 1; r < shown.ranges.length && shown.ranges[r].startContainer.parentElement === el; r++) inElement.push(r);
+      const share = (inElement.indexOf(rangeIdx) + progress) / inElement.length;
 
-      if (!audio.paused && Date.now() - lastUserScrollRef.current > 4000
-        && (rect.top < 80 || rect.bottom > window.innerHeight - 120)) {
-        shown.ranges[rangeIdx].startContainer.parentElement?.scrollIntoView({ block: 'center', behavior: 'smooth' });
+      if (painted !== el) {
+        clear();
+        painted = el;
+        el.style.setProperty('--follow-rest', getComputedStyle(el).color);
+      }
+      const pct = (share * 100).toFixed(1);
+      const edge = (Math.min(100, share * 100 + 8)).toFixed(1);
+      const direction = language === 'ar' ? 'to left' : 'to right';
+      el.style.backgroundImage = `linear-gradient(${direction}, var(--brand-700, var(--color-brand-700)) ${pct}%, var(--follow-rest) ${edge}%)`;
+      el.style.setProperty('-webkit-background-clip', 'text');
+      el.style.setProperty('background-clip', 'text');
+      el.style.setProperty('-webkit-text-fill-color', 'transparent');
+
+      if (!audio.paused && Date.now() - lastUserScrollRef.current > 4000) {
+        const rect = range.getBoundingClientRect();
+        if (rect.width && (rect.top < 80 || rect.bottom > window.innerHeight - 120)) {
+          el.scrollIntoView({ block: 'center', behavior: 'smooth' });
+        }
       }
     };
 
     let frame = 0;
-    const loop = () => { place(); frame = requestAnimationFrame(loop); };
+    const loop = () => { paint(); frame = requestAnimationFrame(loop); };
     if (isPlaying) frame = requestAnimationFrame(loop);
-    else place(true);
+    else paint();
 
     const audio = audioRef.current;
-    const onSeek = () => place(true);
-    const onResize = () => { shownRef.current = null; place(true); };
     const onUserScroll = () => { lastUserScrollRef.current = Date.now(); };
-    audio?.addEventListener('seeked', onSeek);
-    audio?.addEventListener('ended', hideAll);
+    const onResize = () => { shownRef.current = null; };
+    audio?.addEventListener('seeked', paint);
+    audio?.addEventListener('ended', clear);
     window.addEventListener('resize', onResize);
     window.addEventListener('wheel', onUserScroll, { passive: true });
     window.addEventListener('touchmove', onUserScroll, { passive: true });
     return () => {
       cancelAnimationFrame(frame);
       observer.disconnect();
-      audio?.removeEventListener('seeked', onSeek);
-      audio?.removeEventListener('ended', hideAll);
+      clear();
+      audio?.removeEventListener('seeked', paint);
+      audio?.removeEventListener('ended', clear);
       window.removeEventListener('resize', onResize);
       window.removeEventListener('wheel', onUserScroll);
       window.removeEventListener('touchmove', onUserScroll);
     };
-  }, [enabled, spoken, isPlaying, language, audioRef, textRefs, markerRefs]);
+  }, [enabled, spoken, isPlaying, language, audioRef, textRefs]);
 }
