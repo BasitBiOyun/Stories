@@ -11,7 +11,7 @@ export const gevherNesibeA2Pages: PageData[] = [
 
 In the 13th century, medical education in Anatolia had two parts: classroom education and practical training. But European universities started this kind of education much later, in the 16th and 17th centuries. The Ottoman Sultan Mahmud II built the Imperial Medical School. This school opened more than 600 years after the medical school in Kayseri.
 
-When the hospital opened, Konya was the capital city of the Anatolian Seljuk State. At that time, people accepted Kayseri as the second capital. They also knew the city as the center of scientists. The Anatolian Seljuk ruler, Gıyâseddin Keyhusrev I, built this medical center for his sister, Gevher Nesibe Sultan. Today, this old building is the Museum of the Seljuk Civilization (Selçuklu Uygarlığı Müzesi).`,
+When the hospital opened, Konya was the capital city of the Anatolian Seljuk State. At that time, people accepted Kayseri as the second capital. They also knew the city as the center of scientists. The Anatolian Seljuk ruler, Gıyâseddin Keyhusrev I, built this medical center for his sister, Gevher Nesibe Sultan. Today, this old building is the Museum of the Seljuk Civilization.`,
     vocabulary: [
       { word: "still standing", definition: "Still there after a very long time; not destroyed." },
       { word: "medical", definition: "Connected with medicine and helping sick people." },
@@ -182,6 +182,9 @@ Education at the hospital had two parts. In the first part, students took classe
 
 Gevher Nesibe Sultan never married the love of her life. But people loved her very much, and everyone remembers her today.`,
     vocabulary: [
+      { word: "advanced", definition: "Using new and better ideas or ways than others." },
+      { word: "success", definition: "Doing well and getting a good result." },
+      { word: "the love of her life", definition: "The person she loved most in her whole life." },
     ],
     hotspots: [
       { id: 'gevhernesibe-a2-en-h11a', x: 26, y: 30, title: "School and Hospital Together", description: "The Gevher Nesibe Hospital was the first school and hospital together." },
@@ -925,6 +928,74 @@ Gevher Nesibe Sultan never married the love of her life. But people loved her ve
           "chapter": 10,
           "chapterTitle": "Music Therapy at the Dârüşşifâ",
           "storyExample": "He showed that music gave people joy, fear, or comfort.",
+          "category": "Feelings and Life"
+      },
+      {
+          "word": "advanced",
+          "definition": "Using new and better ideas or ways than others.",
+          "partOfSpeech": "adjective",
+          "level": "A2",
+          "pronunciation": "/ədˈvɑːnst/",
+          "wordFamily": [
+              "advance",
+              "advanced"
+          ],
+          "collocations": [
+              "more advanced than",
+              "an advanced school"
+          ],
+          "synonyms": [
+              "modern"
+          ],
+          "chapter": 11,
+          "chapterTitle": "A Legacy That Lives On",
+          "storyExample": "It was more advanced than the first famous medical universities in Europe.",
+          "category": "Describing"
+      },
+      {
+          "word": "success",
+          "definition": "Doing well and getting a good result.",
+          "partOfSpeech": "noun",
+          "level": "A2",
+          "pronunciation": "/səkˈses/",
+          "wordFamily": [
+              "succeed",
+              "success",
+              "successful"
+          ],
+          "collocations": [
+              "great success",
+              "the success of scientists"
+          ],
+          "synonyms": [
+              "achievement"
+          ],
+          "chapter": 11,
+          "chapterTitle": "A Legacy That Lives On",
+          "storyExample": "They show the great success of scientists in the Islamic world.",
+          "category": "Education"
+      },
+      {
+          "word": "the love of her life",
+          "definition": "The person she loved most in her whole life.",
+          "partOfSpeech": "noun",
+          "level": "A2",
+          "pronunciation": "/ðə lʌv əv hɜː laɪf/",
+          "wordFamily": [
+              "love",
+              "lovely",
+              "loved"
+          ],
+          "collocations": [
+              "the love of my life",
+              "never married the love of her life"
+          ],
+          "synonyms": [
+              "true love"
+          ],
+          "chapter": 11,
+          "chapterTitle": "A Legacy That Lives On",
+          "storyExample": "Gevher Nesibe Sultan never married the love of her life.",
           "category": "Feelings and Life"
       }
   ] },

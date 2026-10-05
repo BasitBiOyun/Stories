@@ -187,7 +187,7 @@ const selfPlans: SelfPlan[] = [
     notice: ['Other places had hospitals and schools, but not together.', 'Look at “more advanced than”. Use than, not then.'],
     read: ['Look at the title. What does “lives on” mean? Guess.', 'Listen to the chapter once.', 'Make two columns: Then / Today.'],
     find: ['Paragraph 1: find what was new about this hospital.', 'Paragraph 1: find the comparison with Europe.', 'Paragraph 2: find what people do today.'],
-    words: ['This chapter has no new Word Notes. Look back at your words from Chapters 1–10.', 'Choose five words from the book and write one sentence for each.', 'Write one sentence: Everyone remembers ….'],
+    words: ['Word Notes: advanced, success, the love of her life.', '“It was more advanced than the first famous medical universities in Europe.” Was it older and simpler, or newer and better?', 'Write one sentence: My biggest success this year was ….'],
     languageFocus: 'Decide what never means. Then complete two sentences with not and than.',
     sayIt: 'Say: ad-VANCED, CEN-tu-ries. Say than quickly: /ðən/.',
     quick: 'You will decide if a sentence about Gevher Nesibe is true or false. Read the last paragraph.',
