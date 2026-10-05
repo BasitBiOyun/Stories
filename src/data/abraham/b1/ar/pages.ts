@@ -251,19 +251,19 @@ const abrahamB1RawPagesAr: PageData[] = [
 ];
 
 const storyImages: Record<number, string> = {
-  1: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_b1%2Fimages%2Fabraham_b1_ch1%20(2).png?alt=media&token=96d6f05e-acbe-4e9e-b610-53a5f43ddce6',
-  2: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_b1%2Fimages%2Fabraham_b1_ch2.png?alt=media&token=21d9d18e-b7ad-4d13-8a7c-2b671dd39e60',
-  3: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_b1%2Fimages%2Fabraham_b1_ch3.png?alt=media&token=d4dda77d-5fbe-438f-ae20-00d215f53796',
-  4: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_b1%2Fimages%2Fabraham_b2_ch4.png?alt=media&token=22749671-396f-422b-ae63-07b5600ba29d',
-  5: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_b1%2Fimages%2Fabraham_b2_ch5.png?alt=media&token=5586429e-02db-4e3a-be26-bef94c4fb5c8',
-  6: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_b1%2Fimages%2Fabraham_b2_ch6.png?alt=media&token=85c7636d-1681-41f2-938d-a67a357e8ffa',
-  7: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_b1%2Fimages%2Fabraham_b2_ch7.png?alt=media&token=3e535d5b-1e3c-4cd3-88e3-33b95447f33f',
-  8: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_b1%2Fimages%2Fabraham_b1_ch8.png?alt=media&token=b51ca5fb-f294-4c69-935d-7cb8904ffc32',
-  9: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_b1%2Fimages%2Fabraham_b1_ch9.png?alt=media&token=aa006370-2be7-4c91-8eb1-2af70e0d6f56',
-  10: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_b1%2Fimages%2Fabraham_b1_ch10.png?alt=media&token=e6da226d-8ee6-4643-8a61-e8c937d2aba5',
-  11: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_b1%2Fimages%2Fabraham_b1_ch11.png?alt=media&token=4ca0f748-06a6-4656-882d-6d70caa65773',
-  12: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_b1%2Fimages%2Fabraham_b1_ch12.png?alt=media&token=ffb800a3-5824-4d72-9c16-ec3d81a766ae',
-  13: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_b1%2Fimages%2Fabraham_b1_ch13.png?alt=media&token=a00aeda9-5b8a-4797-a824-9682c1c63bcd',
+  1: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_b1%2Fimages%2Fabraham_b1_chapter1.png?alt=media',
+  2: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_b1%2Fimages%2Fabraham_b1_chapter2.png?alt=media',
+  3: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_b1%2Fimages%2Fabraham_b1_chapter3.png?alt=media',
+  4: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_b1%2Fimages%2Fabraham_b1_chapter4.png?alt=media',
+  5: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_b1%2Fimages%2Fabraham_b1_chapter5.png?alt=media',
+  6: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_b1%2Fimages%2Fabraham_b1_chapter6.png?alt=media',
+  7: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_b1%2Fimages%2Fabraham_b1_chapter7.png?alt=media',
+  8: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_b1%2Fimages%2Fabraham_b1_chapter8.png?alt=media',
+  9: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_b1%2Fimages%2Fabraham_b1_chapter9.png?alt=media',
+  10: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_b1%2Fimages%2Fabraham_b1_chapter10.png?alt=media',
+  11: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_b1%2Fimages%2Fabraham_b1_chapter11.png?alt=media',
+  12: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_b1%2Fimages%2Fabraham_b1_chapter12.png?alt=media',
+  13: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_b1%2Fimages%2Fabraham_b1_chapter13.png?alt=media',
 };
 
 const arabicAudio: Record<number, string> = {

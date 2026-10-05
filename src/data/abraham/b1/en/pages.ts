@@ -14,7 +14,7 @@ const story = (
 // All learning activities live in exercises.ts and are attached in ../index.ts.
 const abrahamB1RawPages: PageData[] = [
   story(1, 'Abraham in Babylon',
-    'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_b1%2Fimages%2Fabraham_b1_ch1%20(2).png?alt=media&token=96d6f05e-acbe-4e9e-b610-53a5f43ddce6',
+    'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_b1%2Fimages%2Fabraham_b1_chapter1.png?alt=media',
     'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_b1%2Faudio%2F00_Chapter_1.mp3?alt=media&token=57bc6da5-9305-4888-96d3-08482db1fee2',
     `A very long time ago, about 4,000 years ago, in the kingdom of Babylon in Mesopotamia, there was a boy named Abraham. In his homeland, people worshipped the stars, the moon, the sun, and statues made from wood and stone. Abraham was a wise boy, as Allah made his heart and mind clear of idols. (See Surah Al-Anbiya: 51.)
 
@@ -33,7 +33,7 @@ In the kingdom of Babylon, people had a large house of worship full of idols wit
     ],
   ),
   story(2, 'Abraham and His Father’s Idols',
-    'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_b1%2Fimages%2Fabraham_b1_ch2.png?alt=media&token=21d9d18e-b7ad-4d13-8a7c-2b671dd39e60',
+    'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_b1%2Fimages%2Fabraham_b1_chapter2.png?alt=media',
     'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_b1%2Faudio%2F01_Chapter_2_Abraham_and_His_Father%E2%80%99s_Idols.mp3?alt=media&token=50f86864-c358-471a-82f2-3218be892a35',
     `Abraham’s father was an idol maker, named Azer. (See Surah Al-An’am: 74.) When Abraham was a young boy, he often used to watch his father while he was making idols. One day, Abraham asked his father, “Why do you put these toys in the house of worship?” Azer replied, “They are not toys, but our gods. We worship them; we show love and respect to them. We ask favors from them and give them presents.” But Abraham used to play with these idols as toys; he rode on their backs and sometimes kicked them.
 
@@ -52,7 +52,7 @@ Abraham asked, “What is this statue, father? It has big ears, bigger than ours
     ],
   ),
   story(3, 'Searching for the True Creator',
-    'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_b1%2Fimages%2Fabraham_b1_ch3.png?alt=media&token=d4dda77d-5fbe-438f-ae20-00d215f53796',
+    'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_b1%2Fimages%2Fabraham_b1_chapter3.png?alt=media',
     'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_b1%2Faudio%2F02_Chapter_3_Searching_for_the_True_Creator.mp3?alt=media&token=28cd4203-ad7f-4883-9a5b-b145567721e5',
     `Years passed, and Abraham grew into a young man. Although he always wondered about Allah, he also knew that Allah could not be a statue. It made him sad to see the people of the kingdom; they were still showing love and respect to idols. On the other hand, Abraham was in search of one true Creator.
 
@@ -69,7 +69,7 @@ One night, Abraham left his home to take a walk in the countryside. On a nearby 
     ],
   ),
   story(4, 'Abraham Receives Guidance',
-    'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_b1%2Fimages%2Fabraham_b2_ch4.png?alt=media&token=22749671-396f-422b-ae63-07b5600ba29d',
+    'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_b1%2Fimages%2Fabraham_b1_chapter4.png?alt=media',
     'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_b1%2Faudio%2F03_Chapter_4_Abraham_Receives_Guidance.mp3?alt=media&token=5a474dc4-f8f5-4825-994a-999eda876bc3',
     `Abraham stayed until sunrise, and when he saw the bright sun, he wondered, “Could this be my Lord? It is bigger.”
 
@@ -90,7 +90,7 @@ Prophet Abraham (pbuh) went home and told his father, “O my father, follow me:
     ],
   ),
   story(5, 'Abraham Calls His People',
-    'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_b1%2Fimages%2Fabraham_b2_ch5.png?alt=media&token=5586429e-02db-4e3a-be26-bef94c4fb5c8',
+    'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_b1%2Fimages%2Fabraham_b1_chapter5.png?alt=media',
     'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_b1%2Faudio%2F04_Chapter_5_Abraham_Calls_His_People.mp3?alt=media&token=ad50e9bb-e402-4ab7-864d-d79a91724b6f',
     `Abraham (pbuh) was very sad for his father. Then, he went to the people of the kingdom and tried to show them the right way: “O people! I have turned my face towards Allah. I do not worship your idols because Allah is the one and only true God!” People got furious when they heard him. Abraham (pbuh) said to them, “Why do you worship these statues? They have no power to help or harm you.” People replied, “We saw our fathers worship them; because of this, we do the same.” Abraham (pbuh) did not give up and told them, “My Lord gives me food and drink when I need them, and heals me when I am sick. Your statues have no power to do these.” He wanted them to reconsider their beliefs. They ignored him, though.`,
     [
@@ -105,7 +105,7 @@ Prophet Abraham (pbuh) went home and told his father, “O my father, follow me:
     ],
   ),
   story(6, 'Abraham Enters the Temple',
-    'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_b1%2Fimages%2Fabraham_b2_ch6.png?alt=media&token=85c7636d-1681-41f2-938d-a67a357e8ffa',
+    'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_b1%2Fimages%2Fabraham_b1_chapter6.png?alt=media',
     'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_b1%2Faudio%2F05_Chapter_6_Abraham_Enters_the_Temple.mp3?alt=media&token=3dc1c09b-1e7e-4e3e-b105-d4c621020d2d',
     `Prophet Abraham (pbuh) decided to show them the foolishness of their beliefs. He made a plan to destroy all their idols, but he did not tell anyone what he was going to do. There was a big celebration soon. All the people usually went outside of town, so he got an axe and waited until the whole town was empty. He went into the big temple and saw all the statues standing there. There were plates of food in front of them, and Abraham (pbuh) jokingly asked them, “Why don’t you eat the food? It is getting cold.” Offering food to these statues was so ridiculous.
 
@@ -122,7 +122,7 @@ Abraham (pbuh) began to break the idols, one after another, until they were all 
     ],
   ),
   story(7, 'The Broken Idols',
-    'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_b1%2Fimages%2Fabraham_b2_ch7.png?alt=media&token=3e535d5b-1e3c-4cd3-88e3-33b95447f33f',
+    'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_b1%2Fimages%2Fabraham_b1_chapter7.png?alt=media',
     'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_b1%2Faudio%2F06_Chapter_7_The_Broken_Idols.mp3?alt=media&token=83d27022-9e27-4678-8ce7-38e04622dc4f',
     `The next day, when people went to the temple to pray to their idols, they were shocked to see all the statues were broken into many pieces. They all gathered around the smashed idols. They wondered and tried to find out who did this. “We heard a young man speaking against our gods,” they remembered. “His name was Abraham.” They found Abraham (pbuh) and brought him into the temple. They asked him, “Did you harm our gods in this way?” Abraham (pbuh) calmly replied, “It was this statue there, the biggest of them all; ask that statue if it can speak!”
 
@@ -141,7 +141,7 @@ They looked at each other in shame because their thoughts and feelings told them
     ],
   ),
   story(8, 'Preparing the Great Fire',
-    'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_b1%2Fimages%2Fabraham_b1_ch8.png?alt=media&token=b51ca5fb-f294-4c69-935d-7cb8904ffc32',
+    'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_b1%2Fimages%2Fabraham_b1_chapter8.png?alt=media',
     'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_b1%2Faudio%2F07_Chapter_8_Preparing_the_Great_Fire.mp3?alt=media&token=d012d642-1cf1-4d30-acf1-40830c943ebb',
     `Firewood was collected for the fire for days.
 
@@ -166,7 +166,7 @@ Allah commanded the fire to be cool for Prophet Abraham (pbuh), and it turned ou
     ],
   ),
   story(9, 'The Miracle and Nimrod',
-    'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_b1%2Fimages%2Fabraham_b1_ch9.png?alt=media&token=aa006370-2be7-4c91-8eb1-2af70e0d6f56',
+    'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_b1%2Fimages%2Fabraham_b1_chapter9.png?alt=media',
     'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_b1%2Faudio%2F08_Chapter_9_The_Miracle_and_Nimrod.mp3?alt=media&token=6d96716a-f0e3-449d-8f90-b009fd363bad',
     `People were shocked to see that Abraham (pbuh) was not harmed at all. People felt embarrassed by the miracle, yet their anger and arrogance remained unchanged.
 
@@ -191,7 +191,7 @@ He (pbuh) said, “He is Allah, the One. He gives life and brings death.”
     ],
   ),
   story(10, 'Leaving Babylon',
-    'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_b1%2Fimages%2Fabraham_b1_ch10.png?alt=media&token=e6da226d-8ee6-4643-8a61-e8c937d2aba5',
+    'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_b1%2Fimages%2Fabraham_b1_chapter10.png?alt=media',
     'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_b1%2Faudio%2F09_Chapter_10_Leaving_Babylon.mp3?alt=media&token=22a5976b-1627-4652-b54b-03bea9174f4b',
     `Only one woman and one man of his people shared his faith in Allah. The woman’s name was Sarah, and the man’s name was Lot. Lot later became a prophet.
 
@@ -210,7 +210,7 @@ One day, Allah commanded Abraham (pbuh) to travel with his wife and little child
     ],
   ),
   story(11, 'Hagar and Ishmael in the Valley',
-    'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_b1%2Fimages%2Fabraham_b1_ch11.png?alt=media&token=4ca0f748-06a6-4656-882d-6d70caa65773',
+    'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_b1%2Fimages%2Fabraham_b1_chapter11.png?alt=media',
     'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_b1%2Faudio%2F10_Chapter_11_Hagar_and_Ishmael_in_the_Valley.mp3?alt=media&token=c15b8c94-5a2b-485b-bfd2-ac9b536bc95e',
     `Abraham (pbuh) left them there and prayed to Allah to protect them. He said, “O our Lord! I have left my family to stay in a valley with no farming, near Your Holy House (the Ka’ba in Mecca); O Allah! Give them blessings so that they may give thanks.” (See Surah Ibrahim: 37.) Hagar knew that Abraham (pbuh) was doing what Allah told him.
 
@@ -229,7 +229,7 @@ The valley had no trees, no fruit, no food, and no water. This was part of Allah
     ],
   ),
   story(12, 'Zamzam and the City of Mecca',
-    'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_b1%2Fimages%2Fabraham_b1_ch12.png?alt=media&token=ffb800a3-5824-4d72-9c16-ec3d81a766ae',
+    'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_b1%2Fimages%2Fabraham_b1_chapter12.png?alt=media',
     'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_b1%2Faudio%2F11_Chapter_12_Zamzam_and_the_City_of_Mecca.mp3?alt=media&token=bb0f1c23-afa2-450f-b7f4-016f43261b19',
     `But there was no water and nobody nearby to help her. While the little child Ishmael was crying with thirst and Hagar was running between the two hills, suddenly water started flowing from the ground under the feet of Ishmael. When Hagar saw this from a distance, she shouted, “Zamzam!” meaning “Flow slowly, stop!”
 
@@ -248,7 +248,7 @@ They started building up a city called Mecca. Meanwhile, Abraham (pbuh) visited 
     ],
   ),
   story(13, 'Building the Ka’ba',
-    'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_b1%2Fimages%2Fabraham_b1_ch13.png?alt=media&token=a00aeda9-5b8a-4797-a824-9682c1c63bcd',
+    'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_b1%2Fimages%2Fabraham_b1_chapter13.png?alt=media',
     'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_b1%2Faudio%2F12_Chapter_13_Building_the_Ka%E2%80%99ba.mp3?alt=media&token=eefcf743-03ee-4539-b82c-4ee0f4dfc068',
     `One day, Allah commanded Abraham (pbuh) to build the House of Allah, the Ka’ba. Abraham (pbuh) said to Ishmael, “O Ishmael, Allah told me to do an important task, and you will help me in this task.” Ishmael replied, “I will help you for sure.”
 
