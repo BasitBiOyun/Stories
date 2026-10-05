@@ -131,6 +131,11 @@
     font-family: var(--font-arabic) !important;
     font-style: normal !important;
   }
+
+  /* A Turkish place name inside Arabic text keeps the Latin type of the English cards. */
+  .learner-name {
+    font-family: "Poppins", sans-serif;
+  }
 }
 
 @layer components {

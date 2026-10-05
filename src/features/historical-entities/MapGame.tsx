@@ -5,6 +5,7 @@ import { cn } from '../../lib/utils';
 import { MapChallengeOverlay, type ChallengeAnswer } from '../story-maps/MapChallengeOverlay';
 import { playMapSound } from '../story-maps/mapSounds';
 import { groupOf } from './categories';
+import { LearnerName } from './LearnerNameLine';
 import { EntityMap } from './EntityMap';
 import { EntityPicture } from './EntityPicture';
 import { MEDITERRANEAN_FEATURES, MEDITERRANEAN_FEATURE_VIEWBOX } from './mediterraneanFeatures';
@@ -260,9 +261,9 @@ export const MapGame = ({
   const answer = answers[index];
   const score = answers.filter(item => item?.correct).length;
   const prompts = useMemo(() => questions.map(entity => {
-    const copy = resolveHistoricalCopy(entity, locale);
-    const learnerName = entity.learnerNames?.tr;
-    return COPY.where(learnerName ? `${copy.title} (\u2068${learnerName}\u2069)` : copy.title);
+    const question = COPY.where(resolveHistoricalCopy(entity, locale).title);
+    // The Turkish name goes before the question mark, in the same type as on the cards.
+    return <>{question.slice(0, -1)}<LearnerName entity={entity} />{question.slice(-1)}</>;
   }), [questions, locale]);
 
   const handleTap = (xPercent: number, yPercent: number) => {

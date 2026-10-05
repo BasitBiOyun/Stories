@@ -22,8 +22,9 @@ export const LearnerName = ({
   return (
     <>
       {' '}
-      {/* The name is isolated so the brackets follow the card's own direction. */}
-      <span className={cn('font-normal opacity-80', className)}>(<bdi lang={LEARNER_LANGUAGE}>{name}</bdi>)</span>
+      {/* Name and brackets form one left-to-right Latin unit, so an Arabic card
+          shows "(Şam)" in the same type as the English card. */}
+      <bdi dir="ltr" lang={LEARNER_LANGUAGE} className={cn('learner-name font-normal opacity-80', className)}>({name})</bdi>
     </>
   );
 };

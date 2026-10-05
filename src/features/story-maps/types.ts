@@ -1,3 +1,5 @@
+import type React from 'react';
+
 /** Small glyphs drawn inside map markers and card chips. */
 export type StoryMapIcon = 'quill' | 'dome' | 'swords' | 'route' | 'kaaba' | 'well' | 'mountain' | 'waves' | 'palm' | 'tent' | 'city' | 'palace';
 
@@ -97,7 +99,7 @@ export interface StoryMapChallengeTarget {
 }
 
 export interface StoryMapChallengeQuestion extends StoryMapChallengeTarget {
-  prompt: string;
+  prompt: React.ReactNode;
 }
 
 export interface StoryMapLayout {
