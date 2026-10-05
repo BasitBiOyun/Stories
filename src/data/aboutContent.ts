@@ -95,7 +95,20 @@ export const teamSections: TeamSection[] = [
   },
   {
     title: { en: 'Software Development and Digital Design', ar: 'تطوير البرمجيات والتصميم الرقمي' },
-    roles: [{ role: { en: 'Software and design', ar: 'البرمجة والتصميم' }, members: [{ name: 'Yunus Emre Yılmaz' }] }],
+    roles: [
+      {
+        role: { en: 'Software Development and Application Architecture', ar: 'تطوير البرمجيات وهندسة التطبيق' },
+        members: [
+          {
+            name: 'Yunus Emre Yılmaz',
+            note: {
+              en: 'Digital Design and User Experience · Visual Content and Voice-over Production · Interactive Map and Activity Design',
+              ar: 'التصميم الرقمي وتجربة المستخدم · إنتاج المحتوى المرئي والتسجيل الصوتي · تصميم الخرائط التفاعلية والأنشطة',
+            },
+          },
+        ],
+      },
+    ],
   },
 ];
 

@@ -768,6 +768,7 @@ const AppContent = () => {
             showHighlights={showHighlights}
             fontSize={(currentBook?.baseFontSize || 12) * readerScale * (isLargeDesktop ? 1.15 : 1) * (classMode ? 1.3 : 1)}
             level={currentLevel}
+            storyId={currentDefinition?.storyId}
             collectionId={currentCollection || 'prophets'}
             lessonSection={isTeacher ? lessonSectionFor(currentPage) : undefined}
           />

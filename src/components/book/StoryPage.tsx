@@ -13,6 +13,7 @@ import { cn } from '../../lib/utils';
 import { SECTION_ICONS, type SectionKey } from '../../lib/sectionIcons';
 import { presentExerciseTitle } from '../../lib/exercisePresentation';
 import { highlightPhraseMatches, highlightTokenMatches, normalizeHighlightText } from '../../lib/highlightTextMatch';
+import { markQuranVerses, VERSE_CLOSE, VERSE_MARKS, VERSE_OPEN } from '../../lib/quranVerses';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { useStoryProgress } from '../../contexts/StoryProgressContext';
 import { fallbackDefinitions as rawFallbackDefinitions, arabicAnimatedDefinitions as rawArabicAnimatedDefinitions } from '../../data/fallbackVocab';
@@ -381,6 +382,7 @@ export const StoryPage = ({
   showHighlights = true,
   fontSize,
   level,
+  storyId = '',
   collectionId = 'prophets',
   lessonSection,
 }: { 
@@ -392,6 +394,8 @@ export const StoryPage = ({
   showHighlights?: boolean;
   fontSize: number;
   level: string;
+  /** Book id from the catalogue (e.g. 'ibrahim'); finds the verse passages the verse rule cannot see. */
+  storyId?: string;
   collectionId?: string;
   /** The Teacher Guide section for this chapter; given only to teachers. */
   lessonSection?: TeacherGuideSection;
@@ -741,6 +745,11 @@ export const StoryPage = ({
   }, [page.timedChunks]);
   void chunksWithIndices;
 
+  const storyText = useMemo(
+    () => markQuranVerses(page.content, /[\u0600-\u06FF]/.test(page.content) ? 'ar' : 'en', storyId, level, page.id),
+    [page.content, page.id, storyId, level],
+  );
+
   const renderContent = (content: string) => {
     const parts = content.split(/(\[POEM_GRID\][\s\S]*?\[\/POEM_GRID\]|\[POEM(?:\s+compact)?\][\s\S]*?\[\/POEM\])/g);
     const highlightWordCount = (value: string) => {
@@ -761,6 +770,8 @@ export const StoryPage = ({
     
     let globalWordCounter = 0;
     const seenOnCurrentPage = new Set<string>();
+    // Qur'an verses are printed in italics; a verse can run over several paragraphs.
+    let inVerse = false;
 
     const renderInlineHighlights = (text: string, keyPrefix: string): React.ReactNode[] => {
       const words = text.split(/(\s+)/);
@@ -879,7 +890,9 @@ export const StoryPage = ({
       return rendered;
     };
 
-    return parts.map((part, partIdx) => {
+    return parts.map((markedPart, partIdx) => {
+      // Poems are never verses, so their marks are dropped.
+      const part = /^\[POEM/.test(markedPart) ? markedPart.replace(VERSE_MARKS, '') : markedPart;
       if (part.startsWith('[POEM_GRID]') && part.endsWith('[/POEM_GRID]')) {
         const poemParts = [...part.matchAll(/\[POEM(?:\s+compact)?\][\s\S]*?\[\/POEM\]/gi)].map(match => match[0]);
         if (poemParts.length > 0) {
@@ -930,7 +943,13 @@ export const StoryPage = ({
         .split('\n\n')
         .filter(p => p.trim().length > 0);
       return paragraphs.map((paragraph, pIdx) => {
-        const words = paragraph.split(/(\s+)/);
+        const verseWords = new Set<number>();
+        const words = paragraph.split(/(\s+)/).map((token, tIdx) => {
+          if (token.includes(VERSE_OPEN)) inVerse = true;
+          if (inVerse && !/^\s+$/.test(token)) verseWords.add(tIdx);
+          if (token.includes(VERSE_CLOSE)) inVerse = false;
+          return token.replace(VERSE_MARKS, '');
+        });
 
         const renderedElements: React.ReactNode[] = [];
         let skipCount = 0;
@@ -1027,7 +1046,7 @@ export const StoryPage = ({
             renderedElements.push(
               <motion.span
                 key={`${partIdx}-${pIdx}-${wIdx}`}
-                className="inline-block rounded px-0.5"
+                className={cn('inline-block rounded px-0.5', verseWords.has(wIdx) && 'quran-verse italic')}
               >
                 {element}
               </motion.span>
@@ -1081,7 +1100,7 @@ export const StoryPage = ({
             renderedElements.push(
               <motion.span
                 key={`${partIdx}-${pIdx}-${wIdx}`}
-                className="inline-block rounded px-0.5"
+                className={cn('inline-block rounded px-0.5', verseWords.has(wIdx) && 'quran-verse italic')}
               >
                 {element}
               </motion.span>
@@ -1777,7 +1796,7 @@ export const StoryPage = ({
             )}
             style={getResponsiveStoryFontStyle(fontSize, isRTL, isDyslexic)}
           >
-            {renderContent(page.content)}
+            {renderContent(storyText)}
             {renderNextUp()}
           </div>
           </div>
@@ -1847,7 +1866,7 @@ export const StoryPage = ({
                 )}
                 style={getResponsiveStoryFontStyle(fontSize, isRTL, isDyslexic)}
                   >
-                {renderContent(page.content)}
+                {renderContent(storyText)}
                 {renderNextUp()}
               </div>
                   </div>
