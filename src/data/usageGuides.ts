@@ -77,7 +77,7 @@ export const USAGE_GUIDES: Record<UserRole, Record<UsageGuideLang, UsageGuide>> 
           icon: 'BookOpen',
           heading: 'A chapter in the app',
           steps: [
-            'Before you read: students look at the picture and guess.',
+            'Before you read: students look, guess or find the answer fast.',
             'Listen: every chapter has a recording. Play it once while students follow the text.',
             'Read: underlined words show a short meaning in both languages.',
             'Quick Challenge, Language Focus and I can close the chapter.',
@@ -165,7 +165,7 @@ export const USAGE_GUIDES: Record<UserRole, Record<UsageGuideLang, UsageGuide>> 
           icon: 'BookOpen',
           heading: 'الفصل في التطبيق',
           steps: [
-            '«قبل القراءة»: ينظر الطلاب إلى الصورة ويخمّنون.',
+            '«قبل القراءة»: ينظر الطلاب أو يخمّنون أو يبحثون عن الجواب بسرعة.',
             '«استمع»: لكل فصل تسجيل صوتي. شغّله مرة والطلاب يتابعون النص.',
             '«اقرأ»: الكلمات التي تحتها خط تُظهر معنى قصيرًا باللغتين.',
             '«تحدٍّ سريع» و«التركيز اللغوي» و«أستطيع» تختم الفصل.',
@@ -253,7 +253,7 @@ export const USAGE_GUIDES: Record<UserRole, Record<UsageGuideLang, UsageGuide>> 
           icon: 'BookOpen',
           heading: 'Every chapter',
           steps: [
-            'Before you read: look at the picture and guess.',
+            'Before you read: look, guess or find the answer fast.',
             'Listen: listen once and follow the text.',
             'Read: read one short part at a time.',
             'Tap an underlined word to see its meaning.',
@@ -337,7 +337,7 @@ export const USAGE_GUIDES: Record<UserRole, Record<UsageGuideLang, UsageGuide>> 
           icon: 'BookOpen',
           heading: 'في كل فصل',
           steps: [
-            '«قبل القراءة»: انظر إلى الصورة وخمّن.',
+            '«قبل القراءة»: انظر أو خمّن أو ابحث عن الجواب بسرعة.',
             '«استمع»: استمع مرة وتابع النص.',
             '«اقرأ»: اقرأ جزءًا قصيرًا في كل مرة.',
             'اضغط على كلمة تحتها خط لترى معناها.',
@@ -423,7 +423,7 @@ export const USAGE_GUIDES: Record<UserRole, Record<UsageGuideLang, UsageGuide>> 
           icon: 'BookOpen',
           heading: 'Study one chapter',
           steps: [
-            'Before you read: look at the picture and guess.',
+            'Before you read: look, guess or find the answer fast.',
             'Listen once and follow the text.',
             'Read one short part at a time. Tap an underlined word to see its meaning.',
             'Do the Quick Challenge. After a wrong answer, find the answer sentence, read it again and try again.',
@@ -505,7 +505,7 @@ export const USAGE_GUIDES: Record<UserRole, Record<UsageGuideLang, UsageGuide>> 
           icon: 'BookOpen',
           heading: 'ادرس فصلًا واحدًا',
           steps: [
-            '«قبل القراءة»: انظر إلى الصورة وخمّن.',
+            '«قبل القراءة»: انظر أو خمّن أو ابحث عن الجواب بسرعة.',
             'استمع مرة وتابع النص.',
             'اقرأ جزءًا قصيرًا في كل مرة. اضغط على كلمة تحتها خط لترى معناها.',
             'أكمل «تحدٍّ سريع». بعد إجابة غير صحيحة جد جملة الإجابة، واقرأها مرة أخرى، وحاول مرة أخرى.',

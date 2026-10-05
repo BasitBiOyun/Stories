@@ -47,7 +47,7 @@ export const SECTION_ICONS = {
     icon: Eye,
     en: 'Before you read',
     ar: 'قَبْلَ القِرَاءَةِ',
-    hint: { en: 'Look at the picture and guess.', ar: 'اُنْظُرْ إِلَى الصُّورَةِ وَخَمِّنْ.' },
+    hint: { en: 'Look, guess or find the answer fast.', ar: 'اُنْظُرْ أَوْ خَمِّنْ أَوِ ابْحَثْ عَنِ الْجَوَابِ بِسُرْعَةٍ.' },
   },
   listen: {
     icon: Headphones,
