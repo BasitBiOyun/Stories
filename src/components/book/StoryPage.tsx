@@ -19,6 +19,8 @@ import { useLanguage } from '../../contexts/LanguageContext';
 import { useStoryProgress } from '../../contexts/StoryProgressContext';
 import { fallbackDefinitions as rawFallbackDefinitions, arabicAnimatedDefinitions as rawArabicAnimatedDefinitions } from '../../data/fallbackVocab';
 import { MyWordsReminder } from './MyWordsPanel';
+import { useFollowAlong } from './useFollowAlong';
+import { timingsUrlFor } from '../../lib/followAlong';
 
 const HotspotButton = ({ 
   hotspot, 
@@ -381,6 +383,7 @@ export const StoryPage = ({
   currentIndex,
   isDyslexic,
   showHighlights = true,
+  followAlong = true,
   fontSize,
   level,
   storyId = '',
@@ -393,6 +396,8 @@ export const StoryPage = ({
   isDyslexic: boolean;
   /** Off: the story reads as plain text, without Word Note and place card highlights. */
   showHighlights?: boolean;
+  /** On: while the audio plays, a marker slides under the word being read (when timings exist). */
+  followAlong?: boolean;
   fontSize: number;
   level: string;
   /** Book id from the catalogue (e.g. 'ibrahim'); finds the verse passages the verse rule cannot see. */
@@ -467,6 +472,21 @@ export const StoryPage = ({
   const highlightVocabulary = showHighlights ? page.vocabulary : undefined;
   const highlightAnimatedWords = showHighlights ? page.animatedWords : undefined;
   const highlightLanguage = isArabic ? 'ar' : 'en';
+  const followTextA = useRef<HTMLDivElement>(null);
+  const followTextB = useRef<HTMLDivElement>(null);
+  const followMarkerA = useRef<HTMLDivElement>(null);
+  const followMarkerB = useRef<HTMLDivElement>(null);
+  const followTextRefs = useMemo(() => [followTextA, followTextB], []);
+  const followMarkerRefs = useMemo(() => [followMarkerA, followMarkerB], []);
+  useFollowAlong({
+    enabled: followAlong && page.type === 'story',
+    timingsUrl: timingsUrlFor(page.audioUrl),
+    audioRef,
+    textRefs: followTextRefs,
+    markerRefs: followMarkerRefs,
+    language: highlightLanguage,
+    isPlaying,
+  });
 
   const vocabStyle = "border-b-2 border-brand-600/40 hover:border-brand-700 font-bold text-brand-900 transition-colors cursor-help";
 
@@ -749,6 +769,18 @@ export const StoryPage = ({
   const storyText = useMemo(
     () => markQuranVerses(page.content, /[\u0600-\u06FF]/.test(page.content) ? 'ar' : 'en', storyId, level, page.id),
     [page.content, page.id, storyId, level],
+  );
+
+  // Follow along: an underline with a small pointer, moved by useFollowAlong.
+  const renderFollowMarker = (ref: React.RefObject<HTMLDivElement | null>) => (
+    <div
+      ref={ref}
+      aria-hidden="true"
+      className="pointer-events-none absolute left-0 top-0 z-10 opacity-0 transition-[transform,width,opacity] duration-150 ease-out motion-reduce:transition-none"
+    >
+      <div className="h-[3px] w-full rounded-full bg-brand-600/80" />
+      <div className="mx-auto mt-px h-0 w-0 border-x-[5px] border-b-[6px] border-x-transparent border-b-brand-600/80" />
+    </div>
   );
 
   const renderContent = (content: string) => {
@@ -1798,9 +1830,10 @@ export const StoryPage = ({
             )}
             style={getResponsiveStoryFontStyle(fontSize, isRTL, isDyslexic)}
           >
-            {renderContent(storyText)}
+            <div ref={followTextA}>{renderContent(storyText)}</div>
             {renderNextUp()}
           </div>
+          {renderFollowMarker(followMarkerA)}
           </div>
           </div>
 
@@ -1868,9 +1901,10 @@ export const StoryPage = ({
                 )}
                 style={getResponsiveStoryFontStyle(fontSize, isRTL, isDyslexic)}
                   >
-                {renderContent(storyText)}
+                <div ref={followTextB}>{renderContent(storyText)}</div>
                 {renderNextUp()}
               </div>
+              {renderFollowMarker(followMarkerB)}
                   </div>
               </div>
             </div>

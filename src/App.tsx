@@ -111,6 +111,7 @@ const AppContent = () => {
   });
   const [isWideView, setIsWideView] = useState(() => localStorage.getItem('reader_wide') === 'true');
   const [showHighlights, setShowHighlights] = useState(() => localStorage.getItem('reader_highlights') !== 'false');
+  const [followAlong, setFollowAlong] = useState(() => localStorage.getItem('reader_follow_along') !== 'false');
   const isLargeDesktop = useMediaQuery('(min-width: 90rem)');
   const [isReaderSettingsOpen, setIsReaderSettingsOpen] = useState(false);
   const [userAnswers, setUserAnswers] = useState<Record<string, boolean | null>>({});
@@ -154,6 +155,10 @@ const AppContent = () => {
   useEffect(() => {
     localStorage.setItem('reader_highlights', String(showHighlights));
   }, [showHighlights]);
+
+  useEffect(() => {
+    localStorage.setItem('reader_follow_along', String(followAlong));
+  }, [followAlong]);
  
   const { language, setLanguage, t, formatNumber, isRTL } = useLanguage();
   const { stats, resetStats, hydrateStats } = useStoryProgress();
@@ -737,6 +742,7 @@ const AppContent = () => {
             currentIndex={currentPageIndex}
             isDyslexic={isDyslexic} 
             showHighlights={showHighlights}
+            followAlong={followAlong}
             fontSize={(currentBook?.baseFontSize || 12) * readerScale * (isLargeDesktop ? 1.15 : 1) * (classMode ? 1.3 : 1)}
             level={currentLevel}
             storyId={currentDefinition?.storyId}
@@ -969,6 +975,33 @@ const AppContent = () => {
                             "flex h-6 w-11 shrink-0 items-center rounded-full p-1 transition-colors",
                             showHighlights ? themeClasses.progressBar : "bg-white/15",
                             showHighlights ? "justify-end" : "justify-start"
+                          )}
+                        >
+                          <span className="h-4 w-4 rounded-full bg-white shadow" />
+                        </span>
+                      </button>
+
+                      <button
+                        type="button"
+                        onClick={() => setFollowAlong(prev => !prev)}
+                        className="mt-2 flex w-full items-center justify-between gap-4 rounded-xl bg-white/[0.045] px-3 py-3 text-start transition-colors hover:bg-white/[0.08]"
+                        aria-pressed={followAlong}
+                        data-follow-along-toggle
+                      >
+                        <span>
+                          <span className="block font-display text-[11px] font-semibold text-parchment">
+                            {language === 'ar' ? 'تتبع القراءة' : 'Follow along'}
+                          </span>
+                          <span className="mt-0.5 block text-[11px] text-parchment/62">
+                            {language === 'ar' ? 'علامة تحت الكلمة المقروءة أثناء الاستماع' : 'A marker under each word as it is read'}
+                          </span>
+                        </span>
+                        <span
+                          dir="ltr"
+                          className={cn(
+                            "flex h-6 w-11 shrink-0 items-center rounded-full p-1 transition-colors",
+                            followAlong ? themeClasses.progressBar : "bg-white/15",
+                            followAlong ? "justify-end" : "justify-start"
                           )}
                         >
                           <span className="h-4 w-4 rounded-full bg-white shadow" />

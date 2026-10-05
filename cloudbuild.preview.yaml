@@ -116,6 +116,35 @@ steps:
 
   # Two builds so the dependency install (npm ci) is cached too: the first keeps the
   # build stage as its own cache image, the second builds the small runtime image.
+  - id: audio-alignment
+    waitFor: ['tts-requests', 'tts-arabic-requests']
+    name: gcr.io/google.com/cloudsdktool/cloud-sdk:slim
+    entrypoint: bash
+    args:
+      - -c
+      - |
+        set -euo pipefail
+        if [ ! -f tts/alignment_requests.json ]; then
+          echo "[Stories Align] No tts/alignment_requests.json; skipping."
+          exit 0
+        fi
+        state="gs://${_TTS_STATE_BUCKET}/tts-state/align-queue-hash.txt"
+        hash="$$(cat tts/alignment_requests.json tts/requests.json tts/arabic_requests.json scripts/tts/align_audio.py | sha256sum | cut -c1-40)"
+        if [ "$$(gcloud storage cat "$$state" 2>/dev/null || true)" = "$$hash" ]; then
+          echo "[Stories Align] Alignment queue unchanged since the last complete run ($$hash); skipping."
+          exit 0
+        fi
+        if ! ELEVENLABS_ALIGN_API_KEY="$$(gcloud secrets versions access latest --secret=ELEVENLABS_ARABIC_API_KEY --project=$PROJECT_ID 2>/dev/null)"; then
+          echo "[Stories Align] Secret ELEVENLABS_ARABIC_API_KEY is not readable; skipping word timings."
+          exit 0
+        fi
+        export ELEVENLABS_ALIGN_API_KEY
+        if python3 scripts/tts/align_audio.py; then
+          printf '%s' "$$hash" | gcloud storage cp - "$$state" || echo "[Stories Align] Could not save the queue hash; the next build checks again."
+        else
+          echo "[Stories Align] WARNING: word timings incomplete; the deploy continues and the queue is retried on the next build."
+        fi
+
   - id: build
     waitFor: ['check-app-changes', 'pull-cache']
     name: gcr.io/cloud-builders/docker
