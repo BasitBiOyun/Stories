@@ -504,8 +504,28 @@ export const StoryMapPage: React.FC<StoryMapPageProps> = ({ page }) => {
   }, [challengeDone, score, map.challenge.length]);
 
   // --- Classroom --------------------------------------------------------------------------------
-  const hiddenPlaces = classroom ? places.filter(place => !revealed.has(place.id)) : [];
-  const shownPlaces = classroom ? places.filter(place => revealed.has(place.id)) : places;
+  // A drawn line shows the places it starts from, passes and has reached, so it never starts or ends on an empty spot.
+  const routeShown = useMemo(() => {
+    const ids = new Set<string>();
+    if (!classroom) return ids;
+    for (const item of map.routes) {
+      const progress = timeOn ? clamp((year - item.start) / Math.max(0.01, item.end - item.start), 0, 1) : 1;
+      if (progress <= 0) continue;
+      const steps = item.points.slice(1).map(([lon, lat], i) => Math.hypot(lon - item.points[i][0], lat - item.points[i][1]));
+      const total = steps.reduce((sum, step) => sum + step, 0);
+      let along = 0;
+      item.points.forEach(([lon, lat], i) => {
+        if (i > 0) along += steps[i - 1];
+        if (along > progress * total + 1e-6) return;
+        for (const place of places) {
+          if (distanceKm(place.lon, place.lat, lon, lat) <= Math.max(30, place.areaRadiusKm ?? 0)) ids.add(place.id);
+        }
+      });
+    }
+    return ids;
+  }, [classroom, map.routes, places, timeOn, year]);
+  const hiddenPlaces = classroom ? places.filter(place => !revealed.has(place.id) && !routeShown.has(place.id)) : [];
+  const shownPlaces = classroom ? places.filter(place => revealed.has(place.id) || routeShown.has(place.id)) : places;
 
   // Round pictures for the pins, from each place's Places & People card. A place without one keeps its icon.
   const pictures = useMemo(() => Object.fromEntries(places.flatMap(place => {
