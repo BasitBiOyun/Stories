@@ -99,6 +99,8 @@ def forced_alignment(api_key: str, audio: bytes, text: str) -> dict[str, Any]:
             return read_json_response(response)
     except error.HTTPError as exc:
         details = exc.read().decode("utf-8", errors="replace")
+        if exc.code in (401, 403):
+            details += " (the API key needs the Forced Alignment / Speech to Text permission)"
         raise TtsError(f"ElevenLabs alignment returned {exc.code}: {details}") from exc
 
 
