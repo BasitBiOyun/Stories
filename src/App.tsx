@@ -17,7 +17,7 @@ import {
   Layers,
   MapPin,
   Menu,
-  X, HelpCircle, FileText } from './components/ui/icons';
+  X, HelpCircle, FileText, ArrowRight } from './components/ui/icons';
 
 import { Level, PageData } from './types';
 import { useBookBundle } from './hooks/useBookBundle';
@@ -59,6 +59,7 @@ import { StoryPage } from './components/book/StoryPage';
 import { ExercisePage } from './components/book/ExercisePage';
 import { MasterGlossary } from './components/book/MasterGlossary';
 import { RolePicker } from './components/layout/RolePicker';
+import { BrandedEntry } from './components/layout/BrandedEntry';
 import { MyWordsPanel } from './components/book/MyWordsPanel';
 import { setMyWordsBook } from './lib/myWords';
 import { useUserRole } from './contexts/UserRoleContext';
@@ -632,80 +633,50 @@ const AppContent = () => {
 
   // --- Render Helpers ---
   if (!isAuthenticated) {
+    const gateCopy = language === 'ar'
+      ? { welcome: 'أَهْلًا بِكَ', text: 'اكْتُبْ رَمْزَ الدُّخُولِ الَّذِي أُعْطِيَ لَكَ لِتَفْتَحَ الْمَكْتَبَة.', label: 'رَمْزُ الدُّخُول', open: 'افْتَحِ الْمَكْتَبَة', wrong: 'الرَّمْزُ غَيْرُ صَحِيح. حَاوِلْ مَرَّةً أُخْرَى.', show: 'أَظْهِرِ الرَّمْز', hide: 'أَخْفِ الرَّمْز' }
+      : { welcome: 'Welcome', text: 'Enter the access code you were given to open the library.', label: 'Access code', open: 'Open the library', wrong: 'That code is not right. Please try again.', show: 'Show code', hide: 'Hide code' };
     return (
-      <div 
-        dir={isRTL ? 'rtl' : 'ltr'}
-        lang={language}
-        className={cn(
-          "min-h-screen bg-wood flex flex-col items-center justify-center relative overflow-hidden page-texture p-4",
-          isDyslexic && language !== 'ar' && "font-dyslexic-mode"
-        )}
-      >
-
-        {/* Background Elements */}
-        <div className="fixed inset-0 pointer-events-none opacity-20">
-          <div className="absolute top-0 left-0 w-96 h-96 bg-gold rounded-full blur-[120px] -translate-x-1/2 -translate-y-1/2" />
-          <div className="absolute bottom-0 right-0 w-96 h-96 bg-gold rounded-full blur-[120px] translate-x-1/2 translate-y-1/2" />
-        </div>
-
-        <div className="relative z-10 w-full max-w-md bg-[#1e1915]/95 rounded-2xl p-8 border-2 border-gold/40 shadow-[0_0_50px_rgba(212,175,55,0.15)] text-center backdrop-blur-sm">
-          {/* Decorative corners */}
-          <div className="absolute top-3 left-3 w-4 h-4 border-t-2 border-l-2 border-gold/40" />
-          <div className="absolute top-3 right-3 w-4 h-4 border-t-2 border-r-2 border-gold/40" />
-          <div className="absolute bottom-3 left-3 w-4 h-4 border-b-2 border-l-2 border-gold/40" />
-          <div className="absolute bottom-3 right-3 w-4 h-4 border-b-2 border-r-2 border-gold/40" />
-
-          <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gold/10 text-gold mb-6 border border-gold/20 shadow-[0_0_15px_rgba(212,175,55,0.1)]">
-            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-          </div>
-
-          <h2 className="font-display text-2xl tracking-wide text-gold uppercase mb-2">Access Required</h2>
-          <p className="font-serif text-[#F5EDD6]/70 text-[14px] leading-relaxed mb-6">
-            Please enter the access code provided to you to unlock the application.
-          </p>
-
-          <form onSubmit={handlePasswordSubmit} className="space-y-4">
-            <div className="relative flex items-center">
-              <input 
-                type={showPassword ? "text" : "password"}
-                value={passwordInput}
-                onChange={(e) => {
-                  setPasswordInput(e.target.value);
-                  setErrorMsg('');
-                }}
-                placeholder="Access Code"
-                className="w-full bg-[#120F0D]/90 border border-gold/30 rounded-xl pl-5 pr-12 py-3.5 text-center text-white placeholder-[#F5EDD6]/30 font-mono text-base focus:outline-none focus:border-gold/70 focus:ring-1 focus:ring-gold/50 transition-all shadow-inner"
-                autoFocus
-              />
-              <button
-                type="button"
-                onClick={() => setShowPassword(prev => !prev)}
-                className="absolute right-3.5 text-gold/60 hover:text-gold p-1 transition-colors cursor-pointer"
-                title={showPassword ? "Hide password" : "Show password"}
-              >
-                {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
-              </button>
-            </div>
-
-            {errorMsg && (
-              <p className="text-red-400 font-serif text-[12px] animate-pulse">
-                {errorMsg}
-              </p>
-            )}
-
-            <button 
-              type="submit"
-              className="w-full bg-gold/10 hover:bg-gold/20 text-gold border border-gold/50 rounded-xl px-6 py-3.5 font-display text-[12px] uppercase tracking-widest font-bold transition-all duration-300 shadow-[0_4px_12px_rgba(0,0,0,0.5)] hover:shadow-[0_4px_20px_rgba(212,175,55,0.15)] active:scale-95"
+      <BrandedEntry>
+        <h2 className={cn('mt-6 text-[40px] font-semibold leading-[1.1] text-[#FFF9EC]', language !== 'ar' && 'tracking-[-0.03em]')}>{gateCopy.welcome}</h2>
+        <p className="mt-3 text-[15px] leading-relaxed text-[#EDE5D4]/70">{gateCopy.text}</p>
+        <form onSubmit={handlePasswordSubmit} className="mt-7 flex flex-col">
+          <label htmlFor="access-code" className="text-[12px] font-semibold text-[#EDE5D4]/70">{gateCopy.label}</label>
+          <div className="relative mt-2 flex items-center">
+            <input
+              id="access-code"
+              type={showPassword ? 'text' : 'password'}
+              value={passwordInput}
+              onChange={(e) => {
+                setPasswordInput(e.target.value);
+                setErrorMsg('');
+              }}
+              placeholder={gateCopy.label}
+              dir="ltr"
+              className="w-full rounded-2xl border border-[#D8B35C]/35 bg-white/[0.05] py-4 pe-12 ps-5 text-base text-[#FFF9EC] placeholder-[#EDE5D4]/35 transition-all focus:border-[#F3D58A] focus:outline-none focus:ring-[3px] focus:ring-[#D8B35C]/20"
+              autoFocus
+            />
+            <button
+              type="button"
+              onClick={() => setShowPassword(prev => !prev)}
+              className="absolute end-3.5 cursor-pointer p-1 text-[#D8B35C]/70 transition-colors hover:text-[#F3D58A]"
+              aria-label={showPassword ? gateCopy.hide : gateCopy.show}
             >
-              Unlock App
+              {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
             </button>
-          </form>
-
-          <div className="mt-8 pt-6 border-t border-gold/10 flex justify-center gap-4">
-            <span className="font-display text-[9px] uppercase tracking-widest text-[#F5EDD6]/40">Interactive E-Book Series</span>
           </div>
-        </div>
-      </div>
+          {errorMsg && (
+            <p role="alert" className="mt-3 text-[13px] text-red-300">{gateCopy.wrong}</p>
+          )}
+          <button
+            type="submit"
+            className="mt-4 inline-flex items-center justify-center gap-2.5 rounded-full bg-[linear-gradient(135deg,#ECCD7E,#B98A36)] px-7 py-4 text-[15px] font-semibold text-[#16130c] shadow-[0_18px_50px_rgba(216,179,92,0.26)] transition-all hover:-translate-y-0.5 hover:shadow-[0_22px_60px_rgba(216,179,92,0.36)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F3D58A] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0b0e0c] active:scale-[0.99]"
+          >
+            {gateCopy.open}
+            <ArrowRight size={16} mirrored={isRTL} />
+          </button>
+        </form>
+      </BrandedEntry>
     );
   }
 

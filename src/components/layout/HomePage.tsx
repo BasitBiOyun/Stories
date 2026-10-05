@@ -1,12 +1,6 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
-import {
-  AnimatePresence,
-  motion,
-  useReducedMotion,
-  useScroll,
-  useTransform,
-} from 'motion/react';
-import { ProphetStory, Level } from '../../types';
+import { motion, useReducedMotion } from 'motion/react';
+import { Level } from '../../types';
 import homeIcon from '../../assets/images/home_icon.webp';
 import { cn } from '../../lib/utils';
 import { useLanguage } from '../../contexts/LanguageContext';
@@ -22,16 +16,19 @@ import { firstOpenBookAt } from '../../lib/nextBook';
 import { InstallAppButton } from '../ui/InstallAppButton';
 import { AboutPage } from './AboutPage';
 import { UsageGuide } from './UsageGuide';
+import { BrandTitle } from './BrandedEntry';
 import { USAGE_GUIDES } from '../../data/usageGuides';
-import { ArrowRight, ChevronLeft, ChevronRight, Clock, GraduationCap } from '../ui/icons';
+import { aboutIntro } from '../../data/aboutContent';
+import { HOME_AFTER_STORY, HOME_FEATURES, HOME_FEATURE_ORDER, HOME_NOTES, type HomeNoteIcon } from '../../data/homeFeatures';
+import { ArrowDown, ArrowRight, BookOpen, Clock, Download, FileText, Globe, GraduationCap, Headphones, ListOrdered, Play } from '../ui/icons';
 import { preloadBook } from '../../core/content/bookRegistry';
 import { readReaderPosition, type ReaderPosition } from '../../lib/readerPosition';
-import { summarizeBookProgress, type BookProgressSummary } from '../../lib/bookProgress';
+import { summarizeBookProgress } from '../../lib/bookProgress';
 import {
   collectionStoryIds,
   collectionVisuals,
   getStoryCollection,
-  storyCatalog as stories,
+  storyCatalog,
   type StoryCollectionId,
 } from '../../core/content/storyCatalog';
 
@@ -42,83 +39,106 @@ interface HomePageProps {
   onOpenTeacherGuide?: (prophetId: string, level: Level) => void;
 }
 
-type CollectionId = 'all' | 'prophets' | 'history' | 'turkish';
+type CollectionId = 'all' | StoryCollectionId;
+const LEVELS: Level[] = ['A2', 'B1', 'B2'];
 const levelDescriptions: Record<Level, { en: string; ar: string }> = {
   A2: { en: 'Elementary', ar: 'المستوى الأساسي' },
   B1: { en: 'Intermediate', ar: 'المستوى المتوسط' },
   B2: { en: 'Upper intermediate', ar: 'فوق المتوسط' },
 };
+type CatalogStory = (typeof storyCatalog)[number];
+const HOME_LEVEL_KEY = 'home_level';
+const readStoredLevel = (): Level | null => {
+  try {
+    const stored = localStorage.getItem(HOME_LEVEL_KEY) as Level | null;
+    return stored && LEVELS.includes(stored) ? stored : null;
+  } catch {
+    return null;
+  }
+};
+
+const NOTE_ICONS: Record<HomeNoteIcon, React.ComponentType<{ size?: number; className?: string }>> = {
+  classMode: SECTION_ICONS.classMode.icon,
+  lessonCard: SECTION_ICONS.lessonCard.icon,
+  levelTest: SECTION_ICONS.levelTest.icon,
+  myWords: SECTION_ICONS.myWords.icon,
+  pdf: FileText,
+  offline: Download,
+  guide: BookOpen,
+};
 
 export const HomePage: React.FC<HomePageProps> = ({ onStart, onOpenTeacherGuide }) => {
   const [activeCollection, setActiveCollection] = useState<CollectionId>('all');
-  const [activeIndex, setActiveIndex] = useState(0);
   const [isAboutOpen, setIsAboutOpen] = useState(false);
   const [isUsageGuideOpen, setIsUsageGuideOpen] = useState(false);
   const [lastActive, setLastActive] = useState<{ prophetId: string; level: Level; position: ReaderPosition | null } | null>(null);
 
   const { language, t, isRTL, formatNumber } = useLanguage();
+  const lang = language === 'ar' ? 'ar' : 'en';
   const { role, isSelfLearner, isTeacher } = useUserRole();
   const [isCheckCodeOpen, setIsCheckCodeOpen] = useState(false);
   const [isLevelTestOpen, setIsLevelTestOpen] = useState(false);
   const [isMyWordsOpen, setIsMyWordsOpen] = useState(false);
   const [suggestedLevel, setSuggestedLevel] = useState<Level | null>(() => readLevelTestResult()?.level ?? null);
-  const suggestedBook = suggestedLevel ? firstOpenBookAt(suggestedLevel, language === 'ar' ? 'ar' : 'en') : null;
-  const myWordCount = useMyWords().filter(word => word.language === (language === 'ar' ? 'ar' : 'en')).length;
+  // The level is chosen once above the shelf and remembered; a self-learner's test result is the first default.
+  const [level, setLevel] = useState<Level>(() => readStoredLevel() ?? readLevelTestResult()?.level ?? 'A2');
+  const suggestedBook = suggestedLevel ? firstOpenBookAt(suggestedLevel, lang) : null;
+  const myWordCount = useMyWords().filter(word => word.language === lang).length;
   const selfCopy = language === 'ar'
     ? { question: 'لَا تَعْرِفُ مُسْتَوَاكَ؟ اخْتِبَارٌ قَصِيرٌ فِي ثَلَاثِ دَقَائِقَ.', take: 'ابْدَأِ الاخْتِبَارَ', suggested: 'مُسْتَوَاكَ المُقْتَرَحُ', startWith: 'ابْدَأْ بِـ', again: 'أَعِدِ الاخْتِبَارَ' }
     : { question: 'Don’t know your level? A three-minute test.', take: 'Take the test', suggested: 'Your suggested level', startWith: 'Start with', again: 'Take the test again' };
   const reduceMotion = useReducedMotion();
-  const stageRef = useRef<HTMLElement>(null);
-
-  const { scrollYProgress } = useScroll({
-    target: stageRef,
-    offset: ['start end', 'end start'],
-  });
-  const scrollCoverY = useTransform(scrollYProgress, [0, 1], reduceMotion ? [0, 0] : [16, -18]);
-  const scrollGlowY = useTransform(scrollYProgress, [0, 1], reduceMotion ? [0, 0] : [-26, 30]);
-  const scrollSigilY = useTransform(scrollYProgress, [0, 1], reduceMotion ? [0, 0] : [22, -24]);
+  const shelfRef = useRef<HTMLElement>(null);
 
   const copy =
     language === 'ar'
       ? {
-          eyebrow: 'مكتبة القصص التفاعلية',
-          title: 'قصص تُقرأ، وتُسمع، وتُعاش.',
-          intro: 'رحلات ثنائية اللغة تجمع القصة والفهم والمفردات والتعلّم النشط في تجربة واحدة.',
-          all: 'جميع الكتب',
+          tagline: 'مكتبة قصص ثنائية اللغة',
+          lead: 'مكتبة تنمو باستمرار، فيها قصص تُقرأ وتُسمع وتُعاش. قصص الأنبياء والتاريخ والتراث التركي الإسلامي، من A2 إلى B2.',
+          traits: ['العربية والإنجليزية', 'A2 · B1 · B2', 'صوت وخرائط للرحلة'],
+          explore: 'استكشف المكتبة',
+          film: 'شاهد الفيلم',
+          cue: 'مرّر للاستكشاف',
+          all: 'الكل',
           prophets: 'قصص الأنبياء',
           history: 'التاريخ والحضارة',
           turkish: 'التراث التركي الإسلامي',
           continueLabel: 'تابع من حيث توقفت',
-          continueAction: 'متابعة القراءة',
-          chooseLevel: 'اختر مستواك',
-          previous: 'الكتاب السابق',
-          next: 'الكتاب التالي',
-          explore: 'اسحب أو استخدم الأسهم للاستكشاف',
+          shelfEyebrow: 'المكتبة',
+          shelfTitle: 'اختر قصة',
+          yourLevel: 'مستواك',
+          read: 'ابدأ القراءة',
+          alsoAt: 'أيضًا',
+          onlyAt: 'متاح الآن في',
+          featEyebrow: 'داخل كل كتاب',
+          featTitle: 'أكثر من قصة.',
+          featLead: 'كل كتاب درس كامل: اقرأ، واستمع، وتابع الرحلة على الخريطة، وتدرّب على ما تعلّمت.',
+          afterStory: 'بعد القصة، ينتهي كل كتاب بـ',
         }
       : {
-          eyebrow: 'Interactive story library',
-          title: 'Stories to read, hear and step inside.',
-          intro: 'Bilingual journeys combining story, comprehension, vocabulary and active learning in one focused experience.',
-          all: 'All books',
+          tagline: 'Bilingual story library',
+          lead: 'A growing library of stories to read, hear and step inside. Prophets, history and Turkish-Islamic heritage, from A2 to B2.',
+          traits: ['English & Arabic', 'A2 · B1 · B2', 'Audio & journey maps'],
+          explore: 'Explore the library',
+          film: 'Watch the film',
+          cue: 'Scroll to explore',
+          all: 'All',
           prophets: 'Prophets',
           history: 'History & civilization',
           turkish: 'Turkish-Islamic heritage',
           continueLabel: 'Continue where you left off',
-          continueAction: 'Continue reading',
-          chooseLevel: 'Choose your level',
-          previous: 'Previous book',
-          next: 'Next book',
-          explore: 'Swipe or use the arrows to explore',
+          shelfEyebrow: 'The library',
+          shelfTitle: 'Choose a story',
+          yourLevel: 'Your level',
+          read: 'Start reading',
+          alsoAt: 'Also',
+          onlyAt: 'Available now at',
+          featEyebrow: 'Inside every book',
+          featTitle: 'More than a story.',
+          featLead: 'Each book is a full lesson: read, listen, follow the journey on the map and practise what you learned.',
+          afterStory: 'After the story, every book ends with',
         };
-
-  // "1 book" / "5 books"; Arabic counts one, two, and three-to-ten differently.
-  const bookCount = (count: number) => {
-    if (language === 'ar') {
-      const noun = count === 1 ? 'كتاب' : count === 2 ? 'كتابان' : count <= 10 ? 'كتب' : 'كتابًا';
-      return count === 1 || count === 2 ? noun : `${formatNumber(count)} ${noun}`;
-    }
-    return `${count} ${count === 1 ? 'book' : 'books'}`;
-  };
+  const traitIcons = [Globe, ListOrdered, Headphones];
 
   const collectionLabels: Record<StoryCollectionId, string> = {
     prophets: copy.prophets,
@@ -126,55 +146,49 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart, onOpenTeacherGuide 
     turkish: copy.turkish,
   };
 
-
-  const translatedStoryName = (story: ProphetStory) => {
+  const translatedStoryName = (story: CatalogStory) => {
     const key = `prophet.${story.id}`;
     const value = t(key);
-    return value && value !== key ? value : story.name;
+    return value && value !== key ? value : language === 'ar' && story.nameAr ? story.nameAr : story.name;
   };
 
-  const translatedStoryDescription = (story: ProphetStory) => {
+  const translatedStoryDescription = (story: CatalogStory) => {
     const key = `prophet.${story.id}.desc`;
     const value = t(key);
-    return value && value !== key ? value : story.description;
+    return value && value !== key ? value : language === 'ar' && story.descriptionAr ? story.descriptionAr : story.description;
   };
 
+  // English-only books are not offered on the Arabic side.
+  const stories = useMemo(
+    () => storyCatalog.filter(story => language === 'en' || !story.englishOnly),
+    [language],
+  );
   const visibleStories = useMemo(() => {
     if (activeCollection === 'all') return stories;
     return stories.filter((story) => collectionStoryIds[activeCollection].includes(story.id));
-  }, [activeCollection]);
+  }, [activeCollection, stories]);
 
-  const activeStory = visibleStories[Math.min(activeIndex, visibleStories.length - 1)] ?? stories[0];
-  const activeStoryCollection = getStoryCollection(activeStory.id);
-  const activeVisual = collectionVisuals[activeStoryCollection];
+  // Hero: the covers take turns at the front of the fan, the blurred backdrop follows.
+  const [front, setFront] = useState(0);
+  useEffect(() => {
+    if (reduceMotion) return;
+    const timer = window.setInterval(() => setFront(current => current + 1), 4200);
+    return () => window.clearInterval(timer);
+  }, [reduceMotion]);
+  const frontStory = stories[front % stories.length];
 
   useEffect(() => {
-    // The user normally spends a moment looking at the active cover before
-    // choosing A2/B1/B2. Warm all available levels immediately so the eventual
-    // click does not have to start a cold dynamic import.
-    activeStory.availableLevels.forEach(level => {
-      preloadBook(activeStory.id, level)?.catch(() => undefined);
-    });
-  }, [activeStory.id]);
-
-  useEffect(() => {
-    // After the active cover is warm, use browser idle time to prepare the
-    // remaining book chunks gradually. This avoids a network burst while still
-    // making later first opens feel instant within the same library session.
-    const remaining = stories
-      .filter(story => story.id !== activeStory.id)
-      .flatMap(story => story.availableLevels.map(level => ({ storyId: story.id, level })));
-
+    // Warm the chosen level of every book on the shelf one by one in idle time, so the first open feels instant.
+    const queue = stories.map(story => ({ storyId: story.id, level: story.availableLevels.includes(level) ? level : story.availableLevels[0] }));
     let cancelled = false;
     let index = 0;
     let idleId: number | null = null;
     let timerId: ReturnType<typeof setTimeout> | null = null;
 
     const warmNext = () => {
-      if (cancelled || index >= remaining.length) return;
-      const item = remaining[index++];
+      if (cancelled || index >= queue.length) return;
+      const item = queue[index++];
       preloadBook(item.storyId, item.level)?.catch(() => undefined);
-
       if ('requestIdleCallback' in window) {
         idleId = window.requestIdleCallback(warmNext, { timeout: 1800 });
       } else {
@@ -193,10 +207,10 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart, onOpenTeacherGuide 
       if (idleId !== null && 'cancelIdleCallback' in window) window.cancelIdleCallback(idleId);
       if (timerId !== null) clearTimeout(timerId);
     };
-  }, []);
+  }, [stories, level]);
 
   const lastActiveStory = lastActive
-    ? stories.find((story) => story.id === lastActive.prophetId) ?? null
+    ? storyCatalog.find((story) => story.id === lastActive.prophetId) ?? null
     : null;
 
   useEffect(() => {
@@ -205,73 +219,39 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart, onOpenTeacherGuide 
 
     try {
       const parsed = JSON.parse(stored);
-      const storyIndex = stories.findIndex((item) => item.id === parsed?.prophetId);
-      const story = storyIndex >= 0 ? stories[storyIndex] : undefined;
-      const level = parsed?.level as Level | undefined;
+      const story = storyCatalog.find((item) => item.id === parsed?.prophetId);
+      const storedLevel = parsed?.level as Level | undefined;
 
-      if (story && level && story.availableLevels.includes(level)) {
-        setLastActive({ prophetId: story.id, level, position: readReaderPosition(story.id, level) });
-        setActiveIndex(storyIndex);
-        preloadBook(story.id, level)?.catch(() => undefined);
+      if (story && storedLevel && story.availableLevels.includes(storedLevel)) {
+        setLastActive({ prophetId: story.id, level: storedLevel, position: readReaderPosition(story.id, storedLevel) });
+        preloadBook(story.id, storedLevel)?.catch(() => undefined);
       }
     } catch {
       // Ignore malformed local storage data.
     }
   }, []);
 
-  // Progress per level of the book on stage, read when the stage changes (the reader writes it on every page).
-  const levelProgress = useMemo<Partial<Record<Level, BookProgressSummary | null>>>(
-    () => Object.fromEntries(activeStory.availableLevels.map(level => [level, summarizeBookProgress(activeStory.id, level)])),
-    [activeStory],
-  );
-
-  const selectCollection = (collection: CollectionId) => {
-    setActiveCollection(collection);
-    setActiveIndex(0);
+  const chooseLevel = (next: Level) => {
+    setLevel(next);
+    try { localStorage.setItem(HOME_LEVEL_KEY, next); } catch { /* the choice just is not remembered */ }
   };
 
-  const warmBook = (prophetId: string, level: Level) => {
-    preloadBook(prophetId, level)?.catch(() => undefined);
+  const warmBook = (prophetId: string, bookLevel: Level) => {
+    preloadBook(prophetId, bookLevel)?.catch(() => undefined);
   };
 
-  const launchStory = (prophetId: string, level: Level, options?: { resume?: boolean }) => {
-    localStorage.setItem('last_active_story', JSON.stringify({ prophetId, level }));
-    setLastActive({ prophetId, level, position: options?.resume ? readReaderPosition(prophetId, level) : null });
-    onStart(prophetId, level, options);
+  const launchStory = (prophetId: string, bookLevel: Level, options?: { resume?: boolean }) => {
+    localStorage.setItem('last_active_story', JSON.stringify({ prophetId, level: bookLevel }));
+    setLastActive({ prophetId, level: bookLevel, position: options?.resume ? readReaderPosition(prophetId, bookLevel) : null });
+    onStart(prophetId, bookLevel, options);
   };
 
-  const moveCarousel = (direction: 1 | -1) => {
-    if (visibleStories.length <= 1) return;
+  const scrollToShelf = () => shelfRef.current?.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
 
-    setActiveIndex((current) => {
-      const next = current + direction;
-      if (next < 0) return visibleStories.length - 1;
-      if (next >= visibleStories.length) return 0;
-      return next;
-    });
-  };
-
-  const swipeInProgressRef = useRef(false);
-
-  const handleSwipeEnd = (offsetX: number, velocityX: number) => {
-    if (visibleStories.length <= 1) return;
-    if (Math.abs(offsetX) < 55 && Math.abs(velocityX) < 450) return;
-
-    const effectiveX = isRTL ? -offsetX : offsetX;
-    moveCarousel(effectiveX < 0 ? 1 : -1);
-  };
-
-  const circularDelta = (index: number) => {
-    const total = visibleStories.length;
-    let delta = index - activeIndex;
-
-    if (total > 2) {
-      if (delta > total / 2) delta -= total;
-      if (delta < -total / 2) delta += total;
-    }
-
-    return delta;
-  };
+  const eyebrowClass = cn('text-[12px] font-semibold uppercase text-[#D8B35C]', isRTL ? 'text-[15px]' : 'tracking-[0.26em]');
+  const sectionTitleClass = cn('mt-3 text-[clamp(2rem,3.4vw,3.3rem)] font-semibold text-[#FFF9EC]', isRTL ? 'leading-[1.35]' : 'leading-[1.05] tracking-[-0.04em]');
+  const fanStep = 'clamp(64px, 11vw, 170px)';
+  const featureOrder = HOME_FEATURE_ORDER[role ?? 'student'];
 
   return (
     <div
@@ -296,8 +276,8 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart, onOpenTeacherGuide 
               <p className="line-clamp-2 text-[13px] font-semibold leading-tight tracking-[-0.01em] text-[#F7F1E5] sm:line-clamp-none sm:truncate sm:text-[15px]">
                 {t('nav.homeTitle')}
               </p>
-              <p className="mt-0.5 hidden truncate text-[11px] font-semibold uppercase tracking-[0.18em] text-[#D8B35C]/68 sm:block">
-                {language === 'ar' ? 'مادة تعليمية ثنائية اللغة' : 'Bilingual curriculum library'}
+              <p className={cn('mt-0.5 hidden truncate text-[11px] font-semibold uppercase text-[#D8B35C]/68 sm:block', !isRTL && 'tracking-[0.18em]')}>
+                {copy.tagline}
               </p>
             </div>
           </div>
@@ -311,25 +291,78 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart, onOpenTeacherGuide 
         </div>
       </header>
 
-      <main className="relative mx-auto w-full max-w-[1500px] px-5 pb-20 pt-7 sm:px-8 sm:pt-9 lg:px-12 lg:pt-11">
-        {/* Three role options do not fit beside the title on a phone, so the switch gets its own row there. */}
-        <div className="-mt-2 mb-6 flex sm:hidden">
-          <RoleToggle />
-        </div>
-        <section className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_350px] lg:items-end">
-          <div className="max-w-5xl text-start">
-            <div className="mb-4 text-[11px] font-semibold uppercase tracking-[0.24em] text-[#D8B35C]/78">
-              {copy.eyebrow}
-            </div>
-            <h1 className="max-w-5xl text-[clamp(2.5rem,5.6vw,5.45rem)] font-semibold leading-[0.96] tracking-[-0.056em] text-[#FFF9EC]">
-              {copy.title}
-            </h1>
-            <p className="mt-5 hidden max-w-2xl text-[14px] font-medium leading-7 text-[#EDE5D4]/78 sm:block sm:text-[15px]">
-              {copy.intro}
-            </p>
-          </div>
+      {/* Three role options do not fit beside the title on a phone, so the switch gets its own row there. */}
+      <div className="flex px-5 pb-2 sm:hidden">
+        <RoleToggle />
+      </div>
 
-          <div className="flex flex-col gap-3">
+      <section className="relative isolate overflow-hidden lg:min-h-[min(calc(100vh-76px),900px)]" data-home-hero>
+        <div className="absolute inset-[-8%] -z-20" aria-hidden="true">
+          {stories.map(story => (
+            <div
+              key={story.id}
+              className="absolute inset-0 scale-110 bg-cover bg-center blur-[46px] saturate-[1.2] transition-opacity duration-[1600ms]"
+              style={{ backgroundImage: `url(${story.image})`, opacity: story.id === frontStory.id ? 0.34 : 0 }}
+            />
+          ))}
+        </div>
+        <div
+          className={cn(
+            'absolute inset-0 -z-10',
+            isRTL
+              ? 'bg-[radial-gradient(ellipse_at_28%_50%,rgba(216,179,92,.18),transparent_55%),linear-gradient(-90deg,#0b0e0c_8%,rgba(11,14,12,.82)_42%,rgba(11,14,12,.3)_100%),linear-gradient(0deg,#0b0e0c_1%,transparent_28%)]'
+              : 'bg-[radial-gradient(ellipse_at_72%_50%,rgba(216,179,92,.18),transparent_55%),linear-gradient(90deg,#0b0e0c_8%,rgba(11,14,12,.82)_42%,rgba(11,14,12,.3)_100%),linear-gradient(0deg,#0b0e0c_1%,transparent_28%)]',
+          )}
+          aria-hidden="true"
+        />
+
+        <div className="mx-auto grid w-full max-w-[1500px] items-center gap-6 px-5 pb-16 pt-2 sm:px-8 lg:min-h-[inherit] lg:grid-cols-2 lg:gap-10 lg:px-12 lg:pb-24 lg:pt-6">
+          <div className="text-start lg:order-1">
+            <p className={cn(eyebrowClass, 'home-rise')}>{copy.tagline}</p>
+            <h1
+              className={cn(
+                'home-rise mt-5 font-semibold text-[#FFF9EC] [text-wrap:balance]',
+                isRTL ? 'text-[clamp(2.6rem,5.4vw,5.8rem)] leading-[1.25]' : 'text-[clamp(2.9rem,6.2vw,7rem)] leading-[0.95] tracking-[-0.05em]',
+              )}
+              style={{ animationDelay: '80ms' }}
+            >
+              <BrandTitle />
+            </h1>
+            <p className={cn('home-rise mt-6 max-w-[540px] leading-[1.7] text-[#EDE5D4]/78', isRTL ? 'text-[19px]' : 'text-[15.5px] sm:text-[17px]')} style={{ animationDelay: '160ms' }}>
+              {copy.lead}
+            </p>
+            <ul className="home-rise mt-7 flex flex-wrap gap-2.5" style={{ animationDelay: '240ms' }}>
+              {copy.traits.map((trait, index) => {
+                const Icon = traitIcons[index];
+                return (
+                  <li key={trait} className={cn('inline-flex items-center gap-2.5 rounded-full border border-[#D8B35C]/18 bg-white/[0.05] px-4 py-2 font-medium text-[#FFF9EC]', isRTL ? 'text-[16px]' : 'text-[13.5px]')}>
+                    <Icon size={16} className="text-[#F3D58A]" />
+                    {trait}
+                  </li>
+                );
+              })}
+            </ul>
+            <div className="home-rise mt-9 flex flex-wrap gap-3.5" style={{ animationDelay: '320ms' }}>
+              <button
+                type="button"
+                onClick={scrollToShelf}
+                className="inline-flex items-center gap-2.5 rounded-full bg-[linear-gradient(135deg,#ECCD7E,#B98A36)] px-7 py-4 text-[15px] font-semibold text-[#16130c] shadow-[0_18px_50px_rgba(216,179,92,0.26)] transition-all hover:-translate-y-0.5 hover:shadow-[0_22px_60px_rgba(216,179,92,0.36)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F3D58A] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0b0e0c]"
+                data-home-explore
+              >
+                {copy.explore}
+                <ArrowDown size={16} />
+              </button>
+              <a
+                href={`https://youtu.be/${aboutIntro.videoId}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2.5 rounded-full border border-white/12 bg-white/[0.06] px-7 py-4 text-[15px] font-semibold text-[#FFF9EC] transition-colors hover:bg-white/[0.11] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50"
+              >
+                <Play size={15} />
+                {copy.film}
+              </a>
+            </div>
+
             {lastActiveStory && lastActive && (
               <motion.button
                 type="button"
@@ -339,487 +372,358 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart, onOpenTeacherGuide 
                 onFocus={() => warmBook(lastActiveStory.id, lastActive.level)}
                 onTouchStart={() => warmBook(lastActiveStory.id, lastActive.level)}
                 onClick={() => launchStory(lastActiveStory.id, lastActive.level, { resume: true })}
-                className="group w-full rounded-2xl bg-white/[0.045] p-4 text-start transition-colors hover:bg-white/[0.075]"
+                className="group mt-7 flex w-full max-w-[460px] items-center gap-4 rounded-[18px] bg-white/[0.045] p-3.5 text-start transition-colors hover:bg-white/[0.075]"
+                data-home-continue
               >
-                <div className="flex items-start gap-4">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#D8B35C]/11 text-[#E4C779]">
-                    <Clock size={18} />
-                  </div>
-                  <div className="min-w-0 flex-1">
-                    <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#E4C779]/76">
-                      {copy.continueLabel}
-                    </p>
-                    <p className="mt-1 truncate text-sm font-semibold text-[#FFF9EC]">
-                      {translatedStoryName(lastActiveStory)} · {lastActive.level}
-                      {lastActive.position && lastActive.position.pageIndex > 0 && (
-                        <> · {t('nav.page')} {formatNumber(lastActive.position.pageIndex + 1)} / {formatNumber(lastActive.position.totalPages)}</>
-                      )}
-                    </p>
-                    <span className="mt-2 inline-flex items-center gap-2 text-xs font-semibold text-[#EDE5D4]/72 transition-colors group-hover:text-white">
-                      {copy.continueAction}
-                      <ArrowRight size={14} mirrored={isRTL} />
-                    </span>
-                  </div>
-                </div>
+                <img src={lastActiveStory.image} alt="" className="h-14 w-12 shrink-0 rounded-[10px] object-cover" />
+                <span className="min-w-0 flex-1">
+                  <span className={cn('flex items-center gap-1.5 text-[11px] font-semibold uppercase text-[#E4C779]/78', !isRTL && 'tracking-[0.16em]')}>
+                    <Clock size={13} />
+                    {copy.continueLabel}
+                  </span>
+                  <span className="mt-1 block truncate text-sm font-semibold text-[#FFF9EC]">
+                    {translatedStoryName(lastActiveStory)} · {lastActive.level}
+                    {lastActive.position && lastActive.position.pageIndex > 0 && (
+                      <> · {t('nav.page')} {formatNumber(lastActive.position.pageIndex + 1)} / {formatNumber(lastActive.position.totalPages)}</>
+                    )}
+                  </span>
+                </span>
+                <ArrowRight size={16} mirrored={isRTL} className="shrink-0 text-[#F3D58A] transition-transform group-hover:translate-x-0.5" />
               </motion.button>
             )}
-            {isTeacher && (
-              <div className="rounded-2xl bg-white/[0.045] p-4 text-start" data-teacher-tools-card>
-                <div className="flex items-start gap-4">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#D8B35C]/11 text-[#E4C779]">
-                    <SECTION_ICONS.checkCode.icon size={18} />
-                  </div>
-                  <div className="min-w-0 flex-1">
-                    <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#E4C779]/76">{SECTION_ICONS.checkCode[language === 'ar' ? 'ar' : 'en']}</p>
-                    <p className="mt-1 text-sm font-semibold text-[#FFF9EC]">
-                      {language === 'ar' ? 'يُظْهِرُ الطَّالِبُ بِطَاقَةَ نَتِيجَتِهِ فِي آخِرِ الكِتَابِ. اكْتُبْ رَمْزَهَا هُنَا.' : 'Students show a result card at the end of each book. Type its code here.'}
-                    </p>
-                    <button
-                      type="button"
-                      onClick={() => setIsCheckCodeOpen(true)}
-                      className="mt-2 inline-flex items-center gap-2 text-xs font-semibold text-[#EDE5D4]/80 transition-colors hover:text-white"
-                      data-check-code-open
-                    >
-                      {language === 'ar' ? 'تَحَقَّقْ مِنْ رَمْزٍ' : 'Check a code'}
-                      <ArrowRight size={14} mirrored={isRTL} />
-                    </button>
+          </div>
+
+          <div className="relative order-first flex h-[250px] items-center justify-center sm:h-[420px] lg:order-2 lg:h-[min(68vh,640px)]" aria-hidden="true">
+            <div className="absolute left-1/2 top-1/2 aspect-square w-[112%] -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#D8B35C]/20 opacity-60" />
+            <div className="home-spin absolute left-1/2 top-1/2 aspect-square w-[88%] -translate-x-1/2 -translate-y-1/2 rounded-full border border-dashed border-[#D8B35C]/16" />
+            <div className="absolute left-1/2 top-1/2 aspect-square w-[62%] -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#D8B35C]/36 shadow-[0_0_120px_rgba(216,179,92,0.16)]" />
+            <div className="relative h-full w-full">
+              {stories.map((story, index) => {
+                const count = stories.length;
+                let delta = index - (front % count);
+                if (delta > count / 2) delta -= count;
+                if (delta < -count / 2) delta += count;
+                const distance = Math.abs(delta);
+                const direction = isRTL ? -1 : 1;
+                const scale = distance === 0 ? 1 : distance === 1 ? 0.8 : 0.64;
+                return (
+                  <div
+                    key={story.id}
+                    className="absolute left-1/2 top-1/2 aspect-[4/5] h-[80%] rounded-[22px] bg-cover bg-center shadow-[0_40px_90px_rgba(0,0,0,0.6),0_0_0_1px_rgba(255,255,255,0.07)] transition-[transform,filter,opacity] duration-[1100ms] ease-[cubic-bezier(.22,1,.36,1)] sm:h-[66%]"
+                    style={{
+                      backgroundImage: `url(${story.image})`,
+                      zIndex: 10 - distance,
+                      opacity: distance > 2 ? 0 : 1,
+                      filter: `brightness(${distance === 0 ? 1 : distance === 1 ? 0.78 : 0.48})`,
+                      transform: `translate(calc(-50% + ${delta * direction} * ${fanStep}), -50%) perspective(1600px) scale(${scale}) rotateY(${-delta * 14 * direction}deg)`,
+                    }}
+                  />
+                );
+              })}
+            </div>
+          </div>
+        </div>
+
+        <button
+          type="button"
+          onClick={scrollToShelf}
+          className={cn('absolute bottom-5 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2.5 text-[11px] font-semibold uppercase text-[#EDE5D4]/50 lg:flex', !isRTL && 'tracking-[0.24em]')}
+        >
+          {copy.cue}
+          <span className="home-cue h-[38px] w-px bg-gradient-to-b from-[#D8B35C] to-transparent" />
+        </button>
+      </section>
+
+      <main className="relative mx-auto w-full max-w-[1500px] px-5 pb-10 sm:px-8 lg:px-12">
+        <section ref={shelfRef} className="scroll-mt-4 pt-10" data-home-shelf>
+          <p className={eyebrowClass}>{copy.shelfEyebrow}</p>
+          <h2 className={sectionTitleClass}>{copy.shelfTitle}</h2>
+
+          {(isTeacher || isSelfLearner) && (
+            <div className="mt-6 flex flex-wrap gap-3">
+              {isTeacher && (
+                <div className="w-full max-w-[460px] rounded-2xl bg-white/[0.045] p-4 text-start" data-teacher-tools-card>
+                  <div className="flex items-start gap-4">
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#D8B35C]/11 text-[#E4C779]">
+                      <SECTION_ICONS.checkCode.icon size={18} />
+                    </div>
+                    <div className="min-w-0 flex-1">
+                      <p className={cn('text-[11px] font-semibold uppercase text-[#E4C779]/76', !isRTL && 'tracking-[0.18em]')}>{SECTION_ICONS.checkCode[lang]}</p>
+                      <p className="mt-1 text-sm font-semibold text-[#FFF9EC]">
+                        {language === 'ar' ? 'يُظْهِرُ الطَّالِبُ بِطَاقَةَ نَتِيجَتِهِ فِي آخِرِ الكِتَابِ. اكْتُبْ رَمْزَهَا هُنَا.' : 'Students show a result card at the end of each book. Type its code here.'}
+                      </p>
+                      <button
+                        type="button"
+                        onClick={() => setIsCheckCodeOpen(true)}
+                        className="mt-2 inline-flex items-center gap-2 text-xs font-semibold text-[#EDE5D4]/80 transition-colors hover:text-white"
+                        data-check-code-open
+                      >
+                        {language === 'ar' ? 'تَحَقَّقْ مِنْ رَمْزٍ' : 'Check a code'}
+                        <ArrowRight size={14} mirrored={isRTL} />
+                      </button>
+                    </div>
                   </div>
                 </div>
-              </div>
-            )}
-            {isSelfLearner && (
-              <div className="rounded-2xl bg-white/[0.045] p-4 text-start" data-self-learner-card>
-                <div className="flex items-start gap-4">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#D8B35C]/11 text-[#E4C779]">
-                    <SECTION_ICONS.levelTest.icon size={18} />
-                  </div>
-                  <div className="min-w-0 flex-1">
-                    {suggestedLevel ? (
-                      <>
-                        <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#E4C779]/76">{selfCopy.suggested}</p>
-                        <p className="mt-1 text-sm font-semibold text-[#FFF9EC]">{suggestedLevel}</p>
-                        {suggestedBook && (
+              )}
+              {isSelfLearner && (
+                <div className="w-full max-w-[460px] rounded-2xl bg-white/[0.045] p-4 text-start" data-self-learner-card>
+                  <div className="flex items-start gap-4">
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#D8B35C]/11 text-[#E4C779]">
+                      <SECTION_ICONS.levelTest.icon size={18} />
+                    </div>
+                    <div className="min-w-0 flex-1">
+                      {suggestedLevel ? (
+                        <>
+                          <p className={cn('text-[11px] font-semibold uppercase text-[#E4C779]/76', !isRTL && 'tracking-[0.18em]')}>{selfCopy.suggested}</p>
+                          <p className="mt-1 text-sm font-semibold text-[#FFF9EC]">{suggestedLevel}</p>
+                          {suggestedBook && (
+                            <button
+                              type="button"
+                              onClick={() => launchStory(suggestedBook.id, suggestedLevel)}
+                              className="mt-2 inline-flex items-center gap-2 text-xs font-semibold text-[#EDE5D4]/80 transition-colors hover:text-white"
+                            >
+                              {selfCopy.startWith} {translatedStoryName(suggestedBook)} · {suggestedLevel}
+                              <ArrowRight size={14} mirrored={isRTL} />
+                            </button>
+                          )}
+                          <button type="button" onClick={() => setIsLevelTestOpen(true)} className="mt-1 block text-xs text-[#EDE5D4]/55 underline-offset-4 hover:text-white hover:underline">
+                            {selfCopy.again}
+                          </button>
+                        </>
+                      ) : (
+                        <>
+                          <p className={cn('text-[11px] font-semibold uppercase text-[#E4C779]/76', !isRTL && 'tracking-[0.18em]')}>{SECTION_ICONS.levelTest[lang]}</p>
+                          <p className="mt-1 text-sm font-semibold text-[#FFF9EC]">{selfCopy.question}</p>
                           <button
                             type="button"
-                            onClick={() => launchStory(suggestedBook.id, suggestedLevel)}
+                            onClick={() => setIsLevelTestOpen(true)}
                             className="mt-2 inline-flex items-center gap-2 text-xs font-semibold text-[#EDE5D4]/80 transition-colors hover:text-white"
+                            data-level-test-open
                           >
-                            {selfCopy.startWith} {translatedStoryName(suggestedBook)} · {suggestedLevel}
+                            {selfCopy.take}
                             <ArrowRight size={14} mirrored={isRTL} />
                           </button>
-                        )}
-                        <button type="button" onClick={() => setIsLevelTestOpen(true)} className="mt-1 block text-xs text-[#EDE5D4]/55 underline-offset-4 hover:text-white hover:underline">
-                          {selfCopy.again}
-                        </button>
-                      </>
-                    ) : (
-                      <>
-                        <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#E4C779]/76">{SECTION_ICONS.levelTest[language === 'ar' ? 'ar' : 'en']}</p>
-                        <p className="mt-1 text-sm font-semibold text-[#FFF9EC]">{selfCopy.question}</p>
-                        <button
-                          type="button"
-                          onClick={() => setIsLevelTestOpen(true)}
-                          className="mt-2 inline-flex items-center gap-2 text-xs font-semibold text-[#EDE5D4]/80 transition-colors hover:text-white"
-                          data-level-test-open
-                        >
-                          {selfCopy.take}
-                          <ArrowRight size={14} mirrored={isRTL} />
-                        </button>
-                      </>
-                    )}
-                    <button
-                      type="button"
-                      onClick={() => setIsMyWordsOpen(true)}
-                      className="mt-3 flex w-full items-center gap-2 border-t border-white/8 pt-3 text-xs font-semibold text-[#EDE5D4]/72 transition-colors hover:text-white"
-                    >
-                      <SECTION_ICONS.myWords.icon size={14} />
-                      {SECTION_ICONS.myWords[language === 'ar' ? 'ar' : 'en']} · {formatNumber(myWordCount)}
-                    </button>
+                        </>
+                      )}
+                      <button
+                        type="button"
+                        onClick={() => setIsMyWordsOpen(true)}
+                        className="mt-3 flex w-full items-center gap-2 border-t border-white/8 pt-3 text-xs font-semibold text-[#EDE5D4]/72 transition-colors hover:text-white"
+                      >
+                        <SECTION_ICONS.myWords.icon size={14} />
+                        {SECTION_ICONS.myWords[lang]} · {formatNumber(myWordCount)}
+                      </button>
+                    </div>
                   </div>
                 </div>
-              </div>
-            )}
-          </div>
-        </section>
-
-        <section className="mt-6 md:mt-9">
-          <div className="-mx-5 flex gap-2.5 overflow-x-auto px-5 pb-1 [scrollbar-width:none] md:mx-0 md:grid md:grid-cols-4 md:gap-3 md:overflow-visible md:px-0 md:pb-0 [&::-webkit-scrollbar]:hidden">
-            <button
-              type="button"
-              onClick={() => selectCollection('all')}
-              aria-pressed={activeCollection === 'all'}
-              className={cn(
-                'shrink-0 rounded-2xl px-4 py-3 text-start transition-all md:px-5 md:py-4',
-                activeCollection === 'all'
-                  ? 'bg-[#D8B35C]/13 shadow-[0_16px_42px_rgba(0,0,0,0.16)]'
-                  : 'bg-white/[0.025] hover:bg-white/[0.055]',
               )}
-            >
-              <span className="block text-[11px] font-semibold uppercase tracking-[0.18em] text-[#E4C779]/72">
-                {copy.all}
-              </span>
-              <span className="mt-1 hidden text-sm font-semibold text-[#FFF9EC] md:block">
-                {bookCount(stories.length)}
-              </span>
-            </button>
+            </div>
+          )}
 
-            {(['prophets', 'history', 'turkish'] as StoryCollectionId[]).map((collection) => {
-              const visual = collectionVisuals[collection];
-              const active = activeCollection === collection;
-
-              return (
+          <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-3 rounded-[22px] bg-white/[0.045] p-3">
+            <span className={cn('ps-2 text-[11px] font-semibold uppercase text-[#EDE5D4]/66', isRTL ? 'text-[14px]' : 'tracking-[0.18em]')}>{copy.yourLevel}</span>
+            <div className="flex w-full gap-1 rounded-2xl bg-black/30 p-1 sm:w-auto" role="group" aria-label={copy.yourLevel}>
+              {LEVELS.map(option => (
+                <button
+                  key={option}
+                  type="button"
+                  aria-pressed={option === level}
+                  onClick={() => chooseLevel(option)}
+                  className={cn(
+                    'flex flex-1 flex-col items-start rounded-xl px-3 py-2 text-start transition-colors sm:min-w-[120px] sm:flex-none sm:px-4',
+                    option === level ? 'bg-[linear-gradient(135deg,#ECCD7E,#B98A36)] text-[#16130c]' : 'text-[#FFF9EC] hover:bg-white/[0.06]',
+                  )}
+                  data-home-level={option}
+                >
+                  <span className="text-[19px] font-semibold leading-tight">{option}</span>
+                  <span className={cn(isRTL ? 'text-[13.5px]' : 'text-[11.5px]', option === level ? 'text-[#16130c]/80' : 'text-[#EDE5D4]/66')}>
+                    {levelDescriptions[option][lang]}
+                  </span>
+                </button>
+              ))}
+            </div>
+            <div className="flex w-full flex-wrap gap-1.5 lg:ms-auto lg:w-auto" role="group">
+              {(['all', 'prophets', 'history', 'turkish'] as CollectionId[]).map(collection => (
                 <button
                   key={collection}
                   type="button"
-                  onClick={() => selectCollection(collection)}
-                  aria-pressed={active}
-                  className="group relative shrink-0 overflow-hidden rounded-2xl px-3.5 py-2.5 text-start transition-all md:px-4 md:py-3.5"
-                  style={{
-                    background: active ? visual.accentSoft : 'rgba(255,255,255,0.025)',
-                    boxShadow: active ? '0 16px 42px rgba(0,0,0,0.16)' : 'none',
-                  }}
+                  aria-pressed={activeCollection === collection}
+                  onClick={() => setActiveCollection(collection)}
+                  className={cn(
+                    'inline-flex items-center gap-2 rounded-full border px-3.5 py-2 font-semibold transition-colors',
+                    isRTL ? 'text-[15px]' : 'text-[13px]',
+                    activeCollection === collection ? 'border-white/10 bg-white/[0.08] text-[#FFF9EC]' : 'border-transparent text-[#EDE5D4]/66 hover:text-[#FFF9EC]',
+                  )}
                 >
-                  <div className="relative flex items-center gap-3.5">
-                    <div
-                      className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl p-1.5 md:h-11 md:w-11"
-                      style={{ background: visual.accentSoft }}
-                    >
-                      <img
-                        src={collectionVisuals[collection].icon}
-                        alt=""
-                        className="h-full w-full object-contain"
-                        referrerPolicy="no-referrer"
-                      />
-                    </div>
-                    <div className="min-w-0">
-                      <span className="block truncate text-[13px] font-semibold text-[#FFF9EC]">
-                        {collectionLabels[collection]}
-                      </span>
-                      <span className="mt-1 hidden text-[11px] font-semibold uppercase tracking-[0.15em] text-[#EDE5D4]/62 md:block">
-                        {bookCount(collectionStoryIds[collection].length)}
-                      </span>
-                    </div>
-                  </div>
+                  {collection !== 'all' && <img src={collectionVisuals[collection].icon} alt="" className="h-5 w-5 object-contain" />}
+                  {collection === 'all' ? copy.all : collectionLabels[collection]}
                 </button>
-              );
-            })}
-          </div>
-        </section>
-
-        <section
-          ref={stageRef}
-          onKeyDown={(event) => {
-            if (event.key === 'ArrowLeft') moveCarousel(isRTL ? 1 : -1);
-            if (event.key === 'ArrowRight') moveCarousel(isRTL ? -1 : 1);
-          }}
-          tabIndex={0}
-          aria-label={copy.explore}
-          className="relative mt-5 overflow-hidden rounded-[38px] outline-none shadow-[0_38px_110px_rgba(0,0,0,0.33)] lg:h-[660px] xl:h-[690px]"
-        >
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={`stage-${activeStoryCollection}`}
-              aria-hidden="true"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.5, ease: 'easeOut' }}
-              className="absolute inset-0"
-              style={{ background: activeVisual.stage }}
-            />
-          </AnimatePresence>
-
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={`ambient-${activeStory.id}`}
-              aria-hidden="true"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.55 }}
-              className="absolute inset-[-7%]"
-              style={{ y: scrollGlowY }}
-            >
-              <img
-                src={activeStory.image}
-                alt=""
-                className="h-full w-full scale-110 object-cover opacity-[0.15] blur-[34px]"
-                referrerPolicy="no-referrer"
-              />
-              <div className="absolute inset-0 bg-gradient-to-r from-[#090c0a]/94 via-[#090c0a]/78 to-[#090c0a]/58" />
-              <div
-                className="absolute left-[12%] top-[8%] h-[58%] w-[46%] rounded-full blur-3xl"
-                style={{
-                  background: `radial-gradient(circle, ${activeVisual.ambient}, transparent 68%)`,
-                }}
-              />
-              <div
-                className="absolute bottom-[-12%] right-[-6%] h-[62%] w-[52%] rounded-full blur-3xl"
-                style={{
-                  background: `radial-gradient(circle, ${activeVisual.accentSoft}, transparent 70%)`,
-                }}
-              />
-            </motion.div>
-          </AnimatePresence>
-
-          <motion.img
-            aria-hidden="true"
-            src={collectionVisuals[activeStoryCollection].icon}
-            alt=""
-            referrerPolicy="no-referrer"
-            className="pointer-events-none absolute -right-16 top-8 h-72 w-72 object-contain opacity-[0.045] sm:h-96 sm:w-96 lg:-right-8 lg:h-[460px] lg:w-[460px]"
-            style={{ y: scrollSigilY }}
-          />
-
-          <div className="relative grid lg:h-full lg:grid-cols-[minmax(420px,0.95fr)_minmax(0,1.05fr)]">
-            <div className="relative flex items-center justify-center overflow-hidden px-6 py-5 sm:min-h-[520px] sm:px-10 sm:py-8 lg:min-h-0 lg:px-8 lg:py-8">
-              <div className="absolute inset-x-[10%] bottom-[8%] h-16 rounded-[50%] bg-black/45 blur-3xl" />
-
-              <motion.div
-                drag={visibleStories.length > 1 ? 'x' : false}
-                dragConstraints={{ left: 0, right: 0 }}
-                dragElastic={0.13}
-                onDragStart={() => { swipeInProgressRef.current = true; }}
-                onDragEnd={(_, info) => {
-                  handleSwipeEnd(info.offset.x, info.velocity.x);
-                  // The click that follows a drag release must not select the cover under the pointer.
-                  window.setTimeout(() => { swipeInProgressRef.current = false; }, 0);
-                }}
-                className="relative h-[340px] w-full max-w-[560px] cursor-grab touch-pan-y active:cursor-grabbing sm:h-[520px] lg:h-[560px]"
-              >
-                {visibleStories.map((story, index) => {
-                  const delta = circularDelta(index);
-                  const absDelta = Math.abs(delta);
-                  const isActive = delta === 0;
-                  const hidden = absDelta > 2;
-                  const visual = collectionVisuals[getStoryCollection(story.id)];
-                  const baseX = delta * 96;
-
-                  return (
-                    <div
-                      key={story.id}
-                      className="pointer-events-none absolute inset-0 flex items-center justify-center"
-                      style={{ zIndex: 30 - absDelta }}
-                    >
-                      <motion.button
-                        type="button"
-                        aria-label={translatedStoryName(story)}
-                        onClick={() => {
-                          if (swipeInProgressRef.current) return;
-                          setActiveIndex(index);
-                        }}
-                        initial={false}
-                        animate={{
-                          x: hidden ? (delta < 0 ? -330 : 330) : baseX,
-                          scale: isActive ? 1 : absDelta === 1 ? 0.84 : 0.7,
-                          rotateY: isActive ? 0 : delta * -17,
-                          opacity: hidden ? 0 : isActive ? 1 : absDelta === 1 ? 0.62 : 0.24,
-                          filter: isActive ? 'brightness(1)' : absDelta === 1 ? 'brightness(0.72)' : 'brightness(0.5)',
-                        }}
-                        transition={{ duration: reduceMotion ? 0 : 0.48, ease: [0.22, 1, 0.36, 1] }}
-                        style={{
-                          pointerEvents: hidden ? 'none' : 'auto',
-                          transformPerspective: 1800,
-                          transformStyle: 'preserve-3d',
-                        }}
-                        className="pointer-events-auto aspect-[4/5] h-[82%] overflow-hidden rounded-[28px] bg-[#0b120d] text-start shadow-[0_36px_90px_rgba(0,0,0,0.45)]"
-                      >
-                        <motion.div
-                          className="relative h-full w-full"
-                          style={isActive ? { y: scrollCoverY } : undefined}
-                        >
-                          <img
-                            src={story.image}
-                            alt=""
-                            draggable={false}
-                            className="h-full w-full object-cover"
-                            referrerPolicy="no-referrer"
-                          />
-                          <div className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-black/22 via-transparent to-white/[0.08]" />
-                          <div
-                            className="pointer-events-none absolute inset-x-0 bottom-0 h-[30%]"
-                            style={{
-                              background: `linear-gradient(to top, rgba(10,17,13,0.72), transparent)`,
-                            }}
-                          />
-                          {isActive && (
-                            <div
-                              className="pointer-events-none absolute left-4 top-4 h-2.5 w-2.5 rounded-full shadow-[0_0_20px_currentColor]"
-                              style={{ color: visual.accentBright, background: visual.accentBright }}
-                            />
-                          )}
-                        </motion.div>
-                      </motion.button>
-                    </div>
-                  );
-                })}
-              </motion.div>
-
-              <div className="absolute bottom-6 left-1/2 z-50 flex -translate-x-1/2 items-center gap-2.5">
-                {visibleStories.map((story, index) => {
-                  const active = index === activeIndex;
-                  const visual = collectionVisuals[getStoryCollection(story.id)];
-
-                  return (
-                    <button
-                      key={story.id}
-                      type="button"
-                      onClick={() => setActiveIndex(index)}
-                      className={cn(
-                        'h-2.5 rounded-full transition-all duration-300',
-                        active ? 'w-8' : 'w-2.5 bg-white/20 hover:bg-white/40',
-                      )}
-                      style={active ? { background: visual.accentBright } : undefined}
-                      aria-label={translatedStoryName(story)}
-                    />
-                  );
-                })}
-              </div>
+              ))}
             </div>
+          </div>
 
-            <div className="relative flex flex-col justify-center px-6 py-6 sm:min-h-[520px] sm:px-10 sm:py-8 lg:h-full lg:min-h-0 lg:px-12 lg:py-10 xl:px-16">
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={`content-${activeStory.id}`}
-                  initial={{ opacity: 0, y: 16 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -10 }}
-                  transition={{ duration: 0.34, ease: 'easeOut' }}
-                  className="text-start"
+          <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {visibleStories.map(story => {
+              const collection = getStoryCollection(story.id);
+              const visual = collectionVisuals[collection];
+              const hasLevel = story.availableLevels.includes(level);
+              const bookLevel = hasLevel ? level : story.availableLevels[0];
+              const otherLevels = story.availableLevels.filter(option => option !== bookLevel);
+              const progress = summarizeBookProgress(story.id, bookLevel);
+              return (
+                <article
+                  key={story.id}
+                  className="group relative flex flex-col overflow-hidden rounded-[26px] border border-white/[0.06] bg-[#121612] text-start transition-[transform,box-shadow,border-color] duration-300 hover:-translate-y-1.5 hover:shadow-[0_30px_70px_rgba(0,0,0,0.45)]"
+                  style={{ ['--accent' as string]: visual.accentBright }}
+                  data-home-book={story.id}
                 >
-                  <div className="flex items-center justify-between gap-4">
-                    <div
-                      className="inline-flex items-center gap-2.5 rounded-full px-3 py-1.5"
-                      style={{ background: activeVisual.accentSoft }}
+                  <button
+                    type="button"
+                    onClick={() => launchStory(story.id, bookLevel)}
+                    onPointerEnter={() => warmBook(story.id, bookLevel)}
+                    onFocus={() => warmBook(story.id, bookLevel)}
+                    onTouchStart={() => warmBook(story.id, bookLevel)}
+                    className="relative block aspect-[16/11] overflow-hidden focus-visible:outline-none"
+                    aria-label={`${translatedStoryName(story)} · ${bookLevel}`}
+                    tabIndex={-1}
+                  >
+                    <img src={story.image} alt="" loading="lazy" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                    <span className="absolute inset-0 bg-gradient-to-t from-[#121612] to-transparent to-45%" />
+                    <span
+                      className={cn('absolute start-3.5 top-3.5 inline-flex items-center gap-2 rounded-full bg-[#0b0e0c]/72 px-3 py-1.5 font-semibold uppercase backdrop-blur-md', isRTL ? 'text-[13px]' : 'text-[11px] tracking-[0.12em]')}
+                      style={{ color: visual.accentBright }}
                     >
-                      <img
-                        src={collectionVisuals[activeStoryCollection].icon}
-                        alt=""
-                        className="h-5 w-5 object-contain"
-                        referrerPolicy="no-referrer"
-                      />
-                      <span
-                        className="text-[11px] font-semibold uppercase tracking-[0.16em]"
-                        style={{ color: activeVisual.accentBright }}
-                      >
-                        {collectionLabels[activeStoryCollection]}
-                      </span>
-                    </div>
-
-                    <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#EDE5D4]/62">
-                      {String(activeIndex + 1).padStart(2, '0')} / {String(visibleStories.length).padStart(2, '0')}
+                      <span className="h-[7px] w-[7px] rounded-full bg-current shadow-[0_0_10px_currentColor]" />
+                      {collectionLabels[collection]}
                     </span>
-                  </div>
-
-                  <h2 className="mt-5 max-w-2xl text-[clamp(2.2rem,4.7vw,5.15rem)] font-semibold leading-[0.95] tracking-[-0.055em] text-[#FFF9EC] sm:mt-7">
-                    {translatedStoryName(activeStory)}
-                  </h2>
-
-                  <p className="mt-3 max-w-xl text-[15px] font-medium leading-6 text-[#EEE6D6]/84 sm:mt-5 sm:leading-7 sm:text-[16px]">
-                    {translatedStoryDescription(activeStory)}
-                  </p>
-
-                  <div className="mt-6 sm:mt-8">
-                    <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.2em] text-[#F0E8D8]/66">
-                      {copy.chooseLevel}
-                    </p>
-
-                    <div className="grid max-w-2xl grid-cols-1 gap-2.5 sm:grid-cols-3">
-                      {activeStory.availableLevels.map((level) => (
-                        <motion.button
-                          key={level}
-                          type="button"
-                          whileHover={reduceMotion ? undefined : { y: -3, scale: 1.01 }}
-                          whileTap={{ scale: 0.985 }}
-                          onPointerEnter={() => warmBook(activeStory.id, level)}
-                          onFocus={() => warmBook(activeStory.id, level)}
-                          onTouchStart={() => warmBook(activeStory.id, level)}
-                          onClick={() => launchStory(activeStory.id, level)}
-                          className="group rounded-2xl px-4 py-4 text-start transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-[#101a14]"
-                          style={{
-                            background: `linear-gradient(145deg, rgba(255,255,255,0.07), ${activeVisual.accentSoft})`,
-                            boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.035)',
-                          }}
-                        >
-                          <div className="flex items-center justify-between gap-3">
-                            <span className="text-[30px] font-semibold leading-none tracking-[-0.04em] text-[#FFF9EC] sm:text-[32px]">
-                              {level}
-                            </span>
-                            <ArrowRight
-                              size={16}
-                              mirrored={isRTL}
-                              className="opacity-45 transition-all group-hover:translate-x-0.5 group-hover:opacity-95"
-                              style={{ color: activeVisual.accentBright }}
-                            />
-                          </div>
-                          <span className="mt-2 block text-[12px] font-medium leading-4 text-[#F0E8D8]/76 sm:text-[13px]">
-                            {levelDescriptions[level][language === 'ar' ? 'ar' : 'en']}
-                          </span>
-                          {levelProgress[level] && (
-                            <span className="mt-2.5 flex items-center gap-2" aria-label={`${levelProgress[level]!.percent}%`}>
-                              <span className="h-1 flex-1 overflow-hidden rounded-full bg-white/10">
-                                <span
-                                  className="block h-full rounded-full"
-                                  style={{ width: `${levelProgress[level]!.percent}%`, background: activeVisual.accentBright }}
-                                />
-                              </span>
-                              <span className="text-[11px] font-semibold tabular-nums text-[#F0E8D8]/76">
-                                {formatNumber(levelProgress[level]!.percent)}%
-                              </span>
-                            </span>
-                          )}
-                        </motion.button>
-                      ))}
+                  </button>
+                  <div className="flex flex-1 flex-col px-5 pb-5 sm:px-[22px] sm:pb-[22px]">
+                    <h3 className={cn('font-semibold text-[#FFF9EC]', isRTL ? 'text-[27px]' : 'text-[24px] tracking-[-0.025em]')}>{translatedStoryName(story)}</h3>
+                    <p className={cn('mt-2 flex-1 leading-relaxed text-[#EDE5D4]/66', isRTL ? 'text-[17px]' : 'text-[14px]')}>{translatedStoryDescription(story)}</p>
+                    {!hasLevel && (
+                      <p className="mt-2 text-[12px] font-semibold text-[#F3D58A]">{copy.onlyAt} {bookLevel}</p>
+                    )}
+                    {progress && (
+                      <span className="mt-3 flex items-center gap-2" aria-label={`${progress.percent}%`}>
+                        <span className="h-1 flex-1 overflow-hidden rounded-full bg-white/10">
+                          <span className="block h-full rounded-full" style={{ width: `${progress.percent}%`, background: visual.accentBright }} />
+                        </span>
+                        <span className="text-[11px] font-semibold tabular-nums text-[#F0E8D8]/76">{formatNumber(progress.percent)}%</span>
+                      </span>
+                    )}
+                    <div className="mt-4 flex flex-wrap items-center justify-between gap-3">
+                      <button
+                        type="button"
+                        onClick={() => launchStory(story.id, bookLevel)}
+                        onPointerEnter={() => warmBook(story.id, bookLevel)}
+                        onFocus={() => warmBook(story.id, bookLevel)}
+                        className="inline-flex items-center gap-2.5 rounded-full bg-[color-mix(in_srgb,var(--accent)_16%,transparent)] px-[18px] py-[11px] text-[14px] font-semibold text-[var(--accent)] transition-colors group-hover:bg-[var(--accent)] group-hover:text-[#16130c] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
+                        data-home-read
+                      >
+                        {copy.read} · {bookLevel}
+                        <ArrowRight size={15} mirrored={isRTL} />
+                      </button>
+                      {otherLevels.length > 0 && (
+                        <span className="flex items-center gap-0.5 text-[12px] text-[#EDE5D4]/50">
+                          {copy.alsoAt}
+                          {otherLevels.map(option => (
+                            <button
+                              key={option}
+                              type="button"
+                              onClick={() => launchStory(story.id, option)}
+                              onPointerEnter={() => warmBook(story.id, option)}
+                              className="rounded-lg px-2 py-1 font-semibold text-[#EDE5D4]/70 transition-colors hover:bg-white/[0.08] hover:text-[#FFF9EC]"
+                            >
+                              {option}
+                            </button>
+                          ))}
+                        </span>
+                      )}
                     </div>
-
                     {onOpenTeacherGuide && (
-                      <div className="mt-3 flex max-w-2xl flex-wrap items-center gap-2" data-teacher-shortcut>
-                        <span className="inline-flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#F0E8D8]/66">
-                          <GraduationCap size={14} style={{ color: activeVisual.accentBright }} />
+                      <div className="mt-3 flex flex-wrap items-center gap-2 border-t border-white/[0.09] pt-3" data-teacher-shortcut>
+                        <span className="inline-flex items-center gap-1.5 text-[12.5px] font-semibold text-[#EDE5D4]/66">
+                          <GraduationCap size={14} style={{ color: visual.accentBright }} />
                           {t('nav.teacherGuideFor')}
                         </span>
-                        {activeStory.availableLevels.map(level => (
+                        {story.availableLevels.map(option => (
                           <button
-                            key={level}
+                            key={option}
                             type="button"
-                            onClick={() => onOpenTeacherGuide(activeStory.id, level)}
-                            className="min-h-9 rounded-full border border-white/12 bg-white/[0.05] px-3.5 font-display text-[12px] font-semibold text-[#FFF9EC] transition-colors hover:bg-white/[0.12] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50"
+                            onClick={() => onOpenTeacherGuide(story.id, option)}
+                            className="min-h-8 rounded-full border border-white/14 bg-white/[0.04] px-3 text-[12px] font-semibold text-[#FFF9EC] transition-colors hover:bg-white/[0.12] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50"
                           >
-                            {level}
+                            {option}
                           </button>
                         ))}
                       </div>
                     )}
                   </div>
+                </article>
+              );
+            })}
+          </div>
+        </section>
 
-                  <div className="mt-8 flex items-center justify-between gap-4">
-                    <p className="hidden text-[11px] font-semibold uppercase tracking-[0.16em] text-[#EDE5D4]/62 sm:block">
-                      {copy.explore}
-                    </p>
+        <section className="pb-10 pt-20 sm:pt-24" data-home-features>
+          <p className={eyebrowClass}>{copy.featEyebrow}</p>
+          <h2 className={sectionTitleClass}>{copy.featTitle}</h2>
+          <p className={cn('mt-3 max-w-[620px] leading-[1.7] text-[#EDE5D4]/66', isRTL ? 'text-[19px]' : 'text-[16px]')}>{copy.featLead}</p>
 
-                    <div className="flex items-center gap-2">
-                      <button
-                        type="button"
-                        onClick={() => moveCarousel(-1)}
-                        disabled={visibleStories.length <= 1}
-                        aria-label={copy.previous}
-                        className="flex h-11 w-11 items-center justify-center rounded-full bg-white/[0.06] text-[#FFF9EC] transition-colors hover:bg-white/[0.12] disabled:cursor-default disabled:opacity-25"
-                      >
-                        <ChevronLeft size={18} mirrored={isRTL} />
-                      </button>
-                      <button
-                        type="button"
-                        onClick={() => moveCarousel(1)}
-                        disabled={visibleStories.length <= 1}
-                        aria-label={copy.next}
-                        className="flex h-11 w-11 items-center justify-center rounded-full bg-white/[0.06] text-[#FFF9EC] transition-colors hover:bg-white/[0.12] disabled:cursor-default disabled:opacity-25"
-                      >
-                        <ChevronRight size={18} mirrored={isRTL} />
-                      </button>
-                    </div>
+          <div className="mt-12 flex flex-col gap-14 lg:gap-[72px]">
+            {featureOrder.map((id, index) => {
+              const feature = HOME_FEATURES[id];
+              return (
+                <div key={id} className="grid items-center gap-7 lg:grid-cols-[minmax(0,1.25fr)_minmax(0,1fr)] lg:gap-14 lg:even:grid-cols-[minmax(0,1fr)_minmax(0,1.25fr)]">
+                  <figure className={cn('m-0 aspect-[16/10] overflow-hidden rounded-3xl border border-white/[0.09] bg-[#121612] shadow-[0_40px_90px_rgba(0,0,0,0.45)]', index % 2 === 1 && 'lg:order-2')}>
+                    <img src={feature.image[lang]} alt="" loading="lazy" className="h-full w-full object-cover object-top" />
+                  </figure>
+                  <div>
+                    <span className={eyebrowClass}>{feature.verb[lang]}</span>
+                    <h3 className={cn('mt-2.5 text-[clamp(1.7rem,2.6vw,2.5rem)] font-semibold text-[#FFF9EC] [text-wrap:balance]', isRTL ? 'leading-[1.4]' : 'leading-[1.1] tracking-[-0.035em]')}>
+                      {feature.title[lang]}
+                    </h3>
+                    <p className={cn('mt-3.5 max-w-[52ch] leading-[1.75] text-[#EDE5D4]/75', isRTL ? 'text-[19px]' : 'text-[16px]')}>{feature.body[lang]}</p>
+                    <ul className="mt-5 flex flex-col gap-2.5">
+                      {feature.points[lang].map(point => (
+                        <li key={point} className={cn('flex items-center gap-3 font-medium text-[#FFF9EC]', isRTL ? 'text-[17px]' : 'text-[14.5px]')}>
+                          <span className="h-[9px] w-[9px] shrink-0 rounded-full border-2 border-[#D8B35C]" />
+                          {point}
+                        </li>
+                      ))}
+                    </ul>
                   </div>
-                </motion.div>
-              </AnimatePresence>
+                </div>
+              );
+            })}
+
+            <div className="flex flex-col gap-6 rounded-[28px] bg-white/[0.045] p-6 sm:p-8" data-home-after-story>
+              <p className={eyebrowClass}>{copy.afterStory}</p>
+              <ol className="relative grid grid-cols-2 gap-y-6 sm:grid-cols-3 lg:grid-cols-6">
+                <span className="absolute inset-x-[8%] top-7 hidden h-px bg-[linear-gradient(90deg,transparent,rgba(216,179,92,.5)_10%,rgba(216,179,92,.5)_90%,transparent)] lg:block" aria-hidden="true" />
+                {HOME_AFTER_STORY.map(key => {
+                  const section = SECTION_ICONS[key];
+                  return (
+                    <li key={key} className="relative flex flex-col items-center gap-3 text-center">
+                      <span className="grid h-14 w-14 place-items-center rounded-full border border-[#D8B35C]/45 bg-[#0b0e0c] text-[#F3D58A] shadow-[0_0_0_6px_#121612,0_0_30px_rgba(216,179,92,0.12)]">
+                        <section.icon size={24} />
+                      </span>
+                      <span className={cn('font-semibold leading-snug text-[#FFF9EC]', isRTL ? 'text-[17px]' : 'text-[14px]')}>{section[lang]}</span>
+                    </li>
+                  );
+                })}
+              </ol>
+              <ul className="flex flex-wrap gap-x-7 gap-y-3 border-t border-white/[0.09] pt-5">
+                {HOME_NOTES[role ?? 'student'].map(note => {
+                  const Icon = NOTE_ICONS[note.icon];
+                  return (
+                    <li key={note.icon} className={cn('flex items-center gap-2.5 font-medium text-[#EDE5D4]/70', isRTL ? 'text-[17px]' : 'text-[14px]')}>
+                      <Icon size={18} className="text-[#F3D58A]" />
+                      {note.label[lang]}
+                    </li>
+                  );
+                })}
+              </ul>
             </div>
           </div>
         </section>
@@ -828,10 +732,13 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart, onOpenTeacherGuide 
       <LevelTest
         isOpen={isLevelTestOpen}
         onClose={() => setIsLevelTestOpen(false)}
-        onResult={setSuggestedLevel}
-        onStart={(storyId, level) => {
+        onResult={(result) => {
+          setSuggestedLevel(result);
+          if (result) chooseLevel(result);
+        }}
+        onStart={(storyId, startLevel) => {
           setIsLevelTestOpen(false);
-          launchStory(storyId, level);
+          launchStory(storyId, startLevel);
         }}
       />
       <MyWordsPanel isOpen={isMyWordsOpen} onClose={() => setIsMyWordsOpen(false)} />
@@ -844,7 +751,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart, onOpenTeacherGuide 
           className="min-h-10 rounded-full px-4 text-[13px] font-semibold text-[#F6F0E2]/55 underline decoration-white/20 underline-offset-4 transition-colors hover:text-[#F6F0E2] hover:decoration-[#D8B35C]/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50"
           data-usage-guide-link
         >
-          {USAGE_GUIDES[role ?? 'student'][language === 'ar' ? 'ar' : 'en'].title}
+          {USAGE_GUIDES[role ?? 'student'][lang].title}
         </button>
         <button
           type="button"

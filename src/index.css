@@ -471,6 +471,24 @@
   }
 }
 
+/* Home page and entry screens: drifting cover wall, slow halo ring, staggered rise of the hero text. */
+@keyframes home-drift { to { transform: translateX(-25%); } }
+@keyframes home-spin { to { transform: translate(-50%, -50%) rotate(360deg); } }
+@keyframes home-rise { from { opacity: 0.001; transform: translateY(22px); } }
+@keyframes home-cue { 50% { transform: translateY(8px); opacity: 0.4; } }
+.home-drift { animation: home-drift 80s linear infinite; }
+.home-drift-reverse { animation: home-drift 80s linear infinite reverse; }
+.home-spin { animation: home-spin 120s linear infinite; }
+.home-rise { animation: home-rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.home-cue { animation: home-cue 2.2s ease-in-out infinite; }
+.home-gold-text {
+  background: linear-gradient(100deg, #F3D58A, #C9963F 60%, #F3D58A);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  padding-bottom: 0.08em;
+}
+
 /* Respect the operating system's reduced-motion preference without changing the default design. */
 @media (prefers-reduced-motion: reduce) {
   *,
