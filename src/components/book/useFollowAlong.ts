@@ -41,13 +41,13 @@ const collectWords = (container: HTMLElement) => {
 
 const isVisible = (el: HTMLElement | null): el is HTMLElement => !!el && el.getClientRects().length > 0;
 
-const FILL_STYLES = ['background-image', 'background-clip', '-webkit-background-clip', '-webkit-text-fill-color', '--follow-rest'];
+const FILL_STYLES = ['background-image', 'border-radius', 'box-decoration-break'];
 
 /**
- * "Follow along": while the chapter audio plays, the word being read fills with the book
- * colour in step with the voice (right to left in Arabic), like karaoke lyrics.
+ * "Follow along": while the chapter audio plays, a soft highlighter in the book colour sweeps
+ * across the word being read, in step with the voice (right to left in Arabic).
  * Word times come from <audio>.timings.json; without that file nothing is shown.
- * The fill is painted over the whole word element, so Arabic letter joining is untouched.
+ * The highlight is a background on the whole word element, so Arabic letter joining is untouched.
  */
 export function useFollowAlong({
   enabled,
@@ -85,6 +85,8 @@ export function useFollowAlong({
   }, [enabled, timingsUrl]);
 
   useEffect(() => {
+    // New timings (another chapter or language) must never reuse the previous word map.
+    shownRef.current = null;
     if (!enabled || !spoken?.length) return;
 
     let painted: HTMLElement | null = null;
@@ -142,15 +144,15 @@ export function useFollowAlong({
       if (painted !== el) {
         clear();
         painted = el;
-        el.style.setProperty('--follow-rest', getComputedStyle(el).color);
       }
+      // A highlighter that sweeps across the word with the voice; the text itself keeps its colour.
       const pct = (share * 100).toFixed(1);
-      const edge = (Math.min(100, share * 100 + 8)).toFixed(1);
+      const edge = Math.min(100, share * 100 + 10).toFixed(1);
       const direction = language === 'ar' ? 'to left' : 'to right';
-      el.style.backgroundImage = `linear-gradient(${direction}, var(--brand-700, var(--color-brand-700)) ${pct}%, var(--follow-rest) ${edge}%)`;
-      el.style.setProperty('-webkit-background-clip', 'text');
-      el.style.setProperty('background-clip', 'text');
-      el.style.setProperty('-webkit-text-fill-color', 'transparent');
+      const ink = 'color-mix(in srgb, var(--brand-300, var(--color-brand-300)) 75%, transparent)';
+      el.style.backgroundImage = `linear-gradient(${direction}, ${ink} ${pct}%, transparent ${edge}%)`;
+      el.style.setProperty('border-radius', '0.35em');
+      el.style.setProperty('box-decoration-break', 'clone');
 
       if (!audio.paused && Date.now() - lastUserScrollRef.current > 4000) {
         const rect = range.getBoundingClientRect();
