@@ -51,7 +51,7 @@ As the last faith, Islam includes not only what Allah told Abraham (pbuh), but a
     title: 'Abraham’s Land and Time',
     image: '',
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_b2%2Faudio%2F03_Chapter_4_Hanifism_Before_Islam.mp3?alt=media&token=d08f7bf4-23c7-4b83-a80d-221e96f8676c',
-    content: `In the Holy Qur’an, the name of Abraham (pbuh)’s father is Azer. He is described as an idol worshipper (see Surah al-An’am: 74). Azer is presented in Islamic sources as Nimrod's idol maker. There are different ideas about the birthplace of Abraham (pbuh). Some sources say that he was born in the land of Sumer, Mesopotamia, and migrated from there to Harran. Most generally speaking, we can say that Abraham was born in the city of Ur or Babylon, the country of King Nimrod. Historically, Abraham (pbuh) is believed to have lived in the 22nd and 21st centuries BC. Some sources suggest that he lived between 2200–2000 BC. During the time of Abraham (pbuh), the Sumerian/Mesopotamian country was prosperous in many aspects, such as agriculture and industry. Abraham (pbuh)'s message of monotheism was a belief that had existed in these lands before, but it had been forgotten over time. In the time of Abraham (pbuh), Allah was believed to be in the heavens.
+    content: `In the Holy Qur’an, the name of Abraham (pbuh)’s father is Azer. He is described as an idol worshipper (see Surah al-An’am: 74). Azer is presented in Islamic sources as Nimrod's idol maker. There are different ideas about the birthplace of Abraham (pbuh). Some sources say that he was born in the land of Sumer, Mesopotamia, and migrated from there to Harran. Most generally speaking, we can say that Abraham was born in the city of Ur or Babylon, the country of King Nimrod. Historically, Abraham (pbuh) is believed to have lived in the 20th century BC. Some sources suggest that he lived between 2200–2000 BC. During the time of Abraham (pbuh), the Sumerian/Mesopotamian country was prosperous in many aspects, such as agriculture and industry. Abraham (pbuh)'s message of monotheism was a belief that had existed in these lands before, but it had been forgotten over time. In the time of Abraham (pbuh), Allah was believed to be in the heavens.
 
 People worshipped the planets, stars, sun, and moon; some people worshipped idols of stone and wood; still others worshipped their kings and rulers.`,
   },
@@ -61,7 +61,7 @@ People worshipped the planets, stars, sun, and moon; some people worshipped idol
     title: 'Nimrod’s Fear and Abraham’s Birth',
     image: '',
     audioUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_b2%2Faudio%2F04_Chapter_5_The_Birthplace_and_Mission_of_Abraham.mp3?alt=media&token=a463971a-d367-49c9-9e95-78868795cc1a',
-    content: `The head of Abraham (pbuh)’s family was an idolater who totally rejected Allah and made idols with his own hands. Abraham (pbuh) was born into that atmosphere and family. Very soon, he was going to fight against his family and the whole system in his society. As a prophet who lived before Jacob (pbuh), Joseph (pbuh), Moses (pbuh), and Jesus (pbuh), Abraham (pbuh) tried to spread the belief in monotheism in the land of Mesopotamia and the lands where he migrated. Nimrod, the king of Babylon, had many fortunetellers and astrologers. One year, around the 22nd century BC, they predicted that a child named Abraham (pbuh) would be born in the region, would change the religion of the people, and would end the reign of Nimrod. According to another narration, Nimrod had a dream that a child in the region would challenge his throne. So, he gathered pregnant women in one place and ordered that all male children be killed.
+    content: `The head of Abraham (pbuh)’s family was an idolater who totally rejected Allah and made idols with his own hands. Abraham (pbuh) was born into that atmosphere and family. Very soon, he was going to fight against his family and the whole system in his society. As a prophet who lived before Jacob (pbuh), Joseph (pbuh), Moses (pbuh), and Jesus (pbuh), Abraham (pbuh) tried to spread the belief in monotheism in the land of Mesopotamia and the lands where he migrated. Nimrod, the king of Babylon, had many fortunetellers and astrologers. One year, around the 20th century BC, they predicted that a child named Abraham (pbuh) would be born in the region, would change the religion of the people, and would end the reign of Nimrod. According to another narration, Nimrod had a dream that a child in the region would challenge his throne. So, he gathered pregnant women in one place and ordered that all male children be killed.
 
 Upon this, Azer took his wife, who was pregnant with Abraham (pbuh), to a safe place and hid her in a cave, where Abraham (pbuh) was born.`,
   },
@@ -455,7 +455,7 @@ const abrahamB2StoryNotes: Record<number, Pick<PageData, 'vocabulary' | 'hotspot
       { word: "aspects", partOfSpeech: "noun", definition: "Particular parts or sides of something." },
     ],
     hotspots: [
-      { id: 'ab-b2-runtime-hs-4-1', x: 27, y: 43, title: "The Land of Nimrod", description: "Abraham (pbuh) was probably born in Ur or Babylon, the country of King Nimrod, around the 22nd and 21st centuries BC." },
+      { id: 'ab-b2-runtime-hs-4-1', x: 27, y: 43, title: "The Land of Nimrod", description: "Abraham (pbuh) was probably born in Ur or Babylon, the country of King Nimrod, around the 20th century BC." },
       { id: 'ab-b2-runtime-hs-4-2', x: 61, y: 61, title: "Many Objects of Worship", description: "People in Abraham’s (pbuh) time worshipped planets, stars, the sun, the moon, idols of stone and wood, and even their kings." },
     ],
   },
@@ -947,12 +947,12 @@ const abrahamB2LanguageReviewExercises: Exercise[] = [
   {
     id: 'abraham-b2-language-review-6-certainty-and-scope', type: 'multiple-choice', title: 'Build: Keep the Writer’s Certainty',
     instructions: 'Choose the summary that keeps how sure the writer is and how many people are meant.',
-    question: 'Chapter 4: “Historically, Abraham (pbuh) is believed to have lived in the 22nd and 21st centuries BC.” Chapter 24: “Only one woman and one man of his people shared his belief in Allah.” Which summary is the most faithful?',
+    question: 'Chapter 4: “Historically, Abraham (pbuh) is believed to have lived in the 20th century BC.” Chapter 24: “Only one woman and one man of his people shared his belief in Allah.” Which summary is the most faithful?',
     options: [
-      'It has been proven that Abraham lived in the 22nd and 21st centuries BC; only two of his people, a woman and a man, shared his belief.',
-      'Abraham is believed to have lived in the 22nd and 21st centuries BC; after the fire, many of his people shared his belief.',
-      'Abraham is believed to have lived in the 22nd and 21st centuries BC; only two of his people, a woman and a man, shared his belief.',
-      'Abraham is believed to have lived in the 22nd and 21st centuries BC; in the end, not a single person shared his belief.',
+      'It has been proven that Abraham lived in the 20th century BC; only two of his people, a woman and a man, shared his belief.',
+      'Abraham is believed to have lived in the 20th century BC; after the fire, many of his people shared his belief.',
+      'Abraham is believed to have lived in the 20th century BC; only two of his people, a woman and a man, shared his belief.',
+      'Abraham is believed to have lived in the 20th century BC; in the end, not a single person shared his belief.',
     ],
     correctAnswer: 2,
     explanation: '“is believed to have lived” keeps a distance: it reports a belief about a date, so ‘It has been proven’ overstates it. “Only one woman and one man” gives an exact scope: ‘many’ inflates it, and ‘not a single person’ erases the two believers. A good B2 summary changes the words but keeps the strength of the claim and its scope.',

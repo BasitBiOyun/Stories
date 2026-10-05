@@ -56,8 +56,8 @@ export const abrahamB2KnowledgeCheckExercises: Exercise[] = [
 
 export const abrahamB2VocabularyChallengePairs: VocabularyChallengePair[] = [
   { word: "rival", meaning: "Someone or something that competes with another for the same position.", partOfSpeech: "noun", chapter: 1, context: "He has no partner, rival, or helper." },
-  { word: "historically", meaning: "According to history or to what is known about the past.", partOfSpeech: "adverb", chapter: 4, context: "Historically, Abraham (pbuh) is believed to have lived in the 22nd and 21st centuries BC." },
-  { word: "predicted", meaning: "Said that something would happen in the future.", partOfSpeech: "verb", chapter: 5, context: "One year, around the 22nd century BC, they predicted that a child named Abraham (pbuh) would be born in the region, would change the religion of the people, and would end the reign of Nimrod." },
+  { word: "historically", meaning: "According to history or to what is known about the past.", partOfSpeech: "adverb", chapter: 4, context: "Historically, Abraham (pbuh) is believed to have lived in the 20th century BC." },
+  { word: "predicted", meaning: "Said that something would happen in the future.", partOfSpeech: "verb", chapter: 5, context: "One year, around the 20th century BC, they predicted that a child named Abraham (pbuh) would be born in the region, would change the religion of the people, and would end the reign of Nimrod." },
   { word: "everlasting", meaning: "Lasting for ever; never ending.", partOfSpeech: "adjective", chapter: 10, context: "Allah is without end, everlasting without disappearance." },
   { word: "harsh", meaning: "Cruel, severe and unkind.", partOfSpeech: "adjective", chapter: 14, context: "His father's harsh behavior towards Abraham (pbuh) did not stop him from carrying the message of truth." },
   { word: "demanded", meaning: "Asked for something firmly, as if it were a right.", partOfSpeech: "verb", chapter: 19, context: "They furiously demanded that Abraham (pbuh) be arrested and judged." },
