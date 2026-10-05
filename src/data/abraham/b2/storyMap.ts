@@ -2,7 +2,7 @@ import type { StoryMapLayout } from '../../../features/story-maps/types';
 
 /**
  * Shared, language-neutral layout of the map shown between chapters 4 and 5. Card text lives in en/ and ar/.
- * The B2 dates are hedged ("believed", "some sources … 2200–2000 BC"), so the slider follows the chapters.
+ * The B2 dates are hedged ("is believed to have lived in the 20th century BC"), so the slider follows the chapters.
  */
 export const abrahamB2StoryMapLayout: StoryMapLayout = {
   baseMap: 'nearEast',

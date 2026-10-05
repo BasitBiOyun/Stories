@@ -293,7 +293,7 @@ export const abrahamB2LanguageFocusChapter4: Record<number, Exercise[]> = {
           items: [
             'Some sources say that he was born in the land of Sumer, Mesopotamia …',
             'Most generally speaking, we can say that Abraham was born in the city of Ur or Babylon …',
-            'Some sources suggest that he lived between 2200–2000 BC.',
+            'Historically, Abraham (pbuh) is believed to have lived in the 20th century BC.',
             'In the time of Abraham (pbuh), Allah was believed to be in the heavens.',
           ],
         },
@@ -310,7 +310,7 @@ export const abrahamB2LanguageFocusChapter4: Record<number, Exercise[]> = {
         'Reported or hedged': [
           'Some sources say that he was born in the land of Sumer, Mesopotamia …',
           'Most generally speaking, we can say that Abraham was born in the city of Ur or Babylon …',
-          'Some sources suggest that he lived between 2200–2000 BC.',
+          'Historically, Abraham (pbuh) is believed to have lived in the 20th century BC.',
           'In the time of Abraham (pbuh), Allah was believed to be in the heavens.',
         ],
         'Stated directly by the writer': [
@@ -319,10 +319,10 @@ export const abrahamB2LanguageFocusChapter4: Record<number, Exercise[]> = {
           'During the time of Abraham (pbuh), the Sumerian/Mesopotamian country was prosperous in many aspects …',
         ],
       },
-      explanation: 'Where sources disagree, the writer does not state a single fact. “Some sources say/suggest” attributes a claim to part of the tradition, and “Most generally speaking, we can say” offers a careful summary. “Was believed to be” reports what people of that time believed. The writer states directly what is not in doubt, including the fact that “there are different ideas”.',
+      explanation: 'Where sources disagree, the writer does not state a single fact. “Some sources say” attributes a claim to part of the tradition, “is believed to have lived” passes on a general belief without proof, and “Most generally speaking, we can say” offers a careful summary. “Was believed to be” reports what people of that time believed. The writer states directly what is not in doubt, including the fact that “there are different ideas”.',
       feedback: {
         correct: 'Correct. You separated reported or hedged claims from direct statements.',
-        incorrect: 'Look for the frame at the start: some sources say/suggest, generally speaking, was believed. A sentence without such a frame is stated directly, even if it talks about disagreement.',
+        incorrect: 'Look for the frame: some sources say, generally speaking, is believed, was believed. A sentence without such a frame is stated directly, even if it talks about disagreement.',
       },
     },
     {
@@ -333,12 +333,12 @@ export const abrahamB2LanguageFocusChapter4: Record<number, Exercise[]> = {
       question: 'Which summary of Abraham’s birthplace and dates is faithful to the chapter?',
       options: [
         'Accounts differ, but broadly speaking Abraham was born in Mesopotamia, probably around the 20th century BC.',
-        'Abraham was born in Ur in 2200 BC and later migrated to Harran.',
+        'Abraham was born in Ur in 1990 BC and later migrated to Harran.',
         'The sources agree that Abraham was born in Sumer and lived in the 20th century BC.',
         'Because the sources disagree, the chapter says nothing about where or when Abraham lived.',
       ],
       correctAnswer: 0,
-      explanation: 'A good B2 summary keeps the writer’s caution. The chapter reports different views (“Some sources say … Some sources suggest …”) and then gives a general conclusion (“Most generally speaking, we can say …”) and a careful estimate of the period. The wrong summaries either join different sources into one certain fact, claim agreement that is not there, or say nothing can be concluded.',
+      explanation: 'A good B2 summary keeps the writer’s caution. The chapter reports different views (“Some sources say …”) and then gives a general conclusion (“Most generally speaking, we can say …”) and a careful estimate of the period (“is believed to have lived …”). The wrong summaries either join different sources into one certain fact, claim agreement that is not there, or say nothing can be concluded.',
       feedback: {
         correct: 'Correct. This summary keeps both the disagreement and the careful general conclusion.',
         incorrect: 'Does the chapter say the sources agree? Does it give one exact city and year? Does it avoid any conclusion? Check the hedged sentences in the first paragraph.',
