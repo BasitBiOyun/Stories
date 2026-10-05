@@ -8,6 +8,7 @@ import { getHistoricalEntityIdFromDefinition } from '../../features/historical-e
 import { ReaderTour, isReaderTourDone } from '../ui/ReaderTour';
 import { ExerciseModule } from '../ExerciseModule';
 import { BeforeYouReadPanel, GroupTaskPanel, ICanPanel, useBeforeYouRead } from './ChapterExtras';
+import { beforeYouReadSeconds } from '../../lib/chapterExtras';
 import { LessonCard } from './LessonCard';
 import { cn } from '../../lib/utils';
 import { SECTION_ICONS, type SectionKey } from '../../lib/sectionIcons';
@@ -1131,6 +1132,7 @@ export const StoryPage = ({
       state={beforeYouRead.state}
       onGuess={beforeYouRead.guess}
       onCheck={beforeYouRead.check}
+      seconds={beforeYouReadSeconds(page.content)}
     />
   ) : null;
   const renderICan = () => page.type === 'story' && page.iCan?.length ? (

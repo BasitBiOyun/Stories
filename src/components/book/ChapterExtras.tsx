@@ -46,7 +46,12 @@ const LABELS = {
   en: {
     title: 'Before you read',
     check: 'Check my guess',
+    checkAnswer: 'Check my answer',
+    start: 'Start',
+    seconds: 's',
+    timeUp: 'Time’s up. Keep looking!',
     right: 'Your guess was right!',
+    rightAnswer: 'Well done, that is right!',
     wrong: 'Good try. The answer is:',
     answerIs: 'The answer is:',
     showAnswer: 'Show the answer',
@@ -59,7 +64,12 @@ const LABELS = {
   ar: {
     title: 'قَبْلَ القِرَاءَةِ',
     check: 'تَحَقَّقْ مِنْ تَخْمِينِي',
+    checkAnswer: 'تَحَقَّقْ مِنْ إِجَابَتِي',
+    start: 'اِبْدَأْ',
+    seconds: 'ث',
+    timeUp: 'انْتَهَى الوَقْتُ. تَابِعِ البَحْثَ!',
     right: 'تَخْمِينُكَ صَحِيحٌ!',
+    rightAnswer: 'أَحْسَنْتَ، إِجَابَتُكَ صَحِيحَةٌ!',
     wrong: 'مُحَاوَلَةٌ جَيِّدَةٌ. الإِجَابَةُ:',
     answerIs: 'الإِجَابَةُ:',
     showAnswer: 'أَظْهِرِ الإِجَابَةَ',
@@ -71,25 +81,42 @@ const LABELS = {
   },
 };
 
-/** A small optional guess above the story. The text is always visible; the learner can skip it. */
+/** A countdown for the timed Before you read tasks. It never locks the question. */
+const useCountdown = (seconds: number, resetKey: string) => {
+  const [left, setLeft] = useState<number | null>(null);
+  useEffect(() => setLeft(null), [resetKey]);
+  useEffect(() => {
+    if (left === null || left <= 0) return undefined;
+    const timer = window.setTimeout(() => setLeft(left - 1), 1000);
+    return () => window.clearTimeout(timer);
+  }, [left]);
+  return { left, start: () => setLeft(seconds) };
+};
+
+/** A small optional task above the story. The text is always visible; the learner can skip it. */
 export const BeforeYouReadPanel = ({
   data,
   language,
   state,
   onGuess,
   onCheck,
+  seconds = 15,
 }: {
   data: BeforeYouRead;
   language: string;
   state: BeforeYouReadState;
   onGuess: (index: number) => void;
   onCheck: () => void;
+  /** Time for the find and skim tasks. */
+  seconds?: number;
 }) => {
   const L = language === 'ar' ? LABELS.ar : LABELS.en;
   const isArabic = language === 'ar';
   const { guess, checked } = state;
   const right = checked && guess === data.answer;
   const { classMode } = useClassMode();
+  const timed = data.kind === 'find' || data.kind === 'skim';
+  const countdown = useCountdown(seconds, data.question);
 
   const letters = isArabic ? ['أ', 'ب', 'ج', 'د'] : ['A', 'B', 'C', 'D'];
 
@@ -99,7 +126,7 @@ export const BeforeYouReadPanel = ({
       className="mb-4 rounded-xl border border-brand-200/80 bg-brand-50/60 px-3 py-2.5 font-sans"
       dir={isArabic ? 'rtl' : 'ltr'}
     >
-      <div className="flex items-center gap-2">
+      <div className="flex flex-wrap items-center gap-2">
         <p className={cn('min-w-0 flex-1 text-wood', isArabic ? 'text-base' : 'text-sm')}>
           <span className={cn('me-2 inline-flex items-center gap-1 align-middle font-display font-semibold uppercase tracking-widest text-brand-800', isArabic ? 'text-xs' : 'text-[10px]')}>
             <SECTION_ICONS.beforeYouRead.icon size={14} />
@@ -107,6 +134,31 @@ export const BeforeYouReadPanel = ({
           </span>
           <span className="font-semibold">{data.question}</span>
         </p>
+        {timed && !checked && (
+          countdown.left === null ? (
+            <button
+              type="button"
+              onClick={countdown.start}
+              data-byr-start
+              className="inline-flex h-8 shrink-0 items-center gap-1.5 rounded-lg border border-brand-300 bg-white px-3 font-display text-[12px] font-semibold text-brand-800 hover:bg-brand-50"
+            >
+              <Clock size={14} />
+              {L.start} · {seconds} {L.seconds}
+            </button>
+          ) : (
+            <span
+              role="timer"
+              aria-live="polite"
+              className={cn(
+                'inline-flex h-8 shrink-0 items-center gap-1.5 rounded-lg px-3 font-display text-[12px] font-semibold tabular-nums',
+                countdown.left > 0 ? 'bg-brand-100 text-brand-800' : 'bg-amber-100 text-amber-900',
+              )}
+            >
+              <Clock size={14} />
+              {countdown.left > 0 ? `${countdown.left} ${L.seconds}` : L.timeUp}
+            </span>
+          )
+        )}
         {!checked && guess === null && classMode && (
           <button
             type="button"
@@ -124,7 +176,7 @@ export const BeforeYouReadPanel = ({
             className="inline-flex h-8 shrink-0 items-center gap-1.5 rounded-lg bg-brand-700 px-3 font-display text-[12px] font-semibold text-white hover:bg-brand-800"
           >
             <Check size={14} />
-            {L.check}
+            {timed ? L.checkAnswer : L.check}
           </button>
         )}
       </div>
@@ -178,7 +230,7 @@ export const BeforeYouReadPanel = ({
 
       {checked && (
         <p className={cn('mt-1.5', isArabic ? 'text-sm' : 'text-[13px]', right ? 'text-emerald-800' : 'text-wood/80')}>
-          <span className="font-semibold">{right ? L.right : `${guess === null ? L.answerIs : L.wrong} ${data.options[data.answer]}`}</span>
+          <span className="font-semibold">{right ? (timed ? L.rightAnswer : L.right) : `${guess === null ? L.answerIs : L.wrong} ${data.options[data.answer]}`}</span>
           {data.quote && data.quote.replace(/[.\s]+$/, '') !== data.options[data.answer].replace(/[.\s]+$/, '') && <span className={cn('ms-1.5 font-serif text-wood/60', !isArabic && 'italic')}>{isArabic ? `«${data.quote}»` : `“${data.quote}”`}</span>}
         </p>
       )}

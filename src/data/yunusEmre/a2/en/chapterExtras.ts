@@ -3,14 +3,14 @@ import type { ChapterExtras } from '../../../../lib/chapterExtras';
 // Before you read, I can and example answers (V2). The story text is unchanged.
 export const yunusEmreA2ChapterExtrasEn: ChapterExtras = {
   beforeYouRead: {
-    1: { question: "Look at the picture. Why do you think people could easily understand Yunus Emre’s poems?", options: ["He wrote them in a very old language.", "He wrote and said them in simple Turkish.", "He sang them with music in the market."], answer: 1, quote: "he wrote and said them in simple Turkish" },
-    2: { question: "Look at the picture. What do you think the dervishes did with the things they had?", options: ["They kept them in their houses.", "They sold them in the market.", "They shared them with the needy."], answer: 2, quote: "They shared what they had with the needy" },
-    3: { question: "Look at the picture. What do you think the path of the dervishes was like?", options: ["very difficult", "very easy", "very short"], answer: 0, quote: "the path of dervishhood was a very difficult one" },
-    4: { question: "Look at the picture. What job do you think Taptuk Emre gave Yunus?", options: ["cooking food for the students", "cutting and bringing wood", "teaching the young students"], answer: 1, quote: "Taptuk then assigned Yunus to the wood-cutting duties at the dervish house." },
-    5: { question: "Look at the picture. How long do you think Yunus served his teacher?", options: ["for four years", "for fourteen years", "for forty years"], answer: 2, quote: "Yunus served his teacher Taptuk Emre in this way for exactly forty years." },
-    6: { question: "Look at the picture. What do you think helped Yunus become a better person?", options: ["woodcutting in nature", "living in a big city", "traveling to the sea"], answer: 0, quote: "For Yunus, woodcutting in nature helped him become a better person." },
-    7: { question: "Look at the picture. What do you think Yunus brought back to his teacher?", options: ["a big bunch of flowers", "a single daisy", "some green wood"], answer: 1, quote: "he returned with a single daisy" },
-    8: { question: "Look at the picture. How do you think Yunus wants us to do every job?", options: ["fast, so we can finish early", "only when someone is watching", "well and correctly"], answer: 2, quote: "we should do it well and correctly for the love of Allah" },
+    1: { kind: 'guess', question: "Guess first: which lands did Yunus Emre travel to?", options: ["Syria and Azerbaijan", "Egypt and Spain", "India and China"], answer: 0, quote: "as well as Syria and Azerbaijan" },
+    2: { kind: 'guess', question: "Guess first: where did dervishes try to find Allah?", options: ["only in the mosque", "only in books", "everywhere"], answer: 2, quote: "Dervishes tried to find Allah everywhere" },
+    3: { kind: 'guess', question: "Guess first: what does a dervish need, says the poem?", options: ["a big house", "a wounded heart", "a fast horse"], answer: 1, quote: "A dervish needs a wounded heart." },
+    4: { kind: 'guess', question: "Guess first: what was behind Taptuk’s dervish house?", options: ["a mountain", "a river", "a market"], answer: 0, quote: "There was a mountain behind Taptuk’s dervish house." },
+    5: { kind: 'guess', question: "Guess first: what does carrying firewood every day do?", options: ["It makes you rich.", "It makes you sleepy.", "It hurts your back."], answer: 2, quote: "Carrying firewood every day hurts your back and leaves bad cuts." },
+    6: { kind: 'guess', question: "Guess first: what special language did Yunus learn?", options: ["the language of kings", "the language of all creatures", "the language of sailors"], answer: 1, quote: "He learned the special language of all creatures." },
+    7: { kind: 'guess', question: "Guess first: when did Yunus come back?", options: ["in the late afternoon", "early in the morning", "at midnight"], answer: 0, quote: "In the late afternoon, he returned with a single daisy." },
+    8: { kind: 'guess', question: "Guess first: what called out to Yunus when it got dark?", options: ["a bird", "his teacher", "a daisy"], answer: 2, quote: "When it started to get dark, a daisy called out to me" },
   },
   iCan: {
     1: ["I can say who Yunus Emre was.", "I can say what happened in the past and why.", "I can give a short life story of a person."],

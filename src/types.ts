@@ -132,7 +132,12 @@ export interface GroupTask {
   solo: string;
 }
 
+/** picture: the picture shows the answer; guess: predict, then check; find: scan the text against a timer; skim: read quickly for the main idea, against a timer. */
+export type BeforeYouReadKind = 'picture' | 'guess' | 'find' | 'skim';
+
 export interface BeforeYouRead {
+  /** Defaults to 'picture'. */
+  kind?: BeforeYouReadKind;
   question: string;
   options: string[];
   /** Index of the correct option. */

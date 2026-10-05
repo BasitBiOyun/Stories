@@ -3,16 +3,16 @@ import type { ChapterExtras } from '../../../../lib/chapterExtras';
 // Before you read, I can and example answers (V2). The story text is unchanged.
 export const adamA2ChapterExtrasEn: ChapterExtras = {
   beforeYouRead: {
-    1: { question: "Look at the picture. What do you think Allah created Adam (pbuh) from?", options: ["fire", "soil", "water"], answer: 1, quote: "Allah created him from soil" },
-    2: { question: "Look at the picture. What do you think made Adam wiser than the angels?", options: ["Allah gave Adam knowledge and taught him to think.", "Adam was older than the angels.", "Adam lived in a big city."], answer: 0, quote: "because Allah gave Adam knowledge and taught him to think" },
-    3: { question: "Look at the picture. What do you think Iblis said about himself?", options: ["“I am sorry.”", "“Adam is better than me.”", "“I am better than Adam.”"], answer: 2, quote: "I am better than Adam." },
-    4: { question: "Look at the picture. What do you think Allah told Adam and Eve about one tree?", options: ["not to go near it", "to plant more trees like it", "to sit under it every day"], answer: 0, quote: "He told Adam and Eve not to go near one tree." },
-    5: { question: "Look at the picture. What do you think Iblis told Adam and Eve about himself?", options: ["He was their enemy.", "He was their friend.", "He was their teacher."], answer: 1, quote: "told them he was their friend" },
-    6: { question: "Look at the picture. Where do you think Adam and Eve lived next?", options: ["in the sky", "in a big city", "on earth"], answer: 2, quote: "put them on earth to live there" },
-    7: { question: "Look at the picture. What do you think Allah made Adam (pbuh)?", options: ["a farmer", "a king", "His first Messenger"], answer: 2, quote: "Allah made Adam His first Messenger" },
-    8: { question: "Look at the picture. What do you think Habil’s job was?", options: ["a shepherd", "a farmer", "a builder"], answer: 0, quote: "Habil became a shepherd" },
-    9: { question: "Look at the picture. What do you think Allah sent to Qabil?", options: ["a sheep", "a crow", "a stone"], answer: 1, quote: "Allah sent a crow" },
-    10: { question: "Look at the picture. What do you think the story tells good people to do?", options: ["to work only for money", "to travel far away from home", "to stay away from jealousy and control their anger"], answer: 2, quote: "good people should stay away from jealousy and control their anger" },
+    1: { kind: 'guess', question: "Guess first: why did Allah care about Adam very much?", options: ["He was the first human.", "He was very strong.", "He was very rich."], answer: 0, quote: "cared about him very much because he was the first human" },
+    2: { kind: 'guess', question: "Guess first: what did Allah tell the angels to show Adam?", options: ["the way to Paradise", "the sea", "respect"], answer: 2, quote: "show respect to him" },
+    3: { kind: 'guess', question: "Guess first: what did Iblis say he was made from?", options: ["water", "fire", "gold"], answer: 1, quote: "You created me from fire" },
+    4: { kind: 'guess', question: "Guess first: what did Allah tell Adam and Eve about one tree?", options: ["not to go near it", "to plant more trees like it", "to sit under it every day"], answer: 0, quote: "He told Adam and Eve not to go near one tree." },
+    5: { kind: 'guess', question: "Guess first: what are people sometimes, says the story?", options: ["very tall", "always angry", "forgetful"], answer: 2, quote: "Unfortunately, people are sometimes forgetful." },
+    6: { kind: 'guess', question: "Guess first: what were Adam and Eve on earth?", options: ["its guests", "its rulers", "its servants"], answer: 1, quote: "They were the rulers of the planet Earth." },
+    7: { kind: 'guess', question: "Guess first: who are the children of Adam and Eve?", options: ["all of us", "only the prophets", "only the angels"], answer: 0, quote: "We are all their children." },
+    8: { kind: 'guess', question: "Guess first: what did the two brothers have one day?", options: ["a big party", "a long trip", "a serious disagreement"], answer: 2, quote: "One day, they were in a serious disagreement." },
+    9: { kind: 'guess', question: "Guess first: whose offering pleased Allah?", options: ["Qabil’s", "Habil’s", "nobody’s"], answer: 1, quote: "Allah was pleased with Habil’s offering" },
+    10: { kind: 'guess', question: "Guess first: what happened to Adam (pbuh) over the years?", options: ["He got old.", "He became a king.", "He built a big city."], answer: 0, quote: "He got old over the years." },
   },
   iCan: {
     1: ["I can tell how Allah created Adam (pbuh).", "I can say what happened and what was going to happen.", "I can retell the start of the story in four sentences."],

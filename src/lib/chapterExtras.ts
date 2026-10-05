@@ -12,6 +12,12 @@ export interface ChapterExtras {
   groupTasks?: Record<number, GroupTask>;
 }
 
+/** Time for a find or skim task: one second per ten words, rounded to 15, 20, 25 or 30 seconds. */
+export const beforeYouReadSeconds = (text: string): number => {
+  const words = text.split(/\s+/).filter(Boolean).length;
+  return Math.min(30, Math.max(15, Math.round(words / 10 / 5) * 5));
+};
+
 const withExamples = (exercises: Exercise[] | undefined, examples: string[] | undefined): Exercise[] | undefined => {
   if (!exercises || !examples?.length) return exercises;
   let next = 0;
