@@ -90,8 +90,8 @@ export const storageManifests: Record<string, BookAssetManifest> = {
   ),
 
   [manifestKey('gevherNesibe', 'A2')]: media(
-    ['gevherNesibe/a2/images', 'GevherNesibe/a2/images'],
-    ['gevherNesibe/a2/audio', 'GevherNesibe/a2/audio'],
+    ['gevher_nesibe/gevher_nesibe_a2/images', 'gevherNesibe/a2/images', 'GevherNesibe/a2/images'],
+    ['gevher_nesibe/gevher_nesibe_a2/audio', 'gevherNesibe/a2/audio', 'GevherNesibe/a2/audio'],
     [],
   ),
 

@@ -1,7 +1,7 @@
 import type { PageData } from '../../../../types';
 
 // Story text is the teacher's final file, verbatim. Word Notes are exactly the teacher's bold expressions.
-// Hotspot positions are placeholders until the chapter pictures arrive.
+// Hotspot positions match the miniature chapter pictures (Storage gevher_nesibe/gevher_nesibe_a2/images).
 export const gevherNesibeA2Pages: PageData[] = [
   {
     id: 1,
@@ -19,8 +19,8 @@ When the hospital opened, Konya was the capital city of the Anatolian Seljuk Sta
       { word: "scientists", definition: "People who study the world and how things work." },
     ],
     hotspots: [
-      { id: 'gevhernesibe-a2-en-h1a', x: 26, y: 30, title: "Two Parts of Education", description: "Medical education in Anatolia had two parts: classroom education and practical training." },
-      { id: 'gevhernesibe-a2-en-h1b', x: 70, y: 64, title: "A Museum Today", description: "Today, the old building is the Museum of the Seljuk Civilization." },
+      { id: 'gevhernesibe-a2-en-h1a', x: 15, y: 78, title: "Two Parts of Education", description: "Medical education in Anatolia had two parts: classroom education and practical training." },
+      { id: 'gevhernesibe-a2-en-h1b', x: 50, y: 30, title: "A Museum Today", description: "Today, the old building is the Museum of the Seljuk Civilization." },
     ],
   },
   {
@@ -36,8 +36,8 @@ To separate them from each other, the Sultan sent the young commander away to wa
       { word: "last wish", definition: "The last thing a person asks for before they die." },
     ],
     hotspots: [
-      { id: 'gevhernesibe-a2-en-h2a', x: 26, y: 30, title: "A Brother’s Plan", description: "Her brother wanted her to marry a palace official, but she did not accept this." },
-      { id: 'gevhernesibe-a2-en-h2b', x: 70, y: 64, title: "No Good Hospital", description: "Kayseri did not have a good hospital, so Gevher Nesibe died at a young age." },
+      { id: 'gevhernesibe-a2-en-h2a', x: 52, y: 22, title: "A Brother’s Plan", description: "Her brother wanted her to marry a palace official, but she did not accept this." },
+      { id: 'gevhernesibe-a2-en-h2b', x: 82, y: 18, title: "No Good Hospital", description: "Kayseri did not have a good hospital, so Gevher Nesibe died at a young age." },
     ],
   },
   {
@@ -56,8 +56,8 @@ To separate them from each other, the Sultan sent the young commander away to wa
       { word: "free", definition: "Costing no money." },
     ],
     hotspots: [
-      { id: 'gevhernesibe-a2-en-h3a', x: 26, y: 30, title: "Help for Sick People", description: "She wanted a hospital to help sick people and find cures for bad diseases." },
-      { id: 'gevhernesibe-a2-en-h3b', x: 70, y: 64, title: "Free for Everyone", description: "She said that nobody should pay any money there." },
+      { id: 'gevhernesibe-a2-en-h3a', x: 40, y: 45, title: "Help for Sick People", description: "She wanted a hospital to help sick people and find cures for bad diseases." },
+      { id: 'gevhernesibe-a2-en-h3b', x: 80, y: 50, title: "Free for Everyone", description: "She said that nobody should pay any money there." },
     ],
   },
   {
@@ -76,8 +76,8 @@ Because the two buildings are next to each other, people call them the ‘Twin M
       { word: "front gate", definition: "The big main door at the front of a building." },
     ],
     hotspots: [
-      { id: 'gevhernesibe-a2-en-h4a', x: 26, y: 30, title: "The House of Healing", description: "People also called the hospital the Dârüşşifâ, “the house of healing.”" },
-      { id: 'gevhernesibe-a2-en-h4b', x: 70, y: 64, title: "Two Buildings Side by Side", description: "The two buildings are next to each other, so people call them the Twin Madrasas." },
+      { id: 'gevhernesibe-a2-en-h4a', x: 75, y: 15, title: "The House of Healing", description: "People also called the hospital the Dârüşşifâ, “the house of healing.”" },
+      { id: 'gevhernesibe-a2-en-h4b', x: 25, y: 22, title: "Two Buildings Side by Side", description: "The two buildings are next to each other, so people call them the Twin Madrasas." },
     ],
   },
   {
@@ -93,8 +93,8 @@ In the summer, lessons were in the large open gardens. Doctors also saw sick peo
       { word: "similar to", definition: "Almost the same as something else." },
     ],
     hotspots: [
-      { id: 'gevhernesibe-a2-en-h5a', x: 26, y: 30, title: "Warm Floors", description: "A heating system under the floor used hot steam from a bathhouse." },
-      { id: 'gevhernesibe-a2-en-h5b', x: 70, y: 64, title: "Lessons in the Garden", description: "In the summer, lessons were in the large open gardens." },
+      { id: 'gevhernesibe-a2-en-h5a', x: 42, y: 58, title: "Warm Floors", description: "A heating system under the floor used hot steam from a bathhouse." },
+      { id: 'gevhernesibe-a2-en-h5b', x: 50, y: 85, title: "Lessons in the Garden", description: "In the summer, lessons were in the large open gardens." },
     ],
   },
   {
@@ -109,8 +109,8 @@ In the summer, lessons were in the large open gardens. Doctors also saw sick peo
       { word: "patients", definition: "People who get help from a doctor or a hospital." },
     ],
     hotspots: [
-      { id: 'gevhernesibe-a2-en-h6a', x: 26, y: 30, title: "The Books of İbn Sînâ", description: "Students read the most important medical books of that time, especially the books of İbn Sînâ." },
-      { id: 'gevhernesibe-a2-en-h6b', x: 70, y: 64, title: "Learning at the Bedside", description: "Students learned at the patients’ bedside in the hospital." },
+      { id: 'gevhernesibe-a2-en-h6a', x: 25, y: 40, title: "The Books of İbn Sînâ", description: "Students read the most important medical books of that time, especially the books of İbn Sînâ." },
+      { id: 'gevhernesibe-a2-en-h6b', x: 80, y: 45, title: "Learning at the Bedside", description: "Students learned at the patients’ bedside in the hospital." },
     ],
   },
   {
@@ -124,8 +124,8 @@ The Gevher Nesibe Hospital had three rooms for operations, and two surgeons work
       { word: "operations", definition: "Medical work when a doctor cuts into the body to fix a problem inside it." },
     ],
     hotspots: [
-      { id: 'gevhernesibe-a2-en-h7a', x: 26, y: 30, title: "A Long Hall", description: "A long hall connects the two buildings." },
-      { id: 'gevhernesibe-a2-en-h7b', x: 70, y: 64, title: "Light from Above", description: "Small windows at the top of the operation rooms gave a little light." },
+      { id: 'gevhernesibe-a2-en-h7a', x: 35, y: 30, title: "A Long Hall", description: "A long hall connects the two buildings." },
+      { id: 'gevhernesibe-a2-en-h7b', x: 55, y: 18, title: "Light from Above", description: "Small windows at the top of the operation rooms gave a little light." },
     ],
   },
   {
@@ -140,8 +140,8 @@ There was also a bathhouse inside the building, and it had a round roof. Inside,
       { word: "round", definition: "Shaped like a circle or a ball." },
     ],
     hotspots: [
-      { id: 'gevhernesibe-a2-en-h8a', x: 26, y: 30, title: "Music for the Mind", description: "Doctors used music to help patients with mental illnesses." },
-      { id: 'gevhernesibe-a2-en-h8b', x: 70, y: 64, title: "A Round Roof", description: "The bathhouse had a round roof and four round windows." },
+      { id: 'gevhernesibe-a2-en-h8a', x: 40, y: 60, title: "Music for the Mind", description: "Doctors used music to help patients with mental illnesses." },
+      { id: 'gevhernesibe-a2-en-h8b', x: 75, y: 25, title: "A Round Roof", description: "The bathhouse had a round roof and four round windows." },
     ],
   },
   {
@@ -155,8 +155,8 @@ Education at the hospital had two parts. In the first part, students took classe
       { word: "served", definition: "Worked for people and helped them for a long time." },
     ],
     hotspots: [
-      { id: 'gevhernesibe-a2-en-h9a', x: 26, y: 30, title: "A Special Name", description: "Students at this school had a special name: ‘dânişmend.’" },
-      { id: 'gevhernesibe-a2-en-h9b', x: 70, y: 64, title: "A Diploma", description: "The diploma showed the names of their teachers and older scientists." },
+      { id: 'gevhernesibe-a2-en-h9a', x: 85, y: 60, title: "A Special Name", description: "Students at this school had a special name: ‘dânişmend.’" },
+      { id: 'gevhernesibe-a2-en-h9b', x: 55, y: 58, title: "A Diploma", description: "The diploma showed the names of their teachers and older scientists." },
     ],
   },
   {
@@ -170,8 +170,8 @@ Education at the hospital had two parts. In the first part, students took classe
       { word: "comfort", definition: "A calm feeling with less worry or pain." },
     ],
     hotspots: [
-      { id: 'gevhernesibe-a2-en-h10a', x: 26, y: 30, title: "Mind and Heart", description: "İbn Sînâ said that doctors must make patients’ minds and hearts stronger." },
-      { id: 'gevhernesibe-a2-en-h10b', x: 70, y: 64, title: "Fârâbî and Music", description: "Fârâbî showed that music gave people joy, fear, or comfort." },
+      { id: 'gevhernesibe-a2-en-h10a', x: 15, y: 85, title: "Mind and Heart", description: "İbn Sînâ said that doctors must make patients’ minds and hearts stronger." },
+      { id: 'gevhernesibe-a2-en-h10b', x: 50, y: 60, title: "Fârâbî and Music", description: "Fârâbî showed that music gave people joy, fear, or comfort." },
     ],
   },
   {
@@ -187,8 +187,8 @@ Gevher Nesibe Sultan never married the love of her life. But people loved her ve
       { word: "the love of her life", definition: "The person she loved most in her whole life." },
     ],
     hotspots: [
-      { id: 'gevhernesibe-a2-en-h11a', x: 26, y: 30, title: "School and Hospital Together", description: "The Gevher Nesibe Hospital was the first school and hospital together." },
-      { id: 'gevhernesibe-a2-en-h11b', x: 70, y: 64, title: "Remembered Today", description: "People loved Gevher Nesibe very much, and everyone remembers her today." },
+      { id: 'gevhernesibe-a2-en-h11a', x: 50, y: 30, title: "School and Hospital Together", description: "The Gevher Nesibe Hospital was the first school and hospital together." },
+      { id: 'gevhernesibe-a2-en-h11b', x: 20, y: 80, title: "Remembered Today", description: "People loved Gevher Nesibe very much, and everyone remembers her today." },
     ],
   },
   { id: 12, type: 'quiz', title: 'Knowledge Check', image: 'https://picsum.photos/seed/quiz-gevhernesibe-a2/1200/800', audioUrl: '', content: 'Test your understanding of the A2 story of the Gevher Nesibe Hospital and Medical School.' },
