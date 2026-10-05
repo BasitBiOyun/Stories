@@ -95,7 +95,7 @@ He noticed that Saladin was making the city walls longer to protect Cairo from f
 
 Finally, Ibn Jubayr visited a large hospital in Cairo. It was completely free. It had separate areas for men, women, and patients who needed special care. He also saw the famous pyramids and the Sphinx. At the river, he looked at a special tool called a Nilometer. People used it to measure the height of the Nile floods.
 
-In Alexandria and Cairo, Ibn Jubayr saw many colleges and guesthouses. Saladin built these places for students, teachers, and poor people. They could live there, and he also gave them money for their daily needs. The Sultan also built public baths and hospitals, and he sent doctors to take care of sick people at home. Another good thing Saladin did was giving out 2,000 loaves of bread to the poor every day. Ibn Jubayr was surprised to see so many mosques in Alexandria, and he wrote that there were between 8,000 and 10,000 of them.`,
+In Alexandria and Cairo, Ibn Jubayr saw many colleges and guesthouses. Saladin built these places for students, teachers, and poor people. They could live there, and he also gave them money for their daily needs. The Sultan also built public baths and hospitals, and he sent doctors to take care of sick people at home. Another good thing Saladin did was giving out 2,000 loaves of bread to the poor every day.`,
     vocabulary: [
       { word: "felt great respect", definition: "Thought that someone was very good and important." },
       { word: "praised", definition: "Said good things about someone or something." },
