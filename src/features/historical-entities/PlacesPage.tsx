@@ -2,6 +2,7 @@ import React, { useMemo, useRef, useState } from 'react';
 import { ArrowRight, BookOpen, Compass, Target } from '../../components/ui/icons';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { cn } from '../../lib/utils';
+import { PHONE_QUERY } from '../../lib/phone';
 import type { PageData } from '../../types';
 import { GROUP_COLORS, GROUP_OF_KIND, GROUP_ORDER, tint, type EntityGroup } from './categories';
 import { EntityMap } from './EntityMap';
@@ -164,7 +165,8 @@ export const PlacesPage = ({
     }));
 
   const scrollToDetail = () => {
-    if (window.matchMedia('(max-width: 1023px)').matches) {
+    // Phones keep the map pinned on top, so there is nothing to scroll to.
+    if (window.matchMedia('(max-width: 1023px)').matches && !window.matchMedia(PHONE_QUERY).matches) {
       window.setTimeout(() => detailRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 30);
     }
   };
@@ -321,9 +323,10 @@ export const PlacesPage = ({
           </div>
         ) : (
           <div className="grid grid-cols-[minmax(0,1fr)] gap-3 lg:min-h-0 lg:flex-1 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] min-[1800px]:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
-            <div ref={detailRef} className="scroll-mt-3 lg:min-h-0">
+            {/* Phones: only the map, pinned on top while the cards scroll under it. */}
+            <div ref={detailRef} className="scroll-mt-3 lg:min-h-0 max-sm:sticky max-sm:top-0 max-sm:z-10">
               <section
-                className="flex flex-col rounded-2xl border border-black/5 bg-white/55 p-3 shadow-sm backdrop-blur-sm [--info-height:50cqh] lg:h-full lg:[container-type:size]"
+                className="flex flex-col rounded-2xl border border-black/5 bg-white/55 p-3 shadow-sm backdrop-blur-sm [--info-height:50cqh] lg:h-full lg:[container-type:size] max-sm:bg-[#FBFAF6]/95 max-sm:p-2 max-sm:shadow-[0_10px_24px_-14px_rgba(20,34,26,0.45)]"
               >
                 <div className="flex shrink-0 justify-center">
                   <EntityMap
@@ -342,7 +345,7 @@ export const PlacesPage = ({
                 </div>
                 {/* Under the map only the picture, square and as large as the room allows.
                     Everything written about the place is on its card in the list. */}
-                <div className="flex flex-col items-center pt-3 lg:min-h-0 lg:flex-1" aria-live="polite">
+                <div className="flex flex-col items-center pt-3 lg:min-h-0 lg:flex-1 max-sm:hidden" aria-live="polite">
                   <EntityPicture
                     entity={selected.entity}
                     iconSize={64}

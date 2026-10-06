@@ -433,33 +433,54 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({
   return (
     <div className="flex-1 min-h-0 flex flex-col gap-3 overflow-hidden">
       <section className={cn(
-        'shrink-0 relative overflow-hidden rounded-[1.6rem] border bg-gradient-to-br px-4 py-4 sm:px-5 sm:py-4 shadow-sm',
+        'shrink-0 relative overflow-hidden rounded-[1.6rem] border bg-gradient-to-br px-4 py-4 sm:px-5 sm:py-4 shadow-sm max-sm:rounded-2xl max-sm:px-3.5 max-sm:py-2.5',
         colTheme.hero,
         colTheme.accentBorder
       )}>
         <div className={cn('absolute -top-16 -right-12 w-44 h-44 rounded-full blur-3xl pointer-events-none', colTheme.heroGlow)} />
-        <div className="relative flex flex-col xl:flex-row xl:items-center xl:justify-between gap-4">
-          <div className="flex items-start gap-3 min-w-0">
+        <div className="relative flex flex-col xl:flex-row xl:items-center xl:justify-between gap-4 max-sm:flex-row max-sm:items-center max-sm:gap-3">
+          <div className="flex items-start gap-3 min-w-0 max-sm:hidden">
             <div className={cn(
-              'w-11 h-11 sm:w-12 sm:h-12 rounded-2xl text-white flex items-center justify-center shadow-lg shrink-0',
+              'w-11 h-11 sm:w-12 sm:h-12 rounded-2xl text-white flex items-center justify-center shadow-lg shrink-0 max-sm:hidden',
               colTheme.brand600
             )}>
               <SECTION_ICONS.glossary.icon size={23} />
             </div>
             <div className="min-w-0">
-              <div className={cn('text-[11px] sm:text-xs uppercase tracking-[0.18em] font-black mb-1', colTheme.brandText)}>
+              <div className={cn('text-[11px] sm:text-xs uppercase tracking-[0.18em] font-black mb-1 max-sm:hidden', colTheme.brandText)}>
                 {copy.eyebrow}
               </div>
-              <h2 className={cn('text-2xl sm:text-3xl font-black tracking-tight leading-none', colTheme.brandTextStrong)}>
+              <h2 className={cn('text-2xl sm:text-3xl font-black tracking-tight leading-none max-sm:text-lg', colTheme.brandTextStrong)}>
                 {t('nav.masterGlossary')}
               </h2>
-              <p className="text-sm sm:text-[15px] text-wood/60 mt-1.5 max-w-2xl leading-relaxed">
+              <p className="text-sm sm:text-[15px] text-wood/60 mt-1.5 max-w-2xl leading-relaxed max-sm:hidden">
                 {copy.subtitle}
               </p>
             </div>
           </div>
 
-          <div className="xl:w-[42%] xl:min-w-[430px] rounded-2xl border border-white/80 bg-white/65 backdrop-blur-md px-4 py-3 shadow-sm">
+          {/* Phones: one slim line instead of the progress box, so the words get the screen */}
+          <div className="sm:hidden flex items-center gap-2.5 min-w-0 flex-1">
+            <span className={cn('text-xs font-black whitespace-nowrap', colTheme.brandText)}>{copy.confident}</span>
+            <div className={cn('h-1.5 flex-1 rounded-full overflow-hidden', colTheme.progressTrack)}>
+              <div className={cn('h-full rounded-full', colTheme.progressFill)} style={{ width: `${progressPct}%` }} />
+            </div>
+            <span className={cn('text-xs font-black tabular-nums whitespace-nowrap', colTheme.brandTextStrong)}>
+              {formatNumber(knownCount)} / {formatNumber(allVocabulary.length)}
+            </span>
+            {(knownCount > 0 || reviewCount > 0) && (
+              <button
+                onClick={resetProgress}
+                className={cn('shrink-0 w-8 h-8 rounded-lg flex items-center justify-center', colTheme.brandSoft, colTheme.brandText)}
+                title={t('nav.reset')}
+                aria-label={t('nav.reset')}
+              >
+                <RotateCcw size={14} />
+              </button>
+            )}
+          </div>
+
+          <div className="max-sm:hidden xl:w-[42%] xl:min-w-[430px] rounded-2xl border border-white/80 bg-white/65 backdrop-blur-md px-4 py-3 shadow-sm">
             <div className="flex items-center justify-between gap-3 mb-2">
               <div>
                 <div className={cn('text-xs font-black uppercase tracking-[0.12em]', colTheme.brandText)}>
@@ -532,8 +553,8 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({
         </div>
       </section>
 
-      <section className="shrink-0 rounded-2xl border border-black/5 bg-white/45 backdrop-blur-sm p-3 shadow-sm">
-        <div className="flex flex-col xl:flex-row xl:items-center gap-2.5">
+      <section className="shrink-0 rounded-2xl border border-black/5 bg-white/45 backdrop-blur-sm p-3 shadow-sm max-sm:p-2">
+        <div className="flex flex-col xl:flex-row xl:items-center gap-2.5 max-sm:gap-2">
           <div className="relative flex-1 min-w-0">
             <Search className={cn(
               'absolute top-1/2 -translate-y-1/2 w-4 h-4',
@@ -546,7 +567,7 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               className={cn(
-                'w-full py-2.5 bg-white/75 border rounded-xl outline-none transition-all font-serif shadow-inner focus:ring-2 focus:ring-black/5',
+                'w-full py-2.5 max-sm:py-2 bg-white/75 border rounded-xl outline-none transition-all font-serif shadow-inner focus:ring-2 focus:ring-black/5',
                 isRTL ? 'pr-10 pl-3' : 'pl-10 pr-3',
                 colTheme.borderStrong,
                 colTheme.brandTextStrong
