@@ -169,3 +169,8 @@ python3 promo/scripts/render.py --workers 3 --crf 14 --out promo/out/lisandan-ku
 - Ekleme sahnelerinin İngilizce üst başlıkları `lang="en"`: büyük harfe çevrilince "OFFLİNE", "PRİNTABLE" gibi Türkçe
   İ çıkmıyor.
 - Yalnız değişen saniyeler yeniden çizildi (18.6–20.2 ve 157.0–179.0); kalan kareler v11 4K dosyasından alındı.
+
+## v11.3
+
+- Finale: the half-second four-pointed flare over the logo is now the same soft round orb as the opener (`#s8flare .orb`), and the logo is the new one with a round light in the centre (`assets/brand/home_icon.png`, 6b1ef64).
+- v11.2 (same day) only re-rendered the opener frames around 20.2 s where the old sparkle still faded out.
