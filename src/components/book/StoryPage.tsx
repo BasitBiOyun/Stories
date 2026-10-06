@@ -8,6 +8,7 @@ import { ExerciseModule } from '../ExerciseModule';
 import { GroupTaskPanel, ICanPanel, BeforeYouReadPanel, useBeforeYouRead, useICanProgress } from './ChapterExtras';
 import { beforeYouReadSeconds } from '../../lib/chapterExtras';
 import { LessonCard } from './LessonCard';
+import { appImage, fallBackToOriginal } from '../../lib/mediaImage';
 import { cn } from '../../lib/utils';
 import { markQuranVerses } from '../../lib/quranVerses';
 import { useLanguage } from '../../contexts/LanguageContext';
@@ -316,7 +317,8 @@ export const StoryPage = ({
             >
               <div className="relative aspect-[4/5] w-full rounded-[1.5rem] shadow-[0_24px_30px_-28px_rgba(0,0,0,0.55)] overflow-hidden">
                 <motion.img 
-                  src={page.image} 
+                  src={appImage(page.image)}
+            onError={fallBackToOriginal(page.image)} 
                   alt={page.title}
                   className="w-full h-full object-cover transition-all duration-700"
                   referrerPolicy="no-referrer"
@@ -392,7 +394,8 @@ export const StoryPage = ({
                 >
                   <div className="relative aspect-[4/5] w-full rounded-[1.25rem] shadow-[0_24px_30px_-28px_rgba(0,0,0,0.55)] overflow-hidden border border-gold/15">
                     <motion.img 
-                      src={page.image} 
+                      src={appImage(page.image)}
+            onError={fallBackToOriginal(page.image)} 
                       alt={page.title}
                       className="w-full h-full object-cover transition-all duration-700"
                       referrerPolicy="no-referrer"

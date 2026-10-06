@@ -69,6 +69,11 @@ self.addEventListener('fetch', event => {
     return;
   }
   if (url.origin === self.location.origin) {
+    // The app's small copies of the Storage pictures are story media too (kept for offline reading).
+    if (url.pathname === '/media-image') {
+      event.respondWith(handleMedia(request));
+      return;
+    }
     if (url.pathname.startsWith('/assets/') || url.pathname.startsWith('/icons/') || /\.(ttf|woff2?|webp|png|svg|css|js)$/.test(url.pathname)) {
       event.respondWith(handleAsset(request));
     }

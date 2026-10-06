@@ -14,6 +14,8 @@ RUN --mount=type=bind,target=/ctx \
 FROM node:22-alpine AS runtime
 WORKDIR /app
 ENV NODE_ENV=production
+# The server makes small WebP copies of the Storage pictures (deploy/server.mjs, /media-image).
+RUN npm install --no-save --no-package-lock --omit=dev sharp@0.34.5
 # The book PDFs get their own layer, so a code change does not copy (and store) them again.
 COPY public/pdfs/books ./dist/pdfs/books
 COPY --from=app-build /app/dist ./dist

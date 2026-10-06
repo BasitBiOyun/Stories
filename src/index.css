@@ -202,9 +202,15 @@
     min-height: 2.75rem;
   }
 
-  /* Phones: the reader's top bar keeps its buttons at 40px so the story gets the screen. */
+  /* Phones: the reader's top and bottom bars use smaller buttons (36px top, 40px bottom) so the story gets the screen. */
   @media (max-width: 639px) {
-    .reader-header .touch-target {
+    .reader-header .touch-target,
+    .reader-header .ui-control {
+      min-width: 2.25rem;
+      min-height: 2.25rem;
+    }
+    .reader-footer .touch-target,
+    .reader-footer .ui-control {
       min-width: 2.5rem;
       min-height: 2.5rem;
     }

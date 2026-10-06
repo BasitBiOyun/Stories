@@ -315,3 +315,25 @@ export const ChapterAudioBar = ({ page, audio, onEnded, withElement = true }: { 
     </>
   );
 };
+
+// The next chapter's narration starts downloading a moment after a chapter opens, so its audio
+// is ready when the reader moves on instead of loading only then.
+export const usePreloadAudio = (url?: string) => {
+  useEffect(() => {
+    if (!url) return;
+    let preloader: HTMLAudioElement | null = null;
+    const timer = window.setTimeout(() => {
+      preloader = new Audio();
+      preloader.preload = 'auto';
+      preloader.src = url;
+      preloader.load();
+    }, 1500);
+    return () => {
+      window.clearTimeout(timer);
+      if (preloader) {
+        preloader.removeAttribute('src');
+        preloader.load();
+      }
+    };
+  }, [url]);
+};

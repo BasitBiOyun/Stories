@@ -8,6 +8,7 @@ import { AnimatePresence } from 'motion/react';
 import { ArrowRight } from '../ui/icons';
 import { PageData, Exercise } from '../../types';
 import { ExerciseModule } from '../ExerciseModule';
+import { appImage, fallBackToOriginal } from '../../lib/mediaImage';
 import { cn } from '../../lib/utils';
 import { markQuranVerses } from '../../lib/quranVerses';
 import { timingsUrlFor } from '../../lib/followAlong';
@@ -97,7 +98,8 @@ const ChapterBlock = React.memo(({
       >
         {page.image && (
           <img
-            src={page.image}
+            src={appImage(page.image)}
+            onError={fallBackToOriginal(page.image)}
             alt={page.title}
             referrerPolicy="no-referrer"
             loading={near ? 'eager' : 'lazy'}

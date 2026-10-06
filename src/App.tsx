@@ -1,3 +1,5 @@
+import { appImage } from './lib/mediaImage';
+import { usePreloadAudio } from './components/book/ChapterAudio';
 import React, { Suspense, lazy, useState, useEffect, useMemo, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import {
@@ -190,6 +192,11 @@ const AppContent = () => {
   }, [currentBookPair, language]);
 
   const currentPage = currentBook?.pages[currentPageIndex];
+  const nextChapterAudio = useMemo(
+    () => currentBook?.pages.slice(currentPageIndex + 1).find(page => page.type === 'story' && page.audioUrl)?.audioUrl,
+    [currentBook, currentPageIndex],
+  );
+  usePreloadAudio(nextChapterAudio);
   const isFinalChallengePage = currentPage?.type === 'final-challenge';
   const totalPages = currentBook?.pages.length || 0;
   const progress = totalPages > 0 ? (currentPageIndex + 1) / totalPages : 0;
@@ -350,7 +357,7 @@ const AppContent = () => {
       book.pages.forEach(page => {
         // Only story pages show pictures; learning pages carry unused (some dead) image links.
         if (page.type !== 'story') return;
-        if (page.image) urls.add(page.image);
+        if (page.image) urls.add(appImage(page.image));
         if (page.audioUrl) urls.add(page.audioUrl);
       });
     });
@@ -1036,7 +1043,7 @@ const AppContent = () => {
       {/* Reader Navigation Dock */}
       {!showSummary && !isFinalChallengePage && (
         <footer className={cn(
-          "relative z-50 min-h-[52px] sm:min-h-14 px-2.5 sm:px-5 md:px-8 grid grid-cols-[1fr_auto_1fr] items-center gap-2 transition-colors duration-500 shrink-0",
+          "reader-footer relative z-50 min-h-12 sm:min-h-14 px-2.5 sm:px-5 md:px-8 grid grid-cols-[1fr_auto_1fr] items-center gap-2 transition-colors duration-500 shrink-0",
           themeClasses.headerBg
         )}>
           <div className="relative flex min-w-0 items-center justify-start">
