@@ -1,4 +1,5 @@
 import React, { useRef, useState, useMemo, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { motion, useMotionValue, useTransform, useSpring, AnimatePresence } from 'motion/react';
 import { Rocket, ArrowRight } from '../ui/icons';
 import { PageData, Hotspot, Exercise, TeacherGuideSection } from '../../types';
@@ -18,7 +19,7 @@ import { HotspotButton } from './StoryHotspot';
 import { getResponsiveStoryFontStyle, useStoryTextRenderer } from './useStoryText';
 import { ChapterAudioBar, ChapterAudioElement, useChapterAudio } from './ChapterAudio';
 import { useMediaQuery } from '../../lib/useMediaQuery';
-import { ChapterSteps, LanguageFocusPanel, QuickChallengePanel } from './ChapterActivities';
+import { ChapterActivityRail, ChapterSteps, LanguageFocusPanel, QuickChallengePanel } from './ChapterActivities';
 
 // One chapter of the reader: title, steps and audio on top, picture and story text, then the chapter's activities.
 // The parts live in their own files: the story text (useStoryText.tsx, StoryPoem.tsx), the picture points
@@ -57,12 +58,16 @@ export const StoryPage = ({
   const { stats, trackExerciseComplete, trackChapterVisit } = useStoryProgress();
   const audio = useChapterAudio(page);
   const { audioRef, isPlaying } = audio;
+  // Wide screens (1024px+): title, steps and audio on top, activities as icons beside the picture.
+  const isWide = useMediaQuery('(min-width: 1024px)');
   const [activeHotspot, setActiveHotspot] = useState<Hotspot | null>(null);
   const [activeExercise, setActiveExercise] = useState<Exercise | null>(null);
   // Completion lives in the shared progress, so a finished Quick Challenge stays finished when the reader comes back.
   const completedExercises = useMemo(() => [...stats.exercisesCompleted], [stats.exercisesCompleted]);
   const [isLanguageFocusOpen, setIsLanguageFocusOpen] = useState(false);
   const [isLessonCardOpen, setIsLessonCardOpen] = useState(false);
+  // Wide screens: the group task or the I can list opened from the icons beside the picture.
+  const [railPanel, setRailPanel] = useState<'group' | 'iCan' | null>(null);
   // First story page on this device: a three-step tour once the page has settled.
   const [isTourActive, setIsTourActive] = useState(false);
   useEffect(() => {
@@ -182,7 +187,7 @@ export const StoryPage = ({
     <ICanPanel items={page.iCan} language={language} storageKey={`${extrasKey}:ican`} />
   ) : null;
   const renderGroupTask = () => page.type === 'story' && page.groupTask ? (
-    <GroupTaskPanel key={extrasKey} task={page.groupTask} language={language} />
+    <GroupTaskPanel key={extrasKey} task={page.groupTask} language={language} defaultOpen={isWide} />
   ) : null;
 
   const quickExercise = page.exercises?.[0];
@@ -221,7 +226,6 @@ export const StoryPage = ({
   );
 
   // Listen · Read · Quick Challenge · Language Focus: what this chapter asks for and what is done.
-  const isWide = useMediaQuery('(min-width: 1024px)');
   const onAudioEnded = () => setAudioEnded(true);
   const renderHeading = () => (
     <div className={cn("flex flex-col min-w-0", isRTL && "text-right")}>
@@ -245,6 +249,7 @@ export const StoryPage = ({
         onOpenExercise={setActiveExercise}
         onOpenLanguageFocus={() => setIsLanguageFocusOpen(true)}
         onOpenLessonCard={() => setIsLessonCardOpen(true)}
+        progressOnly={isWide}
       />
     </div>
   );
@@ -342,7 +347,14 @@ export const StoryPage = ({
         <div className="hidden lg:flex lg:flex-col h-full min-h-0 overflow-y-auto custom-scrollbar ps-0.5 pe-3 xl:pe-4 pb-4">
           <div className="grid grid-cols-12 gap-8 desk:gap-12 items-start">
             {/* Left side: Image */}
-            <div className="col-span-5 self-start lg:sticky lg:top-0">
+            <div className="col-span-5 self-start lg:sticky lg:top-0 flex items-start gap-3 xl:gap-4">
+              <ChapterActivityRail
+                page={page}
+                completedExercises={completedExercises}
+                onOpenExercise={setActiveExercise}
+                onOpenPanel={setRailPanel}
+              />
+              <div className="min-w-0 flex-1">
               {page.image && (
                 <motion.div 
                   initial={{ opacity: 0, x: isRTL ? 20 : -20 }}
@@ -378,6 +390,7 @@ export const StoryPage = ({
                   </div>
                 </motion.div>
               )}
+              </div>
             </div>
 
             {/* Right side: Story text scrolling content */}
@@ -401,12 +414,7 @@ export const StoryPage = ({
             </div>
           </div>
 
-          <QuickChallengePanel page={page} completedExercises={completedExercises} onOpenExercise={setActiveExercise} />
 
-          <LanguageFocusPanel page={page} completedExercises={completedExercises} onOpenExercise={setActiveExercise} isOpen={isLanguageFocusOpen} onToggle={() => setIsLanguageFocusOpen(open => !open)} />
-
-          {renderGroupTask()}
-          {renderICan()}
           {page.type === 'story' && page.id === 1 && <MyWordsReminder />}
         </div>
       </div>
@@ -431,6 +439,44 @@ export const StoryPage = ({
           />
         )}
       </AnimatePresence>
+
+      {createPortal(
+        <AnimatePresence>
+          {isWide && railPanel && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 z-[300] flex items-center justify-center bg-black/45 p-8 backdrop-blur-sm"
+              onClick={() => setRailPanel(null)}
+              role="dialog"
+              aria-modal="true"
+              dir={isRTL ? 'rtl' : 'ltr'}
+            >
+              <motion.div
+                initial={{ y: 12, scale: 0.98 }}
+                animate={{ y: 0, scale: 1 }}
+                exit={{ y: 12, scale: 0.98 }}
+                className="relative w-full max-w-3xl"
+                onClick={event => event.stopPropagation()}
+              >
+                <button
+                  type="button"
+                  onClick={() => setRailPanel(null)}
+                  className="absolute -end-3 -top-3 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-white font-display text-xl text-wood/75 shadow-lg ring-1 ring-black/5 hover:bg-brand-50"
+                  aria-label={language === 'ar' ? 'إغلاق' : 'Close'}
+                >
+                  ×
+                </button>
+                <div className="max-h-[85vh] overflow-y-auto custom-scrollbar rounded-[26px] [&>section]:mt-0">
+                  {railPanel === 'group' ? renderGroupTask() : renderICan()}
+                </div>
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>,
+        document.body,
+      )}
 
       <ReaderTour active={isTourActive} onFinish={() => setIsTourActive(false)} />
       {lessonSection && (

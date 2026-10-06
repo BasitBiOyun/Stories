@@ -136,7 +136,7 @@ export const ChapterAudioBar = ({ page, audio, onEnded, withElement = true }: { 
               ref={audioControlsRef}
               dir="ltr"
               className={cn(
-                "relative z-[90] flex w-full items-center gap-2 rounded-xl border px-1.5 py-1.5 shadow-[0_18px_24px_-22px_rgba(63,49,28,0.45)] backdrop-blur-md sm:w-[430px] sm:gap-3 sm:rounded-2xl sm:px-3 sm:py-3 lg:w-[500px]",
+                "relative z-[90] flex w-full items-center gap-2 rounded-xl border px-1.5 py-1.5 shadow-[0_18px_24px_-22px_rgba(63,49,28,0.45)] backdrop-blur-md sm:w-[430px] sm:gap-3 sm:rounded-2xl sm:px-3 sm:py-3 lg:w-[460px] lg:py-1.5 lg:px-2",
                 "bg-brand-50/88 border-brand-200/90"
               )}
             >
@@ -147,7 +147,7 @@ export const ChapterAudioBar = ({ page, audio, onEnded, withElement = true }: { 
                 onClick={isAudioLocked ? undefined : toggleAudio}
                 disabled={isAudioLocked}
                 className={cn(
-                  "flex h-10 w-10 shrink-0 items-center justify-center rounded-full shadow-[0_7px_18px_rgba(63,49,28,0.16)] transition-all active:scale-[0.97] sm:h-12 sm:w-12",
+                  "flex h-10 w-10 shrink-0 items-center justify-center rounded-full shadow-[0_7px_18px_rgba(63,49,28,0.16)] transition-all active:scale-[0.97] sm:h-12 sm:w-12 lg:h-10 lg:w-10",
                   isAudioLocked
                     ? "bg-gray-400 text-white cursor-not-allowed opacity-60"
                     : "bg-brand-700 text-white hover:bg-brand-800"

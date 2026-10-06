@@ -320,11 +320,11 @@ const GROUP_LABELS = {
 };
 
 /** A group task after some chapters. Closed by default so it never lengthens the page for a learner who skips it. */
-export const GroupTaskPanel = ({ task, language }: { task: GroupTask; language: string }) => {
+export const GroupTaskPanel = ({ task, language, defaultOpen = false }: { task: GroupTask; language: string; defaultOpen?: boolean }) => {
   const isArabic = language === 'ar';
   const L = isArabic ? GROUP_LABELS.ar : GROUP_LABELS.en;
   const { classMode } = useClassMode();
-  const [open, setOpen] = useState(classMode);
+  const [open, setOpen] = useState(classMode || defaultOpen);
   const GroupIcon = MODE_ICONS.group.icon;
   const SoloIcon = MODE_ICONS.individual.icon;
   const small = isArabic ? 'text-sm' : 'text-[13px]';

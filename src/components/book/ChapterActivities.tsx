@@ -5,13 +5,13 @@ import { motion, AnimatePresence } from 'motion/react';
 import { ArrowRight, CheckCircle2 } from '../ui/icons';
 import { PageData, Exercise, TeacherGuideSection } from '../../types';
 import { cn } from '../../lib/utils';
-import { SECTION_ICONS, type SectionKey } from '../../lib/sectionIcons';
+import { SECTION_ICONS, MODE_ICONS, type SectionKey } from '../../lib/sectionIcons';
 import { presentExerciseTitle } from '../../lib/exercisePresentation';
 import { useLanguage } from '../../contexts/LanguageContext';
 
 export const ChapterSteps = ({
   page, listened, textEndReached, quickExercise, quickDone, focusExercises, focusDone, lessonSection,
-  onOpenExercise, onOpenLanguageFocus, onOpenLessonCard,
+  onOpenExercise, onOpenLanguageFocus, onOpenLessonCard, progressOnly = false,
 }: {
   page: PageData;
   listened: boolean;
@@ -24,16 +24,18 @@ export const ChapterSteps = ({
   onOpenExercise: (exercise: Exercise) => void;
   onOpenLanguageFocus: () => void;
   onOpenLessonCard: () => void;
+  /** Wide screens: the activities sit beside the picture, so only Listen and Read show here. */
+  progressOnly?: boolean;
 }) => {
     const { language, t } = useLanguage();
     if (page.type !== 'story') return null;
     const steps: { key: SectionKey; label: string; done: boolean; onClick?: () => void }[] = [];
     if (page.audioUrl) steps.push({ key: 'listen', label: t('nav.stepListen'), done: listened });
     steps.push({ key: 'read', label: t('nav.stepRead'), done: textEndReached });
-    if (quickExercise) {
+    if (quickExercise && !progressOnly) {
       steps.push({ key: 'quickChallenge', label: t('nav.quickChallenge'), done: quickDone, onClick: () => onOpenExercise(quickExercise) });
     }
-    if (focusExercises.length > 0) {
+    if (focusExercises.length > 0 && !progressOnly) {
       steps.push({
         key: 'languageFocus',
         label: t('nav.languageFocus'),
@@ -45,7 +47,7 @@ export const ChapterSteps = ({
         },
       });
     }
-    if (steps.length < 2 && !lessonSection) return null;
+    if (steps.length < (progressOnly ? 1 : 2) && !lessonSection) return null;
     const LessonIcon = SECTION_ICONS.lessonCard.icon;
     return (
       <ol className="mt-1.5 flex flex-wrap items-center gap-1 sm:gap-1.5" aria-label={t('nav.chapterSteps')} data-chapter-steps>
@@ -411,3 +413,72 @@ export const LanguageFocusPanel = ({ page, completedExercises, onOpenExercise, i
       </motion.section>
     );
   };
+
+/** Wide screens: the chapter's activities as one short list under the picture, so story and activities share one screen. */
+export const ChapterActivityRail = ({ page, completedExercises, onOpenExercise, onOpenPanel }: {
+  page: PageData;
+  completedExercises: string[];
+  onOpenExercise: (exercise: Exercise) => void;
+  /** Opens the group task or the I can list in a window. */
+  onOpenPanel: (panel: 'group' | 'iCan') => void;
+}) => {
+  const { language, t, formatNumber } = useLanguage();
+  const isArabic = language === 'ar';
+  if (page.type !== 'story') return null;
+  const quick = page.exercises?.[0];
+  const focus = page.languageFocusExercises ?? [];
+  const focusDone = focus.filter(exercise => completedExercises.includes(exercise.id)).length;
+  const nextFocus = focus.find(exercise => !completedExercises.includes(exercise.id)) ?? focus[0];
+  const rows: { key: string; icon: React.ComponentType<{ size?: number }>; label: string; short: string; status: string; done: boolean; onClick: () => void }[] = [];
+  if (quick) {
+    const done = completedExercises.includes(quick.id);
+    rows.push({ key: 'qc', icon: SECTION_ICONS.quickChallenge.icon, label: t('nav.quickChallenge'), short: isArabic ? 'تحدٍّ' : 'Quick', status: done ? t('nav.completed') : (isArabic ? 'ابدأ' : 'Start'), done, onClick: () => onOpenExercise(quick) });
+  }
+  if (focus.length && nextFocus) {
+    rows.push({ key: 'lf', icon: SECTION_ICONS.languageFocus.icon, label: t('nav.languageFocus'), short: isArabic ? 'تركيز' : 'Focus', status: `${formatNumber(focusDone)} / ${formatNumber(focus.length)}`, done: focusDone === focus.length, onClick: () => onOpenExercise(nextFocus) });
+  }
+  if (page.groupTask) {
+    rows.push({ key: 'gt', icon: MODE_ICONS.group.icon, label: isArabic ? 'مهمة جماعية' : 'Group task', short: isArabic ? 'جماعي' : 'Group', status: page.groupTask.time, done: false, onClick: () => onOpenPanel('group') });
+  }
+  if (page.iCan?.length) {
+    rows.push({ key: 'ic', icon: SECTION_ICONS.iCan.icon, label: SECTION_ICONS.iCan[isArabic ? 'ar' : 'en'], short: isArabic ? 'أستطيع' : 'I can', status: isArabic ? `${formatNumber(page.iCan.length)} عبارات` : `${page.iCan.length} statements`, done: false, onClick: () => onOpenPanel('iCan') });
+  }
+  if (!rows.length) return null;
+
+  return (
+    <nav className="relative z-[70] flex shrink-0 flex-col gap-3 pt-1" aria-label={isArabic ? 'أنشطة هذا الفصل' : 'This chapter'} data-activity-rail>
+      {rows.map(row => {
+        const Icon = row.icon;
+        return (
+          <button
+            key={row.key}
+            type="button"
+            onClick={row.onClick}
+            aria-label={`${row.label} · ${row.status}`}
+            title={`${row.label} · ${row.status}`}
+            className="group flex w-14 flex-col items-center gap-1 rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
+          >
+            <span className={cn(
+              'relative flex h-12 w-12 items-center justify-center rounded-2xl border shadow-[0_10px_20px_-16px_rgba(63,49,28,0.6)] transition-colors',
+              row.done ? 'border-emerald-200 bg-emerald-50 text-emerald-700' : 'border-brand-200 bg-white text-brand-800 group-hover:bg-brand-50',
+            )}>
+              <Icon size={21} />
+              {(row.done || row.key === 'lf') && (
+                <span className={cn(
+                  'absolute -bottom-1 -end-1 flex h-[18px] min-w-[18px] items-center justify-center rounded-full px-1 font-display text-[9px] font-bold tabular-nums ring-2 ring-white',
+                  row.done ? 'bg-emerald-600 text-white' : 'bg-brand-700 text-white',
+                )}>
+                  {row.done ? <CheckCircle2 size={11} /> : row.status.replace(/\s/g, '')}
+                </span>
+              )}
+            </span>
+            {/* Always visible, so a touch board needs no hover to tell the icons apart */}
+            <span className={cn('max-w-full truncate font-display font-semibold leading-tight', isArabic ? 'text-[12px]' : 'text-[11px]', row.done ? 'text-emerald-700' : 'text-wood/70')}>
+              {row.short}
+            </span>
+          </button>
+        );
+      })}
+    </nav>
+  );
+};
