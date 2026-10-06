@@ -229,8 +229,7 @@ export const StoryFlow = ({
 
           {/* The end of the story; the activities come after it */}
           <div className="my-16 flex flex-col items-center text-center" data-story-end>
-            <span className="h-[2px] w-16 rounded-full bg-gold" aria-hidden="true" />
-            <p className="mt-6 font-display text-4xl sm:text-5xl font-semibold tracking-[-0.03em] text-wood clip-room">
+            <p className="font-display text-4xl sm:text-5xl font-semibold tracking-[-0.03em] text-wood clip-room">
               {ar ? 'النِّهَايَةُ' : 'The End'}
             </p>
           </div>
