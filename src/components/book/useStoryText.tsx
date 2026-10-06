@@ -362,7 +362,7 @@ export const useStoryTextRenderer = ({
         const poemParts = [...part.matchAll(/\[POEM(?:\s+compact)?\][\s\S]*?\[\/POEM\]/gi)].map(match => match[0]);
         if (poemParts.length > 0) {
           return (
-            <div key={`poem-grid-${partIdx}`} className="my-6 grid grid-cols-1 md:grid-cols-2 gap-4 items-stretch">
+            <div key={`poem-grid-${partIdx}`} className="my-6 clear-both grid grid-cols-1 md:grid-cols-2 gap-4 items-stretch">
               {poemParts.map((poemPart, poemIndex) => {
                 const poem = parsePoem(poemPart);
                 if (!poem.translation) return null;

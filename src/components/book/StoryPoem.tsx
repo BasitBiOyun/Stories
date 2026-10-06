@@ -44,7 +44,7 @@ export const PoemBlock = ({
       onClick={() => hasOriginal && setShowOriginal(current => !current)}
       className={cn(
         "w-auto p-4 md:py-4 rounded-2xl bg-parchment/45 border border-sky-300/60 border-l-4 border-r-4 border-sky-400 shadow-md relative overflow-hidden flex flex-col items-center justify-center text-center page-texture transition-all hover:shadow-lg hover:bg-parchment/55 hover:border-sky-500 select-none",
-        inGrid ? "my-0 h-full min-h-[180px]" : "my-6",
+        inGrid ? "my-0 h-full min-h-[180px]" : "my-6 clear-both", // clear-both: in story mode a poem goes under the chapter picture, full width
         hasOriginal ? "md:ps-10 md:pe-16 cursor-pointer" : "md:px-10"
       )}
     >
