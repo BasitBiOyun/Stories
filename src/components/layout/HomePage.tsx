@@ -181,17 +181,11 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart, onOpenTeacherGuide 
   hoveredRef.current = hoveredCover;
   useLayoutEffect(() => {
     const count = stories.length;
-    const step = (values: number[], at: number) => {
-      const low = Math.min(Math.floor(at), values.length - 1);
-      const high = Math.min(low + 1, values.length - 1);
-      return values[low] + (values[high] - values[low]) * Math.min(1, at - low);
-    };
-    // A card's look at a given distance from the front (0 = front, 1 = next, ...); outer cards overlap more so a growing library fits.
-    // Offsets are per half step: when two covers swap places they are side by side at half a step from the front, so they must not
-    // overlap there, otherwise the one going back would suddenly jump behind the one coming forward.
-    const OFFSETS = [0, 1.2, 1.4, 1.62, 1.8, 1.95, 2.08, 2.18, 2.26];
-    const SCALES = [1, 0.8, 0.64, 0.52, 0.46];
-    const LIGHT = [1, 0.78, 0.52, 0.4, 0.3];
+    // A card's look at a given distance from the front (0 = front, 1 = next, ...). Smooth curves, so a cover never speeds up or
+    // slows down suddenly; outer covers bunch up so a growing library still fits.
+    const offsetAt = (distance: number) => 2.3 * Math.tanh((distance * 1.3) / 2.3);
+    const scaleAt = (distance: number) => 0.44 + 0.56 * Math.exp(-distance * 0.55);
+    const lightAt = (distance: number) => 0.3 + 0.7 * Math.exp(-distance * 0.7);
     const visibleUntil = Math.min(count / 2, 3.4);
     const lift = stories.map(() => 0);
     const PERIOD = 6500;
@@ -203,32 +197,58 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart, onOpenTeacherGuide 
       const dt = last === null ? 0 : Math.min(now - last, 100);
       last = now;
       if (!hoveredRef.current && !reduceMotion) elapsed += dt;
-      // Glide between books and slow down gently as each one reaches the front, without ever stopping.
-      const raw = elapsed / PERIOD;
-      const fraction = raw - Math.floor(raw);
-      const phase = Math.floor(raw) + fraction - Math.sin(2 * Math.PI * fraction) / (2 * Math.PI) * 0.85;
+      // One steady turn: every cover moves at the same pace all the time.
+      const phase = elapsed / PERIOD;
       const nearest = ((Math.round(phase) % count) + count) % count;
       if (nearest !== shownFront) {
         shownFront = nearest;
         setFrontIndex(nearest);
       }
+      const stepPx = Math.min(170, Math.max(64, window.innerWidth * 0.11));
+      const widths = coverRefs.current.map(card => card?.offsetWidth ?? 0);
+      const deltas = stories.map((_, index) => {
+        const delta = (((index - phase) % count) + count) % count;
+        return delta > count / 2 ? delta - count : delta;
+      });
+      const offsets = deltas.map((delta, index) => offsetAt(Math.abs(delta)) * Math.sign(delta) * (isRTL ? -1 : 1) * (1 - lift[index] * 0.25));
+      const scales = deltas.map((delta, index) => scaleAt(Math.abs(delta)) * (1 + lift[index] * 0.08));
       stories.forEach((story, index) => {
         const card = coverRefs.current[index];
         if (!card) return;
-        let delta = (((index - phase) % count) + count) % count;
-        if (delta > count / 2) delta -= count;
+        const delta = deltas[index];
         const distance = Math.abs(delta);
         const target = hoveredRef.current === story.id ? 1 : 0;
         lift[index] += (target - lift[index]) * (reduceMotion ? 1 : Math.min(1, dt / 120));
-        const side = Math.sign(delta) * (isRTL ? -1 : 1);
-        const offset = step(OFFSETS, distance * 2) * side * (1 - lift[index] * 0.25);
-        const scale = step(SCALES, distance) * (1 + lift[index] * 0.08);
-        const light = step(LIGHT, distance) + (1 - step(LIGHT, distance)) * lift[index];
-        card.style.transform = `translate(calc(-50% + ${offset} * ${fanStep}), -50%) perspective(1600px) scale(${scale}) rotateY(${-offset * 12 * (1 - lift[index])}deg)`;
+        const offset = offsets[index];
+        const light = lightAt(distance) + (1 - lightAt(distance)) * lift[index];
+        card.style.transform = `translate(calc(-50% + ${offset} * ${fanStep}), -50%) perspective(1600px) scale(${scales[index]}) rotateY(${-offset * 12 * (1 - lift[index])}deg)`;
         card.style.filter = `brightness(${light})`;
         card.style.opacity = String(Math.max(0, Math.min(1, (visibleUntil - distance) / 0.6)));
-        card.style.zIndex = String(Math.round(100 - distance * 10) + (lift[index] > 0.05 ? 100 : 0));
+        card.style.zIndex = String(Math.round(1000 - distance * 100) + (lift[index] > 0.05 ? 1000 : 0));
         card.style.pointerEvents = distance > visibleUntil - 0.3 ? 'none' : '';
+        // The front cover going back and the next one coming forward overlap. Where they overlap, the one going back fades
+        // little by little, so when they swap places the newcomer is already showing there and nothing jumps.
+        let mask = '';
+        if (delta < 0 && delta > -1) {
+          const partner = deltas.findIndex(other => Math.abs(other - (delta + 1)) < 1e-6);
+          const strength = Math.max(0, 1 - Math.abs(distance - 0.5) / 0.4);
+          if (partner >= 0 && strength > 0 && lift[partner] < 0.05) {
+            const width = widths[index] * scales[index];
+            const partnerWidth = widths[partner] * scales[partner];
+            const x = offset * stepPx;
+            const partnerX = offsets[partner] * stepPx;
+            const toRight = partnerX > x;
+            const start = toRight
+              ? (partnerX - partnerWidth / 2 - (x - width / 2)) / width
+              : (x + width / 2 - (partnerX + partnerWidth / 2)) / width;
+            if (start < 1) {
+              const edge = Math.max(0, Math.min(100, start * 100));
+              mask = `linear-gradient(to ${toRight ? 'right' : 'left'}, #000 ${Math.max(0, edge - 6)}%, rgba(0,0,0,${1 - strength}) ${edge}%)`;
+            }
+          }
+        }
+        card.style.maskImage = mask;
+        card.style.webkitMaskImage = mask;
       });
       if (!reduceMotion) frame = window.requestAnimationFrame(draw);
     };
