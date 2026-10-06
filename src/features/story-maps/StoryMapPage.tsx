@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useId, useMemo, useRef, useState } from 'react';
+import { PHONE_QUERY } from '../../lib/phone';
 import { AnimatePresence, motion } from 'motion/react';
 import type { PageData } from '../../types';
 import { getHistoricalEntity } from '../historical-entities/registry';
@@ -378,7 +379,8 @@ export const StoryMapPage: React.FC<StoryMapPageProps> = ({ page }) => {
     playMapSound('whoosh');
     await Promise.all([
       tweenYear(item.year + EVENT_SETTLE, ms),
-      animateTo(cameraView(item.camera), Math.max(900, ms), 'fly'),
+      // Phones: a calm glide; the lift-and-dive of the big screen looks like the map is thrashing.
+      animateTo(cameraView(item.camera), Math.max(900, ms), window.matchMedia(PHONE_QUERY).matches ? 'auto' : 'fly'),
     ]);
     selectPlace(item.placeId);
     arrivalSound(index);
@@ -425,8 +427,9 @@ export const StoryMapPage: React.FC<StoryMapPageProps> = ({ page }) => {
       const dwell = sceneTime + (language === 'ar' ? 1000 : 0);
       const here = viewRef.current;
       const push = clampView({ x: here.x + here.w * 0.05, y: here.y + here.h * 0.05, w: here.w * 0.9, h: here.h * 0.9 }, aspect);
+      // Phones keep the camera still while a card is read (no slow push-in); the year still moves.
       await Promise.all([
-        animateTo(push, dwell, 'linear'),
+        window.matchMedia(PHONE_QUERY).matches ? Promise.resolve() : animateTo(push, dwell, 'linear'),
         tweenYear(Math.min(item.year + 0.95, map.time.lastYear + 0.99), dwell),
       ]);
       if (!alive()) return;
@@ -822,7 +825,8 @@ export const StoryMapPage: React.FC<StoryMapPageProps> = ({ page }) => {
 
       {/* Title row, matching the chapter pages */}
       <div className={cn('flex flex-col sm:flex-row sm:items-end justify-between gap-2 mb-3 sm:mb-5 shrink-0', isRTL && 'text-right')}>
-        <div className="min-w-0">
+        {/* Phones: the map's name is already in the top bar. */}
+        <div className="min-w-0 max-sm:hidden">
           <h3 className="font-display text-xl sm:text-3xl lg:text-4xl text-wood font-semibold tracking-[-0.03em] leading-tight">
             {page.title}
           </h3>
@@ -1242,7 +1246,7 @@ export const StoryMapPage: React.FC<StoryMapPageProps> = ({ page }) => {
 
         {/* Info card */}
         <aside
-          className="min-w-0 max-lg:order-3 max-sm:order-2 lg:col-start-2 lg:row-start-1 lg:row-span-2 lg:min-h-0 lg:overflow-y-auto custom-scrollbar rounded-[1.5rem] border border-brand-200/90 bg-brand-50/88 p-4 sm:p-5 shadow-[0_10px_30px_rgba(63,49,28,0.10)] flex flex-col"
+          className="min-w-0 max-lg:order-3 lg:col-start-2 lg:row-start-1 lg:row-span-2 lg:min-h-0 lg:overflow-y-auto custom-scrollbar rounded-[1.5rem] border border-brand-200/90 bg-brand-50/88 p-4 sm:p-5 shadow-[0_10px_30px_rgba(63,49,28,0.10)] flex flex-col"
           aria-live="polite"
         >
           <AnimatePresence mode="wait" initial={false}>
@@ -1464,8 +1468,8 @@ export const StoryMapPage: React.FC<StoryMapPageProps> = ({ page }) => {
 
         {/* Legend (phones) and the time panel */}
         {!challengeOn && (
-          <div className="min-w-0 flex flex-col gap-3 max-lg:order-2 max-sm:order-3 lg:col-start-1 lg:row-start-2">
-            <div className="sm:hidden">{legend}</div>
+          <div className="min-w-0 flex flex-col gap-3 max-lg:order-2 max-sm:-mt-1 lg:col-start-1 lg:row-start-2">
+            <div className="sm:hidden max-sm:order-2">{legend}</div>
             {timeOn && (
               <MapTimePanel
                 map={map}

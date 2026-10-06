@@ -1,7 +1,8 @@
 import React, { useMemo, useRef, useState } from 'react';
-import { ArrowRight, BookOpen, Compass, Target } from '../../components/ui/icons';
+import { ArrowRight, BookOpen, ChevronUp, Compass, Target } from '../../components/ui/icons';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { cn } from '../../lib/utils';
+import { useIsPhone } from '../../lib/phone';
 import type { PageData } from '../../types';
 import { GROUP_COLORS, GROUP_OF_KIND, GROUP_ORDER, tint, type EntityGroup } from './categories';
 import { EntityMap } from './EntityMap';
@@ -37,6 +38,9 @@ const COPY = {
     names: 'names',
     noMap: 'This card has no map.',
     play: 'Find it on the map',
+    gameHint: (n: string) => `A map game: find ${n} places and names from the story`,
+    gameGo: 'Play',
+    gameClose: 'Close',
     inTheStory: 'In the story',
     readChapter: (chapter: string) => `Read Chapter ${chapter}`,
   },
@@ -57,6 +61,9 @@ const COPY = {
     names: 'اسمًا',
     noMap: 'ليس لهذه البطاقة خريطة.',
     play: 'اِبْحَثْ عَنْهُ عَلَى الخَرِيطَةِ',
+    gameHint: (n: string) => `لُعْبَةُ خَرِيطَةٍ: اِبْحَثْ عَنْ ${n} مِنَ الأَمَاكِنِ وَالأَسْمَاءِ فِي القِصَّةِ`,
+    gameGo: 'اِلْعَبْ',
+    gameClose: 'إِغْلَاقٌ',
     inTheStory: 'في القصة',
     readChapter: (chapter: string) => `اقرأ الفصل ${chapter}`,
   },
@@ -118,6 +125,9 @@ export const PlacesPage = ({
   const { language, formatNumber, isRTL } = useLanguage();
   const locale = language === 'ar' ? 'ar' : 'en';
   const text = COPY[locale];
+  const isPhone = useIsPhone();
+  // Phones: cards are closed (small picture, name, kind); tapping one opens it and shows it on the map.
+  const [openCardId, setOpenCardId] = useState<string | null>(null);
   const detailRef = useRef<HTMLDivElement>(null);
   const cardRefs = useRef(new Map<string, HTMLDivElement>());
 
@@ -169,9 +179,17 @@ export const PlacesPage = ({
     }
   };
 
-  const select = (id: string) => {
+  const select = (id: string, fromCard = false) => {
     setSelectedId(id);
     setPlaying(false);
+    if (isPhone) {
+      if (fromCard) setOpenCardId(current => (current === id ? null : id));
+      else {
+        setOpenCardId(id);
+        window.setTimeout(() => cardRefs.current.get(id)?.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 60);
+      }
+      return;
+    }
     scrollToDetail();
     // A place picked on the map brings its card into view in the list.
     if (!window.matchMedia('(max-width: 1023px)').matches) {
@@ -212,6 +230,35 @@ export const PlacesPage = ({
     );
     const quote = quotes.get(entry.entity.id);
 
+    if (isPhone && openCardId !== entry.entity.id) {
+      return (
+        <div
+          key={entry.entity.id}
+          ref={element => { if (element) cardRefs.current.set(entry.entity.id, element); else cardRefs.current.delete(entry.entity.id); }}
+          role="button"
+          tabIndex={0}
+          aria-expanded={false}
+          onClick={() => select(entry.entity.id, true)}
+          onKeyDown={event => {
+            if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); select(entry.entity.id, true); }
+          }}
+          style={cardStyle}
+          className={cn(
+            'flex cursor-pointer items-center gap-3 rounded-2xl border border-black/5 border-s-[3px] p-2 text-start',
+            isActive ? 'shadow-sm' : 'bg-white/75',
+          )}
+        >
+          <EntityPicture entity={entry.entity} iconSize={22} className="aspect-square h-14 w-14 shrink-0 rounded-xl" />
+          <div className="min-w-0 flex-1">
+            <span className="text-[10px] font-black uppercase tracking-[0.14em]" style={{ color }}>{copy.kindLabel}</span>
+            <h4 className="font-display text-[15px] font-bold leading-tight text-brand-950">{title}</h4>
+          </div>
+          {tag}
+          <ChevronUp size={16} className="shrink-0 rotate-180 text-wood/45" />
+        </div>
+      );
+    }
+
     // Every card is complete on its own: text, extra sentence and story quote.
     // Selecting a card only highlights it and shows it on the map; its size never changes.
     return (
@@ -221,12 +268,12 @@ export const PlacesPage = ({
         role="button"
         tabIndex={0}
         aria-pressed={isActive}
-        onClick={() => select(entry.entity.id)}
+        onClick={() => select(entry.entity.id, true)}
         onKeyDown={event => {
           if (event.target !== event.currentTarget) return;
           if (event.key === 'Enter' || event.key === ' ') {
             event.preventDefault();
-            select(entry.entity.id);
+            select(entry.entity.id, true);
           }
         }}
         style={cardStyle}
@@ -283,7 +330,23 @@ export const PlacesPage = ({
   return (
     <div className="flex-1 min-h-0 overflow-y-auto custom-scrollbar lg:overflow-hidden" dir={isRTL ? 'rtl' : 'ltr'}>
       <div className="flex flex-col gap-3 pb-2 lg:h-full lg:pb-5">
-        <section className="relative overflow-hidden rounded-2xl border border-brand-200/70 bg-gradient-to-br from-brand-50/95 via-white/80 to-brand-50/70 px-4 py-2 shadow-sm">
+        {/* Phones: the page name is already in the top bar, so the map game is offered here in words. */}
+        <button
+          type="button"
+          onClick={() => setPlaying(value => !value)}
+          aria-pressed={playing}
+          className="flex w-full items-center gap-3 rounded-2xl bg-teal-700 px-3.5 py-2.5 text-start text-white shadow-md sm:hidden"
+        >
+          <Target size={24} className="shrink-0" />
+          <span className="min-w-0 flex-1">
+            <span className="block font-display text-[15px] font-bold leading-tight">{text.play}</span>
+            <span className="block text-[12px] leading-snug text-white/85">{text.gameHint(formatNumber(entries.length))}</span>
+          </span>
+          <span className="shrink-0 rounded-xl bg-white px-3 py-1.5 font-display text-[13px] font-bold text-teal-800">
+            {playing ? text.gameClose : text.gameGo}
+          </span>
+        </button>
+        <section className="relative overflow-hidden rounded-2xl border border-brand-200/70 bg-gradient-to-br from-brand-50/95 via-white/80 to-brand-50/70 px-4 py-2 shadow-sm max-sm:hidden">
           <div className="relative flex items-center gap-3">
             <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-teal-700 text-white shadow-md">
               <Compass size={20} />
@@ -336,7 +399,7 @@ export const PlacesPage = ({
                     color={selectedColors.base}
                     label={selectedCopy.title}
                     markers={markers}
-                    onMarkerClick={select}
+                    onMarkerClick={id => select(id)}
                     className={mapClassName}
                     style={mapStyle}
                   />

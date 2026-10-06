@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef } from 'react';
+import React, { useMemo } from 'react';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { cn } from '../../lib/utils';
 import { Pause, Play } from '../../components/ui/icons';
@@ -97,68 +97,40 @@ export const MapTimePanel: React.FC<MapTimePanelProps> = ({ map, year, activeInd
     </div>
   );
 
-  // On a phone the chapter buttons scroll sideways; keep the current one in view.
-  const stepsRef = useRef<HTMLOListElement>(null);
-  useEffect(() => {
-    const list = stepsRef.current;
-    const item = list?.children[activeIndex] as HTMLElement | undefined;
-    if (!list || !item || list.offsetParent === null) return;
-    list.scrollTo({ left: item.offsetLeft - (list.clientWidth - item.offsetWidth) / 2, behavior: 'smooth' });
-  }, [activeIndex]);
-
   const tourLabel = playing ? t('map.tourPause') : t('map.tour');
 
   return (
     <div dir="ltr" className="shrink-0 rounded-2xl border border-brand-200/90 bg-brand-50/88 px-3 pb-2 pt-3 sm:px-4">
       {/* Phone: the tour button and the current step on top, the line in full width, then
           chapter buttons that scroll sideways instead of squeezing into one row. */}
-      <div className="sm:hidden">
-        <div className="flex items-center gap-3">
-          {map.features.tour && (
-            <button
-              type="button"
-              onClick={onToggleTour}
-              aria-pressed={playing}
-              className={cn(
-                'inline-flex h-11 shrink-0 items-center gap-2 rounded-full px-4 font-display text-[13px] font-semibold shadow-md transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2',
-                playing ? 'border border-brand-300 bg-white text-brand-800' : 'bg-brand-700 text-white hover:bg-brand-800'
-              )}
-            >
-              {playing ? <Pause size={17} aria-hidden="true" /> : <Play size={17} aria-hidden="true" className="translate-x-px" />}
-              {tourLabel}
-            </button>
-          )}
-          <div className="min-w-0 flex-1 text-end" aria-hidden="true">
-            <div className="font-display text-lg font-bold leading-tight tabular-nums text-brand-800">
+      {/* Phone: one slim bar under the map, like a video player: play, the current step and its line. */}
+      <div className="flex items-center gap-3 sm:hidden">
+        {map.features.tour && (
+          <button
+            type="button"
+            onClick={onToggleTour}
+            aria-pressed={playing}
+            aria-label={tourLabel}
+            className={cn(
+              'flex h-12 w-12 shrink-0 items-center justify-center rounded-full shadow-md transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2',
+              playing ? 'border border-brand-300 bg-white text-brand-800' : 'bg-brand-700 text-white'
+            )}
+          >
+            {playing ? <Pause size={20} aria-hidden="true" /> : <Play size={20} aria-hidden="true" className="translate-x-px" />}
+          </button>
+        )}
+        <div className="min-w-0 flex-1">
+          <div className="flex items-baseline gap-2" aria-hidden="true">
+            <span className="shrink-0 font-display text-[15px] font-bold tabular-nums text-brand-800">
               {stages ? stepText(activeIndex) : formatNumber(shownYear)}
-            </div>
-            <div dir="auto" className="truncate text-[13px] font-semibold leading-snug text-wood">{map.timeline[activeIndex]?.label}</div>
+            </span>
+            <span dir="auto" className="truncate text-[13px] font-semibold text-wood">{map.timeline[activeIndex]?.label}</span>
+            <span className="ms-auto shrink-0 font-display text-[11px] font-semibold tabular-nums text-wood/50">
+              {formatNumber(activeIndex + 1)}/{formatNumber(map.timeline.length)}
+            </span>
           </div>
+          {track}
         </div>
-        {track}
-        <ol ref={stepsRef} className="relative -mx-3 mt-1 flex snap-x gap-1.5 overflow-x-auto px-3 pb-1.5 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-          {map.timeline.map((item, index) => {
-            const active = index === activeIndex;
-            const battle = isBattle(item.placeId);
-            return (
-              <li key={`m-${item.year}`} className="w-[5.25rem] shrink-0 snap-center">
-                <button
-                  type="button"
-                  onClick={() => onJump(index)}
-                  aria-pressed={active}
-                  className={cn(
-                    'flex min-h-[3.6rem] w-full flex-col items-center gap-0.5 rounded-xl border px-1 py-1.5 text-center transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500',
-                    active ? (battle ? 'border-transparent text-white' : 'border-transparent bg-brand-700 text-white') : 'border-brand-200 bg-white text-brand-800'
-                  )}
-                  style={active && battle ? { background: eventColor } : undefined}
-                >
-                  <span className="font-display text-[12px] font-bold tabular-nums">{stepText(index)}</span>
-                  <span dir="auto" className={cn('line-clamp-2 text-[11px] leading-tight', active ? 'font-semibold' : 'text-wood/70')}>{item.label}</span>
-                </button>
-              </li>
-            );
-          })}
-        </ol>
       </div>
 
       <div className="hidden items-start gap-3 sm:flex sm:gap-4">

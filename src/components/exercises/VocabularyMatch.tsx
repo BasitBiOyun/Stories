@@ -405,13 +405,14 @@ export const VocabularyMatch = ({ pairs, collectionId = 'prophets', level, onRev
     { key: 'recall' as const, label: copy.recall },
   ];
   const stageHeader = (
-    <div className="shrink-0 rounded-2xl bg-white/65 p-3 ring-1 ring-inset ring-black/[0.06]">
+    <div className="shrink-0 rounded-2xl bg-white/65 p-3 ring-1 ring-inset ring-black/[0.06] max-sm:rounded-none max-sm:bg-transparent max-sm:p-0 max-sm:ring-0">
       <div className="flex items-center gap-3">
         <div className={cn('hidden h-10 w-10 shrink-0 items-center justify-center rounded-xl text-white sm:flex', theme.badge)}>
           <SECTION_ICONS.vocabularyChallenge.icon size={18} />
         </div>
         <div className="min-w-0 flex-1">
-          <div className="flex items-center justify-between gap-3">
+          {/* Phones: the page name is in the top bar; only the three steps stay, as one slim row. */}
+          <div className="flex items-center justify-between gap-3 max-sm:hidden">
             <div>
               <p className={cn('font-display text-xs font-semibold uppercase tracking-[0.14em] sm:text-sm', theme.accent)}>
                 {copy.title}
@@ -429,7 +430,7 @@ export const VocabularyMatch = ({ pairs, collectionId = 'prophets', level, onRev
               <RotateCcw size={14} />
             </button>
           </div>
-          <div className="mt-3 grid grid-cols-3 gap-2">
+          <div className="mt-3 grid grid-cols-3 gap-2 max-sm:mt-0 max-sm:flex max-sm:gap-1 max-sm:rounded-xl max-sm:bg-black/[0.05] max-sm:p-1">
             {stageDefinitions.map((item, index) => {
               const isUnlocked = index <= maxUnlockedStage;
               const isActive = stageRank === index;
@@ -445,7 +446,7 @@ export const VocabularyMatch = ({ pairs, collectionId = 'prophets', level, onRev
                     setStage(item.key);
                   }}
                   className={cn(
-                    'min-h-10 rounded-xl px-2.5 py-2 text-center font-display text-[11px] font-semibold tracking-[0.02em] ring-1 transition-all sm:text-xs md:text-[13px]',
+                    'min-h-10 rounded-xl px-2.5 py-2 text-center font-display text-[11px] font-semibold tracking-[0.02em] ring-1 transition-all sm:text-xs md:text-[13px] max-sm:min-h-9 max-sm:flex-1 max-sm:rounded-lg max-sm:px-1 max-sm:py-1 max-sm:leading-tight max-sm:ring-0',
                     isActive
                       ? cn(theme.selected, 'ring-1')
                       : isComplete
@@ -459,6 +460,14 @@ export const VocabularyMatch = ({ pairs, collectionId = 'prophets', level, onRev
                 </button>
               );
             })}
+            <button
+              type="button"
+              onClick={reset}
+              className={cn('flex h-9 w-9 shrink-0 items-center justify-center rounded-lg sm:hidden', theme.reset)}
+              aria-label={t('nav.reset')}
+            >
+              <RotateCcw size={14} />
+            </button>
           </div>
         </div>
       </div>

@@ -11,6 +11,7 @@ import {
   CheckCircle,
   ChevronLeft,
   ChevronRight,
+  ChevronUp,
 } from '../ui/icons';
 import { PageData, BookData, VocabularyItem } from '../../types';
 import { SECTION_ICONS } from '../../lib/sectionIcons';
@@ -435,7 +436,7 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({
   return (
     <div className="flex-1 min-h-0 flex flex-col gap-3 overflow-hidden">
       <section className={cn(
-        'shrink-0 relative overflow-hidden rounded-[1.6rem] border bg-gradient-to-br px-4 py-4 sm:px-5 sm:py-4 shadow-sm max-sm:rounded-2xl max-sm:px-3.5 max-sm:py-2.5',
+        'shrink-0 relative overflow-hidden rounded-[1.6rem] border bg-gradient-to-br px-4 py-4 sm:px-5 sm:py-4 shadow-sm max-sm:hidden',
         colTheme.hero,
         colTheme.accentBorder
       )}>
@@ -613,6 +614,16 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({
               ))}
             </select>
           )}
+          {isPhone && (knownCount > 0 || reviewCount > 0) && (
+            <button
+              onClick={resetProgress}
+              className={cn('shrink-0 w-9 h-9 rounded-xl flex items-center justify-center', colTheme.brandSoft, colTheme.brandText)}
+              title={t('nav.reset')}
+              aria-label={t('nav.reset')}
+            >
+              <RotateCcw size={14} />
+            </button>
+          )}
 
           <div className="hidden 2xl:flex items-center gap-1.5 text-[11px] text-wood/40 whitespace-nowrap px-1">
             <span>{formatNumber(filteredVocab.length)}</span>
@@ -680,27 +691,33 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({
               const nextState: KnownState = state === 'unreviewed' ? 'known' : state === 'known' ? 'unknown' : 'unreviewed';
               const stateLabel = state === 'known' ? copy.knownBadge : state === 'unknown' ? copy.reviewBadge : copy.newBadge;
               return (
-                <li key={v.key} className="flex items-center gap-2 bg-white/55 ps-4 pe-3">
+                <li key={v.key} className="bg-white/55 ps-4 pe-3">
+                  <div className="flex items-center gap-2">
                   <button
                     type="button"
-                    onClick={() => playWord(v.word)}
+                    onClick={() => setExpandedWord(expandedWord === v.key ? null : v.key)}
                     className="min-w-0 flex-1 py-3 text-start"
-                    aria-label={v.word}
+                    aria-expanded={expandedWord === v.key}
                   >
                     <span className="flex flex-wrap items-baseline gap-x-2">
-                      <span className={cn('font-black text-[17px] leading-tight', colTheme.brandTextStrong, !isRTL && 'capitalize')}>{v.word}</span>
+                      <span className={cn('font-black text-[17px] leading-tight', colTheme.brandTextStrong, !isRTL && 'capitalize')}>
+                        {v.word}
+                        <ChevronUp size={14} className={cn('ms-1 inline-block align-middle opacity-60 transition-transform', expandedWord !== v.key && 'rotate-180')} />
+                      </span>
                       <span className="text-[11px] font-semibold text-wood/55">
                         {[v.partOfSpeech, v.chapter ? `${copy.chapterLabel} ${formatNumber(v.chapter)}` : null].filter(Boolean).join(' · ')}
                       </span>
                     </span>
                     <span className="mt-0.5 block font-serif text-[15px] leading-snug text-wood/75">{v.definition}</span>
                   </button>
-                  <span
-                    aria-hidden
-                    className={cn('shrink-0 w-9 h-9 rounded-full flex items-center justify-center', playingWord === v.word ? colTheme.audioPlaying : colTheme.audio)}
+                  <button
+                    type="button"
+                    onClick={() => playWord(v.word)}
+                    aria-label={v.word}
+                    className={cn('shrink-0 w-10 h-10 rounded-full flex items-center justify-center', playingWord === v.word ? colTheme.audioPlaying : colTheme.audio)}
                   >
-                    <Volume2 size={15} className={playingWord === v.word ? 'animate-pulse' : ''} />
-                  </span>
+                    <Volume2 size={16} className={playingWord === v.word ? 'animate-pulse' : ''} />
+                  </button>
                   <button
                     type="button"
                     onClick={() => markWord(v.key, nextState)}
@@ -717,6 +734,33 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({
                   >
                     {state === 'unknown' ? <RotateCcw size={17} /> : <Check size={18} />}
                   </button>
+                  </div>
+                  {expandedWord === v.key && (
+                    <div className={cn('mb-3 rounded-xl border bg-white/70 p-3 text-[13px] leading-relaxed text-wood/75 space-y-2', colTheme.border)}>
+                      {v.storyExample && (
+                        <div>
+                          <div className={cn('text-[10px] font-black uppercase tracking-[0.1em]', colTheme.brandText)}>
+                            {copy.inStory}{v.chapter ? ` · ${copy.chapterLabel} ${formatNumber(v.chapter)}` : ''}
+                          </div>
+                          <p className="font-serif italic">“{v.storyExample}”</p>
+                        </div>
+                      )}
+                      {!v.storyExample && v.example && <p className="font-serif italic">“{v.example}”</p>}
+                      {v.pronunciation && <p className="font-serif text-wood/60">{v.pronunciation}</p>}
+                      {([
+                        [copy.categoryLabel, v.category ? [v.category] : undefined],
+                        [copy.wordFamilyLabel, v.wordFamily],
+                        [copy.collocationsLabel, v.collocations],
+                        [copy.synonymsLabel, v.synonyms],
+                        [copy.antonymsLabel, v.antonyms],
+                      ] as const).filter(([, items]) => items?.length).map(([label, items]) => (
+                        <div key={label}>
+                          <div className="text-[10px] font-black uppercase tracking-[0.1em] text-wood/55">{label}</div>
+                          <p>{items!.join(' · ')}</p>
+                        </div>
+                      ))}
+                    </div>
+                  )}
                 </li>
               );
             })}

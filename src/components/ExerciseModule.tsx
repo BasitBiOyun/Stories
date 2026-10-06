@@ -572,7 +572,7 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
       const available = allItems.filter((item) => !assigned.includes(item));
       const allAssigned = allItems.length > 0 && available.length === 0;
       if (isPhone) {
-        // Phones: one item at a time in the middle, the groups as big buttons at the bottom.
+        // Phones: one item at a time, the group buttons right under it; placed items collect below the buttons.
         const groups = exercise.dragDropGroups ?? [];
         const current = available[0] ?? null;
         return (
@@ -592,8 +592,30 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
                 </p>
               </div>
             ) : null}
+            {!isSubmitted && (
+              <div className="pt-1">
+                {current ? (
+                  <div className={cn('grid gap-2', groups.length === 2 ? 'grid-cols-2' : 'grid-cols-1')}>
+                    {groups.map((group) => (
+                      <button
+                        key={group.group}
+                        type="button"
+                        onClick={() => assignDragItem(group.group, current)}
+                        className={cn('min-h-14 rounded-xl border-2 bg-white px-3 py-2 font-display font-semibold leading-snug', isArabic ? 'text-base' : 'text-sm', theme.softBorder, theme.accentText)}
+                      >
+                        {group.group}
+                      </button>
+                    ))}
+                  </div>
+                ) : (
+                  <button type="button" disabled={!allAssigned} onClick={() => submit(dragAssignments)} className={cn('w-full min-h-12 rounded-xl font-bold', isArabic && 'text-base', allAssigned ? `${theme.accentBg} text-white` : 'bg-gray-100 text-gray-400')}>
+                    {t('nav.check')}
+                  </button>
+                )}
+              </div>
+            )}
             {groups.some((group) => (dragAssignments[group.group] ?? []).length > 0) && (
-              <div className="space-y-2">
+              <div className="space-y-2 border-t border-black/[0.06] pt-3">
                 {groups.map((group) => {
                   const placed = dragAssignments[group.group] ?? [];
                   if (!placed.length) return null;
@@ -616,28 +638,6 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
                     </div>
                   );
                 })}
-              </div>
-            )}
-            {!isSubmitted && (
-              <div className="pt-1">
-                {current ? (
-                  <div className={cn('grid gap-2', groups.length === 2 ? 'grid-cols-2' : 'grid-cols-1')}>
-                    {groups.map((group) => (
-                      <button
-                        key={group.group}
-                        type="button"
-                        onClick={() => assignDragItem(group.group, current)}
-                        className={cn('min-h-14 rounded-xl border-2 bg-white px-3 py-2 font-display font-semibold leading-snug', isArabic ? 'text-base' : 'text-sm', theme.softBorder, theme.accentText)}
-                      >
-                        {group.group}
-                      </button>
-                    ))}
-                  </div>
-                ) : (
-                  <button type="button" disabled={!allAssigned} onClick={() => submit(dragAssignments)} className={cn('w-full min-h-12 rounded-xl font-bold', isArabic && 'text-base', allAssigned ? `${theme.accentBg} text-white` : 'bg-gray-100 text-gray-400')}>
-                    {t('nav.check')}
-                  </button>
-                )}
               </div>
             )}
           </div>

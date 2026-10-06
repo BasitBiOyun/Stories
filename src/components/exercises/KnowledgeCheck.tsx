@@ -418,6 +418,8 @@ export const KnowledgeCheck = ({
       <div className="mx-auto w-full max-w-5xl desk:max-w-[84rem] wide:max-w-none space-y-5 pb-4">
         <div className={cn(
           'relative overflow-hidden rounded-[22px] sm:rounded-[28px] p-4 sm:p-6 flex flex-col gap-4 sm:gap-5 sm:flex-row sm:items-start sm:justify-between max-sm:py-3',
+          // Phones: the page name is in the top bar; the question starts on the first line.
+          !showResults && 'max-sm:hidden',
           theme.softBg
         )}>
           <div className="flex items-start gap-3 min-w-0 sm:items-center">
