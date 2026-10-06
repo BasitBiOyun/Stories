@@ -77,7 +77,7 @@ const LABELS = {
     almost: 'Almost',
     notYet: 'Not yet',
     allYes: 'Well done! You can do all of these now.',
-    lookAgain: 'Look at these again:',
+    lookAgain: 'One step for each:',
     reread: 'Read the chapter again',
     done: 'Done',
     askClass: 'Ask the class:',
@@ -101,7 +101,7 @@ const LABELS = {
     almost: 'تَقْرِيبًا',
     notYet: 'لَيْسَ بَعْدُ',
     allYes: 'أَحْسَنْتَ! تَسْتَطِيعُ الآنَ كُلَّ هٰذِهِ.',
-    lookAgain: 'رَاجِعْ هٰذِهِ مَرَّةً أُخْرَى:',
+    lookAgain: 'خُطْوَةٌ وَاحِدَةٌ لِكُلٍّ مِنْهَا:',
     reread: 'اقْرَأِ الفَصْلَ مَرَّةً أُخْرَى',
     done: 'تَمَّ',
     askClass: 'اسْأَلِ الصَّفَّ:',
@@ -270,8 +270,18 @@ export const BeforeYouReadPanel = ({
 
 type Rating = 'yes' | 'almost' | 'notYet';
 
-export const ICanPanel = ({ items, language, storageKey, onReread, onDone }: {
+/** What to do next for one "I can" line, taken from the chapter (see lib/iCanSteps). */
+export interface ICanStep {
+  text: string;
+  quote?: string;
+  actionLabel?: string;
+  action?: () => void;
+}
+
+export const ICanPanel = ({ items, language, storageKey, onReread, onDone, steps }: {
   items: string[];
+  /** One step per line, in the same order as items. */
+  steps?: ICanStep[];
   language: string;
   storageKey: string;
   /** Takes the learner back to the story text. */
@@ -285,13 +295,14 @@ export const ICanPanel = ({ items, language, storageKey, onReread, onDone }: {
   const [ratings, setRatings] = useState<Record<number, Rating>>(() => readStored(storageKey, {}));
   useEffect(() => setRatings(readStored(storageKey, {})), [storageKey]);
   const rate = (index: number, value: Rating) => {
-    const next = { ...ratings, [index]: value };
+    const next = { ...ratings, ...readStored<Record<number, Rating>>(storageKey, {}), [index]: value };
     setRatings(next);
     writeStored(storageKey, next);
     window.dispatchEvent(new Event(I_CAN_EVENT));
   };
   const allRated = items.every((_, index) => ratings[index]);
-  const toReview = items.filter((_, index) => ratings[index] && ratings[index] !== 'yes');
+  const reviewIndexes = items.map((_, index) => index).filter(index => ratings[index] && ratings[index] !== 'yes');
+  const toReview = reviewIndexes.map(index => items[index]);
   const options: { value: Rating; label: string; on: string }[] = [
     { value: 'yes', label: L.yes, on: 'bg-emerald-600 text-white border-emerald-600' },
     { value: 'almost', label: L.almost, on: 'bg-amber-500 text-white border-amber-500' },
@@ -340,34 +351,45 @@ export const ICanPanel = ({ items, language, storageKey, onReread, onDone }: {
         </div>
       ) : allRated && (
         <div className={cn('mt-3 rounded-2xl px-4 py-3', toReview.length ? 'bg-amber-50' : 'bg-emerald-50')} role="status" data-i-can-summary>
-          <p className={cn('flex flex-wrap gap-x-3 gap-y-1 font-display font-semibold', isArabic ? 'text-sm' : 'text-[12px]')}>
-            {options.map(option => {
-              const n = items.filter((_, index) => ratings[index] === option.value).length;
-              return n ? <span key={option.value} className="text-wood/70">{option.label}: {isArabic ? n.toLocaleString('ar-EG') : n}</span> : null;
-            })}
-          </p>
           {toReview.length === 0 ? (
-            <p className={cn('mt-1.5 flex items-center gap-2 font-semibold text-emerald-800', isArabic ? 'text-base' : 'text-sm')}>
+            <p className={cn('flex items-center gap-2 font-semibold text-emerald-800', isArabic ? 'text-base' : 'text-sm')}>
               <CheckCircle size={18} />{L.allYes}
             </p>
           ) : (
             <>
-              <p className={cn('mt-1.5 font-semibold text-amber-900', isArabic ? 'text-base' : 'text-sm')}>{L.lookAgain}</p>
-              <ul className={cn('mt-1 list-disc ps-5 font-serif text-wood/85', isArabic ? 'text-base' : 'text-sm')}>
-                {toReview.map(item => <li key={item}>{item}</li>)}
+              <p className={cn('font-semibold text-amber-900', isArabic ? 'text-base' : 'text-sm')}>{L.lookAgain}</p>
+              <ul className="mt-2 space-y-2.5">
+                {reviewIndexes.map(index => {
+                  const step = steps?.[index];
+                  return (
+                    <li key={items[index]} className="rounded-xl bg-white/80 px-3 py-2.5 ring-1 ring-amber-100">
+                      <p className={cn('text-wood/55', isArabic ? 'text-sm' : 'text-[12px]')}>{items[index]}</p>
+                      <div className="mt-1 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+                        <p className={cn('font-serif text-wood', isArabic ? 'text-base' : 'text-sm')}>
+                          {step?.text ?? L.reread}
+                          {step?.quote && <span className={cn('ms-1 text-wood/70', !isArabic && 'italic')}>{isArabic ? `«${step.quote}»` : `“${step.quote}”`}</span>}
+                        </p>
+                        {(step?.action || onReread) && (
+                          <button
+                            type="button"
+                            onClick={step?.action ?? onReread}
+                            className="min-h-9 shrink-0 self-start rounded-full border border-brand-300 bg-white px-3.5 font-display text-[12px] font-semibold text-brand-800 hover:bg-brand-50 sm:self-auto"
+                          >
+                            {step?.actionLabel ?? L.reread}
+                          </button>
+                        )}
+                      </div>
+                    </li>
+                  );
+                })}
               </ul>
             </>
           )}
         </div>
       )}
 
-      {(onDone || (onReread && !classMode && toReview.length > 0 && allRated)) && (
+      {onDone && (
         <div className="mt-3 flex flex-wrap justify-end gap-2">
-          {onReread && !classMode && allRated && toReview.length > 0 && (
-            <button type="button" onClick={onReread} className="min-h-10 rounded-full border border-brand-300 bg-white px-4 font-display text-[12px] font-semibold text-brand-800 hover:bg-brand-50">
-              {L.reread}
-            </button>
-          )}
           {onDone && (
             <button type="button" onClick={onDone} className="min-h-10 rounded-full bg-brand-700 px-5 font-display text-[12px] font-semibold text-white hover:bg-brand-800">
               {L.done}

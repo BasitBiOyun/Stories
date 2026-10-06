@@ -535,3 +535,11 @@
     transition-duration: 0.01ms !important;
   }
 }
+
+/* "I can" step: the paragraph that tells the line is marked for a moment. */
+.ican-flash {
+  background-color: color-mix(in srgb, var(--brand-500) 16%, transparent);
+  border-radius: 0.5rem;
+  box-shadow: 0 0 0 6px color-mix(in srgb, var(--brand-500) 16%, transparent);
+  transition: background-color 0.6s ease, box-shadow 0.6s ease;
+}

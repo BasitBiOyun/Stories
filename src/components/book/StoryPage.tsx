@@ -5,9 +5,10 @@ import { Rocket, ArrowRight } from '../ui/icons';
 import { PageData, Hotspot, Exercise, TeacherGuideSection } from '../../types';
 import { ReaderTour, isReaderTourDone } from '../ui/ReaderTour';
 import { ExerciseModule } from '../ExerciseModule';
-import { GroupTaskPanel, ICanPanel, BeforeYouReadPanel, useBeforeYouRead, useICanProgress } from './ChapterExtras';
+import { GroupTaskPanel, ICanPanel, type ICanStep, BeforeYouReadPanel, useBeforeYouRead, useICanProgress } from './ChapterExtras';
 import { beforeYouReadSeconds } from '../../lib/chapterExtras';
 import { LessonCard } from './LessonCard';
+import { bestLanguageActivity, bestParagraph, sayItActivity, storyParagraphs } from '../../lib/iCanSteps';
 import { appImage, fallBackToOriginal } from '../../lib/mediaImage';
 import { cn } from '../../lib/utils';
 import { markQuranVerses } from '../../lib/quranVerses';
@@ -186,6 +187,54 @@ export const StoryPage = ({
   ) : null;
   const iCanProgress = useICanProgress(`${extrasKey}:ican`, page.iCan?.length ?? 0);
   // "Read the chapter again" from I can: close the window and bring the story text into view.
+  // Scrolls to one paragraph of the story and marks it for a moment.
+  const goToParagraph = (item: string) => {
+    setRailPanel(null);
+    const target = [followTextB.current, followTextA.current].find(node => node && node.offsetParent !== null);
+    if (!target) return;
+    const paragraphs = Array.from(target.querySelectorAll('p'));
+    const index = bestParagraph(item, paragraphs.map(p => p.textContent ?? ''), language === 'ar');
+    const paragraph = paragraphs[index] ?? target;
+    window.setTimeout(() => {
+      paragraph.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      paragraph.classList.add('ican-flash');
+      window.setTimeout(() => paragraph.classList.remove('ican-flash'), 2600);
+    }, 150);
+  };
+  const iCanSteps = useMemo((): ICanStep[] | undefined => {
+    if (page.type !== 'story' || !page.iCan?.length) return undefined;
+    const ar = language === 'ar';
+    const num = (n: number) => (ar ? n.toLocaleString('ar-EG') : String(n));
+    const focus = page.languageFocusExercises ?? [];
+    const openExercise = (exercise: Exercise) => () => { setRailPanel(null); setActiveExercise(exercise); };
+    return page.iCan.map((item, index): ICanStep => {
+      if (index === 1) {
+        const exercise = bestLanguageActivity(item, focus, ar);
+        if (exercise) return {
+          text: ar ? 'تَدَرَّبْ عَلَى هٰذَا فِي نَشَاطِ التَّرْكِيزِ اللُّغَوِيِّ:' : 'Practise it in this Language Focus activity:',
+          actionLabel: exercise.title,
+          action: openExercise(exercise),
+        };
+      }
+      if (index === 2) {
+        const sayIt = sayItActivity(focus);
+        if (sayIt) return {
+          text: sayIt.example ? (ar ? 'اِبْدَأْ هٰكَذَا:' : 'Start like this:') : (ar ? 'جَرِّبْهُ فِي نَشَاطِ «قُلْهَا».' : 'Try it in the “Say it” task.'),
+          quote: sayIt.example,
+          actionLabel: ar ? 'جَرِّبِ الآنَ' : 'Try it now',
+          action: openExercise(sayIt.exercise),
+        };
+      }
+      const paragraph = bestParagraph(item, storyParagraphs(storyText), ar);
+      if (paragraph >= 0) return {
+        text: ar ? `الفِقْرَةُ ${num(paragraph + 1)} تَحْكِي هٰذَا. اِقْرَأْهَا مَرَّةً أُخْرَى.` : `Paragraph ${paragraph + 1} tells this. Read it once more.`,
+        actionLabel: ar ? `اِذْهَبْ إِلَى الفِقْرَةِ ${num(paragraph + 1)}` : `Go to paragraph ${paragraph + 1}`,
+        action: () => goToParagraph(item),
+      };
+      return { text: ar ? 'اِقْرَأِ الفَصْلَ مَرَّةً أُخْرَى.' : 'Read the chapter once more.' };
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [page, language, storyText]);
   const rereadChapter = () => {
     setRailPanel(null);
     const target = [followTextB.current, followTextA.current].find(node => node && node.offsetParent !== null);
@@ -194,6 +243,7 @@ export const StoryPage = ({
   const renderICan = (inWindow = false) => page.type === 'story' && page.iCan?.length ? (
     <ICanPanel
       items={page.iCan}
+      steps={iCanSteps}
       language={language}
       storageKey={`${extrasKey}:ican`}
       onReread={rereadChapter}
