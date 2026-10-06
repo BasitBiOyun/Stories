@@ -1,6 +1,7 @@
 import {StrictMode} from 'react';
 import {createRoot} from 'react-dom/client';
 import App from './App.tsx';
+import './fonts.css';
 import './index.css';
 import './loading.css';
 import './guideTheme.css';
@@ -12,6 +13,7 @@ import { ArabicUiSanitizer } from './components/ArabicUiSanitizer';
 import { UserRoleProvider } from './contexts/UserRoleContext';
 import { ClassModeProvider } from './contexts/ClassModeContext';
 import { registerServiceWorker } from './lib/pwa';
+import { preloadDeferredChunks } from './lib/preloadDeferred';
 
 const CHUNK_RELOAD_KEY = 'stories_chunk_reload_at';
 
@@ -36,6 +38,7 @@ window.setTimeout(() => {
 }, 30_000);
 
 registerServiceWorker();
+preloadDeferredChunks();
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

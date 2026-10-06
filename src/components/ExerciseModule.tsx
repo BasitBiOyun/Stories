@@ -15,7 +15,7 @@ import { Exercise } from '../types';
 import { cn } from '../lib/utils';
 import { MODE_ICONS, modeKeyFor } from '../lib/sectionIcons';
 import { brandConfetti, collectionVisualFor } from '../core/content/storyCatalog';
-import confetti from 'canvas-confetti';
+import confetti from '../lib/confetti';
 import { useLanguage } from '../contexts/LanguageContext';
 import { useClassMode } from '../contexts/ClassModeContext';
 import { highlightPhraseMatches } from '../lib/highlightTextMatch';

@@ -4,7 +4,7 @@ import { AnimatePresence, motion } from 'motion/react';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { cn } from '../../lib/utils';
 import { getHistoricalEntity, resolveHistoricalCopy, resolveHistoricalMapAsset } from './registry';
-import { EntityMap } from './EntityMap';
+import { EntityMap } from './LazyEntityMap';
 import { entityPictureUrl } from './pictures';
 import { LearnerName } from './LearnerNameLine';
 import { groupColor } from './categories';

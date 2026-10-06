@@ -69,6 +69,7 @@ import { setMyWordsBook } from './lib/myWords';
 import { useUserRole } from './contexts/UserRoleContext';
 import { useClassMode } from './contexts/ClassModeContext';
 import { saveBookOffline } from './lib/pwa';
+import { ensureOpenDyslexicStyles } from './lib/deferredStyles';
 import { OFFLINE_BOOK_SIZE_MB } from './data/offlineBookSizes';
 
 const AppContent = () => {
@@ -152,6 +153,7 @@ const AppContent = () => {
 
   useEffect(() => {
     localStorage.setItem('reader_dyslexic', String(isDyslexic));
+    if (isDyslexic) ensureOpenDyslexicStyles();
   }, [isDyslexic]);
 
   useEffect(() => {

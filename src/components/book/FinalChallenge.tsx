@@ -4,7 +4,7 @@ import { Trophy, ArrowRight } from '../ui/icons';
 import { BookData, Exercise } from '../../types';
 import { SECTION_ICONS } from '../../lib/sectionIcons';
 import { cn } from '../../lib/utils';
-import confetti from 'canvas-confetti';
+import confetti from '../../lib/confetti';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { useStoryProgress } from '../../contexts/StoryProgressContext';
 import { highlightPhraseMatches } from '../../lib/highlightTextMatch';

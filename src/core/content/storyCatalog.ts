@@ -1,11 +1,17 @@
 import type { Level, ProphetStory } from '../../types';
 
 import adamCover from '../../assets/images/adam_cover.webp';
+import adamCoverSmall from '../../assets/images/adam_cover_sm.webp';
 import meccaCover from '../../assets/images/mecca_cover.webp';
+import meccaCoverSmall from '../../assets/images/mecca_cover_sm.webp';
 import abrahamCover from '../../assets/images/abraham_cover.webp';
+import abrahamCoverSmall from '../../assets/images/abraham_cover_sm.webp';
 import mosesCover from '../../assets/images/moses_cover.webp';
+import mosesCoverSmall from '../../assets/images/moses_cover_sm.webp';
 import yunusEmreCover from '../../assets/images/yunus_emre_cover.webp';
+import yunusEmreCoverSmall from '../../assets/images/yunus_emre_cover_sm.webp';
 import ibnJubayrCover from '../../assets/images/ibn_jubayr_cover.webp';
+import ibnJubayrCoverSmall from '../../assets/images/ibn_jubayr_cover_sm.webp';
 import prophetsIcon from '../../assets/images/prophets_icon.webp';
 import civilizationIcon from '../../assets/images/civilization_icon.webp';
 import scholarsIcon from '../../assets/images/scholars_icon.webp';
@@ -107,6 +113,7 @@ export const storyCatalog: StoryCatalogItem[] = [
     description: 'The first human, the knowledge of names, and the beginning of humanity.',
     descriptionAr: 'الإنسان الأول، وتعليم الأسماء، وبداية البشرية.',
     image: adamCover,
+    imageSmall: adamCoverSmall,
     availableLevels: ['A2', 'B1', 'B2'],
     collection: 'prophets',
   },
@@ -117,6 +124,7 @@ export const storyCatalog: StoryCatalogItem[] = [
     description: 'The search for truth, the building of the Ka’ba, and unwavering faith.',
     descriptionAr: 'البحث عن الحقيقة، وبناء الكعبة، والإيمان الراسخ.',
     image: abrahamCover,
+    imageSmall: abrahamCoverSmall,
     availableLevels: ['A2', 'B1', 'B2'],
     collection: 'prophets',
   },
@@ -127,6 +135,7 @@ export const storyCatalog: StoryCatalogItem[] = [
     description: 'The journey from the palace to the desert, and the liberation of a people.',
     descriptionAr: 'الرحلة من القصر إلى الصحراء، وتحرير بني إسرائيل من فرعون.',
     image: mosesCover,
+    imageSmall: mosesCoverSmall,
     availableLevels: ['A2', 'B1', 'B2'],
     collection: 'prophets',
   },
@@ -137,6 +146,7 @@ export const storyCatalog: StoryCatalogItem[] = [
     description: 'The City and the Age of Ignorance: Mecca before the dawn of Islam.',
     descriptionAr: 'المدينة وعصر الجاهلية: مكة قبل بزوغ فجر الإسلام.',
     image: meccaCover,
+    imageSmall: meccaCoverSmall,
     availableLevels: ['A2', 'B1', 'B2'],
     collection: 'history',
   },
@@ -147,6 +157,7 @@ export const storyCatalog: StoryCatalogItem[] = [
     description: 'A Great Andalusian Traveler of the Middle Ages',
     descriptionAr: 'رحّالة أندلسي كبير في العصور الوسطى',
     image: ibnJubayrCover,
+    imageSmall: ibnJubayrCoverSmall,
     availableLevels: ['A2'],
     collection: 'history',
     englishOnly: true,
@@ -158,6 +169,7 @@ export const storyCatalog: StoryCatalogItem[] = [
     description: 'The story of a wise Anatolian dervish who taught love, humility, and devotion through simple Turkish poetry.',
     descriptionAr: 'قصة يونس إمره وشعره وفكره الأخلاقي وتراثه الروحي في الأناضول.',
     image: yunusEmreCover,
+    imageSmall: yunusEmreCoverSmall,
     availableLevels: ['A2', 'B1', 'B2'],
     collection: 'turkish',
   },

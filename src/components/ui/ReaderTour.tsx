@@ -149,14 +149,14 @@ export const ReaderTour: React.FC<ReaderTourProps> = ({ active, onFinish }) => {
           className="absolute rounded-panel bg-white p-4 text-start shadow-[0_18px_48px_rgba(0,0,0,0.35)]"
           style={{ width: cardWidth, left: cardLeft, top: cardTop, bottom: cardBottom }}
         >
-          <p className="ui-label text-wood/55">{formatNumber(index + 1)} / {formatNumber(steps.length)}</p>
+          <p className="ui-label text-wood/70">{formatNumber(index + 1)} / {formatNumber(steps.length)}</p>
           <p id="reader-tour-title" className="mt-1 font-display text-[15px] font-semibold text-wood">{step.title}</p>
           <p className="mt-1 font-serif text-[13px] leading-snug text-wood/72">{step.body}</p>
           <div className="mt-3 flex items-center justify-between gap-2">
             <button
               type="button"
               onClick={finish}
-              className="min-h-10 rounded-full px-3 font-display text-[12px] font-semibold text-wood/60 transition-colors hover:bg-black/[0.05] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
+              className="min-h-10 rounded-full px-3 font-display text-[12px] font-semibold text-wood/70 transition-colors hover:bg-black/[0.05] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
             >
               {t('nav.tourSkip')}
             </button>

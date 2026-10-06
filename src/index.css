@@ -1,5 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Great+Vibes&display=swap');
-@import url('https://cdn.jsdelivr.net/npm/open-dyslexic@1.0.3/dist/css/open-dyslexic.min.css');
+/* Poppins is served from this site (src/fonts.css).
+   OpenDyslexic is added by src/lib/deferredStyles.ts: in the background, or at once when the setting is on. */
 @import "tailwindcss";
 
 /* "Wide view" from the Aa menu: text and panels stretch to the full reader width. */
@@ -7,7 +7,7 @@
 
 @font-face {
   font-family: 'Arakom';
-  src: url('/Arakom-Regular.ttf') format('truetype');
+  src: url('/Arakom-Regular.woff2') format('woff2'), url('/Arakom-Regular.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
   size-adjust: 125%;
@@ -15,7 +15,7 @@
 
 @font-face {
   font-family: 'Arakom';
-  src: url('/Arakom-Bold.ttf') format('truetype');
+  src: url('/Arakom-Bold.woff2') format('woff2'), url('/Arakom-Bold.ttf') format('truetype');
   font-weight: bold;
   font-style: normal;
   size-adjust: 125%;

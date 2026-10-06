@@ -25,7 +25,8 @@ export const BrandTitle: React.FC<{ className?: string }> = ({ className }) => {
  */
 export const BrandedEntry: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const { language, isRTL } = useLanguage();
-  const covers = storyCatalog.filter(story => language === 'en' || !story.englishOnly).map(story => story.image);
+  // The tiles are at most 208 px wide, so the 480 px copies stay sharp even on high-density screens.
+  const covers = storyCatalog.filter(story => language === 'en' || !story.englishOnly).map(story => story.imageSmall ?? story.image);
 
   return (
     <div

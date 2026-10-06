@@ -3,6 +3,7 @@ import { motion, useReducedMotion } from 'motion/react';
 import { Level } from '../../types';
 import homeIcon from '../../assets/images/home_icon.webp';
 import { cn } from '../../lib/utils';
+import { useMediaQuery } from '../../lib/useMediaQuery';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { LanguageToggle } from '../ui/LanguageToggle';
 import { FullscreenToggle } from '../ui/FullscreenButton';
@@ -174,6 +175,8 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart, onOpenTeacherGuide 
   const [hoveredCover, setHoveredCover] = useState<string | null>(null);
   const [highlightedBook, setHighlightedBook] = useState<string | null>(null);
   const [frontIndex, setFrontIndex] = useState(0);
+  // Phones draw the floating covers small, so they get the 480 px copies (a quarter of the download).
+  const isSmallScreen = useMediaQuery('(max-width: 767px)');
   const frontStory = stories.find(story => story.id === hoveredCover) ?? stories[frontIndex % stories.length] ?? stories[0];
   const fanStep = 'clamp(64px, 11vw, 170px)';
   const coverRefs = useRef<(HTMLButtonElement | null)[]>([]);
@@ -394,7 +397,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart, onOpenTeacherGuide 
             <div
               key={story.id}
               className="absolute inset-0 scale-110 bg-cover bg-center blur-[46px] saturate-[1.2] transition-opacity duration-[1600ms]"
-              style={{ backgroundImage: `url(${story.image})`, opacity: story.id === frontStory.id ? 0.34 : 0 }}
+              style={{ backgroundImage: `url(${story.imageSmall ?? story.image})`, opacity: story.id === frontStory.id ? 0.34 : 0 }}
             />
           ))}
         </div>
@@ -467,7 +470,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart, onOpenTeacherGuide 
                 className="group mt-7 flex w-full max-w-[460px] items-center gap-4 rounded-[18px] bg-white/[0.045] p-3.5 text-start transition-colors hover:bg-white/[0.075]"
                 data-home-continue
               >
-                <img src={lastActiveStory.image} alt="" className="h-14 w-12 shrink-0 rounded-[10px] object-cover" />
+                <img src={lastActiveStory.imageSmall ?? lastActiveStory.image} alt="" className="h-14 w-12 shrink-0 rounded-[10px] object-cover" />
                 <span className="min-w-0 flex-1">
                   <span className={cn('flex items-center gap-1.5 text-[11px] font-semibold uppercase text-[#E4C779]/78', !isRTL && 'tracking-[0.16em]')}>
                     <Clock size={13} />
@@ -509,7 +512,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart, onOpenTeacherGuide 
                     <span
                       className="home-float block h-full w-full rounded-[22px] bg-cover bg-center shadow-[0_40px_90px_rgba(0,0,0,0.6),0_0_0_1px_rgba(255,255,255,0.07)]"
                       style={{
-                        backgroundImage: `url(${story.image})`,
+                        backgroundImage: `url(${(isSmallScreen && story.imageSmall) || story.image})`,
                         animationDuration: `${7 + (index % 3) * 1.3}s`,
                         animationDelay: `${-index * 1.7}s`,
                       }}
@@ -736,7 +739,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart, onOpenTeacherGuide 
                         <ArrowRight size={15} mirrored={isRTL} />
                       </button>
                       {otherLevels.length > 0 && (
-                        <span className="flex items-center gap-0.5 text-[12px] text-[#EDE5D4]/50">
+                        <span className="flex items-center gap-0.5 text-[12px] text-[#EDE5D4]/60">
                           {copy.alsoAt}
                           {otherLevels.map(option => (
                             <button

@@ -7,7 +7,7 @@ import { getLearningLevelPolicy } from '../../data/learningLevelPolicy';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { SECTION_ICONS } from '../../lib/sectionIcons';
 import { cn } from '../../lib/utils';
-import confetti from 'canvas-confetti';
+import confetti from '../../lib/confetti';
 
 type Pair = VocabularyChallengePair;
 

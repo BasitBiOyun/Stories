@@ -342,6 +342,8 @@ export interface ProphetStory {
   name: string;
   description: string;
   image: string;
+  /** A 480 px wide copy for small cover tiles, blurred backdrops and phones. */
+  imageSmall?: string;
   availableLevels: Level[];
   isComingSoon?: boolean;
 }

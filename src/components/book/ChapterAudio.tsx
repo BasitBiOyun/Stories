@@ -163,7 +163,7 @@ export const ChapterAudioBar = ({ page, audio, onEnded, withElement = true }: { 
 
               <div className="min-w-0 flex-1">
                 <div className="flex items-center gap-2 sm:gap-2.5">
-                  <span className="w-9 shrink-0 text-start font-mono text-[11px] font-semibold tabular-nums text-wood/55 sm:w-10 sm:text-[11px]">
+                  <span className="w-9 shrink-0 text-start font-mono text-[11px] font-semibold tabular-nums text-wood/70 sm:w-10 sm:text-[11px]">
                     {formatTime(currentTime)}
                   </span>
 
@@ -183,7 +183,7 @@ export const ChapterAudioBar = ({ page, audio, onEnded, withElement = true }: { 
                     )}
                   />
 
-                  <span className="w-9 shrink-0 text-end font-mono text-[11px] font-semibold tabular-nums text-wood/55 sm:w-10 sm:text-[11px]">
+                  <span className="w-9 shrink-0 text-end font-mono text-[11px] font-semibold tabular-nums text-wood/70 sm:w-10 sm:text-[11px]">
                     {formatTime(duration)}
                   </span>
                 </div>
@@ -241,7 +241,7 @@ export const ChapterAudioBar = ({ page, audio, onEnded, withElement = true }: { 
                           )}
                         />
 
-                        <span className="w-9 shrink-0 text-end font-mono text-[11px] font-semibold tabular-nums text-wood/50">
+                        <span className="w-9 shrink-0 text-end font-mono text-[11px] font-semibold tabular-nums text-wood/70">
                           {Math.round(volume * 100)}%
                         </span>
                       </div>
