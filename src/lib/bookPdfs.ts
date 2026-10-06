@@ -1,9 +1,13 @@
 /**
- * The printable PDFs of each book (story book, Teacher's Book, Self-Study Guide), served from
- * /pdfs/books. They are built outside the app from the book data; Ibn Jubayr has an English
+ * The printable PDFs of each book, served from /pdfs/books: three story books (the Story book with the
+ * activities in every chapter and QR codes, the story alone, and the story followed by all the activities),
+ * the Teacher's Book and the Self-Study Guide. They are built outside the app from the book data; Ibn Jubayr has an English
  * edition only.
  */
-export type BookPdfKind = 'story' | 'teachers-book' | 'self-study-guide';
+export type BookPdfKind = 'story' | 'story-only' | 'story-activities' | 'teachers-book' | 'self-study-guide';
+
+/** The three story books, in the order of the menu. */
+export const STORY_PDF_KINDS = ['story', 'story-only', 'story-activities'] as const;
 
 const SLUGS: Record<string, string> = { ibnJubayr: 'ibn-jubayr', yunusEmre: 'yunus-emre' };
 const ENGLISH_ONLY = new Set(['ibnJubayr']);
@@ -19,6 +23,8 @@ export const BOOK_PDF_LABELS: Record<'en' | 'ar', Record<BookPdfKind, string> & 
     hint: 'Opens in your browser to read, print or save.',
     button: 'PDF',
     story: 'Story book (PDF)',
+    'story-only': 'Story only (PDF)',
+    'story-activities': 'Story, then activities (PDF)',
     'teachers-book': 'Teacher’s Book (PDF)',
     'self-study-guide': 'Self-Study Guide (PDF)',
   },
@@ -27,6 +33,8 @@ export const BOOK_PDF_LABELS: Record<'en' | 'ar', Record<BookPdfKind, string> & 
     hint: 'يُفْتَحُ فِي المُتَصَفِّحِ لِلْقِرَاءَةِ أَوِ الطِّبَاعَةِ أَوِ الحِفْظِ.',
     button: 'PDF',
     story: 'كِتَابُ القِصَّةِ (PDF)',
+    'story-only': 'القِصَّةُ فَقَطْ (PDF)',
+    'story-activities': 'القِصَّةُ أَوَّلًا ثُمَّ الأَنْشِطَةُ (PDF)',
     'teachers-book': 'كِتَابُ المُعَلِّمِ (PDF)',
     'self-study-guide': 'دَلِيلُ التَّعَلُّمِ الذَّاتِيِّ (PDF)',
   },

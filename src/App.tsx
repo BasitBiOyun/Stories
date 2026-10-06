@@ -52,10 +52,11 @@ import { HowToUse } from './components/layout/HowToUse';
 import { UsageGuide } from './components/layout/UsageGuide';
 import { USAGE_GUIDES } from './data/usageGuides';
 import { SECTION_ICONS } from './lib/sectionIcons';
-import { BOOK_PDF_LABELS, bookPdfUrl } from './lib/bookPdfs';
+import { BOOK_PDF_LABELS, STORY_PDF_KINDS, bookPdfUrl } from './lib/bookPdfs';
 
 // Book Components
 import { StoryPage } from './components/book/StoryPage';
+import { StoryFlow } from './components/book/StoryFlow';
 import { ExercisePage } from './components/book/ExercisePage';
 import { MasterGlossary } from './components/book/MasterGlossary';
 import { RolePicker } from './components/layout/RolePicker';
@@ -112,6 +113,8 @@ const AppContent = () => {
   const [isWideView, setIsWideView] = useState(() => localStorage.getItem('reader_wide') === 'true');
   const [showHighlights, setShowHighlights] = useState(() => localStorage.getItem('reader_highlights') !== 'false');
   const [followAlong, setFollowAlong] = useState(() => localStorage.getItem('reader_follow_along') !== 'false');
+  // Story mode: the whole story on one page, the activities after "The End".
+  const [storyMode, setStoryMode] = useState(() => localStorage.getItem('reader_story_mode') === 'true');
   const isLargeDesktop = useMediaQuery('(min-width: 90rem)');
   const [isReaderSettingsOpen, setIsReaderSettingsOpen] = useState(false);
   const [userAnswers, setUserAnswers] = useState<Record<string, boolean | null>>({});
@@ -159,6 +162,10 @@ const AppContent = () => {
   useEffect(() => {
     localStorage.setItem('reader_follow_along', String(followAlong));
   }, [followAlong]);
+
+  useEffect(() => {
+    localStorage.setItem('reader_story_mode', String(storyMode));
+  }, [storyMode]);
  
   const { language, setLanguage, t, formatNumber, isRTL } = useLanguage();
   const { stats, resetStats, hydrateStats } = useStoryProgress();
@@ -480,7 +487,7 @@ const AppContent = () => {
       advancePage();
       return;
     }
-    const quickExercise = currentPage?.type === 'story' ? currentPage.exercises?.[0] : undefined;
+    const quickExercise = currentPage?.type === 'story' && !storyMode ? currentPage.exercises?.[0] : undefined;
     const reminderKey = `${selectedProphetId}:${currentLevel}:${currentPage?.id}`;
     if (
       quickExercise &&
@@ -735,6 +742,23 @@ const AppContent = () => {
 
     switch (currentPage.type) {
       case 'story':
+        if (storyMode) {
+          return (
+            <StoryFlow
+              pages={currentBook?.pages || []}
+              currentIndex={currentPageIndex}
+              onVisibleIndex={index => setCurrentPageIndex(index)}
+              onOpenPage={index => setCurrentPageIndex(index)}
+              isDyslexic={isDyslexic}
+              showHighlights={showHighlights}
+              followAlong={followAlong}
+              fontSize={(currentBook?.baseFontSize || 12) * readerScale * (isLargeDesktop ? 1.15 : 1) * (classMode ? 1.3 : 1)}
+              level={currentLevel}
+              storyId={currentDefinition?.storyId}
+              collectionId={currentCollection || 'prophets'}
+            />
+          );
+        }
         return (
           <StoryPage 
             page={currentPage} 
@@ -1010,6 +1034,33 @@ const AppContent = () => {
 
                       <button
                         type="button"
+                        onClick={() => setStoryMode(prev => !prev)}
+                        className="mt-2 flex w-full items-center justify-between gap-4 rounded-xl bg-white/[0.045] px-3 py-3 text-start transition-colors hover:bg-white/[0.08]"
+                        aria-pressed={storyMode}
+                        data-story-mode-toggle
+                      >
+                        <span>
+                          <span className="block font-display text-[11px] font-semibold text-parchment">
+                            {language === 'ar' ? 'وضع القصة' : 'Story mode'}
+                          </span>
+                          <span className="mt-0.5 block text-[11px] text-parchment/62">
+                            {language === 'ar' ? 'القصة كلها متصلة، والأنشطة بعدها' : 'The whole story in one flow, activities after it'}
+                          </span>
+                        </span>
+                        <span
+                          dir="ltr"
+                          className={cn(
+                            "flex h-6 w-11 shrink-0 items-center rounded-full p-1 transition-colors",
+                            storyMode ? themeClasses.progressBar : "bg-white/15",
+                            storyMode ? "justify-end" : "justify-start"
+                          )}
+                        >
+                          <span className="h-4 w-4 rounded-full bg-white shadow" />
+                        </span>
+                      </button>
+
+                      <button
+                        type="button"
                         onClick={() => setIsWideView(prev => !prev)}
                         className="mt-2 hidden w-full items-center justify-between gap-4 rounded-xl bg-white/[0.045] px-3 py-3 text-start transition-colors hover:bg-white/[0.08] lg:flex"
                         aria-pressed={isWideView}
@@ -1199,7 +1250,7 @@ const AppContent = () => {
             )}>
               <AnimatePresence mode="wait">
                 <motion.div
-                  key={showSummary ? 'summary' : `${currentLevel}-${currentPageIndex}`}
+                  key={showSummary ? 'summary' : storyMode && currentPage?.type === 'story' ? `${currentLevel}-story-flow` : `${currentLevel}-${currentPageIndex}`}
                   initial={{ opacity: 0, scale: showSummary ? 1.05 : 1, y: showSummary ? 0 : 15 }}
                   animate={{ opacity: 1, scale: 1, y: 0 }}
                   exit={{ opacity: 0, scale: showSummary ? 0.95 : 1, y: showSummary ? 0 : -15 }}
@@ -1564,7 +1615,7 @@ const AppContent = () => {
                       {BOOK_PDF_LABELS[language === 'ar' ? 'ar' : 'en'].heading}
                     </h4>
                     <div className="mt-2 space-y-1" data-book-pdfs>
-                      {(['story', isTeacher ? 'teachers-book' : 'self-study-guide'] as const).map(kind => (
+                      {([...STORY_PDF_KINDS, isTeacher ? 'teachers-book' : 'self-study-guide'] as const).map(kind => (
                         <a
                           key={kind}
                           href={bookPdfUrl(selectedProphetId, currentLevel, language, kind)}
