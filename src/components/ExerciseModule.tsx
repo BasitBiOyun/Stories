@@ -29,7 +29,7 @@ import {
 import { isLanguageItemType, scoreLanguageItems } from '../lib/exerciseScoring';
 import { LanguageItemExercise } from './exercises/LanguageItemExercises';
 import { MatchingBoard } from './exercises/MatchingBoard';
-import { PHONE_DOCK, useIsPhone } from '../lib/phone';
+import { useIsPhone, useRevealOnPhone } from '../lib/phone';
 
 interface ExerciseModuleProps {
   exercise: Exercise;
@@ -138,6 +138,7 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
   // Score of the first check only; later tries never change it.
   const [firstTry, setFirstTry] = React.useState<{ right: number; total: number } | null>(null);
   const [classReveal, setClassReveal] = React.useState(false);
+  const feedbackRef = useRevealOnPhone<HTMLElement>(isSubmitted ? `${attempt}-${String(classReveal)}` : null);
   const closing = CLOSING[isArabic ? 'ar' : 'en'];
 
   const reflectionNeedsWriting = exercise.type === 'reflection' && (
@@ -458,7 +459,6 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
               onClick={() => submit(matchingAssignments)}
               className={cn(
                 'w-full min-h-12 rounded-xl font-display uppercase tracking-widest font-bold',
-                PHONE_DOCK,
                 isArabic ? 'text-sm sm:text-base' : 'text-xs sm:text-sm',
                 allAssigned ? `${theme.accentBg} ${theme.accentHover} text-white` : 'bg-gray-100 text-gray-400 cursor-not-allowed'
               )}
@@ -521,7 +521,6 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
               onClick={() => submit(localSequence)}
               className={cn(
                 'w-full min-h-12 rounded-xl font-display uppercase tracking-widest font-bold',
-                PHONE_DOCK,
                 isArabic ? 'text-sm sm:text-base' : 'text-xs sm:text-sm',
                 localSequence.length === sequenceItems.length
                   ? `${theme.accentBg} text-white`
@@ -558,7 +557,7 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
             })}
           </div>
           {!isSubmitted && (
-            <button type="button" onClick={() => submit(userAnswer)} className={cn('w-full min-h-12 rounded-xl text-white font-bold', PHONE_DOCK, isArabic && 'text-base', theme.accentBg)}>
+            <button type="button" onClick={() => submit(userAnswer)} className={cn('w-full min-h-12 rounded-xl text-white font-bold', isArabic && 'text-base', theme.accentBg)}>
               {t('nav.check')}
             </button>
           )}
@@ -620,7 +619,7 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
               </div>
             )}
             {!isSubmitted && (
-              <div className={cn('-mx-4 bg-white/95 px-4 pb-3 pt-3 backdrop-blur', PHONE_DOCK)}>
+              <div className="pt-1">
                 {current ? (
                   <div className={cn('grid gap-2', groups.length === 2 ? 'grid-cols-2' : 'grid-cols-1')}>
                     {groups.map((group) => (
@@ -971,12 +970,12 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
 
             {isSubmitted && (
               <motion.section
+                ref={feedbackRef}
                 initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
                 className={cn(
                   'rounded-2xl p-4 sm:p-6 space-y-4',
-                  PHONE_DOCK,
-                  'max-sm:max-h-[70vh] max-sm:overflow-y-auto',
+                  'scroll-mb-3',
                   isQuick || isLanguage ? 'border ring-1 ring-inset' : 'border-2',
                   classMode
                     ? `bg-white ${theme.softBorder} ring-black/[0.03]`

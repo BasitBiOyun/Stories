@@ -6,6 +6,7 @@ import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'motion/react';
 import { cn } from '../../lib/utils';
 import { useMediaQuery } from '../../lib/useMediaQuery';
+import { useSheetDrag } from '../../lib/phone';
 import { SECTION_ICONS } from '../../lib/sectionIcons';
 import { BookOpen, Highlighter, Scroll, Settings, TextSize, Type, Waveform, WideView, X } from '../ui/icons';
 
@@ -56,6 +57,7 @@ export const ReaderSettings = (props: ReaderSettingsProps) => {
   } = props;
   const ar = language === 'ar';
   const isPhone = useMediaQuery('(max-width: 639px)');
+  const settingsSheet = useSheetDrag(() => setOpen(false));
   // Wide view only changes anything on large screens.
   const canWiden = useMediaQuery('(min-width: 1024px)');
   const title = ar ? 'إعدادات القصة' : 'Story settings';
@@ -108,7 +110,11 @@ export const ReaderSettings = (props: ReaderSettingsProps) => {
 
   const body = (
     <>
-      {isPhone && <div className="mx-auto mb-2.5 h-1 w-10 rounded-full bg-white/25" aria-hidden="true" />}
+      {isPhone && (
+        <div className="-mx-4 -mt-2.5 mb-1 flex cursor-grab justify-center pb-2.5 pt-2.5" {...settingsSheet.grip}>
+          <span className="block h-1 w-10 rounded-full bg-white/30" aria-hidden="true" />
+        </div>
+      )}
       <div className="flex items-center justify-between gap-3 px-0.5">
         <h2 className="flex items-center gap-2 font-display text-[15px] font-semibold text-parchment">
           <Settings size={18} aria-hidden="true" />
@@ -237,6 +243,7 @@ export const ReaderSettings = (props: ReaderSettingsProps) => {
                     animate={{ y: 0 }}
                     exit={{ y: '100%' }}
                     transition={{ duration: 0.22, ease: 'easeOut' }}
+                    {...settingsSheet.sheet}
                     className={cn(
                       'fixed inset-x-0 bottom-0 z-[91] max-h-[88dvh] overflow-y-auto rounded-t-[22px] border-t px-4 pb-[calc(1.25rem+env(safe-area-inset-bottom))] pt-2.5 shadow-2xl backdrop-blur-2xl',
                       ar && 'font-arabic',

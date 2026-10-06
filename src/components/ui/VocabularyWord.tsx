@@ -8,7 +8,7 @@ import { getActiveBilingualCounterpart } from '../../data/bilingualHighlightCard
 import { HistoricalEntityWord, getHistoricalEntityIdFromDefinition } from '../../features/historical-entities';
 import { BookMarked, Check } from './icons';
 import { isMyWord, toggleMyWord, useMyWords } from '../../lib/myWords';
-import { useIsPhone } from '../../lib/phone';
+import { useIsPhone, useSheetDrag } from '../../lib/phone';
 
 export const VocabularyWord = ({ 
   word, 
@@ -26,6 +26,7 @@ export const VocabularyWord = ({
   const [isOpen, setIsOpen] = useState(false);
   // Phones: the meaning opens as a card from the bottom instead of a bubble over the text.
   const isPhone = useIsPhone();
+  const wordSheet = useSheetDrag(() => setIsOpen(false));
   const myWords = useMyWords();
   const wordLanguage = language === 'ar' ? 'ar' : 'en';
   const isSaved = isMyWord(myWords, wordLanguage, word);
@@ -185,10 +186,13 @@ export const VocabularyWord = ({
                   language === 'ar' ? "text-right" : "text-left"
                 )}
                 onClick={(e) => e.stopPropagation()}
+                {...(isPhone ? wordSheet.sheet : {})}
               >
                 {isPhone && (
                   <>
-                    <span className="mx-auto mb-3 block h-1 w-10 rounded-full bg-white/25" aria-hidden="true" />
+                    <div className="-mx-5 -mt-3 flex cursor-grab justify-center pb-3 pt-3" {...wordSheet.grip}>
+                      <span className="block h-1 w-10 rounded-full bg-white/30" aria-hidden="true" />
+                    </div>
                     <span className={cn("mb-2 block font-display font-semibold text-parchment", language === 'ar' ? "text-[26px] leading-snug" : "text-2xl")}>{word.replace(/[\s.,;:!?،؛…"“”'‘’()«»]+$/u, '')}</span>
                   </>
                 )}

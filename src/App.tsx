@@ -39,7 +39,7 @@ import { LanguageToggle } from './components/ui/LanguageToggle';
 import { FullscreenToggle } from './components/ui/FullscreenButton';
 import { ReaderSettings } from './components/book/ReaderSettings';
 import { useMediaQuery } from './lib/useMediaQuery';
-import { useIsPhone } from './lib/phone';
+import { useIsPhone, useSheetDrag } from './lib/phone';
 import { StoryProgressProvider, useStoryProgress } from './contexts/StoryProgressContext';
 
 // Layout Components
@@ -129,6 +129,7 @@ const AppContent = () => {
   const isLargeDesktop = useMediaQuery('(min-width: 90rem)');
   // Phones get native patterns: the menu opens as a sheet from the bottom, the header keeps only what is used most.
   const isPhone = useIsPhone();
+  const menuSheet = useSheetDrag(() => setIsMenuOpen(false));
   const [isReaderSettingsOpen, setIsReaderSettingsOpen] = useState(false);
   const [userAnswers, setUserAnswers] = useState<Record<string, boolean | null>>({});
   const [showSummary, setShowSummary] = useState(false);
@@ -621,12 +622,20 @@ const AppContent = () => {
 
   // A horizontal swipe on a touch screen turns the page; sliders, inputs and open overlays are left alone.
   const swipeStartRef = useRef<{ x: number; y: number; ignore: boolean } | null>(null);
+  // A swipe that starts on a row that scrolls sideways (filter chips, shelves, maps) scrolls that row, never the page.
+  const startsInSideScroller = (target: HTMLElement | null) => {
+    for (let el = target; el && el !== document.body; el = el.parentElement) {
+      if (el.scrollWidth > el.clientWidth + 2 && /(auto|scroll)/.test(getComputedStyle(el).overflowX)) return true;
+    }
+    return false;
+  };
   const handleSwipeStart = (e: React.TouchEvent) => {
     const touch = e.touches[0];
     const target = e.target as HTMLElement | null;
     const ignore =
       !touch ||
       Boolean(target?.closest('input, textarea, select, [role="slider"], [draggable="true"], [data-no-swipe]')) ||
+      startsInSideScroller(target) ||
       showSummary || isFinalChallengePage ||
       isMenuOpen || isAboutOpen || isHowToUseOpen || isUsageGuideOpen || isMyWordsOpen || isTeacherGuideOpen || isSelfStudyOpen || isQuickTOCOpen || isReaderSettingsOpen;
     swipeStartRef.current = touch ? { x: touch.clientX, y: touch.clientY, ignore } : null;
@@ -638,7 +647,7 @@ const AppContent = () => {
     if (!start || start.ignore || !touch) return;
     const dx = touch.clientX - start.x;
     const dy = touch.clientY - start.y;
-    if (Math.abs(dx) < 70 || Math.abs(dy) > 50 || Math.abs(dx) < Math.abs(dy) * 1.5) return;
+    if (Math.abs(dx) < 90 || Math.abs(dy) > 50 || Math.abs(dx) < Math.abs(dy) * 2) return;
     const forward = isRTL ? dx > 0 : dx < 0;
     if (forward) handleNextPage();
     else handlePrevPage();
@@ -1273,8 +1282,13 @@ const AppContent = () => {
               )}
               onClick={e => e.stopPropagation()}
               aria-label={t('nav.mainMenu')}
+              {...(isPhone ? menuSheet.sheet : {})}
             >
-              {isPhone && <span className="mx-auto mb-3 block h-1 w-10 shrink-0 rounded-full bg-white/25" aria-hidden="true" />}
+              {isPhone && (
+                <div className="-mx-5 -mt-3 mb-1 flex shrink-0 cursor-grab justify-center pb-3 pt-3" {...menuSheet.grip}>
+                  <span className="block h-1 w-10 rounded-full bg-white/30" aria-hidden="true" />
+                </div>
+              )}
               <div className="flex items-center justify-between gap-4">
                 <div className="min-w-0">
                   <p className={cn("font-display text-[11px] sm:text-[12px] font-semibold uppercase tracking-[0.16em] max-sm:hidden", themeClasses.menuAccentText)}>

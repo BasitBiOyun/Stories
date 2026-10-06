@@ -333,6 +333,21 @@ export const StoryMapPage: React.FC<StoryMapPageProps> = ({ page }) => {
   }, [places, revealPlace, classroom]);
 
   const onPinSelect = (id: string) => { stopTour(); buzz(); playMapSound('select'); selectPlace(id); };
+  // Pins close together overlap on small screens: a tap goes to the pin whose centre is nearest
+  // to the finger, not to whichever pin happens to be drawn on top.
+  const onPinTap = (event: React.MouseEvent<SVGGElement>, id: string) => {
+    const svg = event.currentTarget.ownerSVGElement;
+    let best = id;
+    let bestDistance = Infinity;
+    svg?.querySelectorAll<SVGGElement>('[data-map-pin]').forEach(pin => {
+      const body = pin.querySelector('.story-map-body') ?? pin;
+      const box = body.getBoundingClientRect();
+      const distance = Math.hypot(box.left + box.width / 2 - event.clientX, box.top + box.height / 2 - event.clientY);
+      const pinId = pin.getAttribute('data-map-pin-id');
+      if (pinId && distance < bestDistance) { bestDistance = distance; best = pinId; }
+    });
+    onPinSelect(best);
+  };
 
   // --- Time: slider, events, tour ---------------------------------------------------------------
   const activeIndex = useMemo(() => {
@@ -860,7 +875,7 @@ export const StoryMapPage: React.FC<StoryMapPageProps> = ({ page }) => {
           tabIndex={0}
           onKeyDown={onStageKey}
           aria-label={page.title}
-          className="relative h-[52svh] min-h-[300px] max-lg:order-1 lg:h-auto lg:min-h-0 lg:col-start-1 lg:row-start-1 overflow-hidden rounded-[1.5rem] border border-brand-200/80 shadow-[0_14px_40px_rgba(63,49,28,0.14)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
+          className="relative h-[52svh] min-h-[300px] max-sm:h-[58svh] max-lg:order-1 lg:h-auto lg:min-h-0 lg:col-start-1 lg:row-start-1 overflow-hidden rounded-[1.5rem] border border-brand-200/80 shadow-[0_14px_40px_rgba(63,49,28,0.14)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
           style={{ background: PALETTE.seaBottom, touchAction: zoomed || challengeOn ? 'none' : 'pan-y' }}
         >
           <svg
@@ -1034,13 +1049,14 @@ export const StoryMapPage: React.FC<StoryMapPageProps> = ({ page }) => {
                 <g
                   key={place.id}
                   data-map-pin
+                  data-map-pin-id={place.id}
                   role="button"
                   tabIndex={0}
                   aria-pressed={isSelected}
                   aria-label={`${formatNumber(index + 1)}. ${place.name}`}
                   transform={`translate(${x} ${y}) scale(${px * pinScale})`}
                   className="cursor-pointer outline-none [&:focus-visible_circle.ring]:opacity-100"
-                  onClick={() => onPinSelect(place.id)}
+                  onClick={event => onPinTap(event, place.id)}
                   onKeyDown={event => {
                     if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); onPinSelect(place.id); }
                   }}
@@ -1226,7 +1242,7 @@ export const StoryMapPage: React.FC<StoryMapPageProps> = ({ page }) => {
 
         {/* Info card */}
         <aside
-          className="min-w-0 max-lg:order-3 lg:col-start-2 lg:row-start-1 lg:row-span-2 lg:min-h-0 lg:overflow-y-auto custom-scrollbar rounded-[1.5rem] border border-brand-200/90 bg-brand-50/88 p-4 sm:p-5 shadow-[0_10px_30px_rgba(63,49,28,0.10)] flex flex-col"
+          className="min-w-0 max-lg:order-3 max-sm:order-2 lg:col-start-2 lg:row-start-1 lg:row-span-2 lg:min-h-0 lg:overflow-y-auto custom-scrollbar rounded-[1.5rem] border border-brand-200/90 bg-brand-50/88 p-4 sm:p-5 shadow-[0_10px_30px_rgba(63,49,28,0.10)] flex flex-col"
           aria-live="polite"
         >
           <AnimatePresence mode="wait" initial={false}>
@@ -1448,7 +1464,7 @@ export const StoryMapPage: React.FC<StoryMapPageProps> = ({ page }) => {
 
         {/* Legend (phones) and the time panel */}
         {!challengeOn && (
-          <div className="min-w-0 flex flex-col gap-3 max-lg:order-2 lg:col-start-1 lg:row-start-2">
+          <div className="min-w-0 flex flex-col gap-3 max-lg:order-2 max-sm:order-3 lg:col-start-1 lg:row-start-2">
             <div className="sm:hidden">{legend}</div>
             {timeOn && (
               <MapTimePanel

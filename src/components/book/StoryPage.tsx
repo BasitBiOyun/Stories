@@ -62,6 +62,7 @@ export const StoryPage = ({
   const { audioRef, isPlaying } = audio;
   // Wide screens (1024px+): title, steps and audio on top, activities as icons beside the picture.
   const isWide = useMediaQuery('(min-width: 1024px)');
+  const isPhone = useMediaQuery('(max-width: 639px)');
   const [activeHotspot, setActiveHotspot] = useState<Hotspot | null>(null);
   const [activeExercise, setActiveExercise] = useState<Exercise | null>(null);
   // Completion lives in the shared progress, so a finished Quick Challenge stays finished when the reader comes back.
@@ -303,16 +304,7 @@ export const StoryPage = ({
 
   // Listen · Read · Quick Challenge · Language Focus: what this chapter asks for and what is done.
   const onAudioEnded = () => setAudioEnded(true);
-  const renderHeading = () => (
-    <div className={cn("flex flex-col min-w-0", isRTL && "text-right")}>
-      <h3 className="font-display text-[1.3rem] sm:text-3xl lg:text-4xl text-wood font-semibold tracking-[-0.03em] leading-tight lg:truncate clip-room">{page.title}</h3>
-      <p className={cn(
-        "font-serif text-xs sm:text-base lg:text-lg sm:mt-0.5",
-        language !== 'ar' && "italic",
-        "text-brand-600"
-      )}>
-        {t('nav.chapter')} {formatNumber(page.id)}
-      </p>
+  const renderSteps = () => (
       <ChapterSteps
         page={page}
         listened={listened}
@@ -327,6 +319,32 @@ export const StoryPage = ({
         onOpenLessonCard={() => setIsLessonCardOpen(true)}
         progressOnly={isWide}
       />
+  );
+  const renderHeading = () => (
+    <div className={cn("flex flex-col min-w-0", isRTL && "text-right")}>
+      <h3 className="font-display text-[1.3rem] sm:text-3xl lg:text-4xl text-wood font-semibold tracking-[-0.03em] leading-tight lg:truncate clip-room">{page.title}</h3>
+      <p className={cn(
+        "font-serif text-xs sm:text-base lg:text-lg sm:mt-0.5",
+        language !== 'ar' && "italic",
+        "text-brand-600"
+      )}>
+        {t('nav.chapter')} {formatNumber(page.id)}
+      </p>
+      {renderSteps()}
+    </div>
+  );
+  // Phones open a chapter like a story app: the picture first, a little wider than tall, with the
+  // chapter title written on it. The 4:5 picture is cropped to 4:3 from its middle, so hotspots
+  // are moved to match and the ones that fall outside the crop are left out.
+  const phoneCover = isPhone && !isWide && Boolean(page.image);
+  const shownHotspots = phoneCover
+    ? (page.hotspots ?? [])
+        .map(hotspot => ({ ...hotspot, y: (hotspot.y - 20) / 0.6 }))
+        .filter(hotspot => hotspot.y >= 6 && hotspot.y <= 90)
+    : page.hotspots ?? [];
+  const renderAudioBar = () => !isWide && page.audioUrl && (
+    <div className="sticky top-0 z-[90] !mt-2 sm:!mt-3 [&>div]:bg-brand-50">
+      <ChapterAudioBar page={page} audio={audio} onEnded={onAudioEnded} withElement={false} />
     </div>
   );
 
@@ -350,12 +368,8 @@ export const StoryPage = ({
         {/* Mobile View: Vertical scrolling stack */}
         <div className="block lg:hidden h-full overflow-y-auto custom-scrollbar px-0.5 sm:ps-0.5 sm:pe-4 space-y-4 sm:space-y-6">
           {/* The title and steps scroll away; the audio bar stays at the top of the text */}
-          {!isWide && renderHeading()}
-          {!isWide && page.audioUrl && (
-            <div className="sticky top-0 z-[90] !mt-2 sm:!mt-3 [&>div]:bg-brand-50">
-              <ChapterAudioBar page={page} audio={audio} onEnded={onAudioEnded} withElement={false} />
-            </div>
-          )}
+          {!isWide && !phoneCover && renderHeading()}
+          {!phoneCover && renderAudioBar()}
           {page.image && (
             <motion.div 
               initial={{ opacity: 0, scale: 0.95 }}
@@ -365,8 +379,10 @@ export const StoryPage = ({
               onMouseLeave={handleMouseLeave}
               style={{ rotateX, rotateY }}
             >
-              {/* Phones: the picture keeps its shape but stays under half the screen, so the text starts on the first screen. */}
-              <div className="relative aspect-[4/5] w-full max-sm:mx-auto max-sm:h-[44svh] max-sm:w-auto rounded-[1.5rem] shadow-[0_24px_30px_-28px_rgba(0,0,0,0.55)] overflow-hidden">
+              <div className={cn(
+                "relative w-full rounded-[1.5rem] shadow-[0_24px_30px_-28px_rgba(0,0,0,0.55)] overflow-hidden",
+                phoneCover ? "aspect-[4/3] rounded-[1.25rem]" : "aspect-[4/5]"
+              )}>
                 <motion.img 
                   src={appImage(page.image)}
             onError={fallBackToOriginal(page.image)} 
@@ -378,7 +394,7 @@ export const StoryPage = ({
                 
                 <div className="absolute inset-0 z-[70] p-4 pointer-events-none">
                   <div className="relative w-full h-full">
-                     {page.hotspots?.map((hotspot) => (
+                     {shownHotspots.map((hotspot) => (
                       <HotspotButton 
                         key={hotspot.id} 
                         hotspot={hotspot} 
@@ -389,10 +405,23 @@ export const StoryPage = ({
                     ))}
                   </div>
                 </div>
-                <div className="absolute inset-0 z-10 bg-gradient-to-t from-wood/40 to-transparent pointer-events-none" />
+                <div className={cn(
+                  "absolute inset-0 z-10 bg-gradient-to-t to-transparent pointer-events-none",
+                  phoneCover ? "from-black/75 via-black/10" : "from-wood/40"
+                )} />
+                {phoneCover && (
+                  <div className={cn("absolute inset-x-0 bottom-0 z-[65] px-4 pb-3.5 text-white pointer-events-none", isRTL && "text-right")}>
+                    <p className={cn("font-display font-semibold uppercase text-white/80", language === 'ar' ? "text-[13px]" : "text-[11px] tracking-[0.16em]")}>
+                      {t('nav.chapter')} {formatNumber(page.id)}
+                    </p>
+                    <h3 className="font-display text-[1.35rem] font-semibold leading-tight tracking-[-0.02em] [text-shadow:0_1px_8px_rgba(0,0,0,0.45)]">{page.title}</h3>
+                  </div>
+                )}
               </div>
             </motion.div>
           )}
+          {phoneCover && <div className="!mt-3">{renderSteps()}</div>}
+          {phoneCover && renderAudioBar()}
 
           {/* Text Content */}
           <div className="mx-auto max-w-[68ch] wide:max-w-none">

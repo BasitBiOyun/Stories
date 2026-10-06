@@ -13,7 +13,7 @@ import {
 import { Exercise } from '../../types';
 import { SECTION_ICONS } from '../../lib/sectionIcons';
 import { cn } from '../../lib/utils';
-import { PHONE_DOCK } from '../../lib/phone';
+import { useRevealOnPhone } from '../../lib/phone';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { presentMultipleChoice } from '../../lib/exercisePresentation';
 
@@ -296,6 +296,7 @@ export const KnowledgeCheck = ({
     : false;
 
   const isAnswered = (exercise: Exercise) => answerFor(exercise) !== null;
+  const feedbackRef = useRevealOnPhone<HTMLDivElement>(currentExercise && isAnswered(currentExercise) ? currentExercise.id : null);
 
   // Each question is checked as soon as it is answered (formative feedback), then locked.
   const answerQuestion = (exercise: Exercise, answer: boolean | number) => {
@@ -489,13 +490,13 @@ export const KnowledgeCheck = ({
           </AnimatePresence>
         )}
 
-        {/* Phones: the feedback and the Next button stay pinned at the bottom, never below the fold. */}
-        <div className={cn('space-y-3 max-sm:-mx-0.5 max-sm:rounded-t-2xl max-sm:bg-[#FBFAF6]/95 max-sm:px-0.5 max-sm:pb-1 max-sm:pt-2 max-sm:backdrop-blur-sm', PHONE_DOCK)}>
+        {/* Feedback and Next sit right under the answers; phones scroll them into view. */}
+        <div ref={feedbackRef} className="space-y-3 scroll-mb-3">
         {currentExercise && isAnswered(currentExercise) && (() => {
                 const correctNow = isExerciseAnswerCorrect(currentExercise, answerFor(currentExercise));
                 return (
                   <div className={cn(
-                    'rounded-2xl border p-4 sm:p-5 font-serif leading-relaxed max-sm:max-h-[42vh] max-sm:overflow-y-auto max-sm:p-3.5',
+                    'rounded-2xl border p-4 sm:p-5 font-serif leading-relaxed max-sm:p-3.5',
                     isArabic ? 'text-[15px] sm:text-[17px]' : 'text-sm sm:text-base',
                     correctNow ? 'bg-emerald-50 border-emerald-100 text-emerald-950' : 'bg-rose-50 border-rose-100 text-rose-950'
                   )}>

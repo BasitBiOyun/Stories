@@ -12,6 +12,7 @@ import { SECTION_ICONS } from '../../lib/sectionIcons';
 import { summarizeBookProgress } from '../../lib/bookProgress';
 import { type ReaderPosition } from '../../lib/readerPosition';
 import { aboutIntro } from '../../data/aboutContent';
+import { useSheetDrag } from '../../lib/phone';
 import { ArrowRight, BookMarked, BookOpen, GraduationCap, Info, Library, Play, Settings, X } from '../ui/icons';
 import {
   collectionStoryIds,
@@ -77,6 +78,7 @@ export const PhoneLibrary: React.FC<PhoneLibraryProps> = ({
   const { isTeacher, isSelfLearner } = useUserRole();
   const [tab, setTab] = useState<Tab>('library');
   const [openBook, setOpenBook] = useState<{ id: string; level: Level } | null>(null);
+  const bookSheet = useSheetDrag(() => setOpenBook(null));
   const scrollRef = useRef<HTMLDivElement>(null);
 
   const copy = lang === 'ar'
@@ -355,8 +357,11 @@ export const PhoneLibrary: React.FC<PhoneLibraryProps> = ({
               onClick={event => event.stopPropagation()}
               className="absolute inset-x-0 bottom-0 max-h-[90svh] overflow-y-auto rounded-t-[26px] bg-[#151a16] px-5 pb-[max(1.25rem,env(safe-area-inset-bottom))] pt-3 text-start shadow-2xl"
               data-phone-book-sheet
+              {...bookSheet.sheet}
             >
-              <span className="mx-auto mb-4 block h-1 w-10 rounded-full bg-white/20" aria-hidden="true" />
+              <div className="-mx-5 -mt-3 mb-1 flex cursor-grab justify-center pb-3 pt-3" {...bookSheet.grip}>
+                <span className="block h-1 w-10 rounded-full bg-white/25" aria-hidden="true" />
+              </div>
               <div className="flex items-end gap-4">
                 <img src={bookOpen.imageSmall ?? bookOpen.image} alt="" className="h-[138px] w-[110px] shrink-0 rounded-[14px] object-cover shadow-[0_16px_34px_rgba(0,0,0,0.5)]" />
                 <div className="min-w-0 flex-1 pb-1">

@@ -250,6 +250,8 @@ export const ExercisePage = ({
         >
           <div className={cn(
             "relative bg-white/40 backdrop-blur-sm rounded-2xl sm:rounded-3xl border-2 p-3 sm:p-4 md:p-5 h-full flex flex-col overflow-y-auto custom-scrollbar",
+            // Phones: no frame around the page, the exercise is the screen (as in Final Challenge).
+            "max-sm:rounded-none max-sm:border-0 max-sm:bg-transparent max-sm:p-0 max-sm:backdrop-blur-none",
             colTheme.containerBorder
           )}>
             <div className="flex-1 min-h-0 flex flex-col h-full">
@@ -327,7 +329,7 @@ export const ExercisePage = ({
                         </div>
                       </div>
 
-                      <div className="mt-5 grid grid-cols-3 gap-2 max-sm:mt-3">
+                      <div className="mt-5 grid grid-cols-3 gap-2 max-sm:hidden">
                         {reviewStageLabels.map((label, stageIndex) => {
                           const unlocked = isReviewStageUnlocked(stageIndex);
                           const active = reviewStageIndex === stageIndex;

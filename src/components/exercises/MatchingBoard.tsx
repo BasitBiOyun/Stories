@@ -2,6 +2,7 @@ import React from 'react';
 import { cn } from '../../lib/utils';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { MatchConnectors, pairColor } from './MatchConnectors';
+import { useIsPhone } from '../../lib/phone';
 
 /**
  * The one matching interaction of the app (Quick Challenge, Language Focus, Vocabulary
@@ -113,6 +114,125 @@ export const MatchingBoard: React.FC<MatchingBoardProps> = ({
     setSelectedRight(current => (current === meaning ? null : meaning));
   };
 
+  const isPhone = useIsPhone();
+  const [phoneLeft, setPhoneLeft] = React.useState<string | null>(null);
+
+  if (isPhone) {
+    // Phones: one word at a time with every meaning right under it, so the pair being
+    // made is always on one screen. Picking a meaning moves on to the next open word.
+    const openLefts = pairs.filter(pair => !assignments[pair.left] && !isLocked(pair.left)).map(pair => pair.left);
+    const current = phoneLeft && pairs.some(pair => pair.left === phoneLeft) && !isLocked(phoneLeft)
+      ? phoneLeft
+      : openLefts[0] ?? null;
+    const currentIndex = current ? pairs.findIndex(pair => pair.left === current) : -1;
+    const pickMeaning = (meaning: string) => {
+      if (disabled || submitted || !current) return;
+      const ownerIndex = ownerOf(meaning);
+      if (ownerIndex >= 0 && isLocked(pairs[ownerIndex].left)) return;
+      const next = { ...assignments };
+      for (const [otherLeft, otherMeaning] of Object.entries(next)) {
+        if (otherMeaning === meaning && !isLocked(otherLeft)) delete next[otherLeft];
+      }
+      next[current] = meaning;
+      onAssignmentsChange(next);
+      const after = pairs.map(pair => pair.left);
+      const start = after.indexOf(current);
+      const rotated = [...after.slice(start + 1), ...after.slice(0, start + 1)];
+      setPhoneLeft(rotated.find(left => !next[left] && !isLocked(left)) ?? null);
+    };
+    const textSize = isArabic ? 'text-base' : 'text-[15px]';
+
+    if (submitted || (!current && openLefts.length === 0 && Object.keys(assignments).length >= pairs.length)) {
+      return (
+        <div className={cn('space-y-2', className)} data-matching-board>
+          {pairs.map((pair, pairIndex) => {
+            const assigned = assignments[pair.left];
+            const result = assigned ? resultFor(pair.left) : null;
+            return (
+              <button
+                key={pair.left}
+                type="button"
+                disabled={disabled || submitted || isLocked(pair.left)}
+                onClick={() => setPhoneLeft(pair.left)}
+                className={cn('flex w-full items-start gap-3 rounded-xl border-2 bg-white px-3.5 py-2.5 text-start font-serif', textSize,
+                  result === true && 'bg-emerald-50/70', result === false && 'bg-rose-50/70')}
+                style={{ borderColor: resultColor(pairIndex, result) }}
+              >
+                <MatchPairBadge label={formatNumber(pairIndex + 1)} color={pairColor(pairIndex)} result={result} description="" />
+                <span className="min-w-0 flex-1">
+                  <span className="block font-bold text-wood">{renderLeft ? renderLeft(pair.left) : pair.left}</span>
+                  <span className="block text-wood/75">{assigned ?? '—'}</span>
+                </span>
+              </button>
+            );
+          })}
+        </div>
+      );
+    }
+
+    return (
+      <div className={cn('space-y-3', className)} data-matching-board>
+        <div className="flex flex-wrap gap-1.5" aria-label={headings?.left ?? (isArabic ? 'المفاهيم' : 'Concepts')}>
+          {pairs.map((pair, pairIndex) => {
+            const assigned = Boolean(assignments[pair.left]);
+            const active = pair.left === current;
+            return (
+              <button
+                key={pair.left}
+                type="button"
+                disabled={disabled || isLocked(pair.left)}
+                onClick={() => setPhoneLeft(pair.left)}
+                aria-pressed={active}
+                className={cn('h-8 min-w-8 rounded-full px-2 font-display text-xs font-black transition-colors',
+                  active ? 'ring-2 ring-brand-600 ring-offset-1' : '',
+                  assigned ? 'text-white' : 'bg-white text-wood/60 ring-1 ring-black/10')}
+                style={assigned ? { backgroundColor: pairColor(pairIndex) } : undefined}
+              >
+                {formatNumber(pairIndex + 1)}
+              </button>
+            );
+          })}
+        </div>
+        {current && (
+          <div className="rounded-2xl border-2 border-brand-500 bg-brand-50 px-4 py-3">
+            <p className={cn('font-display font-black uppercase tracking-widest text-brand-700', isArabic ? 'text-xs' : 'text-[10px]')}>
+              {headings?.left ?? (isArabic ? 'المفاهيم' : 'Concepts')} · {formatNumber(currentIndex + 1)}/{formatNumber(pairs.length)}
+            </p>
+            <p className={cn('mt-0.5 font-serif font-bold text-brand-950', isArabic ? 'text-xl' : 'text-lg')}>
+              {renderLeft ? renderLeft(current) : current}
+            </p>
+          </div>
+        )}
+        <p className={cn('font-display font-black uppercase tracking-widest text-brand-700', isArabic ? 'text-xs' : 'text-[10px]')}>
+          {headings?.right ?? (isArabic ? 'المعاني' : 'Meanings')}
+        </p>
+        <div className="space-y-2">
+          {meanings.map(meaning => {
+            const ownerIndex = ownerOf(meaning);
+            const mine = ownerIndex >= 0 && pairs[ownerIndex].left === current;
+            return (
+              <button
+                key={meaning}
+                type="button"
+                data-match-right={meaning}
+                disabled={disabled || (ownerIndex >= 0 && isLocked(pairs[ownerIndex].left))}
+                onClick={() => pickMeaning(meaning)}
+                className={cn('flex min-h-11 w-full items-center gap-2.5 rounded-xl border-2 bg-white px-3.5 py-2 text-start font-serif transition-colors enabled:active:scale-[0.99]', textSize,
+                  mine ? 'border-brand-500 bg-brand-50' : ownerIndex >= 0 ? 'text-wood/55' : 'border-brand-200 text-wood/90')}
+                style={ownerIndex >= 0 && !mine ? { borderColor: pairColor(ownerIndex) } : undefined}
+              >
+                {ownerIndex >= 0 && (
+                  <MatchPairBadge label={formatNumber(ownerIndex + 1)} color={pairColor(ownerIndex)} result={null} description="" />
+                )}
+                <span className="min-w-0 flex-1">{meaning}</span>
+              </button>
+            );
+          })}
+        </div>
+      </div>
+    );
+  }
+
   const cardBase = cn(
     'w-full min-h-14 rounded-xl border-2 px-4 py-3 text-start font-serif transition-[color,background-color,border-color,transform] duration-150 flex items-center gap-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-1 disabled:cursor-default enabled:active:scale-[0.99]',
     isArabic ? 'text-base sm:text-lg' : 'text-sm sm:text-base',
@@ -126,9 +246,8 @@ export const MatchingBoard: React.FC<MatchingBoardProps> = ({
         </p>
       )}
       <div ref={gridRef} className="relative grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-8" data-matching-board>
-        {/* Below md the words become chips that stay pinned on top while the meanings scroll under them. */}
-        <div className="space-y-2.5 max-md:sticky max-md:top-0 max-md:z-10 max-md:-mx-1 max-md:flex max-md:flex-wrap max-md:gap-2 max-md:space-y-0 max-md:bg-[#FBFAF6]/95 max-md:px-1 max-md:pb-2.5 max-md:pt-1 max-md:backdrop-blur-sm">
-          <p className={cn('font-display uppercase tracking-widest font-black text-brand-700 max-md:w-full', isArabic ? 'text-sm sm:text-base' : 'text-xs')}>
+        <div className="space-y-2.5">
+          <p className={cn('font-display uppercase tracking-widest font-black text-brand-700', isArabic ? 'text-sm sm:text-base' : 'text-xs')}>
             {headings?.left ?? (isArabic ? 'المفاهيم' : 'Concepts')}
           </p>
           {pairs.map((pair, pairIndex) => {
@@ -146,7 +265,7 @@ export const MatchingBoard: React.FC<MatchingBoardProps> = ({
                 aria-pressed={selected}
                 className={cn(
                   cardBase,
-                  'justify-between font-bold max-md:min-h-11 max-md:w-auto max-md:gap-2 max-md:rounded-full max-md:px-3.5 max-md:py-1.5',
+                  'justify-between font-bold',
                   selected ? 'border-brand-500 bg-brand-50 text-brand-950' : 'border-brand-200 bg-white text-wood',
                   result === true && 'bg-emerald-50/60',
                   result === false && 'bg-rose-50/60',

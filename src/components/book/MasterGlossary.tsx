@@ -16,6 +16,7 @@ import { PageData, BookData, VocabularyItem } from '../../types';
 import { SECTION_ICONS } from '../../lib/sectionIcons';
 import { cn } from '../../lib/utils';
 import { useLanguage } from '../../contexts/LanguageContext';
+import { useIsPhone } from '../../lib/phone';
 
 interface MasterGlossaryProps {
   bookData: BookData;
@@ -76,6 +77,7 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({
   const [currentPage, setCurrentPage] = useState(1);
   const { t, formatNumber, isRTL } = useLanguage();
   const WORDS_PER_PAGE = 12;
+  const isPhone = useIsPhone();
 
   const copy = useMemo(() => {
     const isA2 = String(bookData.level).toUpperCase() === 'A2';
@@ -554,7 +556,7 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({
       </section>
 
       <section className="shrink-0 rounded-2xl border border-black/5 bg-white/45 backdrop-blur-sm p-3 shadow-sm max-sm:p-2">
-        <div className="flex flex-col xl:flex-row xl:items-center gap-2.5 max-sm:gap-2">
+        <div className="flex flex-col xl:flex-row xl:items-center gap-2.5 max-sm:flex-row max-sm:flex-wrap max-sm:gap-2">
           <div className="relative flex-1 min-w-0">
             <Search className={cn(
               'absolute top-1/2 -translate-y-1/2 w-4 h-4',
@@ -575,7 +577,7 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({
             />
           </div>
 
-          <div className="flex gap-1.5 overflow-x-auto custom-scrollbar shrink-0 pb-0.5 xl:pb-0">
+          <div className="flex gap-1.5 overflow-x-auto custom-scrollbar shrink-0 pb-0.5 xl:pb-0 max-sm:order-last max-sm:basis-full" data-no-swipe>
             {filterOptions.map(opt => (
               <button
                 key={opt.value}
@@ -597,7 +599,7 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({
               value={activeChapter ?? ''}
               onChange={(e) => setActiveChapter(e.target.value ? Number(e.target.value) : null)}
               className={cn(
-                'shrink-0 px-3 py-2 rounded-xl text-xs font-bold border bg-white/70 outline-none cursor-pointer',
+                'shrink-0 px-3 py-2 rounded-xl text-xs font-bold border bg-white/70 outline-none cursor-pointer max-sm:w-[6.5rem] max-sm:px-2',
                 colTheme.borderStrong,
                 colTheme.brandText
               )}
@@ -663,6 +665,64 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({
 
       </section>
 
+      {isPhone ? (
+        // Phones: a plain word list (all words, no pages). Tap a row to hear the word;
+        // the round button cycles New → I know → Practice again.
+        <div className="flex-1 min-h-0 overflow-y-auto -mx-3 border-t border-black/5">
+          {filteredVocab.length === 0 && (
+            <p className="px-4 py-10 text-center text-sm text-wood/55">
+              {searchTerm ? t('nav.noWordsFound') : t('nav.noWordsCategory')}
+            </p>
+          )}
+          <ul className="divide-y divide-black/5">
+            {filteredVocab.map(v => {
+              const state: KnownState = knownMap[v.key] ?? 'unreviewed';
+              const nextState: KnownState = state === 'unreviewed' ? 'known' : state === 'known' ? 'unknown' : 'unreviewed';
+              const stateLabel = state === 'known' ? copy.knownBadge : state === 'unknown' ? copy.reviewBadge : copy.newBadge;
+              return (
+                <li key={v.key} className="flex items-center gap-2 bg-white/55 ps-4 pe-3">
+                  <button
+                    type="button"
+                    onClick={() => playWord(v.word)}
+                    className="min-w-0 flex-1 py-3 text-start"
+                    aria-label={v.word}
+                  >
+                    <span className="flex flex-wrap items-baseline gap-x-2">
+                      <span className={cn('font-black text-[17px] leading-tight', colTheme.brandTextStrong, !isRTL && 'capitalize')}>{v.word}</span>
+                      <span className="text-[11px] font-semibold text-wood/55">
+                        {[v.partOfSpeech, v.chapter ? `${copy.chapterLabel} ${formatNumber(v.chapter)}` : null].filter(Boolean).join(' · ')}
+                      </span>
+                    </span>
+                    <span className="mt-0.5 block font-serif text-[15px] leading-snug text-wood/75">{v.definition}</span>
+                  </button>
+                  <span
+                    aria-hidden
+                    className={cn('shrink-0 w-9 h-9 rounded-full flex items-center justify-center', playingWord === v.word ? colTheme.audioPlaying : colTheme.audio)}
+                  >
+                    <Volume2 size={15} className={playingWord === v.word ? 'animate-pulse' : ''} />
+                  </span>
+                  <button
+                    type="button"
+                    onClick={() => markWord(v.key, nextState)}
+                    title={stateLabel}
+                    aria-label={`${v.word}: ${stateLabel}`}
+                    className={cn(
+                      'shrink-0 w-11 h-11 rounded-full flex items-center justify-center border-2 transition-colors',
+                      state === 'known'
+                        ? 'bg-emerald-600 border-emerald-600 text-white'
+                        : state === 'unknown'
+                          ? 'bg-rose-50 border-rose-300 text-rose-600'
+                          : 'bg-white border-black/10 text-wood/30'
+                    )}
+                  >
+                    {state === 'unknown' ? <RotateCcw size={17} /> : <Check size={18} />}
+                  </button>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      ) : (
       <div className="flex-1 min-h-0 overflow-y-auto custom-scrollbar pe-2 -me-2">
         <div className="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 gap-3.5 pb-2 items-start">
           <AnimatePresence mode="popLayout">
@@ -902,8 +962,9 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({
           </div>
         )}
       </div>
+      )}
 
-      {filteredVocab.length > WORDS_PER_PAGE && (
+      {!isPhone && filteredVocab.length > WORDS_PER_PAGE && (
         <div className="shrink-0 flex items-center justify-center gap-2">
           <button
             onClick={() => setCurrentPage(pageNumber => Math.max(1, pageNumber - 1))}
