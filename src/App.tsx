@@ -58,10 +58,7 @@ import { SECTION_ICONS } from './lib/sectionIcons';
 import { BOOK_PDF_LABELS, STORY_PDF_KINDS, bookPdfUrl } from './lib/bookPdfs';
 
 // Book Components
-import { StoryPage } from './components/book/StoryPage';
-import { StoryFlow } from './components/book/StoryFlow';
-import { ExercisePage } from './components/book/ExercisePage';
-import { MasterGlossary } from './components/book/MasterGlossary';
+import { StoryPage, StoryFlow, ExercisePage, MasterGlossary } from './components/book/readerChunks';
 import { RolePicker } from './components/layout/RolePicker';
 import { BrandedEntry } from './components/layout/BrandedEntry';
 import { MyWordsPanel } from './components/book/MyWordsPanel';
@@ -1034,7 +1031,7 @@ const AppContent = () => {
                   transition={{ duration: 0.35, ease: "easeOut" }}
                   className="h-full flex flex-col overflow-hidden min-h-0"
                 >
-                  {renderPage()}
+                  <Suspense fallback={null}>{renderPage()}</Suspense>
                 </motion.div>
               </AnimatePresence>
             </div>

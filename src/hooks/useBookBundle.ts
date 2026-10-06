@@ -4,6 +4,7 @@ import { getBookDefinition } from '../core/content/bookRegistry';
 import type { BookDefinition } from '../core/content/bookRegistry';
 import type { BookPair } from '../core/content/contracts';
 import { setActiveBilingualBookPair } from '../data/bilingualHighlightCards';
+import { loadReaderChunks } from '../components/book/readerChunks';
 import {
   applyResolvedAssets,
   EMPTY_RESOLVED_ASSETS,
@@ -49,7 +50,8 @@ export const useBookBundle = (storyId: string | null, level: Level | null): Book
     const loadStartedAt = performance.now();
 
     const load = async () => {
-      const loadedPair = await definition.load();
+      // The reader pages are their own download; fetch them alongside the book content.
+      const [loadedPair] = await Promise.all([definition.load(), loadReaderChunks()]);
       if (cancelled) return;
 
       // Open the book as soon as its reviewed content chunk is ready. Existing

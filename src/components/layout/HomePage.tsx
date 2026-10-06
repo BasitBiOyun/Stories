@@ -4,6 +4,7 @@ import { Level } from '../../types';
 import homeIcon from '../../assets/images/home_icon.webp';
 import { cn } from '../../lib/utils';
 import { useMediaQuery } from '../../lib/useMediaQuery';
+import { afterFirstInteraction } from '../../lib/afterFirstInteraction';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { LanguageToggle } from '../ui/LanguageToggle';
 import { FullscreenToggle } from '../ui/FullscreenButton';
@@ -291,14 +292,18 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart, onOpenTeacherGuide 
       }
     };
 
-    if ('requestIdleCallback' in window) {
-      idleId = window.requestIdleCallback(warmNext, { timeout: 1200 });
-    } else {
-      timerId = setTimeout(warmNext, 900);
-    }
+    // Starts on the first touch or scroll (or after a quiet moment), so it never slows the first screen.
+    const cancelStart = afterFirstInteraction(() => {
+      if ('requestIdleCallback' in window) {
+        idleId = window.requestIdleCallback(warmNext, { timeout: 1200 });
+      } else {
+        timerId = setTimeout(warmNext, 900);
+      }
+    }, 6000);
 
     return () => {
       cancelled = true;
+      cancelStart();
       if (idleId !== null && 'cancelIdleCallback' in window) window.cancelIdleCallback(idleId);
       if (timerId !== null) clearTimeout(timerId);
     };

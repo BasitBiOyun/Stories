@@ -3,6 +3,7 @@ import type { BookPair, CollectionId, StoryId } from './contracts';
 import { getStorageManifest } from '../storage/storageManifests';
 import type { BookAssetManifest } from '../storage/contracts';
 import { finalizePreparedBookPairForUi } from './uiBookFinalization';
+import { loadReaderChunks } from '../../components/book/readerChunks';
 
 export interface BookDefinition {
   storyId: StoryId;
@@ -200,5 +201,7 @@ export const isRegisteredStoryId = (value: string): value is StoryId =>
   bookRegistry.some(definition => definition.storyId === value);
 
 /** Preloads only the selected finalized UI book chunk; it never imports all story content eagerly. */
-export const preloadBook = (storyId: string, level: Level): Promise<BookPair> | null =>
-  getBookDefinition(storyId, level)?.load() ?? null;
+export const preloadBook = (storyId: string, level: Level): Promise<BookPair> | null => {
+  void loadReaderChunks().catch(() => undefined);
+  return getBookDefinition(storyId, level)?.load() ?? null;
+};
