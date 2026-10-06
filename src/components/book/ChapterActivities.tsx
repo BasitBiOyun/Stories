@@ -48,17 +48,19 @@ export const ChapterSteps = ({
     if (steps.length < 2 && !lessonSection) return null;
     const LessonIcon = SECTION_ICONS.lessonCard.icon;
     return (
-      <ol className="mt-1.5 flex flex-wrap items-center gap-1.5" aria-label={t('nav.chapterSteps')} data-chapter-steps>
+      <ol className="mt-1.5 flex flex-wrap items-center gap-1 sm:gap-1.5" aria-label={t('nav.chapterSteps')} data-chapter-steps>
         {steps.map(step => {
           const StepIcon = SECTION_ICONS[step.key].icon;
           const chip = (
             <span
               className={cn(
-                'inline-flex items-center gap-1 rounded-full px-2 py-0.5 font-display text-[11px] font-semibold',
+                // Phones: smaller and without icons, so the four steps fit on one line.
+                'inline-flex items-center gap-1 whitespace-nowrap rounded-full px-1.5 py-0.5 font-display text-[10px] font-semibold sm:px-2 sm:text-[11px]',
+                language === 'ar' && 'text-[11px]',
                 step.done ? 'bg-emerald-100 text-emerald-800' : 'bg-black/[0.05] text-wood/62',
               )}
             >
-              <StepIcon size={12} aria-hidden="true" />
+              <StepIcon size={12} aria-hidden="true" className="hidden sm:block" />
               {step.label}
               {step.done && <span aria-hidden="true">✓</span>}
             </span>
