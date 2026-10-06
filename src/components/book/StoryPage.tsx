@@ -5,7 +5,7 @@ import { Rocket, ArrowRight } from '../ui/icons';
 import { PageData, Hotspot, Exercise, TeacherGuideSection } from '../../types';
 import { ReaderTour, isReaderTourDone } from '../ui/ReaderTour';
 import { ExerciseModule } from '../ExerciseModule';
-import { GroupTaskPanel, ICanPanel, BeforeYouReadPanel, useBeforeYouRead } from './ChapterExtras';
+import { GroupTaskPanel, ICanPanel, BeforeYouReadPanel, useBeforeYouRead, useICanProgress } from './ChapterExtras';
 import { beforeYouReadSeconds } from '../../lib/chapterExtras';
 import { LessonCard } from './LessonCard';
 import { cn } from '../../lib/utils';
@@ -183,8 +183,21 @@ export const StoryPage = ({
       seconds={beforeYouReadSeconds(page.content)}
     />
   ) : null;
-  const renderICan = () => page.type === 'story' && page.iCan?.length ? (
-    <ICanPanel items={page.iCan} language={language} storageKey={`${extrasKey}:ican`} />
+  const iCanProgress = useICanProgress(`${extrasKey}:ican`, page.iCan?.length ?? 0);
+  // "Read the chapter again" from I can: close the window and bring the story text into view.
+  const rereadChapter = () => {
+    setRailPanel(null);
+    const target = [followTextB.current, followTextA.current].find(node => node && node.offsetParent !== null);
+    window.setTimeout(() => target?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 150);
+  };
+  const renderICan = (inWindow = false) => page.type === 'story' && page.iCan?.length ? (
+    <ICanPanel
+      items={page.iCan}
+      language={language}
+      storageKey={`${extrasKey}:ican`}
+      onReread={rereadChapter}
+      onDone={inWindow ? () => setRailPanel(null) : undefined}
+    />
   ) : null;
   const renderGroupTask = () => page.type === 'story' && page.groupTask ? (
     <GroupTaskPanel key={extrasKey} task={page.groupTask} language={language} defaultOpen={isWide} />
@@ -194,6 +207,18 @@ export const StoryPage = ({
   const quickDone = Boolean(quickExercise && completedExercises.includes(quickExercise.id));
   const focusExercises = page.languageFocusExercises ?? [];
   const focusDone = focusExercises.length > 0 && focusExercises.every(exercise => completedExercises.includes(exercise.id));
+  const chapterExercises = [quickExercise, ...focusExercises].filter((exercise): exercise is Exercise => Boolean(exercise));
+  // The chapter's activity order: Quick Challenge, Language Focus, then (desktop windows) Group task and I can.
+  const nextActivityAfter = (current: Exercise): (() => void) | null => {
+    const index = chapterExercises.findIndex(exercise => exercise.id === current.id);
+    const rest = index < 0 ? chapterExercises : [...chapterExercises.slice(index + 1), ...chapterExercises.slice(0, index)];
+    const nextExercise = rest.find(exercise => exercise.id !== current.id && !completedExercises.includes(exercise.id));
+    if (nextExercise) return () => setActiveExercise(nextExercise);
+    if (isWide && page.type === 'story' && page.groupTask) return () => { setActiveExercise(null); setRailPanel('group'); };
+    if (isWide && page.iCan?.length) return () => { setActiveExercise(null); setRailPanel('iCan'); };
+    return null;
+  };
+  const activeNext = activeExercise ? nextActivityAfter(activeExercise) : null;
   const listened = audioEnded || stats.audioChaptersPlayed.has(page.id);
 
   // End of the text: a sentinel for the observer, and the call to the Quick Challenge once the reader is there.
@@ -353,6 +378,7 @@ export const StoryPage = ({
                 completedExercises={completedExercises}
                 onOpenExercise={setActiveExercise}
                 onOpenPanel={setRailPanel}
+                iCanRated={iCanProgress.rated}
               />
               <div className="min-w-0 flex-1">
               {page.image && (
@@ -428,6 +454,12 @@ export const StoryPage = ({
               setActiveExercise(null);
             }}
             onClose={() => setActiveExercise(null)}
+            onNext={() => {
+              trackExerciseComplete(activeExercise.id);
+              if (activeNext) activeNext();
+              else setActiveExercise(null);
+            }}
+            isLast={!activeNext}
             collectionId={collectionId}
             variant={
               page.exercises?.[0]?.id === activeExercise.id
@@ -469,7 +501,21 @@ export const StoryPage = ({
                   ×
                 </button>
                 <div className="max-h-[85vh] overflow-y-auto custom-scrollbar rounded-[26px] [&>section]:mt-0">
-                  {railPanel === 'group' ? renderGroupTask() : renderICan()}
+                  {railPanel === 'group' ? renderGroupTask() : renderICan(true)}
+                  {railPanel === 'group' && (
+                    <div className="flex justify-center pt-4">
+                      <button
+                        type="button"
+                        onClick={() => setRailPanel(page.iCan?.length ? 'iCan' : null)}
+                        className="inline-flex min-h-11 items-center gap-2 rounded-xl bg-brand-600 px-6 font-display text-xs font-bold uppercase tracking-widest text-white shadow-lg hover:bg-brand-700"
+                      >
+                        {page.iCan?.length
+                          ? (language === 'ar' ? 'النشاط التالي' : 'Next activity')
+                          : (language === 'ar' ? 'إنهاء' : 'Finish')}
+                        <ArrowRight size={16} className={cn(isRTL && 'rotate-180')} />
+                      </button>
+                    </div>
+                  )}
                 </div>
               </motion.div>
             </motion.div>

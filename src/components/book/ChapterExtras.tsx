@@ -42,6 +42,22 @@ export const useBeforeYouRead = (storageKey: string) => {
   };
 };
 
+const I_CAN_EVENT = 'ican:changed';
+
+/** How many I can lines the learner has rated, kept in step with the panel wherever it is open. */
+export const useICanProgress = (storageKey: string, total: number) => {
+  const count = () => Object.keys(readStored<Record<string, string>>(storageKey, {})).length;
+  const [rated, setRated] = useState(count);
+  useEffect(() => {
+    setRated(count());
+    const sync = () => setRated(count());
+    window.addEventListener(I_CAN_EVENT, sync);
+    return () => window.removeEventListener(I_CAN_EVENT, sync);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [storageKey]);
+  return { rated: Math.min(rated, total), total };
+};
+
 const LABELS = {
   en: {
     title: 'Before you read',
@@ -60,6 +76,12 @@ const LABELS = {
     yes: 'Yes',
     almost: 'Almost',
     notYet: 'Not yet',
+    allYes: 'Well done! You can do all of these now.',
+    lookAgain: 'Look at these again:',
+    reread: 'Read the chapter again',
+    done: 'Done',
+    askClass: 'Ask the class:',
+    showInStory: 'Ask one learner to show it in the story.',
   },
   ar: {
     title: 'قَبْلَ القِرَاءَةِ',
@@ -78,6 +100,12 @@ const LABELS = {
     yes: 'نَعَمْ',
     almost: 'تَقْرِيبًا',
     notYet: 'لَيْسَ بَعْدُ',
+    allYes: 'أَحْسَنْتَ! تَسْتَطِيعُ الآنَ كُلَّ هٰذِهِ.',
+    lookAgain: 'رَاجِعْ هٰذِهِ مَرَّةً أُخْرَى:',
+    reread: 'اقْرَأِ الفَصْلَ مَرَّةً أُخْرَى',
+    done: 'تَمَّ',
+    askClass: 'اسْأَلِ الصَّفَّ:',
+    showInStory: 'اطْلُبْ مِنْ طَالِبٍ أَنْ يُرِيَهُ فِي القِصَّةِ.',
   },
 };
 
@@ -242,7 +270,16 @@ export const BeforeYouReadPanel = ({
 
 type Rating = 'yes' | 'almost' | 'notYet';
 
-export const ICanPanel = ({ items, language, storageKey }: { items: string[]; language: string; storageKey: string }) => {
+export const ICanPanel = ({ items, language, storageKey, onReread, onDone }: {
+  items: string[];
+  language: string;
+  storageKey: string;
+  /** Takes the learner back to the story text. */
+  onReread?: () => void;
+  /** Shown in a window: closes it. */
+  onDone?: () => void;
+}) => {
+  const { classMode } = useClassMode();
   const L = language === 'ar' ? LABELS.ar : LABELS.en;
   const isArabic = language === 'ar';
   const [ratings, setRatings] = useState<Record<number, Rating>>(() => readStored(storageKey, {}));
@@ -251,7 +288,10 @@ export const ICanPanel = ({ items, language, storageKey }: { items: string[]; la
     const next = { ...ratings, [index]: value };
     setRatings(next);
     writeStored(storageKey, next);
+    window.dispatchEvent(new Event(I_CAN_EVENT));
   };
+  const allRated = items.every((_, index) => ratings[index]);
+  const toReview = items.filter((_, index) => ratings[index] && ratings[index] !== 'yes');
   const options: { value: Rating; label: string; on: string }[] = [
     { value: 'yes', label: L.yes, on: 'bg-emerald-600 text-white border-emerald-600' },
     { value: 'almost', label: L.almost, on: 'bg-amber-500 text-white border-amber-500' },
@@ -290,6 +330,51 @@ export const ICanPanel = ({ items, language, storageKey }: { items: string[]; la
           </li>
         ))}
       </ul>
+
+      {/* Closing moment: once every line is rated (students), or as a prompt for the class (class mode) */}
+      {classMode ? (
+        <div className="mt-3 rounded-2xl bg-brand-50/70 px-4 py-3">
+          <p className={cn('font-display font-semibold text-brand-800', isArabic ? 'text-sm' : 'text-[12px] uppercase tracking-widest')}>{L.askClass}</p>
+          <p className={cn('mt-1 font-serif text-wood', isArabic ? 'text-base' : 'text-sm sm:text-base')}>{(toReview[0] ?? items[0]).replace(/\.$/, '')}?</p>
+          <p className={cn('mt-1 text-wood/60', isArabic ? 'text-sm' : 'text-[13px]')}>{L.showInStory}</p>
+        </div>
+      ) : allRated && (
+        <div className={cn('mt-3 rounded-2xl px-4 py-3', toReview.length ? 'bg-amber-50' : 'bg-emerald-50')} role="status" data-i-can-summary>
+          <p className={cn('flex flex-wrap gap-x-3 gap-y-1 font-display font-semibold', isArabic ? 'text-sm' : 'text-[12px]')}>
+            {options.map(option => {
+              const n = items.filter((_, index) => ratings[index] === option.value).length;
+              return n ? <span key={option.value} className="text-wood/70">{option.label}: {isArabic ? n.toLocaleString('ar-EG') : n}</span> : null;
+            })}
+          </p>
+          {toReview.length === 0 ? (
+            <p className={cn('mt-1.5 flex items-center gap-2 font-semibold text-emerald-800', isArabic ? 'text-base' : 'text-sm')}>
+              <CheckCircle size={18} />{L.allYes}
+            </p>
+          ) : (
+            <>
+              <p className={cn('mt-1.5 font-semibold text-amber-900', isArabic ? 'text-base' : 'text-sm')}>{L.lookAgain}</p>
+              <ul className={cn('mt-1 list-disc ps-5 font-serif text-wood/85', isArabic ? 'text-base' : 'text-sm')}>
+                {toReview.map(item => <li key={item}>{item}</li>)}
+              </ul>
+            </>
+          )}
+        </div>
+      )}
+
+      {(onDone || (onReread && !classMode && toReview.length > 0 && allRated)) && (
+        <div className="mt-3 flex flex-wrap justify-end gap-2">
+          {onReread && !classMode && allRated && toReview.length > 0 && (
+            <button type="button" onClick={onReread} className="min-h-10 rounded-full border border-brand-300 bg-white px-4 font-display text-[12px] font-semibold text-brand-800 hover:bg-brand-50">
+              {L.reread}
+            </button>
+          )}
+          {onDone && (
+            <button type="button" onClick={onDone} className="min-h-10 rounded-full bg-brand-700 px-5 font-display text-[12px] font-semibold text-white hover:bg-brand-800">
+              {L.done}
+            </button>
+          )}
+        </div>
+      )}
     </section>
   );
 };

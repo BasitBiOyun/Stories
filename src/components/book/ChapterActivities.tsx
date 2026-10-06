@@ -415,12 +415,14 @@ export const LanguageFocusPanel = ({ page, completedExercises, onOpenExercise, i
   };
 
 /** Wide screens: the chapter's activities as one short list under the picture, so story and activities share one screen. */
-export const ChapterActivityRail = ({ page, completedExercises, onOpenExercise, onOpenPanel }: {
+export const ChapterActivityRail = ({ page, completedExercises, onOpenExercise, onOpenPanel, iCanRated = 0 }: {
   page: PageData;
   completedExercises: string[];
   onOpenExercise: (exercise: Exercise) => void;
   /** Opens the group task or the I can list in a window. */
   onOpenPanel: (panel: 'group' | 'iCan') => void;
+  /** How many I can lines the learner has rated. */
+  iCanRated?: number;
 }) => {
   const { language, t, formatNumber } = useLanguage();
   const isArabic = language === 'ar';
@@ -441,7 +443,7 @@ export const ChapterActivityRail = ({ page, completedExercises, onOpenExercise, 
     rows.push({ key: 'gt', icon: MODE_ICONS.group.icon, label: isArabic ? 'مهمة جماعية' : 'Group task', short: isArabic ? 'جماعي' : 'Group', status: page.groupTask.time, done: false, onClick: () => onOpenPanel('group') });
   }
   if (page.iCan?.length) {
-    rows.push({ key: 'ic', icon: SECTION_ICONS.iCan.icon, label: SECTION_ICONS.iCan[isArabic ? 'ar' : 'en'], short: isArabic ? 'أستطيع' : 'I can', status: isArabic ? `${formatNumber(page.iCan.length)} عبارات` : `${page.iCan.length} statements`, done: false, onClick: () => onOpenPanel('iCan') });
+    rows.push({ key: 'ic', icon: SECTION_ICONS.iCan.icon, label: SECTION_ICONS.iCan[isArabic ? 'ar' : 'en'], short: isArabic ? 'أستطيع' : 'I can', status: `${formatNumber(iCanRated)} / ${formatNumber(page.iCan.length)}`, done: iCanRated >= page.iCan.length, onClick: () => onOpenPanel('iCan') });
   }
   if (!rows.length) return null;
 
@@ -463,7 +465,7 @@ export const ChapterActivityRail = ({ page, completedExercises, onOpenExercise, 
               row.done ? 'border-emerald-200 bg-emerald-50 text-emerald-700' : 'border-brand-200 bg-white text-brand-800 group-hover:bg-brand-50',
             )}>
               <Icon size={21} />
-              {(row.done || row.key === 'lf') && (
+              {(row.done || row.key === 'lf' || row.key === 'ic') && (
                 <span className={cn(
                   'absolute -bottom-1 -end-1 flex h-[18px] min-w-[18px] items-center justify-center rounded-full px-1 font-display text-[9px] font-bold tabular-nums ring-2 ring-white',
                   row.done ? 'bg-emerald-600 text-white' : 'bg-brand-700 text-white',

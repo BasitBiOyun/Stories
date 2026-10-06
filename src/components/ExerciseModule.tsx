@@ -8,6 +8,8 @@ import {
   ArrowRight,
   RotateCcw,
   Lightbulb,
+  Eye,
+  ChatCircleDots,
 } from './ui/icons';
 import { Exercise } from '../types';
 import { cn } from '../lib/utils';
@@ -32,10 +34,42 @@ interface ExerciseModuleProps {
   exercise: Exercise;
   onComplete: () => void;
   onClose: () => void;
+  /** Opens the chapter's next activity; the closing screen shows it as "Next activity" (or "Finish" when isLast). */
+  onNext?: () => void;
+  isLast?: boolean;
   collectionId?: string;
   variant?: 'default' | 'quick' | 'language' | 'review';
   embedded?: boolean;
 }
+
+const CLOSING = {
+  en: {
+    firstTry: (right: string, total: string) => `First try: ${right} / ${total} correct`,
+    allFirst: 'All correct on the first try.',
+    oneFirst: 'Correct on the first try.',
+    later: 'Correct on a later try.',
+    answerShown: 'The right answer is shown above.',
+    missedMarked: 'The ones you missed are marked above. Read them once more.',
+    next: 'Next activity',
+    finish: 'Finish',
+    showAnswers: 'Show answers',
+    classTitle: 'Talk about it together',
+    askClass: 'Ask the class: Which sentence in the story helps? Find it and read it aloud.',
+  },
+  ar: {
+    firstTry: (right: string, total: string) => `المحاولة الأولى: ${right} من ${total} صحيحة`,
+    allFirst: 'كلّها صحيحة من المحاولة الأولى.',
+    oneFirst: 'صحيحة من المحاولة الأولى.',
+    later: 'صحيحة في محاولة لاحقة.',
+    answerShown: 'الإجابة الصحيحة ظاهرة في الأعلى.',
+    missedMarked: 'ما لم يكن صحيحًا مُعلَّم في الأعلى. اقرأه مرّة أخرى.',
+    next: 'النشاط التالي',
+    finish: 'إنهاء',
+    showAnswers: 'أظهر الإجابات',
+    classTitle: 'ناقشوا معًا',
+    askClass: 'اسأل الصف: أيّ جملة في القصة تساعد؟ ابحثوا عنها واقرؤوها بصوت عالٍ.',
+  },
+};
 
 // The collection's colours come from the brand-* tokens App publishes; the classes are the same for every collection.
 const theme = {
@@ -71,6 +105,8 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
   exercise,
   onComplete,
   onClose,
+  onNext,
+  isLast = false,
   collectionId = 'prophets',
   variant = 'default',
   embedded = false,
@@ -97,6 +133,10 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
   const { classMode } = useClassMode();
   const [shownExamples, setShownExamples] = React.useState<Set<number>>(new Set());
   const [attempt, setAttempt] = React.useState(0);
+  // Score of the first check only; later tries never change it.
+  const [firstTry, setFirstTry] = React.useState<{ right: number; total: number } | null>(null);
+  const [classReveal, setClassReveal] = React.useState(false);
+  const closing = CLOSING[isArabic ? 'ar' : 'en'];
 
   const reflectionNeedsWriting = exercise.type === 'reflection' && (
     /\bwrite\b/i.test(exercise.instructions ?? '')
@@ -125,6 +165,9 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
     setQuizAnswered(false);
     setQuizWasCorrect(null);
     setReflectionResponse('');
+    setAttempt(0);
+    setFirstTry(null);
+    setClassReveal(false);
   }, [exercise]);
 
   React.useEffect(() => {
@@ -170,9 +213,39 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
     return answer === exercise.correctAnswer;
   };
 
+  const scoreItems = (answer: any): { right: number; total: number } | null => {
+    if (exercise.type === 'reflection' || exercise.type === 'tap-reveal') return null;
+    if (exercise.type === 'matching') {
+      const pairs = exercise.matchingPairs ?? [];
+      return { right: pairs.filter((pair) => matchingAssignments[pair.left] === pair.right).length, total: pairs.length };
+    }
+    if (exercise.type === 'sequencing') {
+      const expected = (exercise.correctAnswer ?? []) as unknown[];
+      const given = Array.isArray(answer) ? answer : [];
+      return { right: expected.filter((item, index) => given[index] === item).length, total: expected.length };
+    }
+    if (exercise.type === 'drag-drop') {
+      const correctGroups = (exercise.correctAnswer ?? {}) as Record<string, string[]>;
+      const groups = Object.entries(correctGroups);
+      const placed = (answer ?? {}) as Record<string, string[]>;
+      const total = groups.reduce((sum, [, items]) => sum + items.length, 0);
+      const right = groups.reduce((sum, [group, items]) => {
+        const mine = (placed[group] ?? []).map(normalizeText);
+        return sum + items.filter((item) => mine.includes(normalizeText(item))).length;
+      }, 0);
+      return { right, total };
+    }
+    if (isLanguageItemType(exercise.type)) {
+      const results = scoreLanguageItems(exercise, answer) ?? [];
+      return { right: results.filter(Boolean).length, total: results.length };
+    }
+    return { right: isCorrectAnswer(answer) ? 1 : 0, total: 1 };
+  };
+
   const submit = (answer: any = userAnswer) => {
     setUserAnswer(answer);
     setIsSubmitted(true);
+    if (attempt === 0 && !firstTry) setFirstTry(scoreItems(answer));
     if (isCorrectAnswer(answer)) {
       confetti({
         particleCount: isQuick ? 60 : isLanguage ? 36 : isReview ? 22 : 110,
@@ -194,6 +267,27 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
     setDragAssignments({});
     setRevealedItems(new Set());
     setReflectionResponse('');
+    setQuizStep(0);
+    setQuizScore(0);
+    setQuizAnswered(false);
+    setQuizWasCorrect(null);
+    setClassReveal(false);
+  };
+
+  // Class mode: "Show answers" puts the right answer on the board for everyone.
+  const showClassAnswers = () => {
+    setClassReveal(true);
+    if (exercise.type === 'matching') {
+      setMatchingAssignments(Object.fromEntries((exercise.matchingPairs ?? []).map((pair) => [pair.left, pair.right])));
+    } else if (exercise.type === 'drag-drop') {
+      const groups = { ...((exercise.correctAnswer ?? {}) as Record<string, string[]>) };
+      setDragAssignments(groups);
+      setUserAnswer(groups);
+    } else if (exercise.type === 'sequencing') {
+      const order = [...((exercise.correctAnswer ?? []) as string[])];
+      setLocalSequence(order);
+      setUserAnswer(order);
+    }
   };
 
   const assignDragItem = (groupName: string) => {
@@ -235,6 +329,7 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
       setQuizAnswered(false);
       setQuizWasCorrect(null);
     } else {
+      if (attempt === 0 && !firstTry) setFirstTry({ right: quizScore, total });
       setIsSubmitted(true);
     }
   };
@@ -665,7 +760,10 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
     ? quizScore === (exercise.quizQuestions?.length ?? 0)
     : isCorrectAnswer(userAnswer));
   // The first wrong try gets only the hint; the answer and explanation appear after a second try.
-  const revealAnswer = isSubmitted && (correct || attempt > 0);
+  // In class mode the teacher reveals them with "Show answers".
+  const revealAnswer = isSubmitted && (correct || attempt > 0 || (classMode && classReveal) || exercise.type === 'quiz-game');
+  // The closing screen: right, or the answer is already shown.
+  const finished = isSubmitted && (correct || revealAnswer);
 
   const quickBackground =
     'radial-gradient(circle at 14% 8%, color-mix(in srgb, var(--brand-500) 12%, transparent), transparent 34%), #FBFAF6';
@@ -782,29 +880,69 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
           {renderContent()}
 
           <AnimatePresence mode="wait">
-            {isSubmitted && exercise.type !== 'quiz-game' && (
+            {isSubmitted && (
               <motion.section
+                key={finished ? 'closing' : 'feedback'}
                 initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
                 className={cn(
                   'rounded-2xl p-4 sm:p-6 space-y-4',
                   isQuick || isLanguage ? 'border ring-1 ring-inset' : 'border-2',
-                  correct
-                    ? 'bg-emerald-50 border-emerald-200 ring-emerald-100'
+                  classMode
+                    ? `bg-white ${theme.softBorder} ring-black/[0.03]`
+                    : finished
+                    ? 'bg-emerald-50/70 border-emerald-200 ring-emerald-100'
                     : 'bg-rose-50 border-rose-200 ring-rose-100'
                 )}
               >
-                <div className="flex items-start gap-3">
-                  {correct ? <CheckCircle2 className="text-emerald-600 shrink-0 mt-0.5" size={22} /> : <XCircle className="text-rose-600 shrink-0 mt-0.5" size={22} />}
-                  <div className="flex-1 min-w-0">
-                    <p className={cn('font-display font-black', isArabic ? 'text-lg sm:text-xl' : 'text-base sm:text-lg', correct ? 'text-emerald-800' : 'text-rose-800')}>
-                      {correct ? `${t('nav.correct')}!` : t('nav.notQuite')}
-                    </p>
-                    <p className={cn('font-serif text-wood/75 mt-1 leading-relaxed', isArabic ? 'text-base sm:text-lg' : 'text-sm sm:text-base')}>
-                      {correct ? exercise.feedback.correct : exercise.feedback.incorrect}
-                    </p>
+                {classMode ? (
+                  <div className="flex items-start gap-3">
+                    <ChatCircleDots className={cn('shrink-0 mt-0.5', theme.accentText)} size={22} />
+                    <div className="flex-1 min-w-0">
+                      <p className={cn('font-display font-black', isArabic ? 'text-lg sm:text-xl' : 'text-base sm:text-lg', theme.title)}>{closing.classTitle}</p>
+                      <p className={cn('font-serif text-wood/75 mt-1 leading-relaxed', isArabic ? 'text-base sm:text-lg' : 'text-sm sm:text-base')}>{closing.askClass}</p>
+                    </div>
                   </div>
-                </div>
+                ) : (
+                  <div className="flex items-start gap-3">
+                    {finished ? <CheckCircle2 className="text-emerald-600 shrink-0 mt-0.5" size={22} /> : <XCircle className="text-rose-600 shrink-0 mt-0.5" size={22} />}
+                    <div className="flex-1 min-w-0">
+                      <p className={cn('font-display font-black', isArabic ? 'text-lg sm:text-xl' : 'text-base sm:text-lg', finished ? 'text-emerald-800' : 'text-rose-800')}>
+                        {!finished
+                          ? t('nav.notQuite')
+                          : firstTry && firstTry.total > 1
+                          ? closing.firstTry(formatNumber(firstTry.right), formatNumber(firstTry.total))
+                          : firstTry && firstTry.right === firstTry.total
+                          ? closing.oneFirst
+                          : firstTry && correct
+                          ? closing.later
+                          : firstTry
+                          ? closing.answerShown
+                          : `${t('nav.correct')}!`}
+                      </p>
+                      {firstTry && firstTry.total > 1 && !finished && (
+                        <p className={cn('font-display font-bold text-rose-800/80 mt-0.5', isArabic ? 'text-base' : 'text-sm')}>
+                          {closing.firstTry(formatNumber(firstTry.right), formatNumber(firstTry.total))}
+                        </p>
+                      )}
+                      {firstTry && firstTry.total > 1 && finished && (
+                        <p className={cn('font-display font-bold text-emerald-800/80 mt-0.5', isArabic ? 'text-base' : 'text-sm')}>
+                          {firstTry.right === firstTry.total ? closing.allFirst : correct ? closing.later : closing.answerShown}
+                        </p>
+                      )}
+                      {exercise.feedback && (
+                        <p className={cn('font-serif text-wood/75 mt-1 leading-relaxed', isArabic ? 'text-base sm:text-lg' : 'text-sm sm:text-base')}>
+                          {correct ? exercise.feedback.correct : exercise.feedback.incorrect}
+                        </p>
+                      )}
+                      {finished && !correct && firstTry && firstTry.total > 1 && exercise.type !== 'quiz-game' && (
+                        <p className={cn('font-serif text-wood/60 mt-2', isArabic ? 'text-sm sm:text-base' : 'text-xs sm:text-sm')}>
+                          {closing.missedMarked}
+                        </p>
+                      )}
+                    </div>
+                  </div>
+                )}
 
                 {exercise.explanation && revealAnswer && (
                   <div className={cn('rounded-xl bg-white/70 border border-black/5 p-3 sm:p-4 font-serif text-wood/75 leading-relaxed', isArabic ? 'text-base sm:text-lg' : 'text-sm sm:text-base')}>
@@ -813,7 +951,7 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
                   </div>
                 )}
 
-                {!revealAnswer && (
+                {!revealAnswer && !classMode && (
                   <p className={cn('font-serif text-wood/55', isArabic ? 'text-sm sm:text-base' : 'text-xs sm:text-sm')}>
                     {t('nav.answerAfterNextTry')}
                   </p>
@@ -821,26 +959,25 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
 
                 <div className={cn(
                   'grid grid-cols-1 gap-3 w-full',
-                  correct ? 'sm:max-w-sm sm:mx-auto' : 'sm:grid-cols-2'
+                  correct || (classMode && revealAnswer) ? 'sm:max-w-sm sm:mx-auto' : 'sm:grid-cols-2'
                 )}>
-                  {!correct && (
+                  {classMode && !revealAnswer && (
+                    <button type="button" onClick={showClassAnswers} className={cn('min-h-12 rounded-xl font-display uppercase tracking-widest font-bold flex items-center justify-center gap-2 bg-white border-2', theme.softBorder, theme.accentText, isArabic ? 'text-sm sm:text-base' : 'text-xs')}>
+                      <Eye size={16} /> {closing.showAnswers}
+                    </button>
+                  )}
+                  {!classMode && !correct && (
                     <button type="button" onClick={retry} className={cn('min-h-12 rounded-xl font-display uppercase tracking-widest font-bold flex items-center justify-center gap-2', isArabic ? 'text-sm sm:text-base' : 'text-xs', revealAnswer ? 'bg-white border-2 border-rose-200 text-rose-700' : `text-white ${theme.accentBg}`)}>
                       <RotateCcw size={16} /> {t('nav.tryAgain')}
                     </button>
                   )}
-                  <button type="button" onClick={onComplete} className={cn('min-h-12 rounded-xl font-display uppercase tracking-widest font-bold flex items-center justify-center gap-2', isArabic ? 'text-sm sm:text-base' : 'text-xs', correct ? 'bg-emerald-600 text-white' : revealAnswer ? `text-white ${theme.accentBg}` : 'bg-white border-2 border-black/10 text-wood/70')}>
-                    {t('nav.continue')} <ArrowRight className={cn('w-4 h-4', isRTL && 'rotate-180')} />
+                  <button type="button" onClick={onNext ?? onComplete} className={cn('min-h-12 rounded-xl font-display uppercase tracking-widest font-bold flex items-center justify-center gap-2', isArabic ? 'text-sm sm:text-base' : 'text-xs', correct && !classMode ? 'bg-emerald-600 text-white' : revealAnswer ? `text-white ${theme.accentBg}` : 'bg-white border-2 border-black/10 text-wood/70')}>
+                    {onNext ? (isLast ? closing.finish : closing.next) : t('nav.continue')} <ArrowRight className={cn('w-4 h-4', isRTL && 'rotate-180')} />
                   </button>
                 </div>
               </motion.section>
             )}
           </AnimatePresence>
-
-          {isSubmitted && exercise.type === 'quiz-game' && (
-            <button type="button" onClick={onComplete} className={cn('w-full min-h-12 rounded-xl text-white font-display uppercase tracking-widest font-bold', isArabic ? 'text-sm sm:text-base' : 'text-xs', theme.accentBg)}>
-              {t('nav.continue')}
-            </button>
-          )}
         </div>
       </main>
 
