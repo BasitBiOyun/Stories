@@ -257,7 +257,7 @@ export const meccaB2LanguageFocusExercisesPart4: Record<number, Exercise[]> = {
     question: 'Which words show that the opposition grew step by step?',
     sequencingItems: [
       { id: 'c', text: 'Poor people or those without powerful protectors suffered the most.' },
-      { id: 'a', text: 'At first, they mocked just the new religion.' },
+      { id: 'a', text: 'At first, the Quraysh leaders mocked just the new religion.' },
       { id: 'd', text: 'The Meccan elites went further and imposed a social and economic boycott …' },
       { id: 'b', text: 'However, when the Qur’an began to speak ill of their idols, … they began to oppose him fiercely.' },
     ],

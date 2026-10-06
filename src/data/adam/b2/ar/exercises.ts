@@ -34,7 +34,7 @@ export const adamB2KnowledgeCheckExercisesAr: Exercise[] = [
 ];
 
 export const adamB2VocabularyChallengePairsAr: VocabularyChallengePair[] = [
-  { word: "معجز", meaning: "خارق للمألوف ويُنسب إلى قدرة إلهية.", partOfSpeech: "adjective", chapter: 1, context: "خلق من التراب بدون أم ولا أب، كدليل معجز على قدرة الله المطلقة." },
+  { word: "معجز", meaning: "خارق للمألوف ويُنسب إلى قدرة إلهية.", partOfSpeech: "adjective", chapter: 1, context: "خُلِق آدم عليه السلام من التراب بدون أم ولا أب، كدليل معجز على قدرة الله المطلقة." },
   { word: "الحضارة", meaning: "نظام إنساني متطور في الثقافة والمعرفة.", partOfSpeech: "noun", chapter: 3, context: "ويمكن فهْم هذه الأسماء على أنها الأساس العِلميّ للإنسانية، وهي القدرة على التفكير، وإصدار الأحكام المنطقية، وإنتاج الثقافة والحضارة." },
   { word: "الامتياز", meaning: "ميزة أو مكانة خاصة ممنوحة لشخص.", partOfSpeech: "noun", chapter: 4, context: "وهذا الشرف والامتياز في العلم جعلا حتى الملائكة يسجدون لآدم عليه السلام." },
   { word: "اسكن", meaning: "أقم في مكان واتخذه موطنا.", partOfSpeech: "verb", chapter: 6, context: "﴿ويا آدم اسكن أنت وزوجك الجنة فكلا من حيث شئتما ولا تقربا هذه الشجرة فتكونا من الظالمين﴾." },

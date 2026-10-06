@@ -130,10 +130,10 @@ export const mosesB1LanguageFocusExercises: Record<number, Exercise[]> = {
       instructions: 'Put the events from Chapter 2 in order. “When” and “Then” can help.',
       question: 'What happened after the Pharaoh’s dream?',
       sequencingItems: [
-        { id: '1', text: 'When he woke up, he called all his advisors and magicians and asked about the dream.' },
+        { id: '1', text: 'When the Pharaoh woke up, he called all his advisors and magicians and asked about the dream.' },
         { id: '2', text: 'Then, the Pharaoh told his soldiers, “Kill all the newborn boys of the Children of Israel.”' },
-        { id: '3', text: 'His soldiers broke into houses and searched the rooms.' },
-        { id: '4', text: 'When they found baby boys, they killed them.' },
+        { id: '3', text: 'The Pharaoh’s soldiers broke into houses and searched the rooms.' },
+        { id: '4', text: 'When the soldiers found baby boys, they killed them.' },
       ],
       correctAnswer: ['1', '2', '3', '4'],
       explanation: '“When he woke up” links his first action to the moment the dream ended. “Then” moves the story to the next step: The order. The imperative “Kill …” has no subject because it tells someone what to do. “When they found baby boys, they killed them” shows what happened each time the soldiers found a boy.',

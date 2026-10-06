@@ -3,7 +3,7 @@ import type { ChapterExtras } from '../../../../lib/chapterExtras';
 // Before you read, I can and example answers (V2). The story text is unchanged.
 export const adamA2ChapterExtrasEn: ChapterExtras = {
   beforeYouRead: {
-    1: { kind: 'guess', question: "Guess first: Why did Allah care about Adam very much?", options: ["He was the first human.", "He was very strong.", "He was very rich."], answer: 0, quote: "cared about him very much because he was the first human" },
+    1: { kind: 'guess', question: "Guess first: Why did Allah care about Adam very much?", options: ["Adam was the first human.", "Adam was very strong.", "Adam was very rich."], answer: 0, quote: "cared about him very much because he was the first human" },
     2: { kind: 'guess', question: "Guess first: What did Allah tell the angels to show Adam?", options: ["the way to Paradise", "the sea", "respect"], answer: 2, quote: "show respect to him" },
     3: { kind: 'guess', question: "Guess first: What did Iblis say he was made from?", options: ["water", "fire", "gold"], answer: 1, quote: "You created me from fire" },
     4: { kind: 'guess', question: "Guess first: What did Allah tell Adam and Eve about one tree?", options: ["not to go near it", "to plant more trees like it", "to sit under it every day"], answer: 0, quote: "He told Adam and Eve not to go near one tree." },

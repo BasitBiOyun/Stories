@@ -422,14 +422,14 @@ export const abrahamB2LanguageFocusChapter5: Record<number, Exercise[]> = {
           items: [
             'Very soon, he was going to fight against his family and the whole system in his society.',
             'a child named Abraham (pbuh) would be born in the region',
-            'a child in the region would challenge his throne',
+            'a child in the region would challenge Nimrod’s throne',
           ],
         },
         {
           group: 'An event that happened',
           items: [
             'Nimrod, the king of Babylon, had many fortunetellers and astrologers.',
-            'he gathered pregnant women in one place',
+            'Nimrod gathered pregnant women in one place',
             'Azer took his wife … to a safe place',
           ],
         },
@@ -438,11 +438,11 @@ export const abrahamB2LanguageFocusChapter5: Record<number, Exercise[]> = {
         'A later event seen from the past': [
           'Very soon, he was going to fight against his family and the whole system in his society.',
           'a child named Abraham (pbuh) would be born in the region',
-          'a child in the region would challenge his throne',
+          'a child in the region would challenge Nimrod’s throne',
         ],
         'An event that happened': [
           'Nimrod, the king of Babylon, had many fortunetellers and astrologers.',
-          'he gathered pregnant women in one place',
+          'Nimrod gathered pregnant women in one place',
           'Azer took his wife … to a safe place',
         ],
       },

@@ -13,14 +13,14 @@ export const adamB1LanguageFocusExercisesPart2: Record<number, Exercise[]> = {
           group: 'A character’s view (thought / believed / said)',
           items: [
             'All the angels thought that Adam (pbuh) was amazing.',
-            'he believed his origin was superior',
+            'Iblis believed his origin was superior',
             'Iblis said, “I am better than Adam (pbuh).”',
           ],
         },
         {
           group: 'The narrator’s own statement',
           items: [
-            'They all admired him and showed respect to him',
+            'The angels all admired Adam and showed respect to him',
             'Iblis was arrogant.',
             'Iblis did not think carefully and was wrong about Adam (pbuh).',
           ],
@@ -29,11 +29,11 @@ export const adamB1LanguageFocusExercisesPart2: Record<number, Exercise[]> = {
       correctAnswer: {
         'A character’s view (thought / believed / said)': [
           'All the angels thought that Adam (pbuh) was amazing.',
-          'he believed his origin was superior',
+          'Iblis believed his origin was superior',
           'Iblis said, “I am better than Adam (pbuh).”',
         ],
         'The narrator’s own statement': [
-          'They all admired him and showed respect to him',
+          'The angels all admired Adam and showed respect to him',
           'Iblis was arrogant.',
           'Iblis did not think carefully and was wrong about Adam (pbuh).',
         ],
@@ -295,11 +295,11 @@ export const adamB1LanguageFocusExercisesPart5: Record<number, Exercise[]> = {
       instructions: 'Put the parts of Chapter 6 in the right order.',
       question: 'What happened after Iblis tricked them?',
       sequencingItems: [
-        { id: 'a', text: 'He convinced them to believe his lies, …' },
+        { id: 'a', text: 'Iblis convinced Adam and Eve to believe his lies, …' },
         { id: 'b', text: 'Adam stretched out his hand, picked one of the fruits and offered it to Eve.' },
-        { id: 'c', text: 'They both ate of the forbidden tree.' },
+        { id: 'c', text: 'Adam and Eve both ate of the forbidden tree.' },
         { id: 'd', text: 'When Adam finished eating, he felt that his heart was filled with pain, sadness and shame.' },
-        { id: 'e', text: 'They hurried to hide their private parts …' },
+        { id: 'e', text: 'Adam and Eve hurried to hide their private parts …' },
       ],
       correctAnswer: ['a', 'b', 'c', 'd', 'e'],
       explanation: 'The chapter tells the events in time order. A list of past simple verbs (stretched out, picked, offered) gives actions one after another. The time clause “When Adam finished eating” marks the point after which the feeling came, and the final actions show the reaction to what they discovered.',

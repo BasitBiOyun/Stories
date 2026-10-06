@@ -125,9 +125,9 @@ export const mosesA2LanguageFocusExercises: Record<number, Exercise[]> = {
       sequencingItems: [
         { id: '1', text: 'One day the king had a dream.' },
         { id: '2', text: 'The king woke up and called his helpers and magicians.' },
-        { id: '3', text: 'He asked about the dream.' },
+        { id: '3', text: 'The king asked about the dream.' },
         { id: '4', text: 'Then, the king told his soldiers, “Kill all the baby boys of the Children of Israel.”' },
-        { id: '5', text: 'When they found baby boys, they killed them.' },
+        { id: '5', text: 'When the soldiers found baby boys, they killed them.' },
       ],
       correctAnswer: ['1', '2', '3', '4', '5'],
       explanation: 'Past verbs tell the events in order. One day starts the event, Then shows the next step, and When joins two past actions: First they found, then they killed.',

@@ -294,8 +294,8 @@ export const mosesB1LanguageFocusChapter6: Record<number, Exercise[]> = {
       sequencingItems: [
         { id: '1', text: 'Moses knew that the punishment for killing an Egyptian was death.' },
         { id: '2', text: 'Moses escaped from the soldiers.' },
-        { id: '3', text: 'He left Egypt and travelled for a long time.' },
-        { id: '4', text: 'After many days, he reached the land of Midian …' },
+        { id: '3', text: 'Moses left Egypt and travelled for a long time.' },
+        { id: '4', text: 'After many days, Moses reached the land of Midian …' },
         { id: '5', text: 'Moses was tired and thirsty. He was looking for water.' },
       ],
       correctAnswer: ['1', '2', '3', '4', '5'],

@@ -10,7 +10,7 @@ export const yunusB1LanguageFocusChapter9: Exercise[] = [
     question: 'How does each idea lead to the next?',
     sequencingItems: [
       { id: 'a', text: 'In this way, every creature is an image, but only Allah is truly real.' },
-      { id: 'b', text: 'His words remind us of Allah’s commands for achieving this unity.' },
+      { id: 'b', text: 'Yunus Emre’s words remind us of Allah’s commands for achieving this unity.' },
       { id: 'c', text: 'As a result of creation, the original unity lost its unity and multiple existence appeared.' },
       { id: 'd', text: 'The main goal for humans is to reach unity with Allah.' },
       { id: 'e', text: 'All creations in the world are just reflections of Allah’s names.' },

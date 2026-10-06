@@ -14,9 +14,9 @@ export const yunusA2LanguageFocusExercisesPart3: Record<number, Exercise[]> = {
       question: 'What happened first, next and last?',
       sequencingItems: [
         { id: '1', text: 'One day, Taptuk Emre said to his students, “Today, all of you go up the mountain and bring me flowers.”' },
-        { id: '2', text: 'They picked flowers and ran back to their teacher.' },
+        { id: '2', text: 'The students picked flowers and ran back to their teacher.' },
         { id: '3', text: 'Yunus was the last to return.' },
-        { id: '4', text: 'They whispered in each other’s ears, “Just look at him! …”' },
+        { id: '4', text: 'The students whispered in each other’s ears, “Just look at him! …”' },
         { id: '5', text: 'Yunus replied, “My teacher, I walked around the fields, …”' },
       ],
       correctAnswer: ['1', '2', '3', '4', '5'],

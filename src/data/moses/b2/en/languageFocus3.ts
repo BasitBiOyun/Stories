@@ -646,7 +646,7 @@ export const mosesB2LanguageFocusExercisesPart4: Record<number, Exercise[]> = {
       dragDropGroups: [
         {
           group: 'Fear of the visible danger',
-          items: ['The Israelites panicked.', 'They were trapped with the Red Sea in front and the king\'s army behind them.', '‘We are sure to be caught up with.’'],
+          items: ['The Israelites panicked.', 'The Children of Israel were trapped with the Red Sea in front and the king\'s army behind them.', '‘We are sure to be caught up with.’'],
         },
         {
           group: 'Trust before a way is visible',
@@ -654,7 +654,7 @@ export const mosesB2LanguageFocusExercisesPart4: Record<number, Exercise[]> = {
         },
       ],
       correctAnswer: {
-        'Fear of the visible danger': ['The Israelites panicked.', 'They were trapped with the Red Sea in front and the king\'s army behind them.', '‘We are sure to be caught up with.’'],
+        'Fear of the visible danger': ['The Israelites panicked.', 'The Children of Israel were trapped with the Red Sea in front and the king\'s army behind them.', '‘We are sure to be caught up with.’'],
         'Trust before a way is visible': ['Moses (pbuh) said that Allah was with them and would show them the way to safety', '‘Truly! With me is my Lord; He will guide me.’'],
       },
       explanation: 'Both groups speak with certainty, but about different things: “We are sure to be caught up with” is certain about the danger; “He will guide me” is certain about guidance. In the narrative, “However” marks the turn from panic to trust, and the reported “would show” looks forward to a way that is not yet visible.',

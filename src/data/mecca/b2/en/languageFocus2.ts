@@ -16,7 +16,7 @@ const ch8Named = [
 
 const ch7Practice = [
   'The Quraysh added to their wealth through lending at usury.',
-  'They imposed enormous borrowing rates on debts.',
+  'The moneylenders imposed enormous borrowing rates on debts.',
 ];
 const ch7Result = [
   'This system was designed to make the rich richer and the poor poorer.',

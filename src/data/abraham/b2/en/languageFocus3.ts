@@ -402,8 +402,8 @@ export const abrahamB2LanguageFocusChapter23: Record<number, Exercise[]> = {
           group: 'A claim or belief is reported',
           items: [
             'those who declared themselves as gods',
-            'He thought that his claim to be a god could not be questioned by an ordinary person.',
-            'He said: “I give life and cause death.”',
+            'Nimrod thought that his claim to be a god could not be questioned by an ordinary person.',
+            'Nimrod said: “I give life and cause death.”',
           ],
         },
       ],
@@ -415,8 +415,8 @@ export const abrahamB2LanguageFocusChapter23: Record<number, Exercise[]> = {
         ],
         'A claim or belief is reported': [
           'those who declared themselves as gods',
-          'He thought that his claim to be a god could not be questioned by an ordinary person.',
-          'He said: “I give life and cause death.”',
+          'Nimrod thought that his claim to be a god could not be questioned by an ordinary person.',
+          'Nimrod said: “I give life and cause death.”',
         ],
       },
       explanation: 'Reporting verbs keep claims at a distance: “declared themselves as gods”, “He thought that …”, “He said …”. The narrator does not accept these claims; he only reports them. The narrator’s own statements have no such frame. “Still a young man” compresses background, and “Even” stresses how alone Abraham was.',

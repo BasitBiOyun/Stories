@@ -28,7 +28,7 @@ export const yunusA2VocabularyChallengePairs: VocabularyChallengePair[] = [
   { word: 'ordinary', meaning: 'Normal; not special.', partOfSpeech: 'adjective', chapter: 4, context: 'Some jobs look ordinary at first glance.' },
   { word: 'axe', meaning: 'A tool used to cut wood.', partOfSpeech: 'noun', chapter: 5, context: 'Every time he used the axe, he made a bad part of himself better.' },
   { word: 'purer', meaning: 'Cleaner and freer from anything bad.', partOfSpeech: 'adjective', chapter: 6, context: 'During this time, Yunus made his heart purer.' },
-  { word: 'whispered', meaning: 'Spoke very quietly.', partOfSpeech: 'verb', chapter: 7, context: 'They whispered in each other’s ears, “Just look at him! All he could find was a single daisy!”' },
+  { word: 'whispered', meaning: 'Spoke very quietly.', partOfSpeech: 'verb', chapter: 7, context: 'The students whispered in each other’s ears, “Just look at him! All he could find was a single daisy!”' },
 ];
 
 export const yunusA2LanguageReviewExercises: Exercise[] = [
@@ -38,11 +38,11 @@ export const yunusA2LanguageReviewExercises: Exercise[] = [
     instructions: 'Look at the past verb. Put each sentence in the right group.',
     question: 'How does each verb show the past?',
     dragDropGroups: [
-      { group: 'The verb adds -ed', items: ['He traveled to many cities in Anatolia …', 'Yunus served his teacher Taptuk Emre …', 'They whispered in each other’s ears …'] },
+      { group: 'The verb adds -ed', items: ['He traveled to many cities in Anatolia …', 'Yunus served his teacher Taptuk Emre …', 'The students whispered in each other’s ears …'] },
       { group: 'The verb changes (no -ed)', items: ['He told his master …', '… found a lesson from everything in it.', 'All the dervishes went out into the fields.'] },
     ],
     correctAnswer: {
-      'The verb adds -ed': ['He traveled to many cities in Anatolia …', 'Yunus served his teacher Taptuk Emre …', 'They whispered in each other’s ears …'],
+      'The verb adds -ed': ['He traveled to many cities in Anatolia …', 'Yunus served his teacher Taptuk Emre …', 'The students whispered in each other’s ears …'],
       'The verb changes (no -ed)': ['He told his master …', '… found a lesson from everything in it.', 'All the dervishes went out into the fields.'],
     },
     explanation: 'The book tells Yunus’s story in the past. Many verbs add -ed: travel → traveled, serve → served, whisper → whispered. Some verbs change and do not take -ed: tell → told, find → found, go → went. Learn these past forms one by one.',

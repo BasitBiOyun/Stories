@@ -471,7 +471,7 @@ export const mosesA2LanguageFocusExercisesPart6: Record<number, Exercise[]> = {
       sequencingItems: [
         { id: '1', text: 'Moses came to the house.' },
         { id: '2', text: 'Shu’ayb (pbuh) offered Moses a job.' },
-        { id: '3', text: 'Later, he married one of the sisters.' },
+        { id: '3', text: 'Later, Moses married one of the sisters.' },
         { id: '4', text: 'After ten years, Moses decided …' },
       ],
       correctAnswer: ['1', '2', '3', '4'],

@@ -238,7 +238,7 @@ export const adamA2LanguageFocusExercisesPart2: Record<number, Exercise[]> = {
       sequencingItems: [
         { id: '1', text: 'Adam and Eve lived on earth for many years.' },
         { id: '2', text: 'Then, Allah made Adam His first Messenger.' },
-        { id: '3', text: 'He started teaching people …' },
+        { id: '3', text: 'Adam started teaching people …' },
         { id: '4', text: 'After the death of Adam (pbuh), Allah sent many other messengers.' },
         { id: '5', text: 'All the prophets took the same way.' },
       ],

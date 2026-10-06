@@ -22,7 +22,7 @@ export const adamB2LanguageFocusExercisesPart2: Record<number, Exercise[]> = {
         {
           group: 'One event in this story',
           items: [
-            'He took advantage of Adam (pbuh)’s humanity to manipulate him.',
+            'Satan took advantage of Adam (pbuh)’s humanity to manipulate him.',
             'Then one day, they decided to eat of its fruit.',
             'They both ate of the forbidden tree.',
           ],
@@ -35,7 +35,7 @@ export const adamB2LanguageFocusExercisesPart2: Record<number, Exercise[]> = {
           'his determination weakens',
         ],
         'One event in this story': [
-          'He took advantage of Adam (pbuh)’s humanity to manipulate him.',
+          'Satan took advantage of Adam (pbuh)’s humanity to manipulate him.',
           'Then one day, they decided to eat of its fruit.',
           'They both ate of the forbidden tree.',
         ],

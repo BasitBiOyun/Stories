@@ -456,7 +456,7 @@ export const ibnJubayrA2LanguageFocusExercises: Record<number, Exercise[]> = {
     {
       id: 'ibnjubayr-a2-language-13-lessons', type: 'word-bank', title: 'Practise: What He Learned',
       instructions: 'Fill each gap from the word bank. Two words are not needed.',
-      question: 'What did he learn from his journey?',
+      question: 'What did Ibn Jubayr learn from his journey?',
       fillBlanksText: 'For him, learning was just as [blank] as Hajj. … In the end, he learned many things he [blank] learn at home in Granada. His journey made him a [blank] person.',
       wordBank: ['important', 'could not', 'wiser', 'more important', 'wise'],
       correctAnswer: ['important', 'could not', 'wiser'],

@@ -34,7 +34,7 @@ export const adamB2KnowledgeCheckExercises: Exercise[] = [
 ];
 
 export const adamB2VocabularyChallengePairs: VocabularyChallengePair[] = [
-  { word: "miraculous", meaning: "Beyond ordinary natural processes through divine power.", partOfSpeech: "adjective", chapter: 1, context: "He was created from clay without parents, as a miraculous sign of Allah's unlimited power." },
+  { word: "miraculous", meaning: "Beyond ordinary natural processes through divine power.", partOfSpeech: "adjective", chapter: 1, context: "Adam (pbuh) was created from clay without parents, as a miraculous sign of Allah's unlimited power." },
   { word: "civilization", meaning: "An organized society with developed culture and knowledge.", partOfSpeech: "noun", chapter: 3, context: "The names taught to Adam (pbuh) could be the fundamental knowledge of being human, thinking, forming logical judgments, and producing civilization and culture." },
   { word: "privilege", meaning: "A special honour or advantage.", partOfSpeech: "noun", chapter: 4, context: "Having such honour and privilege of knowledge required even the angels to prostrate themselves before Adam (pbuh)." },
   { word: "inhabit", meaning: "To live in or occupy a place.", partOfSpeech: "verb", chapter: 6, context: "“And you, Adam, inhabit the Garden, you and your wife, and eat whatever you wish; but do not approach this tree, for fear that you become wrongdoers.”" },

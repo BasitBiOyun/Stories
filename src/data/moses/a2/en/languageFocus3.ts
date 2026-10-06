@@ -84,12 +84,12 @@ export const mosesA2LanguageFocusExercisesPart8: Record<number, Exercise[]> = {
         },
         {
           group: 'The story tells what happened',
-          items: ['Moses (pbuh) went to Egypt.', 'He met the king and his helpers.', 'The king was sitting on his throne.'],
+          items: ['Moses (pbuh) went to Egypt.', 'Moses met the king and his helpers.', 'The king was sitting on his throne.'],
         },
       ],
       correctAnswer: {
         'Allah tells Moses what to do': ['Put your hand inside your clothes.', 'Now take it out.', 'Go to the king'],
-        'The story tells what happened': ['Moses (pbuh) went to Egypt.', 'He met the king and his helpers.', 'The king was sitting on his throne.'],
+        'The story tells what happened': ['Moses (pbuh) went to Egypt.', 'Moses met the king and his helpers.', 'The king was sitting on his throne.'],
       },
       explanation: 'An instruction starts with the base verb and has no subject: Put …, Take …, Go …. The story events have a subject and a past verb: Moses went, He met, The king was sitting.',
       feedback: {
@@ -188,8 +188,8 @@ export const mosesA2LanguageFocusExercisesPart9: Record<number, Exercise[]> = {
       sequencingItems: [
         { id: '1', text: 'Moses (pbuh) took his walking stick and threw it on the ground.' },
         { id: '2', text: 'The stick turned into a big snake!' },
-        { id: '3', text: 'Then he put his hand inside his clothes.' },
-        { id: '4', text: 'He took his hand out.' },
+        { id: '3', text: 'Then Moses put his hand inside his clothes.' },
+        { id: '4', text: 'Moses took his hand out.' },
       ],
       correctAnswer: ['1', '2', '3', '4'],
       explanation: 'Past verbs give the actions in order. Then shows the next step: After the stick, Moses showed the second sign.',
@@ -369,9 +369,9 @@ export const mosesA2LanguageFocusExercisesPart11: Record<number, Exercise[]> = {
       instructions: 'Put the sentences from Chapter 15 in story order.',
       question: 'What happened after Moses hit the sea?',
       sequencingItems: [
-        { id: '1', text: 'He hit the sea and the sea parted!' },
+        { id: '1', text: 'Moses hit the sea and the sea parted!' },
         { id: '2', text: 'The waves became high walls!' },
-        { id: '3', text: 'They could see the sandy ground!' },
+        { id: '3', text: 'Moses and his people could see the sandy ground!' },
         { id: '4', text: 'Moses (pbuh) and his people safely walked between the walls of water.' },
       ],
       correctAnswer: ['1', '2', '3', '4'],

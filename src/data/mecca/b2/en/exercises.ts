@@ -29,12 +29,12 @@ export const meccaB2VocabularyChallengePairs: VocabularyChallengePair[] = [
   { word: 'rivalry', meaning: 'Sustained competition between powers seeking greater influence, advantage, or control.', partOfSpeech: 'noun', chapter: 1, context: 'The rivalry between these two superpowers exhausted both sides.' },
   { word: 'oppressed', meaning: 'Subjected to persistent unjust treatment or control by a more powerful person or group.', partOfSpeech: 'adjective', chapter: 2, context: 'The oppressed, the weak and the poor were living a life of misery.' },
   { word: 'extensive', meaning: 'Large in scale, range, or degree.', partOfSpeech: 'adjective', chapter: 6, context: 'Because of its extensive trade activities, Mecca was described as the "Republic of Traders."' },
-  { word: 'imposed', meaning: 'Forced something on others by authority or power.', partOfSpeech: 'verb', chapter: 7, context: 'They imposed enormous borrowing rates on debts.' },
+  { word: 'imposed', meaning: 'Forced something on others by authority or power.', partOfSpeech: 'verb', chapter: 7, context: 'The moneylenders imposed enormous borrowing rates on debts.' },
   { word: 'defenseless', meaning: 'Lacking sufficient means, power, or protection to resist harm or exploitation.', partOfSpeech: 'adjective', chapter: 8, context: 'Furthermore, the weak and defenseless people who came to the city from outside for pilgrimage and trade were unfairly treated and oppressed.' },
-  { word: 'hesitation', meaning: 'A pause or delay due to uncertainty.', partOfSpeech: 'noun', chapter: 9, context: 'It is recorded that he said he would respond immediately without hesitation if he were called again (Musnad, I, 190, 317).' },
+  { word: 'hesitation', meaning: 'A pause or delay due to uncertainty.', partOfSpeech: 'noun', chapter: 9, context: 'It is recorded that the Prophet (pbuh) said he would respond immediately without hesitation if he were called again (Musnad, I, 190, 317).' },
   { word: 'disadvantaged', meaning: 'Having fewer rights, chances, or resources.', partOfSpeech: 'adjective', chapter: 10, context: 'However, many women from lower social and economic groups were mistreated and disadvantaged.' },
   { word: 'radical', meaning: 'Producing or involving fundamental change to an existing system or structure.', partOfSpeech: 'adjective', chapter: 14, context: 'The new belief system was introducing radical changes in every area.' },
-  { word: 'mock', meaning: 'To laugh at someone or something cruelly.', partOfSpeech: 'verb', chapter: 15, context: 'At first, they mocked just the new religion.' },
+  { word: 'mock', meaning: 'To laugh at someone or something cruelly.', partOfSpeech: 'verb', chapter: 15, context: 'At first, the Quraysh leaders mocked just the new religion.' },
   { word: 'arrogance', meaning: 'An exaggerated sense of superiority that leads a person to undervalue others.', partOfSpeech: 'noun', chapter: 17, context: 'The term both refers to pre-Islamic Arabia and also describes any culture, society or way of thinking that comes from human arrogance.' },
 ];
 

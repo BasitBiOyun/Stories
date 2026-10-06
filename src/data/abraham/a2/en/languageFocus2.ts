@@ -166,8 +166,8 @@ export const abrahamA2LanguageFocusExercisesPart3: Record<number, Exercise[]> = 
       instructions: 'Put the Chapter 6 sentences in the order they happened.',
       question: 'What did Abraham do first, next and last?',
       sequencingItems: [
-        { id: '1', text: 'He got an axe and waited.' },
-        { id: '2', text: 'When the town was empty, he went into the big house …' },
+        { id: '1', text: 'Abraham (pbuh) got an axe and waited.' },
+        { id: '2', text: 'When the town was empty, Abraham (pbuh) went into the big house …' },
         { id: '3', text: 'Abraham (pbuh) began to break the stone gods, one after another.' },
         { id: '4', text: 'In the end, they were all broken.' },
         { id: '5', text: 'Abraham (pbuh) placed the axe around its neck and hurried back home.' },
