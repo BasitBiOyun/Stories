@@ -278,7 +278,7 @@ export const ExercisePage = ({
                 <div className="h-full min-h-0 overflow-y-auto px-0.5 pt-0.5 pe-1 custom-scrollbar">
                   <div className="mx-auto w-full max-w-5xl desk:max-w-[84rem] wide:max-w-none space-y-4 pb-4">
                     <section className={cn(
-                      "rounded-[28px] bg-white/68 p-5 sm:p-6"
+                      "rounded-[28px] bg-white/68 p-5 sm:p-6 max-sm:rounded-[22px] max-sm:p-4"
                     )}>
                       <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
                         <div className="min-w-0">
@@ -297,7 +297,7 @@ export const ExercisePage = ({
                             {isArabic ? 'مراجعة اللغة' : 'Language Review'}
                           </h3>
                           <p className={cn(
-                            "mt-2 max-w-2xl font-serif leading-relaxed text-wood/58",
+                            "mt-2 max-w-2xl font-serif leading-relaxed text-wood/58 max-sm:hidden",
                             isArabic ? 'text-base sm:text-lg' : 'text-sm sm:text-base'
                           )}>
                             {level === 'A2'
@@ -327,7 +327,7 @@ export const ExercisePage = ({
                         </div>
                       </div>
 
-                      <div className="mt-5 grid grid-cols-3 gap-2">
+                      <div className="mt-5 grid grid-cols-3 gap-2 max-sm:mt-3">
                         {reviewStageLabels.map((label, stageIndex) => {
                           const unlocked = isReviewStageUnlocked(stageIndex);
                           const active = reviewStageIndex === stageIndex;

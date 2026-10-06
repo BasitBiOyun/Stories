@@ -13,6 +13,7 @@ import {
 import { Exercise } from '../../types';
 import { SECTION_ICONS } from '../../lib/sectionIcons';
 import { cn } from '../../lib/utils';
+import { PHONE_DOCK } from '../../lib/phone';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { presentMultipleChoice } from '../../lib/exercisePresentation';
 
@@ -415,7 +416,7 @@ export const KnowledgeCheck = ({
     <section className="h-full min-h-0 overflow-y-auto custom-scrollbar px-0.5 pt-0.5 pe-2">
       <div className="mx-auto w-full max-w-5xl desk:max-w-[84rem] wide:max-w-none space-y-5 pb-4">
         <div className={cn(
-          'relative overflow-hidden rounded-[22px] sm:rounded-[28px] p-4 sm:p-6 flex flex-col gap-4 sm:gap-5 sm:flex-row sm:items-start sm:justify-between',
+          'relative overflow-hidden rounded-[22px] sm:rounded-[28px] p-4 sm:p-6 flex flex-col gap-4 sm:gap-5 sm:flex-row sm:items-start sm:justify-between max-sm:py-3',
           theme.softBg
         )}>
           <div className="flex items-start gap-3 min-w-0 sm:items-center">
@@ -427,7 +428,7 @@ export const KnowledgeCheck = ({
                 {isArabic ? 'بعد إكمال القصة' : 'After the story'}
               </p>
               <h3 className={cn('mt-1 font-display text-2xl sm:text-3xl font-semibold tracking-[-0.03em] leading-tight', theme.title)}>{title}</h3>
-              <p className={cn('font-serif text-wood/55 mt-2 max-w-2xl leading-relaxed', isArabic ? 'text-base sm:text-lg' : 'text-sm sm:text-base')}>
+              <p className={cn('font-serif text-wood/55 mt-2 max-w-2xl leading-relaxed max-sm:hidden', isArabic ? 'text-base sm:text-lg' : 'text-sm sm:text-base')}>
                 {isArabic
                   ? 'اختبر فهمك للعلاقات والأحداث والأفكار الرئيسة في الكتاب كله.'
                   : 'Check your understanding of the key relationships, events and ideas across the whole book.'}
@@ -484,11 +485,17 @@ export const KnowledgeCheck = ({
                 onInfo={() => setActiveFeedback(activeFeedback === currentExercise.id ? null : currentExercise.id)}
                 collectionId={collectionId}
               />
-              {isAnswered(currentExercise) && (() => {
+            </motion.div>
+          </AnimatePresence>
+        )}
+
+        {/* Phones: the feedback and the Next button stay pinned at the bottom, never below the fold. */}
+        <div className={cn('space-y-3 max-sm:-mx-0.5 max-sm:rounded-t-2xl max-sm:bg-[#FBFAF6]/95 max-sm:px-0.5 max-sm:pb-1 max-sm:pt-2 max-sm:backdrop-blur-sm', PHONE_DOCK)}>
+        {currentExercise && isAnswered(currentExercise) && (() => {
                 const correctNow = isExerciseAnswerCorrect(currentExercise, answerFor(currentExercise));
                 return (
                   <div className={cn(
-                    'mt-3 rounded-2xl border p-4 sm:p-5 font-serif leading-relaxed',
+                    'rounded-2xl border p-4 sm:p-5 font-serif leading-relaxed max-sm:max-h-[42vh] max-sm:overflow-y-auto max-sm:p-3.5',
                     isArabic ? 'text-[15px] sm:text-[17px]' : 'text-sm sm:text-base',
                     correctNow ? 'bg-emerald-50 border-emerald-100 text-emerald-950' : 'bg-rose-50 border-rose-100 text-rose-950'
                   )}>
@@ -503,11 +510,7 @@ export const KnowledgeCheck = ({
                     </p>
                   </div>
                 );
-              })()}
-            </motion.div>
-          </AnimatePresence>
-        )}
-
+        })()}
         <div className="flex items-center justify-between gap-3">
           <button
             type="button"
@@ -551,6 +554,8 @@ export const KnowledgeCheck = ({
               <ChevronRight size={16} className={cn(isRTL && 'rotate-180')} />
             </button>
           )}
+        </div>
+
         </div>
 
         {showResults && (

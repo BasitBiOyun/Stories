@@ -2,6 +2,7 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { CheckCircle2, XCircle, RotateCcw, Zap, Lightbulb, ArrowRight } from '../ui/icons';
 import { MatchingBoard } from './MatchingBoard';
+import { PHONE_DOCK } from '../../lib/phone';
 import type { Level, VocabularyChallengePair } from '../../types';
 import { getLearningLevelPolicy } from '../../data/learningLevelPolicy';
 import { useLanguage } from '../../contexts/LanguageContext';
@@ -416,7 +417,7 @@ export const VocabularyMatch = ({ pairs, collectionId = 'prophets', level, onRev
               <p className={cn('font-display text-xs font-semibold uppercase tracking-[0.14em] sm:text-sm', theme.accent)}>
                 {copy.title}
               </p>
-              <p className={cn('mt-0.5 font-serif text-wood/62', isArabic ? 'text-sm sm:text-base' : 'text-xs sm:text-sm')}>
+              <p className={cn('mt-0.5 font-serif text-wood/62 max-sm:hidden', isArabic ? 'text-sm sm:text-base' : 'text-xs sm:text-sm')}>
                 {copy.subtitle}
               </p>
             </div>
@@ -775,7 +776,7 @@ export const VocabularyMatch = ({ pairs, collectionId = 'prophets', level, onRev
         </AnimatePresence>
       </div>
 
-      <div className="shrink-0 min-h-[58px]">
+      <div className={cn('shrink-0 min-h-[58px]', feedback.kind === 'idle' && 'max-sm:hidden')}>
         <AnimatePresence mode="wait">
           {feedback.kind === 'done' ? (
             <motion.div key="done" initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} className="rounded-2xl bg-emerald-50 px-4 py-3 flex items-center gap-3 ring-1 ring-emerald-200">
@@ -833,6 +834,7 @@ export const VocabularyMatch = ({ pairs, collectionId = 'prophets', level, onRev
             data-check-matches
             className={cn(
               'mt-4 w-full min-h-12 rounded-xl font-display uppercase tracking-widest font-bold transition-colors',
+              PHONE_DOCK,
               isArabic ? 'text-sm sm:text-base' : 'text-xs sm:text-sm',
               allPlaced ? 'bg-brand-600 text-white hover:bg-brand-700' : 'bg-gray-100 text-gray-400 cursor-not-allowed',
             )}

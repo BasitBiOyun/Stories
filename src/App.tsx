@@ -72,8 +72,13 @@ import { OFFLINE_BOOK_SIZE_MB } from './data/offlineBookSizes';
 const AppContent = () => {
   // --- State ---
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(() => {
-    const code = sessionStorage.getItem('app_access_code');
-    return code === 'stories_enar';
+    // Remembered on the device (an installed app asks once, not after every restart).
+    try {
+      const code = localStorage.getItem('app_access_code') ?? sessionStorage.getItem('app_access_code');
+      return code === 'stories_enar';
+    } catch {
+      return false;
+    }
   });
   const { role, isTeacher } = useUserRole();
   const { classMode, setClassMode } = useClassMode();
@@ -85,7 +90,11 @@ const AppContent = () => {
     e.preventDefault();
     const normalized = passwordInput.trim();
     if (normalized === 'stories_enar') {
-      sessionStorage.setItem('app_access_code', normalized);
+      try {
+        localStorage.setItem('app_access_code', normalized);
+      } catch {
+        try { sessionStorage.setItem('app_access_code', normalized); } catch { /* storage blocked: stays open for this visit */ }
+      }
       setIsAuthenticated(true);
     } else {
       setErrorMsg('Incorrect password! Please try again.');

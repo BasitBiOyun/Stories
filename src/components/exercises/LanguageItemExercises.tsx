@@ -3,6 +3,7 @@ import { motion, useReducedMotion } from 'motion/react';
 import { CheckCircle2, XCircle } from '../ui/icons';
 import type { Exercise } from '../../types';
 import { useLanguage } from '../../contexts/LanguageContext';
+import { PHONE_DOCK } from '../../lib/phone';
 import { cn } from '../../lib/utils';
 import { presentDeranged } from '../../lib/exercisePresentation';
 import {
@@ -102,6 +103,7 @@ const CheckButton = ({ enabled, onClick, theme, label }: { enabled: boolean; onC
       onClick={onClick}
       className={cn(
         'w-full min-h-12 rounded-xl font-display font-bold uppercase tracking-widest',
+        PHONE_DOCK,
         isArabic ? 'text-sm sm:text-base normal-case tracking-normal' : 'text-xs sm:text-sm',
         enabled ? `${theme.accentBg} text-white` : 'cursor-not-allowed bg-gray-100 text-gray-400',
       )}

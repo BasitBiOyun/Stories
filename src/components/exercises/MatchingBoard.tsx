@@ -126,8 +126,9 @@ export const MatchingBoard: React.FC<MatchingBoardProps> = ({
         </p>
       )}
       <div ref={gridRef} className="relative grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-8" data-matching-board>
-        <div className="space-y-2.5">
-          <p className={cn('font-display uppercase tracking-widest font-black text-brand-700', isArabic ? 'text-sm sm:text-base' : 'text-xs')}>
+        {/* Below md the words become chips that stay pinned on top while the meanings scroll under them. */}
+        <div className="space-y-2.5 max-md:sticky max-md:top-0 max-md:z-10 max-md:-mx-1 max-md:flex max-md:flex-wrap max-md:gap-2 max-md:space-y-0 max-md:bg-[#FBFAF6]/95 max-md:px-1 max-md:pb-2.5 max-md:pt-1 max-md:backdrop-blur-sm">
+          <p className={cn('font-display uppercase tracking-widest font-black text-brand-700 max-md:w-full', isArabic ? 'text-sm sm:text-base' : 'text-xs')}>
             {headings?.left ?? (isArabic ? 'المفاهيم' : 'Concepts')}
           </p>
           {pairs.map((pair, pairIndex) => {
@@ -145,7 +146,7 @@ export const MatchingBoard: React.FC<MatchingBoardProps> = ({
                 aria-pressed={selected}
                 className={cn(
                   cardBase,
-                  'justify-between font-bold',
+                  'justify-between font-bold max-md:min-h-11 max-md:w-auto max-md:gap-2 max-md:rounded-full max-md:px-3.5 max-md:py-1.5',
                   selected ? 'border-brand-500 bg-brand-50 text-brand-950' : 'border-brand-200 bg-white text-wood',
                   result === true && 'bg-emerald-50/60',
                   result === false && 'bg-rose-50/60',

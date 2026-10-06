@@ -93,7 +93,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ isOpen, onClose }) => {
         >
           <div className="sticky top-0 z-10 border-b border-white/[0.07] bg-[#0b0e0c]/92 backdrop-blur-xl">
             <div className="mx-auto flex w-full max-w-[960px] items-center justify-between gap-4 px-5 py-3 sm:px-8">
-              <div className="flex min-w-0 items-center gap-1 rounded-full border border-white/12 bg-black/35 p-1" role="tablist" aria-label={copy.heading}>
+              <div className="flex min-w-0 flex-1 items-center gap-1 rounded-2xl border border-white/15 bg-white/[0.06] p-1 sm:max-w-md" role="tablist" aria-label={copy.heading}>
                 {tabs.map(item => (
                   <button
                     key={item.id}
@@ -102,8 +102,8 @@ export const AboutPage: React.FC<AboutPageProps> = ({ isOpen, onClose }) => {
                     aria-selected={tab === item.id}
                     onClick={() => setTab(item.id)}
                     className={cn(
-                      'flex min-h-9 items-center gap-2 rounded-full px-3.5 font-display text-[12px] font-semibold uppercase tracking-wider transition-colors sm:px-4 sm:text-[13px]',
-                      tab === item.id ? 'bg-white/[0.14] text-[#FFF9EC]' : 'text-[#F6F0E2]/60 hover:bg-white/5 hover:text-[#F6F0E2]',
+                      'flex min-h-11 flex-1 items-center justify-center gap-2 rounded-xl px-3.5 font-display text-[14px] font-semibold transition-colors sm:px-4 sm:text-[15px]',
+                      tab === item.id ? 'bg-[#E9C46A] text-[#1a1a12] shadow-sm' : 'text-[#F6F0E2]/90 hover:bg-white/10 hover:text-white',
                     )}
                   >
                     {item.icon}
@@ -116,7 +116,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ isOpen, onClose }) => {
                 type="button"
                 onClick={onClose}
                 aria-label={copy.close}
-                className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-[#F6F0E2]/75 transition-colors hover:bg-white/[0.08] hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50"
+                className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-white/[0.06] text-[#F6F0E2]/85 transition-colors hover:bg-white/[0.08] hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50"
               >
                 <X size={22} />
               </button>

@@ -29,6 +29,7 @@ import {
 import { isLanguageItemType, scoreLanguageItems } from '../lib/exerciseScoring';
 import { LanguageItemExercise } from './exercises/LanguageItemExercises';
 import { MatchingBoard } from './exercises/MatchingBoard';
+import { PHONE_DOCK, useIsPhone } from '../lib/phone';
 
 interface ExerciseModuleProps {
   exercise: Exercise;
@@ -116,6 +117,7 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
   const isQuick = variant === 'quick';
   const isLanguage = variant === 'language';
   const isReview = variant === 'review';
+  const isPhone = useIsPhone();
   const displayExerciseTitle = React.useMemo(() => presentExerciseTitle(exercise), [exercise]);
   const [userAnswer, setUserAnswer] = React.useState<any>(null);
   const [isSubmitted, setIsSubmitted] = React.useState(false);
@@ -293,18 +295,29 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
     }
   };
 
-  const assignDragItem = (groupName: string) => {
-    if (!selectedDragItem || isSubmitted) return;
+  const assignDragItem = (groupName: string, item: string | null = selectedDragItem) => {
+    if (!item || isSubmitted) return;
     setDragAssignments((previous) => {
       const next: Record<string, string[]> = {};
       for (const [group, items] of Object.entries(previous)) {
-        next[group] = items.filter((item) => item !== selectedDragItem);
+        next[group] = items.filter((candidate) => candidate !== item);
       }
-      next[groupName] = [...(next[groupName] ?? []), selectedDragItem];
+      next[groupName] = [...(next[groupName] ?? []), item];
       setUserAnswer(next);
       return next;
     });
     setSelectedDragItem(null);
+  };
+
+  // Phones: tapping a placed item sends it back to the pile.
+  const unassignDragItem = (item: string) => {
+    if (isSubmitted) return;
+    setDragAssignments((previous) => {
+      const next: Record<string, string[]> = {};
+      for (const [group, items] of Object.entries(previous)) next[group] = items.filter((candidate) => candidate !== item);
+      setUserAnswer(next);
+      return next;
+    });
   };
 
   const currentQuizQuestion = exercise.quizQuestions?.[quizStep];
@@ -445,6 +458,7 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
               onClick={() => submit(matchingAssignments)}
               className={cn(
                 'w-full min-h-12 rounded-xl font-display uppercase tracking-widest font-bold',
+                PHONE_DOCK,
                 isArabic ? 'text-sm sm:text-base' : 'text-xs sm:text-sm',
                 allAssigned ? `${theme.accentBg} ${theme.accentHover} text-white` : 'bg-gray-100 text-gray-400 cursor-not-allowed'
               )}
@@ -507,6 +521,7 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
               onClick={() => submit(localSequence)}
               className={cn(
                 'w-full min-h-12 rounded-xl font-display uppercase tracking-widest font-bold',
+                PHONE_DOCK,
                 isArabic ? 'text-sm sm:text-base' : 'text-xs sm:text-sm',
                 localSequence.length === sequenceItems.length
                   ? `${theme.accentBg} text-white`
@@ -543,7 +558,7 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
             })}
           </div>
           {!isSubmitted && (
-            <button type="button" onClick={() => submit(userAnswer)} className={cn('w-full min-h-12 rounded-xl text-white font-bold', isArabic && 'text-base', theme.accentBg)}>
+            <button type="button" onClick={() => submit(userAnswer)} className={cn('w-full min-h-12 rounded-xl text-white font-bold', PHONE_DOCK, isArabic && 'text-base', theme.accentBg)}>
               {t('nav.check')}
             </button>
           )}
@@ -557,6 +572,78 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
       const assigned = Object.values(dragAssignments).flat();
       const available = allItems.filter((item) => !assigned.includes(item));
       const allAssigned = allItems.length > 0 && available.length === 0;
+      if (isPhone) {
+        // Phones: one item at a time in the middle, the groups as big buttons at the bottom.
+        const groups = exercise.dragDropGroups ?? [];
+        const current = available[0] ?? null;
+        return (
+          <div className="space-y-4">
+            {current && !isSubmitted ? (
+              <div className="space-y-2">
+                <motion.div
+                  key={current}
+                  initial={{ opacity: 0, y: 10, scale: 0.98 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  className={cn('rounded-[20px] border-2 border-stone-200 bg-white px-5 py-7 text-center font-serif font-semibold leading-relaxed text-wood shadow-[0_10px_28px_-14px_rgba(20,34,26,0.35)]', isArabic ? 'text-xl' : 'text-lg')}
+                >
+                  {current}
+                </motion.div>
+                <p className={cn('text-center font-display text-wood/45 tabular-nums', isArabic ? 'text-sm' : 'text-xs')}>
+                  {formatNumber(allItems.length - available.length + 1)} / {formatNumber(allItems.length)}
+                </p>
+              </div>
+            ) : null}
+            {groups.some((group) => (dragAssignments[group.group] ?? []).length > 0) && (
+              <div className="space-y-2">
+                {groups.map((group) => {
+                  const placed = dragAssignments[group.group] ?? [];
+                  if (!placed.length) return null;
+                  return (
+                    <div key={group.group}>
+                      <p className={cn('mb-1.5 font-display font-bold', isArabic ? 'text-sm' : 'text-xs', theme.accentText)}>{group.group}</p>
+                      <div className="flex flex-wrap gap-1.5">
+                        {placed.map((item) => (
+                          <button
+                            key={item}
+                            type="button"
+                            disabled={isSubmitted}
+                            onClick={() => unassignDragItem(item)}
+                            className={cn('min-h-9 rounded-lg border border-stone-200 bg-white px-2.5 py-1 text-start font-serif', isArabic ? 'text-sm' : 'text-xs')}
+                          >
+                            {item}{!isSubmitted && <span className="ms-1.5 text-wood/35" aria-hidden="true">×</span>}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            )}
+            {!isSubmitted && (
+              <div className={cn('-mx-4 bg-white/95 px-4 pb-3 pt-3 backdrop-blur', PHONE_DOCK)}>
+                {current ? (
+                  <div className={cn('grid gap-2', groups.length === 2 ? 'grid-cols-2' : 'grid-cols-1')}>
+                    {groups.map((group) => (
+                      <button
+                        key={group.group}
+                        type="button"
+                        onClick={() => assignDragItem(group.group, current)}
+                        className={cn('min-h-14 rounded-xl border-2 bg-white px-3 py-2 font-display font-semibold leading-snug', isArabic ? 'text-base' : 'text-sm', theme.softBorder, theme.accentText)}
+                      >
+                        {group.group}
+                      </button>
+                    ))}
+                  </div>
+                ) : (
+                  <button type="button" disabled={!allAssigned} onClick={() => submit(dragAssignments)} className={cn('w-full min-h-12 rounded-xl font-bold', isArabic && 'text-base', allAssigned ? `${theme.accentBg} text-white` : 'bg-gray-100 text-gray-400')}>
+                    {t('nav.check')}
+                  </button>
+                )}
+              </div>
+            )}
+          </div>
+        );
+      }
       return (
         <div className="space-y-5">
           <div>
@@ -780,7 +867,7 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
       exit={{ opacity: 0 }}
       className={cn(
         embedded
-          ? 'relative flex min-h-0 w-full flex-col overflow-hidden rounded-[24px] bg-white/72 ring-1 ring-black/[0.06]'
+          ? 'relative flex min-h-0 w-full flex-col overflow-clip rounded-[24px] bg-white/72 ring-1 ring-black/[0.06]'
           : 'fixed inset-0 z-[1000] flex flex-col',
         !embedded && (isQuick ? 'bg-[#FBFAF6]' : isLanguage ? 'bg-[#FCFBF8]' : 'bg-[#FDFBF7]'),
         isRTL && 'font-arabic'
@@ -888,6 +975,8 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
                 animate={{ opacity: 1, y: 0 }}
                 className={cn(
                   'rounded-2xl p-4 sm:p-6 space-y-4',
+                  PHONE_DOCK,
+                  'max-sm:max-h-[70vh] max-sm:overflow-y-auto',
                   isQuick || isLanguage ? 'border ring-1 ring-inset' : 'border-2',
                   classMode
                     ? `bg-white ${theme.softBorder} ring-black/[0.03]`

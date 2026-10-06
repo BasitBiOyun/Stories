@@ -425,7 +425,21 @@ export const StoryMapPage: React.FC<StoryMapPageProps> = ({ page }) => {
   }, [challengeOn, map.timeline, map.time.start, map.time.lastYear, goToEvent, language, animateTo, tweenYear, homeView, aspect, clampView]);
 
   // Pause keeps the map exactly where it is; pressing play again carries on from there.
-  const toggleTour = () => { if (tourRunning) stopTour(); else void startTour(tourUnfinished.current); };
+  // Stacked layouts (phones, tablets): the map sits above the time panel, so bring it into view
+  // when the tour starts or a step is chosen; otherwise nothing would seem to happen.
+  const revealMap = () => {
+    if (typeof window === 'undefined' || !window.matchMedia('(max-width: 1023px)').matches) return;
+    const stage = stageRef.current;
+    if (!stage) return;
+    const box = stage.getBoundingClientRect();
+    if (box.top >= 0 && box.bottom <= window.innerHeight) return;
+    stage.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+  const toggleTour = () => {
+    if (tourRunning) { stopTour(); return; }
+    revealMap();
+    void startTour(tourUnfinished.current);
+  };
 
   const scrubTo = (value: number) => {
     stopTour();
@@ -846,7 +860,7 @@ export const StoryMapPage: React.FC<StoryMapPageProps> = ({ page }) => {
           tabIndex={0}
           onKeyDown={onStageKey}
           aria-label={page.title}
-          className="relative h-[52svh] min-h-[300px] lg:h-auto lg:min-h-0 lg:col-start-1 lg:row-start-1 overflow-hidden rounded-[1.5rem] border border-brand-200/80 shadow-[0_14px_40px_rgba(63,49,28,0.14)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
+          className="relative h-[52svh] min-h-[300px] max-lg:order-1 lg:h-auto lg:min-h-0 lg:col-start-1 lg:row-start-1 overflow-hidden rounded-[1.5rem] border border-brand-200/80 shadow-[0_14px_40px_rgba(63,49,28,0.14)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
           style={{ background: PALETTE.seaBottom, touchAction: zoomed || challengeOn ? 'none' : 'pan-y' }}
         >
           <svg
@@ -1212,7 +1226,7 @@ export const StoryMapPage: React.FC<StoryMapPageProps> = ({ page }) => {
 
         {/* Info card */}
         <aside
-          className="min-w-0 lg:col-start-2 lg:row-start-1 lg:row-span-2 lg:min-h-0 lg:overflow-y-auto custom-scrollbar rounded-[1.5rem] border border-brand-200/90 bg-brand-50/88 p-4 sm:p-5 shadow-[0_10px_30px_rgba(63,49,28,0.10)] flex flex-col"
+          className="min-w-0 max-lg:order-3 lg:col-start-2 lg:row-start-1 lg:row-span-2 lg:min-h-0 lg:overflow-y-auto custom-scrollbar rounded-[1.5rem] border border-brand-200/90 bg-brand-50/88 p-4 sm:p-5 shadow-[0_10px_30px_rgba(63,49,28,0.10)] flex flex-col"
           aria-live="polite"
         >
           <AnimatePresence mode="wait" initial={false}>
@@ -1434,7 +1448,7 @@ export const StoryMapPage: React.FC<StoryMapPageProps> = ({ page }) => {
 
         {/* Legend (phones) and the time panel */}
         {!challengeOn && (
-          <div className="min-w-0 flex flex-col gap-3 lg:col-start-1 lg:row-start-2">
+          <div className="min-w-0 flex flex-col gap-3 max-lg:order-2 lg:col-start-1 lg:row-start-2">
             <div className="sm:hidden">{legend}</div>
             {timeOn && (
               <MapTimePanel
@@ -1445,7 +1459,7 @@ export const StoryMapPage: React.FC<StoryMapPageProps> = ({ page }) => {
                 eventColor={PALETTE.mongol}
                 onToggleTour={toggleTour}
                 onScrub={scrubTo}
-                onJump={index => { void jumpToEvent(index); }}
+                onJump={index => { revealMap(); void jumpToEvent(index); }}
               />
             )}
           </div>
