@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, ReactNode } from 'react';
+import React, { createContext, useContext, useRef, useState, ReactNode } from 'react';
 
 interface FinalChallengeMissedQuestion {
   id: string;
@@ -39,6 +39,10 @@ interface StoryProgressContextType {
 }
 
 const StoryProgressContext = createContext<StoryProgressContextType | undefined>(undefined);
+type StoryProgressActions = Omit<StoryProgressContextType, 'stats'>;
+/** The same actions without the stats: a component that only records progress (a word note, the audio bar) does
+ * not re-render each time the stats change. */
+const StoryProgressActionsContext = createContext<StoryProgressActions | undefined>(undefined);
 
 export const StoryProgressProvider = ({ children }: { children: ReactNode }) => {
   const [stats, setStats] = useState<StoryProgressStats>({
@@ -68,6 +72,7 @@ export const StoryProgressProvider = ({ children }: { children: ReactNode }) => 
 
   const trackChapterVisit = (id: number) => {
     setStats(prev => {
+      if (prev.chaptersVisited.has(id)) return prev; // no change: nothing re-renders
       const next = new Set(prev.chaptersVisited);
       next.add(id);
       return { ...prev, chaptersVisited: next };
@@ -76,6 +81,7 @@ export const StoryProgressProvider = ({ children }: { children: ReactNode }) => 
 
   const trackAudioChapter = (id: number) => {
     setStats(prev => {
+      if (prev.audioChaptersPlayed.has(id)) return prev;
       const next = new Set(prev.audioChaptersPlayed);
       next.add(id);
       return { ...prev, audioChaptersPlayed: next };
@@ -109,10 +115,16 @@ export const StoryProgressProvider = ({ children }: { children: ReactNode }) => 
     }));
   };
 
+  // the actions only call setStats, so the first render's functions stay valid
+  const actionsRef = useRef<StoryProgressActions | null>(null);
+  actionsRef.current ??= { trackWordClick, trackExerciseComplete, trackChapterVisit, trackAudioChapter, setFinalScore, setFinalChallengeDetails, resetStats, hydrateStats };
+
   return (
-    <StoryProgressContext.Provider value={{ stats, trackWordClick, trackExerciseComplete, trackChapterVisit, trackAudioChapter, setFinalScore, setFinalChallengeDetails, resetStats, hydrateStats }}>
-      {children}
-    </StoryProgressContext.Provider>
+    <StoryProgressActionsContext.Provider value={actionsRef.current}>
+      <StoryProgressContext.Provider value={{ stats, ...actionsRef.current }}>
+        {children}
+      </StoryProgressContext.Provider>
+    </StoryProgressActionsContext.Provider>
   );
 };
 
@@ -120,6 +132,14 @@ export const useStoryProgress = () => {
   const context = useContext(StoryProgressContext);
   if (context === undefined) {
     throw new Error('useStoryProgress must be used within a StoryProgressProvider');
+  }
+  return context;
+};
+
+export const useStoryProgressActions = () => {
+  const context = useContext(StoryProgressActionsContext);
+  if (context === undefined) {
+    throw new Error('useStoryProgressActions must be used within a StoryProgressProvider');
   }
   return context;
 };

@@ -3,7 +3,7 @@ import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'motion/react';
 import { cn } from '../../lib/utils';
 import { useLanguage } from '../../contexts/LanguageContext';
-import { useStoryProgress } from '../../contexts/StoryProgressContext';
+import { useStoryProgressActions } from '../../contexts/StoryProgressContext';
 import { getActiveBilingualCounterpart } from '../../data/bilingualHighlightCards';
 import { HistoricalEntityWord, getHistoricalEntityIdFromDefinition } from '../../features/historical-entities';
 import { BookMarked, Check } from './icons';
@@ -21,7 +21,7 @@ export const VocabularyWord = ({
   collectionId?: string;
 }) => {
   const { t, language } = useLanguage();
-  const { trackWordClick } = useStoryProgress();
+  const { trackWordClick } = useStoryProgressActions();
   const [isOpen, setIsOpen] = useState(false);
   const myWords = useMyWords();
   const wordLanguage = language === 'ar' ? 'ar' : 'en';

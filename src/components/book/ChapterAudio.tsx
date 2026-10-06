@@ -5,11 +5,11 @@ import { Play, Pause, Volume2, VolumeX, Lock } from '../ui/icons';
 import { PageData } from '../../types';
 import { cn } from '../../lib/utils';
 import { useLanguage } from '../../contexts/LanguageContext';
-import { useStoryProgress } from '../../contexts/StoryProgressContext';
+import { useStoryProgressActions } from '../../contexts/StoryProgressContext';
 
 export const useChapterAudio = (page: PageData) => {
   const { formatNumber } = useLanguage();
-  const { trackAudioChapter } = useStoryProgress();
+  const { trackAudioChapter } = useStoryProgressActions();
   const audioRef = useRef<HTMLAudioElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);

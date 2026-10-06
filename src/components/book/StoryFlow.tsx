@@ -3,7 +3,7 @@
 // chapter comes "The End", then the activities: each chapter's Quick Challenge and Language Focus, and the
 // pages after the story (map, Knowledge Check, glossary...). Highlighted words and follow along work as in the
 // chapter pages.
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import React, { startTransition, useEffect, useMemo, useRef, useState } from 'react';
 import { AnimatePresence } from 'motion/react';
 import { ArrowRight } from '../ui/icons';
 import { PageData, Exercise } from '../../types';
@@ -35,14 +35,21 @@ interface FlowProps {
   collectionId: string;
 }
 
-const ChapterBlock = ({
-  page, index, allPages, isActive, audio, isDyslexic, showHighlights, followAlong, fontSize, level, storyId, collectionId, flip,
+// memo: the audio bar's time ticks and the page counter re-render StoryFlow several times a second; a chapter
+// re-renders only when its own props change (on phones re-rendering every chapter made scrolling and the
+// audio bar lag).
+const ChapterBlock = React.memo(({
+  page, index, allPages, isActive, audioRef, isPlaying, near, isDyslexic, showHighlights, followAlong, fontSize, level, storyId, collectionId, flip,
 }: {
   page: PageData;
   index: number;
   allPages: PageData[];
   isActive: boolean;
-  audio: ChapterAudio;
+  audioRef: ChapterAudio['audioRef'];
+  /** The audio is playing (only ever true for the active chapter). */
+  isPlaying: boolean;
+  /** Within two chapters of the one being read: its picture loads now, not when it scrolls into view. */
+  near: boolean;
   isDyslexic: boolean;
   showHighlights: boolean;
   followAlong: boolean;
@@ -58,20 +65,24 @@ const ChapterBlock = ({
     () => markQuranVerses(page.content, /[؀-ۿ]/.test(page.content) ? 'ar' : 'en', storyId, level, page.id),
     [page.content, page.id, storyId, level],
   );
+  // Building a chapter's text (word notes, highlights) is the slow part; it only changes with these inputs, not
+  // when the chapter becomes the one being read.
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const text = useMemo(() => renderContent(storyText), [storyText, page, allPages, index, showHighlights, fontSize, collectionId, language]);
   const textRef = useRef<HTMLDivElement>(null);
   const textRefs = useMemo(() => [textRef], []);
   useFollowAlong({
     enabled: followAlong && isActive,
     timingsUrl: timingsUrlFor(page.audioUrl),
-    audioRef: audio.audioRef,
+    audioRef,
     textRefs,
     language: language === 'ar' ? 'ar' : 'en',
-    isPlaying: isActive && audio.isPlaying,
+    isPlaying,
   });
   const isChapter = Boolean(page.exercises?.length);
 
   return (
-    <article className="scroll-mt-28 pt-10 first:pt-2" data-story-chapter={index}>
+    <article className="pt-10 first:pt-2" data-story-chapter={index}>
       <header className={cn('mb-5', isRTL && 'text-right')}>
         {isChapter && (
           <p className={cn('font-display text-[11px] font-semibold uppercase tracking-[0.18em] text-brand-600', language === 'ar' && 'text-sm normal-case tracking-normal')}>
@@ -89,18 +100,19 @@ const ChapterBlock = ({
             src={page.image}
             alt={page.title}
             referrerPolicy="no-referrer"
-            loading="lazy"
+            loading={near ? 'eager' : 'lazy'}
+            decoding="async"
             className={cn(
               'mb-5 aspect-[4/5] w-full max-w-sm rounded-[1.25rem] object-cover shadow-[0_24px_30px_-28px_rgba(0,0,0,0.55)] sm:mx-auto md:mb-3 md:w-[38%] md:max-w-none',
               flip ? 'md:float-start md:me-7' : 'md:float-end md:ms-7',
             )}
           />
         )}
-        <div ref={textRef}>{renderContent(storyText)}</div>
+        <div ref={textRef}>{text}</div>
       </div>
     </article>
   );
-};
+});
 
 export const StoryFlow = ({
   pages, currentIndex, onVisibleIndex, onOpenPage, isDyslexic, showHighlights, followAlong, fontSize, level, storyId, collectionId,
@@ -121,6 +133,8 @@ export const StoryFlow = ({
 
   const scrollRef = useRef<HTMLDivElement>(null);
   const reportedRef = useRef(currentIndex);
+  // every index reported while scrolling, until the counter has caught up (the reports are deferred)
+  const reportedSinceRef = useRef(new Set<number>());
   const playNextRef = useRef(false);
   const chapterEl = (i: number) => scrollRef.current?.querySelector<HTMLElement>(`[data-story-chapter="${i}"]`);
 
@@ -130,7 +144,10 @@ export const StoryFlow = ({
     const first = firstRef.current;
     firstRef.current = false;
     // The counter only followed the scroll: nothing to do.
-    if (!first && currentIndex === reportedRef.current) return;
+    if (!first && reportedSinceRef.current.has(currentIndex)) {
+      if (currentIndex === reportedRef.current) reportedSinceRef.current.clear();
+      return;
+    }
     if (pages[currentIndex]?.type !== 'story') return;
     reportedRef.current = currentIndex;
     if (!audio.isPlaying) setActiveIndex(currentIndex);
@@ -153,8 +170,12 @@ export const StoryFlow = ({
       if (i < 0) i = storyIndexes[0] ?? 0;
       if (reportedRef.current !== i) {
         reportedRef.current = i;
-        if (pages[i]?.exercises?.length) trackChapterVisit(pages[i].id);
-        onVisibleIndex(i);
+        reportedSinceRef.current.add(i);
+        // the page counter and reading progress re-render much of the app: let scrolling go first
+        startTransition(() => {
+          if (pages[i]?.exercises?.length) trackChapterVisit(pages[i].id);
+          onVisibleIndex(i);
+        });
       }
       setActiveIndex(current => (audio.isPlaying ? current : i));
     };
@@ -192,6 +213,59 @@ export const StoryFlow = ({
     return 'default' as const;
   };
 
+  // The activities list re-renders only when its own data changes, not with the page counter or the audio bar.
+  const openPageRef = useRef(onOpenPage);
+  openPageRef.current = onOpenPage;
+  const activities = useMemo(() => (
+      <section aria-label={ar ? 'الأنشطة' : 'Activities'} data-story-activities>
+        <h3 className={cn('font-display text-2xl sm:text-3xl font-semibold tracking-[-0.03em] text-wood clip-room', isRTL && 'text-right')}>
+          {ar ? 'الأنشطة' : 'Activities'}
+        </h3>
+        <p className={cn('mt-1 font-serif text-sm sm:text-base text-wood/60', isRTL && 'text-right')}>
+          {ar ? 'لكل فصل تحدٍّ سريع وتركيز لغوي. اختر ما تريد.' : 'Each chapter has a Quick Challenge and Language Focus. Choose what you want to do.'}
+        </p>
+
+        {activityChapters.map(i => (
+          <div key={i} className="mt-8" data-story-activity-chapter={i}>
+            <p className={cn('font-display text-[12px] font-semibold uppercase tracking-[0.16em] text-brand-700', ar && 'text-sm normal-case tracking-normal', isRTL && 'text-right')}>
+              {t('nav.chapter')} {formatNumber(pages[i].id)} · {pages[i].title}
+            </p>
+            <QuickChallengePanel page={pages[i]} completedExercises={completedExercises} onOpenExercise={setActiveExercise} />
+            <LanguageFocusPanel
+              page={pages[i]}
+              completedExercises={completedExercises}
+              onOpenExercise={setActiveExercise}
+              isOpen={openFocus === i}
+              onToggle={() => setOpenFocus(open => (open === i ? null : i))}
+            />
+          </div>
+        ))}
+
+        {afterStory.length > 0 && (
+          <div className="mt-12">
+            <h4 className={cn('font-display text-lg font-semibold text-wood', isRTL && 'text-right')}>
+              {ar ? 'بعد القصة' : 'After the story'}
+            </h4>
+            <div className="mt-3 grid gap-2 sm:grid-cols-2">
+              {afterStory.map(({ p, i }) => (
+                <button
+                  key={i}
+                  type="button"
+                  onClick={() => openPageRef.current(i)}
+                  className="group flex min-h-12 items-center justify-between gap-3 rounded-2xl bg-white/80 px-4 py-3 text-start ring-1 ring-brand-100 transition-colors hover:bg-white hover:ring-brand-300"
+                  data-story-after-page={i}
+                >
+                  <span className="font-display text-sm font-semibold text-brand-950">{p.title}</span>
+                  <ArrowRight size={16} className={cn('shrink-0 text-brand-700 opacity-60 group-hover:opacity-100', isRTL && 'rotate-180')} />
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
+      </section>
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  ), [pages, activityChapters.join(','), afterStory, completedExercises, openFocus, language, isRTL]);
+
   return (
     <div className="h-full flex flex-col min-h-0" data-story-flow>
       {/* The audio bar stays on top while the story scrolls */}
@@ -215,7 +289,9 @@ export const StoryFlow = ({
               index={i}
               allPages={pages}
               isActive={i === activeIndex}
-              audio={audio}
+              audioRef={audio.audioRef}
+              isPlaying={i === activeIndex && audio.isPlaying}
+              near={Math.abs(n - storyIndexes.indexOf(activeIndex)) <= 2}
               isDyslexic={isDyslexic}
               showHighlights={showHighlights}
               followAlong={followAlong}
@@ -234,52 +310,7 @@ export const StoryFlow = ({
             </p>
           </div>
 
-          <section aria-label={ar ? 'الأنشطة' : 'Activities'} data-story-activities>
-            <h3 className={cn('font-display text-2xl sm:text-3xl font-semibold tracking-[-0.03em] text-wood clip-room', isRTL && 'text-right')}>
-              {ar ? 'الأنشطة' : 'Activities'}
-            </h3>
-            <p className={cn('mt-1 font-serif text-sm sm:text-base text-wood/60', isRTL && 'text-right')}>
-              {ar ? 'لكل فصل تحدٍّ سريع وتركيز لغوي. اختر ما تريد.' : 'Each chapter has a Quick Challenge and Language Focus. Choose what you want to do.'}
-            </p>
-
-            {activityChapters.map(i => (
-              <div key={i} className="mt-8" data-story-activity-chapter={i}>
-                <p className={cn('font-display text-[12px] font-semibold uppercase tracking-[0.16em] text-brand-700', ar && 'text-sm normal-case tracking-normal', isRTL && 'text-right')}>
-                  {t('nav.chapter')} {formatNumber(pages[i].id)} · {pages[i].title}
-                </p>
-                <QuickChallengePanel page={pages[i]} completedExercises={completedExercises} onOpenExercise={setActiveExercise} />
-                <LanguageFocusPanel
-                  page={pages[i]}
-                  completedExercises={completedExercises}
-                  onOpenExercise={setActiveExercise}
-                  isOpen={openFocus === i}
-                  onToggle={() => setOpenFocus(open => (open === i ? null : i))}
-                />
-              </div>
-            ))}
-
-            {afterStory.length > 0 && (
-              <div className="mt-12">
-                <h4 className={cn('font-display text-lg font-semibold text-wood', isRTL && 'text-right')}>
-                  {ar ? 'بعد القصة' : 'After the story'}
-                </h4>
-                <div className="mt-3 grid gap-2 sm:grid-cols-2">
-                  {afterStory.map(({ p, i }) => (
-                    <button
-                      key={i}
-                      type="button"
-                      onClick={() => onOpenPage(i)}
-                      className="group flex min-h-12 items-center justify-between gap-3 rounded-2xl bg-white/80 px-4 py-3 text-start ring-1 ring-brand-100 transition-colors hover:bg-white hover:ring-brand-300"
-                      data-story-after-page={i}
-                    >
-                      <span className="font-display text-sm font-semibold text-brand-950">{p.title}</span>
-                      <ArrowRight size={16} className={cn('shrink-0 text-brand-700 opacity-60 group-hover:opacity-100', isRTL && 'rotate-180')} />
-                    </button>
-                  ))}
-                </div>
-              </div>
-            )}
-          </section>
+          {activities}
         </div>
       </div>
 
