@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import React, { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { motion, useReducedMotion } from 'motion/react';
 import { Level } from '../../types';
 import homeIcon from '../../assets/images/home_icon.webp';
@@ -169,11 +169,70 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart, onOpenTeacherGuide 
     return stories.filter((story) => collectionStoryIds[activeCollection].includes(story.id));
   }, [activeCollection, stories]);
 
-  // Hero: the covers stay in a fan and float gently; the first book sits at the front, the others alternate to either side.
-  // Hovering a cover brings it forward and the blurred backdrop follows; clicking it goes down to that book on the shelf.
+  // Hero: the covers turn slowly as a ring so each book comes to the front in turn, and every cover also floats on its own.
+  // Hovering a cover pauses the turn and lifts that cover; clicking it goes down to that book on the shelf.
   const [hoveredCover, setHoveredCover] = useState<string | null>(null);
   const [highlightedBook, setHighlightedBook] = useState<string | null>(null);
-  const frontStory = stories.find(story => story.id === hoveredCover) ?? stories[0];
+  const [frontIndex, setFrontIndex] = useState(0);
+  const frontStory = stories.find(story => story.id === hoveredCover) ?? stories[frontIndex % stories.length] ?? stories[0];
+  const fanStep = 'clamp(64px, 11vw, 170px)';
+  const coverRefs = useRef<(HTMLButtonElement | null)[]>([]);
+  const hoveredRef = useRef<string | null>(null);
+  hoveredRef.current = hoveredCover;
+  useLayoutEffect(() => {
+    const count = stories.length;
+    const step = (values: number[], at: number) => {
+      const low = Math.min(Math.floor(at), values.length - 1);
+      const high = Math.min(low + 1, values.length - 1);
+      return values[low] + (values[high] - values[low]) * Math.min(1, at - low);
+    };
+    // A card's look at a given distance from the front (0 = front, 1 = next, ...); outer cards overlap more so a growing library fits.
+    const OFFSETS = [0, 1, 1.6, 1.95, 2.15];
+    const SCALES = [1, 0.8, 0.64, 0.52, 0.46];
+    const LIGHT = [1, 0.78, 0.52, 0.4, 0.3];
+    const visibleUntil = Math.min(count / 2, 3.4);
+    const lift = stories.map(() => 0);
+    const PERIOD = 6500;
+    let elapsed = 0;
+    let last: number | null = null;
+    let shownFront = -1;
+    let frame = 0;
+    const draw = (now: number) => {
+      const dt = last === null ? 0 : Math.min(now - last, 100);
+      last = now;
+      if (!hoveredRef.current && !reduceMotion) elapsed += dt;
+      // Glide between books and slow down gently as each one reaches the front, without ever stopping.
+      const raw = elapsed / PERIOD;
+      const fraction = raw - Math.floor(raw);
+      const phase = Math.floor(raw) + fraction - Math.sin(2 * Math.PI * fraction) / (2 * Math.PI) * 0.85;
+      const nearest = ((Math.round(phase) % count) + count) % count;
+      if (nearest !== shownFront) {
+        shownFront = nearest;
+        setFrontIndex(nearest);
+      }
+      stories.forEach((story, index) => {
+        const card = coverRefs.current[index];
+        if (!card) return;
+        let delta = (((index - phase) % count) + count) % count;
+        if (delta > count / 2) delta -= count;
+        const distance = Math.abs(delta);
+        const target = hoveredRef.current === story.id ? 1 : 0;
+        lift[index] += (target - lift[index]) * (reduceMotion ? 1 : Math.min(1, dt / 120));
+        const side = Math.sign(delta) * (isRTL ? -1 : 1);
+        const offset = step(OFFSETS, distance) * side * (1 - lift[index] * 0.25);
+        const scale = step(SCALES, distance) * (1 + lift[index] * 0.08);
+        const light = step(LIGHT, distance) + (1 - step(LIGHT, distance)) * lift[index];
+        card.style.transform = `translate(calc(-50% + ${offset} * ${fanStep}), -50%) perspective(1600px) scale(${scale}) rotateY(${-offset * 12 * (1 - lift[index])}deg)`;
+        card.style.filter = `brightness(${light})`;
+        card.style.opacity = String(Math.max(0, Math.min(1, (visibleUntil - distance) / 0.6)));
+        card.style.zIndex = String(Math.round(100 - distance * 10) + (lift[index] > 0.05 ? 100 : 0));
+        card.style.pointerEvents = distance > visibleUntil - 0.3 ? 'none' : '';
+      });
+      if (!reduceMotion) frame = window.requestAnimationFrame(draw);
+    };
+    draw(performance.now());
+    return () => window.cancelAnimationFrame(frame);
+  }, [stories, isRTL, reduceMotion, reduceMotion ? hoveredCover : null]);
   const goToBook = (storyId: string) => {
     setActiveCollection('all');
     setHighlightedBook(storyId);
@@ -261,7 +320,6 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart, onOpenTeacherGuide 
 
   const eyebrowClass = cn('text-[12px] font-semibold uppercase text-[#D8B35C]', isRTL ? 'text-[15px]' : 'tracking-[0.26em]');
   const sectionTitleClass = cn('mt-3 text-[clamp(2rem,3.4vw,3.3rem)] font-semibold text-[#FFF9EC]', isRTL ? 'leading-[1.35]' : 'leading-[1.05] tracking-[-0.04em]');
-  const fanStep = 'clamp(64px, 11vw, 170px)';
   const featureOrder = HOME_FEATURE_ORDER[role ?? 'student'];
 
   return (
@@ -411,17 +469,12 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart, onOpenTeacherGuide 
             <div className="absolute left-1/2 top-1/2 aspect-square w-[62%] -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#D8B35C]/36 shadow-[0_0_120px_rgba(216,179,92,0.16)]" aria-hidden="true" />
             <div className="relative h-full w-full">
               {stories.map((story, index) => {
-                // Slots 0, +1, -1, +2, -2, +3, -3; outer covers overlap more so a growing library still fits.
-                const side = index % 2 ? 1 : -1;
-                const distance = Math.ceil(index / 2);
-                if (distance > 3) return null;
-                const offset = [0, 1, 1.6, 1.95][distance] * side * (isRTL ? -1 : 1);
                 const hovered = hoveredCover === story.id;
-                const scale = hovered ? Math.max(0.9, [1, 0.8, 0.64, 0.52][distance]) : [1, 0.8, 0.64, 0.52][distance];
                 const name = translatedStoryName(story);
                 return (
                   <button
                     key={story.id}
+                    ref={element => { coverRefs.current[index] = element; }}
                     type="button"
                     onClick={() => goToBook(story.id)}
                     onPointerEnter={() => setHoveredCover(story.id)}
@@ -429,12 +482,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart, onOpenTeacherGuide 
                     onFocus={() => setHoveredCover(story.id)}
                     onBlur={() => setHoveredCover(current => (current === story.id ? null : current))}
                     aria-label={name}
-                    className="absolute left-1/2 top-1/2 aspect-[4/5] h-[80%] cursor-pointer rounded-[22px] transition-[transform,filter] duration-500 ease-[cubic-bezier(.22,1,.36,1)] focus-visible:outline-none sm:h-[66%]"
-                    style={{
-                      zIndex: hovered ? 20 : 10 - distance,
-                      filter: `brightness(${hovered || distance === 0 ? 1 : [1, 0.78, 0.52, 0.4][distance]})`,
-                      transform: `translate(calc(-50% + ${offset} * ${fanStep}), -50%) perspective(1600px) scale(${scale}) rotateY(${hovered ? 0 : -offset * 12}deg)`,
-                    }}
+                    className="absolute left-1/2 top-1/2 aspect-[4/5] h-[80%] cursor-pointer rounded-[22px] focus-visible:outline-none sm:h-[66%]"
                   >
                     <span
                       className="home-float block h-full w-full rounded-[22px] bg-cover bg-center shadow-[0_40px_90px_rgba(0,0,0,0.6),0_0_0_1px_rgba(255,255,255,0.07)]"
