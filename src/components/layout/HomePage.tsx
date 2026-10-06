@@ -187,7 +187,9 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart, onOpenTeacherGuide 
       return values[low] + (values[high] - values[low]) * Math.min(1, at - low);
     };
     // A card's look at a given distance from the front (0 = front, 1 = next, ...); outer cards overlap more so a growing library fits.
-    const OFFSETS = [0, 1, 1.6, 1.95, 2.15];
+    // Offsets are per half step: when two covers swap places they are side by side at half a step from the front, so they must not
+    // overlap there, otherwise the one going back would suddenly jump behind the one coming forward.
+    const OFFSETS = [0, 1.2, 1.4, 1.62, 1.8, 1.95, 2.08, 2.18, 2.26];
     const SCALES = [1, 0.8, 0.64, 0.52, 0.46];
     const LIGHT = [1, 0.78, 0.52, 0.4, 0.3];
     const visibleUntil = Math.min(count / 2, 3.4);
@@ -219,7 +221,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart, onOpenTeacherGuide 
         const target = hoveredRef.current === story.id ? 1 : 0;
         lift[index] += (target - lift[index]) * (reduceMotion ? 1 : Math.min(1, dt / 120));
         const side = Math.sign(delta) * (isRTL ? -1 : 1);
-        const offset = step(OFFSETS, distance) * side * (1 - lift[index] * 0.25);
+        const offset = step(OFFSETS, distance * 2) * side * (1 - lift[index] * 0.25);
         const scale = step(SCALES, distance) * (1 + lift[index] * 0.08);
         const light = step(LIGHT, distance) + (1 - step(LIGHT, distance)) * lift[index];
         card.style.transform = `translate(calc(-50% + ${offset} * ${fanStep}), -50%) perspective(1600px) scale(${scale}) rotateY(${-offset * 12 * (1 - lift[index])}deg)`;
