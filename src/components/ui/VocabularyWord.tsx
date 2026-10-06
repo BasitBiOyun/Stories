@@ -8,6 +8,7 @@ import { getActiveBilingualCounterpart } from '../../data/bilingualHighlightCard
 import { HistoricalEntityWord, getHistoricalEntityIdFromDefinition } from '../../features/historical-entities';
 import { BookMarked, Check } from './icons';
 import { isMyWord, toggleMyWord, useMyWords } from '../../lib/myWords';
+import { useIsPhone } from '../../lib/phone';
 
 export const VocabularyWord = ({ 
   word, 
@@ -23,6 +24,8 @@ export const VocabularyWord = ({
   const { t, language } = useLanguage();
   const { trackWordClick } = useStoryProgressActions();
   const [isOpen, setIsOpen] = useState(false);
+  // Phones: the meaning opens as a card from the bottom instead of a bubble over the text.
+  const isPhone = useIsPhone();
   const myWords = useMyWords();
   const wordLanguage = language === 'ar' ? 'ar' : 'en';
   const isSaved = isMyWord(myWords, wordLanguage, word);
@@ -150,31 +153,45 @@ export const VocabularyWord = ({
         <AnimatePresence>
           {isOpen && (
             <>
-              <div
-                className="fixed inset-0 z-[99998]"
+              <motion.div
+                className={cn("fixed inset-0 z-[99998]", isPhone && "bg-black/25")}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
                 onClick={() => setIsOpen(false)}
               />
               <motion.div
                 ref={tooltipRef}
-                initial={{ opacity: 0, scale: 0.985 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.985 }}
-                transition={{ duration: 0.2, ease: 'easeOut' }}
-                style={{ 
+                initial={isPhone ? { y: '100%' } : { opacity: 0, scale: 0.985 }}
+                animate={isPhone ? { y: 0 } : { opacity: 1, scale: 1 }}
+                exit={isPhone ? { y: '100%' } : { opacity: 0, scale: 0.985 }}
+                transition={isPhone ? { type: 'spring', stiffness: 420, damping: 40 } : { duration: 0.2, ease: 'easeOut' }}
+                style={isPhone
+                  ? { position: 'fixed', left: 0, right: 0, bottom: 0, zIndex: 99999, pointerEvents: 'auto' }
+                  : {
                   position: 'fixed',
                   top: coords.top,
                   left: coords.left,
                   zIndex: 99999,
                   pointerEvents: 'auto'
                 }}
+                dir={language === 'ar' ? 'rtl' : 'ltr'}
                 className={cn(
-                  "w-[calc(100vw-1.5rem)] max-w-xs sm:max-w-sm md:max-w-md max-h-[calc(100vh-1.5rem)] overflow-y-auto overscroll-contain [scrollbar-width:none] [&::-webkit-scrollbar]:hidden p-3.5 sm:p-5",
-                  "bg-wood text-parchment rounded-xl shadow-2xl border",
+                  isPhone
+                    ? "max-h-[70vh] overflow-y-auto overscroll-contain rounded-t-[22px] border-t px-5 pb-[max(1.25rem,env(safe-area-inset-bottom))] pt-3"
+                    : "w-[calc(100vw-1.5rem)] max-w-xs sm:max-w-sm md:max-w-md max-h-[calc(100vh-1.5rem)] overflow-y-auto overscroll-contain [scrollbar-width:none] [&::-webkit-scrollbar]:hidden p-3.5 sm:p-5 rounded-xl border",
+                  "bg-wood text-parchment shadow-2xl",
                   tooltipTheme.border,
                   language === 'ar' ? "text-right" : "text-left"
                 )}
                 onClick={(e) => e.stopPropagation()}
               >
+                {isPhone && (
+                  <>
+                    <span className="mx-auto mb-3 block h-1 w-10 rounded-full bg-white/25" aria-hidden="true" />
+                    <span className={cn("mb-2 block font-display font-semibold text-parchment", language === 'ar' ? "text-[26px] leading-snug" : "text-2xl")}>{word.replace(/[\s.,;:!?،؛…"“”'‘’()«»]+$/u, '')}</span>
+                  </>
+                )}
                 <span className={cn(
                   "font-display uppercase tracking-widest mb-1 sm:mb-2 block",
                   tooltipTheme.accent,
@@ -227,6 +244,7 @@ export const VocabularyWord = ({
                   onClick={() => toggleMyWord({ word, definition: normalizedDefinition, language: wordLanguage })}
                   className={cn(
                     "mt-3.5 inline-flex min-h-9 items-center gap-2 rounded-full border px-3.5 font-display text-[12px] font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/70",
+                    isPhone && "mt-4 min-h-12 w-full justify-center rounded-xl text-[14px]",
                     isSaved ? "border-brand-300/50 bg-brand-300/15 text-brand-200" : "border-white/15 text-parchment/75 hover:border-brand-300/50 hover:text-parchment",
                   )}
                 >
@@ -236,7 +254,7 @@ export const VocabularyWord = ({
                     : (language === 'ar' ? 'احْفَظْ فِي كَلِمَاتِي' : 'Save to My words')}
                 </button>
 
-                <div 
+                {!isPhone && <div 
                   style={{
                     left: coords.arrowOffset
                   }}
@@ -246,7 +264,7 @@ export const VocabularyWord = ({
                       ? "top-full border-t-wood" 
                       : "bottom-full border-b-wood"
                   )} 
-                />
+                />}
               </motion.div>
             </>
           )}

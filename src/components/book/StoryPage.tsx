@@ -365,7 +365,8 @@ export const StoryPage = ({
               onMouseLeave={handleMouseLeave}
               style={{ rotateX, rotateY }}
             >
-              <div className="relative aspect-[4/5] w-full rounded-[1.5rem] shadow-[0_24px_30px_-28px_rgba(0,0,0,0.55)] overflow-hidden">
+              {/* Phones: the picture keeps its shape but stays under half the screen, so the text starts on the first screen. */}
+              <div className="relative aspect-[4/5] w-full max-sm:mx-auto max-sm:h-[44svh] max-sm:w-auto rounded-[1.5rem] shadow-[0_24px_30px_-28px_rgba(0,0,0,0.55)] overflow-hidden">
                 <motion.img 
                   src={appImage(page.image)}
             onError={fallBackToOriginal(page.image)} 

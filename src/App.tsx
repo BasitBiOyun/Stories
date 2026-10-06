@@ -39,6 +39,7 @@ import { LanguageToggle } from './components/ui/LanguageToggle';
 import { FullscreenToggle } from './components/ui/FullscreenButton';
 import { ReaderSettings } from './components/book/ReaderSettings';
 import { useMediaQuery } from './lib/useMediaQuery';
+import { useIsPhone } from './lib/phone';
 import { StoryProgressProvider, useStoryProgress } from './contexts/StoryProgressContext';
 
 // Layout Components
@@ -126,6 +127,8 @@ const AppContent = () => {
   // Story mode: the whole story on one page, the activities after "The End".
   const [storyMode, setStoryMode] = useState(() => localStorage.getItem('reader_story_mode') === 'true');
   const isLargeDesktop = useMediaQuery('(min-width: 90rem)');
+  // Phones get native patterns: the menu opens as a sheet from the bottom, the header keeps only what is used most.
+  const isPhone = useIsPhone();
   const [isReaderSettingsOpen, setIsReaderSettingsOpen] = useState(false);
   const [userAnswers, setUserAnswers] = useState<Record<string, boolean | null>>({});
   const [showSummary, setShowSummary] = useState(false);
@@ -880,14 +883,14 @@ const AppContent = () => {
 
               <div className="min-w-0">
                 <h2
-                  className="clip-room max-w-[150px] truncate font-display text-[12px] font-semibold leading-tight tracking-[-0.01em] text-parchment sm:max-w-xs sm:text-[15px] md:max-w-md md:text-[17px]"
+                  className="clip-room max-w-[min(15rem,58vw)] truncate font-display text-[14px] font-semibold leading-tight tracking-[-0.01em] text-parchment sm:max-w-xs sm:text-[15px] md:max-w-md md:text-[17px]"
                   title={currentBookTitle}
                 >
                   <span className="sm:hidden">{currentPage?.title || currentBookTitle}</span>
                   <span className="hidden sm:inline">{currentBookTitle}</span>
                 </h2>
                 <span className={cn(
-                  "ui-label mt-0.5 block truncate sm:text-xs",
+                  "ui-label mt-0.5 block truncate sm:text-xs max-sm:hidden",
                   themeClasses.headerSubtitle
                 )}>
                   {t('nav.level')} {currentLevel} · {t('nav.page')} {formatNumber(currentPageIndex + 1)}
@@ -938,7 +941,7 @@ const AppContent = () => {
                     type="button"
                     onClick={() => setLanguage(language === 'en' ? 'ar' : 'en')}
                     className={cn(
-                      "ui-control ui-label sm:hidden",
+                      "ui-control ui-label hidden",
                       themeClasses.buttonSec
                     )}
                     aria-label={language === 'en' ? 'Switch to Arabic' : 'Switch to English'}
@@ -955,7 +958,7 @@ const AppContent = () => {
               <button 
                 onClick={handleReturnToLibrary}
                 className={cn(
-                  "ui-control",
+                  "ui-control max-sm:hidden",
                   themeClasses.buttonSec
                 )}
                 title={t('nav.returnToLibrary')}
@@ -1255,22 +1258,26 @@ const AppContent = () => {
             onClick={() => setIsMenuOpen(false)}
           >
             <motion.aside
-              initial={{ x: isRTL ? 340 : -340 }}
-              animate={{ x: 0 }}
-              exit={{ x: isRTL ? 340 : -340 }}
-              transition={{ duration: 0.24, ease: [0.22, 1, 0.36, 1] }}
+              initial={isPhone ? { y: '100%' } : { x: isRTL ? 340 : -340 }}
+              animate={isPhone ? { y: 0 } : { x: 0 }}
+              exit={isPhone ? { y: '100%' } : { x: isRTL ? 340 : -340 }}
+              transition={isPhone ? { type: 'spring', stiffness: 380, damping: 38 } : { duration: 0.24, ease: [0.22, 1, 0.36, 1] }}
               className={cn(
-                "flex h-full w-[min(22rem,88vw)] flex-col overflow-y-auto overscroll-contain border-r p-5 shadow-2xl backdrop-blur-2xl sm:p-7",
-                isRTL && "ml-auto border-l border-r-0",
+                "flex flex-col overflow-y-auto overscroll-contain p-5 shadow-2xl backdrop-blur-2xl sm:p-7",
+                isPhone
+                  ? "absolute inset-x-0 bottom-0 max-h-[88svh] w-full rounded-t-[24px] border-t pb-[max(1.25rem,env(safe-area-inset-bottom))] pt-3"
+                  : "h-full w-[min(22rem,88vw)] border-r",
+                !isPhone && isRTL && "ml-auto border-l border-r-0",
                 themeClasses.menuBg,
                 themeClasses.menuBorder
               )}
               onClick={e => e.stopPropagation()}
               aria-label={t('nav.mainMenu')}
             >
+              {isPhone && <span className="mx-auto mb-3 block h-1 w-10 shrink-0 rounded-full bg-white/25" aria-hidden="true" />}
               <div className="flex items-center justify-between gap-4">
                 <div className="min-w-0">
-                  <p className={cn("font-display text-[11px] sm:text-[12px] font-semibold uppercase tracking-[0.16em]", themeClasses.menuAccentText)}>
+                  <p className={cn("font-display text-[11px] sm:text-[12px] font-semibold uppercase tracking-[0.16em] max-sm:hidden", themeClasses.menuAccentText)}>
                     {t('nav.mainMenu')}
                   </p>
                   <h3 className="mt-1 truncate font-display text-lg font-semibold text-parchment">
@@ -1298,6 +1305,17 @@ const AppContent = () => {
                   <Home size={21} className={themeClasses.menuAccentText} />
                   <span className="font-display text-[14px] sm:text-[15px] font-semibold">{t('nav.libraryHome')}</span>
                 </button>
+                {/* Phones: the language switch lives here instead of the crowded header. */}
+                {isPhone && !isFinalChallengePage && !isEnglishOnlyBook && (
+                  <button
+                    type="button"
+                    onClick={() => { setLanguage(language === 'en' ? 'ar' : 'en'); setIsMenuOpen(false); }}
+                    className={cn("touch-target flex w-full items-center gap-4 rounded-xl px-4 text-parchment transition-colors", themeClasses.menuHoverBg)}
+                  >
+                    <span className={cn("flex h-[21px] min-w-[21px] items-center justify-center font-display text-[12px] font-bold", themeClasses.menuAccentText)} aria-hidden="true">{language === 'en' ? 'ع' : 'EN'}</span>
+                    <span className="font-display text-[14px] font-semibold" lang={language === 'en' ? 'ar' : 'en'} dir={language === 'en' ? 'rtl' : 'ltr'}>{language === 'en' ? 'اقرأ بالعربية' : 'Read in English'}</span>
+                  </button>
+                )}
               </div>
 
               <div className="mt-7">

@@ -4,6 +4,8 @@ import { Level } from '../../types';
 import homeIcon from '../../assets/images/home_icon.webp';
 import { cn } from '../../lib/utils';
 import { useMediaQuery } from '../../lib/useMediaQuery';
+import { useIsPhone } from '../../lib/phone';
+import { PhoneLibrary } from './PhoneLibrary';
 import { afterFirstInteraction } from '../../lib/afterFirstInteraction';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { LanguageToggle } from '../ui/LanguageToggle';
@@ -178,12 +180,15 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart, onOpenTeacherGuide 
   const [frontIndex, setFrontIndex] = useState(0);
   // Phones draw the floating covers small, so they get the 480 px copies (a quarter of the download).
   const isSmallScreen = useMediaQuery('(max-width: 767px)');
+  // Phones get their own app-like library (PhoneLibrary): same books and actions, native layout.
+  const isPhone = useIsPhone();
   const frontStory = stories.find(story => story.id === hoveredCover) ?? stories[frontIndex % stories.length] ?? stories[0];
   const fanStep = 'clamp(64px, 11vw, 170px)';
   const coverRefs = useRef<(HTMLButtonElement | null)[]>([]);
   const hoveredRef = useRef<string | null>(null);
   hoveredRef.current = hoveredCover;
   useLayoutEffect(() => {
+    if (isPhone) return undefined;
     const count = stories.length;
     // A card's look at a given distance from the front (0 = front, 1 = next, ...). Smooth curves, so a cover never speeds up or
     // slows down suddenly; outer covers bunch up so a growing library still fits.
@@ -258,7 +263,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart, onOpenTeacherGuide 
     };
     draw(performance.now());
     return () => window.cancelAnimationFrame(frame);
-  }, [stories, isRTL, reduceMotion, reduceMotion ? hoveredCover : null]);
+  }, [stories, isRTL, reduceMotion, reduceMotion ? hoveredCover : null, isPhone]);
   const goToBook = (storyId: string) => {
     setActiveCollection('all');
     setHighlightedBook(storyId);
@@ -351,6 +356,55 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart, onOpenTeacherGuide 
   const eyebrowClass = cn('text-[12px] font-semibold uppercase text-[#D8B35C]', isRTL ? 'text-[15px]' : 'tracking-[0.26em]');
   const sectionTitleClass = cn('mt-3 text-[clamp(2rem,3.4vw,3.3rem)] font-semibold text-[#FFF9EC]', isRTL ? 'leading-[1.35]' : 'leading-[1.05] tracking-[-0.04em]');
   const featureOrder = HOME_FEATURE_ORDER[role ?? 'student'];
+
+  const overlays = (
+    <>
+      <LevelTest
+        isOpen={isLevelTestOpen}
+        onClose={() => setIsLevelTestOpen(false)}
+        onResult={(result) => {
+          setSuggestedLevel(result);
+          if (result) chooseLevel(result);
+        }}
+        onStart={(storyId, startLevel) => {
+          setIsLevelTestOpen(false);
+          launchStory(storyId, startLevel);
+        }}
+      />
+      <MyWordsPanel isOpen={isMyWordsOpen} onClose={() => setIsMyWordsOpen(false)} />
+      <CheckResultCode isOpen={isCheckCodeOpen} onClose={() => setIsCheckCodeOpen(false)} />
+      <AboutPage isOpen={isAboutOpen} onClose={() => setIsAboutOpen(false)} />
+      <UsageGuide isOpen={isUsageGuideOpen} onClose={() => setIsUsageGuideOpen(false)} />
+    </>
+  );
+
+  if (isPhone) {
+    return (
+      <div className={cn('min-h-screen bg-[#0b0e0c] text-[#F6F0E2]', isRTL && 'font-arabic')} dir={isRTL ? 'rtl' : 'ltr'}>
+        <PhoneLibrary
+          stories={stories}
+          level={level}
+          onChooseLevel={chooseLevel}
+          lastActive={lastActive}
+          onLaunch={launchStory}
+          onWarm={warmBook}
+          storyName={translatedStoryName}
+          storyDescription={translatedStoryDescription}
+          collectionLabels={collectionLabels}
+          myWordCount={myWordCount}
+          usageGuideTitle={USAGE_GUIDES[role ?? 'student'][lang].title}
+          onOpenMyWords={() => setIsMyWordsOpen(true)}
+          onOpenAbout={() => setIsAboutOpen(true)}
+          onOpenUsageGuide={() => setIsUsageGuideOpen(true)}
+          onOpenLevelTest={() => setIsLevelTestOpen(true)}
+          onOpenCheckCode={() => setIsCheckCodeOpen(true)}
+          onOpenTeacherGuide={onOpenTeacherGuide}
+          suggestedLevel={suggestedLevel}
+        />
+        {overlays}
+      </div>
+    );
+  }
 
   return (
     <div
