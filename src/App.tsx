@@ -848,7 +848,7 @@ const AppContent = () => {
       {/* Reader Header */}
       {!showSummary && (
         <header className={cn(
-          "relative z-50 min-h-14 sm:min-h-16 px-3 sm:px-5 md:px-8 flex items-center transition-colors duration-500 shrink-0",
+          "reader-header relative z-50 min-h-12 sm:min-h-16 px-2 sm:px-5 md:px-8 flex items-center transition-colors duration-500 shrink-0",
           themeClasses.headerBg
         )}>
           <div className="relative z-50 flex w-full items-center justify-between gap-3">
@@ -872,7 +872,7 @@ const AppContent = () => {
                   <span className="hidden sm:inline">{currentBookTitle}</span>
                 </h2>
                 <span className={cn(
-                  "ui-label mt-0.5 block sm:text-xs",
+                  "ui-label mt-0.5 block truncate sm:text-xs",
                   themeClasses.headerSubtitle
                 )}>
                   {t('nav.level')} {currentLevel} · {t('nav.page')} {formatNumber(currentPageIndex + 1)}
@@ -1274,7 +1274,7 @@ const AppContent = () => {
           <div className="relative flex min-w-0 items-center justify-start">
             <button 
               onClick={() => setIsQuickTOCOpen(prev => !prev)}
-              className="touch-target flex max-w-full items-center gap-2 rounded-xl px-2.5 text-parchment/80 transition-colors hover:bg-white/[0.08] hover:text-parchment"
+              className="touch-target flex max-w-full items-center gap-1.5 rounded-xl px-2 text-parchment/80 sm:gap-2 sm:px-2.5 transition-colors hover:bg-white/[0.08] hover:text-parchment"
               title={t('nav.tableOfContents')}
               aria-label={t('nav.tableOfContents')}
               aria-expanded={isQuickTOCOpen}
@@ -1284,7 +1284,7 @@ const AppContent = () => {
                 <span className="hidden sm:inline">{t('nav.page')} </span>
                 {formatNumber(currentPageIndex + 1)} / {formatNumber(totalPages)}
               </span>
-              <ChevronUp className={cn("h-3 w-3 shrink-0 opacity-45 transition-transform", isQuickTOCOpen && "rotate-180")} />
+              <ChevronUp className={cn("hidden h-3 w-3 shrink-0 opacity-45 transition-transform min-[360px]:block", isQuickTOCOpen && "rotate-180")} />
             </button>
 
             <AnimatePresence>

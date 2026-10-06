@@ -16,7 +16,8 @@ import { useFollowAlong } from './useFollowAlong';
 import { timingsUrlFor } from '../../lib/followAlong';
 import { HotspotButton } from './StoryHotspot';
 import { getResponsiveStoryFontStyle, useStoryTextRenderer } from './useStoryText';
-import { ChapterAudioBar, useChapterAudio } from './ChapterAudio';
+import { ChapterAudioBar, ChapterAudioElement, useChapterAudio } from './ChapterAudio';
+import { useMediaQuery } from '../../lib/useMediaQuery';
 import { ChapterSteps, LanguageFocusPanel, QuickChallengePanel } from './ChapterActivities';
 
 // One chapter of the reader: title, steps and audio on top, picture and story text, then the chapter's activities.
@@ -220,47 +221,60 @@ export const StoryPage = ({
   );
 
   // Listen · Read · Quick Challenge · Language Focus: what this chapter asks for and what is done.
+  const isWide = useMediaQuery('(min-width: 1024px)');
+  const onAudioEnded = () => setAudioEnded(true);
+  const renderHeading = () => (
+    <div className={cn("flex flex-col min-w-0", isRTL && "text-right")}>
+      <h3 className="font-display text-[1.3rem] sm:text-3xl lg:text-4xl text-wood font-semibold tracking-[-0.03em] leading-tight lg:truncate clip-room">{page.title}</h3>
+      <p className={cn(
+        "font-serif text-xs sm:text-base lg:text-lg sm:mt-0.5",
+        language !== 'ar' && "italic",
+        "text-brand-600"
+      )}>
+        {t('nav.chapter')} {formatNumber(page.id)}
+      </p>
+      <ChapterSteps
+        page={page}
+        listened={listened}
+        textEndReached={textEndReached}
+        quickExercise={quickExercise}
+        quickDone={quickDone}
+        focusExercises={focusExercises}
+        focusDone={focusDone}
+        lessonSection={lessonSection}
+        onOpenExercise={setActiveExercise}
+        onOpenLanguageFocus={() => setIsLanguageFocusOpen(true)}
+        onOpenLessonCard={() => setIsLessonCardOpen(true)}
+      />
+    </div>
+  );
 
   return (
     <div className="h-full flex flex-col relative overflow-hidden min-h-0">
-      {/* Top Bar with Audio and Title Info */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 sm:gap-4 mb-3 sm:mb-5 shrink-0">
-        <div className={cn(
-          "flex flex-col min-w-0",
-          isRTL ? "text-right" : ""
-        )}>
-          <h3 className="font-display text-xl sm:text-3xl lg:text-4xl text-wood font-semibold tracking-[-0.03em] leading-tight truncate clip-room">{page.title}</h3>
-          <p className={cn(
-            "font-serif text-xs sm:text-base lg:text-lg mt-0.5",
-            language !== 'ar' && "italic",
-            "text-brand-600"
-          )}>
-            {t('nav.chapter')} {formatNumber(page.id)}
-          </p>
-          <ChapterSteps
-            page={page}
-            listened={listened}
-            textEndReached={textEndReached}
-            quickExercise={quickExercise}
-            quickDone={quickDone}
-            focusExercises={focusExercises}
-            focusDone={focusDone}
-            lessonSection={lessonSection}
-            onOpenExercise={setActiveExercise}
-            onOpenLanguageFocus={() => setIsLanguageFocusOpen(true)}
-            onOpenLessonCard={() => setIsLessonCardOpen(true)}
-          />
-        </div>
+      {/* One audio element for both layouts, so turning a tablet does not stop the sound */}
+      <ChapterAudioElement page={page} audio={audio} onEnded={onAudioEnded} />
 
-        <div className="shrink-0 w-full sm:w-auto">
-          <ChapterAudioBar page={page} audio={audio} onEnded={() => setAudioEnded(true)} />
+      {/* Wide screens: title, steps and audio stay on top. Phones and tablets scroll them with the story (below). */}
+      {isWide && (
+        <div className="flex flex-row items-center justify-between gap-4 mb-5 shrink-0">
+          {renderHeading()}
+          <div className="shrink-0 w-auto">
+            <ChapterAudioBar page={page} audio={audio} onEnded={onAudioEnded} withElement={false} />
+          </div>
         </div>
-      </div>
+      )}
 
       {/* Dynamic responsive layout container */}
       <div className="flex-1 min-h-0 overflow-hidden">
         {/* Mobile View: Vertical scrolling stack */}
-        <div className="block lg:hidden h-full overflow-y-auto custom-scrollbar px-0.5 sm:ps-0.5 sm:pe-4 space-y-6">
+        <div className="block lg:hidden h-full overflow-y-auto custom-scrollbar px-0.5 sm:ps-0.5 sm:pe-4 space-y-4 sm:space-y-6">
+          {/* The title and steps scroll away; the audio bar stays at the top of the text */}
+          {!isWide && renderHeading()}
+          {!isWide && page.audioUrl && (
+            <div className="sticky top-0 z-[90] !mt-2 sm:!mt-3 [&>div]:bg-brand-50">
+              <ChapterAudioBar page={page} audio={audio} onEnded={onAudioEnded} withElement={false} />
+            </div>
+          )}
           {page.image && (
             <motion.div 
               initial={{ opacity: 0, scale: 0.95 }}

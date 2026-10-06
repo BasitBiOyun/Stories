@@ -108,12 +108,24 @@ export const useChapterAudio = (page: PageData) => {
 
 export type ChapterAudio = ReturnType<typeof useChapterAudio>;
 
-/** The player bar; onEnded runs when the chapter's audio has played to the end. */
-export const ChapterAudioBar = ({ page, audio, onEnded }: { page: PageData; audio: ChapterAudio; onEnded: () => void }) => {
+/** The chapter's audio element on its own, for a page that moves the player bar between layouts without stopping the sound. */
+export const ChapterAudioElement = ({ page, audio, onEnded }: { page: PageData; audio: ChapterAudio; onEnded: () => void }) =>
+  page.audioUrl ? (
+    <audio
+      ref={audio.audioRef}
+      src={page.audioUrl}
+      onEnded={() => { audio.setIsPlaying(false); onEnded(); }}
+      onTimeUpdate={audio.handleTimeUpdate}
+      onLoadedMetadata={audio.handleLoadedMetadata}
+    />
+  ) : null;
+
+/** The player bar; onEnded runs when the chapter's audio has played to the end. withElement false: the page renders ChapterAudioElement itself. */
+export const ChapterAudioBar = ({ page, audio, onEnded, withElement = true }: { page: PageData; audio: ChapterAudio; onEnded: () => void; withElement?: boolean }) => {
   const { language } = useLanguage();
   const {
-    audioRef, audioControlsRef, isPlaying, setIsPlaying, currentTime, duration, volume, speed, audioMenu, setAudioMenu,
-    toggleAudio, handleTimeUpdate, handleLoadedMetadata, handleSeek, handleVolumeChange, toggleMute, setPlaybackSpeed, formatTime,
+    audioControlsRef, isPlaying, currentTime, duration, volume, speed, audioMenu, setAudioMenu,
+    toggleAudio, handleSeek, handleVolumeChange, toggleMute, setPlaybackSpeed, formatTime,
   } = audio;
   const isAudioLocked = false;
 
@@ -124,24 +136,18 @@ export const ChapterAudioBar = ({ page, audio, onEnded }: { page: PageData; audi
               ref={audioControlsRef}
               dir="ltr"
               className={cn(
-                "relative z-[90] flex w-full items-center gap-2.5 rounded-2xl border px-2.5 py-2.5 shadow-[0_18px_24px_-22px_rgba(63,49,28,0.45)] backdrop-blur-md sm:w-[430px] sm:gap-3 sm:px-3 sm:py-3 lg:w-[500px]",
+                "relative z-[90] flex w-full items-center gap-2 rounded-xl border px-1.5 py-1.5 shadow-[0_18px_24px_-22px_rgba(63,49,28,0.45)] backdrop-blur-md sm:w-[430px] sm:gap-3 sm:rounded-2xl sm:px-3 sm:py-3 lg:w-[500px]",
                 "bg-brand-50/88 border-brand-200/90"
               )}
             >
-              <audio
-                ref={audioRef}
-                src={page.audioUrl}
-                onEnded={() => { setIsPlaying(false); onEnded(); }}
-                onTimeUpdate={handleTimeUpdate}
-                onLoadedMetadata={handleLoadedMetadata}
-              />
+              {withElement && <ChapterAudioElement page={page} audio={audio} onEnded={onEnded} />}
 
               <button
                 type="button"
                 onClick={isAudioLocked ? undefined : toggleAudio}
                 disabled={isAudioLocked}
                 className={cn(
-                  "flex h-11 w-11 shrink-0 items-center justify-center rounded-full shadow-[0_7px_18px_rgba(63,49,28,0.16)] transition-all active:scale-[0.97] sm:h-12 sm:w-12",
+                  "flex h-10 w-10 shrink-0 items-center justify-center rounded-full shadow-[0_7px_18px_rgba(63,49,28,0.16)] transition-all active:scale-[0.97] sm:h-12 sm:w-12",
                   isAudioLocked
                     ? "bg-gray-400 text-white cursor-not-allowed opacity-60"
                     : "bg-brand-700 text-white hover:bg-brand-800"

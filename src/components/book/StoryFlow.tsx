@@ -196,8 +196,8 @@ export const StoryFlow = ({
     <div className="h-full flex flex-col min-h-0" data-story-flow>
       {/* The audio bar stays on top while the story scrolls */}
       {activePage?.audioUrl && (
-        <div className="mb-3 flex shrink-0 flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
-          <p className={cn('min-w-0 truncate font-display text-sm font-semibold text-wood/75', isRTL && 'text-right')}>
+        <div className="mb-2 flex shrink-0 flex-col gap-1.5 sm:mb-3 sm:flex-row sm:items-center sm:gap-2 sm:justify-between">
+          <p className={cn('min-w-0 truncate font-display text-xs font-semibold text-wood/75 sm:text-sm', isRTL && 'text-right')}>
             {t('nav.chapter')} {formatNumber(activePage.id)} · {activePage.title}
           </p>
           <div className="shrink-0 w-full sm:w-auto">

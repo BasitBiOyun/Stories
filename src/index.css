@@ -202,6 +202,14 @@
     min-height: 2.75rem;
   }
 
+  /* Phones: the reader's top bar keeps its buttons at 40px so the story gets the screen. */
+  @media (max-width: 639px) {
+    .reader-header .touch-target {
+      min-width: 2.5rem;
+      min-height: 2.5rem;
+    }
+  }
+
   .safe-area-x {
     padding-inline-start: max(var(--safe-inline, 0px), env(safe-area-inset-left));
     padding-inline-end: max(var(--safe-inline, 0px), env(safe-area-inset-right));

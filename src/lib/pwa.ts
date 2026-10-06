@@ -13,7 +13,8 @@ interface BeforeInstallPromptEvent extends Event {
   userChoice: Promise<{ outcome: 'accepted' | 'dismissed' }>;
 }
 
-const isStandalone = () =>
+/** True when the app runs installed (from the home screen), where the system already gives it the whole screen. */
+export const isStandalone = () =>
   window.matchMedia?.('(display-mode: standalone)').matches ||
   (navigator as Navigator & { standalone?: boolean }).standalone === true;
 

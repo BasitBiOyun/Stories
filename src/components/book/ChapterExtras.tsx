@@ -119,6 +119,8 @@ export const BeforeYouReadPanel = ({
   const countdown = useCountdown(seconds, data.question);
 
   const letters = isArabic ? ['أ', 'ب', 'ج', 'د'] : ['A', 'B', 'C', 'D'];
+  // Arabic pages count the seconds in Arabic digits, like the rest of the Arabic interface.
+  const num = (n: number) => (isArabic ? n.toLocaleString('ar-EG') : String(n));
 
   return (
     <section
@@ -127,7 +129,7 @@ export const BeforeYouReadPanel = ({
       dir={isArabic ? 'rtl' : 'ltr'}
     >
       <div className="flex flex-wrap items-center gap-2">
-        <p className={cn('min-w-0 flex-1 text-wood', isArabic ? 'text-base' : 'text-sm')}>
+        <p className={cn('min-w-[min(100%,16rem)] flex-1 text-wood', isArabic ? 'text-base' : 'text-sm')}>
           <span className={cn('me-2 inline-flex items-center gap-1 align-middle font-display font-semibold uppercase tracking-widest text-brand-800', isArabic ? 'text-xs' : 'text-[10px]')}>
             <SECTION_ICONS.beforeYouRead.icon size={14} />
             {L.title}
@@ -143,7 +145,7 @@ export const BeforeYouReadPanel = ({
               className="inline-flex h-8 shrink-0 items-center gap-1.5 rounded-lg border border-brand-300 bg-white px-3 font-display text-[12px] font-semibold text-brand-800 hover:bg-brand-50"
             >
               <Clock size={14} />
-              {L.start} · {seconds} {L.seconds}
+              {L.start} · {num(seconds)} {L.seconds}
             </button>
           ) : (
             <span
@@ -155,7 +157,7 @@ export const BeforeYouReadPanel = ({
               )}
             >
               <Clock size={14} />
-              {countdown.left > 0 ? `${countdown.left} ${L.seconds}` : L.timeUp}
+              {countdown.left > 0 ? `${num(countdown.left)} ${L.seconds}` : L.timeUp}
             </span>
           )
         )}

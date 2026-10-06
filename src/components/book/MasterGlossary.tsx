@@ -502,7 +502,8 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({
           </div>
         </div>
 
-        <div className="relative grid grid-cols-2 lg:grid-cols-4 gap-2.5 mt-4">
+        {/* Phones: the filter chips below already carry these counts */}
+        <div className="relative hidden sm:grid grid-cols-2 lg:grid-cols-4 gap-2.5 mt-4">
           {summaryCards.map(item => {
             const Icon = item.icon;
             const active = filter === item.key;

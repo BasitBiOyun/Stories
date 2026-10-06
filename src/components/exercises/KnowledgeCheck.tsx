@@ -415,11 +415,11 @@ export const KnowledgeCheck = ({
     <section className="h-full min-h-0 overflow-y-auto custom-scrollbar px-0.5 pt-0.5 pe-2">
       <div className="mx-auto w-full max-w-5xl desk:max-w-[84rem] wide:max-w-none space-y-5 pb-4">
         <div className={cn(
-          'relative overflow-hidden rounded-[28px] p-5 sm:p-6 flex flex-col gap-5 sm:flex-row sm:items-start sm:justify-between',
+          'relative overflow-hidden rounded-[22px] sm:rounded-[28px] p-4 sm:p-6 flex flex-col gap-4 sm:gap-5 sm:flex-row sm:items-start sm:justify-between',
           theme.softBg
         )}>
-          <div className="flex items-center gap-3 min-w-0">
-            <div className={cn('flex h-12 w-12 items-center justify-center rounded-2xl text-white shadow-lg shrink-0', theme.accentBg)}>
+          <div className="flex items-start gap-3 min-w-0 sm:items-center">
+            <div className={cn('flex h-10 w-10 items-center justify-center rounded-xl text-white shadow-lg shrink-0 sm:h-12 sm:w-12 sm:rounded-2xl', theme.accentBg)}>
               <SECTION_ICONS.knowledgeCheck.icon size={23} />
             </div>
             <div className="min-w-0">

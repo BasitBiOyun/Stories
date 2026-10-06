@@ -2,6 +2,7 @@ import React from 'react';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { cn } from '../../lib/utils';
 import { isHomeHash } from '../../lib/hashRoute';
+import { isStandalone } from '../../lib/pwa';
 
 // Phosphor Icons / CornersOut / Regular (MIT)
 const PhosphorCornersOut = ({ size = 19 }: { size?: number }) => (
@@ -23,7 +24,8 @@ export const useFullscreen = () => {
   const [isFullscreen, setIsFullscreen] = React.useState(false);
 
   React.useEffect(() => {
-    setIsSupported(typeof document !== 'undefined' && Boolean(document.documentElement.requestFullscreen));
+    // An installed app already fills the screen, so it offers no full-screen control.
+    setIsSupported(typeof document !== 'undefined' && Boolean(document.documentElement.requestFullscreen) && !isStandalone());
 
     const syncFullscreenState = () => setIsFullscreen(Boolean(document.fullscreenElement));
     syncFullscreenState();
