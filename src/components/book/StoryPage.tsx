@@ -211,8 +211,8 @@ export const StoryPage = ({
   // The chapter's activity order: Quick Challenge, Language Focus, then (desktop windows) Group task and I can.
   const nextActivityAfter = (current: Exercise): (() => void) | null => {
     const index = chapterExercises.findIndex(exercise => exercise.id === current.id);
-    const rest = index < 0 ? chapterExercises : [...chapterExercises.slice(index + 1), ...chapterExercises.slice(0, index)];
-    const nextExercise = rest.find(exercise => exercise.id !== current.id && !completedExercises.includes(exercise.id));
+    // Always the next one in order, done or not, so Quick Challenge leads to the first Language Focus.
+    const nextExercise = index < 0 ? undefined : chapterExercises[index + 1];
     if (nextExercise) return () => setActiveExercise(nextExercise);
     if (isWide && page.type === 'story' && page.groupTask) return () => { setActiveExercise(null); setRailPanel('group'); };
     if (isWide && page.iCan?.length) return () => { setActiveExercise(null); setRailPanel('iCan'); };

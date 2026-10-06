@@ -1,6 +1,6 @@
 import React from 'react';
 import { createPortal } from 'react-dom';
-import { motion, AnimatePresence } from 'motion/react';
+import { motion } from 'motion/react';
 import {
   CheckCircle2,
   XCircle,
@@ -151,7 +151,10 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
     return [...items.slice(1), items[0]];
   }, [exercise]);
 
-  React.useEffect(() => {
+  // Reset while rendering, not in an effect, so the next activity never shows one frame of the previous result.
+  const [shownExercise, setShownExercise] = React.useState(exercise);
+  if (shownExercise !== exercise) {
+    setShownExercise(exercise);
     setUserAnswer(null);
     setIsSubmitted(false);
     setShowHint(false);
@@ -168,7 +171,7 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
     setAttempt(0);
     setFirstTry(null);
     setClassReveal(false);
-  }, [exercise]);
+  }
 
   React.useEffect(() => {
     if (embedded) return;
@@ -879,10 +882,8 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
 
           {renderContent()}
 
-          <AnimatePresence mode="wait">
             {isSubmitted && (
               <motion.section
-                key={finished ? 'closing' : 'feedback'}
                 initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
                 className={cn(
@@ -977,7 +978,6 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
                 </div>
               </motion.section>
             )}
-          </AnimatePresence>
         </div>
       </main>
 
