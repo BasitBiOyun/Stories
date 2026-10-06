@@ -169,14 +169,24 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart, onOpenTeacherGuide 
     return stories.filter((story) => collectionStoryIds[activeCollection].includes(story.id));
   }, [activeCollection, stories]);
 
-  // Hero: the covers take turns at the front of the fan, the blurred backdrop follows.
-  const [front, setFront] = useState(0);
+  // Hero: the covers stay in a fan and float gently; the first book sits at the front, the others alternate to either side.
+  // Hovering a cover brings it forward and the blurred backdrop follows; clicking it goes down to that book on the shelf.
+  const [hoveredCover, setHoveredCover] = useState<string | null>(null);
+  const [highlightedBook, setHighlightedBook] = useState<string | null>(null);
+  const frontStory = stories.find(story => story.id === hoveredCover) ?? stories[0];
+  const goToBook = (storyId: string) => {
+    setActiveCollection('all');
+    setHighlightedBook(storyId);
+    // Wait a frame so a filtered shelf can show the book again before scrolling to it.
+    window.requestAnimationFrame(() => {
+      document.querySelector(`[data-home-book="${storyId}"]`)?.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'center' });
+    });
+  };
   useEffect(() => {
-    if (reduceMotion) return;
-    const timer = window.setInterval(() => setFront(current => current + 1), 4200);
-    return () => window.clearInterval(timer);
-  }, [reduceMotion]);
-  const frontStory = stories[front % stories.length];
+    if (!highlightedBook) return;
+    const timer = window.setTimeout(() => setHighlightedBook(null), 2800);
+    return () => window.clearTimeout(timer);
+  }, [highlightedBook]);
 
   useEffect(() => {
     // Warm the chosen level of every book on the shelf one by one in idle time, so the first open feels instant.
@@ -395,31 +405,56 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart, onOpenTeacherGuide 
             )}
           </div>
 
-          <div className="relative order-first flex h-[250px] items-center justify-center sm:h-[420px] lg:order-2 lg:h-[min(68vh,640px)]" aria-hidden="true">
-            <div className="absolute left-1/2 top-1/2 aspect-square w-[112%] -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#D8B35C]/20 opacity-60" />
-            <div className="home-spin absolute left-1/2 top-1/2 aspect-square w-[88%] -translate-x-1/2 -translate-y-1/2 rounded-full border border-dashed border-[#D8B35C]/16" />
-            <div className="absolute left-1/2 top-1/2 aspect-square w-[62%] -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#D8B35C]/36 shadow-[0_0_120px_rgba(216,179,92,0.16)]" />
+          <div className="relative order-first flex h-[250px] items-center justify-center sm:h-[420px] lg:order-2 lg:h-[min(68vh,640px)]">
+            <div className="absolute left-1/2 top-1/2 aspect-square w-[112%] -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#D8B35C]/20 opacity-60" aria-hidden="true" />
+            <div className="home-spin absolute left-1/2 top-1/2 aspect-square w-[88%] -translate-x-1/2 -translate-y-1/2 rounded-full border border-dashed border-[#D8B35C]/16" aria-hidden="true" />
+            <div className="absolute left-1/2 top-1/2 aspect-square w-[62%] -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#D8B35C]/36 shadow-[0_0_120px_rgba(216,179,92,0.16)]" aria-hidden="true" />
             <div className="relative h-full w-full">
               {stories.map((story, index) => {
-                const count = stories.length;
-                let delta = index - (front % count);
-                if (delta > count / 2) delta -= count;
-                if (delta < -count / 2) delta += count;
-                const distance = Math.abs(delta);
-                const direction = isRTL ? -1 : 1;
-                const scale = distance === 0 ? 1 : distance === 1 ? 0.8 : 0.64;
+                // Slots 0, +1, -1, +2, -2, +3, -3; outer covers overlap more so a growing library still fits.
+                const side = index % 2 ? 1 : -1;
+                const distance = Math.ceil(index / 2);
+                if (distance > 3) return null;
+                const offset = [0, 1, 1.6, 1.95][distance] * side * (isRTL ? -1 : 1);
+                const hovered = hoveredCover === story.id;
+                const scale = hovered ? Math.max(0.9, [1, 0.8, 0.64, 0.52][distance]) : [1, 0.8, 0.64, 0.52][distance];
+                const name = translatedStoryName(story);
                 return (
-                  <div
+                  <button
                     key={story.id}
-                    className="absolute left-1/2 top-1/2 aspect-[4/5] h-[80%] rounded-[22px] bg-cover bg-center shadow-[0_40px_90px_rgba(0,0,0,0.6),0_0_0_1px_rgba(255,255,255,0.07)] transition-[transform,filter,opacity] duration-[1100ms] ease-[cubic-bezier(.22,1,.36,1)] sm:h-[66%]"
+                    type="button"
+                    onClick={() => goToBook(story.id)}
+                    onPointerEnter={() => setHoveredCover(story.id)}
+                    onPointerLeave={() => setHoveredCover(current => (current === story.id ? null : current))}
+                    onFocus={() => setHoveredCover(story.id)}
+                    onBlur={() => setHoveredCover(current => (current === story.id ? null : current))}
+                    aria-label={name}
+                    className="absolute left-1/2 top-1/2 aspect-[4/5] h-[80%] cursor-pointer rounded-[22px] transition-[transform,filter] duration-500 ease-[cubic-bezier(.22,1,.36,1)] focus-visible:outline-none sm:h-[66%]"
                     style={{
-                      backgroundImage: `url(${story.image})`,
-                      zIndex: 10 - distance,
-                      opacity: distance > 2 ? 0 : 1,
-                      filter: `brightness(${distance === 0 ? 1 : distance === 1 ? 0.78 : 0.48})`,
-                      transform: `translate(calc(-50% + ${delta * direction} * ${fanStep}), -50%) perspective(1600px) scale(${scale}) rotateY(${-delta * 14 * direction}deg)`,
+                      zIndex: hovered ? 20 : 10 - distance,
+                      filter: `brightness(${hovered || distance === 0 ? 1 : [1, 0.78, 0.52, 0.4][distance]})`,
+                      transform: `translate(calc(-50% + ${offset} * ${fanStep}), -50%) perspective(1600px) scale(${scale}) rotateY(${hovered ? 0 : -offset * 12}deg)`,
                     }}
-                  />
+                  >
+                    <span
+                      className="home-float block h-full w-full rounded-[22px] bg-cover bg-center shadow-[0_40px_90px_rgba(0,0,0,0.6),0_0_0_1px_rgba(255,255,255,0.07)]"
+                      style={{
+                        backgroundImage: `url(${story.image})`,
+                        animationDuration: `${7 + (index % 3) * 1.3}s`,
+                        animationDelay: `${-index * 1.7}s`,
+                      }}
+                    >
+                      <span
+                        className={cn(
+                          'absolute inset-x-3 bottom-3 rounded-full bg-[#0b0e0c]/75 px-3 py-1.5 text-center font-semibold text-[#FFF9EC] backdrop-blur-md transition-opacity duration-300',
+                          isRTL ? 'text-[15px]' : 'text-[13px]',
+                          hovered ? 'opacity-100' : 'opacity-0',
+                        )}
+                      >
+                        {name}
+                      </span>
+                    </span>
+                  </button>
                 );
               })}
             </div>
@@ -575,9 +610,13 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart, onOpenTeacherGuide 
               return (
                 <article
                   key={story.id}
-                  className="group relative flex flex-col overflow-hidden rounded-[26px] border border-white/[0.06] bg-[#121612] text-start transition-[transform,box-shadow,border-color] duration-300 hover:-translate-y-1.5 hover:shadow-[0_30px_70px_rgba(0,0,0,0.45)]"
+                  className={cn(
+                    "group relative flex flex-col overflow-hidden rounded-[26px] border border-white/[0.06] bg-[#121612] text-start transition-[transform,box-shadow,border-color] duration-300 hover:-translate-y-1.5 hover:shadow-[0_30px_70px_rgba(0,0,0,0.45)]",
+                    highlightedBook === story.id && 'home-book-highlight',
+                  )}
                   style={{ ['--accent' as string]: visual.accentBright }}
                   data-home-book={story.id}
+                  data-home-highlight={highlightedBook === story.id || undefined}
                 >
                   <button
                     type="button"

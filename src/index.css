@@ -494,6 +494,12 @@
 .home-spin { animation: home-spin 120s linear infinite; }
 .home-rise { animation: home-rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) both; }
 .home-cue { animation: home-cue 2.2s ease-in-out infinite; }
+/* Hero covers float on their own; each card gets its own duration and delay so they never move in step. */
+@keyframes home-float { 50% { transform: translateY(-12px) rotate(0.8deg); } }
+.home-float { position: relative; animation: home-float 8s ease-in-out infinite; }
+/* The shelf card a hero cover led to glows gold for a moment. */
+@keyframes home-book-glow { 0%, 70% { box-shadow: 0 0 0 3px #D8B35C, 0 0 60px rgba(216, 179, 92, 0.45); } }
+.home-book-highlight { animation: home-book-glow 2.8s ease-out both; }
 .home-gold-text {
   background: linear-gradient(100deg, #F3D58A, #C9963F 60%, #F3D58A);
   -webkit-background-clip: text;
