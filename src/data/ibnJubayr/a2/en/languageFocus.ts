@@ -60,7 +60,7 @@ export const ibnJubayrA2LanguageFocusExercises: Record<number, Exercise[]> = {
       wordBank: ['to go', 'to gain', 'to get', 'going', 'gained'],
       correctAnswer: ['to go', 'to gain', 'to get'],
       explanation: 'We talk about dreams and goals with “to + verb”: his dream was to go, he wanted to gain, the goal was to get. The verb after “to” does not change.',
-      feedback: { correct: 'Well done. Dream / want / goal + to + verb.', incorrect: 'After “was” and “wanted” here, use to + verb. Read the first paragraph of Chapter 2.' },
+      feedback: { correct: 'Well done. Dream / want / goal + to + verb.', incorrect: 'After “was” and “wanted” here, use to + verb. Read the paragraph in Chapter 2 that starts “When he was young”.' },
     },
     {
       id: 'ibnjubayr-a2-language-2-my-dream', type: 'reflection', title: 'Use: My Biggest Dream',
@@ -128,7 +128,7 @@ export const ibnJubayrA2LanguageFocusExercises: Record<number, Exercise[]> = {
       wordBank: ['While', 'After', 'Then', 'finally', 'Before'],
       correctAnswer: ['While', 'After', 'Then', 'finally'],
       explanation: '“While” = during a longer action. “After” = when something ended. “Then” = next. “Finally” = at the end. These words make a journey easy to follow.',
-      feedback: { correct: 'Well done. While, After, Then, finally.', incorrect: 'Read the first paragraph of Chapter 4 again and follow the ship from the storm to Alexandria.' },
+      feedback: { correct: 'Well done. While, After, Then, finally.', incorrect: 'Read the second paragraph of Chapter 4 again and follow the ship from the storm to Alexandria.' },
     },
     {
       id: 'ibnjubayr-a2-language-4-retell-route', type: 'reflection', title: 'Use: Tell the Route',

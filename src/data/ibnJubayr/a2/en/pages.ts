@@ -30,10 +30,20 @@ When Ibn Jubayr was born in Valencia in the year 1145, Muslim Spain was rich in 
     type: 'story',
     title: "A Young Scholar from Granada",
     image: "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/andulus%2Fa2%2Fimages%2Fandulus_a2_ch2.webp?alt=media",
-    content: `When he was young, Ibn Jubayr studied hard and learned more about Islam, languages and literature. He had a good education. When he grew up, he got a job with the government and worked as a secretary for the governor of Granada. One of his biggest dreams was to go on Hajj. He also wanted to gain new knowledge and skills during his journey to Mecca. Another goal of this trip was to get information about other Muslim lands. So, he visited great Eastern cities like Baghdad, Mosul, Aleppo, Jerusalem and Damascus.
+    content: `When you think of the great travelers of the Middle Ages, what are the first two names that come to mind? For sure, they are Marco Polo and Ibn Battuta. But in this text, you will learn about another important traveler: Ibn Jubayr.
+
+In the late 12th century (1183–1185), Ibn Jubayr went from Al-Andalus to the Holy Land. He traveled about 15,000 kilometers.
+
+Later, in the late 13th century (1271–1295), Marco Polo traveled about 24,000 kilometers to China. In the 14th century (1325–1354), Ibn Battuta traveled a very long way, about 117,000 kilometers. He went much further than the other two travelers.
+
+Ibn Jubayr traveled less, but he was one of the first great travelers. He wrote one of the first travel books and showed the way to Marco Polo and Ibn Battuta many years later.
+
+When he was young, Ibn Jubayr studied hard and learned more about Islam, languages and literature. He had a good education. When he grew up, he got a job with the government and worked as a secretary for the governor of Granada. One of his biggest dreams was to go on Hajj. He also wanted to gain new knowledge and skills during his journey to Mecca. Another goal of this trip was to get information about other Muslim lands. So, he visited great Eastern cities like Baghdad, Mosul, Aleppo, Jerusalem and Damascus.
 
 When he started his long journey in 1183, he was a middle-aged man from a well-known family in Al-Andalus.`,
     vocabulary: [
+      { word: "come to mind", definition: "Come into your thoughts quickly." },
+      { word: "further", definition: "A longer way; to a place that is farther away." },
       { word: "gain new knowledge", definition: "Learn new things." },
     ],
     hotspots: [
@@ -71,10 +81,16 @@ In the Middle Ages, the journey to Mecca for Hajj was very long and difficult. I
     type: 'story',
     title: "Across the Mediterranean",
     image: "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/andulus%2Fa2%2Fimages%2Fandulus_a2_ch4.webp?alt=media",
-    content: `On February 3, 1183, Ibn Jubayr left Granada and went to Ceuta. Ceuta was a Muslim city in North Africa. There, he took a Genoese ship and passed the islands of Sardinia and Sicily. While they were sailing between these islands, a terrible storm caught them. After the storm stopped, the ship continued on its way toward the island of Crete. Then, it turned south towards Egypt and finally arrived in Alexandria on March 26. At that time, traveling by sea was faster and safer than traveling by land. That’s why Ibn Jubayr followed this interesting route.
+    content: `On February 3, 1183, Ibn Jubayr left Granada and went to Ceuta. Ceuta was a Muslim city in North Africa. There, he took a Genoese ship and passed the islands of Sardinia and Sicily. During the Crusades, Muslims became slaves. When Ibn Jubayr was on a ship near Sardinia, he wrote that he saw 80 Muslim prisoners. They were sold at the market.
+
+While they were sailing between these islands, a terrible storm caught them. After the storm stopped, the ship continued on its way toward the island of Crete. Then, it turned south towards Egypt and finally arrived in Alexandria on March 26. At that time, traveling by sea was faster and safer than traveling by land. That’s why Ibn Jubayr followed this interesting route.
+
+Ibn Jubayr got off the ship in Alexandria. There, he saw a group of Christian soldiers. They were prisoners. These Christian soldiers used to attack Muslims on their Hajj journey. But an army from Cairo stopped them. The army managed to stop them just one day before Medina. Ibn Jubayr wrote about this because he saw it.
 
 In Alexandria, Ibn Jubayr went to see the famous Lighthouse of Alexandria. It was still standing during that time. The very big size and beauty of the lighthouse amazed him. He wrote that it was more than 50 men tall and it was very old and strong. After he stayed there for eight days, he traveled to Cairo.`,
     vocabulary: [
+      { word: "got off", definition: "Left a ship, bus or train." },
+      { word: "managed to", definition: "Was able to do something difficult." },
       { word: "amazed", definition: "Surprised very much." },
     ],
     hotspots: [
@@ -364,6 +380,50 @@ Ibn Jubayr thought that other people should do the same. He told young people to
           "category": "Places"
       },
       {
+          "word": "come to mind",
+          "definition": "Come into your thoughts quickly.",
+          "partOfSpeech": "phrase",
+          "level": "A2",
+          "pronunciation": "/kʌm tə maɪnd/",
+          "wordFamily": [
+              "mind"
+          ],
+          "collocations": [
+              "the first names that come to mind",
+              "nothing comes to mind"
+          ],
+          "synonyms": [
+              "think of"
+          ],
+          "chapter": 2,
+          "chapterTitle": "A Young Scholar from Granada",
+          "storyExample": "When you think of the great travelers of the Middle Ages, what are the first two names that come to mind?",
+          "category": "Learning"
+      },
+      {
+          "word": "further",
+          "definition": "A longer way; to a place that is farther away.",
+          "partOfSpeech": "adverb",
+          "level": "A2",
+          "pronunciation": "/ˈfɜːðə/",
+          "wordFamily": [
+              "far",
+              "farther",
+              "further"
+          ],
+          "collocations": [
+              "go further",
+              "much further"
+          ],
+          "synonyms": [
+              "farther"
+          ],
+          "chapter": 2,
+          "chapterTitle": "A Young Scholar from Granada",
+          "storyExample": "He went much further than the other two travelers.",
+          "category": "Travel"
+      },
+      {
           "word": "gain new knowledge",
           "definition": "Learn new things.",
           "partOfSpeech": "phrase",
@@ -554,6 +614,50 @@ Ibn Jubayr thought that other people should do the same. He told young people to
           "chapter": 3,
           "chapterTitle": "The Rihla and a Dangerous Journey",
           "storyExample": "Almost the whole area was a war zone.",
+          "category": "War and Safety"
+      },
+      {
+          "word": "got off",
+          "definition": "Left a ship, bus or train.",
+          "partOfSpeech": "phrasal verb",
+          "level": "A2",
+          "pronunciation": "/ɡɒt ɒf/",
+          "wordFamily": [
+              "get off",
+              "get on"
+          ],
+          "collocations": [
+              "got off the ship",
+              "get off the bus"
+          ],
+          "synonyms": [
+              "left"
+          ],
+          "chapter": 4,
+          "chapterTitle": "Across the Mediterranean",
+          "storyExample": "Ibn Jubayr got off the ship in Alexandria.",
+          "category": "Travel"
+      },
+      {
+          "word": "managed to",
+          "definition": "Was able to do something difficult.",
+          "partOfSpeech": "verb",
+          "level": "A2",
+          "pronunciation": "/ˈmænɪdʒd tuː/",
+          "wordFamily": [
+              "manage",
+              "managed"
+          ],
+          "collocations": [
+              "managed to stop them",
+              "manage to finish"
+          ],
+          "synonyms": [
+              "was able to"
+          ],
+          "chapter": 4,
+          "chapterTitle": "Across the Mediterranean",
+          "storyExample": "The army managed to stop them just one day before Medina.",
           "category": "War and Safety"
       },
       {

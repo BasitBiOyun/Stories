@@ -35,7 +35,7 @@ export const ibnJubayrA2StoryMapCopyEn: StoryMapCopy = {
       name: 'Alexandria',
       kind: 'City',
       text: 'The ship arrived in Alexandria on March 26, 1183. Ibn Jubayr saw the famous Lighthouse of Alexandria. It was more than 50 men tall. At the end of his life, he moved to Alexandria and died there in 1217.',
-      teacherNote: 'Chapters 4 and 13. The sea line goes past the islands the book names: Sardinia, Sicily and Crete. The book gives no exact route.',
+      teacherNote: 'Chapters 4 and 13. The sea line goes past the islands the book names: Sardinia, Sicily and Crete. The book gives no exact route. Near Sardinia, he saw 80 Muslim prisoners who were sold at the market. In Alexandria, he saw Christian soldiers as prisoners; an army from Cairo stopped them one day before Medina.',
       question: 'What famous building did Ibn Jubayr see in Alexandria?',
     },
     cairo: {
