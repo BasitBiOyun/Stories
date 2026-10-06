@@ -1245,7 +1245,7 @@ const AppContent = () => {
               exit={{ x: isRTL ? 340 : -340 }}
               transition={{ duration: 0.24, ease: [0.22, 1, 0.36, 1] }}
               className={cn(
-                "flex h-full w-[min(22rem,88vw)] flex-col border-r p-5 shadow-2xl backdrop-blur-2xl sm:p-7",
+                "flex h-full w-[min(22rem,88vw)] flex-col overflow-y-auto overscroll-contain border-r p-5 shadow-2xl backdrop-blur-2xl sm:p-7",
                 isRTL && "ml-auto border-l border-r-0",
                 themeClasses.menuBg,
                 themeClasses.menuBorder

@@ -70,7 +70,7 @@ export const ChapterSteps = ({
           return (
             <li key={step.key} className="flex">
               {step.onClick ? (
-                <button type="button" onClick={step.onClick} className="rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500">
+                <button type="button" onClick={step.onClick} className="inline-flex rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500">
                   {chip}
                 </button>
               ) : chip}

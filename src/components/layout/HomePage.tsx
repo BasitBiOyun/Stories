@@ -615,19 +615,20 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart, onOpenTeacherGuide 
                   aria-pressed={option === level}
                   onClick={() => chooseLevel(option)}
                   className={cn(
-                    'flex flex-1 flex-col items-start rounded-xl px-3 py-2 text-start transition-colors sm:min-w-[120px] sm:flex-none sm:px-4',
+                    'flex min-w-0 flex-1 flex-col items-center justify-center rounded-xl px-1.5 py-2 text-center transition-colors sm:min-w-[120px] sm:flex-none sm:items-start sm:justify-start sm:px-4 sm:text-start',
                     option === level ? 'bg-[linear-gradient(135deg,#ECCD7E,#B98A36)] text-[#16130c]' : 'text-[#FFF9EC] hover:bg-white/[0.06]',
                   )}
                   data-home-level={option}
                 >
                   <span className="text-[19px] font-semibold leading-tight">{option}</span>
-                  <span className={cn(isRTL ? 'text-[13.5px]' : 'text-[11.5px]', option === level ? 'text-[#16130c]/80' : 'text-[#EDE5D4]/66')}>
+                  <span className={cn('leading-tight', isRTL ? 'text-[13px] sm:text-[13.5px]' : 'text-[10.5px] sm:text-[11.5px]', option === level ? 'text-[#16130c]/80' : 'text-[#EDE5D4]/66')}>
                     {levelDescriptions[option][lang]}
                   </span>
                 </button>
               ))}
             </div>
-            <div className="flex w-full flex-wrap gap-1.5 lg:ms-auto lg:w-auto" role="group">
+            {/* Phones: one row that scrolls sideways instead of four ragged lines */}
+            <div className="-mx-1 flex w-full gap-1.5 overflow-x-auto px-1 pb-0.5 [scrollbar-width:none] sm:mx-0 sm:flex-wrap sm:overflow-visible sm:px-0 sm:pb-0 lg:ms-auto lg:w-auto" role="group">
               {(['all', 'prophets', 'history', 'turkish'] as CollectionId[]).map(collection => (
                 <button
                   key={collection}
@@ -635,9 +636,9 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart, onOpenTeacherGuide 
                   aria-pressed={activeCollection === collection}
                   onClick={() => setActiveCollection(collection)}
                   className={cn(
-                    'inline-flex items-center gap-2 rounded-full border px-3.5 py-2 font-semibold transition-colors',
+                    'inline-flex shrink-0 items-center gap-2 whitespace-nowrap rounded-full border px-3.5 py-2 font-semibold transition-colors',
                     isRTL ? 'text-[15px]' : 'text-[13px]',
-                    activeCollection === collection ? 'border-white/10 bg-white/[0.08] text-[#FFF9EC]' : 'border-transparent text-[#EDE5D4]/66 hover:text-[#FFF9EC]',
+                    activeCollection === collection ? 'border-white/10 bg-white/[0.08] text-[#FFF9EC]' : 'border-white/[0.06] text-[#EDE5D4]/66 hover:text-[#FFF9EC] sm:border-transparent',
                   )}
                 >
                   {collection !== 'all' && <img src={collectionVisuals[collection].icon} alt="" className="h-5 w-5 object-contain" />}
