@@ -1,7 +1,6 @@
 import React from 'react';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { cn } from '../../lib/utils';
-import { isHomeHash } from '../../lib/hashRoute';
 import { isStandalone } from '../../lib/pwa';
 
 // Phosphor Icons / CornersOut / Regular (MIT)
@@ -18,14 +17,16 @@ const PhosphorCornersOut = ({ size = 19 }: { size?: number }) => (
   </svg>
 );
 
-/** Whether the page can go full screen, whether it is, and a toggle; the reader's settings menu renders the control. */
+/** Whether the page can go full screen, whether it is, and a toggle; the top bar of each screen renders the control. */
 export const useFullscreen = () => {
   const [isSupported, setIsSupported] = React.useState(false);
   const [isFullscreen, setIsFullscreen] = React.useState(false);
 
   React.useEffect(() => {
-    // An installed app already fills the screen, so it offers no full-screen control.
-    setIsSupported(typeof document !== 'undefined' && Boolean(document.documentElement.requestFullscreen) && !isStandalone());
+    // An app installed on a phone or tablet already fills the screen, so it offers no full-screen control. Installed
+    // on a computer or a smart board it opens in a window, and the control stays.
+    const handheld = window.matchMedia?.('(pointer: coarse)').matches && Math.min(window.screen.width, window.screen.height) < 820;
+    setIsSupported(typeof document !== 'undefined' && Boolean(document.documentElement.requestFullscreen) && !(isStandalone() && handheld));
 
     const syncFullscreenState = () => setIsFullscreen(Boolean(document.fullscreenElement));
     syncFullscreenState();
@@ -65,29 +66,11 @@ const PhosphorCornersIn = ({ size = 19 }: { size?: number }) => (
 export const FullscreenIcon = PhosphorCornersOut;
 export const ExitFullscreenIcon = PhosphorCornersIn;
 
-/** Floating full-screen control at the bottom corner of every screen; Escape leaves full screen. */
-export const FullscreenButton = () => {
+/** Round full-screen control for the top bar of each screen; hidden on phones, where the browser bar is the real limit. */
+/** className replaces the idle colours, so a screen can match its own buttons. */
+export const FullscreenToggle = ({ className }: { className?: string }) => {
   const { isSupported, isFullscreen, toggleFullscreen } = useFullscreen();
-  const { language, isRTL } = useLanguage();
-  // On a phone the library has no bottom bar to hold the button, and a floating one sits on the book cards.
-  // There it is left out; inside a book it sits in the reader's bottom bar, and the Aa menu also offers full screen.
-  const [onLibrary, setOnLibrary] = React.useState(() => isHomeHash(window.location.hash));
-  React.useEffect(() => {
-    const sync = () => setOnLibrary(isHomeHash(window.location.hash));
-    window.addEventListener('hashchange', sync);
-    return () => window.removeEventListener('hashchange', sync);
-  }, []);
-
-  React.useEffect(() => {
-    if (!isFullscreen) return;
-    const onKey = (event: KeyboardEvent) => {
-      if (event.key === 'Escape' && document.fullscreenElement) {
-        void document.exitFullscreen().catch(() => undefined);
-      }
-    };
-    window.addEventListener('keydown', onKey);
-    return () => window.removeEventListener('keydown', onKey);
-  }, [isFullscreen]);
+  const { language } = useLanguage();
 
   if (!isSupported) return null;
 
@@ -100,17 +83,17 @@ export const FullscreenButton = () => {
       type="button"
       onClick={() => { void toggleFullscreen(); }}
       className={cn(
-        // Phone: a small control in the empty end of the reader's bottom bar, clear of the story text.
-        "fixed bottom-2 z-[260] h-9 w-9 items-center justify-center rounded-xl border border-white/15 bg-black/45 text-white/80 shadow-lg backdrop-blur-md transition-colors hover:bg-black/60 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60 sm:bottom-20 sm:h-11 sm:w-11",
-        isRTL ? "left-3 sm:left-auto sm:right-4" : "right-3 sm:right-4",
-        onLibrary && !isFullscreen ? "hidden sm:flex" : "flex",
+        "hidden h-10 w-10 shrink-0 items-center justify-center rounded-full border transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/70 sm:flex sm:h-11 sm:w-11",
+        isFullscreen
+          ? "border-gold bg-gold text-wood hover:bg-gold/90"
+          : (className ?? "border-white/15 text-parchment/85 hover:bg-white/[0.08] hover:text-parchment"),
       )}
       title={label}
       aria-label={label}
       aria-pressed={isFullscreen}
       data-fullscreen-button
     >
-      {isFullscreen ? <PhosphorCornersIn size={17} /> : <PhosphorCornersOut size={17} />}
+      {isFullscreen ? <PhosphorCornersIn size={18} /> : <PhosphorCornersOut size={18} />}
     </button>
   );
 };

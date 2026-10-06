@@ -141,7 +141,7 @@ const TOOLS = {
       intro: 'These tools are in the reader for every book.',
       items: [
         [SECTION_ICONS.lessonCard, 'Open “Lesson card” under the chapter title: aims, timed steps, the group task and the exit ticket on one screen.'],
-        [SECTION_ICONS.classMode, 'Reading settings (Aa) → Class mode: Bigger text for the board, “Show the answer” for Before you read, “Show example” for discussion prompts, and group tasks open.'],
+        [SECTION_ICONS.classMode, 'Story settings → Class mode: Bigger text for the board, “Show the answer” for Before you read, “Show example” for discussion prompts, and group tasks open.'],
         [SECTION_ICONS.beforeYouRead, 'Before you read: One guess per chapter, a one-minute hook before listening.'],
         [SECTION_ICONS.iCan, 'I can: Three lines at the end of each chapter for self-assessment.'],
         [MODE_ICONS.group, 'Group tasks: Three per book, with roles, steps and what each group shares. Nobody plays a prophet or a person from the story.'],
@@ -154,7 +154,7 @@ const TOOLS = {
       intro: 'هٰذِهِ الأَدَوَاتُ مَوْجُودَةٌ فِي القَارِئِ لِكُلِّ كِتَابٍ.',
       items: [
         [SECTION_ICONS.lessonCard, 'افْتَحْ «بِطَاقَةَ الدَّرْسِ» تَحْتَ عُنْوَانِ الفَصْلِ: الأَهْدَافُ وَخُطُوَاتُ الدَّرْسِ بِأَوْقَاتِهَا وَالمُهِمَّةُ الجَمَاعِيَّةُ وَبِطَاقَةُ الخُرُوجِ فِي شَاشَةٍ وَاحِدَةٍ.'],
-        [SECTION_ICONS.classMode, 'إِعْدَادَاتُ القِرَاءَةِ (Aa) ← وَضْعُ الصَّفِّ: نَصٌّ أَكْبَرُ لِلسَّبُّورَةِ، وَ«أَظْهِرِ الإِجَابَةَ» قَبْلَ القِرَاءَةِ، وَ«أَظْهِرِ المِثَالَ» لِأَسْئِلَةِ النِّقَاشِ، وَالمُهِمَّاتُ الجَمَاعِيَّةُ مَفْتُوحَةٌ.'],
+        [SECTION_ICONS.classMode, 'إِعْدَادَاتُ القِصَّةِ ← وَضْعُ الصَّفِّ: نَصٌّ أَكْبَرُ لِلسَّبُّورَةِ، وَ«أَظْهِرِ الإِجَابَةَ» قَبْلَ القِرَاءَةِ، وَ«أَظْهِرِ المِثَالَ» لِأَسْئِلَةِ النِّقَاشِ، وَالمُهِمَّاتُ الجَمَاعِيَّةُ مَفْتُوحَةٌ.'],
         [SECTION_ICONS.beforeYouRead, 'قَبْلَ القِرَاءَةِ: تَخْمِينٌ وَاحِدٌ لِكُلِّ فَصْلٍ، تَهْيِئَةٌ لِدَقِيقَةٍ قَبْلَ الاسْتِمَاعِ.'],
         [SECTION_ICONS.iCan, 'أَسْتَطِيعُ: ثَلَاثَةُ أَسْطُرٍ فِي آخِرِ كُلِّ فَصْلٍ لِلتَّقْيِيمِ الذَّاتِيِّ.'],
         [MODE_ICONS.group, 'المُهِمَّاتُ الجَمَاعِيَّةُ: ثَلَاثٌ فِي كُلِّ كِتَابٍ، بِأَدْوَارٍ وَخُطُوَاتٍ وَمَا تَعْرِضُهُ كُلُّ مَجْمُوعَةٍ. لَا يُمَثِّلُ أَحَدٌ نَبِيًّا وَلَا شَخْصًا مِنَ القِصَّةِ.'],
@@ -193,7 +193,7 @@ const TOOLS = {
 
 /**
  * "Before you read: One guess…" → label "Before you read", body "One guess…", so the card title is not repeated in its text.
- * A line without a short lead-in ("Open “Lesson card” under…", "Reading settings (Aa) → Class mode: …") keeps the section name as its title.
+ * A line without a short lead-in ("Open “Lesson card” under…", "Story settings → Class mode: …") keeps the section name as its title.
  */
 const splitToolLine = (line: string, fallback: string) => {
   const match = line.match(/^([^:→←]+):\s*(.+)$/s);

@@ -5,6 +5,7 @@ import homeIcon from '../../assets/images/home_icon.webp';
 import { cn } from '../../lib/utils';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { LanguageToggle } from '../ui/LanguageToggle';
+import { FullscreenToggle } from '../ui/FullscreenButton';
 import { RoleToggle } from '../ui/RoleToggle';
 import { useUserRole } from '../../contexts/UserRoleContext';
 import { SECTION_ICONS } from '../../lib/sectionIcons';
@@ -287,6 +288,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart, onOpenTeacherGuide 
               <RoleToggle />
             </div>
             <LanguageToggle />
+            <FullscreenToggle />
           </div>
         </div>
       </header>

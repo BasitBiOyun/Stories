@@ -34,7 +34,8 @@ import { mergeBookProgress, readBookProgress, type BookProgress } from './lib/bo
 import { collectionVisuals, getStoryMeta, isHiddenStory, readerTokenVariables } from './core/content/storyCatalog';
 import { useLanguage } from './contexts/LanguageContext';
 import { LanguageToggle } from './components/ui/LanguageToggle';
-import { FullscreenIcon, useFullscreen } from './components/ui/FullscreenButton';
+import { FullscreenToggle } from './components/ui/FullscreenButton';
+import { ReaderSettings } from './components/book/ReaderSettings';
 import { useMediaQuery } from './lib/useMediaQuery';
 import { StoryProgressProvider, useStoryProgress } from './contexts/StoryProgressContext';
 
@@ -169,7 +170,6 @@ const AppContent = () => {
  
   const { language, setLanguage, t, formatNumber, isRTL } = useLanguage();
   const { stats, resetStats, hydrateStats } = useStoryProgress();
-  const { isSupported: canFullscreen, isFullscreen, toggleFullscreen } = useFullscreen();
   const {
     definition: currentDefinition,
     pair: currentBookPair,
@@ -881,262 +881,30 @@ const AppContent = () => {
             </div>
 
             <div className="flex shrink-0 items-center gap-1.5 sm:gap-2">
-              <div className="relative">
-                <button
-                  type="button"
-                  onClick={() => setIsReaderSettingsOpen(prev => !prev)}
-                  className={cn(
-                    "touch-target flex items-center justify-center rounded-full border text-[13px] font-semibold tracking-[-0.03em] transition-colors",
-                    themeClasses.buttonSec
-                  )}
-                  aria-label={language === 'ar' ? 'إعدادات القراءة' : 'Reading settings'}
-                  aria-expanded={isReaderSettingsOpen}
-                  title={language === 'ar' ? 'إعدادات القراءة' : 'Reading settings'}
-                >
-                  Aa
-                </button>
+              <ReaderSettings
+                open={isReaderSettingsOpen}
+                setOpen={setIsReaderSettingsOpen}
+                language={language}
+                isRTL={isRTL}
+                readerScale={readerScale}
+                setReaderScale={setReaderScale}
+                isDyslexic={isDyslexic}
+                setIsDyslexic={setIsDyslexic}
+                showHighlights={showHighlights}
+                setShowHighlights={setShowHighlights}
+                followAlong={followAlong}
+                setFollowAlong={setFollowAlong}
+                storyMode={storyMode}
+                setStoryMode={setStoryMode}
+                isWideView={isWideView}
+                setIsWideView={setIsWideView}
+                isTeacher={isTeacher}
+                classMode={classMode}
+                setClassMode={setClassMode}
+                theme={themeClasses}
+              />
 
-                <AnimatePresence>
-                  {isReaderSettingsOpen && (
-                    <motion.div
-                      initial={{ opacity: 0, y: -8, scale: 0.97 }}
-                      animate={{ opacity: 1, y: 0, scale: 1 }}
-                      exit={{ opacity: 0, y: -8, scale: 0.97 }}
-                      transition={{ duration: 0.16, ease: 'easeOut' }}
-                      className={cn(
-                        "absolute top-[calc(100%+0.65rem)] z-[80] w-72 rounded-2xl border p-4 shadow-2xl backdrop-blur-2xl max-sm:fixed max-sm:inset-x-3 max-sm:top-[3.9rem] max-sm:w-auto",
-                        isRTL ? "sm:left-0" : "sm:right-0",
-                        themeClasses.menuBg,
-                        themeClasses.menuBorder
-                      )}
-                    >
-                      <div className="flex items-center justify-between gap-4">
-                        <div>
-                          <p className="font-display text-[12px] font-semibold text-parchment">
-                            {language === 'ar' ? 'حجم النص' : 'Text size'}
-                          </p>
-                          <p className="mt-0.5 text-[11px] text-parchment/62">
-                            {language === 'ar' ? 'اضبط النص للقراءة المريحة' : 'Tune the story text for comfortable reading'}
-                          </p>
-                        </div>
-                        <span className={cn("font-display text-[11px] font-semibold", themeClasses.goldText)}>
-                          {Math.round(readerScale * 100)}%
-                        </span>
-                      </div>
-
-                      <div className="mt-3 grid grid-cols-3 gap-2">
-                        <button
-                          type="button"
-                          onClick={() => setReaderScale(prev => Math.max(0.85, Number((prev - 0.1).toFixed(2))))}
-                          disabled={readerScale <= 0.85}
-                          className="touch-target rounded-xl bg-white/[0.06] font-display text-lg text-parchment transition-colors hover:bg-white/[0.11] disabled:opacity-30"
-                          aria-label={language === 'ar' ? 'تصغير النص' : 'Decrease text size'}
-                        >
-                          −
-                        </button>
-                        <button
-                          type="button"
-                          onClick={() => setReaderScale(1)}
-                          className="touch-target rounded-xl bg-white/[0.06] font-display text-[11px] font-semibold text-parchment transition-colors hover:bg-white/[0.11]"
-                        >
-                          {language === 'ar' ? 'إعادة' : 'Reset'}
-                        </button>
-                        <button
-                          type="button"
-                          onClick={() => setReaderScale(prev => Math.min(1.3, Number((prev + 0.1).toFixed(2))))}
-                          disabled={readerScale >= 1.3}
-                          className="touch-target rounded-xl bg-white/[0.06] font-display text-lg text-parchment transition-colors hover:bg-white/[0.11] disabled:opacity-30"
-                          aria-label={language === 'ar' ? 'تكبير النص' : 'Increase text size'}
-                        >
-                          +
-                        </button>
-                      </div>
-
-                      <button
-                        type="button"
-                        onClick={() => setIsDyslexic(prev => !prev)}
-                        className="mt-3 flex w-full items-center justify-between gap-4 rounded-xl bg-white/[0.045] px-3 py-3 text-start transition-colors hover:bg-white/[0.08]"
-                        aria-pressed={isDyslexic}
-                      >
-                        <span>
-                          <span className="block font-display text-[11px] font-semibold text-parchment">
-                            {language === 'ar' ? 'خط سهل للقراءة' : 'Dyslexia-friendly font'}
-                          </span>
-                          <span className="mt-0.5 block text-[11px] text-parchment/62">
-                            OpenDyslexic
-                          </span>
-                        </span>
-                        <span
-                          dir="ltr"
-                          className={cn(
-                            "flex h-6 w-11 shrink-0 items-center rounded-full p-1 transition-colors",
-                            isDyslexic ? themeClasses.progressBar : "bg-white/15",
-                            isDyslexic ? "justify-end" : "justify-start"
-                          )}
-                        >
-                          <span className="h-4 w-4 rounded-full bg-white shadow" />
-                        </span>
-                      </button>
-
-                      <button
-                        type="button"
-                        onClick={() => setShowHighlights(prev => !prev)}
-                        className="mt-2 flex w-full items-center justify-between gap-4 rounded-xl bg-white/[0.045] px-3 py-3 text-start transition-colors hover:bg-white/[0.08]"
-                        aria-pressed={showHighlights}
-                        data-highlights-toggle
-                      >
-                        <span>
-                          <span className="block font-display text-[11px] font-semibold text-parchment">
-                            {language === 'ar' ? 'الكلمات الملونة' : 'Highlighted words'}
-                          </span>
-                          <span className="mt-0.5 block text-[11px] text-parchment/62">
-                            {language === 'ar' ? 'أوقفها لقراءة النص بلون واحد' : 'Turn off to read plain text'}
-                          </span>
-                        </span>
-                        <span
-                          dir="ltr"
-                          className={cn(
-                            "flex h-6 w-11 shrink-0 items-center rounded-full p-1 transition-colors",
-                            showHighlights ? themeClasses.progressBar : "bg-white/15",
-                            showHighlights ? "justify-end" : "justify-start"
-                          )}
-                        >
-                          <span className="h-4 w-4 rounded-full bg-white shadow" />
-                        </span>
-                      </button>
-
-                      <button
-                        type="button"
-                        onClick={() => setFollowAlong(prev => !prev)}
-                        className="mt-2 flex w-full items-center justify-between gap-4 rounded-xl bg-white/[0.045] px-3 py-3 text-start transition-colors hover:bg-white/[0.08]"
-                        aria-pressed={followAlong}
-                        data-follow-along-toggle
-                      >
-                        <span>
-                          <span className="block font-display text-[11px] font-semibold text-parchment">
-                            {language === 'ar' ? 'تتبع القراءة' : 'Follow along'}
-                          </span>
-                          <span className="mt-0.5 block text-[11px] text-parchment/62">
-                            {language === 'ar' ? 'تتلوّن الكلمة المقروءة مع الصوت' : 'The word being read fills with colour'}
-                          </span>
-                        </span>
-                        <span
-                          dir="ltr"
-                          className={cn(
-                            "flex h-6 w-11 shrink-0 items-center rounded-full p-1 transition-colors",
-                            followAlong ? themeClasses.progressBar : "bg-white/15",
-                            followAlong ? "justify-end" : "justify-start"
-                          )}
-                        >
-                          <span className="h-4 w-4 rounded-full bg-white shadow" />
-                        </span>
-                      </button>
-
-                      <button
-                        type="button"
-                        onClick={() => setStoryMode(prev => !prev)}
-                        className="mt-2 flex w-full items-center justify-between gap-4 rounded-xl bg-white/[0.045] px-3 py-3 text-start transition-colors hover:bg-white/[0.08]"
-                        aria-pressed={storyMode}
-                        data-story-mode-toggle
-                      >
-                        <span>
-                          <span className="block font-display text-[11px] font-semibold text-parchment">
-                            {language === 'ar' ? 'وضع القصة' : 'Story mode'}
-                          </span>
-                          <span className="mt-0.5 block text-[11px] text-parchment/62">
-                            {language === 'ar' ? 'القصة كلها متصلة، والأنشطة بعدها' : 'The whole story in one flow, activities after it'}
-                          </span>
-                        </span>
-                        <span
-                          dir="ltr"
-                          className={cn(
-                            "flex h-6 w-11 shrink-0 items-center rounded-full p-1 transition-colors",
-                            storyMode ? themeClasses.progressBar : "bg-white/15",
-                            storyMode ? "justify-end" : "justify-start"
-                          )}
-                        >
-                          <span className="h-4 w-4 rounded-full bg-white shadow" />
-                        </span>
-                      </button>
-
-                      <button
-                        type="button"
-                        onClick={() => setIsWideView(prev => !prev)}
-                        className="mt-2 hidden w-full items-center justify-between gap-4 rounded-xl bg-white/[0.045] px-3 py-3 text-start transition-colors hover:bg-white/[0.08] lg:flex"
-                        aria-pressed={isWideView}
-                        data-wide-view-toggle
-                      >
-                        <span>
-                          <span className="block font-display text-[11px] font-semibold text-parchment">
-                            {language === 'ar' ? 'عرض واسع' : 'Wide view'}
-                          </span>
-                          <span className="mt-0.5 block text-[11px] text-parchment/62">
-                            {language === 'ar' ? 'يملأ النص واللوحات الشاشة' : 'Text and panels fill the screen'}
-                          </span>
-                        </span>
-                        <span
-                          dir="ltr"
-                          className={cn(
-                            "flex h-6 w-11 shrink-0 items-center rounded-full p-1 transition-colors",
-                            isWideView ? themeClasses.progressBar : "bg-white/15",
-                            isWideView ? "justify-end" : "justify-start"
-                          )}
-                        >
-                          <span className="h-4 w-4 rounded-full bg-white shadow" />
-                        </span>
-                      </button>
-
-                      {isTeacher && (
-                        <button
-                          type="button"
-                          onClick={() => setClassMode(!classMode)}
-                          className="mt-2 flex w-full items-center justify-between gap-4 rounded-xl bg-white/[0.045] px-3 py-3 text-start transition-colors hover:bg-white/[0.08]"
-                          aria-pressed={classMode}
-                          data-class-mode-toggle
-                        >
-                          <span className="flex items-start gap-2.5">
-                            <SECTION_ICONS.classMode.icon size={17} className="mt-0.5 shrink-0 text-parchment/80" />
-                            <span>
-                              <span className="block font-display text-[11px] font-semibold text-parchment">
-                                {SECTION_ICONS.classMode[language === 'ar' ? 'ar' : 'en']}
-                              </span>
-                              <span className="mt-0.5 block text-[11px] text-parchment/62">
-                                {language === 'ar' ? 'نَصٌّ أَكْبَرُ لِلسَّبُّورَةِ، وَالإِجَابَاتُ وَالأَمْثِلَةُ عِنْدَ الطَّلَبِ' : 'Bigger text for the board, answers and examples on demand'}
-                              </span>
-                            </span>
-                          </span>
-                          <span
-                            dir="ltr"
-                            className={cn(
-                              "flex h-6 w-11 shrink-0 items-center rounded-full p-1 transition-colors",
-                              classMode ? themeClasses.progressBar : "bg-white/15",
-                              classMode ? "justify-end" : "justify-start"
-                            )}
-                          >
-                            <span className="h-4 w-4 rounded-full bg-white shadow" />
-                          </span>
-                        </button>
-                      )}
-
-                      {canFullscreen && (
-                        <button
-                          type="button"
-                          onClick={() => { void toggleFullscreen(); }}
-                          className="mt-2 flex w-full items-center justify-between gap-4 rounded-xl bg-white/[0.045] px-3 py-3 text-start transition-colors hover:bg-white/[0.08]"
-                          aria-pressed={isFullscreen}
-                        >
-                          <span className="block font-display text-[11px] font-semibold text-parchment">
-                            {isFullscreen
-                              ? (language === 'ar' ? 'الخروج من ملء الشاشة' : 'Exit full screen')
-                              : (language === 'ar' ? 'ملء الشاشة' : 'Full screen')}
-                          </span>
-                          <span className="text-parchment/70"><FullscreenIcon size={17} /></span>
-                        </button>
-                      )}
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
+              <FullscreenToggle className={themeClasses.buttonSec} />
 
               {isFinalChallengePage ? (
                 <span
@@ -1226,7 +994,7 @@ const AppContent = () => {
             <button
               type="button"
               className="fixed inset-0 z-40 cursor-default"
-              aria-label={language === 'ar' ? 'إغلاق إعدادات القراءة' : 'Close reading settings'}
+              aria-label={language === 'ar' ? 'إغلاق إعدادات القصة' : 'Close story settings'}
               onClick={() => setIsReaderSettingsOpen(false)}
             />
           )}

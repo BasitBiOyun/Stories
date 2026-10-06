@@ -9,7 +9,6 @@ import './arabicTypography.css';
 import './lib/pdfDownloadLock';
 import { LanguageProvider } from './contexts/LanguageContext';
 import { ArabicUiSanitizer } from './components/ArabicUiSanitizer';
-import { FullscreenButton } from './components/ui/FullscreenButton';
 import { UserRoleProvider } from './contexts/UserRoleContext';
 import { ClassModeProvider } from './contexts/ClassModeContext';
 import { registerServiceWorker } from './lib/pwa';
@@ -44,7 +43,6 @@ createRoot(document.getElementById('root')!).render(
       <UserRoleProvider>
         <ClassModeProvider>
           <App />
-          <FullscreenButton />
           <ArabicUiSanitizer />
         </ClassModeProvider>
       </UserRoleProvider>

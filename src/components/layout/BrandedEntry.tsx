@@ -1,6 +1,7 @@
 import React from 'react';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { LanguageToggle } from '../ui/LanguageToggle';
+import { FullscreenToggle } from '../ui/FullscreenButton';
 import { cn } from '../../lib/utils';
 import { storyCatalog } from '../../core/content/storyCatalog';
 import homeIcon from '../../assets/images/home_icon.webp';
@@ -71,8 +72,9 @@ export const BrandedEntry: React.FC<{ children: React.ReactNode }> = ({ children
       </div>
 
       <div className="relative flex items-center justify-center px-5 py-10 sm:px-10">
-        <div className="absolute end-4 top-4 z-20">
+        <div className="absolute end-4 top-4 z-20 flex items-center gap-2">
           <LanguageToggle />
+          <FullscreenToggle />
         </div>
         <div className="w-full max-w-[440px]">
           <img src={homeIcon} alt="" className="h-14 w-14 rounded-[14px] bg-white/[0.05] p-2" />

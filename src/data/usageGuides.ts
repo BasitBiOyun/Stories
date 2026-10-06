@@ -97,7 +97,7 @@ export const USAGE_GUIDES: Record<UserRole, Record<UsageGuideLang, UsageGuide>> 
           icon: 'ProjectorScreen',
           heading: 'Teaching on the board',
           steps: [
-            'Open the Aa menu and turn on Class mode.',
+            'Open Story settings and turn on Class mode.',
             'The text becomes larger. Answers and example answers stay hidden until you choose Show the answer or Show example.',
             'Group tasks open for the whole class. The icons show if a task is for one student, a pair or a group.',
             'On the maps, Class mode hides the places so you can show them one by one.',
@@ -185,7 +185,7 @@ export const USAGE_GUIDES: Record<UserRole, Record<UsageGuideLang, UsageGuide>> 
           icon: 'ProjectorScreen',
           heading: 'التدريس على السبورة',
           steps: [
-            'افتح قائمة Aa وشغّل «وضع الصف».',
+            'افتح «إعدادات القصة» وشغّل «وضع الصف».',
             'يكبر النص، وتبقى الإجابات وأمثلة الإجابات مخفية حتى تختار إظهارها.',
             'تُفتح المهام الجماعية للصف كله. وتبيّن الرموز إن كانت المهمة لطالب واحد أو لزميلين أو لمجموعة.',
             'في الخرائط يُخفي «وضع الصف» الأماكن لتُظهرها واحدًا بعد الآخر.',
