@@ -70,7 +70,7 @@ def validate_request(item: dict[str, Any]) -> tuple[str, str, str]:
     return request_id, narration_text, storage_path
 
 
-def elevenlabs_synthesize(api_key: str, narration_text: str) -> bytes:
+def elevenlabs_synthesize(api_key: str, narration_text: str, stability: float | None = None) -> bytes:
     cleaned = narration_for_audio(narration_text)
     if not cleaned:
         raise TtsError("Narration became empty after cleanup.")
@@ -81,12 +81,16 @@ def elevenlabs_synthesize(api_key: str, narration_text: str) -> bytes:
         f"https://api.elevenlabs.io/v1/text-to-speech/{VOICE_ID}"
         "?output_format=mp3_44100_128"
     )
-    # Only speed is overridden; the voice keeps its stored stability/similarity settings.
+    # Speed is always overridden. A request may also set "stability" (higher = steadier, less
+    # emotional delivery); otherwise the voice keeps its stored stability/similarity settings.
+    voice_settings: dict[str, float] = {"speed": SPEED}
+    if stability is not None:
+        voice_settings["stability"] = stability
     body = json.dumps(
         {
             "text": cleaned,
             "model_id": MODEL_ID,
-            "voice_settings": {"speed": SPEED},
+            "voice_settings": voice_settings,
         },
         ensure_ascii=False,
     ).encode("utf-8")
@@ -139,7 +143,10 @@ def process_item(api_key: str, access_token: str, item: dict[str, Any]) -> str:
         raise TtsError(f"{request_id}: target already exists. Set allowOverwrite=true after approval.")
 
     log(f"{request_id}: generating Arabic narration -> {storage_path}")
-    audio = elevenlabs_synthesize(api_key, narration_text)
+    stability = item.get("stability")
+    if stability is not None and not (isinstance(stability, (int, float)) and 0 <= stability <= 1):
+        raise TtsError(f"{request_id}: stability must be a number between 0 and 1.")
+    audio = elevenlabs_synthesize(api_key, narration_text, stability)
     uploaded, firebase_url = multipart_upload(
         access_token, storage_path, audio, existing, request_id, voice_id=VOICE_ID
     )
