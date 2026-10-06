@@ -161,3 +161,11 @@ Proje sahibinin v10 notları üzerine:
 python3 promo/scripts/build_audio.py
 python3 promo/scripts/render.py --workers 3 --crf 14 --out promo/out/lisandan-kulture-v11-4k.mp4
 ```
+
+## v11.1 (6 Ekim 2026)
+
+- Girişteki "Oku. Dinle. Anla." ışığı artık yuvarlak, yumuşak bir ışık topu (`.star .orb`). Dört köşeli parlama
+  Gemini simgesine benzediği için kaldırıldı. Uygulama logosu sonda aynen duruyor.
+- Ekleme sahnelerinin İngilizce üst başlıkları `lang="en"`: büyük harfe çevrilince "OFFLİNE", "PRİNTABLE" gibi Türkçe
+  İ çıkmıyor.
+- Yalnız değişen saniyeler yeniden çizildi (18.6–20.2 ve 157.0–179.0); kalan kareler v11 4K dosyasından alındı.

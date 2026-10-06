@@ -1218,7 +1218,7 @@ const ADAM_CH = ['Introduction & The Creation', 'The Shaping of Adam', 'Iblis’
 }
 
 function nHead(sec, eyebrow, lines, cls = '') {
-  const h = el('div', 'kin nhead ' + cls, `<div class="eyebrow">${eyebrow}</div>${lines.map(([x, g]) => `<div class="line${g ? ' gold' : ''}">${x}</div>`).join('')}`, sec);
+  const h = el('div', 'kin nhead ' + cls, `<div class="eyebrow" lang="en">${eyebrow}</div>${lines.map(([x, g]) => `<div class="line${g ? ' gold' : ''}">${x}</div>`).join('')}`, sec);
   h.setAttribute('lang', 'tr');
   return { el: h, spans: maskLines(h) };
 }
