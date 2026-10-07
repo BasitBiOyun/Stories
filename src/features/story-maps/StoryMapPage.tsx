@@ -509,15 +509,6 @@ export const StoryMapPage: React.FC<StoryMapPageProps> = ({ page }) => {
     buzz();
     playMapSound('drop');
     window.setTimeout(() => playMapSound(correct ? 'correct' : 'wrong'), 560);
-    if (correct) {
-      window.setTimeout(() => {
-        void import('canvas-confetti').then(module => module.default({
-          particleCount: 36, spread: 70, startVelocity: 22, ticks: 90, scalar: 0.8,
-          origin: { x: clientX / window.innerWidth, y: clientY / window.innerHeight },
-          colors: [GOOD, PALETTE.seljuk, '#1f5f63'],
-        }));
-      }, 560);
-    }
     // Show the answer and the right place together.
     const [tx, ty] = BASE.project(question.lon, question.lat);
     const r = question.radiusKm * BASE.unitsPerKm;
@@ -529,11 +520,6 @@ export const StoryMapPage: React.FC<StoryMapPageProps> = ({ page }) => {
     const h = w / aspect;
     void animateTo(clampView({ x: (minX + maxX) / 2 - w / 2, y: (minY + maxY) / 2 - h / 2 + h * 0.08, w, h }, aspect), 650);
   };
-
-  useEffect(() => {
-    if (!challengeDone || score !== map.challenge.length) return;
-    void import('canvas-confetti').then(module => module.default({ particleCount: 90, spread: 65, origin: { y: 0.65 }, colors: [GOOD, PALETTE.seljuk, '#1f5f63'] }));
-  }, [challengeDone, score, map.challenge.length]);
 
   // --- Classroom --------------------------------------------------------------------------------
   // A drawn line shows the places it starts from, passes and has reached, so it never starts or ends on an empty spot.
@@ -680,13 +666,6 @@ export const StoryMapPage: React.FC<StoryMapPageProps> = ({ page }) => {
     const timer = window.setTimeout(() => setInkDone(true), 2700);
     return () => window.clearTimeout(timer);
   }, [inkDone]);
-
-  const celebrated = useRef(false);
-  useEffect(() => {
-    if (celebrated.current || visited.size < places.length) return;
-    celebrated.current = true;
-    void import('canvas-confetti').then(module => module.default({ particleCount: 50, spread: 55, origin: { y: 0.7 }, colors: [GOOD, PALETTE.seljuk, '#1f5f63'] }));
-  }, [visited, places.length]);
 
   // --- Derived drawing values -------------------------------------------------------------------
   const px = size.w > 0 ? view.w / size.w : 1; // map units per screen pixel

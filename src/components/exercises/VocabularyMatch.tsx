@@ -7,17 +7,26 @@ import { getLearningLevelPolicy } from '../../data/learningLevelPolicy';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { SECTION_ICONS } from '../../lib/sectionIcons';
 import { cn } from '../../lib/utils';
-import confetti from '../../lib/confetti';
+import { EndCard, FeedbackBox } from './ExerciseFeedback';
 
 type Pair = VocabularyChallengePair;
 
 /** The same number on a matched word and its meaning shows which two belong together. */
-type Props = { pairs: Pair[]; collectionId?: string; level: Level; onReviewGlossary?: () => void; onComplete?: () => void };
+type Props = {
+  pairs: Pair[];
+  collectionId?: string;
+  level: Level;
+  onReviewGlossary?: () => void;
+  onComplete?: () => void;
+  /** Opens the next page of the book from the closing card. */
+  onNextPage?: () => void;
+  nextPageLabel?: string;
+};
 
 type FeedbackState =
   | { kind: 'idle' }
   | { kind: 'checked'; correct: number; wrong: number }
-  | { kind: 'done' };
+  | { kind: 'done'; revealed: number };
 
 const shuffle = <T,>(items: T[]): T[] => [...items].sort(() => Math.random() - 0.5);
 
@@ -99,7 +108,7 @@ const theme = {
     selected: 'border-brand-500 ring-brand-500 bg-brand-50', matched: 'border-emerald-300 bg-emerald-50', idle: 'border-brand-100 bg-white hover:border-brand-300',
   };
 
-export const VocabularyMatch = ({ pairs, collectionId = 'prophets', level, onReviewGlossary, onComplete }: Props) => {
+export const VocabularyMatch = ({ pairs, collectionId = 'prophets', level, onReviewGlossary, onComplete, onNextPage, nextPageLabel }: Props) => {
   const { t, formatNumber, language, isRTL } = useLanguage();
   const policy = getLearningLevelPolicy(level);
   const isArabic = language === 'ar';
@@ -110,6 +119,8 @@ export const VocabularyMatch = ({ pairs, collectionId = 'prophets', level, onRev
   const [checkMarks, setCheckMarks] = useState<Record<string, boolean>>({});
   const [streak, setStreak] = useState(0);
   const [feedback, setFeedback] = useState<FeedbackState>({ kind: 'idle' });
+  // Two tries per board: the second check shows the right meaning of every pair still wrong.
+  const [matchRound, setMatchRound] = useState(0);
 
   const [stage, setStage] = useState<'match' | 'context' | 'recall' | 'done'>('match');
   const [maxUnlockedStage, setMaxUnlockedStage] = useState(0);
@@ -117,6 +128,7 @@ export const VocabularyMatch = ({ pairs, collectionId = 'prophets', level, onRev
   const [contextIndex, setContextIndex] = useState(0);
   const [contextChoice, setContextChoice] = useState<string | null>(null);
   const [contextFeedback, setContextFeedback] = useState<'idle' | 'correct' | 'wrong'>('idle');
+  const [contextTries, setContextTries] = useState(0);
   const [recallIndex, setRecallIndex] = useState(0);
   const [recallChoice, setRecallChoice] = useState<string | null>(null);
   const [typedRecall, setTypedRecall] = useState('');
@@ -160,12 +172,14 @@ export const VocabularyMatch = ({ pairs, collectionId = 'prophets', level, onRev
     setCheckMarks({});
     setStreak(0);
     setFeedback({ kind: 'idle' });
+    setMatchRound(0);
     setStage('match');
     setMaxUnlockedStage(0);
     setRevisitWords(new Set());
     setContextIndex(0);
     setContextChoice(null);
     setContextFeedback('idle');
+    setContextTries(0);
     setRecallIndex(0);
     setRecallChoice(null);
     setTypedRecall('');
@@ -209,9 +223,9 @@ export const VocabularyMatch = ({ pairs, collectionId = 'prophets', level, onRev
     if (feedback.kind === 'checked') setFeedback({ kind: 'idle' });
   };
 
-  // Check every placed pair at once: right ones lock in, wrong ones show ✕ and come back for another go.
+  // Check every placed pair at once: right ones lock in, wrong ones show ✕ until Try again.
   const checkMatches = () => {
-    if (!allPlaced || feedback.kind === 'done') return;
+    if (!allPlaced || feedback.kind !== 'idle') return;
     const nextMatches = { ...matches };
     const marks: Record<string, boolean> = {};
     let correct = 0;
@@ -227,21 +241,34 @@ export const VocabularyMatch = ({ pairs, collectionId = 'prophets', level, onRev
         addRevisit(word);
       }
     });
-    setMatches(nextMatches);
     setStreak(wrong === 0 ? streak + correct : 0);
+    if (wrong > 0 && matchRound > 0) {
+      // Second miss: show the right meaning for every pair that is still wrong.
+      setMatches({ ...wordToMeaning });
+      setPending({});
+      setCheckMarks({});
+      setFeedback({ kind: 'done', revealed: wrong });
+      setMaxUnlockedStage(current => Math.max(current, 1));
+      return;
+    }
+    setMatches(nextMatches);
     if (Object.keys(nextMatches).length === total) {
       setPending({});
       setCheckMarks({});
-      setFeedback({ kind: 'done' });
+      setFeedback({ kind: 'done', revealed: 0 });
       setMaxUnlockedStage(current => Math.max(current, 1));
       return;
     }
     setCheckMarks(marks);
     setFeedback({ kind: 'checked', correct, wrong });
-    setTimeout(() => {
-      setPending({});
-      setCheckMarks({});
-    }, 900);
+  };
+
+  // First miss: the wrong meanings go back to the list for one more try.
+  const retryMatches = () => {
+    setPending({});
+    setCheckMarks({});
+    setMatchRound(1);
+    setFeedback({ kind: 'idle' });
   };
 
   const copy = isArabic
@@ -265,7 +292,8 @@ export const VocabularyMatch = ({ pairs, collectionId = 'prophets', level, onRev
         check: 'تحقق',
         correct: 'صحيح',
         wrong: 'حاول مرة أخرى',
-        showAnswer: 'إظهار الإجابة',
+        matchRevealed: 'المعاني الصحيحة ظاهرة الآن باللون الأخضر. اقرأها قبل أن تتابع.',
+        hintMeaning: 'ابحث عن الكلمة التي تعني:',
         chapter: 'الفصل',
         cue: 'تلميح',
         complete: 'اكتملت المرحلة',
@@ -298,7 +326,8 @@ export const VocabularyMatch = ({ pairs, collectionId = 'prophets', level, onRev
         check: 'Check',
         correct: 'Correct',
         wrong: 'Try again',
-        showAnswer: 'Show answer',
+        matchRevealed: 'The right meanings are now shown in green. Read them before you go on.',
+        hintMeaning: 'Look for the word that means:',
         chapter: 'Chapter',
         cue: 'Cue',
         complete: 'Stage complete',
@@ -335,7 +364,7 @@ export const VocabularyMatch = ({ pairs, collectionId = 'prophets', level, onRev
     : '';
 
   const answerContext = (word: string) => {
-    if (!currentContext || contextFeedback === 'correct') return;
+    if (!currentContext || contextFeedback !== 'idle') return;
     setContextChoice(word);
 
     if (word === currentContext.word) {
@@ -347,18 +376,26 @@ export const VocabularyMatch = ({ pairs, collectionId = 'prophets', level, onRev
     setContextFeedback('wrong');
   };
 
+  const retryContext = () => {
+    setContextTries(1);
+    setContextChoice(null);
+    setContextFeedback('idle');
+  };
+
   const continueContext = () => {
     if (contextIndex + 1 >= contextItems.length) {
       setMaxUnlockedStage(current => Math.max(current, 2));
       setStage('recall');
       setContextChoice(null);
       setContextFeedback('idle');
+      setContextTries(0);
       return;
     }
 
     setContextIndex(index => index + 1);
     setContextChoice(null);
     setContextFeedback('idle');
+    setContextTries(0);
   };
 
   const currentRecall = recallItems[recallIndex];
@@ -377,15 +414,21 @@ export const VocabularyMatch = ({ pairs, collectionId = 'prophets', level, onRev
     }
 
     addRevisit(currentRecall.word);
+    if (recallAttempts > 0) setAnswerRevealed(true);
     setRecallAttempts(value => value + 1);
     setRecallFeedback('wrong');
+  };
+
+  const retryRecall = () => {
+    setRecallChoice(null);
+    setTypedRecall('');
+    setRecallFeedback('idle');
   };
 
   const continueRecall = () => {
     if (recallIndex + 1 >= recallItems.length) {
       setStage('done');
       onComplete?.();
-      confetti({ particleCount: 55, spread: 55, origin: { y: 0.72 } });
       return;
     }
 
@@ -503,7 +546,7 @@ export const VocabularyMatch = ({ pairs, collectionId = 'prophets', level, onRev
             <div className={cn('grid gap-2.5', contextOptions.length > 3 ? 'sm:grid-cols-2' : 'sm:grid-cols-3')}>
               {contextOptions.map(word => {
                 const selected = contextChoice === word;
-                const correct = contextFeedback !== 'idle' && word === currentContext.word;
+                const correct = (contextFeedback === 'correct' || (contextFeedback === 'wrong' && contextTries > 0)) && word === currentContext.word;
                 const wrong = contextFeedback === 'wrong' && selected && !correct;
 
                 return (
@@ -511,7 +554,7 @@ export const VocabularyMatch = ({ pairs, collectionId = 'prophets', level, onRev
                     key={word}
                     type="button"
                     onClick={() => answerContext(word)}
-                    disabled={contextFeedback === 'correct'}
+                    disabled={contextFeedback !== 'idle'}
                     className={cn(
                       'min-h-14 rounded-2xl px-4 font-serif font-semibold ring-1 transition-all',
                       correct
@@ -530,31 +573,17 @@ export const VocabularyMatch = ({ pairs, collectionId = 'prophets', level, onRev
             </div>
 
             {contextFeedback !== 'idle' && (
-              <div className={cn(
-                'rounded-2xl p-4 ring-1',
-                contextFeedback === 'correct'
-                  ? 'bg-emerald-50 text-emerald-900 ring-emerald-200'
-                  : 'bg-rose-50 text-rose-900 ring-rose-200'
-              )}>
-                <div className="flex items-start gap-3">
-                  {contextFeedback === 'correct'
-                    ? <CheckCircle2 size={19} className="mt-0.5 shrink-0 text-emerald-700" />
-                    : <XCircle size={19} className="mt-0.5 shrink-0 text-rose-700" />}
-                  <div className="min-w-0 flex-1">
-                    <p className="font-display text-sm font-semibold">
-                      {contextFeedback === 'correct' ? copy.correct : copy.wrong}
-                    </p>
-                    <p className={cn('mt-1 font-serif leading-relaxed opacity-75', isArabic ? 'text-base' : 'text-sm')}>
-                      <strong>{displayWord(currentContext.word, language)}</strong> · {currentContext.meaning}
-                    </p>
-                  </div>
-                  {contextFeedback === 'correct' && (
-                    <button type="button" onClick={continueContext} className={cn('inline-flex min-h-10 items-center gap-1.5 rounded-xl px-3.5 font-display text-[11px] font-semibold', theme.badge)}>
-                      {copy.continue}<ArrowRight size={14} className={isRTL ? 'rotate-180' : ''} />
-                    </button>
-                  )}
-                </div>
-              </div>
+              <FeedbackBox
+                state={contextFeedback === 'correct' ? 'correct' : contextTries > 0 ? 'revealed' : 'retry'}
+                revealKey={`context-${contextIndex}-${contextTries}`}
+                message={contextFeedback === 'correct'
+                  ? <><strong>{displayWord(currentContext.word, language)}</strong> · {currentContext.meaning}</>
+                  : contextTries > 0 ? undefined : <>{copy.hintMeaning} <strong>{currentContext.meaning}</strong></>}
+                onRetry={retryContext}
+                onNext={continueContext}
+              >
+                {contextFeedback === 'wrong' && <><strong>{displayWord(currentContext.word, language)}</strong> · {currentContext.meaning}</>}
+              </FeedbackBox>
             )}
           </div>
         </div>
@@ -600,11 +629,8 @@ export const VocabularyMatch = ({ pairs, collectionId = 'prophets', level, onRev
                   <button
                     key={word}
                     type="button"
-                    onClick={() => {
-                      setRecallChoice(word);
-                      setRecallFeedback('idle');
-                    }}
-                    disabled={recallFeedback === 'correct'}
+                    onClick={() => setRecallChoice(word)}
+                    disabled={recallFeedback !== 'idle'}
                     className={cn(
                       'min-h-14 rounded-2xl px-4 font-serif font-semibold ring-1 transition-all',
                       (recallFeedback === 'correct' || answerRevealed) && word === currentRecall.word
@@ -622,14 +648,11 @@ export const VocabularyMatch = ({ pairs, collectionId = 'prophets', level, onRev
               <input
                 type="text"
                 value={typedRecall}
-                onChange={(event) => {
-                  setTypedRecall(event.target.value);
-                  setRecallFeedback('idle');
-                }}
+                onChange={(event) => setTypedRecall(event.target.value)}
                 onKeyDown={(event) => {
-                  if (event.key === 'Enter' && typedRecall.trim()) verifyRecall();
+                  if (event.key === 'Enter' && typedRecall.trim() && recallFeedback === 'idle') verifyRecall();
                 }}
-                disabled={recallFeedback === 'correct' || answerRevealed}
+                disabled={recallFeedback !== 'idle'}
                 autoComplete="off"
                 spellCheck={false}
                 placeholder={isArabic ? 'اكتب الكلمة هنا…' : 'Type the target word…'}
@@ -637,7 +660,7 @@ export const VocabularyMatch = ({ pairs, collectionId = 'prophets', level, onRev
               />
             )}
 
-            {policy.vocabularyRecallMode === 'independent' && recallFeedback === 'correct' && (
+            {policy.vocabularyRecallMode === 'independent' && (recallFeedback === 'correct' || answerRevealed) && (
               <div className="rounded-2xl bg-white p-4 ring-1 ring-black/[0.06]">
                 <label className={cn('block font-display text-[11px] font-semibold uppercase tracking-[0.12em]', theme.accent)}>
                   {copy.usePrompt}
@@ -652,64 +675,29 @@ export const VocabularyMatch = ({ pairs, collectionId = 'prophets', level, onRev
               </div>
             )}
 
-            <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
-              <div className="min-h-10 flex-1">
-                {recallFeedback === 'wrong' && !answerRevealed && (
-                  <p className={cn('flex items-center gap-2 font-serif text-rose-700', isArabic ? 'text-base' : 'text-sm')}>
-                    <XCircle size={17} className="shrink-0" />{copy.wrong}
-                  </p>
-                )}
-                {(recallFeedback === 'correct' || answerRevealed) && (
-                  <div className={cn('font-serif', recallFeedback === 'correct' ? 'text-emerald-800' : 'text-wood/70', isArabic ? 'text-base' : 'text-sm')}>
-                    {recallFeedback === 'correct' && (
-                      <p className="flex items-center gap-2 font-display font-semibold">
-                        <CheckCircle2 size={17} className="shrink-0" />{copy.correct}
-                      </p>
-                    )}
-                    <p className="mt-1">
-                      <strong>{displayWord(currentRecall.word, language)}</strong> · {currentRecall.meaning}
-                    </p>
-                  </div>
-                )}
-              </div>
-
-              <div className="flex gap-2">
-                {recallFeedback === 'wrong' && recallAttempts >= 2 && !answerRevealed && (
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setAnswerRevealed(true);
-                      addRevisit(currentRecall.word);
-                    }}
-                    className="min-h-11 rounded-xl bg-white px-4 font-display text-[11px] font-semibold text-wood/62 ring-1 ring-black/[0.07]"
-                  >
-                    {copy.showAnswer}
-                  </button>
-                )}
-                {recallFeedback !== 'correct' && !answerRevealed ? (
-                  <button
-                    type="button"
-                    onClick={verifyRecall}
-                    disabled={policy.vocabularyRecallMode === 'choice' ? !recallChoice : !typedRecall.trim()}
-                    className={cn('min-h-11 rounded-xl px-5 font-display text-[11px] font-semibold disabled:opacity-35', theme.badge)}
-                  >
-                    {copy.check}
-                  </button>
-                ) : (
-                  <button
-                    type="button"
-                    onClick={continueRecall}
-                    disabled={policy.vocabularyRecallMode === 'independent' && useSentence.trim().length < 8}
-                    className={cn(
-                      'inline-flex min-h-11 items-center gap-2 rounded-xl px-5 font-display text-[11px] font-semibold disabled:cursor-not-allowed disabled:opacity-35',
-                      theme.badge
-                    )}
-                  >
-                    {copy.continue}<ArrowRight size={15} className={isRTL ? 'rotate-180' : ''} />
-                  </button>
-                )}
-              </div>
-            </div>
+            {recallFeedback === 'idle' ? (
+              <button
+                type="button"
+                onClick={verifyRecall}
+                disabled={policy.vocabularyRecallMode === 'choice' ? !recallChoice : !typedRecall.trim()}
+                className={cn('w-full min-h-12 rounded-xl font-display uppercase tracking-widest font-bold transition-colors disabled:cursor-not-allowed bg-brand-600 text-white hover:bg-brand-700 disabled:bg-gray-100 disabled:text-gray-400', isArabic ? 'text-sm sm:text-base' : 'text-xs sm:text-sm')}
+              >
+                {copy.check}
+              </button>
+            ) : (
+              <FeedbackBox
+                state={recallFeedback === 'correct' ? 'correct' : answerRevealed ? 'revealed' : 'retry'}
+                revealKey={`recall-${recallIndex}-${recallAttempts}`}
+                message={recallFeedback === 'correct'
+                  ? <><strong>{displayWord(currentRecall.word, language)}</strong> · {currentRecall.meaning}</>
+                  : answerRevealed ? undefined : <>{copy.cue}: <strong>{displayWord(currentRecall.word, language).charAt(0)}…</strong></>}
+                onRetry={retryRecall}
+                onNext={continueRecall}
+                nextDisabled={policy.vocabularyRecallMode === 'independent' && useSentence.trim().length < 8}
+              >
+                {recallFeedback === 'wrong' && <><strong>{displayWord(currentRecall.word, language)}</strong> · {currentRecall.meaning}</>}
+              </FeedbackBox>
+            )}
           </div>
         </div>
       </div>
@@ -721,44 +709,40 @@ export const VocabularyMatch = ({ pairs, collectionId = 'prophets', level, onRev
       <div className="h-full flex flex-col gap-3 overflow-hidden" dir={isRTL ? 'rtl' : 'ltr'}>
         {stageHeader}
         <div className="flex-1 min-h-0 overflow-y-auto custom-scrollbar pe-2">
-          <div className="mx-auto max-w-3xl desk:max-w-5xl wide:max-w-none space-y-4 pb-3">
-            <div className={cn('rounded-2xl p-6 text-center ring-1', theme.barBg, theme.selected)}>
-              <CheckCircle2 size={30} className="mx-auto text-emerald-600" />
-              <h4 className="mt-3 font-display text-2xl font-semibold tracking-[-0.03em] text-wood">{copy.done}</h4>
-              <p className={cn('mt-2 font-serif text-wood/55', isArabic ? 'text-lg' : 'text-base')}>
-                {formatNumber(Math.max(0, pairs.length - revisitWords.size))} / {formatNumber(pairs.length)} {copy.mastered}
-              </p>
-            </div>
-
-            {revisitWords.size > 0 && (
-              <div className="rounded-2xl bg-rose-50 p-5 ring-1 ring-rose-200">
-                <p className="font-display text-sm font-semibold text-rose-800">{copy.revisit}</p>
-                <p className={cn('mt-1 font-serif text-rose-900/60', isArabic ? 'text-base' : 'text-sm')}>{copy.revisitHint}</p>
-                <div className="mt-3 flex flex-wrap gap-2">
-                  {[...revisitWords].map(word => (
-                    <span key={word} className="rounded-full bg-white px-3 py-1.5 font-serif text-sm font-semibold text-rose-800 ring-1 ring-rose-200">
-                      {displayWord(word, language)}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            <div className="flex flex-col justify-center gap-2 sm:flex-row">
-              {revisitWords.size > 0 && onReviewGlossary && (
+          <div className="mx-auto max-w-3xl desk:max-w-5xl wide:max-w-none pb-3">
+            <EndCard
+              title={copy.done}
+              onRestart={reset}
+              onNext={onNextPage}
+              nextLabel={nextPageLabel}
+              actions={revisitWords.size > 0 && onReviewGlossary ? (
                 <button
                   type="button"
                   onClick={onReviewGlossary}
-                  className={cn('inline-flex min-h-12 items-center justify-center gap-2 rounded-2xl px-5 font-display text-[11px] font-semibold', theme.badge)}
+                  className={cn('inline-flex min-h-12 items-center justify-center gap-2 rounded-xl px-5 font-display text-[12px] font-semibold', theme.badge)}
                 >
                   <SECTION_ICONS.glossary.icon size={16} />
                   {copy.backToGlossary}
                 </button>
+              ) : undefined}
+            >
+              <p className={cn('text-center font-serif text-emerald-900/70', isArabic ? 'text-base' : 'text-sm')}>
+                {formatNumber(Math.max(0, pairs.length - revisitWords.size))} / {formatNumber(pairs.length)} {copy.mastered}
+              </p>
+              {revisitWords.size > 0 && (
+                <div className="mt-4 rounded-2xl bg-white/80 p-4 ring-1 ring-rose-200">
+                  <p className="font-display text-sm font-semibold text-rose-800">{copy.revisit}</p>
+                  <p className={cn('mt-1 font-serif text-rose-900/60', isArabic ? 'text-base' : 'text-sm')}>{copy.revisitHint}</p>
+                  <div className="mt-3 flex flex-wrap gap-2">
+                    {[...revisitWords].map(word => (
+                      <span key={word} className="rounded-full bg-white px-3 py-1.5 font-serif text-sm font-semibold text-rose-800 ring-1 ring-rose-200">
+                        {displayWord(word, language)}
+                      </span>
+                    ))}
+                  </div>
+                </div>
               )}
-              <button type="button" onClick={reset} className="inline-flex min-h-12 items-center justify-center gap-2 rounded-2xl bg-white px-5 font-display text-[11px] font-semibold text-wood/65 ring-1 ring-black/[0.07]">
-                <RotateCcw size={16} />{copy.restart}
-              </button>
-            </div>
+            </EndCard>
           </div>
         </div>
       </div>
@@ -784,41 +768,14 @@ export const VocabularyMatch = ({ pairs, collectionId = 'prophets', level, onRev
         </AnimatePresence>
       </div>
 
-      <div className={cn('shrink-0 min-h-[58px]', feedback.kind === 'idle' && 'max-sm:hidden')}>
-        <AnimatePresence mode="wait">
-          {feedback.kind === 'done' ? (
-            <motion.div key="done" initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} className="rounded-2xl bg-emerald-50 px-4 py-3 flex items-center gap-3 ring-1 ring-emerald-200">
-              <CheckCircle2 size={20} className="text-emerald-600 shrink-0" />
-              <div className="flex-1">
-                <p className={cn('font-display font-semibold text-emerald-800', isArabic ? 'text-base' : 'text-sm')}>{copy.complete}</p>
-                <p className={cn('mt-0.5 font-serif text-emerald-700/70', isArabic ? 'text-sm' : 'text-xs')}>
-                  {t('ex.allWordsMatched').replace('{total}', formatNumber(total))}
-                </p>
-              </div>
-              <button
-                type="button"
-                onClick={() => setStage('context')}
-                className={cn('inline-flex min-h-10 items-center gap-1.5 rounded-xl px-4 font-display text-[11px] font-semibold', theme.badge)}
-              >
-                {copy.continue}
-                <ArrowRight size={14} className={isRTL ? 'rotate-180' : ''} />
-              </button>
-            </motion.div>
-          ) : feedback.kind === 'checked' ? (
-            <motion.div key={`checked-${feedback.correct}-${feedback.wrong}`} initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} className="rounded-2xl border-2 border-rose-300 bg-rose-50 px-4 py-3 flex items-center gap-3">
-              <XCircle size={20} className="text-rose-600 shrink-0" />
-              <p className={cn('font-serif text-rose-800', isArabic ? 'text-base' : 'text-sm')}>
-                {t('ex.matchesResult').replace('{correct}', formatNumber(feedback.correct)).replace('{wrong}', formatNumber(feedback.wrong))} {t('ex.keepTrying')}
-              </p>
-            </motion.div>
-          ) : (
-            <motion.div key="idle" initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="rounded-2xl border-2 border-dashed border-gray-200 h-full min-h-[58px] flex items-center justify-center gap-2 px-4">
-              <Lightbulb size={17} className={theme.accent} />
-              <p className={cn('font-serif text-wood/50', isArabic ? 'text-base' : 'text-sm')}>{t('ex.selectWordHint')}</p>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </div>
+      {feedback.kind === 'idle' && (
+        <div className="shrink-0 min-h-[58px] max-sm:hidden">
+          <div className="rounded-2xl border-2 border-dashed border-gray-200 h-full min-h-[58px] flex items-center justify-center gap-2 px-4">
+            <Lightbulb size={17} className={theme.accent} />
+            <p className={cn('font-serif text-wood/50', isArabic ? 'text-base' : 'text-sm')}>{t('ex.selectWordHint')}</p>
+          </div>
+        </div>
+      )}
 
       <div className="flex-1 min-h-0 overflow-y-auto overflow-x-hidden custom-scrollbar px-2">
         <MatchingBoard
@@ -828,13 +785,13 @@ export const VocabularyMatch = ({ pairs, collectionId = 'prophets', level, onRev
           onAssignmentsChange={handleBoardChange}
           results={boardResults}
           lockedLefts={lockedWords}
-          disabled={feedback.kind === 'done'}
+          disabled={feedback.kind !== 'idle'}
           headings={{ left: t('ex.words'), right: t('ex.meanings') }}
           instructions={null}
           renderLeft={(word) => displayWord(word, language)}
           className="pb-2"
         />
-        {feedback.kind !== 'done' && (
+        {feedback.kind === 'idle' ? (
           <button
             type="button"
             onClick={checkMatches}
@@ -848,6 +805,17 @@ export const VocabularyMatch = ({ pairs, collectionId = 'prophets', level, onRev
           >
             {t('nav.matchedThem')}
           </button>
+        ) : (
+          <FeedbackBox
+            className="mt-4"
+            state={feedback.kind === 'checked' ? 'retry' : feedback.revealed > 0 ? 'revealed' : 'correct'}
+            revealKey={`match-${matchRound}`}
+            message={feedback.kind === 'checked'
+              ? t('ex.matchesResult').replace('{correct}', formatNumber(feedback.correct)).replace('{wrong}', formatNumber(feedback.wrong))
+              : feedback.revealed > 0 ? copy.matchRevealed : t('ex.allWordsMatched').replace('{total}', formatNumber(total))}
+            onRetry={retryMatches}
+            onNext={() => setStage('context')}
+          />
         )}
       </div>
     </div>

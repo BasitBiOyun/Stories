@@ -297,15 +297,6 @@ export const MapGame = ({
     buzz();
     playMapSound('drop');
     window.setTimeout(() => playMapSound(correct ? 'correct' : 'wrong'), 560);
-    if (correct) {
-      window.setTimeout(() => {
-        void import('canvas-confetti').then(module => module.default({
-          particleCount: 36, spread: 70, startVelocity: 22, ticks: 90, scalar: 0.8,
-          origin: { x: 0.3, y: 0.5 },
-          colors: [GOOD, '#e0ad48', '#1f5f63'],
-        }));
-      }, 560);
-    }
   };
 
   const nextQuestion = () => {
@@ -321,11 +312,6 @@ export const MapGame = ({
     resetView();
     playMapSound('start');
   };
-
-  useEffect(() => {
-    if (!done || score !== total || total === 0) return;
-    void import('canvas-confetti').then(module => module.default({ particleCount: 90, spread: 65, origin: { y: 0.65 }, colors: [GOOD, '#e0ad48', '#1f5f63'] }));
-  }, [done, score, total]);
 
   const isFeature = target?.focus?.mode === 'feature';
   const detail = answer && target && isFeature

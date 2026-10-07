@@ -839,7 +839,8 @@ const AppContent = () => {
             handleAnswer={handleAnswer} 
             level={currentLevel}
             collectionId={currentCollection || 'prophets'}
-            onReviewComplete={currentPage.type === 'exercises' ? handleNextPage : undefined}
+            onNextPage={currentPageIndex < totalPages - 1 ? handleNextPage : undefined}
+            nextPageLabel={currentBook.pages[currentPageIndex + 1]?.title}
             onReviewGlossary={
               currentPage.type === 'vocabulary-match'
                 ? () => {

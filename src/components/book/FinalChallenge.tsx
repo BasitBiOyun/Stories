@@ -3,8 +3,8 @@ import { motion } from 'motion/react';
 import { Trophy, ArrowRight } from '../ui/icons';
 import { BookData, Exercise } from '../../types';
 import { SECTION_ICONS } from '../../lib/sectionIcons';
+import { FeedbackBox } from '../exercises/ExerciseFeedback';
 import { cn } from '../../lib/utils';
-import confetti from '../../lib/confetti';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { useStoryProgress } from '../../contexts/StoryProgressContext';
 import { highlightPhraseMatches } from '../../lib/highlightTextMatch';
@@ -276,12 +276,6 @@ export const FinalChallenge: React.FC<FinalChallengeProps> = ({ bookData, onComp
       scoredQuestionCount,
     });
 
-    confetti({
-      particleCount: 180,
-      spread: 85,
-      origin: { y: 0.65 },
-      colors: theme.confetti,
-    });
 
     onComplete?.();
   };
@@ -713,72 +707,39 @@ export const FinalChallenge: React.FC<FinalChallengeProps> = ({ bookData, onComp
 
         {renderAnswerArea()}
 
-        {selectedAnswer !== null && (
+        {selectedAnswer !== null && currentQuestion.type === 'reflection' && (
           <motion.div
             initial={{ opacity: 0, y: 6 }}
             animate={{ opacity: 1, y: 0 }}
-            className={cn(
-              'rounded-2xl border-2 p-4 sm:p-5',
-              currentQuestion.type === 'reflection'
-                ? theme.soft
-                : lastCorrect
-                  ? 'bg-emerald-50 border-emerald-200'
-                  : attemptNumber === 1
-                    ? 'bg-amber-50 border-amber-200'
-                    : 'bg-rose-50 border-rose-200'
-            )}
+            className={cn('rounded-2xl border-2 p-4 sm:p-5', theme.soft)}
           >
-            {currentQuestion.type !== 'reflection' && lastCorrect === false && attemptNumber === 1 ? (
-              <>
-                <p className={cn('font-display font-black uppercase tracking-wider text-amber-800', isArabic ? 'text-sm sm:text-base' : 'text-xs sm:text-sm')}>
-                  {isArabic ? 'دليل من القصة' : 'Story Evidence'}
-                </p>
-                <p className={cn('font-serif text-wood/75 mt-2 leading-relaxed', isArabic ? 'text-base sm:text-lg' : 'text-sm sm:text-base')}>
-                  {currentQuestion.feedback.incorrect || (isArabic ? 'ارجع إلى الدليل في القصة وحاول مرة أخرى.' : 'Return to the story evidence and try once more.')}
-                </p>
-                <button
-                  type="button"
-                  onClick={retryCurrentQuestion}
-                  className={cn(
-                    'w-full mt-4 min-h-12 rounded-xl border-2 bg-white font-display uppercase tracking-widest font-bold',
-                    isArabic ? 'text-sm sm:text-base' : 'text-xs',
-                    theme.border,
-                    theme.subtext
-                  )}
-                >
-                  {isArabic ? 'حاول مرة أخرى' : 'Try Again'}
-                </button>
-              </>
-            ) : (
-              <>
-                <p className={cn('font-serif text-wood/75 leading-relaxed', isArabic ? 'text-base sm:text-lg' : 'text-sm sm:text-base')}>
-                  {currentQuestion.type === 'reflection'
-                    ? currentQuestion.feedback.correct
-                    : lastCorrect
-                      ? currentQuestion.feedback.correct
-                      : currentQuestion.feedback.incorrect}
-                </p>
-                {currentQuestion.explanation && (
-                  <p className={cn('font-serif text-wood/60 mt-2 leading-relaxed', isArabic ? 'text-base sm:text-lg' : 'text-sm sm:text-base')}>{currentQuestion.explanation}</p>
-                )}
-                {renderCorrectionReview()}
-                <button
-                  type="button"
-                  onClick={goNext}
-                  className={cn(
-                    'w-full mt-4 min-h-12 rounded-xl text-white font-display uppercase tracking-widest font-bold flex items-center justify-center gap-2',
-                    isArabic ? 'text-sm sm:text-base' : 'text-xs',
-                    theme.accent
-                  )}
-                >
-                  {currentStep < questions.length - 1
-                    ? t('nav.nextQuestion')
-                    : (isArabic ? 'عرض ملخص التعلم' : 'View Learning Summary')}
-                  <ArrowRight className={cn('w-4 h-4', isRTL && 'rotate-180')} />
-                </button>
-              </>
-            )}
+            <p className={cn('font-serif text-wood/75 leading-relaxed', isArabic ? 'text-base sm:text-lg' : 'text-sm sm:text-base')}>
+              {currentQuestion.feedback.correct}
+            </p>
+            <button
+              type="button"
+              onClick={goNext}
+              className={cn('w-full mt-4 min-h-12 rounded-xl text-white font-display uppercase tracking-widest font-bold flex items-center justify-center gap-2 bg-brand-600 hover:bg-brand-700', isArabic ? 'text-sm sm:text-base' : 'text-xs')}
+            >
+              {currentStep < questions.length - 1 ? t('nav.nextQuestion') : (isArabic ? 'عرض ملخص التعلم' : 'View Learning Summary')}
+              <ArrowRight className={cn('w-4 h-4', isRTL && 'rotate-180')} />
+            </button>
           </motion.div>
+        )}
+        {selectedAnswer !== null && currentQuestion.type !== 'reflection' && (
+          <FeedbackBox
+            state={lastCorrect ? 'correct' : attemptNumber === 1 ? 'retry' : 'revealed'}
+            revealKey={`${currentQuestion.id}-${attemptNumber}`}
+            message={lastCorrect
+              ? currentQuestion.feedback.correct
+              : currentQuestion.feedback.incorrect || (isArabic ? 'ارجع إلى الدليل في القصة وحاول مرة أخرى.' : 'Return to the story evidence and try once more.')}
+            explanation={currentQuestion.explanation}
+            onRetry={retryCurrentQuestion}
+            onNext={goNext}
+            nextLabel={currentStep < questions.length - 1 ? t('nav.nextQuestion') : (isArabic ? 'عرض ملخص التعلم' : 'View Learning Summary')}
+          >
+            {renderCorrectionReview()}
+          </FeedbackBox>
         )}
       </div>
     </div>

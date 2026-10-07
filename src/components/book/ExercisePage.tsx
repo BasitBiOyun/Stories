@@ -5,6 +5,7 @@ import { PageData, Level } from '../../types';
 import { KnowledgeCheck } from '../exercises/KnowledgeCheck';
 import { VocabularyMatch } from '../exercises/VocabularyMatch';
 import { ExerciseModule } from '../ExerciseModule';
+import { EndCard } from '../exercises/ExerciseFeedback';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { useStoryProgress } from '../../contexts/StoryProgressContext';
 
@@ -18,7 +19,8 @@ export const ExercisePage = ({
   level,
   collectionId = 'prophets',
   onReviewGlossary,
-  onReviewComplete,
+  onNextPage,
+  nextPageLabel,
 }: { 
   page: PageData; 
   userAnswers: Record<string, boolean | null>; 
@@ -26,7 +28,9 @@ export const ExercisePage = ({
   level: Level;
   collectionId?: string;
   onReviewGlossary?: () => void;
-  onReviewComplete?: () => void;
+  /** Opens the next page of the book; only the closing card calls it, never a timer. */
+  onNextPage?: () => void;
+  nextPageLabel?: string;
 }) => {
   const { t, language, formatNumber } = useLanguage();
   const { trackExerciseComplete } = useStoryProgress();
@@ -39,6 +43,9 @@ export const ExercisePage = ({
   const [speed, setSpeed] = useState(1);
   const [completedExercises, setCompletedExercises] = useState<string[]>([]);
   const [reviewIndex, setReviewIndex] = useState(0);
+  const [reviewDone, setReviewDone] = useState(false);
+  // Language Review items whose first try was right, for the closing card.
+  const [reviewFirstTry, setReviewFirstTry] = useState<Record<string, boolean>>({});
 
   const colTheme = {
         audioBg: "bg-brand-50/90 border-brand-200 backdrop-blur-md shadow-lg",
@@ -263,6 +270,8 @@ export const ExercisePage = ({
                   handleAnswer={handleAnswer} 
                   collectionId={collectionId}
                   onComplete={(exerciseIds) => exerciseIds.forEach(trackExerciseComplete)}
+                  onNextPage={onNextPage}
+                  nextPageLabel={nextPageLabel}
                 />
               )}
               {page.type === 'vocabulary-match' && page.vocabularyPairs && (
@@ -273,6 +282,8 @@ export const ExercisePage = ({
                     level={level}
                     onReviewGlossary={onReviewGlossary}
                     onComplete={() => trackExerciseComplete(`vocabulary-${page.id}`)}
+                    onNextPage={onNextPage}
+                    nextPageLabel={nextPageLabel}
                   />
                 </div>
               )}
@@ -347,7 +358,7 @@ export const ExercisePage = ({
                               key={label}
                               type="button"
                               disabled={!unlocked}
-                              onClick={() => unlocked && setReviewIndex(reviewStageStarts[stageIndex])}
+                              onClick={() => { if (!unlocked) return; setReviewDone(false); setReviewIndex(reviewStageStarts[stageIndex]); }}
                               className={cn(
                                 "min-h-11 rounded-xl px-2 py-2 font-display text-[11px] font-semibold transition-all ring-1 sm:text-xs md:text-sm",
                                 active
@@ -366,58 +377,44 @@ export const ExercisePage = ({
                       </div>
                     </section>
 
-                    {languageReviewExercises[reviewIndex] && (
-                      <div className="space-y-3">
-                        {reviewIndex > 0 && (
-                          <button
-                            type="button"
-                            onClick={() => setReviewIndex(index => Math.max(0, index - 1))}
-                            className="inline-flex min-h-9 items-center gap-1.5 rounded-full bg-white/70 px-3 font-display text-[11px] font-semibold uppercase tracking-[0.11em] text-wood/62 ring-1 ring-black/[0.06] transition-colors hover:bg-white"
-                          >
-                            <ChevronLeft size={14} className={cn(isArabic && 'rotate-180')} />
-                            {isArabic ? 'السابق' : 'Previous'}
-                          </button>
-                        )}
-
-                        <ExerciseModule
-                          key={languageReviewExercises[reviewIndex].id}
-                          exercise={languageReviewExercises[reviewIndex]}
-                          variant="review"
-                          embedded
-                          collectionId={collectionId}
-                          onClose={() => undefined}
-                          onComplete={() => {
-                            const exerciseId = languageReviewExercises[reviewIndex].id;
-                            trackExerciseComplete(exerciseId);
-                            setCompletedExercises(previous =>
-                              previous.includes(exerciseId) ? previous : [...previous, exerciseId]
-                            );
-                            if (reviewIndex < reviewTotal - 1) {
-                              setReviewIndex(index => index + 1);
-                            } else {
-                              onReviewComplete?.();
-                            }
-                          }}
-                        />
-
-                        {completedExercises.length === reviewTotal && reviewTotal > 0 && (
-                          <motion.div
-                            initial={{ opacity: 0, y: 8 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            className="rounded-[22px] bg-emerald-50/85 p-5 text-center ring-1 ring-emerald-200"
-                          >
-                            <CheckCircle2 className="mx-auto text-emerald-600" size={24} />
-                            <h4 className="mt-2 font-display text-xl font-semibold text-emerald-950">
-                              {isArabic ? 'اكتملت مراجعة اللغة' : 'Language Review complete'}
-                            </h4>
-                            <p className={cn("mt-1 font-serif text-emerald-900/60", isArabic ? 'text-base' : 'text-sm')}>
-                              {isArabic
-                                ? 'راجعت اللغة من الكتاب واستخدمتها في مهام جديدة.'
-                                : 'You reviewed the book’s language and used it in new tasks.'}
-                            </p>
-                          </motion.div>
-                        )}
-                      </div>
+                    {reviewDone ? (
+                      <EndCard
+                        title={isArabic ? 'اكتملت مراجعة اللغة' : 'Language Review complete'}
+                        firstTry={{ right: Object.values(reviewFirstTry).filter(Boolean).length, total: reviewTotal }}
+                        onRestart={() => {
+                          setReviewFirstTry({});
+                          setCompletedExercises([]);
+                          setReviewIndex(0);
+                          setReviewDone(false);
+                        }}
+                        onNext={onNextPage}
+                        nextLabel={nextPageLabel}
+                      />
+                    ) : languageReviewExercises[reviewIndex] && (
+                      <ExerciseModule
+                        key={languageReviewExercises[reviewIndex].id}
+                        exercise={languageReviewExercises[reviewIndex]}
+                        variant="review"
+                        embedded
+                        collectionId={collectionId}
+                        onClose={() => undefined}
+                        onFirstTry={(right) => {
+                          const exerciseId = languageReviewExercises[reviewIndex].id;
+                          setReviewFirstTry(previous => exerciseId in previous ? previous : { ...previous, [exerciseId]: right });
+                        }}
+                        onComplete={() => {
+                          const exerciseId = languageReviewExercises[reviewIndex].id;
+                          trackExerciseComplete(exerciseId);
+                          setCompletedExercises(previous =>
+                            previous.includes(exerciseId) ? previous : [...previous, exerciseId]
+                          );
+                          if (reviewIndex < reviewTotal - 1) {
+                            setReviewIndex(index => index + 1);
+                          } else {
+                            setReviewDone(true);
+                          }
+                        }}
+                      />
                     )}
                   </div>
                 </div>

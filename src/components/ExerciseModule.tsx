@@ -14,8 +14,6 @@ import {
 import { Exercise } from '../types';
 import { cn } from '../lib/utils';
 import { MODE_ICONS, modeKeyFor } from '../lib/sectionIcons';
-import { brandConfetti, collectionVisualFor } from '../core/content/storyCatalog';
-import confetti from '../lib/confetti';
 import { useLanguage } from '../contexts/LanguageContext';
 import { useClassMode } from '../contexts/ClassModeContext';
 import { highlightPhraseMatches } from '../lib/highlightTextMatch';
@@ -37,6 +35,8 @@ interface ExerciseModuleProps {
   onClose: () => void;
   /** Opens the chapter's next activity; the closing screen shows it as "Next activity" (or "Finish" when isLast). */
   onNext?: () => void;
+  /** Reports whether the first try was right (once per exercise). */
+  onFirstTry?: (right: boolean) => void;
   isLast?: boolean;
   collectionId?: string;
   variant?: 'default' | 'quick' | 'language' | 'review';
@@ -107,6 +107,7 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
   onComplete,
   onClose,
   onNext,
+  onFirstTry,
   isLast = false,
   collectionId = 'prophets',
   variant = 'default',
@@ -251,14 +252,9 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
   const submit = (answer: any = userAnswer) => {
     setUserAnswer(answer);
     setIsSubmitted(true);
-    if (attempt === 0 && !firstTry) setFirstTry(scoreItems(answer));
-    if (isCorrectAnswer(answer)) {
-      confetti({
-        particleCount: isQuick ? 60 : isLanguage ? 36 : isReview ? 22 : 110,
-        spread: isQuick ? 52 : isLanguage ? 42 : isReview ? 34 : 65,
-        origin: { y: 0.65 },
-        colors: brandConfetti(collectionVisualFor(collectionId).readerTokens.scale),
-      });
+    if (attempt === 0 && !firstTry) {
+      setFirstTry(scoreItems(answer));
+      onFirstTry?.(isCorrectAnswer(answer));
     }
   };
 
@@ -333,10 +329,7 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
     if (quizAnswered) return;
     setQuizAnswered(true);
     setQuizWasCorrect(isCorrect);
-    if (isCorrect) {
-      setQuizScore((score) => score + 1);
-      confetti({ particleCount: isQuick ? 40 : isLanguage ? 28 : isReview ? 18 : 70, spread: isQuick ? 45 : isLanguage ? 38 : isReview ? 32 : 55, origin: { y: 0.7 } });
-    }
+    if (isCorrect) setQuizScore((score) => score + 1);
   };
 
   const nextQuiz = () => {
@@ -979,9 +972,11 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
                   isQuick || isLanguage ? 'border ring-1 ring-inset' : 'border-2',
                   classMode
                     ? `bg-white ${theme.softBorder} ring-black/[0.03]`
-                    : finished
+                    : correct
                     ? 'bg-emerald-50/70 border-emerald-200 ring-emerald-100'
-                    : 'bg-rose-50 border-rose-200 ring-rose-100'
+                    : finished
+                    ? 'bg-rose-50 border-rose-200 ring-rose-100'
+                    : 'bg-amber-50 border-amber-200 ring-amber-100'
                 )}
               >
                 {classMode ? (
@@ -994,9 +989,9 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
                   </div>
                 ) : (
                   <div className="flex items-start gap-3">
-                    {finished ? <CheckCircle2 className="text-emerald-600 shrink-0 mt-0.5" size={22} /> : <XCircle className="text-rose-600 shrink-0 mt-0.5" size={22} />}
+                    {correct ? <CheckCircle2 className="text-emerald-600 shrink-0 mt-0.5" size={22} /> : <XCircle className={cn('shrink-0 mt-0.5', finished ? 'text-rose-600' : 'text-amber-700')} size={22} />}
                     <div className="flex-1 min-w-0">
-                      <p className={cn('font-display font-black', isArabic ? 'text-lg sm:text-xl' : 'text-base sm:text-lg', finished ? 'text-emerald-800' : 'text-rose-800')}>
+                      <p className={cn('font-display font-black', isArabic ? 'text-lg sm:text-xl' : 'text-base sm:text-lg', correct ? 'text-emerald-800' : finished ? 'text-rose-800' : 'text-amber-900')}>
                         {!finished
                           ? t('nav.notQuite')
                           : firstTry && firstTry.total > 1
@@ -1010,12 +1005,12 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
                           : `${t('nav.correct')}!`}
                       </p>
                       {firstTry && firstTry.total > 1 && !finished && (
-                        <p className={cn('font-display font-bold text-rose-800/80 mt-0.5', isArabic ? 'text-base' : 'text-sm')}>
+                        <p className={cn('font-display font-bold text-amber-900/80 mt-0.5', isArabic ? 'text-base' : 'text-sm')}>
                           {closing.firstTry(formatNumber(firstTry.right), formatNumber(firstTry.total))}
                         </p>
                       )}
                       {firstTry && firstTry.total > 1 && finished && (
-                        <p className={cn('font-display font-bold text-emerald-800/80 mt-0.5', isArabic ? 'text-base' : 'text-sm')}>
+                        <p className={cn('font-display font-bold mt-0.5', correct ? 'text-emerald-800/80' : 'text-rose-800/80', isArabic ? 'text-base' : 'text-sm')}>
                           {firstTry.right === firstTry.total ? closing.allFirst : correct ? closing.later : closing.answerShown}
                         </p>
                       )}
@@ -1046,23 +1041,25 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
                   </p>
                 )}
 
+                {/* One button at a time (the Final Challenge model): Try again after a first miss, Next once settled. */}
                 <div className={cn(
                   'grid grid-cols-1 gap-3 w-full',
-                  correct || (classMode && revealAnswer) ? 'sm:max-w-sm sm:mx-auto' : 'sm:grid-cols-2'
+                  classMode && !revealAnswer ? 'sm:grid-cols-2' : 'sm:max-w-sm sm:mx-auto'
                 )}>
                   {classMode && !revealAnswer && (
                     <button type="button" onClick={showClassAnswers} className={cn('min-h-12 rounded-xl font-display uppercase tracking-widest font-bold flex items-center justify-center gap-2 bg-white border-2', theme.softBorder, theme.accentText, isArabic ? 'text-sm sm:text-base' : 'text-xs')}>
                       <Eye size={16} /> {closing.showAnswers}
                     </button>
                   )}
-                  {!classMode && !correct && (
-                    <button type="button" onClick={retry} className={cn('min-h-12 rounded-xl font-display uppercase tracking-widest font-bold flex items-center justify-center gap-2', isArabic ? 'text-sm sm:text-base' : 'text-xs', revealAnswer ? 'bg-white border-2 border-rose-200 text-rose-700' : `text-white ${theme.accentBg}`)}>
+                  {!classMode && !finished ? (
+                    <button type="button" onClick={retry} data-feedback-retry className={cn('min-h-12 rounded-xl font-display uppercase tracking-widest font-bold flex items-center justify-center gap-2 bg-white border-2 border-amber-300 text-amber-900', isArabic ? 'text-sm sm:text-base' : 'text-xs')}>
                       <RotateCcw size={16} /> {t('nav.tryAgain')}
                     </button>
+                  ) : (
+                    <button type="button" onClick={onNext ?? onComplete} data-feedback-next className={cn('min-h-12 rounded-xl font-display uppercase tracking-widest font-bold flex items-center justify-center gap-2 text-white bg-brand-600 hover:bg-brand-700', isArabic ? 'text-sm sm:text-base' : 'text-xs')}>
+                      {onNext ? (isLast ? closing.finish : closing.next) : t('nav.next')} <ArrowRight className={cn('w-4 h-4', isRTL && 'rotate-180')} />
+                    </button>
                   )}
-                  <button type="button" onClick={onNext ?? onComplete} className={cn('min-h-12 rounded-xl font-display uppercase tracking-widest font-bold flex items-center justify-center gap-2', isArabic ? 'text-sm sm:text-base' : 'text-xs', correct && !classMode ? 'bg-emerald-600 text-white' : revealAnswer ? `text-white ${theme.accentBg}` : 'bg-white border-2 border-black/10 text-wood/70')}>
-                    {onNext ? (isLast ? closing.finish : closing.next) : t('nav.continue')} <ArrowRight className={cn('w-4 h-4', isRTL && 'rotate-180')} />
-                  </button>
                 </div>
               </motion.section>
             )}
