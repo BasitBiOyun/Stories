@@ -8,7 +8,7 @@
   },
   "scripts": {
     "dev": "vite --port=3000 --host=0.0.0.0",
-    "build": "npm run typecheck && npm run validate:content && npm run validate:vocabulary && npm run validate:exercises && vite build",
+    "build": "npm run typecheck && npm run validate:content && npm run validate:rules && npm run validate:vocabulary && npm run validate:exercises && vite build && npm run build:panel",
     "preview": "vite preview",
     "clean": "rm -rf dist",
     "typecheck": "tsc --noEmit",
@@ -24,7 +24,10 @@
     "format:check": "prettier --check e2e playwright.config.ts eslint.config.js",
     "test:e2e": "playwright test",
     "test:e2e:update": "playwright test --update-snapshots",
-    "validate:content": "tsx scripts/validation/validateContentFiles.ts"
+    "validate:content": "tsx scripts/validation/validateContentFiles.ts",
+    "validate:rules": "tsx scripts/validation/validateContentRules.ts",
+    "build:panel": "vite build --config vite.panel.config.ts && node scripts/content/copyForPanel.mjs",
+    "report:content": "tsx scripts/validation/contentHealth.ts"
   },
   "dependencies": {
     "@firebase/app": "^0.15.1",

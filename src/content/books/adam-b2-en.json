@@ -86,20 +86,20 @@
        {
         "group": "Names the source of the account",
         "items": [
-         "We learn his story from the Holy Qur'an.",
-         "Based on the Holy Qur'an, …"
+         "We learn his story from the Holy Qur’an.",
+         "Based on the Holy Qur’an, …"
         ]
        },
        {
         "group": "Puts the person or thing affected first (passive)",
         "items": [
          "He was created from clay without parents",
-         "The story of Adam (pbuh) is told in several chapters (surahs) of the Holy Qur'an.",
+         "The story of Adam (pbuh) is told in several chapters (surahs) of the Holy Qur’an.",
          "Satan is portrayed as a rebel against Allah’s command"
         ]
        },
        {
-        "group": "Rejects or narrows one idea in favour of another",
+        "group": "Rejects or narrows one idea in favor of another",
         "items": [
          "a rival and enemy of Adam (pbuh) rather than Allah",
          "not symbolic or imaginary, but it is an original factual tale"
@@ -108,15 +108,15 @@
       ],
       "correctAnswer": {
        "Names the source of the account": [
-        "We learn his story from the Holy Qur'an.",
-        "Based on the Holy Qur'an, …"
+        "We learn his story from the Holy Qur’an.",
+        "Based on the Holy Qur’an, …"
        ],
        "Puts the person or thing affected first (passive)": [
         "He was created from clay without parents",
-        "The story of Adam (pbuh) is told in several chapters (surahs) of the Holy Qur'an.",
+        "The story of Adam (pbuh) is told in several chapters (surahs) of the Holy Qur’an.",
         "Satan is portrayed as a rebel against Allah’s command"
        ],
-       "Rejects or narrows one idea in favour of another": [
+       "Rejects or narrows one idea in favor of another": [
         "a rival and enemy of Adam (pbuh) rather than Allah",
         "not symbolic or imaginary, but it is an original factual tale"
        ]
@@ -146,8 +146,8 @@
         ]
        },
        {
-        "source": "The story of Adam (pbuh) is told in several chapters (surahs) of the Holy Qur'an.",
-        "frame": "The Holy Qur'an [blank] the story of Adam (pbuh) in several chapters (surahs).",
+        "source": "The story of Adam (pbuh) is told in several chapters (surahs) of the Holy Qur’an.",
+        "frame": "The Holy Qur’an [blank] the story of Adam (pbuh) in several chapters (surahs).",
         "answers": [
          "tells",
          "narrates",
@@ -213,7 +213,7 @@
        {
         "question": "Sentence 2 — Put the book or event first: “It was written by …”",
         "mode": "Individual",
-        "example": "The book was not written by Ibn Battuta’s own hand. It was dictated to a scholar called Ibn Juzayy after the traveller returned to Morocco."
+        "example": "The book was not written by Ibn Battuta’s own hand. It was dictated to a scholar called Ibn Juzayy after the traveler returned to Morocco."
        },
        {
         "question": "Sentence 3 — Correct an idea: “It is … rather than …”",
@@ -280,7 +280,7 @@
       "x": 34,
       "y": 63,
       "title": "Shared Human Origin",
-      "description": "All people come from the same soil, so no colour makes anyone superior to another."
+      "description": "All people come from the same soil, so no color makes anyone superior to another."
      },
      {
       "id": "h2b",
@@ -296,12 +296,12 @@
       "type": "true-false",
       "title": "Which Source Says What?",
       "instructions": "Decide whether the statement is true or false according to Chapter 2.",
-      "question": "In Chapter 2, the information that people have different colours comes from the verse of Surah Sad.",
+      "question": "In Chapter 2, the information that people have different colors comes from the verse of Surah Sad.",
       "correctAnswer": false,
-      "explanation": "The verse of Surah Sad (71) says only that Allah created a human being “from clay”. The different colours (“white, red, black, and yellow”) come from the saying of Prophet Muhammad (pbuh) about the handful of dust. From this hadith the writer concludes that people “have no superiority over one another due to the difference in their colors.”",
+      "explanation": "The verse of Surah Sad (71) says only that Allah created a human being “from clay”. The different colors (“white, red, black, and yellow”) come from the saying of Prophet Muhammad (pbuh) about the handful of dust. From this hadith the writer concludes that people “have no superiority over one another due to the difference in their colors.”",
       "feedback": {
-       "correct": "Correct. The verse is about clay; the colours come from the hadith, and the writer builds his conclusion on it.",
-       "incorrect": "Compare the two sources. Read the verse at the end of the first paragraph, then the saying at the start of the second paragraph. Which one lists colours?"
+       "correct": "Correct. The verse is about clay; the colors come from the hadith, and the writer builds his conclusion on it.",
+       "incorrect": "Compare the two sources. Read the verse at the end of the first paragraph, then the saying at the start of the second paragraph. Which one lists colors?"
       }
      }
     ],
@@ -378,7 +378,7 @@
        "So",
        "but"
       ],
-      "explanation": "“As an example” moves from the general statement about different terms to one specific verse. “So, in essence” draws a conclusion from the hadith: People come from the same soil, so colour gives no one superiority. “did not …, but was …” rejects one idea (evolution from another being) and replaces it with the chapter’s claim.",
+      "explanation": "“As an example” moves from the general statement about different terms to one specific verse. “So, in essence” draws a conclusion from the hadith: People come from the same soil, so color gives no one superiority. “did not …, but was …” rejects one idea (evolution from another being) and replaces it with the chapter’s claim.",
       "feedback": {
        "correct": "Correct. You linked the general point, the example, the conclusion and the correction.",
        "incorrect": "Ask what each gap does: Introduce a specific case, sum up what follows from the hadith, or replace a rejected idea. Then check the order of the three paragraphs in Chapter 2."
@@ -422,11 +422,11 @@
     ],
     "beforeYouRead": {
      "kind": "find",
-     "question": "Find it fast: What does the chapter say about people of different colours?",
+     "question": "Find it fast: What does the chapter say about people of different colors?",
      "options": [
       "They are all from the same soil.",
       "They come from different first parents.",
-      "Some colours are better than others."
+      "Some colors are better than others."
      ],
      "answer": 0,
      "quote": "people are from the same soil and they have no superiority over one another due to the difference in their colors"
@@ -673,7 +673,7 @@
     "title": "Angels’ Prostration & Iblis’s Arrogance",
     "image": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/adam_b2%2Fimages%2Fadam_b2_chapter4.png?alt=media",
     "audioUrl": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/adam_b2%2Faudio%2Fadam_b2_ch4.mp3?alt=media&token=c077f30d-5f0e-4030-a373-069abf985246",
-    "content": "The reason why Adam (pbuh) and his offspring are considered higher and more valuable than other beings (see Isra: 70) is because of the power of knowledge that Allah gave them.\n\nHowever, in the Qur’an, Allah mentions another type of knowledge, which is the revelation (wahy) (see Nisa: 163-165). He delivers it to mankind through the prophets. It is clear that human beings need both types of knowledge. These two types of knowledge are not alternatives to each other, but rather they complete one another. One is necessary for mankind to maintain his worldly life, and revelation is essential to understand his role, duty, and the order established by Allah. Having such honour and privilege of knowledge required even the angels to prostrate themselves before Adam (pbuh). Here, the tale reaches its rising action: ‘And We said to the angels, “Bow down to (prostrate) Adam.” They bowed down, except for Satan. He refused, was arrogant, and was one of the disbelievers.’ (Baqarah: 34) ‘Except for Satan. He was too proud, and one of the faithless.’ (Sad: 74) He said, ‘O Satan, what prevented you from prostrating before what I created with My own hands? Are you too proud, or were you one of the exalted?’ (Sad: 75) He (Satan) said, ‘I am better than he (Adam); You created me from fire, and You created him from clay.’ (Sad: 76)",
+    "content": "The reason why Adam (pbuh) and his offspring are considered higher and more valuable than other beings (see Isra: 70) is because of the power of knowledge that Allah gave them.\n\nHowever, in the Qur’an, Allah mentions another type of knowledge, which is the revelation (wahy) (see Nisa: 163-165). He delivers it to mankind through the prophets. It is clear that human beings need both types of knowledge. These two types of knowledge are not alternatives to each other, but rather they complete one another. One is necessary for mankind to maintain his worldly life, and revelation is essential to understand his role, duty, and the order established by Allah. Having such honor and privilege of knowledge required even the angels to prostrate themselves before Adam (pbuh). Here, the tale reaches its rising action: ‘And We said to the angels, “Bow down to (prostrate) Adam.” They bowed down, except for Satan. He refused, was arrogant, and was one of the disbelievers.’ (Baqarah: 34) ‘Except for Satan. He was too proud, and one of the faithless.’ (Sad: 74) He said, ‘O Satan, what prevented you from prostrating before what I created with My own hands? Are you too proud, or were you one of the exalted?’ (Sad: 75) He (Satan) said, ‘I am better than he (Adam); You created me from fire, and You created him from clay.’ (Sad: 76)",
     "vocabulary": [
      {
       "word": "offspring",
@@ -689,7 +689,7 @@
      },
      {
       "word": "privilege",
-      "definition": "A special honour or advantage."
+      "definition": "A special honor or advantage."
      },
      {
       "word": "arrogant",
@@ -755,7 +755,7 @@
       "question": "After “require someone” and “necessary for someone”: “to” + verb or -ing?",
       "errorItems": [
        {
-        "sentence": "Having such honour and privilege of knowledge required even the angels prostrating themselves before Adam (pbuh).",
+        "sentence": "Having such honor and privilege of knowledge required even the angels prostrating themselves before Adam (pbuh).",
         "error": "prostrating",
         "options": [
          "prostrate",
@@ -869,7 +869,7 @@
     "title": "Angels’ Prostration & Iblis’s Arrogance — Part II",
     "image": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/adam_b2%2Fimages%2Fadam_b2_chapter5.png?alt=media",
     "audioUrl": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/adam_b2%2Faudio%2Fadam_b2_ch5.mp3?alt=media&token=88331cdd-99ae-459f-a260-5b3f2351635f",
-    "content": "Angels admitted their inability and realized that Adam (pbuh) was the creature who knew what they did not know and that his capacity to learn was his most honourable quality. Adam (pbuh)’s knowledge included knowledge of the Creator, which is faith or Islam, as well as the knowledge he would need to inhabit and master the earth. All kinds of worldly knowledge are included in this. The prostration of angels to Adam (pbuh) is not a prostration of worship, because such prostration is solely to and for Allah. Angels’ prostration means obedience to Allah to show respect and admiration to Adam (pbuh), because the unique knowledge given to Adam (pbuh) is different from the knowledge of the angels that never changes.\n\nOn the other hand, Iblis’ arrogance came from his belief that his origin was superior to Adam (pbuh)’s. Satan’s—in other words, Iblis’—unapparent arrogance came to the surface when Adam (pbuh) appeared on the scene. He underlines his superiority because of the material from which he was created, yet Adam (pbuh)’s humble origin shows that Allah does not focus on origins, that is, race, colour, or ethnicity, since all humans ultimately originate from dried mud.",
+    "content": "Angels admitted their inability and realized that Adam (pbuh) was the creature who knew what they did not know and that his capacity to learn was his most honorable quality. Adam (pbuh)’s knowledge included knowledge of the Creator, which is faith or Islam, as well as the knowledge he would need to inhabit and master the earth. All kinds of worldly knowledge are included in this. The prostration of angels to Adam (pbuh) is not a prostration of worship, because such prostration is solely to and for Allah. Angels’ prostration means obedience to Allah to show respect and admiration to Adam (pbuh), because the unique knowledge given to Adam (pbuh) is different from the knowledge of the angels that never changes.\n\nOn the other hand, Iblis’ arrogance came from his belief that his origin was superior to Adam (pbuh)’s. Satan’s—in other words, Iblis’—unapparent arrogance came to the surface when Adam (pbuh) appeared on the scene. He underlines his superiority because of the material from which he was created, yet Adam (pbuh)’s humble origin shows that Allah does not focus on origins, that is, race, color, or ethnicity, since all humans ultimately originate from dried mud.",
     "vocabulary": [
      {
       "word": "inability",
@@ -905,7 +905,7 @@
       "x": 77,
       "y": 56,
       "title": "False Superiority",
-      "description": "The chapter rejects superiority based on material origin, race or colour."
+      "description": "The chapter rejects superiority based on material origin, race or color."
      }
     ],
     "exercises": [
@@ -922,9 +922,9 @@
        "Adam’s wish to live forever in Paradise"
       ],
       "correctAnswer": 1,
-      "explanation": "At the end of the chapter the writer says Iblis “underlines his superiority because of the material from which he was created, yet Adam (pbuh)’s humble origin shows that Allah does not focus on origins, that is, race, colour, or ethnicity, since all humans ultimately originate from dried mud.”",
+      "explanation": "At the end of the chapter the writer says Iblis “underlines his superiority because of the material from which he was created, yet Adam (pbuh)’s humble origin shows that Allah does not focus on origins, that is, race, color, or ethnicity, since all humans ultimately originate from dried mud.”",
       "feedback": {
-       "correct": "Yes. The writer turns Adam’s humble origin into evidence that origin, race and colour do not decide a person’s value.",
+       "correct": "Yes. The writer turns Adam’s humble origin into evidence that origin, race and color do not decide a person’s value.",
        "incorrect": "Read the last sentence of the chapter. After the word “yet”, what does the writer set against Iblis’s claim?"
       }
      }
@@ -950,7 +950,7 @@
         "right": "gives a second name for the same being"
        },
        {
-        "left": "that is, race, colour, or ethnicity",
+        "left": "that is, race, color, or ethnicity",
         "right": "lists what the writer means by “origins”"
        },
        {
@@ -961,7 +961,7 @@
       "correctAnswer": {
        "which is faith or Islam": "says what “knowledge of the Creator” is",
        "in other words, Iblis’": "gives a second name for the same being",
-       "that is, race, colour, or ethnicity": "lists what the writer means by “origins”",
+       "that is, race, color, or ethnicity": "lists what the writer means by “origins”",
        "All kinds of worldly knowledge are included in this.": "widens a category to cover every field of learning"
       },
       "explanation": "The three markers are close in meaning but do different jobs here. “Which is …” defines the phrase just before it. “In other words” restates a name so the reader can follow who is meant. “That is” makes a broad word (origins) concrete. A separate sentence (“All kinds of … are included in this”) widens the scope of a category.",
@@ -1112,7 +1112,7 @@
     "vocabulary": [
      {
       "word": "respectful",
-      "definition": "Showing honour and proper regard; here, mindful of one’s duty to Allah."
+      "definition": "Showing honor and proper regard; here, mindful of one’s duty to Allah."
      },
      {
       "word": "inhabit",
@@ -1343,7 +1343,7 @@
     ],
     "groupTask": {
      "type": "jigsaw",
-     "title": "Knowledge, Honour and Pride",
+     "title": "Knowledge, Honor and Pride",
      "time": "20 min",
      "groupSize": "4",
      "roles": [
@@ -1367,7 +1367,7 @@
      "steps": [
       "Read your chapters again. Note two key ideas and one sentence from the book that supports each idea.",
       "Teach your ideas to the group in your own words, then read your supporting sentence aloud, for example: “people are from the same soil” or “These two types of knowledge are not alternatives to each other, but rather they complete one another.”",
-      "Listen to the others and build one chain together: origin → knowledge → honour → pride → two paths.",
+      "Listen to the others and build one chain together: origin → knowledge → honor → pride → two paths.",
       "Together, complete this sentence with two reasons, each backed by a quote: “In these chapters, true value comes from …, not from ….” For example, the book says “Allah does not focus on origins”."
      ],
      "share": "Each group presents its chain and its sentence about true value, and reads the two quotes that support it.",
@@ -1588,7 +1588,7 @@
        {
         "question": "Sentence 4 — End the story: “He had already … . As soon as …”",
         "mode": "Pair",
-        "example": "He had already spent all his savings when he read some honest reviews. As soon as he had worn them for a week, he realised they were just ordinary shoes."
+        "example": "He had already spent all his savings when he read some honest reviews. As soon as he had worn them for a week, he realized they were just ordinary shoes."
        }
       ]
      }
@@ -1753,7 +1753,7 @@
         "group": "What the Qur’an says or does not say",
         "items": [
          "“So he (Satan) made them (Adam (pbuh) and Eve) fall through deception.",
-         "This tree is not described in the Holy Qur'an.",
+         "This tree is not described in the Holy Qur’an.",
          "It is only mentioned that Satan deceived Adam (pbuh) and Eve."
         ]
        },
@@ -1768,7 +1768,7 @@
       "correctAnswer": {
        "What the Qur’an says or does not say": [
         "“So he (Satan) made them (Adam (pbuh) and Eve) fall through deception.",
-        "This tree is not described in the Holy Qur'an.",
+        "This tree is not described in the Holy Qur’an.",
         "It is only mentioned that Satan deceived Adam (pbuh) and Eve."
        ],
        "An interpretation added by others": [
@@ -1841,7 +1841,7 @@
     "title": "Repentance & Descent to Earth",
     "image": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/adam_b2%2Fimages%2Fadam_b2_chapter9.png?alt=media",
     "audioUrl": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/adam_b2%2Faudio%2Fadam_b2_ch9.mp3?alt=media&token=81c54390-7d2e-4d99-9d10-6935c85a3bbe",
-    "content": "Adam (pbuh) severely regretted what he had done. He immediately turned towards Allah. His regret itself was the reason for Allah’s mercy upon him. “They said, ‘Our Lord, we have done wrong to ourselves. Unless You forgive us, and have mercy on us, we will be among the losers.’” (A’raf: 23) Then Adam (pbuh) received words from his Lord (to learn how to ask for forgiveness), so His Lord pardoned him (accepted his repentance). Verily, He is the One Who forgives (accepts repentance), the Most Merciful. (Baqarah: 37) We said, “Go down from it (the Paradise), all of you. Yet whenever guidance comes to you from Me, then whoever follows My guidance—they have nothing to fear, nor shall they grieve.” (Baqarah: 38)\n\nAllah taught Adam (pbuh) how to ask for forgiveness. This unintentional mistake committed by Adam (pbuh) was forgiven by Allah upon his repentance. This means that Allah did not abandon Adam (pbuh); He immediately turned towards Adam (pbuh), too. Adam (pbuh) and Eve left Paradise and descended upon Earth. At that time, there was neither a community nor a congregation. After a period of time following their descent to Earth, when a community emerged, Adam (pbuh) was given prophethood, thus becoming the first human, the first father, and the first prophet. We understand from the verses that humans are open to sinning and sometimes rebelling against their Lord. However, in order to remain an honoured human, they must recognize their mistakes, seek the fault within themselves, and immediately turn towards Allah.",
+    "content": "Adam (pbuh) severely regretted what he had done. He immediately turned towards Allah. His regret itself was the reason for Allah’s mercy upon him. “They said, ‘Our Lord, we have done wrong to ourselves. Unless You forgive us, and have mercy on us, we will be among the losers.’” (A’raf: 23) Then Adam (pbuh) received words from his Lord (to learn how to ask for forgiveness), so His Lord pardoned him (accepted his repentance). Verily, He is the One Who forgives (accepts repentance), the Most Merciful. (Baqarah: 37) We said, “Go down from it (the Paradise), all of you. Yet whenever guidance comes to you from Me, then whoever follows My guidance—they have nothing to fear, nor shall they grieve.” (Baqarah: 38)\n\nAllah taught Adam (pbuh) how to ask for forgiveness. This unintentional mistake committed by Adam (pbuh) was forgiven by Allah upon his repentance. This means that Allah did not abandon Adam (pbuh); He immediately turned towards Adam (pbuh), too. Adam (pbuh) and Eve left Paradise and descended upon Earth. At that time, there was neither a community nor a congregation. After a period of time following their descent to Earth, when a community emerged, Adam (pbuh) was given prophethood, thus becoming the first human, the first father, and the first prophet. We understand from the verses that humans are open to sinning and sometimes rebelling against their Lord. However, in order to remain an honored human, they must recognize their mistakes, seek the fault within themselves, and immediately turn towards Allah.",
     "vocabulary": [
      {
       "word": "regretted",
@@ -1860,7 +1860,7 @@
       "definition": "The divinely appointed role of a prophet."
      },
      {
-      "word": "honoured",
+      "word": "honored",
       "definition": "Regarded as having dignity and respected status."
      }
     ],
@@ -2011,7 +2011,7 @@
         "answer": 0
        },
        {
-        "sentence": "However, in order to remain an honoured human, they must to recognize their mistakes, seek the fault within themselves, and immediately turn towards Allah.",
+        "sentence": "However, in order to remain an honored human, they must to recognize their mistakes, seek the fault within themselves, and immediately turn towards Allah.",
         "error": "must to recognize",
         "options": [
          "must recognizing",
@@ -2035,7 +2035,7 @@
       "instructions": "Write or say 8–10 sentences about a mistake and how people put it right.",
       "question": "How can a mistake be put right?",
       "correctAnswer": null,
-      "explanation": "A strong B2 response uses grammar to organise responsibility: acknowledgment → condition/consequence → cause/result → obligation → changed action.",
+      "explanation": "A strong B2 response uses grammar to organize responsibility: acknowledgment → condition/consequence → cause/result → obligation → changed action.",
       "feedback": {
        "correct": "Make the final corrective action more concrete than simply saying someone felt sorry.",
        "incorrect": ""
@@ -2054,7 +2054,7 @@
        {
         "question": "Sentence 3 — Say what changed: “As a result, …”",
         "mode": "Individual",
-        "example": "We apologised and showed her a new plan. As a result, she gave us two more days, and our group started to work together again."
+        "example": "We apologized and showed her a new plan. As a result, she gave us two more days, and our group started to work together again."
        },
        {
         "question": "Sentence 4 — Say what you must do now: “We can …, but we must …”",
@@ -2087,7 +2087,7 @@
     "title": "The Settlement on Earth",
     "image": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/adam_b2%2Fimages%2Fadam_b2_chapter10.png?alt=media",
     "audioUrl": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/adam_b2%2Faudio%2Fadam_b2_ch10.mp3?alt=media&token=be3bea4e-5ae6-488c-9a07-46e885b5d89c",
-    "content": "Allah knew that Adam (pbuh) and Eve would eat of the tree and descend to Earth. He knew that Satan would violate their innocence. That experience was essential for their life on Earth; it was a cornerstone of their vicegerency. It was meant to teach Adam (pbuh), Eve, and their offspring the knowledge that Satan is their enemy and that the right path is to act in accordance with what they have heard from the Creator. The Creator is Knower, Powerful, Just, and Merciful.\n\nAdam (pbuh)’s descending to Earth, then, did not imply dishonour or humiliation, but rather it was an honorable and respected settlement on Earth. And thus began the story of humankind and its struggle against Satan on Earth. There are many hadiths about the place of Adam (pbuh)’s descending upon Earth. Ibn Abbas, who narrated many hadiths, said: “Adam (pbuh) descended on land ‘Dihna’ between Mecca and Taif.”\n\nIt is also reported that Adam (pbuh) descended with the Black Stone (a large black stone set into the wall of the Ka’ba in Mecca. It is said to have come from Paradise).\n\nIbn Umar said that Adam (pbuh) descended on As-Safa and Eve on Al-Marwa (names of two mountains in the neighborhood of the Sacred House (Ka’ba) in Mecca. Part of the rites of pilgrimage (hajj) includes walking and running between these two hills in remembrance of Hagar's search for water).",
+    "content": "Allah knew that Adam (pbuh) and Eve would eat of the tree and descend to Earth. He knew that Satan would violate their innocence. That experience was essential for their life on Earth; it was a cornerstone of their vicegerency. It was meant to teach Adam (pbuh), Eve, and their offspring the knowledge that Satan is their enemy and that the right path is to act in accordance with what they have heard from the Creator. The Creator is Knower, Powerful, Just, and Merciful.\n\nAdam (pbuh)’s descending to Earth, then, did not imply dishonor or humiliation, but rather it was an honorable and respected settlement on Earth. And thus began the story of humankind and its struggle against Satan on Earth. There are many hadiths about the place of Adam (pbuh)’s descending upon Earth. Ibn Abbas, who narrated many hadiths, said: “Adam (pbuh) descended on land ‘Dihna’ between Mecca and Taif.”\n\nIt is also reported that Adam (pbuh) descended with the Black Stone (a large black stone set into the wall of the Ka’ba in Mecca. It is said to have come from Paradise).\n\nIbn Umar said that Adam (pbuh) descended on As-Safa and Eve on Al-Marwa (names of two mountains in the neighborhood of the Sacred House (Ka’ba) in Mecca. Part of the rites of pilgrimage (hajj) includes walking and running between these two hills in remembrance of Hagar's search for water).",
     "vocabulary": [
      {
       "word": "innocence",
@@ -2229,7 +2229,7 @@
         "answer": 0
        },
        {
-        "sentence": "Adam (pbuh)’s descending to Earth, then, did not implied dishonour or humiliation, but rather it was an honorable and respected settlement on Earth.",
+        "sentence": "Adam (pbuh)’s descending to Earth, then, did not implied dishonor or humiliation, but rather it was an honorable and respected settlement on Earth.",
         "error": "did not implied",
         "options": [
          "was not imply",
@@ -2294,7 +2294,7 @@
      "quote": "it was an honorable and respected settlement on Earth"
     },
     "iCan": [
-     "I can explain why the descent to Earth was not a dishonour.",
+     "I can explain why the descent to Earth was not a dishonor.",
      "I can report claims with “it is said” and “it is reported”.",
      "I can describe an event that people tell in different ways."
     ]
@@ -2455,7 +2455,7 @@
       "instructions": "Write or say 8–10 sentences about someone who starts a hard new life somewhere.",
       "question": "What must the person do, and what matters most?",
       "correctAnswer": null,
-      "explanation": "A strong B2 response uses grammar to organise a whole argument: Pressure develops over time, responsibilities accumulate, priorities are ranked, and consequences are contrasted.",
+      "explanation": "A strong B2 response uses grammar to organize a whole argument: Pressure develops over time, responsibilities accumulate, priorities are ranked, and consequences are contrasted.",
       "feedback": {
        "correct": "Keep the paragraph coherent: Each structure should advance the same situation rather than appear as an isolated grammar example.",
        "incorrect": ""
@@ -2735,7 +2735,7 @@
       }
      ],
      "steps": [
-      "Together, write four questions, such as “Why was the descent to Earth not a dishonour?” or “Where did Adam (pbuh) descend, according to the reports?”",
+      "Together, write four questions, such as “Why was the descent to Earth not a dishonor?” or “Where did Adam (pbuh) descend, according to the reports?”",
       "The Presenter asks the questions. The Historian answers with careful frames such as “Ibn Abbas said …”, “It is also reported that …” or “the book does not tell us …”.",
       "After each answer, the Source Checker reads the sentence from the book, for example: “It is also reported that Adam (pbuh) descended with the Black Stone” or “Qabil’s sacrifice was not accepted by Allah because of his insincerity in his offering.”",
       "Nobody speaks as Adam (pbuh), Eve, Habil, Qabil or any other person from the story. You are only a radio team that reports and checks what the book says."
@@ -2762,7 +2762,7 @@
      },
      {
       "word": "potential",
-      "definition": "The capacity to develop a quality or behaviour."
+      "definition": "The capacity to develop a quality or behavior."
      },
      {
       "word": "moderate",
@@ -2960,7 +2960,7 @@
        {
         "question": "Sentence 1 — Admit a hard fact: “Although …, I did not …”",
         "mode": "Individual",
-        "example": "Although my neighbour’s music was very loud late at night, I did not want to shout at him."
+        "example": "Although my neighbor’s music was very loud late at night, I did not want to shout at him."
        },
        {
         "question": "Sentence 2 — Say what may be true: “He may … , or he might …”",
@@ -3200,7 +3200,7 @@
       "instructions": "Write or say 8–10 sentences about someone who ignores warnings until a problem grows.",
       "question": "How does the problem grow, and what helps in the end?",
       "correctAnswer": null,
-      "explanation": "A strong B2 response should use the target structures to organise discourse: Failed restraints → visible consequence → developing burden → purposeful learning moment.",
+      "explanation": "A strong B2 response should use the target structures to organize discourse: Failed restraints → visible consequence → developing burden → purposeful learning moment.",
       "feedback": {
        "correct": "Keep the passive focused on information structure, make the developing state genuinely gradual, and ensure the purpose clause explains why the final example matters.",
        "incorrect": ""
@@ -3646,7 +3646,7 @@
        }
       ],
       "correctAnswer": null,
-      "explanation": "In reported speech after a past verb (“told”), Adam’s “will” becomes “would”. In direct speech it goes back to “will”. The two “but” clauses organise his message: Not abandonment but guidance, and different names and miracles but one shared call.",
+      "explanation": "In reported speech after a past verb (“told”), Adam’s “will” becomes “would”. In direct speech it goes back to “will”. The two “but” clauses organize his message: Not abandonment but guidance, and different names and miracles but one shared call.",
       "feedback": {
        "correct": "Well done. You changed “would” back to “will” in direct speech.",
        "incorrect": "Direct speech uses Adam’s own time: His future is “will”. Keep “not” in the first item and the passive “be united” in the second."
@@ -3994,7 +3994,7 @@
       "correctAnswer": 1,
       "explanation": "Chapter 4: “I am better than he (Adam); You created me from fire, and You created him from clay.” Chapter 9: “Our Lord, we have done wrong to ourselves. Unless You forgive us, and have mercy on us, we will be among the losers.”",
       "feedback": {
-       "correct": "Exactly. Iblis argues for his own superiority, while Adam and Eve look for the fault within themselves and turn to Allah. The book presents this as the way to remain an honoured human.",
+       "correct": "Exactly. Iblis argues for his own superiority, while Adam and Eve look for the fault within themselves and turn to Allah. The book presents this as the way to remain an honored human.",
        "incorrect": "Find the words Iblis says at the end of Chapter 4 and the words Adam and Eve say in the first verse of Chapter 9. Who defends himself, and who blames himself?"
       }
      },
@@ -4113,8 +4113,8 @@
        {
         "group": "What the Qur’an itself says or leaves out",
         "items": [
-         "The story of Adam (pbuh) is told in several chapters (surahs) of the Holy Qur'an.",
-         "This tree is not described in the Holy Qur'an.",
+         "The story of Adam (pbuh) is told in several chapters (surahs) of the Holy Qur’an.",
+         "This tree is not described in the Holy Qur’an.",
          "Habil and Qabil are referred to as Adam (pbuh)’s two sons without their names being given."
         ]
        },
@@ -4137,8 +4137,8 @@
       ],
       "correctAnswer": {
        "What the Qur’an itself says or leaves out": [
-        "The story of Adam (pbuh) is told in several chapters (surahs) of the Holy Qur'an.",
-        "This tree is not described in the Holy Qur'an.",
+        "The story of Adam (pbuh) is told in several chapters (surahs) of the Holy Qur’an.",
+        "This tree is not described in the Holy Qur’an.",
         "Habil and Qabil are referred to as Adam (pbuh)’s two sons without their names being given."
        ],
        "A report passed on by others": [
@@ -4523,10 +4523,10 @@
      },
      {
       "word": "privilege",
-      "meaning": "A special honour or advantage.",
+      "meaning": "A special honor or advantage.",
       "partOfSpeech": "noun",
       "chapter": 4,
-      "context": "Having such honour and privilege of knowledge required even the angels to prostrate themselves before Adam (pbuh)."
+      "context": "Having such honor and privilege of knowledge required even the angels to prostrate themselves before Adam (pbuh)."
      },
      {
       "word": "inhabit",
@@ -4547,7 +4547,7 @@
       "meaning": "The experience of being stripped of dignity.",
       "partOfSpeech": "noun",
       "chapter": 10,
-      "context": "Adam (pbuh)’s descending to Earth, then, did not imply dishonour or humiliation, but rather it was an honorable and respected settlement on Earth."
+      "context": "Adam (pbuh)’s descending to Earth, then, did not imply dishonor or humiliation, but rather it was an honorable and respected settlement on Earth."
      },
      {
       "word": "witnessed",
@@ -4961,7 +4961,7 @@
      },
      {
       "word": "privilege",
-      "definition": "A special honour or advantage.",
+      "definition": "A special honor or advantage.",
       "partOfSpeech": "noun",
       "pronunciation": "/ˈprɪvəlɪdʒ/",
       "wordFamily": [
@@ -4970,13 +4970,13 @@
       ],
       "collocations": [
        "special privilege",
-       "honour and privilege"
+       "honor and privilege"
       ],
       "category": "Status & Values",
       "level": "B2",
       "chapter": 4,
       "chapterTitle": "Angels’ Prostration & Iblis’s Arrogance",
-      "storyExample": "Having such honour and privilege of knowledge required even the angels to prostrate themselves before Adam (pbuh)."
+      "storyExample": "Having such honor and privilege of knowledge required even the angels to prostrate themselves before Adam (pbuh)."
      },
      {
       "word": "arrogant",
@@ -5026,7 +5026,7 @@
       "level": "B2",
       "chapter": 5,
       "chapterTitle": "Angels’ Prostration & Iblis’s Arrogance — Part II",
-      "storyExample": "Angels admitted their inability and realized that Adam (pbuh) was the creature who knew what they did not know and that his capacity to learn was his most honourable quality."
+      "storyExample": "Angels admitted their inability and realized that Adam (pbuh) was the creature who knew what they did not know and that his capacity to learn was his most honorable quality."
      },
      {
       "word": "obedience",
@@ -5094,7 +5094,7 @@
       "level": "B2",
       "chapter": 5,
       "chapterTitle": "Angels’ Prostration & Iblis’s Arrogance — Part II",
-      "storyExample": "He underlines his superiority because of the material from which he was created, yet Adam (pbuh)’s humble origin shows that Allah does not focus on origins, that is, race, colour, or ethnicity, since all humans ultimately originate from dried mud."
+      "storyExample": "He underlines his superiority because of the material from which he was created, yet Adam (pbuh)’s humble origin shows that Allah does not focus on origins, that is, race, color, or ethnicity, since all humans ultimately originate from dried mud."
      },
      {
       "word": "ethnicity",
@@ -5113,11 +5113,11 @@
       "level": "B2",
       "chapter": 5,
       "chapterTitle": "Angels’ Prostration & Iblis’s Arrogance — Part II",
-      "storyExample": "He underlines his superiority because of the material from which he was created, yet Adam (pbuh)’s humble origin shows that Allah does not focus on origins, that is, race, colour, or ethnicity, since all humans ultimately originate from dried mud."
+      "storyExample": "He underlines his superiority because of the material from which he was created, yet Adam (pbuh)’s humble origin shows that Allah does not focus on origins, that is, race, color, or ethnicity, since all humans ultimately originate from dried mud."
      },
      {
       "word": "respectful",
-      "definition": "Showing honour and proper regard; here, mindful of one’s duty to Allah.",
+      "definition": "Showing honor and proper regard; here, mindful of one’s duty to Allah.",
       "partOfSpeech": "adjective",
       "pronunciation": "/rɪˈspektfəl/",
       "wordFamily": [
@@ -5527,18 +5527,18 @@
       "storyExample": "After a period of time following their descent to Earth, when a community emerged, Adam (pbuh) was given prophethood, thus becoming the first human, the first father, and the first prophet."
      },
      {
-      "word": "honoured",
+      "word": "honored",
       "definition": "Regarded as having dignity and respected status.",
       "partOfSpeech": "adjective",
       "pronunciation": "/ˈɑːnərd/",
       "wordFamily": [
-       "honour",
-       "honoured",
-       "honourable"
+       "honor",
+       "honored",
+       "honorable"
       ],
       "collocations": [
-       "honoured human",
-       "highly honoured"
+       "honored human",
+       "highly honored"
       ],
       "synonyms": [
        "respected"
@@ -5547,7 +5547,7 @@
       "level": "B2",
       "chapter": 9,
       "chapterTitle": "Repentance & Descent to Earth",
-      "storyExample": "However, in order to remain an honoured human, they must recognize their mistakes, seek the fault within themselves, and immediately turn towards Allah."
+      "storyExample": "However, in order to remain an honored human, they must recognize their mistakes, seek the fault within themselves, and immediately turn towards Allah."
      },
      {
       "word": "innocence",
@@ -5619,7 +5619,7 @@
       ],
       "collocations": [
        "suffer humiliation",
-       "dishonour or humiliation"
+       "dishonor or humiliation"
       ],
       "antonyms": [
        "dignity"
@@ -5628,7 +5628,7 @@
       "level": "B2",
       "chapter": 10,
       "chapterTitle": "The Settlement on Earth",
-      "storyExample": "Adam (pbuh)’s descending to Earth, then, did not imply dishonour or humiliation, but rather it was an honorable and respected settlement on Earth."
+      "storyExample": "Adam (pbuh)’s descending to Earth, then, did not imply dishonor or humiliation, but rather it was an honorable and respected settlement on Earth."
      },
      {
       "word": "pilgrimage",
@@ -5882,7 +5882,7 @@
      },
      {
       "word": "potential",
-      "definition": "The capacity to develop a quality or behaviour.",
+      "definition": "The capacity to develop a quality or behavior.",
       "partOfSpeech": "noun",
       "pronunciation": "/pəˈtenʃəl/",
       "wordFamily": [
@@ -5999,7 +5999,7 @@
       ],
       "collocations": [
        "criminal act",
-       "criminal behaviour"
+       "criminal behavior"
       ],
       "category": "Law & Conduct",
       "level": "B2",
@@ -6418,9 +6418,9 @@
      {
       "id": "adam-b2-fc-2",
       "type": "sequencing",
-      "title": "From Honour to Earth",
+      "title": "From Honor to Earth",
       "instructions": "Put these turning points in the order the book tells them.",
-      "question": "How does the book move from Adam’s honour to his life and mission on Earth?",
+      "question": "How does the book move from Adam’s honor to his life and mission on Earth?",
       "sequencingItems": [
        {
         "id": "4",
@@ -6626,10 +6626,10 @@
        "In the knowledge and capacity to learn Allah gave him."
       ],
       "correctAnswer": 3,
-      "explanation": "Chapter 4 says Adam and his offspring are “considered higher and more valuable than other beings” because of “the power of knowledge that Allah gave them”, and Chapter 5 says “his capacity to learn was his most honourable quality”. Origin is the answer the book rejects: “Allah does not focus on origins”.",
+      "explanation": "Chapter 4 says Adam and his offspring are “considered higher and more valuable than other beings” because of “the power of knowledge that Allah gave them”, and Chapter 5 says “his capacity to learn was his most honorable quality”. Origin is the answer the book rejects: “Allah does not focus on origins”.",
       "feedback": {
        "correct": "Yes. The book places human value in knowledge and the ability to learn, not in origin, place or power.",
-       "incorrect": "Read the first sentence of Chapter 4 and the first sentence of Chapter 5. What do they name as the reason for Adam’s honour?"
+       "incorrect": "Read the first sentence of Chapter 4 and the first sentence of Chapter 5. What do they name as the reason for Adam’s honor?"
       }
      }
     ]

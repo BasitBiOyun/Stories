@@ -1124,7 +1124,7 @@
       "type": "matching",
       "title": "What Do These Phrases Mean?",
       "instructions": "Match each phrase from Chapter 5 with its meaning.",
-      "question": "What do these phrases tell us about trade and behaviour in and around Mecca?",
+      "question": "What do these phrases tell us about trade and behavior in and around Mecca?",
       "matchingHeadings": {
        "left": "From the chapter",
        "right": "Meaning"
@@ -1144,7 +1144,7 @@
        },
        {
         "left": "showed respect",
-        "right": "treated others with honour"
+        "right": "treated others with honor"
        },
        {
         "left": "stayed away from fighting",
@@ -1155,7 +1155,7 @@
        "helped grow Mecca’s economy": "played a part in making the city’s business bigger",
        "allowed merchants to travel": "made it possible for traders to go on journeys",
        "focused on worship": "gave most of their attention to prayer and religious acts",
-       "showed respect": "treated others with honour",
+       "showed respect": "treated others with honor",
        "stayed away from fighting": "avoided war and violence"
       },
       "explanation": "“Allow + person + to + verb” means “make something possible for someone”. “Focus on”, “show respect” and “stay away from” are fixed phrases: the small words (“on”, “from”) cannot be changed. Together they explain how agreements and the sacred months made trade and travel easier.",
@@ -1165,7 +1165,7 @@
       }
      },
      {
-      "id": "mecca-b1-language-5-behaviour-purpose",
+      "id": "mecca-b1-language-5-behavior-purpose",
       "type": "choose-form",
       "title": "Time, Result and Purpose",
       "instructions": "Choose the correct form to complete each sentence from Chapter 5.",
@@ -1856,7 +1856,7 @@
       "matchingPairs": [
        {
         "left": "highly proud of their ancestors",
-        "right": "felt great honour because of their family line"
+        "right": "felt great honor because of their family line"
        },
        {
         "left": "They had to protect … their tribe",
@@ -1876,7 +1876,7 @@
        }
       ],
       "correctAnswer": {
-       "highly proud of their ancestors": "felt great honour because of their family line",
+       "highly proud of their ancestors": "felt great honor because of their family line",
        "They had to protect … their tribe": "it was their duty to defend their group",
        "in every situation": "whatever happened, at all times",
        "even when the tribe did something wrong": "also in cases where their group was at fault",
@@ -2091,7 +2091,7 @@
       "type": "transformation",
       "title": "Who Did It?",
       "instructions": "Rewrite each part of Chapter 9. Use the start that is given.",
-      "question": "Why does the chapter keep the slaves, not the owners, at the centre of these sentences?",
+      "question": "Why does the chapter keep the slaves, not the owners, at the center of these sentences?",
       "transformItems": [
        {
         "source": "Slaves faced brutal conditions and were bought and sold like animals.",
@@ -2986,7 +2986,7 @@
      "options": [
       "helping the poor",
       "keeping their power and unity",
-      "travelling to new lands"
+      "traveling to new lands"
      ],
      "answer": 1,
      "quote": "Keeping their power and unity was very important for them."
@@ -3198,7 +3198,7 @@
       "correctAnswer": null,
       "explanation": "A strong response should use “at first”, a change with “but when”, a repeated-past pattern with “whenever” or “often”, a reported command with “ordered/told + person + to + verb”, a group description with “those without...”, and a purpose phrase with “to + verb”.",
       "feedback": {
-       "correct": "Keep the six sentences connected so the reader can follow the change, repeated behaviour, command, vulnerability and purpose.",
+       "correct": "Keep the six sentences connected so the reader can follow the change, repeated behavior, command, vulnerability and purpose.",
        "incorrect": ""
       },
       "discussionPrompts": [
@@ -3213,7 +3213,7 @@
         "example": "But when he won the school prize, their behavior became worse."
        },
        {
-        "question": "Sentence 3 — Add repeated past behaviour with “whenever” or “often”.",
+        "question": "Sentence 3 — Add repeated past behavior with “whenever” or “often”.",
         "mode": "Individual",
         "example": "Whenever he walked into the classroom, they made jokes about his accent."
        },
@@ -6106,7 +6106,7 @@
         "options": [
          "travel",
          "to travel",
-         "travelling"
+         "traveling"
         ],
         "answer": 1
        },

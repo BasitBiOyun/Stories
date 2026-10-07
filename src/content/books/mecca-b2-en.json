@@ -775,7 +775,7 @@
       "type": "word-bank",
       "title": "Marking a Long History",
       "instructions": "Complete the lines from Chapter 4 with time expressions from the bank. Three words are not needed.",
-      "question": "Which time expressions organise several centuries of Meccan history?",
+      "question": "Which time expressions organize several centuries of Meccan history?",
       "fillBlanksText": "[blank] the discovery of the Zamzam water, the Jurhumites from Yemen settled in Mecca. … [blank], when Ishmael grew up, Abraham (pbuh) came to the city to reconstruct the Holy Ka’ba with his son. … [blank] the rule of this tribe, people forgot the religion of Abraham (pbuh) (monotheism) and spread idolatry throughout the city. [blank] the 5th century, the administration of Mecca and the Ka’ba passed to the Quraysh tribe.",
       "wordBank": [
        "After",
@@ -2286,7 +2286,7 @@
         "frame": "Poets [blank] tribes in poems, and they praised conflict and war rather than peace.",
         "answers": [
          "honored",
-         "honoured"
+         "honored"
         ]
        }
       ],
@@ -2738,7 +2738,7 @@
      "options": [
       "as a threat to their authority",
       "as a way to grow their trade",
-      "as a religion only for travellers"
+      "as a religion only for travelers"
      ],
      "answer": 0,
      "quote": "The leaders of the Quraysh viewed Islam as a threat to their authority."
@@ -5359,7 +5359,7 @@
        "To show that each of these things happened only once."
       ],
       "correctAnswer": 1,
-      "explanation": "In these passives the people who suffered (orphans, the weak, the poor, the children) stay at the centre of the sentence, and the doer is left out. The doers are not unknown: Chapter 8 names them in a separate sentence, “those who oppressed and treated people unfairly were generally wealthy and powerful individuals”. When the doer matters, the writer adds a “by” phrase: “an agreement was made by some Quraysh tribes”. So the choice between passive and active shows what the writer wants the reader to look at.",
+      "explanation": "In these passives the people who suffered (orphans, the weak, the poor, the children) stay at the center of the sentence, and the doer is left out. The doers are not unknown: Chapter 8 names them in a separate sentence, “those who oppressed and treated people unfairly were generally wealthy and powerful individuals”. When the doer matters, the writer adds a “by” phrase: “an agreement was made by some Quraysh tribes”. So the choice between passive and active shows what the writer wants the reader to look at.",
       "feedback": {
        "correct": "Correct. The passive keeps the victims and what happened to them in focus.",
        "incorrect": "Ask what stands at the front of each sentence: The people who suffered, or the people who acted? Then look for the sentence in Chapter 8 that names the oppressors."

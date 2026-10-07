@@ -177,7 +177,7 @@
          "know",
          "see",
          "regard",
-         "recognise",
+         "recognize",
          "recognize",
          "remember"
         ]
@@ -459,7 +459,7 @@
        {
         "question": "Sentences 5–6 — Add a second place of learning: “She also learned a lot at …”",
         "mode": "Pair",
-        "example": "She studied literature at university, but she also learned a lot at her grandmother’s house. It was a place where neighbours met every evening to tell old stories."
+        "example": "She studied literature at university, but she also learned a lot at her grandmother’s house. It was a place where neighbors met every evening to tell old stories."
        }
       ]
      }
@@ -719,7 +719,7 @@
        {
         "question": "Sentences 1–2 — Describe the place: “… is not only … but also …”",
         "mode": "Individual",
-        "example": "Our town market is not only a place for shopping but also a place where neighbours meet. Furthermore, it gives work to many local farmers."
+        "example": "Our town market is not only a place for shopping but also a place where neighbors meet. Furthermore, it gives work to many local farmers."
        },
        {
         "question": "Sentence 3 — Give an example: “… especially …”",
@@ -1591,7 +1591,7 @@
     "title": "Yunus as a Wise Dervish",
     "image": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/yunus%2Fb1%2Fimages%2Fyunus_b1_ch7-clean.png?alt=media&token=f8a95b8e-4bbb-4786-a4d3-abdba63be0ad",
     "audioUrl": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/yunus%2Fb1%2Faudio%2F06_Chapter_7_Yunus_as_a_Wise_Dervish.mp3?alt=media&token=b49d99a5-9f7c-4fc0-9cc5-f2ad927740cf",
-    "content": "Anatolia was experiencing total chaos. During the same period, the shaykhs from the regions of Turkestan, Khorasan and Iran came to Anatolia under Mongol pressure. These shaykhs trained dervishes in their teachings. These dervishes were influential among nomads. They were spreading a simple understanding of Islam and establishing popular Sûfîsm.\n\nSo in such an environment, Yunus Emre also appeared as a wise Sûfî and dervish and travelled around Anatolia. As a Sûfî, he helped people make sense of life during those hard days. Poetry was his most influential tool.\n\nYunus’s understanding of Sûfîsm comes from the Qur’an and the Prophet’s (pbuh) Sunnah. He was also inspired by the ideas and experiences of earlier Muslim Sûfîs.",
+    "content": "Anatolia was experiencing total chaos. During the same period, the shaykhs from the regions of Turkestan, Khorasan and Iran came to Anatolia under Mongol pressure. These shaykhs trained dervishes in their teachings. These dervishes were influential among nomads. They were spreading a simple understanding of Islam and establishing popular Sûfîsm.\n\nSo in such an environment, Yunus Emre also appeared as a wise Sûfî and dervish and traveled around Anatolia. As a Sûfî, he helped people make sense of life during those hard days. Poetry was his most influential tool.\n\nYunus’s understanding of Sûfîsm comes from the Qur’an and the Prophet’s (pbuh) Sunnah. He was also inspired by the ideas and experiences of earlier Muslim Sûfîs.",
     "vocabulary": [
      {
       "word": "Anatolia",
@@ -1640,7 +1640,7 @@
       "x": 35,
       "y": 58,
       "title": "Wise Sûfî",
-      "description": "Yunus travelled around Anatolia and helped people make sense of life in hard days."
+      "description": "Yunus traveled around Anatolia and helped people make sense of life in hard days."
      },
      {
       "id": "yunus-b1-en-7-2",
@@ -1658,14 +1658,14 @@
       "instructions": "Read the question. Choose the best answer from Chapter 7.",
       "question": "How did Yunus Emre respond to the hard days in Anatolia?",
       "options": [
-       "He travelled around Anatolia and used poetry to help people make sense of life.",
+       "He traveled around Anatolia and used poetry to help people make sense of life.",
        "He left Anatolia and went to Khorasan to study with the shaykhs there.",
        "He trained the dervishes who spread a simple understanding of Islam among nomads."
       ],
       "correctAnswer": 0,
-      "explanation": "Chapter 7 says Yunus Emre “appeared as a wise Sûfî and dervish and travelled around Anatolia” and “helped people make sense of life during those hard days. Poetry was his most influential tool.” It was the shaykhs from Turkestan, Khorasan and Iran who trained dervishes.",
+      "explanation": "Chapter 7 says Yunus Emre “appeared as a wise Sûfî and dervish and traveled around Anatolia” and “helped people make sense of life during those hard days. Poetry was his most influential tool.” It was the shaykhs from Turkestan, Khorasan and Iran who trained dervishes.",
       "feedback": {
-       "correct": "Yes. In a time of total chaos, he travelled and used poetry to help people.",
+       "correct": "Yes. In a time of total chaos, he traveled and used poetry to help people.",
        "incorrect": "The first paragraph of Chapter 7 is about the shaykhs and their dervishes. Read the second paragraph to find what Yunus himself did."
       }
      }
@@ -1741,7 +1741,7 @@
       "title": "Time, Pressure and Response",
       "instructions": "Complete the lines from Chapter 7 with words from the bank. Three words are not needed.",
       "question": "What was happening, and how did Yunus Emre help?",
-      "fillBlanksText": "Anatolia was experiencing total chaos. [blank] the same period, the shaykhs from the regions of Turkestan, Khorasan and Iran came to Anatolia [blank] Mongol pressure. … So in [blank] an environment, Yunus Emre also appeared as a wise Sûfî and dervish and travelled around Anatolia. … Poetry was his [blank] influential tool.",
+      "fillBlanksText": "Anatolia was experiencing total chaos. [blank] the same period, the shaykhs from the regions of Turkestan, Khorasan and Iran came to Anatolia [blank] Mongol pressure. … So in [blank] an environment, Yunus Emre also appeared as a wise Sûfî and dervish and traveled around Anatolia. … Poetry was his [blank] influential tool.",
       "wordBank": [
        "under",
        "During",
@@ -1784,7 +1784,7 @@
        {
         "question": "Sentence 2 — Say what people were doing: “During that time, … were …ing …”",
         "mode": "Individual",
-        "example": "During that time, families were sharing food and checking on older neighbours."
+        "example": "During that time, families were sharing food and checking on older neighbors."
        },
        {
         "question": "Sentence 3 — Bring in the person: “So …, … also offered help.”",
@@ -1836,7 +1836,7 @@
       },
       {
        "name": "Reader C (people on the move)",
-       "job": "You know Chapters 4 and 7: who came to Anatolia from the east, and how Yunus Emre travelled around Anatolia."
+       "job": "You know Chapters 4 and 7: who came to Anatolia from the east, and how Yunus Emre traveled around Anatolia."
       },
       {
        "name": "Map Keeper",
@@ -2974,7 +2974,7 @@
       "correctAnswer": null,
       "explanation": "Useful language from the chapter includes “is about + -ing”, “such as...”, “with these principles...”, “teach someone to...”, “avoid...”, and “not only... but also...”. Use only the forms that fit your topic naturally.",
       "feedback": {
-       "correct": "Keep the response connected: definition, examples, guidance, contrast in behaviour, and a wider role or result.",
+       "correct": "Keep the response connected: definition, examples, guidance, contrast in behavior, and a wider role or result.",
        "incorrect": ""
       },
       "discussionPrompts": [
@@ -3473,7 +3473,7 @@
        "labelSide": "left",
        "name": "Anatolia",
        "kind": "Region",
-       "text": "Yunus Emre was a famous Turkish poet and a Sûfî from Anatolia. He was born around 1240–1241 and died around 1320–1321. He lived in a very difficult time, but he travelled around Anatolia as a wise dervish and helped people with his poetry.",
+       "text": "Yunus Emre was a famous Turkish poet and a Sûfî from Anatolia. He was born around 1240–1241 and died around 1320–1321. He lived in a very difficult time, but he traveled around Anatolia as a wise dervish and helped people with his poetry.",
        "teacherNote": "The book names no birthplace, lodge or grave, so the map shows only the region. Chapter 4: the Anatolian Seljuk Sultan Alaeddin I (1220–1237) built a navy in the Mediterranean and Black Seas; point to both sea names. The line from the east shows people migrating to Anatolia from Central Asia because of the Mongol invasion (Chapter 4); its path is approximate.",
        "question": "Why was Yunus Emre’s time a very difficult time in Anatolia?"
       },
@@ -5341,7 +5341,7 @@
       "instructions": "Write 5–6 sentences about a real change in your school or town.",
       "question": "Can you tell the news of a change clearly?",
       "correctAnswer": null,
-      "explanation": "Example: “Three years ago, the park in our neighbourhood was full of rubbish, and few families were using it. However, last spring the park was cleaned by volunteers from our school, and new benches were put in. According to my neighbour, Mr Hasan, more children play there now than ever before. The park is not only cleaner but also safer, because it has new lights. For this reason, my friends and I go there almost every day. Anyone who uses the park should help keep it clean.”",
+      "explanation": "Example: “Three years ago, the park in our neighbourhood was full of rubbish, and few families were using it. However, last spring the park was cleaned by volunteers from our school, and new benches were put in. According to my neighbor, Mr Hasan, more children play there now than ever before. The park is not only cleaner but also safer, because it has new lights. For this reason, my friends and I go there almost every day. Anyone who uses the park should help keep it clean.”",
       "feedback": {
        "correct": "Check your paragraph: was/were + -ing for the background; However for the turn; was/were + past participle for the change; According to … for someone’s view; not only … but also …; because / because of, For this reason; Anyone who … should ….",
        "incorrect": ""
@@ -5360,7 +5360,7 @@
        {
         "question": "Sentence 3 — A view: “According to …, …” or “Some people say that …”",
         "mode": "Pair",
-        "example": "According to our neighbours, families now feel safe there after dark."
+        "example": "According to our neighbors, families now feel safe there after dark."
        },
        {
         "question": "Sentences 4–6 — The result: “The … is not only … but also … . For this reason, … . Anyone who … should …”",

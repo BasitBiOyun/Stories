@@ -1324,7 +1324,7 @@
      "kind": "find",
      "question": "Find it fast: What changed around Adam (pbuh) after he ate the fruit?",
      "options": [
-      "the colour of the sky",
+      "the color of the sky",
       "the atmosphere around him",
       "the size of the trees"
      ],
@@ -3266,7 +3266,7 @@
       "instructions": "Write 5–6 sentences about a mistake you put right. Tell a partner first.",
       "question": "Can you tell a true story about a mistake you put right?",
       "correctAnswer": null,
-      "explanation": "Example: “Last week, I had to bring my group’s poster to class. I forgot it because I was in a hurry. When I arrived at school, I realised that I had left it on my desk. It wasn’t on purpose, but my group was upset. However, I decided to tell my teacher the truth, and I managed to make a new poster at lunchtime. This experience suggests that we should admit our mistakes quickly; it shows the importance of saying sorry and putting things right.”",
+      "explanation": "Example: “Last week, I had to bring my group’s poster to class. I forgot it because I was in a hurry. When I arrived at school, I realized that I had left it on my desk. It wasn’t on purpose, but my group was upset. However, I decided to tell my teacher the truth, and I managed to make a new poster at lunchtime. This experience suggests that we should admit our mistakes quickly; it shows the importance of saying sorry and putting things right.”",
       "feedback": {
        "correct": "Check your sentences: had to, because, had + past participle, but / however, decided (never) to, managed to, should, the importance of + -ing.",
        "incorrect": ""
@@ -3278,9 +3278,9 @@
         "example": "Last month, I had to bring my part of a group poster for science class. I forgot it at home because I was busy with a football match."
        },
        {
-        "question": "Sentence 3 — Look back at the mistake: “I realised that I had … .” / “It wasn’t on purpose, but …”",
+        "question": "Sentence 3 — Look back at the mistake: “I realized that I had … .” / “It wasn’t on purpose, but …”",
         "mode": "Individual",
-        "example": "I realised that I had let my group down: It wasn’t on purpose, but they had to wait for me."
+        "example": "I realized that I had let my group down: It wasn’t on purpose, but they had to wait for me."
        },
        {
         "question": "Sentence 4 — A better choice: “However, I decided (never) to … .” / “I managed to … .”",

@@ -8,6 +8,9 @@ import { readContent } from '../../content/contentSource';
 import { withPlacesLayer } from '../../features/historical-entities';
 import type { HistoricalEntityBookKey, HistoricalEntityLocale } from '../../features/historical-entities';
 import { bookCatalog, type BookCatalogEntry } from '../../content/bookCatalog';
+import { editionName } from '../../content/editionName';
+
+export { editionName };
 
 export interface BookDefinition {
   storyId: StoryId;
@@ -30,10 +33,6 @@ interface BookFile {
 }
 
 const definitionKey = (storyId: StoryId, level: Level): string => `${storyId}:${level}`;
-
-/** The file name of one edition: one story, one level, one language. */
-export const editionName = (storyId: string, level: Level, language: 'en' | 'ar'): string =>
-  `${storyId}-${level.toLowerCase()}-${language}`;
 
 const loadEdition = async (storyId: StoryId, level: Level, language: 'en' | 'ar'): Promise<BookData> => {
   const file = await readContent<BookFile>('books', editionName(storyId, level, language));

@@ -1128,7 +1128,7 @@
       "id": "ibnjubayr-a2-language-6-picture",
       "type": "reflection",
       "title": "Use: It Is Like …",
-      "instructions": "Describe the Chapter 6 picture to your partner with “It is like …”.",
+      "instructions": "Describe the Chapter 6 picture with “It is like …”.",
       "question": "Can you describe a picture with “be like”?",
       "correctAnswer": null,
       "explanation": "Example: “The desert is like a sea of sand. The red tent on the camel is like a small palace. The camels are like a long line on the hills.”",
@@ -5343,23 +5343,23 @@
       "sequencingItems": [
        {
         "id": "3",
-        "text": "He arrives in Mecca."
+        "text": "Ibn Jubayr arrives in Mecca."
        },
        {
         "id": "5",
-        "text": "He dies in Alexandria."
+        "text": "Ibn Jubayr dies in Alexandria."
        },
        {
         "id": "1",
-        "text": "He is born in Valencia."
+        "text": "Ibn Jubayr is born in Valencia."
        },
        {
         "id": "4",
-        "text": "His ship hits the ground near Sicily."
+        "text": "Ibn Jubayr’s ship hits the ground near Sicily."
        },
        {
         "id": "2",
-        "text": "He leaves Granada for his long journey."
+        "text": "Ibn Jubayr leaves Granada for his long journey."
        }
       ],
       "correctAnswer": [

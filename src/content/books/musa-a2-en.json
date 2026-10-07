@@ -903,7 +903,7 @@
       "id": "moses-a2-language-4-production",
       "type": "reflection",
       "title": "Use It: A Helpful Plan",
-      "instructions": "Say four short sentences about a helpful neighbour.",
+      "instructions": "Say four short sentences about a helpful neighbor.",
       "question": "Can you describe a helpful person and your plan?",
       "correctAnswer": null,
       "explanation": "Use be + adjective, different from, will + verb and an imperative.",
@@ -915,12 +915,12 @@
        {
         "question": "Sentence 1 — Describe the person: “Our … is … and …”",
         "mode": "Individual",
-        "example": "Our new neighbour is friendly and helpful."
+        "example": "Our new neighbor is friendly and helpful."
        },
        {
         "question": "Sentence 2 — Compare: “She/He is different from …”",
         "mode": "Individual",
-        "example": "She is different from our old neighbour, who was very quiet."
+        "example": "She is different from our old neighbor, who was very quiet."
        },
        {
         "question": "Sentence 3 — Say what you will do: “I will …”",
@@ -1402,7 +1402,7 @@
     "title": "Escape to Midian",
     "image": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fa2%2Fimages%2Fmoses_a2_chapter7.png?alt=media",
     "audioUrl": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fa2%2Faudio%2F06_Chapter_7_Escape_to_Midian.mp3?alt=media&token=3d9e6d96-5a6c-4f3c-ad67-ca510ea37a8d",
-    "content": "Moses knew that the penalty for killing an Egyptian was death. Moses escaped from the soldiers. He left Egypt and travelled for a long time. He was not alone. Allah guided him. After many days, he arrived at Midian. Midian was near Egypt. The king of Egypt was not the ruler there. Moses was tired and thirsty. So, he looked for water. Soon, he found a well. There were many men around the water. These were shepherds with their sheep. They were watering their animals. Two girls were sitting far from the water. They also had sheep with them. But they did not go near the well. Moses asked the girls, “Why are you sitting far away from the well?”",
+    "content": "Moses knew that the penalty for killing an Egyptian was death. Moses escaped from the soldiers. He left Egypt and traveled for a long time. He was not alone. Allah guided him. After many days, he arrived at Midian. Midian was near Egypt. The king of Egypt was not the ruler there. Moses was tired and thirsty. So, he looked for water. Soon, he found a well. There were many men around the water. These were shepherds with their sheep. They were watering their animals. Two girls were sitting far from the water. They also had sheep with them. But they did not go near the well. Moses asked the girls, “Why are you sitting far away from the well?”",
     "vocabulary": [
      {
       "word": "Egypt",
@@ -1629,7 +1629,7 @@
      "quote": "Soon, he found a well. There were many men around the water. These were shepherds with their sheep."
     },
     "iCan": [
-     "I can tell how Moses travelled to Midian.",
+     "I can tell how Moses traveled to Midian.",
      "I can say where I arrived and what people were doing.",
      "I can describe a short trip."
     ]
@@ -2064,7 +2064,7 @@
     "title": "The Voice on the Mountain",
     "image": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fa2%2Fimages%2Fmoses_a2_chapter10.png?alt=media",
     "audioUrl": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fa2%2Faudio%2F09_Chapter_10_The_Voice_on_the_Mountain.mp3?alt=media&token=8c42577a-cc5a-42d3-8c61-32710db819f3",
-    "content": "He took his family. They started to travel to Egypt. They travelled a long time. It was winter. There was nobody on the way. It was getting dark and cold. They were in a valley between mountains. Suddenly, Moses saw a fire on the hillside. He said to his family, “Wait here. I will get some fire to get warm.” Moses climbed the mountain. It was already dark. Everywhere was very quiet. In the silence, he heard a loud voice: “Moses, I am Allah. I chose you. Listen to me. There is no god but Me.” Then Allah told Moses, “Put down your walking stick!” Moses put down his walking stick on the ground. It turned into a big snake!",
+    "content": "He took his family. They started to travel to Egypt. They traveled a long time. It was winter. There was nobody on the way. It was getting dark and cold. They were in a valley between mountains. Suddenly, Moses saw a fire on the hillside. He said to his family, “Wait here. I will get some fire to get warm.” Moses climbed the mountain. It was already dark. Everywhere was very quiet. In the silence, he heard a loud voice: “Moses, I am Allah. I chose you. Listen to me. There is no god but Me.” Then Allah told Moses, “Put down your walking stick!” Moses put down his walking stick on the ground. It turned into a big snake!",
     "vocabulary": [
      {
       "word": "Egypt",
@@ -2548,7 +2548,7 @@
      "roles": [
       {
        "name": "Reader A (Egypt)",
-       "job": "You know Chapters 6–7: why Moses had to leave Egypt and how he travelled."
+       "job": "You know Chapters 6–7: why Moses had to leave Egypt and how he traveled."
       },
       {
        "name": "Reader B (Midian)",
@@ -2566,7 +2566,7 @@
      "steps": [
       "Each reader reads only his or her chapters and then closes the book.",
       "The Map Keeper asks each reader: Where did he go? Why did he go there? How long did he stay?",
-      "Each reader answers with one sentence from the book, for example: “He left Egypt and travelled for a long time.” or “After ten years, Moses decided to go back to Egypt.” The Map Keeper adds the place and the reason to the route.",
+      "Each reader answers with one sentence from the book, for example: “He left Egypt and traveled for a long time.” or “After ten years, Moses decided to go back to Egypt.” The Map Keeper adds the place and the reason to the route.",
       "Together, check your route on the map page Moses’s Journey in the app and correct any mistakes."
      ],
      "share": "Each group shows its route to the class and gives one reason for each move: “He went to … because …”.",
@@ -3072,7 +3072,7 @@
      },
      {
       "word": "caravan",
-      "definition": "A group of people travelling together."
+      "definition": "A group of people traveling together."
      },
      {
       "word": "army",
@@ -3150,7 +3150,7 @@
        },
        {
         "left": "caravan",
-        "right": "a group travelling together"
+        "right": "a group traveling together"
        },
        {
         "left": "got tired",
@@ -3164,7 +3164,7 @@
       "correctAnswer": {
        "keep it secret": "tell nobody about it",
        "Life became harder": "Things were more difficult",
-       "caravan": "a group travelling together",
+       "caravan": "a group traveling together",
        "got tired": "started to need rest",
        "rose": "came up in the sky"
       },
@@ -3907,7 +3907,7 @@
        "labelSide": "right",
        "name": "Midian",
        "kind": "Region",
-       "text": "Moses left Egypt and travelled for many days to Midian. The king of Egypt was not the ruler there. At a well, Moses helped two sisters with their sheep. He lived in Midian for ten years.",
+       "text": "Moses left Egypt and traveled for many days to Midian. The king of Egypt was not the ruler there. At a well, Moses helped two sisters with their sheep. He lived in Midian for ten years.",
        "teacherNote": "The A2 text says only that Midian was near Egypt. The B1 and B2 books say it was on the eastern side of the Gulf of Aqaba. The place of the well is not known.",
        "question": "Why did Moses go to Midian? Who did he meet there?"
       },
@@ -3923,7 +3923,7 @@
        "labelSide": "bottom",
        "name": "The Mountain",
        "kind": "Mountain",
-       "text": "After ten years, Moses and his family travelled back to Egypt. It was winter. In a valley between mountains, Moses saw a fire. He climbed the mountain and heard the voice of Allah.",
+       "text": "After ten years, Moses and his family traveled back to Egypt. It was winter. In a valley between mountains, Moses saw a fire. He climbed the mountain and heard the voice of Allah.",
        "teacherNote": "The A2 text does not name this mountain. The B2 book calls it Mount Sinai, also known as Mount Tur. The soft area in the south of the Sinai Peninsula is approximate; the exact place is not known.",
        "question": "What did Allah tell Moses to do with his walking stick?"
       },
@@ -4092,7 +4092,7 @@
        "lon": 35.4,
        "lat": 28.3,
        "radiusKm": 180,
-       "prompt": "Find Midian. Moses travelled there from Egypt for many days."
+       "prompt": "Find Midian. Moses traveled there from Egypt for many days."
       },
       {
        "id": "mountain",
@@ -4186,9 +4186,9 @@
       "type": "true-false",
       "title": "The Way to Midian",
       "instructions": "Read the sentence. Is it true or false?",
-      "question": "Moses travelled to Midian all alone, without any help.",
+      "question": "Moses traveled to Midian all alone, without any help.",
       "correctAnswer": false,
-      "explanation": "Chapter 7: “He left Egypt and travelled for a long time. He was not alone. Allah guided him.”",
+      "explanation": "Chapter 7: “He left Egypt and traveled for a long time. He was not alone. Allah guided him.”",
       "feedback": {
        "correct": "Right, it is false. The story says he was not alone: Allah guided him.",
        "incorrect": "Read the first lines of Chapter 7 again. Was Moses really alone?"
@@ -5430,7 +5430,7 @@
      },
      {
       "word": "caravan",
-      "definition": "A group of people travelling together.",
+      "definition": "A group of people traveling together.",
       "partOfSpeech": "noun",
       "level": "A2",
       "pronunciation": "/ˈkærəvæn/",

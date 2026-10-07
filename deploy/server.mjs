@@ -279,6 +279,20 @@ const server = http.createServer((req, res) => {
     return sendMissingAsset(res);
   }
 
+  // The content panel and the book files it reads are a work tool: they are sent only to a
+  // browser that opened the preview link. Without PREVIEW_KEY nobody can be recognised, so
+  // they are not served at all.
+  if (urlPath === '/panel' || urlPath.startsWith('/panel/') || urlPath.startsWith('/content/')) {
+    if (!previewKey || !hasPreviewCookie(req)) {
+      res.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8', 'Cache-Control': 'no-store' });
+      res.end('Not found');
+      return;
+    }
+    if (urlPath === '/panel' || urlPath === '/panel/') {
+      return sendFile(req, res, join(root, 'panel', 'panel.html'));
+    }
+  }
+
   const safePath = normalize(urlPath).replace(/^([.][.][/\\])+/, '');
   let filePath = join(root, safePath === '/' ? 'index.html' : safePath);
 

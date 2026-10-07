@@ -1128,7 +1128,7 @@
       "id": "ibnjubayr-a2-language-6-picture",
       "type": "reflection",
       "title": "Use: It Is Like …",
-      "instructions": "Describe the Chapter 6 picture to your partner with “It is like …”.",
+      "instructions": "Describe the Chapter 6 picture with “It is like …”.",
       "question": "Can you describe a picture with “be like”?",
       "correctAnswer": null,
       "explanation": "Example: “The desert is like a sea of sand. The red tent on the camel is like a small palace. The camels are like a long line on the hills.”",
@@ -1257,7 +1257,7 @@
       "title": "Practise: With Respect, Such As",
       "instructions": "Fill each gap from the word bank. Two words are not needed.",
       "question": "Which words tell us how, and which words give examples?",
-      "fillBlanksText": "He describes the Great Mosque of Mecca and the holy Ka'bah [blank] respect. People traveled to Mecca from very far places [blank] Persia, India, and Africa. … A mother's body [blank] makes enough space for her baby.",
+      "fillBlanksText": "He describes the Great Mosque of Mecca and the holy Ka’bah [blank] respect. People traveled to Mecca from very far places [blank] Persia, India, and Africa. … A mother's body [blank] makes enough space for her baby.",
       "wordBank": [
        "with",
        "such as",
@@ -1292,7 +1292,7 @@
        {
         "question": "Sentence 1 — Say where it is: “… is located in …”",
         "mode": "Individual",
-        "example": "The big mosque in my town is located in the city centre."
+        "example": "The big mosque in my town is located in the city center."
        },
        {
         "question": "Sentence 2 — Say what it can do: “It can … / It cannot …”",
@@ -1481,7 +1481,7 @@
       "instructions": "Write three sentences about your town with “there is” and “there are”.",
       "question": "Can you describe your town with numbers?",
       "correctAnswer": null,
-      "explanation": "Example: “In my town, there are four schools and ten mosques. There is a big park near the river. There are many shops in the centre.”",
+      "explanation": "Example: “In my town, there are four schools and ten mosques. There is a big park near the river. There are many shops in the center.”",
       "feedback": {
        "correct": "Check: there is + one thing, there are + many things, near / in.",
        "incorrect": ""
@@ -1547,7 +1547,7 @@
      },
      {
       "word": "mosaics",
-      "definition": "Pictures made with many small pieces of coloured stone or glass."
+      "definition": "Pictures made with many small pieces of colored stone or glass."
      },
      {
       "word": "gateways",
@@ -1661,9 +1661,9 @@
         "example": "My school has a garden, a library, a big hall and a sports field."
        },
        {
-        "question": "“My favourite part is … because …”",
+        "question": "“My favorite part is … because …”",
         "mode": "Pair",
-        "example": "My favourite part is the library because it is quiet and has many books."
+        "example": "My favorite part is the library because it is quiet and has many books."
        }
       ]
      }
@@ -4621,7 +4621,7 @@
      },
      {
       "word": "mosaics",
-      "definition": "Pictures made with many small pieces of coloured stone or glass.",
+      "definition": "Pictures made with many small pieces of colored stone or glass.",
       "partOfSpeech": "noun",
       "level": "A2",
       "pronunciation": "/moʊˈzeɪɪks/",
@@ -5343,23 +5343,23 @@
       "sequencingItems": [
        {
         "id": "3",
-        "text": "He arrives in Mecca."
+        "text": "Ibn Jubayr arrives in Mecca."
        },
        {
         "id": "5",
-        "text": "He dies in Alexandria."
+        "text": "Ibn Jubayr dies in Alexandria."
        },
        {
         "id": "1",
-        "text": "He is born in Valencia."
+        "text": "Ibn Jubayr is born in Valencia."
        },
        {
         "id": "4",
-        "text": "His ship hits the ground near Sicily."
+        "text": "Ibn Jubayr’s ship hits the ground near Sicily."
        },
        {
         "id": "2",
-        "text": "He leaves Granada for his long journey."
+        "text": "Ibn Jubayr leaves Granada for his long journey."
        }
       ],
       "correctAnswer": [

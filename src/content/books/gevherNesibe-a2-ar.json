@@ -3001,7 +3001,7 @@
       "id": "gevhernesibe-a2-language-review-1-there-was-were",
       "type": "drag-drop",
       "title": "Look: There Was, There Were",
-      "instructions": "Look at the noun after was or were. Put each sentence in the right group.",
+      "instructions": "Put each sentence in the right group: was or were.",
       "question": "Is it one thing, or more than one?",
       "dragDropGroups": [
        {
@@ -3493,7 +3493,7 @@
        },
        {
         "id": "2",
-        "text": "Her brother builds a medical school and a hospital."
+        "text": "Gevher Nesibe’s brother builds a medical school and a hospital."
        }
       ],
       "correctAnswer": [

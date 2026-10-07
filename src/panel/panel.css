@@ -1,0 +1,197 @@
+/* The panel is a work tool, not part of the app's design: plain, dense and readable. */
+:root {
+  --ink: #1d2b24;
+  --muted: #5d6b63;
+  --line: #d9e0db;
+  --paper: #f7f8f7;
+  --accent: #0f766e;
+  --warn: #b45309;
+  --bad: #b91c1c;
+  --good: #047857;
+  color-scheme: light;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font:
+    15px/1.5 -apple-system,
+    'Segoe UI',
+    system-ui,
+    sans-serif;
+}
+a {
+  color: var(--accent);
+}
+header {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  padding: 14px 20px;
+  background: #fff;
+  border-bottom: 1px solid var(--line);
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+header h1 {
+  font-size: 17px;
+  margin: 0;
+}
+header p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+main {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+button {
+  font: inherit;
+  border: 1px solid var(--line);
+  background: #fff;
+  border-radius: 8px;
+  padding: 7px 12px;
+  cursor: pointer;
+}
+button:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+button[disabled] {
+  opacity: 0.5;
+  cursor: default;
+}
+button.primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+button.primary:hover {
+  color: #fff;
+  filter: brightness(1.08);
+}
+table {
+  border-collapse: collapse;
+  width: 100%;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  overflow: hidden;
+}
+th,
+td {
+  text-align: start;
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--line);
+  font-size: 14px;
+  vertical-align: top;
+}
+th {
+  background: #eef2f0;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+}
+tr:last-child td {
+  border-bottom: 0;
+}
+.row {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: 300px 1fr;
+  align-items: start;
+}
+.card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 14px;
+}
+.list {
+  max-height: 70vh;
+  overflow: auto;
+}
+.list button {
+  display: block;
+  width: 100%;
+  text-align: start;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  border-radius: 0;
+  padding: 9px 12px;
+}
+.list button[aria-current='true'] {
+  background: #e8f3f1;
+  color: var(--accent);
+  font-weight: 600;
+}
+label {
+  display: block;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  margin: 14px 0 4px;
+}
+textarea,
+input[type='text'] {
+  width: 100%;
+  font: inherit;
+  padding: 9px 11px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+}
+textarea {
+  min-height: 96px;
+  resize: vertical;
+}
+textarea[dir='rtl'] {
+  font-size: 17px;
+  line-height: 1.9;
+}
+.finding {
+  border-inline-start: 3px solid var(--warn);
+  background: #fff8ec;
+  padding: 7px 11px;
+  border-radius: 6px;
+  margin-top: 7px;
+  font-size: 13px;
+}
+.finding.bad {
+  border-color: var(--bad);
+  background: #fef2f2;
+}
+.ok {
+  color: var(--good);
+  font-size: 13px;
+}
+.muted {
+  color: var(--muted);
+  font-size: 13px;
+}
+.changed {
+  color: var(--warn);
+  font-weight: 600;
+}
+.pill {
+  display: inline-block;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 1px 9px;
+  font-size: 12px;
+  color: var(--muted);
+}

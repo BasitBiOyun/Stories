@@ -1,0 +1,59 @@
+# Content
+
+Where the library lives and how it is changed.
+
+## The files
+
+| What | Where |
+|---|---|
+| One edition (story, level, language) | `src/content/books/<story>-<level>-<language>.json` |
+| Its Teacher's Book and Self-Study Guide | `src/content/guides/<story>-<level>-<language>.json` |
+| Which books exist, their names and descriptions, which are unpublished | `src/content/stories.json` |
+| Which editions exist | `src/content/bookCatalog.json` |
+| Which interface languages exist, their direction, digits and font | `src/content/languages.json` |
+| The house rules, shared by the build and the panel | `src/content/rules.ts` |
+
+A book file holds the pages as the reader sees them: chapters with their text, pictures and audio,
+the activities on each page, the journey map, and the book-end pages. Places & People cards are not
+in the book file: they come from the shared catalogue when the book opens, so correcting a card
+corrects every book.
+
+Nothing else in the app decides what a book contains. A new book is a file here plus its cover
+picture; a new level is a line in `bookCatalog.json`.
+
+## Changing a text
+
+1. Open the content panel (see below), or edit the JSON file directly.
+2. `npm run validate:content` checks the shape, `npm run validate:rules` checks the house rules.
+   Both run in `npm run build`, so a broken or non-standard text cannot ship.
+3. Commit the changed file. The change is reviewed and reversible like any other change.
+
+If the English wording of a chapter changes, its narration has to be made again: add that chapter
+to `tts/requests.json` (see `docs/OPERATIONS.md`).
+
+## The house rules, checked automatically
+
+- Shared terms: Qur’an, Ka’ba, (pbuh), Tawhid, CE — always written the same way.
+- American spelling (color, honor, center, organize …).
+- Instruction length: at most 12 words at A2, 16 at B1, 20 at B2, not counting the list of answers.
+- A sequencing card says who it is about, because it is read on its own after shuffling.
+
+Everything else — whether a text is right for the level, whether an exercise teaches what it
+should, whether a picture fits — is read by people. The rules only catch what a machine can be
+sure of.
+
+## The content panel
+
+`/panel` on the preview address. It lists every edition, opens a book page by page, lets the text
+and the activity instructions be changed, shows which house rules the page breaks while they are
+typed, and gives the changed file to download. It publishes nothing: the downloaded file goes into
+the repository the usual way.
+
+It is served only to a browser that opened the preview link (`?gizli=<PREVIEW_KEY>`), and not at
+all when `PREVIEW_KEY` is not set on the service. Signing in, roles, draft and approval steps and
+publishing from the panel itself wait for the accounts stage.
+
+## Seeing what the library holds
+
+`npm run report:content` prints every edition with its chapters, words, activities, pictures,
+narration and guide parts, and says where narration is still missing.

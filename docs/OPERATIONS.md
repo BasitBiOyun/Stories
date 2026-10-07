@@ -31,6 +31,11 @@ Books in `hiddenStoryCatalog` (`src/core/content/storyCatalog.ts`) are built int
 - With `PREVIEW_KEY` set on the Cloud Run service (Edit & deploy new revision → Variables): the files are sent only to a browser that opened `?gizli=<PREVIEW_KEY>#/<storyId>/<level>/1` once (it keeps a cookie for 30 days). Anyone else gets a 404, so unpublished texts cannot be downloaded.
 - Places & People cards of hidden books are still in the shared files; only the story, exercises and guides are protected.
 
+## The content panel
+`/panel` on the preview address is the editing tool for the library (docs/CONTENT.md). It is sent
+only to a browser that opened `?gizli=<PREVIEW_KEY>` once, and not at all when `PREVIEW_KEY` is not
+set. The book files it reads are served the same way, under `/content/`.
+
 ## Firebase Storage
 - Rules live in `storage.rules`. Reading and listing are public (the app lists chapter folders); writing from browsers is closed. `tts-state/` is private.
 - Publish after a change: `npx firebase-tools deploy --only storage` (logged in with an owner account), or paste the file into Firebase console → Storage → Rules.
@@ -40,6 +45,11 @@ Books in `hiddenStoryCatalog` (`src/core/content/storyCatalog.ts`) are built int
 ## Dependencies
 - Dependabot (`.github/dependabot.yml`) opens weekly update PRs against `platform-v2`.
 - `npm audit --omit=dev` must stay at 0. Only `@firebase/app` and `@firebase/storage` are used from Firebase; do not add the `firebase` meta package back (it brings Firestore and gRPC).
+
+## Content checks in every build
+`npm run build` runs `validate:content` (the shape of every book and guide file) and
+`validate:rules` (the house rules for English text), as well as the older vocabulary and exercise
+validators. `npm run report:content` prints what the library holds today.
 
 ## Security checks before a release
 Tools are installed per session with `bash /mnt/project-files/araclar/kur.sh` (project files):

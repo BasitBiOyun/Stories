@@ -400,7 +400,7 @@
       "instructions": "Write or say 8–10 sentences about a tradition that has changed in some ways over time.",
       "question": "What stayed the same, and what changed?",
       "correctAnswer": null,
-      "explanation": "A strong B2 response should organise ideas rather than simply insert target phrases. The reader should be able to see what the concept means, which statement is interpretive, why a change occurred, and what conclusion follows.",
+      "explanation": "A strong B2 response should organize ideas rather than simply insert target phrases. The reader should be able to see what the concept means, which statement is interpretive, why a change occurred, and what conclusion follows.",
       "feedback": {
        "correct": "Check that the paragraph distinguishes definition from interpretation and that the cause–result chain leads naturally to the final contrast.",
        "incorrect": ""
@@ -648,7 +648,7 @@
        {
         "question": "Step 4 — Widen your last point: “… not only … but also …”",
         "mode": "Pair",
-        "example": "Today libraries are not only places to borrow books but also community centres where people take classes and meet."
+        "example": "Today libraries are not only places to borrow books but also community centers where people take classes and meet."
        }
       ]
      }
@@ -881,7 +881,7 @@
       "instructions": "Write or say 8–10 sentences about a place in history that experts still disagree about.",
       "question": "What is known, and what is still not sure?",
       "correctAnswer": null,
-      "explanation": "A strong response should organise evidence and uncertainty explicitly: attribute claims, synthesise cautiously, locate an earlier state in time, mark change, and distinguish groups rather than overgeneralising.",
+      "explanation": "A strong response should organize evidence and uncertainty explicitly: attribute claims, synthesise cautiously, locate an earlier state in time, mark change, and distinguish groups rather than overgeneralising.",
       "feedback": {
        "correct": "Check that every uncertain point is visibly qualified and that your paragraph still reaches a useful synthesis instead of becoming a list of disconnected caveats.",
        "incorrect": ""
@@ -1246,7 +1246,7 @@
       "instructions": "Read the sentence from Chapter 6. Then choose the best explanation.",
       "question": "“Being a child, he played with the statues, …” What does “Being a child” add to the sentence?",
       "options": [
-       "It gives the background reason for his behaviour: because he was a child, he played with them.",
+       "It gives the background reason for his behavior: because he was a child, he played with them.",
        "It shows that he was playing and becoming a child at the same moment.",
        "It describes his father, who was making the statues.",
        "It shows that he stopped being a child after this event."
@@ -1459,7 +1459,7 @@
       "instructions": "Read the sentence from Chapter 7. Is the statement true or false?",
       "question": "In “It shocked him to see people bowing, crying, and begging the idols for help, as if those lifeless idols were capable of hearing their prayers!”, the writer suggests that the idols may really have heard the prayers.",
       "correctAnswer": false,
-      "explanation": "“As if” + past form (were) describes behaviour that suggests something unreal. The people behaved like the idols could hear, but the writer calls them “lifeless idols”, so the comparison shows a contradiction between the people’s behaviour and reality.",
+      "explanation": "“As if” + past form (were) describes behavior that suggests something unreal. The people behaved like the idols could hear, but the writer calls them “lifeless idols”, so the comparison shows a contradiction between the people’s behavior and reality.",
       "feedback": {
        "correct": "Correct. “As if … were” marks the idea as unreal.",
        "incorrect": "Notice the word “lifeless” in the same clause and the past form “were”. Does the writer think the idols could hear?"
@@ -2063,7 +2063,7 @@
       },
       "title": "Two Points and a Conflict",
       "instructions": "Match each step with what Chapter 10 says.",
-      "question": "How does Chapter 10 organise Abraham’s answer to the star worshippers?",
+      "question": "How does Chapter 10 organize Abraham’s answer to the star worshippers?",
       "matchingPairs": [
        {
         "left": "Firstly",
@@ -2158,7 +2158,7 @@
      {
       "id": "abraham-b2-language-10-firstly-secondly",
       "type": "transformation",
-      "title": "Organising a Two-Part Explanation",
+      "title": "Organizing a Two-Part Explanation",
       "instructions": "Rewrite each sentence from Chapter 10 with the words given. Keep the meaning.",
       "question": "How else can we say these lines from Chapter 10?",
       "transformItems": [
@@ -2236,7 +2236,7 @@
     },
     "iCan": [
      "I can explain the two points Abraham (pbuh) made about the stars and planets.",
-     "I can organise an argument with “firstly” and “secondly”.",
+     "I can organize an argument with “firstly” and “secondly”.",
      "I can explain how evidence can lead to a debate."
     ]
    },
@@ -2414,7 +2414,7 @@
       "instructions": "Write or say 8–10 sentences about a disagreement at school or in your town.",
       "question": "Which side has better reasons?",
       "correctAnswer": null,
-      "explanation": "A strong response should use language choices to organise reasoning: Challenge an assumption, qualify a claim, distinguish evidence from inference, and end with an evaluative comparison.",
+      "explanation": "A strong response should use language choices to organize reasoning: Challenge an assumption, qualify a claim, distinguish evidence from inference, and end with an evaluative comparison.",
       "feedback": {
        "correct": "Check that your questions advance the argument and that your inference is clearly marked as an inference.",
        "incorrect": ""
@@ -3213,7 +3213,7 @@
      {
       "word": "defend",
       "partOfSpeech": "verb",
-      "definition": "To protect something from attack by arguing in its favour."
+      "definition": "To protect something from attack by arguing in its favor."
      },
      {
       "word": "criticizing",
@@ -3256,7 +3256,7 @@
      {
       "id": "ab-b2-q15",
       "type": "true-false",
-      "title": "The People’s Defence",
+      "title": "The People’s Defense",
       "instructions": "Is the statement true or false? Use Chapter 15.",
       "question": "The people defended their idols by saying that the idols could see them when they bowed down.",
       "correctAnswer": false,
@@ -3421,7 +3421,7 @@
        {
         "question": "Step 4 — Suggest a test: “We could test whether …”",
         "mode": "Pair",
-        "example": "We could test whether students concentrate better without ties for one month. If their marks and behaviour stay the same or improve, the tie rule becomes harder to defend."
+        "example": "We could test whether students concentrate better without ties for one month. If their marks and behavior stay the same or improve, the tie rule becomes harder to defend."
        }
       ]
      }
@@ -4505,7 +4505,7 @@
        {
         "question": "Step 2 — Show what they knew but would not admit: “In fact, … . However, …”",
         "mode": "Pair",
-        "example": "In fact, the committee recognised that the park was more useful than a car park. However, they refused to admit that their plan had been a mistake."
+        "example": "In fact, the committee recognized that the park was more useful than a car park. However, they refused to admit that their plan had been a mistake."
        },
        {
         "question": "Step 3 — Show their only choice: “All they could do was … . They decided to …”",
@@ -4762,7 +4762,7 @@
      {
       "word": "blackened",
       "partOfSpeech": "verb",
-      "definition": "Made something dark in colour, for example with smoke or fire."
+      "definition": "Made something dark in color, for example with smoke or fire."
      },
      {
       "word": "shamed",
@@ -4899,7 +4899,7 @@
        {
         "question": "Step 2 — Give the turning point: “Once …, … had finally …”",
         "mode": "Pair",
-        "example": "Once the bridge reopened, traffic in the centre became much lighter. The repair had finally been completed."
+        "example": "Once the bridge reopened, traffic in the center became much lighter. The repair had finally been completed."
        },
        {
         "question": "Step 3 — Show a surprise: “People expected …, yet …”",
@@ -5364,7 +5364,7 @@
      "options": [
       "the wrongdoers",
       "the poor",
-      "the travellers"
+      "the travelers"
      ],
      "answer": 0,
      "quote": "Allah does not guide the people who are Zalimeen (wrongdoers)"
@@ -5399,7 +5399,7 @@
      {
       "word": "righteousness",
       "partOfSpeech": "noun",
-      "definition": "Behaviour that is morally good and fair."
+      "definition": "Behavior that is morally good and fair."
      },
      {
       "word": "sterile",
@@ -5423,7 +5423,7 @@
       "x": 42,
       "y": 57,
       "title": "Journey to Egypt",
-      "description": "Abraham (pbuh) left his people with Sarah and Lot (pbuh), travelled to Egypt and then settled in Palestine."
+      "description": "Abraham (pbuh) left his people with Sarah and Lot (pbuh), traveled to Egypt and then settled in Palestine."
      },
      {
       "id": "ab-b2-runtime-hs-25-2",
@@ -5591,7 +5591,7 @@
       "type": "reflection",
       "title": "Write a Coherent Change-of-Plan Narrative",
       "instructions": "Write or say 8–10 sentences about someone who has to change plans.",
-      "question": "What did the person realise, and what did they do?",
+      "question": "What did the person realize, and what did they do?",
       "correctAnswer": null,
       "explanation": "A strong response should distinguish what had happened earlier, what the person realized at a later moment, what decision followed, and how the new actions developed across time or place.",
       "feedback": {
@@ -5605,9 +5605,9 @@
         "example": "Emre had trained for the national swimming team for five years. He had won many local races before his shoulder injury."
        },
        {
-        "question": "Step 2 — Say what was not going to happen: “He realised that he was not going to …”",
+        "question": "Step 2 — Say what was not going to happen: “He realized that he was not going to …”",
         "mode": "Pair",
-        "example": "After the injury, he realised that he was not going to swim at the national level."
+        "example": "After the injury, he realized that he was not going to swim at the national level."
        },
        {
         "question": "Step 3 — Give the decision: “He decided to … . Therefore, he …”",
@@ -5879,7 +5879,7 @@
       "Each reader answers with one sentence from the book, for example: “After Egypt, Abraham (pbuh) traveled to Palestine and settled there.” The Map Keeper adds the place and the reason to the route.",
       "Together, check your route against the map page “Abraham’s Journey” in the app and correct anything you placed wrongly."
      ],
-     "share": "Each group traces its route for the class and gives a reason for each move, using phrases such as because he realised that …, he decided to … or Allah told him that he should …",
+     "share": "Each group traces its route for the class and gives a reason for each move, using phrases such as because he realized that …, he decided to … or Allah told him that he should …",
      "solo": "Cover Chapters 4–26, draw the route Babylon or Ur → Egypt → Palestine → the valley of Mecca from memory with one reason for each move, then check it on the map page “Abraham’s Journey”."
     }
    },
@@ -6356,12 +6356,12 @@
      {
       "word": "caravan",
       "partOfSpeech": "noun",
-      "definition": "A group of travellers with animals crossing a desert together."
+      "definition": "A group of travelers with animals crossing a desert together."
      },
      {
       "word": "commemorated",
       "partOfSpeech": "verb",
-      "definition": "Remembered and honoured with a special act or ceremony."
+      "definition": "Remembered and honored with a special act or ceremony."
      },
      {
       "word": "pilgrimage",
@@ -6492,7 +6492,7 @@
          "commemorated",
          "remembered",
          "honored",
-         "honoured"
+         "honored"
         ]
        }
       ],
@@ -7120,7 +7120,7 @@
       },
       "explanation": "“A voice stopped Abraham (pbuh) just as his knife was about to touch Ishmael.” Abraham “showed his willingness to sacrifice all his belongings for Allah. Because of this, Allah made him the leader of humanity.” The chapter ends: “It was only a test; the substitute was a ram or goat.”",
       "feedback": {
-       "correct": "Well done. The test showed Abraham’s submission, and it ended in mercy and honour.",
+       "correct": "Well done. The test showed Abraham’s submission, and it ended in mercy and honor.",
        "incorrect": "Look for three places in Chapter 32: the moment of the knife, the sentence with “Because of this”, and the last sentence."
       }
      }
@@ -7787,7 +7787,7 @@
       "x": 24,
       "y": 39,
       "title": "A House for Everyone",
-      "description": "Abraham (pbuh) built a place of worship for all people, not for one race or colour."
+      "description": "Abraham (pbuh) built a place of worship for all people, not for one race or color."
      },
      {
       "id": "ab-b2-runtime-hs-35-2",
@@ -8565,13 +8565,13 @@
       "options": [
        "The watchers stood too close, while Abraham stood far away.",
        "The fire was weaker than the people had hoped it would be.",
-       "Those who meant to harm him were shamed; he was honoured.",
+       "Those who meant to harm him were shamed; he was honored.",
        "Abraham was still afraid, but he hid it from the crowd."
       ],
       "correctAnswer": 2,
       "explanation": "Chapter 22: “The smoke blackened their faces, yet his face was bright.” The same chapter quotes: “They wanted to harm him, but We made them the worst losers” (Surah al-Anbiya: 70), and adds, “This miracle shamed the despotic rulers.”",
       "feedback": {
-       "correct": "Exactly. The physical detail matches the verse: The planners of harm became “the worst losers”, while Abraham came out honoured.",
+       "correct": "Exactly. The physical detail matches the verse: The planners of harm became “the worst losers”, while Abraham came out honored.",
        "incorrect": "Read the contrast together with the verse and the sentence about the rulers later in Chapter 22. Who ended up shamed, and who did not?"
       }
      },
@@ -9332,7 +9332,7 @@
      {
       "word": "defend",
       "partOfSpeech": "verb",
-      "definition": "To protect something from attack by arguing in its favour.",
+      "definition": "To protect something from attack by arguing in its favor.",
       "level": "B2",
       "chapter": 15,
       "chapterTitle": "Debating the Idolaters",
@@ -9702,7 +9702,7 @@
      {
       "word": "blackened",
       "partOfSpeech": "verb",
-      "definition": "Made something dark in colour, for example with smoke or fire.",
+      "definition": "Made something dark in color, for example with smoke or fire.",
       "level": "B2",
       "chapter": 22,
       "chapterTitle": "Stepping Out Unharmed",
@@ -9842,7 +9842,7 @@
      {
       "word": "righteousness",
       "partOfSpeech": "noun",
-      "definition": "Behaviour that is morally good and fair.",
+      "definition": "Behavior that is morally good and fair.",
       "level": "B2",
       "chapter": 25,
       "chapterTitle": "Emigration and Ishmael’s Birth",
@@ -10052,7 +10052,7 @@
      {
       "word": "caravan",
       "partOfSpeech": "noun",
-      "definition": "A group of travellers with animals crossing a desert together.",
+      "definition": "A group of travelers with animals crossing a desert together.",
       "level": "B2",
       "chapter": 29,
       "chapterTitle": "Hagar’s Search for Water",
@@ -10062,7 +10062,7 @@
      {
       "word": "commemorated",
       "partOfSpeech": "verb",
-      "definition": "Remembered and honoured with a special act or ceremony.",
+      "definition": "Remembered and honored with a special act or ceremony.",
       "level": "B2",
       "chapter": 29,
       "chapterTitle": "Hagar’s Search for Water",

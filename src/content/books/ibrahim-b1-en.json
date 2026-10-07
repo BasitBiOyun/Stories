@@ -337,7 +337,7 @@
       },
       "explanation": "“Used to + verb” describes a habit in an earlier period of life. Once “used to” sets up the habit, the past simple can continue it: “he rode on their backs and sometimes kicked them” describes the same repeated play. “One day” moves the story to one particular event, told in the past simple.",
       "feedback": {
-       "correct": "Correct. You separated repeated childhood behaviour from single events.",
+       "correct": "Correct. You separated repeated childhood behavior from single events.",
        "incorrect": "Look for “used to”, “often” and “sometimes” for habits, and “One day” for a single event. “He rode on their backs” follows “used to play”, so it is part of the same habit."
       }
      },
@@ -558,7 +558,7 @@
       "correctAnswer": 0,
       "explanation": "“Still” (before the main verb, after be) shows that a situation continues and has not changed, often when we expect a change. Years passed and Abraham grew up, but the people were still showing love and respect to idols. The continuous form “were showing” adds that this was ongoing. That is why it made Abraham sad.",
       "feedback": {
-       "correct": "Correct. “Still” shows that the people’s behaviour continued without change.",
+       "correct": "Correct. “Still” shows that the people’s behavior continued without change.",
        "incorrect": "Look at the first words of Chapter 3: “Years passed …”. What did not change in all those years?"
       }
      },
@@ -640,7 +640,7 @@
       "instructions": "Write or say four sentences about someone thinking about two possible reasons for something.",
       "question": "What are the two possible reasons, and what does the person decide?",
       "correctAnswer": null,
-      "explanation": "A strong response can use “Although ...”, “On the other hand ...”, “Could this be ...?”, “because ...”, and “I understood/realised that ...” in one coherent line of reasoning.",
+      "explanation": "A strong response can use “Although ...”, “On the other hand ...”, “Could this be ...?”, “because ...”, and “I understood/realized that ...” in one coherent line of reasoning.",
       "feedback": {
        "correct": "Keep all four sentences focused on one situation and make the conclusion follow from the evidence.",
        "incorrect": ""
@@ -664,7 +664,7 @@
        {
         "question": "Sentence 4 — Give the answer: “I understood that …”",
         "mode": "Pair",
-        "example": "In the end, I realised that the game was using most of the battery."
+        "example": "In the end, I realized that the game was using most of the battery."
        }
       ]
      }
@@ -874,12 +874,12 @@
        {
         "question": "Sentence 1 — Start with “When …” or “Until …”",
         "mode": "Individual",
-        "example": "When I saw our messy classroom after the party, I realised that someone had to clean it."
+        "example": "When I saw our messy classroom after the party, I realized that someone had to clean it."
        },
        {
         "question": "Sentence 2 — Give a duty and a reason: “We should … because …”",
         "mode": "Individual",
-        "example": "As class monitor this week, I should organise the cleaning because everyone uses this room."
+        "example": "As class monitor this week, I should organize the cleaning because everyone uses this room."
        },
        {
         "question": "Sentence 3 — Give one clear instruction: “Follow …”, “Stop …” or “Leave …”",
@@ -2214,7 +2214,7 @@
        }
       ],
       "correctAnswer": null,
-      "explanation": "“Decide” is followed by to + verb (decided to leave … and travel). “During + noun” places an event inside a longer period (during his journey); “while” needs a clause (while he was travelling). “Finally” marks the end point after a long process; “at first” and “firstly” introduce a beginning.",
+      "explanation": "“Decide” is followed by to + verb (decided to leave … and travel). “During + noun” places an event inside a longer period (during his journey); “while” needs a clause (while he was traveling). “Finally” marks the end point after a long process; “at first” and “firstly” introduce a beginning.",
       "feedback": {
        "correct": "Correct. You chose the forms for a decision, a time period and an end point.",
        "incorrect": "Check what follows each gap: A verb, a noun (his journey), or a comma after a long time of travel. Then read the second and third paragraphs of Chapter 10."
@@ -2261,7 +2261,7 @@
        {
         "question": "Sentence 1 — Say what the person realizes.",
         "mode": "Individual",
-        "example": "Last year, my family realised that our flat was too small for five people."
+        "example": "Last year, my family realized that our flat was too small for five people."
        },
        {
         "question": "Sentence 2 — Give the decision, with “so” or “therefore”.",
@@ -5080,7 +5080,7 @@
       "title": "Use: Our Recycling Project",
       "instructions": "This text is new. Complete it with words from the bank. Three are not needed.",
       "question": "Can you use the book’s language to tell the story of a class project?",
-      "fillBlanksText": "Last year, many students in our class [blank] throw paper into the rubbish bin. One day, our teacher, Mrs Demir, asked us to make a recycling box. We made a plan, but we did not tell the other classes what we [blank] to do. At first, some students laughed at the idea. We did not give up, [blank]. After two months, the box was [blank] full that we needed a second one. Now, every Friday, the paper [blank] to a recycling centre in our town.",
+      "fillBlanksText": "Last year, many students in our class [blank] throw paper into the rubbish bin. One day, our teacher, Mrs Demir, asked us to make a recycling box. We made a plan, but we did not tell the other classes what we [blank] to do. At first, some students laughed at the idea. We did not give up, [blank]. After two months, the box was [blank] full that we needed a second one. Now, every Friday, the paper [blank] to a recycling center in our town.",
       "wordBank": [
        "used to",
        "were going",
@@ -5156,7 +5156,7 @@
       "instructions": "Write five or six sentences about a plan that changed your life. Tell a partner first.",
       "question": "What was the plan, and what did it change?",
       "correctAnswer": null,
-      "explanation": "Example: Two years ago, the children in our street used to play on a dirty piece of land. One day, while we were cleaning our bikes, our neighbour Mr Aydın told us to write to the town council. We sent a letter, but we did not know what they were going to say. However, they said yes, so the rubbish was collected and new trees were planted. The park was so beautiful that everybody came to see it. Today we still play there every afternoon.",
+      "explanation": "Example: Two years ago, the children in our street used to play on a dirty piece of land. One day, while we were cleaning our bikes, our neighbor Mr Aydın told us to write to the town council. We sent a letter, but we did not know what they were going to say. However, they said yes, so the rubbish was collected and new trees were planted. The park was so beautiful that everybody came to see it. Today we still play there every afternoon.",
       "feedback": {
        "correct": "Check your sentences: used to for a past habit, while + was/were -ing for the background, told/asked + person + to, was/were going to, a passive (was/were + past participle), a linker (however, so, because) and so … that.",
        "incorrect": ""
