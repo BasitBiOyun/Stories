@@ -1,3 +1,5 @@
+// Reads the content JSON from disk (the browser build reads it through Vite instead).
+import '../lib/nodeContent';
 import { bookRegistry } from '../../src/core/content/bookRegistry';
 import { narrativeLearningPages } from '../../src/data/learningPageRoles';
 import { applyResolvedAssets, isValidAudioUrl, isValidImageUrl, loadBookAssets } from '../../src/core/storage/storageAssetLoader';

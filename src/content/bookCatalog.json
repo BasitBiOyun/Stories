@@ -1,0 +1,90 @@
+{
+ "schema": 1,
+ "editions": [
+  {
+   "storyId": "adam",
+   "level": "A2",
+   "collection": "prophets"
+  },
+  {
+   "storyId": "adam",
+   "level": "B1",
+   "collection": "prophets"
+  },
+  {
+   "storyId": "adam",
+   "level": "B2",
+   "collection": "prophets"
+  },
+  {
+   "storyId": "ibrahim",
+   "level": "A2",
+   "collection": "prophets"
+  },
+  {
+   "storyId": "ibrahim",
+   "level": "B1",
+   "collection": "prophets"
+  },
+  {
+   "storyId": "ibrahim",
+   "level": "B2",
+   "collection": "prophets"
+  },
+  {
+   "storyId": "musa",
+   "level": "A2",
+   "collection": "prophets"
+  },
+  {
+   "storyId": "musa",
+   "level": "B1",
+   "collection": "prophets"
+  },
+  {
+   "storyId": "musa",
+   "level": "B2",
+   "collection": "prophets"
+  },
+  {
+   "storyId": "mecca",
+   "level": "A2",
+   "collection": "history"
+  },
+  {
+   "storyId": "mecca",
+   "level": "B1",
+   "collection": "history"
+  },
+  {
+   "storyId": "mecca",
+   "level": "B2",
+   "collection": "history"
+  },
+  {
+   "storyId": "ibnJubayr",
+   "level": "A2",
+   "collection": "history"
+  },
+  {
+   "storyId": "yunusEmre",
+   "level": "A2",
+   "collection": "turkish"
+  },
+  {
+   "storyId": "yunusEmre",
+   "level": "B1",
+   "collection": "turkish"
+  },
+  {
+   "storyId": "yunusEmre",
+   "level": "B2",
+   "collection": "turkish"
+  },
+  {
+   "storyId": "gevherNesibe",
+   "level": "A2",
+   "collection": "turkish"
+  }
+ ]
+}

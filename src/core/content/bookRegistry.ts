@@ -1,9 +1,13 @@
-import type { Level } from '../../types';
+import type { BookData, Level } from '../../types';
 import type { BookPair, CollectionId, StoryId } from './contracts';
 import { getStorageManifest } from '../storage/storageManifests';
 import type { BookAssetManifest } from '../storage/contracts';
 import { finalizePreparedBookPairForUi } from './uiBookFinalization';
 import { loadReaderChunks } from '../../components/book/readerChunks';
+import { readContent } from '../../content/contentSource';
+import { withPlacesLayer } from '../../features/historical-entities';
+import type { HistoricalEntityBookKey, HistoricalEntityLocale } from '../../features/historical-entities';
+import { bookCatalog, type BookCatalogEntry } from '../../content/bookCatalog';
 
 export interface BookDefinition {
   storyId: StoryId;
@@ -16,48 +20,43 @@ export interface BookDefinition {
   load: () => Promise<BookPair>;
 }
 
+interface BookFile {
+  schema: number;
+  storyId: StoryId;
+  level: Level;
+  language: 'en' | 'ar';
+  collection: CollectionId;
+  book: BookData;
+}
+
 const definitionKey = (storyId: StoryId, level: Level): string => `${storyId}:${level}`;
 
-type BookModule = Record<string, unknown> & {
-  default?: Record<string, unknown>;
-};
+/** The file name of one edition: one story, one level, one language. */
+export const editionName = (storyId: string, level: Level, language: 'en' | 'ar'): string =>
+  `${storyId}-${level.toLowerCase()}-${language}`;
 
-/**
- * Vite normally returns ESM named exports directly. Some deployed chunks can be
- * wrapped by an interop layer, so reviewed prepared books are resolved from
- * either the module namespace or its default object. The import stays lazy: a
- * broken book can fail its own load without taking down the application shell.
- */
-const loadBookPairFromModule = async (
-  loader: () => Promise<unknown>,
-  englishExport: string,
-  arabicExport: string,
-  label: string,
-): Promise<BookPair> => {
-  const loaded = await loader();
-  const namespace = loaded && typeof loaded === 'object' ? loaded as BookModule : {};
-  const defaultNamespace = namespace.default && typeof namespace.default === 'object'
-    ? namespace.default
-    : {};
-
-  const en = (namespace[englishExport] ?? defaultNamespace[englishExport]) as BookPair['en'] | undefined;
-  const ar = (namespace[arabicExport] ?? defaultNamespace[arabicExport]) as BookPair['ar'] | undefined;
-
-  if (!en || !ar) {
-    throw new Error(`[Book Registry] ${label} module did not expose prepared EN/AR book data.`);
+const loadEdition = async (storyId: StoryId, level: Level, language: 'en' | 'ar'): Promise<BookData> => {
+  const file = await readContent<BookFile>('books', editionName(storyId, level, language));
+  if (!file?.book?.pages?.length) {
+    throw new Error(`[Book Registry] ${storyId} ${level} ${language} has no pages.`);
   }
-
-  return { en, ar };
+  // Places & People cards come from the shared entity catalogue, not from the book file, so a
+  // correction to a card reaches every book without the books being written again.
+  const bookKey = `${storyId}-${level.toLowerCase()}` as HistoricalEntityBookKey;
+  return { ...file.book, pages: withPlacesLayer(file.book.pages, bookKey, language as HistoricalEntityLocale) };
 };
 
-const createDefinition = (
-  storyId: StoryId,
-  level: Level,
-  collection: CollectionId,
-  loadSource: () => Promise<BookPair>,
-): BookDefinition => {
-  let preparedPromise: Promise<BookPair> | null = null;
+const createDefinition = (entry: BookCatalogEntry): BookDefinition => {
+  const { storyId, level, collection } = entry;
+  const loadSource = async (): Promise<BookPair> => {
+    const [en, ar] = await Promise.all([
+      loadEdition(storyId, level, 'en'),
+      loadEdition(storyId, level, 'ar'),
+    ]);
+    return { en, ar };
+  };
 
+  let preparedPromise: Promise<BookPair> | null = null;
   const load = () => {
     if (!preparedPromise) {
       preparedPromise = loadSource()
@@ -70,127 +69,10 @@ const createDefinition = (
     return preparedPromise;
   };
 
-  return {
-    storyId,
-    level,
-    collection,
-    storage: getStorageManifest(storyId, level),
-    loadSource,
-    load,
-  };
+  return { storyId, level, collection, storage: getStorageManifest(storyId, level), loadSource, load };
 };
 
-export const bookRegistry: readonly BookDefinition[] = [
-  createDefinition('adam', 'A2', 'prophets', () => loadBookPairFromModule(
-    () => import('../../data/adam/a2'),
-    'adamA2BookDataEn',
-    'adamA2BookDataAr',
-    'Adam A2',
-  )),
-  createDefinition('adam', 'B1', 'prophets', () => loadBookPairFromModule(
-    () => import('../../data/adam/b1'),
-    'adamB1BookDataEn',
-    'adamB1BookDataAr',
-    'Adam B1',
-  )),
-  createDefinition('adam', 'B2', 'prophets', () => loadBookPairFromModule(
-    () => import('../../data/adam/b2'),
-    'adamB2BookDataEn',
-    'adamB2BookDataAr',
-    'Adam B2',
-  )),
-
-  createDefinition('ibrahim', 'A2', 'prophets', () => loadBookPairFromModule(
-    () => import('../../data/abraham/a2'),
-    'abrahamA2BookDataEn',
-    'abrahamA2BookDataAr',
-    'Abraham A2',
-  )),
-  createDefinition('ibrahim', 'B1', 'prophets', () => loadBookPairFromModule(
-    () => import('../../data/abraham/b1'),
-    'abrahamB1BookDataEn',
-    'abrahamB1BookDataAr',
-    'Abraham B1',
-  )),
-  createDefinition('ibrahim', 'B2', 'prophets', () => loadBookPairFromModule(
-    () => import('../../data/abraham/b2'),
-    'abrahamB2BookDataEn',
-    'abrahamB2BookDataAr',
-    'Abraham B2',
-  )),
-
-  createDefinition('musa', 'A2', 'prophets', () => loadBookPairFromModule(
-    () => import('../../data/moses/a2'),
-    'mosesA2BookDataEn',
-    'mosesA2BookDataAr',
-    'Moses A2',
-  )),
-  createDefinition('musa', 'B1', 'prophets', () => loadBookPairFromModule(
-    () => import('../../data/moses/b1'),
-    'mosesB1BookDataEn',
-    'mosesB1BookDataAr',
-    'Moses B1',
-  )),
-  createDefinition('musa', 'B2', 'prophets', () => loadBookPairFromModule(
-    () => import('../../data/moses/b2'),
-    'mosesB2BookDataEn',
-    'mosesB2BookDataAr',
-    'Moses B2',
-  )),
-
-  createDefinition('mecca', 'A2', 'history', () => loadBookPairFromModule(
-    () => import('../../data/mecca/a2'),
-    'meccaA2BookDataEn',
-    'meccaA2BookDataAr',
-    'Mecca A2',
-  )),
-  createDefinition('mecca', 'B1', 'history', () => loadBookPairFromModule(
-    () => import('../../data/mecca/b1'),
-    'meccaB1BookDataEn',
-    'meccaB1BookDataAr',
-    'Mecca B1',
-  )),
-  createDefinition('mecca', 'B2', 'history', () => loadBookPairFromModule(
-    () => import('../../data/mecca/b2'),
-    'meccaB2BookDataEn',
-    'meccaB2BookDataAr',
-    'Mecca B2',
-  )),
-
-  createDefinition('ibnJubayr', 'A2', 'history', () => loadBookPairFromModule(
-    () => import('../../data/ibnJubayr/a2'),
-    'ibnJubayrA2BookDataEn',
-    'ibnJubayrA2BookDataAr',
-    'Ibn Jubayr A2',
-  )),
-
-  createDefinition('yunusEmre', 'A2', 'turkish', () => loadBookPairFromModule(
-    () => import('../../data/yunusEmre/a2'),
-    'yunusEmreA2BookDataEn',
-    'yunusEmreA2BookDataAr',
-    'Yunus Emre A2',
-  )),
-  createDefinition('yunusEmre', 'B1', 'turkish', () => loadBookPairFromModule(
-    () => import('../../data/yunusEmre/b1'),
-    'yunusEmreB1BookDataEn',
-    'yunusEmreB1BookDataAr',
-    'Yunus Emre B1',
-  )),
-  createDefinition('yunusEmre', 'B2', 'turkish', () => loadBookPairFromModule(
-    () => import('../../data/yunusEmre/b2'),
-    'yunusEmreB2BookDataEn',
-    'yunusEmreB2BookDataAr',
-    'Yunus Emre B2',
-  )),
-
-  // Hidden books (see hiddenStoryCatalog): English only until the Arabic edition arrives.
-  createDefinition('gevherNesibe', 'A2', 'turkish', () => loadBookPairFromModule(
-    () => import('../../data/gevherNesibe/a2'),
-    'gevherNesibeA2BookDataEn',
-    'gevherNesibeA2BookDataAr',
-    'Gevher Nesibe A2',
-  )),
-] as const;
+export const bookRegistry: readonly BookDefinition[] = bookCatalog.map(createDefinition);
 
 const registryByKey = new Map(bookRegistry.map(definition => [definitionKey(definition.storyId, definition.level), definition]));
 

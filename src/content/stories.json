@@ -1,0 +1,137 @@
+{
+ "schema": 1,
+ "stories": [
+  {
+   "id": "adam",
+   "text": {
+    "en": {
+     "name": "Prophet Adam",
+     "description": "The first human, the knowledge of names, and the beginning of humanity."
+    },
+    "ar": {
+     "name": "آدم عليه السلام",
+     "description": "الإنسان الأول، وتعليم الأسماء، وبداية البشرية."
+    }
+   },
+   "availableLevels": [
+    "A2",
+    "B1",
+    "B2"
+   ],
+   "collection": "prophets"
+  },
+  {
+   "id": "ibrahim",
+   "text": {
+    "en": {
+     "name": "Prophet Abraham",
+     "description": "The search for truth, the building of the Ka’ba, and unwavering faith."
+    },
+    "ar": {
+     "name": "إبراهيم عليه السلام",
+     "description": "البحث عن الحقيقة، وبناء الكعبة، والإيمان الراسخ."
+    }
+   },
+   "availableLevels": [
+    "A2",
+    "B1",
+    "B2"
+   ],
+   "collection": "prophets"
+  },
+  {
+   "id": "musa",
+   "text": {
+    "en": {
+     "name": "Prophet Moses",
+     "description": "The journey from the palace to the desert, and the liberation of a people."
+    },
+    "ar": {
+     "name": "موسى عليه السلام",
+     "description": "الرحلة من القصر إلى الصحراء، وتحرير بني إسرائيل من فرعون."
+    }
+   },
+   "availableLevels": [
+    "A2",
+    "B1",
+    "B2"
+   ],
+   "collection": "prophets"
+  },
+  {
+   "id": "mecca",
+   "text": {
+    "en": {
+     "name": "Mecca Before Islam",
+     "description": "The City and the Age of Ignorance: Mecca before the dawn of Islam."
+    },
+    "ar": {
+     "name": "مكة قبل الإسلام",
+     "description": "المدينة وعصر الجاهلية: مكة قبل بزوغ فجر الإسلام."
+    }
+   },
+   "availableLevels": [
+    "A2",
+    "B1",
+    "B2"
+   ],
+   "collection": "history"
+  },
+  {
+   "id": "ibnJubayr",
+   "text": {
+    "en": {
+     "name": "Ibn Jubayr",
+     "description": "A Great Andalusian Traveler of the Middle Ages"
+    },
+    "ar": {
+     "name": "ابن جبير",
+     "description": "رحّالة أندلسي كبير في العصور الوسطى"
+    }
+   },
+   "availableLevels": [
+    "A2"
+   ],
+   "collection": "history",
+   "englishOnly": true
+  },
+  {
+   "id": "yunusEmre",
+   "text": {
+    "en": {
+     "name": "Yunus Emre",
+     "description": "The story of a wise Anatolian dervish who taught love, humility, and devotion through simple Turkish poetry."
+    },
+    "ar": {
+     "name": "يونس إمره",
+     "description": "قصة يونس إمره وشعره وفكره الأخلاقي وتراثه الروحي في الأناضول."
+    }
+   },
+   "availableLevels": [
+    "A2",
+    "B1",
+    "B2"
+   ],
+   "collection": "turkish"
+  },
+  {
+   "id": "gevherNesibe",
+   "text": {
+    "en": {
+     "name": "The Gevher Nesibe Hospital",
+     "description": "The first hospital and medical school together in the world, in Seljuk Kayseri."
+    },
+    "ar": {
+     "name": "دار شفاء جوهر نسيبة",
+     "description": "أول مستشفى ومدرسة طبية معًا في العالم، في قيصري السلجوقية."
+    }
+   },
+   "availableLevels": [
+    "A2"
+   ],
+   "collection": "turkish",
+   "englishOnly": true,
+   "hidden": true
+  }
+ ]
+}

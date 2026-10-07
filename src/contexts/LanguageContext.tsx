@@ -1,6 +1,11 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
+import { defaultLanguageCode, formatNumberIn, languageCodes, languageSetting } from '../content/languages';
 
 type Language = 'en' | 'ar';
+
+/** Languages come from src/content/languages.json; these two have translation tables today. */
+const isLanguage = (value: string | null): value is Language =>
+  Boolean(value) && languageCodes.includes(value as string) && (value === 'en' || value === 'ar');
 
 interface LanguageContextType {
   language: Language;
@@ -1283,38 +1288,35 @@ const translations: Record<Language, Record<string, string>> = {
   }
 };
 
-const arabicNumerals = ['٠', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩'];
-
 export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [language, setLanguage] = useState<Language>(() => {
     // A printed book's QR code says which edition it belongs to (?lang=en or ?lang=ar).
     const fromLink = new URLSearchParams(window.location.search).get('lang');
-    if (fromLink === 'en' || fromLink === 'ar') return fromLink;
+    if (isLanguage(fromLink)) return fromLink;
     const stored = localStorage.getItem('app_language');
-    if (stored === 'en' || stored === 'ar') return stored;
-    return navigator.language?.toLowerCase().startsWith('ar') ? 'ar' : 'en';
+    if (isLanguage(stored)) return stored;
+    const fromBrowser = languageCodes.find(code => navigator.language?.toLowerCase().startsWith(code));
+    return isLanguage(fromBrowser ?? null) ? (fromBrowser as Language) : (defaultLanguageCode as Language);
   });
 
-  const isRTL = language === 'ar';
+  const setting = languageSetting(language);
+  const isRTL = setting.direction === 'rtl';
 
   useEffect(() => {
-    document.documentElement.dir = isRTL ? 'rtl' : 'ltr';
+    document.documentElement.dir = setting.direction;
     document.documentElement.lang = language;
     localStorage.setItem('app_language', language);
-  }, [language, isRTL]);
+  }, [language, setting.direction]);
 
   const t = (key: string) => {
     return translations[language][key] || key;
   };
 
-  const formatNumber = (num: number | string) => {
-    if (language !== 'ar') return String(num);
-    return String(num).replace(/[0-9]/g, (d) => arabicNumerals[parseInt(d)]);
-  };
+  const formatNumber = (num: number | string) => formatNumberIn(language, num);
 
   return (
     <LanguageContext.Provider value={{ language, setLanguage, isRTL, t, formatNumber }}>
-      <div className={isRTL ? 'font-arabic' : 'font-sans'}>
+      <div className={setting.fontClass}>
         {children}
       </div>
     </LanguageContext.Provider>

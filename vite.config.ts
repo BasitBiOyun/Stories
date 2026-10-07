@@ -21,19 +21,25 @@ const inlineEntryCss = (): Plugin => ({
   },
 });
 
-// Books that are not published yet (hiddenStoryCatalog in storyCatalog.ts) are built into files
+// Books that are not published yet (the books marked hidden in src/content/stories.json) are built into files
 // named assets/hidden-*.js. When PREVIEW_KEY is set on the server, those files are only sent to a
 // browser that opened the preview link with that key (deploy/server.mjs), so the unpublished texts
 // cannot be downloaded by anyone who reads the app's code.
 const hiddenStoryIds = (): string[] => {
-  const source = readFileSync(path.resolve(__dirname, 'src/core/content/storyCatalog.ts'), 'utf8');
-  const start = source.indexOf('export const hiddenStoryCatalog');
-  if (start < 0) return [];
-  const block = source.slice(start, source.indexOf('\n];', start));
-  return [...block.matchAll(/^ {4}id: '([A-Za-z0-9]+)'/gm)].map(match => match[1]);
+  const file = JSON.parse(readFileSync(path.resolve(__dirname, 'src/content/stories.json'), 'utf8')) as {
+    stories: { id: string; hidden?: boolean }[];
+  };
+  return file.stories.filter(story => story.hidden).map(story => story.id);
 };
-const hiddenDataFolders = hiddenStoryIds().map(id => `${path.sep}src${path.sep}data${path.sep}${id}${path.sep}`);
-const isHiddenModule = (id: string) => hiddenDataFolders.some(folder => id.includes(folder));
+// Content files are named <storyId>-<level>-<language>.json under src/content.
+const hiddenContentPrefixes = hiddenStoryIds().map(id => `${path.sep}src${path.sep}content${path.sep}`.concat(`$$${id}-`));
+const isHiddenModule = (id: string) => hiddenContentPrefixes.some(prefix => {
+  const [folder, start] = prefix.split('$$');
+  const index = id.indexOf(folder);
+  if (index < 0) return false;
+  const rest = id.slice(index + folder.length);
+  return rest.startsWith(`books${path.sep}${start}`) || rest.startsWith(`guides${path.sep}${start}`);
+});
 
 // The preview branch is deployed by Cloud Build; GitHub Actions are not required for this path.
 export default defineConfig(() => {

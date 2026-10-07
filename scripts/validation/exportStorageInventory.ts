@@ -1,3 +1,5 @@
+// Reads the content JSON from disk (the browser build reads it through Vite instead).
+import '../lib/nodeContent';
 import { getDownloadURL, listAll, ref } from '@firebase/storage';
 import { storage } from '../../src/lib/firebase';
 import { getBookDefinition } from '../../src/core/content/bookRegistry';

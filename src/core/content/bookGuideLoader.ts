@@ -1,13 +1,13 @@
+import type { Level } from '../../types';
 import type {
-  Level,
   StudentGuideMetadata,
   StudentGuideSection,
   TeacherGuideMetadata,
   TeacherGuideSection,
 } from '../../types';
 import type { StoryId } from './contracts';
-
-type GuideModule = Record<string, unknown>;
+import { readContent } from '../../content/contentSource';
+import { editionName } from './bookRegistry';
 
 export interface TeacherGuideData {
   content: TeacherGuideSection[];
@@ -31,144 +31,34 @@ export interface BilingualSelfStudyGuideData {
   ar: SelfStudyGuideData;
 }
 
-const teacherGuideModules = import.meta.glob('../../data/*/*/*/teacherGuide.ts');
-const selfStudyGuideModules = import.meta.glob('../../data/*/*/*/selfStudyGuide.ts');
+interface GuideFile {
+  schema: number;
+  teacherGuide: TeacherGuideData;
+  selfStudyGuide: SelfStudyGuideData;
+}
 
-const storyFolder: Record<StoryId, string> = {
-  adam: 'adam',
-  ibrahim: 'abraham',
-  musa: 'moses',
-  mecca: 'mecca',
-  ibnJubayr: 'ibnJubayr',
-  yunusEmre: 'yunusEmre',
-  gevherNesibe: 'gevherNesibe',
-};
+const fileCache = new Map<string, Promise<GuideFile>>();
 
-const isObject = (value: unknown): value is Record<string, unknown> =>
-  Boolean(value) && typeof value === 'object' && !Array.isArray(value);
-
-const isChapterGuide = (value: unknown): value is TeacherGuideSection[] =>
-  Array.isArray(value)
-  && value.length > 0
-  && isObject(value[0])
-  && typeof value[0].chapter === 'string'
-  && Array.isArray(value[0].objectives)
-  && typeof value[0].lessonPlan === 'string';
-
-const isStudentSections = (value: unknown): value is StudentGuideSection[] =>
-  Array.isArray(value)
-  && value.length > 0
-  && isObject(value[0])
-  && typeof value[0].title === 'string'
-  && typeof value[0].text === 'string'
-  && Array.isArray(value[0].points)
-  && !('chapter' in value[0]);
-
-const isTeacherMetadata = (value: unknown): value is TeacherGuideMetadata =>
-  isObject(value)
-  && (
-    'purpose' in value
-    || 'approachDesc' in value
-    || 'targetLearners' in value
-    || 'assessmentOverview' in value
-    || 'readingFramework' in value
-    || 'rubricRows' in value
-  );
-
-const isStudentMetadata = (value: unknown): value is StudentGuideMetadata =>
-  isObject(value)
-  && (
-    'estimatedStudyTime' in value
-    || 'learningGoals' in value
-    || 'recommendedUse' in value
-    || 'whoIsThisFor' in value
-    || 'audience' in value
-  );
-
-const modulePath = (
-  storyId: StoryId,
-  level: Level,
-  language: 'en' | 'ar',
-  file: 'teacherGuide' | 'selfStudyGuide',
-) => `../../data/${storyFolder[storyId]}/${level.toLowerCase()}/${language}/${file}.ts`;
-
-// English-only books have no ar/ guide files; their Arabic slot reuses the English guide.
-const withEnglishFallback = (
-  modules: Record<string, () => Promise<unknown>>,
-  path: string,
-) => (modules[path] ? path : path.replace('/ar/', '/en/'));
-
-const loadModule = async (
-  modules: Record<string, () => Promise<unknown>>,
-  path: string,
-): Promise<GuideModule> => {
-  const loader = modules[withEnglishFallback(modules, path)];
-  if (!loader) throw new Error(`[Guide Loader] Missing module: ${path}`);
-  const loaded = await loader();
-  return loaded && typeof loaded === 'object' ? loaded as GuideModule : {};
-};
-
-const extractTeacherGuide = (module: GuideModule): TeacherGuideData => {
-  const values = Object.values(module);
-  return {
-    content: values.find(isChapterGuide) ?? [],
-    metadata: values.find(isTeacherMetadata),
-  };
-};
-
-const extractSelfStudyGuide = (module: GuideModule): SelfStudyGuideData => {
-  const values = Object.values(module);
-  const textCandidates = values.filter((value): value is string => (
-    typeof value === 'string' && value.trim().length > 40
-  ));
-
-  return {
-    content: values.find(isChapterGuide) ?? [],
-    metadata: values.find(isStudentMetadata),
-    sections: values.find(isStudentSections),
-    text: textCandidates.sort((left, right) => right.length - left.length)[0],
-  };
-};
-
-const teacherCache = new Map<string, Promise<BilingualTeacherGuideData>>();
-const selfStudyCache = new Map<string, Promise<BilingualSelfStudyGuideData>>();
-
-export const loadTeacherGuideData = (
-  storyId: StoryId,
-  level: Level,
-): Promise<BilingualTeacherGuideData> => {
-  const key = `${storyId}:${level}`;
-  const cached = teacherCache.get(key);
+const guideFile = (storyId: StoryId, level: Level, language: 'en' | 'ar'): Promise<GuideFile> => {
+  const name = editionName(storyId, level, language);
+  const cached = fileCache.get(name);
   if (cached) return cached;
-
-  const request = Promise.all([
-    loadModule(teacherGuideModules, modulePath(storyId, level, 'en', 'teacherGuide')),
-    loadModule(teacherGuideModules, modulePath(storyId, level, 'ar', 'teacherGuide')),
-  ]).then(([en, ar]) => ({
-    en: extractTeacherGuide(en),
-    ar: extractTeacherGuide(ar),
-  }));
-
-  teacherCache.set(key, request);
+  const request = readContent<GuideFile>('guides', name);
+  fileCache.set(name, request);
   return request;
 };
 
-export const loadSelfStudyGuideData = (
+const bothLanguages = async <T>(
   storyId: StoryId,
   level: Level,
-): Promise<BilingualSelfStudyGuideData> => {
-  const key = `${storyId}:${level}`;
-  const cached = selfStudyCache.get(key);
-  if (cached) return cached;
-
-  const request = Promise.all([
-    loadModule(selfStudyGuideModules, modulePath(storyId, level, 'en', 'selfStudyGuide')),
-    loadModule(selfStudyGuideModules, modulePath(storyId, level, 'ar', 'selfStudyGuide')),
-  ]).then(([en, ar]) => ({
-    en: extractSelfStudyGuide(en),
-    ar: extractSelfStudyGuide(ar),
-  }));
-
-  selfStudyCache.set(key, request);
-  return request;
+  pick: (file: GuideFile) => T,
+): Promise<{ en: T; ar: T }> => {
+  const [en, ar] = await Promise.all([guideFile(storyId, level, 'en'), guideFile(storyId, level, 'ar')]);
+  return { en: pick(en), ar: pick(ar) };
 };
+
+export const loadTeacherGuideData = (storyId: StoryId, level: Level): Promise<BilingualTeacherGuideData> =>
+  bothLanguages(storyId, level, file => file.teacherGuide);
+
+export const loadSelfStudyGuideData = (storyId: StoryId, level: Level): Promise<BilingualSelfStudyGuideData> =>
+  bothLanguages(storyId, level, file => file.selfStudyGuide);

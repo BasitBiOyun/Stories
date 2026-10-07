@@ -1,0 +1,3372 @@
+{
+ "schema": 1,
+ "storyId": "yunusEmre",
+ "level": "A2",
+ "language": "en",
+ "collection": "turkish",
+ "book": {
+  "id": "yunusEmre-a2-en",
+  "title": "Yunus Emre: Faith, Character, and Poetry (A2)",
+  "level": "A2",
+  "baseFontSize": 13,
+  "pages": [
+   {
+    "id": 1,
+    "type": "story",
+    "title": "Yunus Emre",
+    "image": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/yunus%2Fa2%2Fimages%2Fyunus_a2_ch1-clean.png?alt=media&token=6c39aefe-e1bc-4d97-a8c5-553d0db338a9",
+    "audioUrl": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/yunus%2Fa2%2Faudio%2F00_Chapter_1.mp3?alt=media&token=2c220cf9-a3d3-4563-bbab-c15c66f575f3",
+    "content": "Yunus Emre was one of the first great Anatolian Turkish poets. He was born in 1240 in Anatolia. People could easily understand his poems because he wrote and said them in simple Turkish. He helped improve the Turkish language. His poems have important moral lessons. These lessons are still very important for Turkish culture today. He also spoke of the greatness and oneness of Allah, love for Allah and Prophet Muhammad (pbuh).\n\nAt that time, schools were called madrasas. After he completed his madrasa education, he followed the way of the dervishes and became a dervish. Dervishes trained to be good people with moral values under the guidance of a teacher at dervish houses.\n\nYunus Emre became a dervish pupil of Taptuk Emre. He traveled to many cities in Anatolia, as well as Syria and Azerbaijan. He lived in the same period as Mevlana. Mevlana died in 1273 and later Yunus passed away in 1320. Yunus was 33 or 34 years old when Mevlana died.",
+    "vocabulary": [
+     {
+      "word": "Anatolia",
+      "definition": "__historical_entity__:yunus-anatolia"
+     },
+     {
+      "word": "Syria",
+      "definition": "__historical_entity__:yunus-syria"
+     },
+     {
+      "word": "Azerbaijan",
+      "definition": "__historical_entity__:yunus-azerbaijan"
+     },
+     {
+      "word": "madrasa",
+      "definition": "__historical_entity__:yunus-madrasa"
+     },
+     {
+      "word": "Yunus Emre",
+      "definition": "__historical_entity__:yunus-yunus-emre"
+     },
+     {
+      "word": "Taptuk Emre",
+      "definition": "__historical_entity__:yunus-taptuk-emre"
+     },
+     {
+      "word": "Mevlana",
+      "definition": "__historical_entity__:yunus-mevlana-rumi"
+     },
+     {
+      "word": "moral",
+      "definition": "About good behavior and right actions."
+     },
+     {
+      "word": "dervish",
+      "definition": "A person who follows a simple spiritual life."
+     },
+     {
+      "word": "guidance",
+      "definition": "Help and advice about what to do."
+     },
+     {
+      "word": "pupil",
+      "definition": "A student who learns from a teacher."
+     }
+    ],
+    "hotspots": [
+     {
+      "id": "h1-1",
+      "x": 36,
+      "y": 42,
+      "title": "Simple Turkish",
+      "description": "People could easily understand his poems because he wrote and said them in simple Turkish."
+     },
+     {
+      "id": "h1-2",
+      "x": 68,
+      "y": 50,
+      "title": "Taptuk Emre",
+      "description": "Yunus Emre became a dervish pupil of Taptuk Emre."
+     }
+    ],
+    "exercises": [
+     {
+      "id": "yunus-a2-quick-1",
+      "type": "matching",
+      "matchingHeadings": {
+       "left": "Year",
+       "right": "What happened"
+      },
+      "title": "Three Years",
+      "instructions": "Match each year with what happened in Chapter 1.",
+      "question": "What happened in each year?",
+      "matchingPairs": [
+       {
+        "left": "1240",
+        "right": "Yunus Emre was born in Anatolia."
+       },
+       {
+        "left": "1273",
+        "right": "Mevlana died."
+       },
+       {
+        "left": "1320",
+        "right": "Yunus Emre passed away."
+       }
+      ],
+      "correctAnswer": {
+       "1240": "Yunus Emre was born in Anatolia.",
+       "1273": "Mevlana died.",
+       "1320": "Yunus Emre passed away."
+      },
+      "explanation": "Chapter 1 says Yunus Emre “was born in 1240 in Anatolia.” The last paragraph says: “Mevlana died in 1273 and later Yunus passed away in 1320.”",
+      "feedback": {
+       "correct": "Well done! Yunus was born in 1240. Mevlana died in 1273, and Yunus died later, in 1320.",
+       "incorrect": "Look for the years in Chapter 1: one is in the first paragraph and two are in the last paragraph. Who was born? Who died first?"
+      }
+     }
+    ],
+    "languageFocusExercises": [
+     {
+      "id": "yunus-a2-language-1-past-life-forms",
+      "type": "matching",
+      "title": "Past Forms in a Life Story",
+      "instructions": "Match each verb with its past form from Chapter 1.",
+      "question": "What is the past form of each verb?",
+      "matchingHeadings": {
+       "left": "Verb",
+       "right": "Past form in Chapter 1"
+      },
+      "matchingPairs": [
+       {
+        "left": "become",
+        "right": "became"
+       },
+       {
+        "left": "write",
+        "right": "wrote"
+       },
+       {
+        "left": "say",
+        "right": "said"
+       },
+       {
+        "left": "speak",
+        "right": "spoke"
+       }
+      ],
+      "correctAnswer": {
+       "become": "became",
+       "write": "wrote",
+       "say": "said",
+       "speak": "spoke"
+      },
+      "explanation": "A life story tells finished events, so Chapter 1 uses past forms. These four verbs are irregular: they do not take -ed. “He became a dervish.” “He wrote and said them in simple Turkish.” “He also spoke of the greatness and oneness of Allah.”",
+      "feedback": {
+       "correct": "Good. You know the irregular past forms in Yunus Emre’s life story.",
+       "incorrect": "Look at Chapter 1 again. Find “became”, “wrote”, “said” and “spoke”. They do not end in -ed."
+      }
+     },
+     {
+      "id": "yunus-a2-language-1-meaning-links",
+      "type": "word-bank",
+      "title": "Because, After, When",
+      "instructions": "Fill each gap from the word bank. Two words are not needed.",
+      "question": "Which word gives a reason, an order or a time?",
+      "fillBlanksText": "People could easily understand his poems [blank] he … them in simple Turkish. … [blank] he completed his madrasa education, he followed the way of the dervishes … Yunus was 33 or 34 years old [blank] Mevlana died.",
+      "wordBank": [
+       "because",
+       "After",
+       "when",
+       "so",
+       "but"
+      ],
+      "correctAnswer": [
+       "because",
+       "After",
+       "when"
+      ],
+      "explanation": "“Because” gives a reason: people understood his poems because he used simple Turkish. “After” shows the order of events: First his madrasa education, then the dervish way. “When” links a fact to a time: Yunus was 33 or 34 at the time Mevlana died.",
+      "feedback": {
+       "correct": "Correct. You used because for a reason, after for the order of events and when for a time.",
+       "incorrect": "Read the first and last paragraphs of Chapter 1 again. Ask: Is it a reason? Is it the next event? Is it a time?"
+      }
+     },
+     {
+      "id": "yunus-a2-language-1-mini-biography",
+      "type": "reflection",
+      "title": "Say It: Mini Biography",
+      "instructions": "Say three short sentences about Yunus Emre’s life.",
+      "question": "What do you know about Yunus Emre’s life?",
+      "correctAnswer": null,
+      "explanation": "A clear A2 response can combine a birth fact, an education or life-change fact, and one more past event from the chapter.",
+      "feedback": {
+       "correct": "Use three accurate past-life sentences from Chapter 1.",
+       "incorrect": ""
+      },
+      "discussionPrompts": [
+       {
+        "question": "Sentence 1 — Say when and where he was born: “Yunus Emre was born …”",
+        "mode": "Individual",
+        "example": "Yunus Emre was born in 1240 in Anatolia."
+       },
+       {
+        "question": "Sentence 2 — Say what he became: “After he completed …, he became …”",
+        "mode": "Individual",
+        "example": "After he completed his madrasa education, he became a dervish."
+       },
+       {
+        "question": "Sentence 3 — Add one more fact: “He traveled …” or “He lived …”",
+        "mode": "Pair",
+        "example": "He traveled to many cities in Anatolia, and to Syria and Azerbaijan too."
+       }
+      ]
+     }
+    ],
+    "beforeYouRead": {
+     "kind": "guess",
+     "question": "Guess first: Which lands did Yunus Emre travel to?",
+     "options": [
+      "Syria and Azerbaijan",
+      "Egypt and Spain",
+      "India and China"
+     ],
+     "answer": 0,
+     "quote": "as well as Syria and Azerbaijan"
+    },
+    "iCan": [
+     "I can say who Yunus Emre was.",
+     "I can say what happened in the past and why.",
+     "I can give a short life story of a person."
+    ]
+   },
+   {
+    "id": 2,
+    "type": "story",
+    "title": "Our Dervish Yunus",
+    "image": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/yunus%2Fa2%2Fimages%2Fyunus_a2_ch2-clean.png?alt=media&token=5e5d2c97-81c9-44a3-b142-aa7c39563a67",
+    "audioUrl": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/yunus%2Fa2%2Faudio%2F01_Chapter_2_Our_Dervish_Yunus.mp3?alt=media&token=0f6fcff6-eb0f-48e2-a2bb-74080c44f3e7",
+    "content": "Dervishes tried to find Allah everywhere not only with their eyes but also with their hearts. They witnessed the signs of Allah in the whole universe. They shared these experiences about Allah with other people. Dervishes were fully aware that they were in need of Allah in every way. That is why, even if they were rich, they always called themselves poor. If they were wealthy, their wealth was not in their hearts, but in their hands to give to charity. They shared what they had with the needy; they could call themselves poor, but their hearts were very rich. Dervishes were generous-hearted and open-handed.\n\nBecause of the Creator, they forgave and tolerated others. They were kind and cheerful; they were not cold or sulky. They tried to understand everyone and found a solution to their problems. They always tried to leave bad habits like jealousy, arrogance, stinginess, greediness, selfishness, or gossiping.",
+    "vocabulary": [
+     {
+      "word": "witnessed",
+      "definition": "Saw or felt something clearly."
+     },
+     {
+      "word": "universe",
+      "definition": "Everything that exists."
+     },
+     {
+      "word": "charity",
+      "definition": "Help given to people in need."
+     },
+     {
+      "word": "sulky",
+      "definition": "Unhappy and unfriendly in silence."
+     }
+    ],
+    "hotspots": [
+     {
+      "id": "h2-1",
+      "x": 32,
+      "y": 46,
+      "title": "Hearts and Eyes",
+      "description": "Dervishes tried to find Allah everywhere not only with their eyes but also with their hearts."
+     },
+     {
+      "id": "h2-2",
+      "x": 70,
+      "y": 52,
+      "title": "The Needy",
+      "description": "They shared what they had with the needy."
+     }
+    ],
+    "exercises": [
+     {
+      "id": "yunus-a2-quick-2",
+      "type": "true-false",
+      "title": "Wealth in the Hand",
+      "instructions": "Is the sentence true or false? Use Chapter 2.",
+      "question": "When the dervishes were rich, they kept their money for themselves.",
+      "correctAnswer": false,
+      "explanation": "Chapter 2 says their wealth was “not in their hearts, but in their hands to give to charity.” It also says, “They shared what they had with the needy.”",
+      "feedback": {
+       "correct": "Correct! The dervishes did not keep their wealth. They shared it with people in need.",
+       "incorrect": "Read the end of the first paragraph again. What did the dervishes do with what they had?"
+      }
+     }
+    ],
+    "languageFocusExercises": [
+     {
+      "id": "yunus-a2-language-2-past-habit-chunks",
+      "type": "multiple-choice",
+      "title": "Why Did They Say “Poor”?",
+      "instructions": "Read the sentences from Chapter 2. Then choose the best answer.",
+      "question": "“Dervishes were fully aware that they were in need of Allah in every way. That is why, even if they were rich, they always called themselves poor.” Why did the dervishes call themselves poor?",
+      "options": [
+       "They had no money.",
+       "They knew that they needed Allah in every way.",
+       "They wanted people to give them charity."
+      ],
+      "correctAnswer": 1,
+      "explanation": "“That is why” points back to the sentence before it. That sentence gives the reason: they knew they needed Allah. “Even if they were rich” means: Also at times when they had money. So “poor” here is not about money.",
+      "feedback": {
+       "correct": "Correct. “That is why” points back to the reason: they needed Allah in every way.",
+       "incorrect": "Look at the sentence before “That is why”. It gives the reason. And “even if they were rich” tells us they sometimes had money."
+      }
+     },
+     {
+      "id": "yunus-a2-language-2-reason-contrast-links",
+      "type": "choose-form",
+      "title": "But, Because Of, Were Not",
+      "instructions": "Choose the correct words for each sentence from Chapter 2.",
+      "question": "Which words fit the sentences about the dervishes?",
+      "formChoices": [
+       {
+        "sentence": "If they were wealthy, their wealth was not in their hearts, [choice] in their hands to give to charity.",
+        "options": [
+         "and",
+         "but",
+         "so"
+        ],
+        "answer": 1
+       },
+       {
+        "sentence": "[choice] the Creator, they forgave and tolerated others.",
+        "options": [
+         "Because",
+         "Even if",
+         "Because of"
+        ],
+        "answer": 2
+       },
+       {
+        "sentence": "They were kind and cheerful; they [choice] cold or sulky.",
+        "options": [
+         "were not",
+         "did not",
+         "not were"
+        ],
+        "answer": 0
+       }
+      ],
+      "correctAnswer": null,
+      "explanation": "“Not … but …” takes away one idea and gives the right one: Not in their hearts, but in their hands. “Because of” comes before a noun (“because of the Creator”); “because” needs a full sentence after it. With an adjective in the past, use “were not”: “they were not cold or sulky”.",
+      "feedback": {
+       "correct": "Well done. You chose the right linking word and the right past form.",
+       "incorrect": "Read Chapter 2 again. Is there a noun after the gap or a full sentence? Is the word after the gap an adjective (cold, sulky)?"
+      }
+     },
+     {
+      "id": "yunus-a2-language-2-character-portrait",
+      "type": "reflection",
+      "title": "Say It: Character Portrait",
+      "instructions": "Say three short sentences about the dervishes.",
+      "question": "What were the dervishes like?",
+      "correctAnswer": null,
+      "explanation": "A strong A2 response combines one character description, one repeated action and one contrast or reason from the chapter.",
+      "feedback": {
+       "correct": "Use accurate Chapter 2 language to describe character, action and contrast.",
+       "incorrect": ""
+      },
+      "discussionPrompts": [
+       {
+        "question": "Sentence 1 — Say what they were like: “They were … and …”",
+        "mode": "Individual",
+        "example": "They were kind and cheerful."
+       },
+       {
+        "question": "Sentence 2 — Say what they did: “They tried to …” or “They shared …”",
+        "mode": "Individual",
+        "example": "They tried to understand everyone and find a solution to their problems."
+       },
+       {
+        "question": "Sentence 3 — Add “but” or a reason: “They called themselves poor, but …”",
+        "mode": "Pair",
+        "example": "They called themselves poor, but their hearts were very rich."
+       }
+      ]
+     }
+    ],
+    "beforeYouRead": {
+     "kind": "guess",
+     "question": "Guess first: Where did dervishes try to find Allah?",
+     "options": [
+      "only in the mosque",
+      "only in books",
+      "everywhere"
+     ],
+     "answer": 2,
+     "quote": "Dervishes tried to find Allah everywhere"
+    },
+    "iCan": [
+     "I can say how the dervishes lived and shared.",
+     "I can say what people were like and what they were not like.",
+     "I can describe a kind person in three sentences."
+    ]
+   },
+   {
+    "id": 3,
+    "type": "story",
+    "title": "The Difficult Path",
+    "image": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/yunus%2Fa2%2Fimages%2Fyunus_a2_ch3-clean.png?alt=media&token=200a6e74-d04a-4f4b-9348-f21b2dd1bab3",
+    "audioUrl": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/yunus%2Fa2%2Faudio%2F02_Chapter_3_The_Difficult_Path.mp3?alt=media&token=37f699e8-d728-448f-b90c-d482050415d6",
+    "content": "They followed honesty, patience, humility, generosity, respect and trust in Allah.\n\nIn fact, the path of dervishhood was a very difficult one. Yunus Emre beautifully makes this point in his poem that begins with the words, “You cannot be a dervish.”\n\n[POEM_GRID]\n[POEM]\nEnglish:\nA dervish needs a wounded heart.\nHe needs eyes full of tears.\nHe needs to be as easy going as a sheep.\nYou can’t be a dervish.\nTurkish:\nDerviş bağrı baş gerek\nGözü dolu yaş gerek\nKoyundan yavaş gerek\nSen derviş olamazsın\n[/POEM]\n[POEM]\nEnglish:\nHe must be without hands when someone hits him.\nHe must be tongueless when people make fun of him.\nA dervish needs to be without any desires (selfless).\nYou can’t be a dervish.\nTurkish:\nDövene elsiz gerek\nSövene dilsiz gerek\nDerviş gönülsüz gerek\nSen derviş olamazsın\n[/POEM]\n[/POEM_GRID]\n\nDervishes had a way of life of their own. They ate less, spoke less, slept less, and spent their time on useful activities. Dervishes lived a moderate and disciplined life according to Islam.\n\nYunus Emre was one of these dervishes. He received his dervish training at the school of his master, Taptuk Emre.",
+    "vocabulary": [
+     {
+      "word": "Yunus Emre",
+      "definition": "__historical_entity__:yunus-yunus-emre"
+     },
+     {
+      "word": "Taptuk Emre",
+      "definition": "__historical_entity__:yunus-taptuk-emre"
+     },
+     {
+      "word": "patience",
+      "definition": "Staying calm while waiting or facing difficulty."
+     },
+     {
+      "word": "generosity",
+      "definition": "Being happy to give to others."
+     },
+     {
+      "word": "moderate",
+      "definition": "Not too much and not too little."
+     },
+     {
+      "word": "disciplined",
+      "definition": "Following clear rules and a fixed order every day."
+     }
+    ],
+    "hotspots": [
+     {
+      "id": "h3-1",
+      "x": 35,
+      "y": 45,
+      "title": "Path of Dervishhood",
+      "description": "The path of dervishhood was a very difficult one."
+     },
+     {
+      "id": "h3-2",
+      "x": 66,
+      "y": 54,
+      "title": "Useful Activities",
+      "description": "They ate less, spoke less, slept less, and spent their time on useful activities."
+     }
+    ],
+    "exercises": [
+     {
+      "id": "yunus-a2-quick-3",
+      "type": "multiple-choice",
+      "title": "A Way of Life",
+      "instructions": "Read the question. Choose the answer from Chapter 3.",
+      "question": "The dervishes had a way of life of their own. How did they live?",
+      "options": [
+       "They spent all their days at the madrasa.",
+       "They ate less, spoke less and slept less.",
+       "They ate more and slept more than other people."
+      ],
+      "correctAnswer": 1,
+      "explanation": "Chapter 3 says: “They ate less, spoke less, slept less, and spent their time on useful activities.” It calls this “a moderate and disciplined life according to Islam.”",
+      "feedback": {
+       "correct": "Yes! They ate, spoke and slept less, and they used their time well. This was a disciplined life.",
+       "incorrect": "Read the paragraph after the poem again. Find the sentence after “a way of life of their own”."
+      }
+     }
+    ],
+    "languageFocusExercises": [
+     {
+      "id": "yunus-a2-language-3-need-must-cant",
+      "type": "matching",
+      "title": "What Does the Poem Mean?",
+      "instructions": "Match each line of the poem with its meaning.",
+      "question": "What does a dervish need, and what must he do?",
+      "matchingHeadings": {
+       "left": "Line from the poem",
+       "right": "Meaning"
+      },
+      "matchingPairs": [
+       {
+        "left": "He needs to be as easy going as a sheep.",
+        "right": "He is calm and gentle with everyone."
+       },
+       {
+        "left": "He must be without hands when someone hits him.",
+        "right": "He does not fight back."
+       },
+       {
+        "left": "He must be tongueless when people make fun of him.",
+        "right": "He says nothing back to rude people."
+       },
+       {
+        "left": "A dervish needs to be without any desires (selfless).",
+        "right": "He wants nothing for himself."
+       }
+      ],
+      "correctAnswer": {
+       "He needs to be as easy going as a sheep.": "He is calm and gentle with everyone.",
+       "He must be without hands when someone hits him.": "He does not fight back.",
+       "He must be tongueless when people make fun of him.": "He says nothing back to rude people.",
+       "A dervish needs to be without any desires (selfless).": "He wants nothing for himself."
+      },
+      "explanation": "The poem uses pictures, not real body parts: “without hands” means he does not hit back, and “tongueless” means he does not answer rude words. “Needs to” and “must” tell us what is necessary for a dervish. The last line of each verse, “You can’t be a dervish”, says that this path is very hard.",
+      "feedback": {
+       "correct": "Good. You understood the pictures in the poem.",
+       "incorrect": "Read the poem again. Ask: What does a person “without hands” not do? What does a “tongueless” person not do?"
+      }
+     },
+     {
+      "id": "yunus-a2-language-3-living-with-less",
+      "type": "choose-form",
+      "title": "Ate, Slept, Spent",
+      "instructions": "Choose the correct past form for each sentence.",
+      "question": "How did the dervishes live?",
+      "formChoices": [
+       {
+        "sentence": "Dervishes had a way of life of their own. They [choice] less, …",
+        "options": [
+         "eated",
+         "ate",
+         "eat"
+        ],
+        "answer": 1
+       },
+       {
+        "sentence": "… spoke less, [choice] less, …",
+        "options": [
+         "sleep",
+         "sleeped",
+         "slept"
+        ],
+        "answer": 2
+       },
+       {
+        "sentence": "… and [choice] their time on useful activities.",
+        "options": [
+         "spent",
+         "spended",
+         "spend"
+        ],
+        "answer": 0
+       }
+      ],
+      "correctAnswer": null,
+      "explanation": "“Eat”, “sleep” and “spend” are irregular verbs. Their past forms are “ate”, “slept” and “spent”, not “eated”, “sleeped” or “spended”. With “less”, the sentence shows a simple, disciplined life.",
+      "feedback": {
+       "correct": "Correct. You used the irregular past forms.",
+       "incorrect": "Look at the paragraph after the poem in Chapter 3. These verbs do not take -ed in the past."
+      }
+     },
+     {
+      "id": "yunus-a2-language-3-difficult-path",
+      "type": "reflection",
+      "title": "Say It: The Difficult Path",
+      "instructions": "Say three short sentences about the dervish way of life.",
+      "question": "Why is the dervish path hard?",
+      "correctAnswer": null,
+      "explanation": "A strong A2 response reuses the chapter’s own language functions rather than memorising a grammar rule.",
+      "feedback": {
+       "correct": "Use one sentence with needs, one with must, and one about the disciplined way of life.",
+       "incorrect": ""
+      },
+      "discussionPrompts": [
+       {
+        "question": "Sentence 1 — Say what a dervish needs: “A dervish needs …”",
+        "mode": "Individual",
+        "example": "A dervish needs a wounded heart and eyes full of tears."
+       },
+       {
+        "question": "Sentence 2 — Say what he must do: “He must …”",
+        "mode": "Individual",
+        "example": "He must not fight back when someone hits him."
+       },
+       {
+        "question": "Sentence 3 — Say how they lived: “Dervishes ate less, … and …”",
+        "mode": "Pair",
+        "example": "Dervishes ate less, slept less and spent their time on useful activities."
+       }
+      ]
+     }
+    ],
+    "beforeYouRead": {
+     "kind": "guess",
+     "question": "Guess first: What does a dervish need, says the poem?",
+     "options": [
+      "a big house",
+      "a wounded heart",
+      "a fast horse"
+     ],
+     "answer": 1,
+     "quote": "A dervish needs a wounded heart."
+    },
+    "iCan": [
+     "I can tell why the dervish path was hard.",
+     "I can say what a person needs and must do.",
+     "I can explain a simple way of life."
+    ],
+    "groupTask": {
+     "type": "mapGap",
+     "title": "Yunus Emre’s Life on the Map",
+     "time": "10 min",
+     "groupSize": "3–4",
+     "roles": [
+      {
+       "name": "Reader A",
+       "job": "You know the start: “He was born in 1240 in Anatolia.”"
+      },
+      {
+       "name": "Reader B",
+       "job": "You know the travels: “He traveled to many cities in Anatolia, as well as Syria and Azerbaijan.”"
+      },
+      {
+       "name": "Reader C",
+       "job": "You know the dates: “Mevlana died in 1273 and later Yunus passed away in 1320.”"
+      },
+      {
+       "name": "Map Keeper",
+       "job": "You ask questions and write the places and dates on a simple map."
+      }
+     ],
+     "steps": [
+      "Each reader reads only his or her sentence from Chapter 1 and then closes the book.",
+      "The Map Keeper asks: “Where was he born? Where did he travel? When did he die?”",
+      "The readers answer, and the Map Keeper writes Anatolia, Syria, Azerbaijan and the dates on the paper map.",
+      "Together, check your map with the book and with the “Yunus Emre’s World” map in the app. Find Konya there too: Mevlana lived in Konya."
+     ],
+     "share": "Each group shows its map and tells his life with “He was born in … He traveled to … He passed away in …”.",
+     "solo": "Cover Chapter 1, write the places and dates from memory, and then check them on the “Yunus Emre’s World” map."
+    }
+   },
+   {
+    "id": 4,
+    "type": "story",
+    "title": "The Woodcutter Yunus",
+    "image": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/yunus%2Fa2%2Fimages%2Fyunus_a2_ch4-clean.png?alt=media&token=ca4e4897-3845-4b61-b7a0-5b4d0dbc10b4",
+    "audioUrl": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/yunus%2Fa2%2Faudio%2F03_Chapter_4_The_Woodcutter_Yunus.mp3?alt=media&token=d115951e-0f8a-4181-b380-6a9bb3ce24b6",
+    "content": "He became a student of Taptuk Emre at a young age. In Taptuk Emre’s dervish house, the first condition to be a student was to be humble and willing to serve people and all creatures.\n\nThis was also the case for Yunus. He told his master, “I will do whatever service you ask of me.” Taptuk then assigned Yunus to the wood-cutting duties at the dervish house. Some jobs look ordinary at first glance. The primary goal is to break the ego and give up bad habits.\n\nThere was a mountain behind Taptuk’s dervish house. Taptuk asked Yunus to collect wood from the mountain. Every day, Yunus carried wood on his back from the mountain. But he never cut or brought green or crooked wood. He always said, “Crooked wood cannot go into the dervish house.”",
+    "vocabulary": [
+     {
+      "word": "dervish house",
+      "definition": "__historical_entity__:yunus-tekke"
+     },
+     {
+      "word": "Yunus",
+      "definition": "__historical_entity__:yunus-yunus-emre"
+     },
+     {
+      "word": "Taptuk Emre",
+      "definition": "__historical_entity__:yunus-taptuk-emre"
+     },
+     {
+      "word": "humble",
+      "definition": "Not proud; respectful and modest."
+     },
+     {
+      "word": "service",
+      "definition": "Work done to help others."
+     },
+     {
+      "word": "ordinary",
+      "definition": "Normal; not special."
+     },
+     {
+      "word": "crooked",
+      "definition": "Not straight; bent."
+     }
+    ],
+    "hotspots": [
+     {
+      "id": "h4-1",
+      "x": 35,
+      "y": 48,
+      "title": "Wood-Cutting Duties",
+      "description": "Taptuk then assigned Yunus to the wood-cutting duties at the dervish house."
+     },
+     {
+      "id": "h4-2",
+      "x": 70,
+      "y": 44,
+      "title": "Crooked Wood",
+      "description": "Yunus never cut or brought green or crooked wood."
+     }
+    ],
+    "exercises": [
+     {
+      "id": "yunus-a2-quick-4",
+      "type": "sequencing",
+      "title": "Yunus the Woodcutter",
+      "instructions": "Put the events from Chapter 4 in the right order.",
+      "question": "What happened first, next and last?",
+      "sequencingItems": [
+       {
+        "id": "1",
+        "text": "Yunus became a student of Taptuk Emre at a young age."
+       },
+       {
+        "id": "2",
+        "text": "Yunus said, “I will do whatever service you ask of me.”"
+       },
+       {
+        "id": "3",
+        "text": "Taptuk gave Yunus the wood-cutting duties."
+       },
+       {
+        "id": "4",
+        "text": "Every day, Yunus carried wood on his back from the mountain."
+       }
+      ],
+      "correctAnswer": [
+       "1",
+       "2",
+       "3",
+       "4"
+      ],
+      "explanation": "First Yunus became Taptuk Emre’s student. Then he told his master, “I will do whatever service you ask of me.” After that, Taptuk “assigned Yunus to the wood-cutting duties”, and every day Yunus carried wood from the mountain.",
+      "feedback": {
+       "correct": "Great! Yunus was humble: He promised to serve, and then he did his work every day.",
+       "incorrect": "Read Chapter 4 from the beginning to the end. Find what Yunus said, what Taptuk asked and what Yunus did every day."
+      }
+     }
+    ],
+    "languageFocusExercises": [
+     {
+      "id": "yunus-a2-language-4-service-language",
+      "type": "true-false",
+      "title": "How Often?",
+      "instructions": "Read the sentence from Chapter 4. True or false?",
+      "question": "“But he never cut or brought green or crooked wood.” — Statement: Yunus sometimes brought crooked wood to the dervish house.",
+      "correctAnswer": false,
+      "explanation": "“Never” means “not one time”. So Yunus did not bring crooked wood at any time. Chapter 4 also uses “every day” (a daily action) and “always” (at all times) to show Yunus’s routine.",
+      "feedback": {
+       "correct": "Correct. “Never” means not one time, so the statement is false.",
+       "incorrect": "Look at the word “never” in the sentence. Does it mean “sometimes” or “not one time”?"
+      }
+     },
+     {
+      "id": "yunus-a2-language-4-frequency-routine",
+      "type": "word-bank",
+      "title": "A Promise and a Routine",
+      "instructions": "Fill each gap from the word bank. Two words are not needed.",
+      "question": "What did Yunus promise, and how did he work?",
+      "fillBlanksText": "He told his master, “I [blank] do whatever service you ask of me.” … Taptuk asked Yunus [blank] collect wood from the mountain. [blank] day, Yunus carried wood on his back from the mountain. … He [blank] said, “Crooked wood cannot go into the dervish house.”",
+      "wordBank": [
+       "will",
+       "to",
+       "Every",
+       "always",
+       "for",
+       "am"
+      ],
+      "correctAnswer": [
+       "will",
+       "to",
+       "Every",
+       "always"
+      ],
+      "explanation": "“I will …” makes a promise. “Asked + person + to + verb” tells us what someone asked another person to do: “asked Yunus to collect wood”. “Every day” is a daily action, and “always” means at all times. Learners often say “I am do” or “asked him for collect”, but English needs “I will do” and “asked him to collect”.",
+      "feedback": {
+       "correct": "Well done. You completed the promise, the request and the routine.",
+       "incorrect": "Read the second and third paragraphs of Chapter 4 again. After “asked Yunus”, which small word comes before “collect”?"
+      }
+     },
+     {
+      "id": "yunus-a2-language-4-service-routine",
+      "type": "reflection",
+      "title": "Say It: Service and Routine",
+      "instructions": "Say three short sentences about how Yunus served.",
+      "question": "How did Yunus serve his teacher?",
+      "correctAnswer": null,
+      "explanation": "A strong A2 response moves from language noticed in the chapter to a short spoken description of Yunus’s behaviour.",
+      "feedback": {
+       "correct": "Use one sentence about willingness, one about his promise, and one about his daily routine.",
+       "incorrect": ""
+      },
+      "discussionPrompts": [
+       {
+        "question": "Sentence 1 — Say he was ready: “Yunus was willing to …”",
+        "mode": "Individual",
+        "example": "Yunus was willing to serve people and all creatures."
+       },
+       {
+        "question": "Sentence 2 — Give his promise: “He said, ‘I will …’”",
+        "mode": "Individual",
+        "example": "He said, “I will do whatever service you ask of me.”"
+       },
+       {
+        "question": "Sentence 3 — Say what he did every day: “Every day he …, but he never …”",
+        "mode": "Pair",
+        "example": "Every day he carried wood from the mountain, but he never brought crooked wood."
+       }
+      ]
+     }
+    ],
+    "beforeYouRead": {
+     "kind": "guess",
+     "question": "Guess first: What was behind Taptuk’s dervish house?",
+     "options": [
+      "a mountain",
+      "a river",
+      "a market"
+     ],
+     "answer": 0,
+     "quote": "There was a mountain behind Taptuk’s dervish house."
+    },
+    "iCan": [
+     "I can tell about Yunus and his work with wood.",
+     "I can make a promise and say how often I do things.",
+     "I can describe a job I do every day."
+    ]
+   },
+   {
+    "id": 5,
+    "type": "story",
+    "title": "Straight Wood and the Ego",
+    "image": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/yunus%2Fa2%2Fimages%2Fyunus_a2_ch5-clean.png?alt=media&token=003db54e-e04b-4b58-b7a6-2b36cf52a9fd",
+    "audioUrl": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/yunus%2Fa2%2Faudio%2F04_Chapter_5_Straight_Wood_and_the_Ego.mp3?alt=media&token=2877e2b5-610b-43d2-aafc-82eebdc7d0ef",
+    "content": "Just imagine! Carrying firewood every day hurts your back and leaves bad cuts. He chose the straightest pieces of wood with the greatest care. So why was he doing that?\n\nThe wood was like Yunus’s ego, and it looked like it needed to be corrected. It looked like Yunus was working with wood to fix crooked pieces. But in fact, he was training his own heart and ego. Every time he used the axe, he made a bad part of himself better. This service taught him how to have a good heart and do the right thing.\n\nYunus served his teacher Taptuk Emre in this way for exactly forty years. Taptuk Emre noticed that Yunus never carried crooked wood to the house. One day he asked Yunus the following question:\n\n\"My Yunus, is there no crooked wood in the mountains? Why do you always bring straight pieces?\"",
+    "vocabulary": [
+     {
+      "word": "Yunus",
+      "definition": "__historical_entity__:yunus-yunus-emre"
+     },
+     {
+      "word": "Taptuk Emre",
+      "definition": "__historical_entity__:yunus-taptuk-emre"
+     },
+     {
+      "word": "care",
+      "definition": "Close attention so that you do something well."
+     },
+     {
+      "word": "ego",
+      "definition": "The part of a person that can become proud or selfish."
+     },
+     {
+      "word": "corrected",
+      "definition": "Made right or better."
+     },
+     {
+      "word": "axe",
+      "definition": "A tool used to cut wood."
+     }
+    ],
+    "hotspots": [
+     {
+      "id": "h5-1",
+      "x": 34,
+      "y": 50,
+      "title": "Straightest Pieces",
+      "description": "He chose the straightest pieces of wood with the greatest care."
+     },
+     {
+      "id": "h5-2",
+      "x": 68,
+      "y": 46,
+      "title": "Heart and Ego",
+      "description": "In fact, Yunus was training his own heart and ego."
+     }
+    ],
+    "exercises": [
+     {
+      "id": "yunus-a2-quick-5",
+      "type": "multiple-choice",
+      "title": "Straight Wood",
+      "instructions": "Read the question. Choose the answer from Chapter 5.",
+      "question": "Why did Yunus choose only the straightest pieces of wood?",
+      "options": [
+       "Straight wood was easier to carry down the mountain.",
+       "He was training his own heart and ego.",
+       "Taptuk Emre promised him a gift for it."
+      ],
+      "correctAnswer": 1,
+      "explanation": "Chapter 5 asks, “So why was he doing that?” Then it says: “It looked like Yunus was working with wood to fix crooked pieces. But in fact, he was training his own heart and ego.”",
+      "feedback": {
+       "correct": "Right! The wood is like Yunus’s ego. Every time he used the axe, he made a bad part of himself better.",
+       "incorrect": "Read the second paragraph of Chapter 5 again. Find the words “But in fact …”."
+      }
+     }
+    ],
+    "languageFocusExercises": [
+     {
+      "id": "yunus-a2-language-5-question-functions",
+      "type": "sequencing",
+      "title": "From “It Looked Like” to “In Fact”",
+      "instructions": "Put the sentences from Chapter 5 in order.",
+      "question": "What did it look like, and what was really happening?",
+      "sequencingItems": [
+       {
+        "id": "1",
+        "text": "It looked like Yunus was working with wood to fix crooked pieces."
+       },
+       {
+        "id": "2",
+        "text": "But in fact, he was training his own heart and ego."
+       },
+       {
+        "id": "3",
+        "text": "Every time he used the axe, he made a bad part of himself better."
+       },
+       {
+        "id": "4",
+        "text": "This service taught him how to have a good heart and do the right thing."
+       }
+      ],
+      "correctAnswer": [
+       "1",
+       "2",
+       "3",
+       "4"
+      ],
+      "explanation": "“It looked like …” gives a first idea: What we see. “But in fact …” gives the true meaning. “Every time …” shows something that happens again and again. “This service taught him how to …” gives the result: What Yunus learned.",
+      "feedback": {
+       "correct": "Correct. You followed the chapter from the first idea to the true meaning and the result.",
+       "incorrect": "Read the second paragraph of Chapter 5. Start with “It looked like”. Which sentence says what is true “in fact”?"
+      }
+     },
+     {
+      "id": "yunus-a2-language-5-appearance-reality",
+      "type": "sentence-building",
+      "title": "Build Taptuk’s Question",
+      "instructions": "Put the words in order to make Taptuk’s question.",
+      "question": "What did Taptuk ask Yunus?",
+      "sentenceChunks": [
+       "Why",
+       "do you",
+       "always",
+       "bring",
+       "straight pieces?"
+      ],
+      "correctAnswer": null,
+      "explanation": "To ask about a habit, use: Why + do + you + (always) + verb … ? “Always” comes before the main verb: “Why do you always bring straight pieces?” The other question, “Is there no crooked wood in the mountains?”, starts with “Is there” to ask if something exists.",
+      "feedback": {
+       "correct": "Well done. You built the question in the right order.",
+       "incorrect": "Look at the last line of Chapter 5. Start with “Why”, then “do you”. “Always” goes before “bring”."
+      }
+     },
+     {
+      "id": "yunus-a2-language-5-explain-deeper-meaning",
+      "type": "reflection",
+      "title": "Say It: What the Work Really Means",
+      "instructions": "Say four short sentences about what Yunus’s work really meant.",
+      "question": "What was Yunus really learning?",
+      "correctAnswer": null,
+      "explanation": "A strong A2 response uses the chapter’s own discourse pattern: first impression, deeper reality, repeated action and learning.",
+      "feedback": {
+       "correct": "Use the four sentence starters to explain the chapter’s deeper meaning clearly.",
+       "incorrect": ""
+      },
+      "discussionPrompts": [
+       {
+        "question": "Sentence 1 — Say how it looked: “At first, it looked like Yunus was …”",
+        "mode": "Individual",
+        "example": "At first, it looked like Yunus was only working with wood."
+       },
+       {
+        "question": "Sentence 2 — Say what was true: “But in fact, he was …”",
+        "mode": "Individual",
+        "example": "But in fact, he was training his own heart and ego."
+       },
+       {
+        "question": "Sentence 3 — Say what happened each time: “Every time he …, he …”",
+        "mode": "Pair",
+        "example": "Every time he used the axe, he made a bad part of himself better."
+       },
+       {
+        "question": "Sentence 4 — Say what he learned: “This service taught him how to …”",
+        "mode": "Pair",
+        "example": "This service taught him how to have a good heart."
+       }
+      ]
+     }
+    ],
+    "beforeYouRead": {
+     "kind": "guess",
+     "question": "Guess first: What does carrying firewood every day do?",
+     "options": [
+      "It makes you rich.",
+      "It makes you sleepy.",
+      "It hurts your back."
+     ],
+     "answer": 2,
+     "quote": "Carrying firewood every day hurts your back and leaves bad cuts."
+    },
+    "iCan": [
+     "I can tell what Yunus really learned from the wood.",
+     "I can say what something looks like and what is really true.",
+     "I can explain the real meaning of a simple job."
+    ]
+   },
+   {
+    "id": 6,
+    "type": "story",
+    "title": "The Door of Honesty",
+    "image": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/yunus%2Fa2%2Fimages%2Fyunus_a2_ch6-clean.png?alt=media&token=67497bea-2d63-4b36-9282-4a195dbfca4a",
+    "audioUrl": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/yunus%2Fa2%2Faudio%2F05_Chapter_6_The_Door_of_Honesty.mp3?alt=media&token=ae9043fe-3949-413b-8258-3821a1d649e0",
+    "content": "Yunus replied, \"My teacher, this place is a door of honesty and goodness. Not even a crooked piece of wood can enter here. And a dishonest and insincere person cannot enter this place, either.\"\n\nNature and living alone helped the dervish think deeply about himself. During this time, Yunus made his heart purer. He learned the special language of all creatures. He looked at nature and found a lesson from everything in it, like reading the Qur’an. Also, the lessons and talks at the dervish house helped him with this learning. For Yunus, woodcutting in nature helped him become a better person.\n\nHe first learned to be alone with Allah in the mountains. The mountains are quiet and far from people. There are trees, animals, and rivers. If you look closely, you find a deeper meaning in everything in nature. Everything tells a story.",
+    "vocabulary": [
+     {
+      "word": "dervish house",
+      "definition": "__historical_entity__:yunus-tekke"
+     },
+     {
+      "word": "Yunus",
+      "definition": "__historical_entity__:yunus-yunus-emre"
+     },
+     {
+      "word": "honesty",
+      "definition": "Telling the truth and doing what is right."
+     },
+     {
+      "word": "goodness",
+      "definition": "The quality of being kind and doing right."
+     },
+     {
+      "word": "creatures",
+      "definition": "Living things, such as people and animals, made by Allah."
+     },
+     {
+      "word": "purer",
+      "definition": "Cleaner and freer from anything bad."
+     }
+    ],
+    "hotspots": [
+     {
+      "id": "h6-1",
+      "x": 35,
+      "y": 45,
+      "title": "Honesty and Goodness",
+      "description": "Yunus said that the dervish house was a door of honesty and goodness."
+     },
+     {
+      "id": "h6-2",
+      "x": 68,
+      "y": 54,
+      "title": "Lessons from Nature",
+      "description": "He looked at nature and found a lesson from everything in it."
+     }
+    ],
+    "exercises": [
+     {
+      "id": "yunus-a2-quick-6",
+      "type": "multiple-choice",
+      "title": "Who Can Enter?",
+      "instructions": "Read the question. Choose the answer from Chapter 6.",
+      "question": "Yunus says that a crooked piece of wood cannot enter the dervish house. Who else cannot enter?",
+      "options": [
+       "a poor person",
+       "a dishonest and insincere person",
+       "a person who lives alone"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Yunus answers Taptuk: “this place is a door of honesty and goodness. Not even a crooked piece of wood can enter here. And a dishonest and insincere person cannot enter this place, either.”",
+      "feedback": {
+       "correct": "Yes! Crooked wood and a dishonest person cannot enter. The dervish house is a place of honesty and goodness.",
+       "incorrect": "Read Yunus’s answer at the beginning of Chapter 6 again. Find the word “either”."
+      }
+     }
+    ],
+    "languageFocusExercises": [
+     {
+      "id": "yunus-a2-language-6-change-learning",
+      "type": "matching",
+      "title": "If You Look Closely",
+      "instructions": "Match the beginnings and endings from the end of Chapter 6.",
+      "question": "What are the mountains like, and what can you find?",
+      "matchingHeadings": {
+       "left": "Beginning",
+       "right": "Ending"
+      },
+      "matchingPairs": [
+       {
+        "left": "The mountains are",
+        "right": "quiet and far from people."
+       },
+       {
+        "left": "There are",
+        "right": "trees, animals, and rivers."
+       },
+       {
+        "left": "If you look closely,",
+        "right": "you find a deeper meaning in everything in nature."
+       },
+       {
+        "left": "Everything",
+        "right": "tells a story."
+       }
+      ],
+      "correctAnswer": {
+       "The mountains are": "quiet and far from people.",
+       "There are": "trees, animals, and rivers.",
+       "If you look closely,": "you find a deeper meaning in everything in nature.",
+       "Everything": "tells a story."
+      },
+      "explanation": "“Are” + adjectives describes a place (quiet, far from people). “There are” + plural nouns says what is in a place. “If you look closely, you find …” has two parts: First what you do, then what happens. “Everything” is singular, so the verb takes -s: “tells”.",
+      "feedback": {
+       "correct": "Good. You rebuilt the sentences about the mountains.",
+       "incorrect": "Read the last paragraph of Chapter 6. Which ending is a list of things? Which ending starts with “you find”?"
+      }
+     },
+     {
+      "id": "yunus-a2-language-6-if-observation",
+      "type": "word-bank",
+      "title": "Helped Him Think, Made It Purer",
+      "instructions": "Fill each gap from the word bank. Two words are not needed.",
+      "question": "What comes after “helped the dervish”, “made his heart” and “learned”?",
+      "fillBlanksText": "Nature and living alone helped the dervish [blank] deeply about himself. During this time, Yunus made his heart [blank]. … He first learned [blank] alone with Allah in the mountains.",
+      "wordBank": [
+       "think",
+       "purer",
+       "to be",
+       "thinking",
+       "being"
+      ],
+      "correctAnswer": [
+       "think",
+       "purer",
+       "to be"
+      ],
+      "explanation": "After “help + person”, use the base verb: “helped the dervish think”. “Make + thing + adjective” shows a change: “made his heart purer” (more pure than before). After “learn”, use “to + verb”: “learned to be alone”.",
+      "feedback": {
+       "correct": "Correct. You used the right form after helped, made and learned.",
+       "incorrect": "Read the second and third paragraphs of Chapter 6 again. We say “helped him think”, not “helped him thinking”, and “learned to be”, not “learned being”."
+      }
+     },
+     {
+      "id": "yunus-a2-language-6-learning-from-nature",
+      "type": "reflection",
+      "title": "Say It: Learning from a Place",
+      "instructions": "Say four short sentences about how nature helped Yunus.",
+      "question": "How did the mountains help Yunus learn?",
+      "correctAnswer": null,
+      "explanation": "A strong A2 response combines description, help/change language and the chapter’s simple if-result pattern.",
+      "feedback": {
+       "correct": "Use the chapter’s own language to connect place, learning and discovery.",
+       "incorrect": ""
+      },
+      "discussionPrompts": [
+       {
+        "question": "Sentence 1 — Describe the place: “The mountains were … and …”",
+        "mode": "Individual",
+        "example": "The mountains were quiet and far from people."
+       },
+       {
+        "question": "Sentence 2 — Say how nature helped: “Nature helped Yunus …”",
+        "mode": "Individual",
+        "example": "Nature helped Yunus think deeply about himself."
+       },
+       {
+        "question": "Sentence 3 — Say what he learned: “He learned to …”",
+        "mode": "Pair",
+        "example": "He learned to be alone with Allah in the mountains."
+       },
+       {
+        "question": "Sentence 4 — Say what you can find: “If you look closely, you …”",
+        "mode": "Pair",
+        "example": "If you look closely, you find a deeper meaning in everything in nature."
+       }
+      ]
+     }
+    ],
+    "beforeYouRead": {
+     "kind": "guess",
+     "question": "Guess first: What special language did Yunus learn?",
+     "options": [
+      "the language of kings",
+      "the language of all creatures",
+      "the language of sailors"
+     ],
+     "answer": 1,
+     "quote": "He learned the special language of all creatures."
+    },
+    "iCan": [
+     "I can tell how nature helped Yunus.",
+     "I can describe a place and what is in it.",
+     "I can describe a quiet place I know."
+    ],
+    "groupTask": {
+     "type": "jigsaw",
+     "title": "Yunus at the Dervish House",
+     "time": "15 min",
+     "groupSize": "3–4",
+     "roles": [
+      {
+       "name": "Chapter 4 Expert",
+       "job": "You read Chapter 4 and teach Yunus’s job and his promise."
+      },
+      {
+       "name": "Chapter 5 Expert",
+       "job": "You read Chapter 5 and teach what the work with wood really meant."
+      },
+      {
+       "name": "Chapter 6 Expert",
+       "job": "You read Chapter 6 and teach how nature helped Yunus learn."
+      },
+      {
+       "name": "Note Taker",
+       "job": "You write one fact from each expert and check the sentence in the book."
+      }
+     ],
+     "steps": [
+      "Read your chapter again and find two important facts, for example: “Every day, Yunus carried wood on his back from the mountain.”",
+      "Teach your facts to the group and show the sentence in the book.",
+      "Listen to the others, and the Note Taker writes one fact from each chapter.",
+      "Together, finish this sentence with three reasons: “Yunus became a better person because …”"
+     ],
+     "share": "Each group reads its three reasons and shows the sentence from the book for each one.",
+     "solo": "Read Chapters 4–6 again and write one fact from each chapter on a card."
+    }
+   },
+   {
+    "id": 7,
+    "type": "story",
+    "title": "A Single Daisy",
+    "image": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/yunus%2Fa2%2Fimages%2Fyunus_a2_ch7-clean.png?alt=media&token=a2b10e28-c657-4f96-a5a8-b70f6aedd6cd",
+    "audioUrl": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/yunus%2Fa2%2Faudio%2F06_Chapter_7_A_Single_Daisy.mp3?alt=media&token=db885702-c119-40e8-ae16-a635de955363",
+    "content": "One day, Taptuk Emre said to his students, “Today, all of you go up the mountain and bring me flowers. I will give a gift to whoever prepares the most beautiful bunch of flowers.” All the dervishes went out into the fields. They picked flowers and ran back to their teacher. Yunus was the last to return.\n\nIn the late afternoon, he returned with a single daisy. Some dervishes were making fun of Yunus. They whispered in each other’s ears, “Just look at him! All he could find was a single daisy!” Taptuk asked Yunus about the meaning behind this single daisy. Yunus replied, “My teacher, I walked around the fields, and wherever I saw a flower, I heard that it was saying the name of Allah. I could not cut any of them.”",
+    "vocabulary": [
+     {
+      "word": "Yunus",
+      "definition": "__historical_entity__:yunus-yunus-emre"
+     },
+     {
+      "word": "Taptuk Emre",
+      "definition": "__historical_entity__:yunus-taptuk-emre"
+     },
+     {
+      "word": "bunch",
+      "definition": "A group of flowers held together."
+     },
+     {
+      "word": "daisy",
+      "definition": "A small white flower with a yellow middle."
+     },
+     {
+      "word": "making fun of",
+      "definition": "Laughing at someone in an unkind way."
+     },
+     {
+      "word": "whispered",
+      "definition": "Spoke very quietly."
+     }
+    ],
+    "hotspots": [
+     {
+      "id": "h7-1",
+      "x": 36,
+      "y": 46,
+      "title": "Only One Flower",
+      "description": "In the late afternoon, Yunus returned with a single daisy."
+     },
+     {
+      "id": "h7-2",
+      "x": 68,
+      "y": 50,
+      "title": "The Name of Allah",
+      "description": "Yunus heard every flower he saw saying the name of Allah."
+     }
+    ],
+    "exercises": [
+     {
+      "id": "yunus-a2-quick-7",
+      "type": "multiple-choice",
+      "title": "A Single Daisy",
+      "instructions": "Read the question. Choose the answer from Chapter 7.",
+      "question": "Why did Yunus not bring a big bunch of flowers?",
+      "options": [
+       "The other dervishes picked all the flowers first.",
+       "Every flower he saw was saying the name of Allah.",
+       "Taptuk Emre asked each student for only one flower."
+      ],
+      "correctAnswer": 1,
+      "explanation": "Yunus tells Taptuk: “wherever I saw a flower, I heard that it was saying the name of Allah. I could not cut any of them.”",
+      "feedback": {
+       "correct": "Right! Yunus heard the flowers remembering Allah, so he could not cut them.",
+       "incorrect": "Read Yunus’s answer to Taptuk at the end of Chapter 7. Find the words “wherever I saw a flower …”."
+      }
+     }
+    ],
+    "languageFocusExercises": [
+     {
+      "id": "yunus-a2-language-7-story-sequence",
+      "type": "sequencing",
+      "title": "Tell the Flower Story in Order",
+      "instructions": "Put the sentences from Chapter 7 in order.",
+      "question": "What happened first, next and last?",
+      "sequencingItems": [
+       {
+        "id": "1",
+        "text": "One day, Taptuk Emre said to his students, “Today, all of you go up the mountain and bring me flowers.”"
+       },
+       {
+        "id": "2",
+        "text": "The students picked flowers and ran back to their teacher."
+       },
+       {
+        "id": "3",
+        "text": "Yunus was the last to return."
+       },
+       {
+        "id": "4",
+        "text": "The students whispered in each other’s ears, “Just look at him! …”"
+       },
+       {
+        "id": "5",
+        "text": "Yunus replied, “My teacher, I walked around the fields, …”"
+       }
+      ],
+      "correctAnswer": [
+       "1",
+       "2",
+       "3",
+       "4",
+       "5"
+      ],
+      "explanation": "“One day” starts a story. Then the dervishes pick flowers and come back; Yunus comes back last, “in the late afternoon”. Some dervishes laugh at him, Taptuk asks about the daisy, and Yunus answers.",
+      "feedback": {
+       "correct": "Correct. You told the story in the right order.",
+       "incorrect": "Read Chapter 7 again. Start with “One day”. Who comes back first: The other dervishes or Yunus?"
+      }
+     },
+     {
+      "id": "yunus-a2-language-7-quantity-groups",
+      "type": "choose-form",
+      "title": "Some, Any, A Single",
+      "instructions": "Choose the correct word for each sentence from Chapter 7.",
+      "question": "How many dervishes? How many flowers?",
+      "formChoices": [
+       {
+        "sentence": "[choice] dervishes were making fun of Yunus.",
+        "options": [
+         "Any",
+         "Some",
+         "Every"
+        ],
+        "answer": 1
+       },
+       {
+        "sentence": "“Just look at him! All he could find was [choice] daisy!”",
+        "options": [
+         "a single",
+         "a some",
+         "any"
+        ],
+        "answer": 0
+       },
+       {
+        "sentence": "I could not cut [choice] of them.",
+        "options": [
+         "none",
+         "some",
+         "any"
+        ],
+        "answer": 2
+       }
+      ],
+      "correctAnswer": null,
+      "explanation": "“Some” means part of a group, not everyone: some dervishes laughed. “A single” means only one: a single daisy. After “not”, use “any”: “I could not cut any of them” means he cut not one flower. “Could not … none” is a double negative, so it is wrong.",
+      "feedback": {
+       "correct": "Well done. You used some, a single and any correctly.",
+       "incorrect": "Read the second paragraph of Chapter 7. Did all the dervishes laugh, or only part of the group? Which word comes after “not”?"
+      }
+     },
+     {
+      "id": "yunus-a2-language-7-retell-daisy",
+      "type": "reflection",
+      "title": "Say It: Retell the Daisy Scene",
+      "instructions": "Retell Chapter 7 in four short sentences.",
+      "question": "What happened with the flowers?",
+      "correctAnswer": null,
+      "explanation": "A strong A2 retelling uses a clear event order and simple expressions such as all, some, a single, could not, and when.",
+      "feedback": {
+       "correct": "Use the sentence starters to keep the story clear and in order.",
+       "incorrect": ""
+      },
+      "discussionPrompts": [
+       {
+        "question": "Sentence 1 — Start the story: “One day, Taptuk asked all the students to …”",
+        "mode": "Individual",
+        "example": "One day, Taptuk asked all the students to bring him flowers from the mountain."
+       },
+       {
+        "question": "Sentence 2 — Compare Yunus with the others: “The dervishes …, but Yunus …”",
+        "mode": "Individual",
+        "example": "The dervishes ran back with many flowers, but Yunus came back last with a single daisy."
+       },
+       {
+        "question": "Sentence 3 — Give his reason: “He could not cut any flowers because …”",
+        "mode": "Pair",
+        "example": "He could not cut any flowers because he heard them saying the name of Allah."
+       },
+       {
+        "question": "Sentence 4 — Say how it ends: “When it started to get dark, …”",
+        "mode": "Pair",
+        "example": "When it started to get dark, a daisy called out to Yunus."
+       }
+      ]
+     }
+    ],
+    "beforeYouRead": {
+     "kind": "guess",
+     "question": "Guess first: When did Yunus come back?",
+     "options": [
+      "in the late afternoon",
+      "early in the morning",
+      "at midnight"
+     ],
+     "answer": 0,
+     "quote": "In the late afternoon, he returned with a single daisy."
+    },
+    "iCan": [
+     "I can tell the story of the single daisy.",
+     "I can say how many people or things there were.",
+     "I can retell a short story in the right order."
+    ]
+   },
+   {
+    "id": 8,
+    "type": "story",
+    "title": "A Meaningful Life",
+    "image": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/yunus%2Fa2%2Fimages%2Fyunus_a2_ch8-clean.png?alt=media&token=5928fe9e-cd4a-42d3-9dbe-10d6b32126b1",
+    "audioUrl": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/yunus%2Fa2%2Faudio%2F07_Chapter_8_A_Meaningful_Life.mp3?alt=media&token=0b25f43f-f374-4a92-a505-68e8aa74a66c",
+    "content": "“When it started to get dark, a daisy called out to me: ‘Come, dervish Yunus. My time is up now; I’m dried up and dying. At least pick me and let my life end in the hands of a dervish.’”\n\nIn these two stories, Yunus tells us to always remember Allah in our hearts and to do every job well. He says that we must always do our best when we work. Every job is important, so we should do it well and correctly for the love of Allah. Our hearts must be full of love for Him during our daily lives. This helps us live a meaningful and fruitful life.",
+    "vocabulary": [
+     {
+      "word": "Yunus",
+      "definition": "__historical_entity__:yunus-yunus-emre"
+     },
+     {
+      "word": "dried up",
+      "definition": "No longer fresh because it has lost water."
+     },
+     {
+      "word": "dying",
+      "definition": "Coming to the end of life."
+     },
+     {
+      "word": "meaningful",
+      "definition": "Having an important purpose or value."
+     },
+     {
+      "word": "fruitful",
+      "definition": "Useful and successful."
+     }
+    ],
+    "hotspots": [
+     {
+      "id": "h8-1",
+      "x": 34,
+      "y": 45,
+      "title": "The Daisy’s Words",
+      "description": "The daisy said, “My time is up now; I’m dried up and dying.”"
+     },
+     {
+      "id": "h8-2",
+      "x": 68,
+      "y": 52,
+      "title": "A Fruitful Life",
+      "description": "Remembering Allah and doing every job well helps us live a meaningful and fruitful life."
+     }
+    ],
+    "exercises": [
+     {
+      "id": "yunus-a2-quick-8",
+      "type": "true-false",
+      "title": "Daily Work",
+      "instructions": "Is the sentence true or false? Use Chapter 8.",
+      "question": "Yunus says that only big and important jobs need to be done well.",
+      "correctAnswer": false,
+      "explanation": "Chapter 8 says: “Every job is important, so we should do it well and correctly for the love of Allah.”",
+      "feedback": {
+       "correct": "Correct! For Yunus, every job is important, even a simple one like carrying wood.",
+       "incorrect": "Read the last paragraph of Chapter 8 again. Which jobs does Yunus say are important?"
+      }
+     }
+    ],
+    "languageFocusExercises": [
+     {
+      "id": "yunus-a2-language-8-advice-necessity-result",
+      "type": "multiple-choice",
+      "title": "Must or Should?",
+      "instructions": "Read the two lines. Then choose the best answer.",
+      "question": "A: “Our hearts must be full of love for Him …” B: “… we should do it well and correctly …” Which word gives the stronger rule?",
+      "options": [
+       "should",
+       "must",
+       "They are the same."
+      ],
+      "correctAnswer": 1,
+      "explanation": "“Must” is strong: It says something is necessary. “Should” is softer: It gives good advice. Both come before the base verb: “must be”, “should do”. In “Every job is important, so we should do it well”, “so” shows the result of the first idea.",
+      "feedback": {
+       "correct": "Correct. “Must” is stronger than “should”.",
+       "incorrect": "Read the last paragraph of Chapter 8 again. Think: A school rule says “You must …”; a friend’s advice says “You should …”. Which one is stronger?"
+      }
+     },
+     {
+      "id": "yunus-a2-language-8-so-result",
+      "type": "matching",
+      "title": "Yunus’s Message",
+      "instructions": "Match the beginnings and endings to make sentences from Chapter 8.",
+      "question": "Which ending completes each sentence about Yunus’s message?",
+      "matchingHeadings": {
+       "left": "Beginning",
+       "right": "Ending"
+      },
+      "matchingPairs": [
+       {
+        "left": "Yunus tells us",
+        "right": "to always remember Allah in our hearts"
+       },
+       {
+        "left": "He says that we",
+        "right": "must always do our best when we work"
+       },
+       {
+        "left": "This helps us",
+        "right": "live a meaningful and fruitful life"
+       },
+       {
+        "left": "At least pick me",
+        "right": "and let my life end in the hands of a dervish"
+       }
+      ],
+      "correctAnswer": {
+       "Yunus tells us": "to always remember Allah in our hearts",
+       "He says that we": "must always do our best when we work",
+       "This helps us": "live a meaningful and fruitful life",
+       "At least pick me": "and let my life end in the hands of a dervish"
+      },
+      "explanation": "“Tell + person + to + verb” gives someone’s advice: “Yunus tells us to always remember Allah.” “Help + person + verb” shows a good result: “This helps us live a meaningful life.” “Let + person/thing + verb” asks for permission: “let my life end in the hands of a dervish”.",
+      "feedback": {
+       "correct": "Good. You rebuilt the sentences of Yunus’s message.",
+       "incorrect": "Read Chapter 8 again. After “tells us”, we need “to”. After “helps us”, we need a verb without “to”."
+      }
+     },
+     {
+      "id": "yunus-a2-language-8-daily-life-message",
+      "type": "reflection",
+      "title": "Say It: A Meaningful Daily Life",
+      "instructions": "Give four short pieces of advice for daily life.",
+      "question": "How can Yunus’s lesson help you every day?",
+      "correctAnswer": null,
+      "explanation": "A strong A2 response transfers the chapter’s language from the story to a simple personal message about everyday behaviour.",
+      "feedback": {
+       "correct": "Use the sentence starters to turn the chapter’s language into clear daily-life advice.",
+       "incorrect": ""
+      },
+      "discussionPrompts": [
+       {
+        "question": "Sentence 1 — Give Yunus’s message: “Yunus tells us to …”",
+        "mode": "Individual",
+        "example": "Yunus tells us to always remember Allah in our hearts."
+       },
+       {
+        "question": "Sentence 2 — Say what we must do: “We must …”",
+        "mode": "Individual",
+        "example": "We must always do our best when we work."
+       },
+       {
+        "question": "Sentence 3 — Give advice and a reason: “We should … because …”",
+        "mode": "Pair",
+        "example": "We should do our homework carefully because every job is important."
+       },
+       {
+        "question": "Sentence 4 — Say the result: “This helps us …”",
+        "mode": "Pair",
+        "example": "This helps us live a meaningful and fruitful life."
+       }
+      ]
+     }
+    ],
+    "beforeYouRead": {
+     "kind": "guess",
+     "question": "Guess first: What did the daisy ask Yunus to do?",
+     "options": [
+      "to water it",
+      "to leave it",
+      "to pick it"
+     ],
+     "answer": 2,
+     "quote": "At least pick me"
+    },
+    "iCan": [
+     "I can tell Yunus’s message about work.",
+     "I can give a strong rule and some soft advice.",
+     "I can give advice for a good daily life."
+    ],
+    "groupTask": {
+     "type": "project",
+     "title": "Every Job Is Important",
+     "time": "20 min",
+     "groupSize": "3–4",
+     "roles": [
+      {
+       "name": "Quote Finder",
+       "job": "You copy one sentence from Chapter 4 or Chapter 8 exactly as it is in the book."
+      },
+      {
+       "name": "Writer",
+       "job": "You write what the job is and how to do it well."
+      },
+      {
+       "name": "Explainer",
+       "job": "You write why the job is important."
+      },
+      {
+       "name": "Designer",
+       "job": "You put everything on the poster in a clear way."
+      }
+     ],
+     "steps": [
+      "Choose one everyday job at school or at home, like cleaning the board, watering plants or helping a classmate.",
+      "Write what the job is and how to do it well: “Every day we …”, “We never …”.",
+      "Write why it is important: “We should …”, “This helps us …”.",
+      "Add one sentence from Chapter 4 or Chapter 8 exactly, for example: “Every job is important, so we should do it well and correctly for the love of Allah.”"
+     ],
+     "share": "Each group shows its poster and reads the sentence from the book aloud.",
+     "solo": "Make a small poster alone about one job you do every day, with one sentence from the book and two sentences of your own."
+    }
+   },
+   {
+    "id": 101,
+    "type": "map",
+    "title": "Yunus Emre’s World",
+    "subtitle": "Map · 1240–1320",
+    "content": "",
+    "map": {
+     "baseMap": "anatolia",
+     "home": {
+      "west": 25.5,
+      "east": 49,
+      "south": 32.5,
+      "north": 43.5
+     },
+     "overlays": [
+      "seljuk-1243",
+      "mongol-1243"
+     ],
+     "features": {
+      "timeSlider": true,
+      "tour": true,
+      "challenge": true,
+      "classroom": true
+     },
+     "time": {
+      "start": 1240,
+      "lastYear": 1320,
+      "birth": 1240
+     },
+     "legend": {
+      "seljuk-1243": "Anatolian Seljuk lands",
+      "seljuk-pressure": "Anatolian Seljuk lands under Mongol pressure",
+      "mongol-1243": "Mongol army, 1242–1243"
+     },
+     "age": {
+      "born": "Yunus Emre is born."
+     },
+     "routes": [],
+     "places": [
+      {
+       "id": "anatolia",
+       "entityId": "yunus-anatolia",
+       "lon": 34.1,
+       "lat": 39.35,
+       "icon": "quill",
+       "tone": "place",
+       "labelSide": "left",
+       "name": "Anatolia",
+       "kind": "Region",
+       "text": "Yunus Emre was born in Anatolia in 1240. He died in 1320. Today, Anatolia is a part of Türkiye.",
+       "teacherNote": "Many towns say they have the grave of Yunus Emre. Do not show one place as certain.",
+       "question": "Which country is Anatolia a part of today?"
+      },
+      {
+       "id": "konya",
+       "entityId": "yunus-konya",
+       "lon": 32.49,
+       "lat": 37.87,
+       "icon": "dome",
+       "tone": "place",
+       "labelSide": "bottom",
+       "name": "Konya",
+       "kind": "City",
+       "text": "Konya was the capital city of the Anatolian Seljuks. Mevlana lived here and died here in 1273. Yunus Emre lived at the same time.",
+       "teacherNote": "Chapter 1 says Yunus was 33 or 34 years old when Mevlana died.",
+       "question": "How old was Yunus Emre in 1273? Move the slider to check."
+      },
+      {
+       "id": "kosedag",
+       "entityId": "yunus-kosedag",
+       "lon": 38.05,
+       "lat": 40.1,
+       "icon": "swords",
+       "tone": "event",
+       "labelSide": "top",
+       "name": "Kösedağ, 1243",
+       "kind": "Battle",
+       "text": "In 1243, the Anatolian Seljuk army fought the Mongol army here. The Anatolian Seljuks lost. After that, life in Anatolia became very hard. Yunus Emre was only three years old.",
+       "teacherNote": "The exact battlefield is not known. Sources place it near Kösedağ, about 80 km northeast of Sivas. The B1 and B2 books tell this event in detail.",
+       "question": "What happened in Anatolia after 1243?"
+      },
+      {
+       "id": "syria",
+       "entityId": "yunus-syria",
+       "lon": 37.3,
+       "lat": 34.9,
+       "icon": "route",
+       "tone": "place",
+       "areaRadiusKm": 230,
+       "labelSide": "right",
+       "name": "Syria",
+       "kind": "Region",
+       "text": "Yunus Emre traveled to Syria. Big cities like Aleppo and Damascus were there.",
+       "teacherNote": "In the 13th century, Syria (al-Sham) was a larger region than the country today.",
+       "question": "Which two big cities can you see in Syria?"
+      },
+      {
+       "id": "azerbaijan",
+       "entityId": "yunus-azerbaijan",
+       "lon": 46.29,
+       "lat": 38.08,
+       "icon": "route",
+       "tone": "place",
+       "areaRadiusKm": 150,
+       "labelSide": "top",
+       "name": "Azerbaijan",
+       "kind": "Region",
+       "text": "Yunus Emre also traveled to Azerbaijan. At that time, Azerbaijan was the land around the city of Tabriz. The Mongol army came to Anatolia from here.",
+       "teacherNote": "Medieval Azerbaijan is mostly in north-west Iran today. It is not the same as the modern Republic of Azerbaijan.",
+       "question": "Which army came to Anatolia from this land?"
+      }
+     ],
+     "towns": [
+      {
+       "id": "sivas",
+       "lon": 37.02,
+       "lat": 39.75,
+       "labelSide": "bottom",
+       "name": "Sivas"
+      },
+      {
+       "id": "erzurum",
+       "lon": 41.27,
+       "lat": 39.9,
+       "name": "Erzurum"
+      },
+      {
+       "id": "aleppo",
+       "lon": 37.16,
+       "lat": 36.2,
+       "name": "Aleppo"
+      },
+      {
+       "id": "damascus",
+       "lon": 36.29,
+       "lat": 33.51,
+       "name": "Damascus"
+      }
+     ],
+     "seas": [
+      {
+       "id": "blackSea",
+       "lon": 34.6,
+       "lat": 42.85,
+       "name": "Black Sea"
+      },
+      {
+       "id": "mediterranean",
+       "lon": 30.6,
+       "lat": 34.6,
+       "name": "Mediterranean Sea"
+      }
+     ],
+     "timeline": [
+      {
+       "year": 1240,
+       "placeId": "anatolia",
+       "camera": {
+        "lon": 34.5,
+        "lat": 39.2,
+        "zoom": 1.5
+       },
+       "scene": {
+        "kind": "dawn",
+        "placeId": "anatolia"
+       },
+       "label": "Yunus is born"
+      },
+      {
+       "year": 1243,
+       "placeId": "kosedag",
+       "camera": {
+        "lon": 41.5,
+        "lat": 39.6,
+        "zoom": 1.7
+       },
+       "label": "Kösedağ"
+      },
+      {
+       "year": 1273,
+       "placeId": "konya",
+       "camera": {
+        "lon": 33.6,
+        "lat": 38.5,
+        "zoom": 1.9
+       },
+       "scene": {
+        "kind": "radiate",
+        "placeId": "konya"
+       },
+       "label": "Mevlana dies"
+      },
+      {
+       "year": 1320,
+       "placeId": "anatolia",
+       "camera": {
+        "lon": 38.6,
+        "lat": 37.6,
+        "zoom": 1.05
+       },
+       "scene": {
+        "kind": "journey",
+        "fromId": "anatolia",
+        "toIds": [
+         "syria",
+         "azerbaijan"
+        ]
+       },
+       "label": "Yunus dies"
+      }
+     ],
+     "challenge": [
+      {
+       "id": "anatolia",
+       "lon": 33.6,
+       "lat": 39,
+       "radiusKm": 330,
+       "prompt": "Find Anatolia, the home of Yunus Emre."
+      },
+      {
+       "id": "konya",
+       "lon": 32.49,
+       "lat": 37.87,
+       "radiusKm": 110,
+       "prompt": "Find Konya. It was the capital city of the Anatolian Seljuks."
+      },
+      {
+       "id": "syria",
+       "lon": 37.3,
+       "lat": 34.9,
+       "radiusKm": 230,
+       "prompt": "Find Syria. Aleppo and Damascus were there."
+      },
+      {
+       "id": "azerbaijan",
+       "lon": 46.29,
+       "lat": 38.08,
+       "radiusKm": 170,
+       "prompt": "Find Azerbaijan. It is east of Anatolia."
+      },
+      {
+       "id": "kosedag",
+       "lon": 38.05,
+       "lat": 40.1,
+       "radiusKm": 110,
+       "prompt": "Find Kösedağ. It is about 80 km northeast of Sivas."
+      }
+     ]
+    }
+   },
+   {
+    "id": 9,
+    "type": "quiz",
+    "title": "Knowledge Check",
+    "image": "https://picsum.photos/seed/quiz-yunus-a2/1200/800",
+    "audioUrl": "",
+    "content": "Check your understanding of the complete story.",
+    "exercises": [
+     {
+      "id": "yunus-a2-kc-1-simple-turkish",
+      "type": "multiple-choice",
+      "title": "Easy to Understand",
+      "instructions": "Read the question. Choose the answer.",
+      "question": "Why could people easily understand Yunus Emre’s poems?",
+      "options": [
+       "He wrote and said them in simple Turkish.",
+       "He wrote them only for madrasa students.",
+       "He wrote them in Syria and Azerbaijan."
+      ],
+      "correctAnswer": 0,
+      "explanation": "Chapter 1: “People could easily understand his poems because he wrote and said them in simple Turkish.”",
+      "feedback": {
+       "correct": "Yes! He used simple Turkish, so everyone could understand his poems. This also helped the Turkish language.",
+       "incorrect": "Not this one. Read the first paragraph of Chapter 1 again. Find the word “because”."
+      }
+     },
+     {
+      "id": "yunus-a2-kc-2-bad-habits",
+      "type": "true-false",
+      "title": "Bad Habits",
+      "instructions": "Read the sentence. Is it true or false?",
+      "question": "Dervishes tried to keep habits like jealousy and gossiping.",
+      "correctAnswer": false,
+      "explanation": "Chapter 2: “They always tried to leave bad habits like jealousy, arrogance, stinginess, greediness, selfishness, or gossiping.”",
+      "feedback": {
+       "correct": "Right, it is false. Jealousy and gossiping are bad habits, and dervishes always tried to leave them.",
+       "incorrect": "Read the last sentence of Chapter 2 again. What did dervishes try to do with bad habits?"
+      }
+     },
+     {
+      "id": "yunus-a2-kc-3-tongueless",
+      "type": "multiple-choice",
+      "title": "A Dervish Without a Tongue",
+      "instructions": "Read the question. Choose the answer.",
+      "question": "The poem says a dervish must be “tongueless” when people make fun of him. What does this mean?",
+      "options": [
+       "He makes fun of them, too.",
+       "He does not answer them back.",
+       "He cries with eyes full of tears."
+      ],
+      "correctAnswer": 1,
+      "explanation": "Chapter 3: “He must be tongueless when people make fun of him.”",
+      "feedback": {
+       "correct": "Yes. He has a tongue, but he stays quiet. He does not answer bad words with bad words.",
+       "incorrect": "Not this one. Read the second part of the poem in Chapter 3. What does a person do with his tongue?"
+      }
+     },
+     {
+      "id": "yunus-a2-kc-4-goal-of-service",
+      "type": "multiple-choice",
+      "title": "Why Cut Wood?",
+      "instructions": "Read the question. Choose the answer.",
+      "question": "Taptuk gave Yunus ordinary work like cutting wood. What was the main goal of this work?",
+      "options": [
+       "to collect the most wood on the mountain",
+       "to make him strong for his travels",
+       "to break his ego and give up bad habits"
+      ],
+      "correctAnswer": 2,
+      "explanation": "Chapter 4: “Some jobs look ordinary at first glance. The primary goal is to break the ego and give up bad habits.”",
+      "feedback": {
+       "correct": "Yes! The work looked ordinary, but its real goal was to make Yunus a better person inside.",
+       "incorrect": "Not this one. Read the second paragraph of Chapter 4 again. Find the words “The primary goal”."
+      }
+     },
+     {
+      "id": "yunus-a2-kc-5-taptuk-noticed",
+      "type": "true-false",
+      "title": "Taptuk Watches Yunus",
+      "instructions": "Read the sentence. Is it true or false?",
+      "question": "Taptuk Emre never noticed what kind of wood Yunus brought.",
+      "correctAnswer": false,
+      "explanation": "Chapter 5: “Taptuk Emre noticed that Yunus never carried crooked wood to the house.”",
+      "feedback": {
+       "correct": "Right, it is false. Taptuk noticed that Yunus never brought crooked wood, so he asked him why.",
+       "incorrect": "Read the last paragraph of Chapter 5 again. What did Taptuk Emre notice?"
+      }
+     },
+     {
+      "id": "yunus-a2-kc-6-lessons-in-nature",
+      "type": "multiple-choice",
+      "title": "Learning from Nature",
+      "instructions": "Read the question. Choose the answer.",
+      "question": "What did Yunus do when he looked at nature?",
+      "options": [
+       "He found a lesson in everything in it.",
+       "He picked every flower that he saw.",
+       "He looked only for straight wood."
+      ],
+      "correctAnswer": 0,
+      "explanation": "Chapter 6: “He looked at nature and found a lesson from everything in it, like reading the Qur’an.”",
+      "feedback": {
+       "correct": "Yes! For Yunus, nature was like a book. Everything in it taught him something.",
+       "incorrect": "Not this one. Read the second paragraph of Chapter 6 again. What did Yunus find in nature?"
+      }
+     },
+     {
+      "id": "yunus-a2-kc-7-gift-for-flowers",
+      "type": "multiple-choice",
+      "title": "The Flower Task",
+      "instructions": "Read the question. Choose the answer.",
+      "question": "What did Taptuk Emre promise to the student with the most beautiful bunch of flowers?",
+      "options": [
+       "He would take that student to Syria.",
+       "He would give that student a gift.",
+       "He would give him the wood-cutting duties."
+      ],
+      "correctAnswer": 1,
+      "explanation": "Chapter 7: “I will give a gift to whoever prepares the most beautiful bunch of flowers.”",
+      "feedback": {
+       "correct": "Yes. Taptuk promised a gift, so all the dervishes ran to the fields to pick flowers.",
+       "incorrect": "Not this one. Read Taptuk’s words at the start of Chapter 7 again."
+      }
+     },
+     {
+      "id": "yunus-a2-kc-8-daisy-wish",
+      "type": "true-false",
+      "title": "The Daisy’s Wish",
+      "instructions": "Read the sentence. Is it true or false?",
+      "question": "The daisy wanted its life to end in the hands of a dervish.",
+      "correctAnswer": true,
+      "explanation": "Chapter 8: “At least pick me and let my life end in the hands of a dervish.”",
+      "feedback": {
+       "correct": "Right, it is true. The daisy was dying, so it asked Yunus to pick it. It wanted to end its life with a dervish.",
+       "incorrect": "Read the daisy’s words at the start of Chapter 8 again. What did the daisy ask Yunus to do?"
+      }
+     }
+    ]
+   },
+   {
+    "id": 11,
+    "type": "glossary",
+    "title": "Master Glossary",
+    "content": "Review all key vocabulary from the story in one place.",
+    "image": "https://picsum.photos/seed/glossary-yunus-a2/1200/800",
+    "vocabulary": [
+     {
+      "word": "moral",
+      "definition": "About good behavior and right actions.",
+      "partOfSpeech": "adjective",
+      "level": "A2",
+      "pronunciation": "/ˈmɔːrəl/",
+      "wordFamily": [
+       "moral",
+       "morality",
+       "morally"
+      ],
+      "collocations": [
+       "moral lesson",
+       "moral values"
+      ],
+      "synonyms": [
+       "right",
+       "ethical"
+      ],
+      "antonyms": [
+       "immoral"
+      ],
+      "chapter": 1,
+      "chapterTitle": "Yunus Emre",
+      "storyExample": "His poems have important moral lessons.",
+      "category": "Values"
+     },
+     {
+      "word": "dervish",
+      "definition": "A person who follows a simple spiritual life.",
+      "partOfSpeech": "noun",
+      "level": "A2",
+      "pronunciation": "/ˈdɜːrvɪʃ/",
+      "wordFamily": [
+       "dervish",
+       "dervishes"
+      ],
+      "collocations": [
+       "become a dervish",
+       "dervish house"
+      ],
+      "chapter": 1,
+      "chapterTitle": "Yunus Emre",
+      "storyExample": "After he completed his madrasa education, he followed the way of the dervishes and became a dervish.",
+      "category": "Spiritual Life"
+     },
+     {
+      "word": "guidance",
+      "definition": "Help and advice about what to do.",
+      "partOfSpeech": "noun",
+      "level": "A2",
+      "pronunciation": "/ˈɡaɪdəns/",
+      "wordFamily": [
+       "guide",
+       "guidance"
+      ],
+      "collocations": [
+       "under the guidance of",
+       "give guidance"
+      ],
+      "synonyms": [
+       "advice",
+       "help"
+      ],
+      "chapter": 1,
+      "chapterTitle": "Yunus Emre",
+      "storyExample": "Dervishes trained to be good people with moral values under the guidance of a teacher at dervish houses.",
+      "category": "Learning"
+     },
+     {
+      "word": "pupil",
+      "definition": "A student who learns from a teacher.",
+      "partOfSpeech": "noun",
+      "level": "A2",
+      "pronunciation": "/ˈpjuːpəl/",
+      "wordFamily": [
+       "pupil",
+       "pupils"
+      ],
+      "collocations": [
+       "a pupil of",
+       "young pupil"
+      ],
+      "synonyms": [
+       "student"
+      ],
+      "chapter": 1,
+      "chapterTitle": "Yunus Emre",
+      "storyExample": "Yunus Emre became a dervish pupil of Taptuk Emre.",
+      "category": "People & Roles"
+     },
+     {
+      "word": "witnessed",
+      "definition": "Saw or felt something clearly.",
+      "partOfSpeech": "verb",
+      "level": "A2",
+      "pronunciation": "/ˈwɪtnəst/",
+      "wordFamily": [
+       "witness",
+       "witnesses",
+       "witnessed"
+      ],
+      "collocations": [
+       "witness an event",
+       "witness something clearly"
+      ],
+      "synonyms": [
+       "saw",
+       "observed"
+      ],
+      "chapter": 2,
+      "chapterTitle": "Our Dervish Yunus",
+      "storyExample": "They witnessed the signs of Allah in the whole universe.",
+      "category": "Actions"
+     },
+     {
+      "word": "universe",
+      "definition": "Everything that exists.",
+      "partOfSpeech": "noun",
+      "level": "A2",
+      "pronunciation": "/ˈjuːnɪvɜːrs/",
+      "wordFamily": [
+       "universe",
+       "universal"
+      ],
+      "collocations": [
+       "the whole universe",
+       "the universe around us"
+      ],
+      "chapter": 2,
+      "chapterTitle": "Our Dervish Yunus",
+      "storyExample": "They witnessed the signs of Allah in the whole universe.",
+      "category": "World & Nature"
+     },
+     {
+      "word": "charity",
+      "definition": "Help given to people in need.",
+      "partOfSpeech": "noun",
+      "level": "A2",
+      "pronunciation": "/ˈtʃerəti/",
+      "wordFamily": [
+       "charity",
+       "charitable"
+      ],
+      "collocations": [
+       "give to charity",
+       "charity work"
+      ],
+      "synonyms": [
+       "help",
+       "aid"
+      ],
+      "chapter": 2,
+      "chapterTitle": "Our Dervish Yunus",
+      "storyExample": "If they were wealthy, their wealth was not in their hearts, but in their hands to give to charity.",
+      "category": "Helping Others"
+     },
+     {
+      "word": "sulky",
+      "definition": "Unhappy and unfriendly in silence.",
+      "partOfSpeech": "adjective",
+      "level": "A2",
+      "pronunciation": "/ˈsʌlki/",
+      "wordFamily": [
+       "sulk",
+       "sulky"
+      ],
+      "collocations": [
+       "look sulky",
+       "feel sulky"
+      ],
+      "synonyms": [
+       "moody"
+      ],
+      "antonyms": [
+       "cheerful"
+      ],
+      "chapter": 2,
+      "chapterTitle": "Our Dervish Yunus",
+      "storyExample": "They were kind and cheerful; they were not cold or sulky.",
+      "category": "Feelings"
+     },
+     {
+      "word": "patience",
+      "definition": "Staying calm while waiting or facing difficulty.",
+      "partOfSpeech": "noun",
+      "level": "A2",
+      "pronunciation": "/ˈpeɪʃəns/",
+      "wordFamily": [
+       "patient",
+       "patience",
+       "patiently"
+      ],
+      "collocations": [
+       "show patience",
+       "have patience"
+      ],
+      "synonyms": [
+       "calmness"
+      ],
+      "antonyms": [
+       "impatience"
+      ],
+      "chapter": 3,
+      "chapterTitle": "The Difficult Path",
+      "storyExample": "They followed honesty, patience, humility, generosity, respect and trust in Allah.",
+      "category": "Values"
+     },
+     {
+      "word": "generosity",
+      "definition": "Being happy to give to others.",
+      "partOfSpeech": "noun",
+      "level": "A2",
+      "pronunciation": "/ˌdʒenəˈrɑːsəti/",
+      "wordFamily": [
+       "generous",
+       "generosity",
+       "generously"
+      ],
+      "collocations": [
+       "show generosity",
+       "great generosity"
+      ],
+      "synonyms": [
+       "kindness"
+      ],
+      "antonyms": [
+       "stinginess"
+      ],
+      "chapter": 3,
+      "chapterTitle": "The Difficult Path",
+      "storyExample": "They followed honesty, patience, humility, generosity, respect and trust in Allah.",
+      "category": "Values"
+     },
+     {
+      "word": "moderate",
+      "definition": "Not too much and not too little.",
+      "partOfSpeech": "adjective",
+      "level": "A2",
+      "pronunciation": "/ˈmɑːdərət/",
+      "wordFamily": [
+       "moderate",
+       "moderation",
+       "moderately"
+      ],
+      "collocations": [
+       "moderate life",
+       "moderate amount"
+      ],
+      "synonyms": [
+       "balanced"
+      ],
+      "antonyms": [
+       "extreme"
+      ],
+      "chapter": 3,
+      "chapterTitle": "The Difficult Path",
+      "storyExample": "Dervishes lived a moderate and disciplined life according to Islam.",
+      "category": "Daily Life"
+     },
+     {
+      "word": "disciplined",
+      "definition": "Following clear rules and a fixed order every day.",
+      "partOfSpeech": "adjective",
+      "level": "A2",
+      "pronunciation": "/ˈdɪsəplɪnd/",
+      "wordFamily": [
+       "discipline",
+       "disciplined"
+      ],
+      "collocations": [
+       "disciplined life",
+       "disciplined person"
+      ],
+      "synonyms": [
+       "orderly"
+      ],
+      "antonyms": [
+       "careless"
+      ],
+      "chapter": 3,
+      "chapterTitle": "The Difficult Path",
+      "storyExample": "Dervishes lived a moderate and disciplined life according to Islam.",
+      "category": "Daily Life"
+     },
+     {
+      "word": "humble",
+      "definition": "Not proud; respectful and modest.",
+      "partOfSpeech": "adjective",
+      "level": "A2",
+      "pronunciation": "/ˈhʌmbəl/",
+      "wordFamily": [
+       "humble",
+       "humility",
+       "humbly"
+      ],
+      "collocations": [
+       "humble person",
+       "remain humble"
+      ],
+      "synonyms": [
+       "modest"
+      ],
+      "antonyms": [
+       "proud",
+       "arrogant"
+      ],
+      "chapter": 4,
+      "chapterTitle": "The Woodcutter Yunus",
+      "storyExample": "In Taptuk Emre’s dervish house, the first condition to be a student was to be humble and willing to serve people and all creatures.",
+      "category": "Values"
+     },
+     {
+      "word": "service",
+      "definition": "Work done to help others.",
+      "partOfSpeech": "noun",
+      "level": "A2",
+      "pronunciation": "/ˈsɜːrvɪs/",
+      "wordFamily": [
+       "serve",
+       "service"
+      ],
+      "collocations": [
+       "service to others",
+       "helpful service"
+      ],
+      "synonyms": [
+       "help",
+       "assistance"
+      ],
+      "chapter": 4,
+      "chapterTitle": "The Woodcutter Yunus",
+      "storyExample": "He told his master, “I will do whatever service you ask of me.”",
+      "category": "Helping Others"
+     },
+     {
+      "word": "ordinary",
+      "definition": "Normal; not special.",
+      "partOfSpeech": "adjective",
+      "level": "A2",
+      "pronunciation": "/ˈɔːrdəneri/",
+      "wordFamily": [
+       "ordinary",
+       "ordinarily"
+      ],
+      "collocations": [
+       "ordinary life",
+       "ordinary work"
+      ],
+      "synonyms": [
+       "normal",
+       "usual"
+      ],
+      "antonyms": [
+       "unusual",
+       "special"
+      ],
+      "chapter": 4,
+      "chapterTitle": "The Woodcutter Yunus",
+      "storyExample": "Some jobs look ordinary at first glance.",
+      "category": "Daily Life"
+     },
+     {
+      "word": "crooked",
+      "definition": "Not straight; bent.",
+      "partOfSpeech": "adjective",
+      "level": "A2",
+      "pronunciation": "/ˈkrʊkɪd/",
+      "collocations": [
+       "crooked wood",
+       "crooked line"
+      ],
+      "synonyms": [
+       "bent"
+      ],
+      "antonyms": [
+       "straight"
+      ],
+      "chapter": 4,
+      "chapterTitle": "The Woodcutter Yunus",
+      "storyExample": "But he never cut or brought green or crooked wood.",
+      "category": "Description"
+     },
+     {
+      "word": "care",
+      "definition": "Close attention so that you do something well.",
+      "partOfSpeech": "noun",
+      "level": "A2",
+      "pronunciation": "/ker/",
+      "wordFamily": [
+       "care",
+       "careful",
+       "carefully"
+      ],
+      "collocations": [
+       "with great care",
+       "take care"
+      ],
+      "synonyms": [
+       "attention"
+      ],
+      "antonyms": [
+       "carelessness"
+      ],
+      "chapter": 5,
+      "chapterTitle": "Straight Wood and the Ego",
+      "storyExample": "He chose the straightest pieces of wood with the greatest care.",
+      "category": "Personal Growth"
+     },
+     {
+      "word": "ego",
+      "definition": "The part of a person that can become proud or selfish.",
+      "partOfSpeech": "noun",
+      "level": "A2",
+      "pronunciation": "/ˈiːɡoʊ/",
+      "wordFamily": [
+       "ego",
+       "egotistical"
+      ],
+      "collocations": [
+       "break the ego",
+       "control the ego"
+      ],
+      "chapter": 5,
+      "chapterTitle": "Straight Wood and the Ego",
+      "storyExample": "The wood was like Yunus’s ego, and it looked like it needed to be corrected.",
+      "category": "Personal Growth"
+     },
+     {
+      "word": "corrected",
+      "definition": "Made right or better.",
+      "partOfSpeech": "verb",
+      "level": "A2",
+      "pronunciation": "/kəˈrektɪd/",
+      "wordFamily": [
+       "correct",
+       "corrected",
+       "correction"
+      ],
+      "collocations": [
+       "correct a mistake",
+       "corrected version"
+      ],
+      "synonyms": [
+       "fixed",
+       "improved"
+      ],
+      "chapter": 5,
+      "chapterTitle": "Straight Wood and the Ego",
+      "storyExample": "The wood was like Yunus’s ego, and it looked like it needed to be corrected.",
+      "category": "Actions & Change"
+     },
+     {
+      "word": "axe",
+      "definition": "A tool used to cut wood.",
+      "partOfSpeech": "noun",
+      "level": "A2",
+      "pronunciation": "/æks/",
+      "wordFamily": [
+       "axe",
+       "axes"
+      ],
+      "collocations": [
+       "use an axe",
+       "cut with an axe"
+      ],
+      "chapter": 5,
+      "chapterTitle": "Straight Wood and the Ego",
+      "storyExample": "Every time he used the axe, he made a bad part of himself better.",
+      "category": "Objects"
+     },
+     {
+      "word": "honesty",
+      "definition": "Telling the truth and doing what is right.",
+      "partOfSpeech": "noun",
+      "level": "A2",
+      "pronunciation": "/ˈɑːnəsti/",
+      "wordFamily": [
+       "honest",
+       "honesty",
+       "honestly"
+      ],
+      "collocations": [
+       "value honesty",
+       "a door of honesty"
+      ],
+      "synonyms": [
+       "truthfulness"
+      ],
+      "antonyms": [
+       "dishonesty"
+      ],
+      "chapter": 6,
+      "chapterTitle": "The Door of Honesty",
+      "storyExample": "Yunus replied, \"My teacher, this place is a door of honesty and goodness.",
+      "category": "Values"
+     },
+     {
+      "word": "goodness",
+      "definition": "The quality of being kind and doing right.",
+      "partOfSpeech": "noun",
+      "level": "A2",
+      "pronunciation": "/ˈɡʊdnəs/",
+      "wordFamily": [
+       "good",
+       "goodness"
+      ],
+      "collocations": [
+       "honesty and goodness",
+       "full of goodness"
+      ],
+      "synonyms": [
+       "kindness"
+      ],
+      "chapter": 6,
+      "chapterTitle": "The Door of Honesty",
+      "storyExample": "Yunus replied, \"My teacher, this place is a door of honesty and goodness.",
+      "category": "Values"
+     },
+     {
+      "word": "creatures",
+      "definition": "Living things, such as people and animals, made by Allah.",
+      "partOfSpeech": "noun",
+      "level": "A2",
+      "pronunciation": "/ˈkriːtʃərz/",
+      "wordFamily": [
+       "creature",
+       "creatures"
+      ],
+      "collocations": [
+       "living creatures",
+       "all creatures"
+      ],
+      "synonyms": [
+       "living things"
+      ],
+      "chapter": 6,
+      "chapterTitle": "The Door of Honesty",
+      "storyExample": "He learned the special language of all creatures.",
+      "category": "World & Nature"
+     },
+     {
+      "word": "purer",
+      "definition": "Cleaner and freer from anything bad.",
+      "partOfSpeech": "adjective",
+      "level": "A2",
+      "pronunciation": "/ˈpjʊrər/",
+      "wordFamily": [
+       "pure",
+       "purer",
+       "purity"
+      ],
+      "collocations": [
+       "a pure heart",
+       "make something purer"
+      ],
+      "synonyms": [
+       "cleaner"
+      ],
+      "chapter": 6,
+      "chapterTitle": "The Door of Honesty",
+      "storyExample": "During this time, Yunus made his heart purer.",
+      "category": "Personal Growth"
+     },
+     {
+      "word": "bunch",
+      "definition": "A group of flowers held together.",
+      "partOfSpeech": "noun",
+      "level": "A2",
+      "pronunciation": "/bʌntʃ/",
+      "wordFamily": [
+       "bunch",
+       "bunches"
+      ],
+      "collocations": [
+       "a bunch of flowers",
+       "a big bunch"
+      ],
+      "synonyms": [
+       "bouquet"
+      ],
+      "chapter": 7,
+      "chapterTitle": "A Single Daisy",
+      "storyExample": "I will give a gift to whoever prepares the most beautiful bunch of flowers.",
+      "category": "World & Nature"
+     },
+     {
+      "word": "daisy",
+      "definition": "A small white flower with a yellow middle.",
+      "partOfSpeech": "noun",
+      "level": "A2",
+      "pronunciation": "/ˈdeɪzi/",
+      "wordFamily": [
+       "daisy",
+       "daisies"
+      ],
+      "collocations": [
+       "a single daisy",
+       "daisy flower"
+      ],
+      "chapter": 7,
+      "chapterTitle": "A Single Daisy",
+      "storyExample": "In the late afternoon, he returned with a single daisy.",
+      "category": "World & Nature"
+     },
+     {
+      "word": "making fun of",
+      "definition": "Laughing at someone in an unkind way.",
+      "partOfSpeech": "verb",
+      "level": "A2",
+      "pronunciation": "/ˈmeɪkɪŋ fʌn əv/",
+      "wordFamily": [
+       "make fun of",
+       "made fun of"
+      ],
+      "collocations": [
+       "make fun of someone"
+      ],
+      "synonyms": [
+       "laughing at"
+      ],
+      "chapter": 7,
+      "chapterTitle": "A Single Daisy",
+      "storyExample": "Some dervishes were making fun of Yunus.",
+      "category": "Actions"
+     },
+     {
+      "word": "whispered",
+      "definition": "Spoke very quietly.",
+      "partOfSpeech": "verb",
+      "level": "A2",
+      "pronunciation": "/ˈwɪspərd/",
+      "wordFamily": [
+       "whisper",
+       "whispered",
+       "whispering"
+      ],
+      "collocations": [
+       "whisper in someone’s ear",
+       "whisper quietly"
+      ],
+      "antonyms": [
+       "shouted"
+      ],
+      "chapter": 7,
+      "chapterTitle": "A Single Daisy",
+      "storyExample": "They whispered in each other’s ears, “Just look at him! All he could find was a single daisy!”",
+      "category": "Actions"
+     },
+     {
+      "word": "dried up",
+      "definition": "No longer fresh because it has lost water.",
+      "partOfSpeech": "adjective",
+      "level": "A2",
+      "pronunciation": "/ˌdraɪd ˈʌp/",
+      "wordFamily": [
+       "dry",
+       "dried",
+       "dry up"
+      ],
+      "collocations": [
+       "dried up flower",
+       "dried up river"
+      ],
+      "synonyms": [
+       "dry"
+      ],
+      "antonyms": [
+       "fresh"
+      ],
+      "chapter": 8,
+      "chapterTitle": "A Meaningful Life",
+      "storyExample": "My time is up now; I’m dried up and dying.",
+      "category": "World & Nature"
+     },
+     {
+      "word": "dying",
+      "definition": "Coming to the end of life.",
+      "partOfSpeech": "adjective",
+      "level": "A2",
+      "pronunciation": "/ˈdaɪɪŋ/",
+      "wordFamily": [
+       "die",
+       "dying",
+       "death",
+       "dead"
+      ],
+      "collocations": [
+       "dying flower",
+       "dying wish"
+      ],
+      "antonyms": [
+       "living"
+      ],
+      "chapter": 8,
+      "chapterTitle": "A Meaningful Life",
+      "storyExample": "My time is up now; I’m dried up and dying.",
+      "category": "World & Nature"
+     },
+     {
+      "word": "meaningful",
+      "definition": "Having an important purpose or value.",
+      "partOfSpeech": "adjective",
+      "level": "A2",
+      "pronunciation": "/ˈmiːnɪŋfəl/",
+      "wordFamily": [
+       "meaning",
+       "meaningful",
+       "meaningless"
+      ],
+      "collocations": [
+       "meaningful life",
+       "meaningful message"
+      ],
+      "synonyms": [
+       "important",
+       "purposeful"
+      ],
+      "antonyms": [
+       "meaningless"
+      ],
+      "chapter": 8,
+      "chapterTitle": "A Meaningful Life",
+      "storyExample": "This helps us live a meaningful and fruitful life.",
+      "category": "Ideas & Meaning"
+     },
+     {
+      "word": "fruitful",
+      "definition": "Useful and successful.",
+      "partOfSpeech": "adjective",
+      "level": "A2",
+      "pronunciation": "/ˈfruːtfəl/",
+      "wordFamily": [
+       "fruit",
+       "fruitful",
+       "fruitfully"
+      ],
+      "collocations": [
+       "fruitful life",
+       "fruitful discussion"
+      ],
+      "synonyms": [
+       "useful",
+       "productive"
+      ],
+      "antonyms": [
+       "unproductive"
+      ],
+      "chapter": 8,
+      "chapterTitle": "A Meaningful Life",
+      "storyExample": "This helps us live a meaningful and fruitful life.",
+      "category": "Ideas & Meaning"
+     }
+    ]
+   },
+   {
+    "id": 102,
+    "type": "places",
+    "title": "Places & People",
+    "content": "Find every city, land, sea and person from the story on the map.",
+    "entityBookKey": "yunusEmre-a2"
+   },
+   {
+    "id": 10,
+    "type": "vocabulary-match",
+    "title": "Vocabulary Challenge",
+    "image": "https://picsum.photos/seed/vocab-match-yunus-a2/1200/800",
+    "audioUrl": "",
+    "content": "Match six important story words with their meanings.",
+    "vocabularyPairs": [
+     {
+      "word": "guidance",
+      "meaning": "Help and advice about what to do.",
+      "partOfSpeech": "noun",
+      "chapter": 1,
+      "context": "Dervishes trained to be good people with moral values under the guidance of a teacher at dervish houses."
+     },
+     {
+      "word": "witnessed",
+      "meaning": "Saw or felt something clearly.",
+      "partOfSpeech": "verb",
+      "chapter": 2,
+      "context": "They witnessed the signs of Allah in the whole universe."
+     },
+     {
+      "word": "ordinary",
+      "meaning": "Normal; not special.",
+      "partOfSpeech": "adjective",
+      "chapter": 4,
+      "context": "Some jobs look ordinary at first glance."
+     },
+     {
+      "word": "axe",
+      "meaning": "A tool used to cut wood.",
+      "partOfSpeech": "noun",
+      "chapter": 5,
+      "context": "Every time he used the axe, he made a bad part of himself better."
+     },
+     {
+      "word": "purer",
+      "meaning": "Cleaner and freer from anything bad.",
+      "partOfSpeech": "adjective",
+      "chapter": 6,
+      "context": "During this time, Yunus made his heart purer."
+     },
+     {
+      "word": "whispered",
+      "meaning": "Spoke very quietly.",
+      "partOfSpeech": "verb",
+      "chapter": 7,
+      "context": "The students whispered in each other’s ears, “Just look at him! All he could find was a single daisy!”"
+     }
+    ]
+   },
+   {
+    "id": 13,
+    "type": "exercises",
+    "title": "Language Review",
+    "image": "https://picsum.photos/seed/exercises-yunus-a2/1200/800",
+    "content": "Review and use the grammar patterns and language functions from all eight chapters.",
+    "exercises": [
+     {
+      "id": "yunus-a2-language-review-1-past-biography",
+      "type": "drag-drop",
+      "title": "Look: Two Kinds of Past",
+      "instructions": "Look at the past verb. Put each sentence in the right group.",
+      "question": "How does each verb show the past?",
+      "dragDropGroups": [
+       {
+        "group": "The verb adds -ed",
+        "items": [
+         "He traveled to many cities in Anatolia …",
+         "Yunus served his teacher Taptuk Emre …",
+         "The students whispered in each other’s ears …"
+        ]
+       },
+       {
+        "group": "The verb changes (no -ed)",
+        "items": [
+         "He told his master …",
+         "… found a lesson from everything in it.",
+         "All the dervishes went out into the fields."
+        ]
+       }
+      ],
+      "correctAnswer": {
+       "The verb adds -ed": [
+        "He traveled to many cities in Anatolia …",
+        "Yunus served his teacher Taptuk Emre …",
+        "The students whispered in each other’s ears …"
+       ],
+       "The verb changes (no -ed)": [
+        "He told his master …",
+        "… found a lesson from everything in it.",
+        "All the dervishes went out into the fields."
+       ]
+      },
+      "explanation": "The book tells Yunus’s story in the past. Many verbs add -ed: travel → traveled, serve → served, whisper → whispered. Some verbs change and do not take -ed: tell → told, find → found, go → went. Learn these past forms one by one.",
+      "feedback": {
+       "correct": "Well done. You found the -ed verbs and the verbs that change.",
+       "incorrect": "Say the verb today (travel, tell, go …). Does the past form only add -ed, or does it change?"
+      }
+     },
+     {
+      "id": "yunus-a2-language-review-2-how-often-how-many",
+      "type": "matching",
+      "title": "Look: How Often? How Many?",
+      "matchingHeadings": {
+       "left": "From the book",
+       "right": "Meaning"
+      },
+      "instructions": "Match each phrase from the book with its meaning.",
+      "question": "What do always, never, a single and some mean?",
+      "matchingPairs": [
+       {
+        "left": "they always called themselves poor",
+        "right": "at all times"
+       },
+       {
+        "left": "he never cut or brought green or crooked wood",
+        "right": "not one time"
+       },
+       {
+        "left": "he returned with a single daisy",
+        "right": "only one"
+       },
+       {
+        "left": "Some dervishes were making fun of Yunus.",
+        "right": "part of a group, not all of them"
+       }
+      ],
+      "correctAnswer": {
+       "they always called themselves poor": "at all times",
+       "he never cut or brought green or crooked wood": "not one time",
+       "he returned with a single daisy": "only one",
+       "Some dervishes were making fun of Yunus.": "part of a group, not all of them"
+      },
+      "explanation": "“Always” and “never” tell us how often: always = at all times, never = not one time. “A single” and “some” tell us how many: A single = only one, some = a part of the group. These small words make a story exact.",
+      "feedback": {
+       "correct": "Correct. Always and never tell us how often. A single and some tell us how many.",
+       "incorrect": "Look at the small word in each sentence: always, never, a single, some. Is it about time or about number?"
+      }
+     },
+     {
+      "id": "yunus-a2-language-review-3-appearance-reality",
+      "type": "multiple-choice",
+      "title": "Look: It Looks Like …",
+      "instructions": "Read the sentences. Then choose the best answer.",
+      "question": "Chapter 4: “Some jobs look ordinary at first glance.” Chapter 5: “It looked like Yunus was working with wood to fix crooked pieces. But in fact, he was training his own heart and ego.” What do “look” and “It looked like” tell us?",
+      "options": [
+       "what is really true",
+       "what we see at first",
+       "what will happen later"
+      ],
+      "correctAnswer": 1,
+      "explanation": "“Look” and “It looked like …” tell us what we see at first. “But in fact …” then tells us what is really true: The work looks like wood-cutting, but it trains Yunus’s heart.",
+      "feedback": {
+       "correct": "Correct. “It looked like” is the first picture. “But in fact” gives the real meaning.",
+       "incorrect": "Read Chapter 5 again. Which words come first: what we see, or what is true?"
+      }
+     },
+     {
+      "id": "yunus-a2-language-review-4-linking-ideas",
+      "type": "word-bank",
+      "title": "Practise: Reason, Result, Different Idea",
+      "instructions": "Fill the gaps from the word bank. Two words are not needed.",
+      "question": "Which word fits each gap?",
+      "fillBlanksText": "People could easily understand his poems [blank] he wrote and said them in simple Turkish. … Dervishes were fully aware that they were in need of Allah in every way. [blank], even if they were rich, they always called themselves poor. … they could call themselves poor, [blank] their hearts were very rich. … Every job is important, [blank] we should do it well and correctly …",
+      "wordBank": [
+       "because",
+       "That is why",
+       "but",
+       "so",
+       "when",
+       "Because of"
+      ],
+      "correctAnswer": [
+       "because",
+       "That is why",
+       "but",
+       "so"
+      ],
+      "explanation": "“Because” + a sentence gives a reason. “That is why” and “so” give a result: First the reason, then what happens. “But” gives a different idea: Poor, but rich hearts. “Because of” needs a noun after it (“because of the Creator”), not a sentence.",
+      "feedback": {
+       "correct": "Well done. You linked reasons, results and different ideas.",
+       "incorrect": "For each gap, ask: Does the next part give a reason, a result, or a different idea? Check Chapter 1, Chapter 2 and the end of Chapter 8."
+      }
+     },
+     {
+      "id": "yunus-a2-language-review-5-verb-patterns",
+      "type": "choose-form",
+      "title": "Practise: What Comes After the Verb?",
+      "instructions": "Choose the correct form for each sentence from the book.",
+      "question": "What comes after “taught him how”, “helped him” and “let my life”?",
+      "formChoices": [
+       {
+        "sentence": "This service taught him how [choice] a good heart and do the right thing.",
+        "options": [
+         "have",
+         "to have",
+         "having"
+        ],
+        "answer": 1
+       },
+       {
+        "sentence": "For Yunus, woodcutting in nature helped him [choice] a better person.",
+        "options": [
+         "becoming",
+         "became",
+         "become"
+        ],
+        "answer": 2
+       },
+       {
+        "sentence": "At least pick me and let my life [choice] in the hands of a dervish.",
+        "options": [
+         "end",
+         "to end",
+         "ending"
+        ],
+        "answer": 0
+       }
+      ],
+      "correctAnswer": null,
+      "explanation": "After “how”, use “to + verb”: “taught him how to have”. After “help + person” and “let + person/thing”, use the base verb: “helped him become”, “let my life end”.",
+      "feedback": {
+       "correct": "Correct. How + to + verb; help and let + base verb.",
+       "incorrect": "Look at the verb before the gap: taught … how, helped …, let …. Check Chapters 5, 6 and 8."
+      }
+     },
+     {
+      "id": "yunus-a2-language-review-6-fix-the-mistake",
+      "type": "error-correction",
+      "title": "Practise: Fix One Mistake",
+      "instructions": "Each sentence has one mistake. Tap it, then choose the correct words.",
+      "question": "Can you fix the verb in each sentence?",
+      "errorItems": [
+       {
+        "sentence": "He choosed the straightest pieces of wood with the greatest care.",
+        "error": "choosed",
+        "options": [
+         "chose",
+         "choosing",
+         "chooses"
+        ],
+        "answer": 0
+       },
+       {
+        "sentence": "They picked flowers and runned back to their teacher.",
+        "error": "runned",
+        "options": [
+         "run",
+         "ran",
+         "running"
+        ],
+        "answer": 1
+       },
+       {
+        "sentence": "He says that we must to always do our best when we work.",
+        "error": "must to",
+        "options": [
+         "musts",
+         "must be",
+         "must"
+        ],
+        "answer": 2
+       }
+      ],
+      "correctAnswer": null,
+      "explanation": "“Choose” and “run” change in the past: chose, ran (not choosed, runned). After “must”, use the base verb without “to”: “we must always do our best”.",
+      "feedback": {
+       "correct": "Well done. You fixed all three sentences.",
+       "incorrect": "Compare with the book: Chapter 5 (the straightest pieces), Chapter 7 (the flowers) and Chapter 8 (do our best)."
+      }
+     },
+     {
+      "id": "yunus-a2-language-review-7-every-time",
+      "type": "sentence-building",
+      "title": "Practise: Every Time …",
+      "instructions": "Put the words in order to make the sentence from Chapter 5.",
+      "question": "What changed each time Yunus worked?",
+      "sentenceChunks": [
+       "Every time",
+       "he used the axe,",
+       "he made",
+       "a bad part of himself",
+       "better."
+      ],
+      "correctAnswer": null,
+      "explanation": "“Every time + action” means: again and again, each time this happens. “Make + something + adjective” shows a change: A bad part becomes better. Chapter 6 uses the same pattern: “Yunus made his heart purer.”",
+      "feedback": {
+       "correct": "Well done. Every time … shows a repeated action, and made … better shows the change.",
+       "incorrect": "Start with the time words “Every time”. Then say what he did, and what he made better."
+      }
+     },
+     {
+      "id": "yunus-a2-language-review-8-new-context",
+      "type": "word-bank",
+      "title": "Use: A Helper at School",
+      "instructions": "Fill the gaps in this new text. Two words are not needed.",
+      "question": "Can you use the book’s words in a school story?",
+      "fillBlanksText": "Mrs Ayşe works in our school kitchen. [blank] day, she cooks lunch for many students. She [blank] comes late. It looks like an easy job, [blank] in fact it is hard work. [blank], we always say “thank you” to her.",
+      "wordBank": [
+       "Every",
+       "never",
+       "but",
+       "That is why",
+       "some",
+       "because"
+      ],
+      "correctAnswer": [
+       "Every",
+       "never",
+       "but",
+       "That is why"
+      ],
+      "explanation": "“Every day” shows a daily habit. “Never” means not one time. “It looks like …, but in fact …” gives the first picture and then the truth. “That is why” gives the result. Like Yunus’s story, the text says that ordinary work is important.",
+      "feedback": {
+       "correct": "Well done. You used the book’s language in a new place.",
+       "incorrect": "Ask for each gap: How often? what we see or what is true? a reason or a result?"
+      }
+     },
+     {
+      "id": "yunus-a2-language-review-9-transfer",
+      "type": "reflection",
+      "title": "Use: An Everyday Hero",
+      "instructions": "Write 4–5 sentences about a helper. Tell a partner first.",
+      "question": "Who helps others every day in your life?",
+      "correctAnswer": null,
+      "explanation": "Example: “Mr Ali is our school caretaker. Every day, he opens the doors at seven. It looks like an easy job, but in fact he works very hard. Last winter, he fixed the heater in our classroom. His job is important, so we should keep our school clean. This helps us study well.”",
+      "feedback": {
+       "correct": "Check your sentences: past verbs, how often, It looks like … but in fact …, so, should, helps us.",
+       "incorrect": ""
+      },
+      "discussionPrompts": [
+       {
+        "question": "Sentence 1 — Say how often: “Every day, he/she …” or “He/She never …”",
+        "mode": "Individual",
+        "example": "Every day, our school cleaner opens the classrooms early, and she never comes late."
+       },
+       {
+        "question": "Sentence 2 — Give one past event: “Last week, he/she …”",
+        "mode": "Individual",
+        "example": "Last week, she helped a small boy find his lost bag."
+       },
+       {
+        "question": "Sentence 3 — Say how it looks and what is true: “It looks like …, but in fact …”",
+        "mode": "Pair",
+        "example": "It looks like her job is easy, but in fact it is very hard work."
+       },
+       {
+        "question": "Sentence 4 — Give the result: “His/Her job is important, so we should … . This helps us …”",
+        "mode": "Pair",
+        "example": "Her job is important, so we should keep our classrooms clean. This helps us study well."
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "id": 14,
+    "type": "final-challenge",
+    "title": "Final Challenge",
+    "image": "https://picsum.photos/seed/challenge-yunus-a2/1200/800",
+    "content": "Bring the whole story together in the Final Challenge.",
+    "exercises": [
+     {
+      "id": "yunus-a2-final-1",
+      "type": "fill-blanks",
+      "title": "Schools in Yunus’s Time",
+      "instructions": "Complete the sentence from Chapter 1 with one word: madrasas, mosques or markets.",
+      "question": "What were schools called at that time?",
+      "fillBlanksText": "At that time, schools were called [blank].",
+      "correctAnswer": [
+       "madrasas"
+      ],
+      "explanation": "Chapter 1 says: “At that time, schools were called madrasas. After he completed his madrasa education, he followed the way of the dervishes and became a dervish.”",
+      "feedback": {
+       "correct": "Yes. Yunus first studied at a madrasa and then chose the way of the dervishes.",
+       "incorrect": "Read the start of the second paragraph of Chapter 1."
+      }
+     },
+     {
+      "id": "yunus-a2-final-2",
+      "type": "multiple-choice",
+      "title": "Poems for Today",
+      "instructions": "Choose the best answer.",
+      "question": "Why are Yunus Emre’s poems still important for Turkish culture today?",
+      "options": [
+       "They are written in a very old and difficult language.",
+       "They have important moral lessons.",
+       "They tell the history of the Anatolian cities."
+      ],
+      "correctAnswer": 1,
+      "explanation": "Chapter 1 says: “His poems have important moral lessons. These lessons are still very important for Turkish culture today.”",
+      "feedback": {
+       "correct": "Yes. The lessons in his poems are still alive today.",
+       "incorrect": "Read the first paragraph of Chapter 1. What do his poems have?"
+      }
+     },
+     {
+      "id": "yunus-a2-final-3",
+      "type": "true-false",
+      "title": "How the Dervishes Behaved",
+      "instructions": "Is the sentence true or false?",
+      "question": "The dervishes were often cold and sulky with other people.",
+      "correctAnswer": false,
+      "explanation": "Chapter 2 says: “They were kind and cheerful; they were not cold or sulky. They tried to understand everyone and found a solution to their problems.”",
+      "feedback": {
+       "correct": "Right. The dervishes were kind and cheerful, and they tried to understand everyone.",
+       "incorrect": "Read the last paragraph of Chapter 2. How did the dervishes treat people?"
+      }
+     },
+     {
+      "id": "yunus-a2-final-4",
+      "type": "multiple-choice",
+      "title": "A Poem About a Hard Path",
+      "instructions": "Choose the best answer.",
+      "question": "Yunus Emre wrote a poem that begins with “You cannot be a dervish.” What does this poem show?",
+      "options": [
+       "The path of dervishhood was very difficult.",
+       "Every person can become a dervish in one day.",
+       "Dervishes did not like to write poems."
+      ],
+      "correctAnswer": 0,
+      "explanation": "Chapter 3 says: “In fact, the path of dervishhood was a very difficult one.” Yunus says this in his poem that begins with the words “You cannot be a dervish.”",
+      "feedback": {
+       "correct": "Yes. The poem lists hard things a dervish must do, so the path was not easy.",
+       "incorrect": "Read the sentences just before the poem in Chapter 3."
+      }
+     },
+     {
+      "id": "yunus-a2-final-5",
+      "type": "multiple-choice",
+      "title": "The First Condition",
+      "instructions": "Choose the best answer.",
+      "question": "What was the first condition to be a student in Taptuk Emre’s dervish house?",
+      "options": [
+       "to know many long poems by heart",
+       "to come from a rich and famous family",
+       "to be humble and ready to serve others"
+      ],
+      "correctAnswer": 2,
+      "explanation": "Chapter 4 says: “In Taptuk Emre’s dervish house, the first condition to be a student was to be humble and willing to serve people and all creatures.”",
+      "feedback": {
+       "correct": "Yes. A student had to be humble and ready to serve people and all living things.",
+       "incorrect": "Read the first paragraph of Chapter 4."
+      }
+     },
+     {
+      "id": "yunus-a2-final-6",
+      "type": "matching",
+      "title": "Word Meanings",
+      "instructions": "Match each word with its meaning in the story.",
+      "question": "What does each word mean?",
+      "matchingPairs": [
+       {
+        "left": "generous-hearted",
+        "right": "happy to give to others"
+       },
+       {
+        "left": "moderate",
+        "right": "not too much and not too little"
+       },
+       {
+        "left": "crooked",
+        "right": "not straight"
+       },
+       {
+        "left": "fruitful",
+        "right": "bringing good results"
+       }
+      ],
+      "correctAnswer": {
+       "generous-hearted": "happy to give to others",
+       "moderate": "not too much and not too little",
+       "crooked": "not straight",
+       "fruitful": "bringing good results"
+      },
+      "explanation": "Chapter 2: “Dervishes were generous-hearted and open-handed.” Chapter 3: “Dervishes lived a moderate and disciplined life according to Islam.” Chapter 5: “Taptuk Emre noticed that Yunus never carried crooked wood to the house.” Chapter 8: “This helps us live a meaningful and fruitful life.”",
+      "feedback": {
+       "correct": "Yes. You found the meaning of each word from its sentence.",
+       "incorrect": "Read each word in its sentence in Chapters 2, 3, 5 and 8."
+      }
+     },
+     {
+      "id": "yunus-a2-final-7",
+      "type": "true-false",
+      "title": "Alone with Allah",
+      "instructions": "Is the sentence true or false?",
+      "question": "Yunus first learned to be alone with Allah in the mountains.",
+      "correctAnswer": true,
+      "explanation": "Chapter 6 says: “He first learned to be alone with Allah in the mountains. The mountains are quiet and far from people.”",
+      "feedback": {
+       "correct": "True. The quiet mountains helped Yunus think about Allah.",
+       "incorrect": "Read the last paragraph of Chapter 6. Where did Yunus first learn this?"
+      }
+     },
+     {
+      "id": "yunus-a2-final-8",
+      "type": "matching",
+      "title": "Who Said It?",
+      "instructions": "Match each speaker with their words.",
+      "question": "Who said these words?",
+      "matchingPairs": [
+       {
+        "left": "Yunus",
+        "right": "“Crooked wood cannot go into the dervish house.”"
+       },
+       {
+        "left": "Taptuk Emre",
+        "right": "“Today, all of you go up the mountain and bring me flowers.”"
+       },
+       {
+        "left": "Some dervishes",
+        "right": "“Just look at him! All he could find was a single daisy!”"
+       },
+       {
+        "left": "The daisy",
+        "right": "“My time is up now; I’m dried up and dying.”"
+       }
+      ],
+      "correctAnswer": {
+       "Yunus": "“Crooked wood cannot go into the dervish house.”",
+       "Taptuk Emre": "“Today, all of you go up the mountain and bring me flowers.”",
+       "Some dervishes": "“Just look at him! All he could find was a single daisy!”",
+       "The daisy": "“My time is up now; I’m dried up and dying.”"
+      },
+      "explanation": "Chapter 4: Yunus always said: “Crooked wood cannot go into the dervish house.” Chapter 7: Taptuk Emre said to his students, “Today, all of you go up the mountain and bring me flowers.” The dervishes whispered, “Just look at him! All he could find was a single daisy!” Chapter 8: the daisy says, “My time is up now; I’m dried up and dying.”",
+      "feedback": {
+       "correct": "Yes. You remembered who said each sentence.",
+       "incorrect": "Look again at Chapters 4, 7 and 8."
+      }
+     },
+     {
+      "id": "yunus-a2-final-9",
+      "type": "fill-blanks",
+      "title": "Back from the Fields",
+      "instructions": "Complete the sentence from Chapter 7 with one word: last, first or second.",
+      "question": "When did Yunus come back from the fields?",
+      "fillBlanksText": "Yunus was the [blank] to return.",
+      "correctAnswer": [
+       "last"
+      ],
+      "explanation": "Chapter 7 says: “They picked flowers and ran back to their teacher. Yunus was the last to return. In the late afternoon, he returned with a single daisy.”",
+      "feedback": {
+       "correct": "Yes. The others ran back quickly, but Yunus came back late with one daisy.",
+       "incorrect": "Read the end of the first paragraph of Chapter 7."
+      }
+     },
+     {
+      "id": "yunus-a2-final-10",
+      "type": "sequencing",
+      "title": "Yunus’s Path",
+      "instructions": "Put these events in the order of the story.",
+      "question": "What happened first, next and last?",
+      "sequencingItems": [
+       {
+        "id": "3",
+        "text": "Taptuk asks why Yunus always brings straight wood."
+       },
+       {
+        "id": "1",
+        "text": "Yunus completes his madrasa education."
+       },
+       {
+        "id": "5",
+        "text": "Yunus returns with a single daisy."
+       },
+       {
+        "id": "2",
+        "text": "Yunus serves his teacher for forty years."
+       },
+       {
+        "id": "4",
+        "text": "Taptuk sends his students to bring flowers."
+       }
+      ],
+      "correctAnswer": [
+       "1",
+       "2",
+       "3",
+       "4",
+       "5"
+      ],
+      "explanation": "The madrasa (Chapter 1), forty years of service (Chapter 5), Taptuk’s question (Chapter 5), the flower task (Chapter 7) and the single daisy (Chapter 7).",
+      "feedback": {
+       "correct": "Yes. Yunus studied, served for many years, and then learned through the wood and the flowers.",
+       "incorrect": "Remember that Taptuk asked about the wood after Yunus had served for forty years."
+      }
+     }
+    ]
+   }
+  ],
+  "teacherGuide": [],
+  "selfStudyGuide": []
+ }
+}

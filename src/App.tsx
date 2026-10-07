@@ -8,8 +8,6 @@ import {
   ChevronRight,
   ChevronUp,
   Download,
-  Eye,
-  EyeOff,
   Home,
   Info,
   LoaderCircle,
@@ -17,7 +15,7 @@ import {
   Layers,
   MapPin,
   Menu,
-  X, HelpCircle, FileText, ArrowRight } from './components/ui/icons';
+  X, HelpCircle, FileText } from './components/ui/icons';
 
 import { Level, PageData } from './types';
 import { useBookBundle } from './hooks/useBookBundle';
@@ -37,6 +35,7 @@ import { LanguageToggle } from './components/ui/LanguageToggle';
 import { FullscreenToggle } from './components/ui/FullscreenButton';
 import { ReaderSettings } from './components/book/ReaderSettings';
 import { useMediaQuery } from './lib/useMediaQuery';
+import { useReaderPreferences } from './hooks/useReaderPreferences';
 import { useIsPhone, useSheetDrag } from './lib/phone';
 import { StoryProgressProvider, useStoryProgress } from './contexts/StoryProgressContext';
 
@@ -59,47 +58,19 @@ import { BOOK_PDF_LABELS, STORY_PDF_KINDS, bookPdfUrl } from './lib/bookPdfs';
 // Book Components
 import { StoryPage, StoryFlow, ExercisePage, MasterGlossary } from './components/book/readerChunks';
 import { RolePicker } from './components/layout/RolePicker';
-import { BrandedEntry } from './components/layout/BrandedEntry';
+import { AccessGate, hasAccessCode } from './components/layout/AccessGate';
 import { MyWordsPanel } from './components/book/MyWordsPanel';
 import { setMyWordsBook } from './lib/myWords';
 import { useUserRole } from './contexts/UserRoleContext';
 import { useClassMode } from './contexts/ClassModeContext';
 import { saveBookOffline } from './lib/pwa';
-import { ensureOpenDyslexicStyles } from './lib/deferredStyles';
 import { OFFLINE_BOOK_SIZE_MB } from './data/offlineBookSizes';
 
 const AppContent = () => {
   // --- State ---
-  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(() => {
-    // Remembered on the device (an installed app asks once, not after every restart).
-    try {
-      const code = localStorage.getItem('app_access_code') ?? sessionStorage.getItem('app_access_code');
-      return code === 'stories_enar';
-    } catch {
-      return false;
-    }
-  });
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(hasAccessCode);
   const { role, isTeacher } = useUserRole();
   const { classMode, setClassMode } = useClassMode();
-  const [passwordInput, setPasswordInput] = useState('');
-  const [showPassword, setShowPassword] = useState(false);
-  const [errorMsg, setErrorMsg] = useState('');
-
-  const handlePasswordSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    const normalized = passwordInput.trim();
-    if (normalized === 'stories_enar') {
-      try {
-        localStorage.setItem('app_access_code', normalized);
-      } catch {
-        try { sessionStorage.setItem('app_access_code', normalized); } catch { /* storage blocked: stays open for this visit */ }
-      }
-      setIsAuthenticated(true);
-    } else {
-      setErrorMsg('Incorrect password! Please try again.');
-    }
-  };
-
   // A shared or reloaded link like #/mecca/a2/5 opens that book at that page.
   const [initialRoute] = useState(() => parseHashRoute(window.location.hash));
   const [selectedProphetId, setSelectedProphetId] = useState<string | null>(initialRoute?.storyId ?? null);
@@ -114,16 +85,14 @@ const AppContent = () => {
   const [isSelfStudyOpen, setIsSelfStudyOpen] = useState(false);
   const [teacherGuideData, setTeacherGuideData] = useState<BilingualTeacherGuideData | null>(null);
   const [selfStudyGuideData, setSelfStudyGuideData] = useState<BilingualSelfStudyGuideData | null>(null);
-  const [isDyslexic, setIsDyslexic] = useState(() => localStorage.getItem('reader_dyslexic') === 'true');
-  const [readerScale, setReaderScale] = useState(() => {
-    const stored = Number(localStorage.getItem('reader_scale'));
-    return Number.isFinite(stored) && stored >= 0.85 && stored <= 1.3 ? stored : 1;
-  });
-  const [isWideView, setIsWideView] = useState(() => localStorage.getItem('reader_wide') === 'true');
-  const [showHighlights, setShowHighlights] = useState(() => localStorage.getItem('reader_highlights') !== 'false');
-  const [followAlong, setFollowAlong] = useState(() => localStorage.getItem('reader_follow_along') !== 'false');
-  // Story mode: the whole story on one page, the activities after "The End".
-  const [storyMode, setStoryMode] = useState(() => localStorage.getItem('reader_story_mode') === 'true');
+  const {
+    isDyslexic, setIsDyslexic,
+    readerScale, setReaderScale,
+    isWideView, setIsWideView,
+    showHighlights, setShowHighlights,
+    followAlong, setFollowAlong,
+    storyMode, setStoryMode,
+  } = useReaderPreferences();
   const isLargeDesktop = useMediaQuery('(min-width: 90rem)');
   // Phones get native patterns: the menu opens as a sheet from the bottom, the header keeps only what is used most.
   const isPhone = useIsPhone();
@@ -155,30 +124,11 @@ const AppContent = () => {
     };
   }, []);
 
-  useEffect(() => {
-    localStorage.setItem('reader_scale', String(readerScale));
-  }, [readerScale]);
 
-  useEffect(() => {
-    localStorage.setItem('reader_dyslexic', String(isDyslexic));
-    if (isDyslexic) ensureOpenDyslexicStyles();
-  }, [isDyslexic]);
 
-  useEffect(() => {
-    localStorage.setItem('reader_wide', String(isWideView));
-  }, [isWideView]);
 
-  useEffect(() => {
-    localStorage.setItem('reader_highlights', String(showHighlights));
-  }, [showHighlights]);
 
-  useEffect(() => {
-    localStorage.setItem('reader_follow_along', String(followAlong));
-  }, [followAlong]);
 
-  useEffect(() => {
-    localStorage.setItem('reader_story_mode', String(storyMode));
-  }, [storyMode]);
  
   const { language, setLanguage, t, formatNumber, isRTL } = useLanguage();
   const { stats, resetStats, hydrateStats } = useStoryProgress();
@@ -657,51 +607,7 @@ const AppContent = () => {
 
   // --- Render Helpers ---
   if (!isAuthenticated) {
-    const gateCopy = language === 'ar'
-      ? { welcome: 'أَهْلًا بِكَ', text: 'اكْتُبْ رَمْزَ الدُّخُولِ الَّذِي أُعْطِيَ لَكَ لِتَفْتَحَ الْمَكْتَبَة.', label: 'رَمْزُ الدُّخُول', open: 'افْتَحِ الْمَكْتَبَة', wrong: 'الرَّمْزُ غَيْرُ صَحِيح. حَاوِلْ مَرَّةً أُخْرَى.', show: 'أَظْهِرِ الرَّمْز', hide: 'أَخْفِ الرَّمْز' }
-      : { welcome: 'Welcome', text: 'Enter the access code you were given to open the library.', label: 'Access code', open: 'Open the library', wrong: 'That code is not right. Please try again.', show: 'Show code', hide: 'Hide code' };
-    return (
-      <BrandedEntry>
-        <h2 className={cn('mt-6 text-[40px] font-semibold leading-[1.1] text-[#FFF9EC]', language !== 'ar' && 'tracking-[-0.03em]')}>{gateCopy.welcome}</h2>
-        <p className="mt-3 text-[15px] leading-relaxed text-[#EDE5D4]/70">{gateCopy.text}</p>
-        <form onSubmit={handlePasswordSubmit} className="mt-7 flex flex-col">
-          <label htmlFor="access-code" className="text-[12px] font-semibold text-[#EDE5D4]/70">{gateCopy.label}</label>
-          <div className="relative mt-2 flex items-center">
-            <input
-              id="access-code"
-              type={showPassword ? 'text' : 'password'}
-              value={passwordInput}
-              onChange={(e) => {
-                setPasswordInput(e.target.value);
-                setErrorMsg('');
-              }}
-              placeholder={gateCopy.label}
-              dir="ltr"
-              className="w-full rounded-2xl border border-[#D8B35C]/35 bg-white/[0.05] py-4 pe-12 ps-5 text-base text-[#FFF9EC] placeholder-[#EDE5D4]/35 transition-all focus:border-[#F3D58A] focus:outline-none focus:ring-[3px] focus:ring-[#D8B35C]/20"
-              autoFocus
-            />
-            <button
-              type="button"
-              onClick={() => setShowPassword(prev => !prev)}
-              className="absolute end-3.5 cursor-pointer p-1 text-[#D8B35C]/70 transition-colors hover:text-[#F3D58A]"
-              aria-label={showPassword ? gateCopy.hide : gateCopy.show}
-            >
-              {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
-            </button>
-          </div>
-          {errorMsg && (
-            <p role="alert" className="mt-3 text-[13px] text-red-300">{gateCopy.wrong}</p>
-          )}
-          <button
-            type="submit"
-            className="mt-4 inline-flex items-center justify-center gap-2.5 rounded-full bg-[linear-gradient(135deg,#ECCD7E,#B98A36)] px-7 py-4 text-[15px] font-semibold text-[#16130c] shadow-[0_18px_50px_rgba(216,179,92,0.26)] transition-all hover:-translate-y-0.5 hover:shadow-[0_22px_60px_rgba(216,179,92,0.36)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F3D58A] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0b0e0c] active:scale-[0.99]"
-          >
-            {gateCopy.open}
-            <ArrowRight size={16} mirrored={isRTL} />
-          </button>
-        </form>
-      </BrandedEntry>
-    );
+    return <AccessGate onOpen={() => setIsAuthenticated(true)} />;
   }
 
   if (!role) {

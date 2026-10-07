@@ -1,0 +1,5083 @@
+{
+ "schema": 1,
+ "storyId": "mecca",
+ "level": "A2",
+ "language": "en",
+ "collection": "history",
+ "book": {
+  "id": "mecca-a2-en",
+  "title": "Bilal ibn Rabah and Mecca (A2)",
+  "level": "A2",
+  "baseFontSize": 13,
+  "pages": [
+   {
+    "id": 1,
+    "type": "story",
+    "title": "Bilal Ibn Rabah’s Place in Islam",
+    "image": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Fimages%2Fmecca_a2_ch1.png?alt=media&token=20e4bbdd-4474-4c82-aa54-3ff1cef617d1",
+    "audioUrl": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Faudio%2F00_Chapter_1.mp3?alt=media&token=76a7c1bd-fa29-41ba-a587-4846ce823fc8",
+    "content": "Bilal ibn Rabah was one of the first seven people who openly said they were Muslims in Mecca. After becoming a Muslim, he never left Prophet Muhammad (pbuh) until his death. He was also the first person to give the Adhan, the call to prayer, in the history of Islam.\n\nBilal was a black slave. He was born in Mecca. His mother was an Ethiopian woman. His father, Rabah, and his mother, Hamama, were also slaves. So Bilal was born into slavery.\n\nWithout Islam, he would always be a slave. People in Mecca thought Bilal was just a poor slave. They thought he had no power and would never become someone important. But Islam made him a free and great man. His story teaches us that skin color or being a slave does not make a person less valuable.",
+    "vocabulary": [
+     {
+      "word": "Mecca",
+      "definition": "__historical_entity__:mecca-mecca-7th-century"
+     },
+     {
+      "word": "openly",
+      "definition": "In a way that is not hidden."
+     },
+     {
+      "word": "Adhan",
+      "definition": "The call to prayer in Islam."
+     },
+     {
+      "word": "slave",
+      "definition": "A person who is owned by another person and must work for them."
+     },
+     {
+      "word": "valuable",
+      "definition": "Worth a lot; very important."
+     }
+    ],
+    "hotspots": [
+     {
+      "id": "mecca-a2-en-h1a",
+      "x": 31,
+      "y": 42,
+      "title": "Bilal ibn Rabah",
+      "description": "Bilal was among the first people who openly said they were Muslims in Mecca."
+     },
+     {
+      "id": "mecca-a2-en-h1b",
+      "x": 71,
+      "y": 58,
+      "title": "A Great Lesson",
+      "description": "Bilal’s story teaches that skin color or slavery does not make a person less valuable."
+     }
+    ],
+    "exercises": [
+     {
+      "id": "mecca-a2-quick-1",
+      "type": "multiple-choice",
+      "title": "Bilal’s Place",
+      "instructions": "Read the question. Choose the answer from Chapter 1.",
+      "question": "What was Bilal the first person to do in the history of Islam?",
+      "options": [
+       "He was born free in Mecca.",
+       "He gave the Adhan, the call to prayer.",
+       "He went to live in Damascus."
+      ],
+      "correctAnswer": 1,
+      "explanation": "Chapter 1 says Bilal was “the first person to give the Adhan, the call to prayer, in the history of Islam.”",
+      "feedback": {
+       "correct": "Yes! Bilal was the first person to give the Adhan. That is why his name is so special.",
+       "incorrect": "Not this one. Read the first paragraph again and find the words “the first person to …”."
+      }
+     }
+    ],
+    "languageFocusExercises": [
+     {
+      "id": "mecca-a2-language-1-biography",
+      "type": "drag-drop",
+      "title": "Fact or Belief?",
+      "instructions": "Put each part in the right group: fact or belief.",
+      "question": "Is it a fact, or only what people in Mecca thought?",
+      "dragDropGroups": [
+       {
+        "group": "A fact in the story",
+        "items": [
+         "Bilal was a black slave.",
+         "His mother was an Ethiopian woman.",
+         "He was also the first person to give the Adhan …"
+        ]
+       },
+       {
+        "group": "What people in Mecca thought",
+        "items": [
+         "Bilal was just a poor slave.",
+         "he had no power",
+         "… would never become someone important."
+        ]
+       }
+      ],
+      "correctAnswer": {
+       "A fact in the story": [
+        "Bilal was a black slave.",
+        "His mother was an Ethiopian woman.",
+        "He was also the first person to give the Adhan …"
+       ],
+       "What people in Mecca thought": [
+        "Bilal was just a poor slave.",
+        "he had no power",
+        "… would never become someone important."
+       ]
+      },
+      "explanation": "After “People in Mecca thought …” and “They thought …”, the chapter tells us an old belief, not a fact. “Thought + sentence” reports what people believed. The story shows the belief was wrong: Bilal became a great man.",
+      "feedback": {
+       "correct": "Correct. You found the facts and the old beliefs.",
+       "incorrect": "Look at the third paragraph. Find “People in Mecca thought …” and “They thought …”. The words after them are a belief."
+      }
+     },
+     {
+      "id": "mecca-a2-language-1-belief",
+      "type": "matching",
+      "title": "Past Forms in Chapter 1",
+      "instructions": "Match each verb with its past form from Chapter 1.",
+      "question": "What is the past form of each verb?",
+      "matchingHeadings": {
+       "left": "Base verb",
+       "right": "Past form in Chapter 1"
+      },
+      "matchingPairs": [
+       {
+        "left": "say",
+        "right": "said"
+       },
+       {
+        "left": "leave",
+        "right": "left"
+       },
+       {
+        "left": "think",
+        "right": "thought"
+       },
+       {
+        "left": "have",
+        "right": "had"
+       }
+      ],
+      "correctAnswer": {
+       "say": "said",
+       "leave": "left",
+       "think": "thought",
+       "have": "had"
+      },
+      "explanation": "These verbs are irregular. Their past forms do not end in -ed: say → said, leave → left, think → thought, have → had.",
+      "feedback": {
+       "correct": "Correct. You know four irregular past forms from the chapter.",
+       "incorrect": "Find the verbs in Chapter 1: “openly said”, “never left”, “thought Bilal was …”, “had no power”."
+      }
+     },
+     {
+      "id": "mecca-a2-language-1-change",
+      "type": "choose-form",
+      "title": "Background and Change",
+      "instructions": "Choose the correct word for each sentence from Chapter 1.",
+      "question": "Where was Bilal born, and how did Islam change him?",
+      "formChoices": [
+       {
+        "sentence": "He was born [choice] Mecca.",
+        "options": [
+         "on",
+         "in",
+         "at"
+        ],
+        "answer": 1
+       },
+       {
+        "sentence": "His father, Rabah, and his mother, Hamama, [choice] also slaves.",
+        "options": [
+         "was",
+         "were",
+         "be"
+        ],
+        "answer": 1
+       },
+       {
+        "sentence": "But Islam [choice] him a free and great man.",
+        "options": [
+         "did",
+         "was",
+         "made"
+        ],
+        "answer": 2
+       }
+      ],
+      "correctAnswer": null,
+      "explanation": "We say “was born in + city”. We use “were” with two people (his father and his mother). “Made + person + adjective/noun” shows a change: Islam made him free and great.",
+      "feedback": {
+       "correct": "Correct. You chose the right words for background and change.",
+       "incorrect": "Check the second paragraph for the birthplace and the parents. Check the end of the chapter for the change."
+      }
+     },
+     {
+      "id": "mecca-a2-language-1-production",
+      "type": "reflection",
+      "title": "A Short Life Story",
+      "instructions": "Write or say four sentences about a real or imaginary person.",
+      "question": "Can you tell a short life story?",
+      "correctAnswer": null,
+      "explanation": "Use chapter language rather than retelling the Quick Challenge.",
+      "feedback": {
+       "correct": "Use at least three different patterns.",
+       "incorrect": ""
+      },
+      "discussionPrompts": [
+       {
+        "question": "Sentence 1 — Say where they were born: “… was born in …”",
+        "mode": "Individual",
+        "example": "My grandfather was born in a small village."
+       },
+       {
+        "question": "Sentence 2 — Add a fact about the past: “… was/were …”",
+        "mode": "Individual",
+        "example": "His parents were farmers, and they were very poor."
+       },
+       {
+        "question": "Sentence 3 — Say what people thought: “People thought …”",
+        "mode": "Individual",
+        "example": "People thought he would never go to school."
+       },
+       {
+        "question": "Sentence 4 — Show a change: “… made him/her …”",
+        "mode": "Pair",
+        "example": "But hard work made him a good teacher."
+       }
+      ]
+     }
+    ],
+    "beforeYouRead": {
+     "kind": "guess",
+     "question": "Guess first: Where was Bilal born?",
+     "options": [
+      "in Mecca",
+      "in Abyssinia",
+      "in Medina"
+     ],
+     "answer": 0,
+     "quote": "He was born in Mecca."
+    },
+    "iCan": [
+     "I can say who Bilal was.",
+     "I can say what people thought long ago.",
+     "I can write four short sentences about a person."
+    ]
+   },
+   {
+    "id": 2,
+    "type": "story",
+    "title": "The Age of Ignorance",
+    "image": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Fimages%2Fmecca_a2_ch2.png?alt=media&token=9b4da4cd-2f99-4e5e-b0f3-5a7d27d3bd72",
+    "audioUrl": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Faudio%2F01_Chapter_2_The_Age_of_Ignorance.mp3?alt=media&token=f9a3c4c4-545a-4fb2-8b1a-d21e02b030e9",
+    "content": "The period before Islam was called the Age of Ignorance, or Jahiliyyah. Many people did not believe in the One and Only Allah. They left the true belief and worshipped idols. There was no real peace and justice in society.\n\nThere was a big gap between rich and poor people. Rich people had a lot of money and lived in luxury. They used gold plates and silver cups. But many poor people lived in need. Life was very hard for them.\n\nMecca was a business city. People bought and sold things there. Some rich people lent money to the poor and wanted more money back. This unfair extra money was called riba. Because of this, the rich became richer and the poor became poorer.",
+    "vocabulary": [
+     {
+      "word": "Mecca",
+      "definition": "__historical_entity__:mecca-mecca-7th-century"
+     },
+     {
+      "word": "ignorance",
+      "definition": "Not knowing or not following the truth."
+     },
+     {
+      "word": "idols",
+      "definition": "Objects that people wrongly worship."
+     },
+     {
+      "word": "justice",
+      "definition": "Fair treatment for people."
+     },
+     {
+      "word": "luxury",
+      "definition": "A very comfortable and expensive way of life."
+     }
+    ],
+    "hotspots": [
+     {
+      "id": "mecca-a2-en-h2a",
+      "x": 27,
+      "y": 56,
+      "title": "Jahiliyyah",
+      "description": "The period before Islam was called the Age of Ignorance."
+     },
+     {
+      "id": "mecca-a2-en-h2b",
+      "x": 73,
+      "y": 38,
+      "title": "Rich and Poor",
+      "description": "There was a large gap between rich and poor people."
+     }
+    ],
+    "exercises": [
+     {
+      "id": "mecca-a2-quick-2",
+      "type": "multiple-choice",
+      "title": "Rich and Poor",
+      "instructions": "Read the question. Choose the answer from Chapter 2.",
+      "question": "Some rich people lent money to the poor. What did they want back?",
+      "options": [
+       "the same money, with nothing extra",
+       "more money than they gave",
+       "gold plates and silver cups"
+      ],
+      "correctAnswer": 1,
+      "explanation": "The chapter says some rich people “lent money to the poor and wanted more money back.” Because of this, the rich became richer and the poor became poorer.",
+      "feedback": {
+       "correct": "Right! They wanted more money back. This made the poor people even poorer.",
+       "incorrect": "Look again at the last paragraph of Chapter 2. What did the rich people want back?"
+      }
+     }
+    ],
+    "languageFocusExercises": [
+     {
+      "id": "mecca-a2-language-2-past-society",
+      "type": "multiple-choice",
+      "title": "Two Different Lives",
+      "instructions": "Read the sentences from Chapter 2. Then choose the best answer.",
+      "question": "“They used gold plates and silver cups. But many poor people lived in need.” What does “But” show here?",
+      "options": [
+       "The second sentence is the reason for the first one.",
+       "The second sentence shows a very different situation.",
+       "The second sentence happened later in time."
+      ],
+      "correctAnswer": 1,
+      "explanation": "“But” joins two different or opposite ideas. Rich people used gold and silver, but poor people did not have enough. The word shows the big gap between the two groups.",
+      "feedback": {
+       "correct": "Correct. “But” shows a different, opposite situation.",
+       "incorrect": "Read the second paragraph again. Compare the life of the rich people with the life of the poor people."
+      }
+     },
+     {
+      "id": "mecca-a2-language-2-contrast",
+      "type": "word-bank",
+      "title": "Describing the Past",
+      "instructions": "Complete the lines with the word bank. Two words are extra.",
+      "question": "What was life like before Islam?",
+      "fillBlanksText": "The period before Islam [blank] the Age of Ignorance, or Jahiliyyah. … [blank] no real peace and justice in society. … Rich people had [blank] money and lived in luxury.",
+      "wordBank": [
+       "was called",
+       "There was",
+       "a lot of",
+       "many",
+       "There were"
+      ],
+      "correctAnswer": [
+       "was called",
+       "There was",
+       "a lot of"
+      ],
+      "explanation": "“Was called” gives the name of something. “There was” says that something existed (or did not exist) in the past; “peace and justice” takes “was”. We say “a lot of money”, not “many money”, because we cannot count money like this.",
+      "feedback": {
+       "correct": "Correct. You chose the words for a name, a past situation and a quantity.",
+       "incorrect": "Read the first two paragraphs of Chapter 2. Check the word after each blank: “money” cannot follow “many”."
+      }
+     },
+     {
+      "id": "mecca-a2-language-2-result",
+      "type": "sentence-building",
+      "title": "Cause and Result",
+      "instructions": "Put the parts in order to make the sentence from Chapter 2.",
+      "question": "What happened to the rich and the poor?",
+      "sentenceChunks": [
+       "Because of this,",
+       "the rich",
+       "became richer",
+       "and the poor",
+       "became poorer."
+      ],
+      "correctAnswer": null,
+      "explanation": "“Because of this” gives the result of something the writer said before (the unfair extra money). “Became + richer/poorer” shows a change over time.",
+      "feedback": {
+       "correct": "Correct. The sentence starts with the cause and ends with the result.",
+       "incorrect": "Start with the words that link back to the unfair money. Look at the last sentence of Chapter 2."
+      }
+     },
+     {
+      "id": "mecca-a2-language-2-production",
+      "type": "reflection",
+      "title": "Describe a Past Community",
+      "instructions": "Write or say four sentences about a town in the past.",
+      "question": "Can you describe a town in the past?",
+      "correctAnswer": null,
+      "explanation": "Use “there was”, quantity language, “but”, and “because of this”.",
+      "feedback": {
+       "correct": "Keep the description short and connected.",
+       "incorrect": ""
+      },
+      "discussionPrompts": [
+       {
+        "question": "Sentence 1 — Say what was there: “There was …”",
+        "mode": "Individual",
+        "example": "There was a small market in the old town."
+       },
+       {
+        "question": "Sentence 2 — Say how many: “many …” or “a lot of …”",
+        "mode": "Individual",
+        "example": "A lot of people sold fruit and bread there."
+       },
+       {
+        "question": "Sentence 3 — Show two different lives: “…, but …”",
+        "mode": "Individual",
+        "example": "Some families had big houses, but many families lived in small rooms."
+       },
+       {
+        "question": "Sentence 4 — Give a result: “Because of this, … became …”",
+        "mode": "Pair",
+        "example": "Many people had no work. Because of this, the poor families became poorer."
+       }
+      ]
+     }
+    ],
+    "beforeYouRead": {
+     "kind": "picture",
+     "question": "Look at the picture. What was life in Mecca like before Islam?",
+     "options": [
+      "Everyone had a lot of money and lived well.",
+      "Everyone believed in the One and Only Allah.",
+      "There was a big gap between rich and poor people."
+     ],
+     "answer": 2,
+     "quote": "There was a big gap between rich and poor people."
+    },
+    "iCan": [
+     "I can tell how rich and poor people lived.",
+     "I can say what a town was like long ago.",
+     "I can write four sentences about a town long ago."
+    ]
+   },
+   {
+    "id": 3,
+    "type": "story",
+    "title": "Slaves in Mecca",
+    "image": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Fimages%2Fmecca_a2_ch3.png?alt=media&token=29c10d59-3866-480e-8c92-5fb618c95e39",
+    "audioUrl": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Faudio%2F02_Chapter_3_Slaves_in_Mecca.mp3?alt=media&token=6ccce6ef-b016-4a99-8915-213d3f3579b7",
+    "content": "In this unfair system, the poor were getting poorer and the rich were getting richer. The people with money were the most powerful people in the city.\n\nSlave markets were very common in Arabia. Mecca was a center for buying and selling slaves. Many slaves from different lands, especially from Abyssinia, lived in the homes of Meccan people.\n\nOne of those slaves was Bilal ibn Rabah. His master was Umayya ibn Khalaf. Umayya was one of the richest and most powerful leaders in Mecca. He worshipped idols and became a major enemy of Islam. When Prophet Muhammad (pbuh) started teaching Islam, Umayya wanted this message to stop.",
+    "vocabulary": [
+     {
+      "word": "Mecca",
+      "definition": "__historical_entity__:mecca-mecca-7th-century"
+     },
+     {
+      "word": "Arabia",
+      "definition": "__historical_entity__:mecca-arabian-peninsula"
+     },
+     {
+      "word": "Umayya",
+      "definition": "__historical_entity__:mecca-umayya-ibn-khalaf"
+     },
+     {
+      "word": "system",
+      "definition": "A way that society or work is organized."
+     },
+     {
+      "word": "slave markets",
+      "definition": "Places where slaves were bought and sold."
+     },
+     {
+      "word": "Abyssinia",
+      "definition": "An old name for Ethiopia and nearby areas."
+     },
+     {
+      "word": "master",
+      "definition": "A person who owns a slave."
+     }
+    ],
+    "hotspots": [
+     {
+      "id": "mecca-a2-en-h3a",
+      "x": 34,
+      "y": 64,
+      "title": "Slave Markets",
+      "description": "Mecca was a center for buying and selling slaves."
+     },
+     {
+      "id": "mecca-a2-en-h3b",
+      "x": 66,
+      "y": 31,
+      "title": "Umayya",
+      "description": "Umayya was one of the richest and most powerful leaders in Mecca."
+     }
+    ],
+    "exercises": [
+     {
+      "id": "mecca-a2-quick-3",
+      "type": "true-false",
+      "title": "Umayya and Islam",
+      "instructions": "Is the sentence true or false? Use Chapter 3.",
+      "question": "When the Prophet (pbuh) started teaching Islam, Umayya became a friend of the new message.",
+      "correctAnswer": false,
+      "explanation": "Chapter 3 says Umayya worshipped idols, became a major enemy of Islam and wanted the message to stop.",
+      "feedback": {
+       "correct": "Correct! Umayya did not become a friend of Islam. He wanted the message to stop.",
+       "incorrect": "Read the last sentences of Chapter 3 again. What did Umayya want to do with the message?"
+      }
+     }
+    ],
+    "languageFocusExercises": [
+     {
+      "id": "mecca-a2-language-3-change-comparison",
+      "type": "matching",
+      "title": "What Does It Mean?",
+      "instructions": "Match each phrase from Chapter 3 with its meaning.",
+      "question": "How does the chapter describe Mecca and its people?",
+      "matchingHeadings": {
+       "left": "From the chapter",
+       "right": "Meaning"
+      },
+      "matchingPairs": [
+       {
+        "left": "the poor were getting poorer",
+        "right": "they had less and less"
+       },
+       {
+        "left": "Slave markets were very common in Arabia.",
+        "right": "You could find them in many places."
+       },
+       {
+        "left": "the most powerful people in the city",
+        "right": "stronger than all other people in Mecca"
+       },
+       {
+        "left": "Umayya wanted this message to stop.",
+        "right": "He hoped the teaching would end."
+       }
+      ],
+      "correctAnswer": {
+       "the poor were getting poorer": "they had less and less",
+       "Slave markets were very common in Arabia.": "You could find them in many places.",
+       "the most powerful people in the city": "stronger than all other people in Mecca",
+       "Umayya wanted this message to stop.": "He hoped the teaching would end."
+      },
+      "explanation": "“Were getting + poorer/richer” shows a change that continued in the past. “The most + adjective” compares one group with all the others. “Wanted + thing + to + verb” shows what someone wished for.",
+      "feedback": {
+       "correct": "Correct. You understood the change, the comparison and the wish.",
+       "incorrect": "Read each phrase in Chapter 3 again. Ask: Is it about a change, about places, about power or about a wish?"
+      }
+     },
+     {
+      "id": "mecca-a2-language-3-place",
+      "type": "choose-form",
+      "title": "Place, Origin and Time",
+      "instructions": "Choose the correct word for each sentence from Chapter 3.",
+      "question": "What was Mecca a center for, and where were slaves from?",
+      "formChoices": [
+       {
+        "sentence": "Mecca was a center for [choice] and selling slaves.",
+        "options": [
+         "buy",
+         "buying",
+         "to buy"
+        ],
+        "answer": 1
+       },
+       {
+        "sentence": "Many slaves [choice] different lands, especially from Abyssinia, lived in the homes of Meccan people.",
+        "options": [
+         "from",
+         "in",
+         "at"
+        ],
+        "answer": 0
+       },
+       {
+        "sentence": "When Prophet Muhammad (pbuh) [choice] teaching Islam, …",
+        "options": [
+         "start",
+         "starts",
+         "started"
+        ],
+        "answer": 2
+       }
+      ],
+      "correctAnswer": null,
+      "explanation": "“A center for + -ing” says what a place was important for. “From + place” shows where people came from. After “When” in a past story, use the past form: “When … started …”.",
+      "feedback": {
+       "correct": "Correct. You chose the right form each time.",
+       "incorrect": "Look at the second and third paragraphs of Chapter 3. After “for”, use the -ing form."
+      }
+     },
+     {
+      "id": "mecca-a2-language-3-time",
+      "type": "sentence-building",
+      "title": "One of the Richest",
+      "instructions": "Put the parts in order to make the sentence from Chapter 3.",
+      "question": "Who was Umayya in Mecca?",
+      "sentenceChunks": [
+       "Umayya was",
+       "one of",
+       "the richest and most powerful",
+       "leaders",
+       "in Mecca."
+      ],
+      "correctAnswer": null,
+      "explanation": "“One of the + superlative + plural noun” puts one person inside a top group: Umayya was one of the richest leaders. The noun after it is plural: “leaders”.",
+      "feedback": {
+       "correct": "Correct. You built the superlative sentence.",
+       "incorrect": "Start with the person, then “one of”, then the superlative and a plural noun. Check the third paragraph."
+      }
+     },
+     {
+      "id": "mecca-a2-language-3-production",
+      "type": "reflection",
+      "title": "Describe a Changing City",
+      "instructions": "Write or say four sentences about an imaginary city.",
+      "question": "Can you describe a city that is changing?",
+      "correctAnswer": null,
+      "explanation": "Use at least three Chapter 3 patterns.",
+      "feedback": {
+       "correct": "Keep the four sentences connected.",
+       "incorrect": ""
+      },
+      "discussionPrompts": [
+       {
+        "question": "Sentence 1 — Say what the city is known for: “… was a center for …”",
+        "mode": "Individual",
+        "example": "Green Town was a center for making carpets."
+       },
+       {
+        "question": "Sentence 2 — Show a change: “… were getting …”",
+        "mode": "Individual",
+        "example": "The streets were getting busier every year."
+       },
+       {
+        "question": "Sentence 3 — Say what was the top one: “the biggest …” or “the most …”",
+        "mode": "Individual",
+        "example": "The carpet market was the biggest place in the city."
+       },
+       {
+        "question": "Sentence 4 — Say what someone wanted: “When …, … wanted … to …”",
+        "mode": "Pair",
+        "example": "When the streets got too busy, the mayor wanted people to take the new bus."
+       }
+      ]
+     }
+    ],
+    "beforeYouRead": {
+     "kind": "guess",
+     "question": "Guess first: Who was Bilal’s master?",
+     "options": [
+      "Abu Bakr",
+      "Umayya ibn Khalaf",
+      "Rabah"
+     ],
+     "answer": 1,
+     "quote": "His master was Umayya ibn Khalaf."
+    },
+    "iCan": [
+     "I can say who Bilal’s master was.",
+     "I can say who was the richest or strongest.",
+     "I can talk about a city that is changing."
+    ]
+   },
+   {
+    "id": 4,
+    "type": "story",
+    "title": "Bilal’s Hard Life",
+    "image": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Fimages%2Fmecca_a2_ch4.png?alt=media&token=973d7f83-3ddb-4692-87c6-62963772b371",
+    "audioUrl": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Faudio%2F03_Chapter_4_Bilal%E2%80%99s_Hard_Life.mp3?alt=media&token=12a37c49-7c5f-4635-bd3e-dbb88eae6146",
+    "content": "Umayya never gave up his hatred of Islam and Muslims. Bilal was a slave of Umayya ibn Khalaf. Umayya was always very unkind to Bilal. Every member of the family was rude to him. They did not respect him as a person.\n\nThey called Bilal “the son of the black woman” to hurt his feelings. He had a very difficult life at his master’s house. He looked after his master’s camels and worked under the hot sun in the desert of Mecca all day.\n\nIn the evening, his job was to bring food and wine to his master. His master was often angry and harsh. No one could say “No” to him or say anything negative. Bilal had to be patient and work hard every day.",
+    "vocabulary": [
+     {
+      "word": "Mecca",
+      "definition": "__historical_entity__:mecca-mecca-7th-century"
+     },
+     {
+      "word": "Umayya",
+      "definition": "__historical_entity__:mecca-umayya-ibn-khalaf"
+     },
+     {
+      "word": "hatred",
+      "definition": "A very strong feeling of dislike."
+     },
+     {
+      "word": "rude",
+      "definition": "Not polite or respectful."
+     },
+     {
+      "word": "harsh",
+      "definition": "Cruel, strict, or unkind."
+     },
+     {
+      "word": "patient",
+      "definition": "Calm when you must wait or when life is hard."
+     }
+    ],
+    "hotspots": [
+     {
+      "id": "mecca-a2-en-h4a",
+      "x": 39,
+      "y": 35,
+      "title": "Hard Work",
+      "description": "Bilal cared for camels and worked under the hot sun all day."
+     },
+     {
+      "id": "mecca-a2-en-h4b",
+      "x": 63,
+      "y": 67,
+      "title": "No Respect",
+      "description": "Umayya’s family treated Bilal rudely and did not respect him as a person."
+     }
+    ],
+    "exercises": [
+     {
+      "id": "mecca-a2-quick-4",
+      "type": "matching",
+      "matchingHeadings": {
+       "left": "When or who",
+       "right": "What happened"
+      },
+      "title": "A Hard Day",
+      "instructions": "Match each part with what happened to Bilal in Chapter 4.",
+      "question": "What was Bilal’s life like at his master’s house?",
+      "matchingPairs": [
+       {
+        "left": "All day",
+        "right": "He looked after the camels under the hot sun."
+       },
+       {
+        "left": "In the evening",
+        "right": "He brought food and drinks to his master."
+       },
+       {
+        "left": "The family",
+        "right": "They were rude to him and called him names."
+       }
+      ],
+      "correctAnswer": {
+       "All day": "He looked after the camels under the hot sun.",
+       "In the evening": "He brought food and drinks to his master.",
+       "The family": "They were rude to him and called him names."
+      },
+      "explanation": "Chapter 4 describes Bilal’s hard work all day, his job in the evening and how the family treated him.",
+      "feedback": {
+       "correct": "Well done! You found his work, his evening job and how the family treated him.",
+       "incorrect": "Look for the time words in Chapter 4: “all day” and “in the evening”. Then find how the family behaved."
+      }
+     }
+    ],
+    "languageFocusExercises": [
+     {
+      "id": "mecca-a2-language-4-frequency",
+      "type": "drag-drop",
+      "title": "How Often, or What Job?",
+      "instructions": "Put each part in the right group: How often, or his job.",
+      "question": "Does it say how often, or what Bilal had to do?",
+      "dragDropGroups": [
+       {
+        "group": "How often or how long",
+        "items": [
+         "Umayya was always very unkind to Bilal.",
+         "His master was often angry and harsh.",
+         "… worked under the hot sun in the desert of Mecca all day."
+        ]
+       },
+       {
+        "group": "Bilal’s job or duty",
+        "items": [
+         "He looked after his master’s camels …",
+         "… his job was to bring food and wine to his master.",
+         "Bilal had to be patient …"
+        ]
+       }
+      ],
+      "correctAnswer": {
+       "How often or how long": [
+        "Umayya was always very unkind to Bilal.",
+        "His master was often angry and harsh.",
+        "… worked under the hot sun in the desert of Mecca all day."
+       ],
+       "Bilal’s job or duty": [
+        "He looked after his master’s camels …",
+        "… his job was to bring food and wine to his master.",
+        "Bilal had to be patient …"
+       ]
+      },
+      "explanation": "“Always”, “often” and “all day” tell us how often or how long. “His job was to + verb” and “had to + verb” tell us what Bilal must do. “Had to” shows a past duty: There was no other choice.",
+      "feedback": {
+       "correct": "Correct. You separated time words from job and duty words.",
+       "incorrect": "Look for “always”, “often” and “all day”. Then look for “his job was to” and “had to”."
+      }
+     },
+     {
+      "id": "mecca-a2-language-4-purpose",
+      "type": "error-correction",
+      "title": "Find and Fix the Mistake",
+      "instructions": "Each sentence has one mistake. Tap it, then choose the correct words.",
+      "question": "Can you fix the sentences about how people treated Bilal?",
+      "errorItems": [
+       {
+        "sentence": "They called Bilal “the son of the black woman” for hurt his feelings.",
+        "error": "for hurt",
+        "options": [
+         "to hurt",
+         "for hurting to",
+         "hurted"
+        ],
+        "answer": 0
+       },
+       {
+        "sentence": "They did not respected him as a person.",
+        "error": "respected",
+        "options": [
+         "respecting",
+         "respect",
+         "respects"
+        ],
+        "answer": 1
+       }
+      ],
+      "correctAnswer": null,
+      "explanation": "Use “to + base verb” to say why someone did something: “to hurt his feelings”. After “did not”, use the base verb: “did not respect”.",
+      "feedback": {
+       "correct": "Well done. You fixed both sentences.",
+       "incorrect": "Compare with Chapter 4: the first paragraph (“did not …”) and the start of the second paragraph (why they called him names)."
+      }
+     },
+     {
+      "id": "mecca-a2-language-4-obligation",
+      "type": "multiple-choice",
+      "title": "Every Member",
+      "instructions": "Read the sentence from Chapter 4. Then choose the best meaning.",
+      "question": "“Every member of the family was rude to him.” What does this mean?",
+      "options": [
+       "Only one person in the family was rude to Bilal.",
+       "The family was rude to Bilal only on some days.",
+       "All the people in the family were rude to Bilal."
+      ],
+      "correctAnswer": 2,
+      "explanation": "“Every + singular noun” means all of them, one by one. The noun is singular (“member”) and the verb is singular (“was”), but the meaning is “all”.",
+      "feedback": {
+       "correct": "Correct. “Every member” means all the people in the family.",
+       "incorrect": "Read the first paragraph again. “Every” does not mean “one” or “sometimes”."
+      }
+     },
+     {
+      "id": "mecca-a2-language-4-production",
+      "type": "reflection",
+      "title": "Describe a Difficult Routine",
+      "instructions": "Write or say four sentences about a hard daily routine.",
+      "question": "What does the person do every day?",
+      "correctAnswer": null,
+      "explanation": "Use at least three Chapter 4 patterns.",
+      "feedback": {
+       "correct": "Keep it short and clear.",
+       "incorrect": ""
+      },
+      "discussionPrompts": [
+       {
+        "question": "Sentence 1 — Say how often: “always …” or “often …”",
+        "mode": "Individual",
+        "example": "My uncle always got up at five o’clock."
+       },
+       {
+        "question": "Sentence 2 — Give the job: “His/Her job was to …”",
+        "mode": "Individual",
+        "example": "His job was to bake bread for the whole street."
+       },
+       {
+        "question": "Sentence 3 — Say what for: “… to + verb”",
+        "mode": "Individual",
+        "example": "He went to the shop early to turn on the big oven."
+       },
+       {
+        "question": "Sentence 4 — Say what they had to do: “… had to …”",
+        "mode": "Pair",
+        "example": "He had to work all day, even in the hot summer."
+       }
+      ]
+     }
+    ],
+    "beforeYouRead": {
+     "kind": "guess",
+     "question": "Guess first: What could no one say to Umayya?",
+     "options": [
+      "“No”",
+      "“Hello”",
+      "“Thank you”"
+     ],
+     "answer": 0,
+     "quote": "No one could say “No” to him"
+    },
+    "iCan": [
+     "I can tell about Bilal’s hard days.",
+     "I can say what someone did every day.",
+     "I can tell my partner about a hard day."
+    ],
+    "groupTask": {
+     "type": "jigsaw",
+     "title": "Life in Old Mecca",
+     "time": "15 min",
+     "groupSize": "3–4",
+     "roles": [
+      {
+       "name": "Chapter 1 Expert",
+       "job": "You read Chapter 1 and teach who Bilal was."
+      },
+      {
+       "name": "Chapter 2 Expert",
+       "job": "You read Chapter 2 and teach about rich and poor people."
+      },
+      {
+       "name": "Chapter 3 Expert",
+       "job": "You read Chapter 3 and teach about Mecca and Umayya ibn Khalaf."
+      },
+      {
+       "name": "Chapter 4 Expert",
+       "job": "You read Chapter 4 and teach about Bilal’s work every day."
+      }
+     ],
+     "steps": [
+      "Read your chapter again and find two important facts.",
+      "Teach your facts to the group and show the sentence in the book.",
+      "Listen to the others and write one fact from each chapter.",
+      "Together, finish this sentence with three reasons: “Life was hard for Bilal because …”"
+     ],
+     "share": "Each group reads its three reasons and shows the sentence from the book for each one.",
+     "solo": "Read Chapters 1–4 again and write one fact from each chapter on a card."
+    }
+   },
+   {
+    "id": 5,
+    "type": "story",
+    "title": "A New Message",
+    "image": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Fimages%2Fmecca_a2_ch5.png?alt=media&token=3bc48909-db40-4b68-a142-69f6863f7f84",
+    "audioUrl": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Faudio%2F04_Chapter_5_A_New_Message.mp3?alt=media&token=be177f14-9655-4a2a-8797-60455716e29a",
+    "content": "Umayya liked Bilal because he was an obedient and hardworking servant. Bilal had to work very hard to please his master and protect himself from his master’s anger.\n\nBilal thought he would be a slave forever. He did not have any money to pay for his freedom. He also had no power to protect himself from bad behaviour.\n\nOne day, Bilal heard people talking about a new Prophet, Muhammad (pbuh). The Prophet (pbuh) was telling everyone to worship only Allah. He taught that people must be fair and equal. He told the people of Mecca to stop worshipping idols. He said, “Worship One Allah. Allah created the world.”",
+    "vocabulary": [
+     {
+      "word": "Mecca",
+      "definition": "__historical_entity__:mecca-mecca-7th-century"
+     },
+     {
+      "word": "Umayya",
+      "definition": "__historical_entity__:mecca-umayya-ibn-khalaf"
+     },
+     {
+      "word": "obedient",
+      "definition": "Doing what someone tells you to do."
+     },
+     {
+      "word": "freedom",
+      "definition": "The state of not being a slave or prisoner."
+     },
+     {
+      "word": "fair",
+      "definition": "Treating people in the right and equal way."
+     },
+     {
+      "word": "equal",
+      "definition": "Having the same value or rights."
+     }
+    ],
+    "hotspots": [
+     {
+      "id": "mecca-a2-en-h5a",
+      "x": 29,
+      "y": 61,
+      "title": "No Freedom",
+      "description": "Bilal had no money to pay for his freedom."
+     },
+     {
+      "id": "mecca-a2-en-h5b",
+      "x": 74,
+      "y": 33,
+      "title": "The New Message",
+      "description": "The Prophet (pbuh) taught that people must be fair and equal."
+     }
+    ],
+    "exercises": [
+     {
+      "id": "mecca-a2-quick-5",
+      "type": "multiple-choice",
+      "title": "No Way Out",
+      "instructions": "Read the question. Choose the answer from Chapter 5.",
+      "question": "Why did Bilal think he would be a slave forever?",
+      "options": [
+       "He did not have any money to pay for his freedom.",
+       "His master wanted to free him very soon.",
+       "He did not like the new Prophet’s message."
+      ],
+      "correctAnswer": 0,
+      "explanation": "Chapter 5 says Bilal “did not have any money to pay for his freedom” and had no power to protect himself.",
+      "feedback": {
+       "correct": "Yes! He had no money and no power. That is why he felt he would always be a slave.",
+       "incorrect": "Read the second paragraph of Chapter 5 again. What did Bilal not have?"
+      }
+     }
+    ],
+    "languageFocusExercises": [
+     {
+      "id": "mecca-a2-language-5-reason-duty",
+      "type": "true-false",
+      "title": "What Did Bilal Think?",
+      "instructions": "Read the sentence from Chapter 5. Is the statement true or false?",
+      "question": "“Bilal thought he would be a slave forever.” This means Bilal believed he would soon be free.",
+      "correctAnswer": false,
+      "explanation": "“Thought he would …” tells us what Bilal expected about his future. He expected to be a slave forever. He had no hope of freedom at that time.",
+      "feedback": {
+       "correct": "Correct. Bilal did not expect to be free.",
+       "incorrect": "Read the second paragraph again. What does “forever” tell you about his hope?"
+      }
+     },
+     {
+      "id": "mecca-a2-language-5-reporting",
+      "type": "matching",
+      "title": "Bilal’s Situation",
+      "instructions": "Match each phrase from Chapter 5 with its meaning.",
+      "question": "What was Bilal’s life like?",
+      "matchingHeadings": {
+       "left": "From the chapter",
+       "right": "Meaning"
+      },
+      "matchingPairs": [
+       {
+        "left": "because he was an obedient and hardworking servant",
+        "right": "the reason Umayya liked him"
+       },
+       {
+        "left": "had to work very hard",
+        "right": "there was no other choice for him"
+       },
+       {
+        "left": "did not have any money",
+        "right": "he was without a single coin"
+       },
+       {
+        "left": "had no power to protect himself",
+        "right": "he was not able to keep himself safe"
+       }
+      ],
+      "correctAnswer": {
+       "because he was an obedient and hardworking servant": "the reason Umayya liked him",
+       "had to work very hard": "there was no other choice for him",
+       "did not have any money": "he was without a single coin",
+       "had no power to protect himself": "he was not able to keep himself safe"
+      },
+      "explanation": "“Because + sentence” gives a reason. “Had to + verb” shows a past duty. “Did not have any + noun” and “had no power to + verb” show what Bilal did not have and could not do.",
+      "feedback": {
+       "correct": "Correct. You understood the reason, the duty and what Bilal was missing.",
+       "incorrect": "Read the first two paragraphs of Chapter 5 again. Which phrase is about money? Which is about safety?"
+      }
+     },
+     {
+      "id": "mecca-a2-language-5-command",
+      "type": "word-bank",
+      "title": "The Prophet’s Message",
+      "instructions": "Complete the lines with the word bank. Two words are extra.",
+      "question": "What did the Prophet teach, and what did he tell people?",
+      "fillBlanksText": "He taught that people [blank] be fair and equal. He told the people of Mecca [blank] stop [blank] idols.",
+      "wordBank": [
+       "must",
+       "to",
+       "worshipping",
+       "worship",
+       "for"
+      ],
+      "correctAnswer": [
+       "must",
+       "to",
+       "worshipping"
+      ],
+      "explanation": "“Taught that + sentence” reports a teaching; “must” shows it is necessary. “Told + person + to + verb” reports an instruction. After “stop”, use the -ing form: “stop worshipping”.",
+      "feedback": {
+       "correct": "Correct. You completed the teaching and the instruction.",
+       "incorrect": "Read the last paragraph of Chapter 5. After “told the people of Mecca” comes “to”, and after “stop” comes an -ing word."
+      }
+     },
+     {
+      "id": "mecca-a2-language-5-production",
+      "type": "reflection",
+      "title": "Explain a New Message",
+      "instructions": "Write or say four sentences about a new rule or idea.",
+      "question": "What is the new rule, and why?",
+      "correctAnswer": null,
+      "explanation": "Use at least three Chapter 5 patterns.",
+      "feedback": {
+       "correct": "Keep the message clear and simple.",
+       "incorrect": ""
+      },
+      "discussionPrompts": [
+       {
+        "question": "Sentence 1 — Give a reason: “… because …”",
+        "mode": "Individual",
+        "example": "Our school made a new rule because the classrooms were very noisy."
+       },
+       {
+        "question": "Sentence 2 — Say what people had to do: “… had to …”",
+        "mode": "Individual",
+        "example": "Every student had to put their phone in a box."
+       },
+       {
+        "question": "Sentence 3 — Say what someone taught: “… taught that …”",
+        "mode": "Individual",
+        "example": "Our teacher taught that quiet rooms help us learn."
+       },
+       {
+        "question": "Sentence 4 — Say what someone told people: “… told us to …”",
+        "mode": "Pair",
+        "example": "She told us to speak one by one."
+       }
+      ]
+     }
+    ],
+    "beforeYouRead": {
+     "kind": "guess",
+     "question": "Guess first: What did the Prophet (pbuh) say Allah created?",
+     "options": [
+      "the idols",
+      "the city of Mecca",
+      "the world"
+     ],
+     "answer": 2,
+     "quote": "Allah created the world."
+    },
+    "iCan": [
+     "I can say what the new Prophet (pbuh) taught.",
+     "I can say what someone told people to do.",
+     "I can explain a new rule to my partner."
+    ]
+   },
+   {
+    "id": 6,
+    "type": "story",
+    "title": "Visiting Abu Bakr",
+    "image": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Fimages%2Fmecca_a2_ch6.png?alt=media&token=7cf6f58f-a546-4cac-8d5c-278289477fff",
+    "audioUrl": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Faudio%2F05_Chapter_6_Visiting_Abu_Bakr.mp3?alt=media&token=b325dbbd-1f2e-4f9d-8dbb-a33f7bdc2f1b",
+    "content": "Bilal thought about the message of Islam for many days. He walked in the desert all day and thought deeply about the Creator and the creation.\n\nBilal decided to visit Abu Bakr, the close friend of Prophet Muhammad (pbuh). It was night time and very dark. Bilal felt fear in his heart. He left his room secretly and walked on a hidden path. He did not want anyone to see him.\n\nBilal knew that Abu Bakr believed in Muhammad’s (pbuh) message. When he arrived at Abu Bakr’s house, he knocked on the door and went inside. He started to ask many questions about the new religion. Abu Bakr was a very kind man, and everybody knew that he was very nice to slaves.",
+    "vocabulary": [
+     {
+      "word": "Creator",
+      "definition": "Allah, Who created everything."
+     },
+     {
+      "word": "secretly",
+      "definition": "In a hidden way."
+     },
+     {
+      "word": "hidden path",
+      "definition": "A way that is not easy to see."
+     },
+     {
+      "word": "kind",
+      "definition": "Good and caring."
+     }
+    ],
+    "hotspots": [
+     {
+      "id": "mecca-a2-en-h6a",
+      "x": 36,
+      "y": 69,
+      "title": "A Secret Visit",
+      "description": "Bilal left secretly and walked on a hidden path at night."
+     },
+     {
+      "id": "mecca-a2-en-h6b",
+      "x": 69,
+      "y": 29,
+      "title": "Abu Bakr",
+      "description": "Abu Bakr was known for being kind to slaves."
+     }
+    ],
+    "exercises": [
+     {
+      "id": "mecca-a2-quick-6",
+      "type": "sequencing",
+      "title": "A Secret Visit",
+      "instructions": "Put the events from Chapter 6 in the right order.",
+      "question": "What did Bilal do first, next and last?",
+      "sequencingItems": [
+       {
+        "id": "1",
+        "text": "Bilal thought about the message of Islam for many days."
+       },
+       {
+        "id": "2",
+        "text": "Bilal left his room secretly at night."
+       },
+       {
+        "id": "3",
+        "text": "Bilal knocked on Abu Bakr’s door."
+       },
+       {
+        "id": "4",
+        "text": "Bilal asked many questions about the new religion."
+       }
+      ],
+      "correctAnswer": [
+       "1",
+       "2",
+       "3",
+       "4"
+      ],
+      "explanation": "First Bilal thought about the message for many days. Then one dark night he left his room secretly, went to Abu Bakr’s house, knocked on the door and asked many questions.",
+      "feedback": {
+       "correct": "Great! You followed Bilal from his thinking to his visit.",
+       "incorrect": "Follow Bilal step by step: From his days of thinking, to his room, to Abu Bakr’s door, and then inside the house."
+      }
+     }
+    ],
+    "languageFocusExercises": [
+     {
+      "id": "mecca-a2-language-6-thinking",
+      "type": "multiple-choice",
+      "title": "A Secret Visit",
+      "instructions": "Read the sentence from Chapter 6. Then choose the best meaning.",
+      "question": "“He did not want anyone to see him.” What did Bilal want?",
+      "options": [
+       "He did not want to see any person on the way.",
+       "He wanted no person to see him on the way.",
+       "He wanted to see Abu Bakr, but not at night."
+      ],
+      "correctAnswer": 1,
+      "explanation": "In “did not want + person + to + verb”, the person after “want” does the action. Here “anyone” is the one who might see. Bilal wanted to stay secret.",
+      "feedback": {
+       "correct": "Correct. Bilal wanted to stay secret, so no one should see him.",
+       "incorrect": "Look at the second paragraph. Who does the action “see” in this sentence: Bilal, or other people?"
+      }
+     },
+     {
+      "id": "mecca-a2-language-6-sequence",
+      "type": "choose-form",
+      "title": "Thinking and Deciding",
+      "instructions": "Choose the correct word or words for each sentence from Chapter 6.",
+      "question": "What did Bilal think about and decide?",
+      "formChoices": [
+       {
+        "sentence": "Bilal thought [choice] the message of Islam for many days.",
+        "options": [
+         "at",
+         "about",
+         "to"
+        ],
+        "answer": 1
+       },
+       {
+        "sentence": "Bilal decided [choice] Abu Bakr, the close friend of Prophet Muhammad (pbuh).",
+        "options": [
+         "to visit",
+         "visiting",
+         "visit"
+        ],
+        "answer": 0
+       },
+       {
+        "sentence": "[choice] he arrived at Abu Bakr’s house, he knocked on the door …",
+        "options": [
+         "During",
+         "Then",
+         "When"
+        ],
+        "answer": 2
+       }
+      ],
+      "correctAnswer": null,
+      "explanation": "We say “think about + topic”. After “decided”, use “to + verb”. “When + past sentence” tells us the time of another past action.",
+      "feedback": {
+       "correct": "Correct. You chose the right form each time.",
+       "incorrect": "Check each sentence in Chapter 6: the first paragraph (thinking), the second (the decision) and the third (arriving)."
+      }
+     },
+     {
+      "id": "mecca-a2-language-6-time",
+      "type": "sentence-building",
+      "title": "Starting to Ask",
+      "instructions": "Put the parts in order to make the sentence from Chapter 6.",
+      "question": "What did Bilal do inside Abu Bakr’s house?",
+      "sentenceChunks": [
+       "He",
+       "started",
+       "to ask",
+       "many questions",
+       "about the new religion."
+      ],
+      "correctAnswer": null,
+      "explanation": "“Started to + verb” shows the beginning of an action. Bilal began to ask questions and wanted to learn more.",
+      "feedback": {
+       "correct": "Correct. You built the sentence about the beginning of an action.",
+       "incorrect": "Start with the person, then “started to …”. Check the third paragraph of Chapter 6."
+      }
+     },
+     {
+      "id": "mecca-a2-language-6-production",
+      "type": "reflection",
+      "title": "Tell a Short Visit Story",
+      "instructions": "Write or say four sentences about a surprise visit.",
+      "question": "Who did you visit, and what happened?",
+      "correctAnswer": null,
+      "explanation": "Use at least three Chapter 6 patterns.",
+      "feedback": {
+       "correct": "Keep the story in order.",
+       "incorrect": ""
+      },
+      "discussionPrompts": [
+       {
+        "question": "Sentence 1 — Give a decision: “I decided to …”",
+        "mode": "Individual",
+        "example": "I decided to visit my grandmother on her birthday."
+       },
+       {
+        "question": "Sentence 2 — Say what you did secretly: “I … secretly …”",
+        "mode": "Individual",
+        "example": "I bought a cake secretly and hid it in my bag."
+       },
+       {
+        "question": "Sentence 3 — Say what you found: “When I arrived, …”",
+        "mode": "Individual",
+        "example": "When I arrived, she was in the garden."
+       },
+       {
+        "question": "Sentence 4 — Say what you started to do: “I started to …”",
+        "mode": "Pair",
+        "example": "I started to sing “Happy Birthday”, and she smiled."
+       }
+      ]
+     }
+    ],
+    "beforeYouRead": {
+     "kind": "guess",
+     "question": "Guess first: How did Bilal feel on his way to Abu Bakr?",
+     "options": [
+      "He felt happy and calm.",
+      "He felt fear in his heart.",
+      "He felt angry and tired."
+     ],
+     "answer": 1,
+     "quote": "Bilal felt fear in his heart."
+    },
+    "iCan": [
+     "I can tell how Bilal visited Abu Bakr at night.",
+     "I can say what I decided and when.",
+     "I can tell a short story about a surprise visit."
+    ]
+   },
+   {
+    "id": 7,
+    "type": "story",
+    "title": "Bilal Accepts Islam",
+    "image": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Fimages%2Fmecca_a2_ch7.png?alt=media&token=80500b12-4498-4ad9-aaec-b93667802336",
+    "audioUrl": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Faudio%2F06_Chapter_7_Bilal_Accepts_Islam.mp3?alt=media&token=3b1a9462-b2de-4dca-999a-b9adf440beaf",
+    "content": "Abu Bakr told Bilal about the new religion. Islam says there is no god but Allah. Allah has no partners or equals, not even a rich master or powerful people.\n\nBilal told Abu Bakr that he wanted to be a Muslim, too. Abu Bakr supported Bilal and was very happy to hear this.\n\nAfter Bilal met Abu Bakr, he went back home. He could not sleep during the night. He stayed awake and thought about his life. He knew that life would be difficult after becoming a Muslim. But he also knew that the religion of Allah was the truth. Following this religion was the right thing to do. In the end, he accepted Islam. When Umayya learned this, he became very angry.",
+    "vocabulary": [
+     {
+      "word": "Umayya",
+      "definition": "__historical_entity__:mecca-umayya-ibn-khalaf"
+     },
+     {
+      "word": "partners",
+      "definition": "Others who share power or work with someone."
+     },
+     {
+      "word": "equals",
+      "definition": "People or things with the same value or power."
+     },
+     {
+      "word": "supported",
+      "definition": "Helped and encouraged."
+     },
+     {
+      "word": "truth",
+      "definition": "What is real and right."
+     }
+    ],
+    "hotspots": [
+     {
+      "id": "mecca-a2-en-h7a",
+      "x": 25,
+      "y": 47,
+      "title": "No God but Allah",
+      "description": "Abu Bakr explained that Allah has no partners or equals."
+     },
+     {
+      "id": "mecca-a2-en-h7b",
+      "x": 76,
+      "y": 54,
+      "title": "A Brave Choice",
+      "description": "Bilal accepted Islam, even though he knew that life would be difficult."
+     }
+    ],
+    "exercises": [
+     {
+      "id": "mecca-a2-quick-7",
+      "type": "multiple-choice",
+      "title": "A Difficult Choice",
+      "instructions": "Read the question. Choose the answer from Chapter 7.",
+      "question": "Bilal knew that life would be difficult. Why did he still accept Islam?",
+      "options": [
+       "Abu Bakr told him he would be free the next day.",
+       "Umayya asked him to learn about the new religion.",
+       "He knew that the religion of Allah was the truth."
+      ],
+      "correctAnswer": 2,
+      "explanation": "Chapter 7 says Bilal knew life would be difficult, “but he also knew that the religion of Allah was the truth.”",
+      "feedback": {
+       "correct": "Right! He chose the truth, even when he knew it would be hard.",
+       "incorrect": "Read the last paragraph of Chapter 7 again. Find the sentence that starts with “But he also knew …”."
+      }
+     }
+    ],
+    "languageFocusExercises": [
+     {
+      "id": "mecca-a2-language-7-belief-choice",
+      "type": "sequencing",
+      "title": "Bilal’s Big Decision",
+      "instructions": "Put the events from Chapter 7 in order. Time words can help.",
+      "question": "What happened before Bilal accepted Islam?",
+      "sequencingItems": [
+       {
+        "id": "1",
+        "text": "Abu Bakr told Bilal about the new religion."
+       },
+       {
+        "id": "2",
+        "text": "Bilal told Abu Bakr that he wanted to be a Muslim, too."
+       },
+       {
+        "id": "3",
+        "text": "After Bilal met Abu Bakr, he went back home."
+       },
+       {
+        "id": "4",
+        "text": "Bilal stayed awake and thought about his life."
+       },
+       {
+        "id": "5",
+        "text": "In the end, Bilal accepted Islam."
+       }
+      ],
+      "correctAnswer": [
+       "1",
+       "2",
+       "3",
+       "4",
+       "5"
+      ],
+      "explanation": "“After + past sentence” puts one event later than another. “In the end” introduces the final result after a long time of thinking.",
+      "feedback": {
+       "correct": "Correct. The story moves from information to a final decision.",
+       "incorrect": "Look for “After …” and “In the end”. Which sentence is the final result?"
+      }
+     },
+     {
+      "id": "mecca-a2-language-7-difficulty",
+      "type": "choose-form",
+      "title": "A Long Night",
+      "instructions": "Choose the correct word for each sentence from Chapter 7.",
+      "question": "What did Bilal know, and what could he not do?",
+      "formChoices": [
+       {
+        "sentence": "He knew that life [choice] be difficult after becoming a Muslim.",
+        "options": [
+         "was being",
+         "would",
+         "was"
+        ],
+        "answer": 1
+       },
+       {
+        "sentence": "He could not [choice] during the night.",
+        "options": [
+         "slept",
+         "sleeping",
+         "sleep"
+        ],
+        "answer": 2
+       }
+      ],
+      "correctAnswer": null,
+      "explanation": "After “knew that” in a past story, use “would + verb” for a future idea: “life would be difficult”. After “could not”, use the base verb: “could not sleep”.",
+      "feedback": {
+       "correct": "Correct. You chose the right form for the future idea and for “could not”.",
+       "incorrect": "Read the third paragraph of Chapter 7. The story is in the past, so the future idea uses “would”."
+      }
+     },
+     {
+      "id": "mecca-a2-language-7-result",
+      "type": "matching",
+      "title": "What Does It Mean?",
+      "instructions": "Match each phrase from Chapter 7 with its meaning.",
+      "question": "What do these phrases from Chapter 7 mean?",
+      "matchingHeadings": {
+       "left": "From the chapter",
+       "right": "Meaning"
+      },
+      "matchingPairs": [
+       {
+        "left": "supported Bilal",
+        "right": "helped him and stood by him"
+       },
+       {
+        "left": "was very happy to hear this",
+        "right": "felt glad about the news"
+       },
+       {
+        "left": "the right thing to do",
+        "right": "a good and correct choice"
+       },
+       {
+        "left": "stayed awake",
+        "right": "did not go to sleep"
+       }
+      ],
+      "correctAnswer": {
+       "supported Bilal": "helped him and stood by him",
+       "was very happy to hear this": "felt glad about the news",
+       "the right thing to do": "a good and correct choice",
+       "stayed awake": "did not go to sleep"
+      },
+      "explanation": "These phrases describe how people felt and acted. “Was happy to + verb” gives the reason for a feeling. “Stayed + adjective” shows that a state continued.",
+      "feedback": {
+       "correct": "Correct. You understood each phrase.",
+       "incorrect": "Find each phrase in Chapter 7 and read the sentence around it."
+      }
+     },
+     {
+      "id": "mecca-a2-language-7-production",
+      "type": "reflection",
+      "title": "Describe a Difficult Choice",
+      "instructions": "Write or say four sentences about a hard choice.",
+      "question": "What did you want, and what did you decide?",
+      "correctAnswer": null,
+      "explanation": "Use at least three Chapter 7 patterns.",
+      "feedback": {
+       "correct": "Keep the sequence clear.",
+       "incorrect": ""
+      },
+      "discussionPrompts": [
+       {
+        "question": "Sentence 1 — Say what you wanted: “I wanted to …”",
+        "mode": "Individual",
+        "example": "I wanted to join the school football team."
+       },
+       {
+        "question": "Sentence 2 — Say what you knew: “I knew that …”",
+        "mode": "Individual",
+        "example": "I knew that I had to train every evening."
+       },
+       {
+        "question": "Sentence 3 — Say what you expected: “… would be …”",
+        "mode": "Individual",
+        "example": "I thought it would be hard to do my homework too."
+       },
+       {
+        "question": "Sentence 4 — Give the end: “In the end, …”",
+        "mode": "Pair",
+        "example": "In the end, I joined the team, and I was very happy."
+       }
+      ]
+     }
+    ],
+    "beforeYouRead": {
+     "kind": "guess",
+     "question": "Guess first: How did Umayya feel when he learned this?",
+     "options": [
+      "very angry",
+      "very happy",
+      "a little sad"
+     ],
+     "answer": 0,
+     "quote": "When Umayya learned this, he became very angry."
+    },
+    "iCan": [
+     "I can tell why Bilal chose Islam.",
+     "I can say what happened first and in the end.",
+     "I can talk about a hard choice I made."
+    ]
+   },
+   {
+    "id": 8,
+    "type": "story",
+    "title": "Allah Is One",
+    "image": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Fimages%2Fmecca_a2_ch8.png?alt=media&token=694894dc-dc04-4bd1-b486-65d05451f524",
+    "audioUrl": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Faudio%2F07_Chapter_8_Allah_Is_One.mp3?alt=media&token=18a91bc7-23ff-4b9e-a238-15bca0cc7266",
+    "content": "Umayya asked Bilal angrily, “Is it true? Did you leave our religion and believe in this magic man Muhammad?” Bilal answered with a strong and sure voice: “Yes, Allah helped me to find the right way. Now I believe in the true religion.”\n\nWhen Umayya heard this, he went mad with anger. He locked Bilal in a house without food or water. He forced him to look at idols and worship them, but Bilal refused.\n\nUmayya told children to tie ropes around Bilal’s neck and pull him through the city of Mecca. He whipped Bilal and put a huge burning rock on his chest in the hot sun. He told him, “If you speak well of our idols, you will be free.” But Bilal only said, “Allah is One, Allah is One.”",
+    "vocabulary": [
+     {
+      "word": "Mecca",
+      "definition": "__historical_entity__:mecca-mecca-7th-century"
+     },
+     {
+      "word": "Umayya",
+      "definition": "__historical_entity__:mecca-umayya-ibn-khalaf"
+     },
+     {
+      "word": "angrily",
+      "definition": "In a way that shows you are very upset with someone."
+     },
+     {
+      "word": "refused",
+      "definition": "Said no; did not agree to do something."
+     },
+     {
+      "word": "whipped",
+      "definition": "Hit with a whip."
+     },
+     {
+      "word": "Allah is One",
+      "definition": "There is no god but Allah."
+     }
+    ],
+    "hotspots": [
+     {
+      "id": "mecca-a2-en-h8a",
+      "x": 42,
+      "y": 30,
+      "title": "Umayya’s Anger",
+      "description": "Umayya hurt Bilal and tried to force him to worship idols."
+     },
+     {
+      "id": "mecca-a2-en-h8b",
+      "x": 61,
+      "y": 70,
+      "title": "Bilal Stays Strong",
+      "description": "Bilal only said, “Allah is One, Allah is One.”"
+     }
+    ],
+    "exercises": [
+     {
+      "id": "mecca-a2-quick-8",
+      "type": "true-false",
+      "title": "Allah Is One",
+      "instructions": "Is the sentence true or false? Use Chapter 8.",
+      "question": "Umayya said, “If you speak well of our idols, you will be free.” Bilal agreed.",
+      "correctAnswer": false,
+      "explanation": "Bilal did not agree. Chapter 8 says he only said, “Allah is One, Allah is One.”",
+      "feedback": {
+       "correct": "Correct! Bilal did not agree. He only said, “Allah is One.”",
+       "incorrect": "Read the end of Chapter 8 again. What did Bilal say to Umayya?"
+      }
+     }
+    ],
+    "languageFocusExercises": [
+     {
+      "id": "mecca-a2-language-8-dialogue",
+      "type": "true-false",
+      "title": "Forced, but Refused",
+      "instructions": "Read the sentence from Chapter 8. Is the statement true or false?",
+      "question": "“He forced him to look at idols and worship them, but Bilal refused.” This means Bilal did what Umayya wanted.",
+      "correctAnswer": false,
+      "explanation": "“Forced + person + to + verb” means someone tried to make another person do something with pressure. “Refused” means said no. “But” shows that Bilal did not do what Umayya wanted.",
+      "feedback": {
+       "correct": "Correct. Umayya used pressure, but Bilal said no.",
+       "incorrect": "Read the second paragraph again. What does Bilal do after “but”?"
+      }
+     },
+     {
+      "id": "mecca-a2-language-8-refusal",
+      "type": "error-correction",
+      "title": "Find and Fix the Mistake",
+      "instructions": "Each sentence has one mistake. Tap it, then choose the correct words.",
+      "question": "Can you fix Umayya’s words to Bilal?",
+      "errorItems": [
+       {
+        "sentence": "Umayya asked Bilal angrily, “Is it true? Did you left our religion and believe in this magic man Muhammad?”",
+        "error": "left",
+        "options": [
+         "leaving",
+         "leave",
+         "leaves"
+        ],
+        "answer": 1
+       },
+       {
+        "sentence": "He told him, “If you speak well of our idols, you would be free.”",
+        "error": "would",
+        "options": [
+         "will",
+         "were",
+         "did"
+        ],
+        "answer": 0
+       }
+      ],
+      "correctAnswer": null,
+      "explanation": "In a past question, use “Did + person + base verb”: “Did you leave …?” With “If + present”, use “will + verb” for the future result: “If you speak …, you will be free.”",
+      "feedback": {
+       "correct": "Well done. You fixed the question and the if-sentence.",
+       "incorrect": "Compare with Chapter 8: Umayya’s question in the first paragraph and his words in the last paragraph."
+      }
+     },
+     {
+      "id": "mecca-a2-language-8-condition",
+      "type": "choose-form",
+      "title": "Bilal’s Answer",
+      "instructions": "Choose the correct word or words for each sentence from Chapter 8.",
+      "question": "What did Bilal answer, and what did Umayya do?",
+      "formChoices": [
+       {
+        "sentence": "Yes, Allah helped me [choice] the right way.",
+        "options": [
+         "to find",
+         "finding",
+         "found"
+        ],
+        "answer": 0
+       },
+       {
+        "sentence": "Now I [choice] in the true religion.",
+        "options": [
+         "believed",
+         "believe",
+         "believing"
+        ],
+        "answer": 1
+       },
+       {
+        "sentence": "When Umayya [choice] this, he went mad with anger.",
+        "options": [
+         "hears",
+         "hearing",
+         "heard"
+        ],
+        "answer": 2
+       }
+      ],
+      "correctAnswer": null,
+      "explanation": "“Helped + person + to + verb” shows help with an action. “Now + present verb” shows the situation at this moment. “When + past verb” tells us the time of another past action.",
+      "feedback": {
+       "correct": "Correct. You chose the right form each time.",
+       "incorrect": "Read Bilal’s answer in the first paragraph and the start of the second paragraph of Chapter 8."
+      }
+     },
+     {
+      "id": "mecca-a2-language-8-production",
+      "type": "reflection",
+      "title": "Saying No",
+      "instructions": "Write or say four sentences about saying no to an unfair request.",
+      "question": "What did someone ask, and why did you say no?",
+      "correctAnswer": null,
+      "explanation": "Transfer the language without recreating the violent scene.",
+      "feedback": {
+       "correct": "Use at least three Chapter 8 patterns.",
+       "incorrect": ""
+      },
+      "discussionPrompts": [
+       {
+        "question": "Sentence 1 — Ask about the past: “Did you …?”",
+        "mode": "Individual",
+        "example": "My friend asked me, “Did you do the homework last night?”"
+       },
+       {
+        "question": "Sentence 2 — Say no: “… refused” or “I refused to …”",
+        "mode": "Individual",
+        "example": "He wanted to copy my homework, but I refused."
+       },
+       {
+        "question": "Sentence 3 — Say what someone tried to make you do: “… tried to force me to …”",
+        "mode": "Individual",
+        "example": "He tried to force me to give him my notebook, but I said no."
+       },
+       {
+        "question": "Sentence 4 — Give a result with “if”: “If you …, you will …”",
+        "mode": "Pair",
+        "example": "I told him, “If you study with me, you will understand the lesson.”"
+       }
+      ]
+     }
+    ],
+    "beforeYouRead": {
+     "kind": "guess",
+     "question": "Read the title. What did Bilal keep saying?",
+     "options": [
+      "“Please help me.”",
+      "“I am sorry.”",
+      "“Allah is One.”"
+     ],
+     "answer": 2,
+     "quote": "But Bilal only said, “Allah is One, Allah is One.”"
+    },
+    "iCan": [
+     "I can tell how Bilal stayed strong.",
+     "I can ask what someone did and say no.",
+     "I can talk about saying no to something unfair."
+    ]
+   },
+   {
+    "id": 9,
+    "type": "story",
+    "title": "Abu Bakr Saves Bilal",
+    "image": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Fimages%2Fmecca_a2_ch9.png?alt=media&token=de7d6436-0cd2-4eed-af16-d0b9e83b84bc",
+    "audioUrl": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Faudio%2F08_Chapter_9_Abu_Bakr_Saves_Bilal.mp3?alt=media&token=c24a2fef-492b-438b-b1fa-e6e56fe427c0",
+    "content": "Umayya wanted Bilal to feel sorry and leave his new religion. But Bilal never said the words that Umayya wanted to hear.\n\nAbu Bakr heard that Umayya was hurting Bilal very badly. He went to see Umayya right away. Bilal was in pain under a heavy rock. Abu Bakr asked Umayya to sell Bilal to him. Umayya did not want to set Bilal free. He was angry and said, “If you want him, you can take him for a high price.”\n\nAbu Bakr asked, “What did he do wrong? Is it a crime to believe in the one true Allah?” But Umayya said, “He is my slave. I can do whatever I want with him.” Again, Abu Bakr asked Umayya to sell Bilal to him.",
+    "vocabulary": [
+     {
+      "word": "Umayya",
+      "definition": "__historical_entity__:mecca-umayya-ibn-khalaf"
+     },
+     {
+      "word": "pain",
+      "definition": "The feeling you have when your body is hurt."
+     },
+     {
+      "word": "right away",
+      "definition": "Immediately, without waiting."
+     },
+     {
+      "word": "price",
+      "definition": "The money needed to buy something."
+     },
+     {
+      "word": "crime",
+      "definition": "A wrong action against the law."
+     }
+    ],
+    "hotspots": [
+     {
+      "id": "mecca-a2-en-h9a",
+      "x": 32,
+      "y": 34,
+      "title": "Abu Bakr Arrives",
+      "description": "Abu Bakr heard that Umayya was hurting Bilal, and he went to Umayya right away."
+     },
+     {
+      "id": "mecca-a2-en-h9b",
+      "x": 72,
+      "y": 66,
+      "title": "An Offer to Buy",
+      "description": "Abu Bakr asked Umayya to sell Bilal to him."
+     }
+    ],
+    "exercises": [
+     {
+      "id": "mecca-a2-quick-9",
+      "type": "multiple-choice",
+      "title": "Abu Bakr’s Question",
+      "instructions": "Read the question. Choose the answer from Chapter 9.",
+      "question": "What did Abu Bakr ask Umayya?",
+      "options": [
+       "“Is it a crime to believe in the one true Allah?”",
+       "“Can Bilal work with my camels for one day?”",
+       "“Why does Bilal not work harder?”"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Abu Bakr asked, “What did he do wrong? Is it a crime to believe in the one true Allah?” He showed that Bilal did nothing wrong.",
+      "feedback": {
+       "correct": "Yes! Abu Bakr showed that believing in Allah is not a crime.",
+       "incorrect": "Look at the last paragraph of Chapter 9. Find Abu Bakr’s question with a question mark."
+      }
+     }
+    ],
+    "languageFocusExercises": [
+     {
+      "id": "mecca-a2-language-9-response",
+      "type": "matching",
+      "title": "What Does It Mean?",
+      "instructions": "Match each phrase from Chapter 9 with its meaning.",
+      "question": "What do these phrases tell us about Abu Bakr and Umayya?",
+      "matchingHeadings": {
+       "left": "From the chapter",
+       "right": "Meaning"
+      },
+      "matchingPairs": [
+       {
+        "left": "Abu Bakr heard that Umayya was hurting Bilal",
+        "right": "news of the pain reached Abu Bakr"
+       },
+       {
+        "left": "right away",
+        "right": "at once, without waiting"
+       },
+       {
+        "left": "Umayya did not want to set Bilal free.",
+        "right": "He was not ready to let Bilal go."
+       },
+       {
+        "left": "for a high price",
+        "right": "for a lot of money"
+       }
+      ],
+      "correctAnswer": {
+       "Abu Bakr heard that Umayya was hurting Bilal": "news of the pain reached Abu Bakr",
+       "right away": "at once, without waiting",
+       "Umayya did not want to set Bilal free.": "He was not ready to let Bilal go.",
+       "for a high price": "for a lot of money"
+      },
+      "explanation": "“Heard that + sentence” reports news someone received. “Right away” shows a very quick action. “Did not want to + verb” shows that someone was not willing to do something.",
+      "feedback": {
+       "correct": "Correct. You understood the news, the quick action and Umayya’s answer.",
+       "incorrect": "Read the second paragraph of Chapter 9 again. Which phrase is about time? Which is about money?"
+      }
+     },
+     {
+      "id": "mecca-a2-language-9-question",
+      "type": "sentence-building",
+      "title": "Asking for Something",
+      "instructions": "Put the parts in order to make the sentence from Chapter 9.",
+      "question": "What did Abu Bakr ask Umayya to do?",
+      "sentenceChunks": [
+       "Abu Bakr",
+       "asked Umayya",
+       "to sell Bilal",
+       "to him."
+      ],
+      "correctAnswer": null,
+      "explanation": "“Asked + person + to + verb” reports a request. The person who must act (Umayya) comes after “asked”.",
+      "feedback": {
+       "correct": "Correct. You built the request.",
+       "incorrect": "Start with the person who asks. Then put the person who must act, then “to + verb”."
+      }
+     },
+     {
+      "id": "mecca-a2-language-9-request",
+      "type": "multiple-choice",
+      "title": "Asking About a Past Action",
+      "instructions": "Choose the correct question. Abu Bakr asks this question in Chapter 9.",
+      "question": "Which question uses “did” correctly?",
+      "options": [
+       "What did he did wrong?",
+       "What he did do wrong?",
+       "What did he do wrong?"
+      ],
+      "correctAnswer": 2,
+      "explanation": "Past questions use question word + did + person + base verb: “What did he do …?” After “did”, the verb does not change.",
+      "feedback": {
+       "correct": "Correct. After “did”, use the base verb.",
+       "incorrect": "Find Abu Bakr’s question in the last paragraph of Chapter 9. Look at the verb after “did he”."
+      }
+     },
+     {
+      "id": "mecca-a2-language-9-production",
+      "type": "reflection",
+      "title": "Respond to a Problem",
+      "instructions": "Write or say four sentences about hearing of a problem and helping.",
+      "question": "What did you hear, and how did you help?",
+      "correctAnswer": null,
+      "explanation": "Use at least three Chapter 9 patterns.",
+      "feedback": {
+       "correct": "Keep the response practical and safe.",
+       "incorrect": ""
+      },
+      "discussionPrompts": [
+       {
+        "question": "Sentence 1 — Say what you heard: “I heard that …”",
+        "mode": "Individual",
+        "example": "I heard that my neighbour’s cat was lost."
+       },
+       {
+        "question": "Sentence 2 — Say what you did quickly: “… right away.”",
+        "mode": "Individual",
+        "example": "I went to her house right away."
+       },
+       {
+        "question": "Sentence 3 — Ask a question: “Did you …?”",
+        "mode": "Individual",
+        "example": "I asked her, “Did you look in the garden?”"
+       },
+       {
+        "question": "Sentence 4 — Ask someone for help: “I asked … to …”",
+        "mode": "Pair",
+        "example": "Then I asked my brother to help us look."
+       }
+      ]
+     }
+    ],
+    "beforeYouRead": {
+     "kind": "guess",
+     "question": "Guess first: What did Umayya want Bilal to do?",
+     "options": [
+      "go to Medina",
+      "leave his new religion",
+      "buy his freedom"
+     ],
+     "answer": 1,
+     "quote": "Umayya wanted Bilal to feel sorry and leave his new religion."
+    },
+    "iCan": [
+     "I can tell how Abu Bakr helped Bilal.",
+     "I can say what I heard and ask for help.",
+     "I can tell my partner how I helped someone."
+    ]
+   },
+   {
+    "id": 10,
+    "type": "story",
+    "title": "A Free Muslim",
+    "image": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Fimages%2Fmecca_a2_ch10.png?alt=media&token=43996fc5-3581-49f6-99f8-dc3ffd9e01d0",
+    "audioUrl": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Faudio%2F09_Chapter_10_A_Free_Muslim.mp3?alt=media&token=b1a30907-9298-431f-9b5c-3b81397ff881",
+    "content": "Finally, Umayya agreed to sell Bilal for five pieces of gold. He laughed at Abu Bakr and said, “If you offered me only one piece of gold, I would still sell him to you.” Abu Bakr replied, “If you asked me for one hundred pieces of gold, I would still pay that price for him.”\n\nAbu Bakr went to Bilal. Bilal was in great pain. Abu Bakr moved the heavy rock from Bilal’s chest. Bilal stood up with difficulty. But he went to see Prophet Muhammad (pbuh) first with Abu Bakr.\n\nAbu Bakr told Bilal that he was now a free man and no longer a slave. Abu Bakr bought Bilal and rescued him from his master’s hands. After that day, Bilal became a free Muslim. He could worship Allah freely. Abu Bakr could keep Bilal as a slave, but he did not. He freed him.",
+    "vocabulary": [
+     {
+      "word": "Umayya",
+      "definition": "__historical_entity__:mecca-umayya-ibn-khalaf"
+     },
+     {
+      "word": "agreed",
+      "definition": "Said yes."
+     },
+     {
+      "word": "gold",
+      "definition": "A valuable yellow metal."
+     },
+     {
+      "word": "rescued",
+      "definition": "Saved from danger."
+     },
+     {
+      "word": "freely",
+      "definition": "Without being forced or stopped."
+     }
+    ],
+    "hotspots": [
+     {
+      "id": "mecca-a2-en-h10a",
+      "x": 38,
+      "y": 63,
+      "title": "Freedom",
+      "description": "Abu Bakr told Bilal that he was now a free man."
+     },
+     {
+      "id": "mecca-a2-en-h10b",
+      "x": 64,
+      "y": 36,
+      "title": "Rescue",
+      "description": "Abu Bakr bought Bilal and rescued him from his master."
+     }
+    ],
+    "exercises": [
+     {
+      "id": "mecca-a2-quick-10",
+      "type": "multiple-choice",
+      "title": "The Price",
+      "instructions": "Read the question. Choose the answer from Chapter 10.",
+      "question": "In the end, how many pieces of gold did Umayya sell Bilal for?",
+      "options": [
+       "one piece of gold",
+       "five pieces of gold",
+       "one hundred pieces of gold"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Umayya sold Bilal for five pieces of gold. “One” and “one hundred” are in the chapter too, but they are only what Umayya and Abu Bakr said: “If you offered me …” and “If you asked me for …”.",
+      "feedback": {
+       "correct": "Well done! Five pieces of gold. The other numbers were only words, not the real price.",
+       "incorrect": "Read the first sentence of Chapter 10 again: “Umayya agreed to sell Bilal for …”."
+      }
+     }
+    ],
+    "languageFocusExercises": [
+     {
+      "id": "mecca-a2-language-10-condition-price",
+      "type": "drag-drop",
+      "title": "Real or Imagined?",
+      "instructions": "Real or only imagined? Put each part in the right group.",
+      "question": "Did it really happen, or did someone only imagine it?",
+      "dragDropGroups": [
+       {
+        "group": "Really happened",
+        "items": [
+         "Umayya agreed … for five pieces of gold.",
+         "Abu Bakr moved the heavy rock from Bilal’s chest.",
+         "Bilal stood up with difficulty."
+        ]
+       },
+       {
+        "group": "Only imagined",
+        "items": [
+         "If you offered me only one piece of gold, I would still sell him to you.",
+         "If you asked me for one hundred pieces of gold, I would still pay that price for him."
+        ]
+       }
+      ],
+      "correctAnswer": {
+       "Really happened": [
+        "Umayya agreed … for five pieces of gold.",
+        "Abu Bakr moved the heavy rock from Bilal’s chest.",
+        "Bilal stood up with difficulty."
+       ],
+       "Only imagined": [
+        "If you offered me only one piece of gold, I would still sell him to you.",
+        "If you asked me for one hundred pieces of gold, I would still pay that price for him."
+       ]
+      },
+      "explanation": "“If + past verb …, I would + verb” talks about an imagined situation, not a real one. The real price was five pieces of gold. Nobody offered one piece or asked for one hundred.",
+      "feedback": {
+       "correct": "Correct. You separated real events from imagined ones.",
+       "incorrect": "Look for “If … would …”. These sentences imagine a different price. What was the real price?"
+      }
+     },
+     {
+      "id": "mecca-a2-language-10-condition",
+      "type": "choose-form",
+      "title": "Agreement and Freedom",
+      "instructions": "Choose the correct word or words for each sentence from Chapter 10.",
+      "question": "How did Bilal become free, and what could he do?",
+      "formChoices": [
+       {
+        "sentence": "Finally, Umayya agreed [choice] Bilal for five pieces of gold.",
+        "options": [
+         "selling",
+         "to sell",
+         "sell"
+        ],
+        "answer": 1
+       },
+       {
+        "sentence": "Abu Bakr told Bilal that he was now a free man and no [choice] a slave.",
+        "options": [
+         "more",
+         "again",
+         "longer"
+        ],
+        "answer": 2
+       },
+       {
+        "sentence": "He [choice] worship Allah freely.",
+        "options": [
+         "could",
+         "can",
+         "was"
+        ],
+        "answer": 0
+       }
+      ],
+      "correctAnswer": null,
+      "explanation": "After “agreed”, use “to + verb”. “No longer” shows that an old state has ended: Bilal was not a slave any more. “Could + verb” shows a past ability: now he was able to worship freely.",
+      "feedback": {
+       "correct": "Correct. You chose the right form each time.",
+       "incorrect": "Read the first and last paragraphs of Chapter 10. The story is in the past, so use the past form of “can”."
+      }
+     },
+     {
+      "id": "mecca-a2-language-10-status",
+      "type": "multiple-choice",
+      "title": "Could, but Did Not",
+      "instructions": "Read the sentences from Chapter 10. Then choose the best meaning.",
+      "question": "“Abu Bakr could keep Bilal as a slave, but he did not. He freed him.” What does this tell us?",
+      "options": [
+       "Abu Bakr was not able to keep Bilal.",
+       "Abu Bakr wanted to keep Bilal, but Umayya stopped him.",
+       "Keeping Bilal was possible, but Abu Bakr chose to free him."
+      ],
+      "correctAnswer": 2,
+      "explanation": "“Could + verb, but did not” shows that something was possible, but the person chose not to do it. It shows Abu Bakr’s good choice.",
+      "feedback": {
+       "correct": "Correct. It was possible, but Abu Bakr made a better choice.",
+       "incorrect": "Read the last three sentences of Chapter 10. “Could” means it was possible. What did Abu Bakr choose?"
+      }
+     },
+     {
+      "id": "mecca-a2-language-10-production",
+      "type": "reflection",
+      "title": "Describe a Change",
+      "instructions": "Write or say four sentences about a good change in someone’s life.",
+      "question": "What changed, and how is life different now?",
+      "correctAnswer": null,
+      "explanation": "Use at least three Chapter 10 patterns.",
+      "feedback": {
+       "correct": "Keep the example realistic and simple.",
+       "incorrect": ""
+      },
+      "discussionPrompts": [
+       {
+        "question": "Sentence 1 — Say what someone agreed to: “… agreed to …”",
+        "mode": "Individual",
+        "example": "My parents agreed to buy me a bike."
+       },
+       {
+        "question": "Sentence 2 — Imagine something: “If I …, I would …”",
+        "mode": "Individual",
+        "example": "I always said, “If I had a bike, I would ride to school every day.”"
+       },
+       {
+        "question": "Sentence 3 — Say what stopped: “… no longer …”",
+        "mode": "Individual",
+        "example": "Now I no longer take the crowded bus."
+       },
+       {
+        "question": "Sentence 4 — Say what you could or couldn’t do: “Before, I couldn’t …”",
+        "mode": "Pair",
+        "example": "Before, I couldn’t get to school early, but now I can."
+       }
+      ]
+     }
+    ],
+    "beforeYouRead": {
+     "kind": "guess",
+     "question": "Guess first: Who did Bilal go to see first?",
+     "options": [
+      "Prophet Muhammad (pbuh)",
+      "his mother",
+      "Umayya"
+     ],
+     "answer": 0,
+     "quote": "But he went to see Prophet Muhammad (pbuh) first with Abu Bakr."
+    },
+    "iCan": [
+     "I can tell how Bilal became free.",
+     "I can say how things are different now.",
+     "I can talk about a good change in a life."
+    ],
+    "groupTask": {
+     "type": "roleplay",
+     "title": "History Radio Show",
+     "time": "15 min",
+     "groupSize": "3–4",
+     "roles": [
+      {
+       "name": "Reporter",
+       "job": "You ask the historian questions about Chapters 5–10."
+      },
+      {
+       "name": "Historian",
+       "job": "You answer with facts from the book."
+      },
+      {
+       "name": "Helper",
+       "job": "You find the answer in the book when the historian needs help."
+      },
+      {
+       "name": "Listener",
+       "job": "You ask one last question and say thank you."
+      }
+     ],
+     "steps": [
+      "Together, write four questions, like “Why did Bilal go out secretly at night?” or “How much did Abu Bakr pay for Bilal?”",
+      "The Reporter says hello to the listeners and asks the questions.",
+      "The Historian answers in short sentences: “The book says …”",
+      "Nobody speaks as a person from the story; the Historian only tells about them."
+     ],
+     "share": "Each group performs its show and says one important fact it learned.",
+     "solo": "Write three questions about Chapters 5–10 and answer each one with a sentence from the book."
+    }
+   },
+   {
+    "id": 11,
+    "type": "story",
+    "title": "The First Call to Prayer",
+    "image": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Fimages%2Fmecca_a2_ch11.png?alt=media&token=2a892d1b-9ec9-4806-b178-d9e9f60c8f9d",
+    "audioUrl": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Faudio%2F10_Chapter_11_The_First_Call_to_Prayer.mp3?alt=media&token=fb41878e-d306-4c7b-9266-39747d70edeb",
+    "content": "After Bilal became free, he became one of the Prophet’s most beloved and respected friends. When the Prophet (pbuh) wanted to be alone, he often allowed only Bilal to stay with him.\n\nAfter many years of hardship in Mecca, the Prophet (pbuh) told the Muslims to move to Medina. After the Hijrah, the Prophet (pbuh) wanted someone to call people to prayer. He chose Bilal.\n\nBilal was a very brave man. Even when people hurt him, he shouted fearlessly, “There is no god but Allah.” That is why giving the first Adhan (call to prayer) was certainly worthy of Bilal. So Bilal gave the first Adhan: “Allah is the greatest, Allah is the greatest.”",
+    "vocabulary": [
+     {
+      "word": "Mecca",
+      "definition": "__historical_entity__:mecca-mecca-7th-century"
+     },
+     {
+      "word": "Medina",
+      "definition": "__historical_entity__:mecca-medina-7th-century"
+     },
+     {
+      "word": "beloved",
+      "definition": "Loved very much."
+     },
+     {
+      "word": "hardship",
+      "definition": "A difficult time or problem."
+     },
+     {
+      "word": "Hijrah",
+      "definition": "The move of the Muslims from Mecca to Medina."
+     },
+     {
+      "word": "fearlessly",
+      "definition": "Bravely, not afraid of anyone."
+     }
+    ],
+    "hotspots": [
+     {
+      "id": "mecca-a2-en-h11a",
+      "x": 28,
+      "y": 68,
+      "title": "Hijrah",
+      "description": "The Muslims moved from Mecca to Medina after years of hardship."
+     },
+     {
+      "id": "mecca-a2-en-h11b",
+      "x": 75,
+      "y": 32,
+      "title": "The First Adhan",
+      "description": "The Prophet (pbuh) chose Bilal to call people to prayer."
+     }
+    ],
+    "exercises": [
+     {
+      "id": "mecca-a2-quick-11",
+      "type": "multiple-choice",
+      "title": "The First Adhan",
+      "instructions": "Read the question. Choose the answer from Chapter 11.",
+      "question": "Why was the first Adhan right for Bilal?",
+      "options": [
+       "He was the oldest Muslim in Medina.",
+       "He was brave and said “There is no god but Allah” even when people hurt him.",
+       "He asked the Prophet (pbuh) for this job many times."
+      ],
+      "correctAnswer": 1,
+      "explanation": "Chapter 11 says Bilal was very brave: “Even when people hurt him, he shouted fearlessly, ‘There is no god but Allah.’ That is why giving the first Adhan was certainly worthy of Bilal.”",
+      "feedback": {
+       "correct": "Right! His brave voice for Allah made him the right person for the first Adhan.",
+       "incorrect": "Read the last paragraph of Chapter 11 again. Find the words “That is why …”."
+      }
+     }
+    ],
+    "languageFocusExercises": [
+     {
+      "id": "mecca-a2-language-11-change-choice",
+      "type": "multiple-choice",
+      "title": "Even When",
+      "instructions": "Read the sentence from Chapter 11. Then choose the best meaning.",
+      "question": "“Even when people hurt him, he shouted fearlessly, “There is no god but Allah.”” What does “Even when” show?",
+      "options": [
+       "He shouted only at times when people did not hurt him.",
+       "He was brave in hard times; the pain did not stop him.",
+       "He shouted because people asked him to shout."
+      ],
+      "correctAnswer": 1,
+      "explanation": "“Even when + sentence” shows that something stayed true in a difficult situation. People hurt Bilal, but he still said his belief without fear.",
+      "feedback": {
+       "correct": "Correct. The difficulty did not stop Bilal.",
+       "incorrect": "Read the third paragraph of Chapter 11. What kind of man was Bilal, and what did he do when people hurt him?"
+      }
+     },
+     {
+      "id": "mecca-a2-language-11-purpose",
+      "type": "matching",
+      "title": "What Does It Mean?",
+      "instructions": "Match each phrase from Chapter 11 with its meaning.",
+      "question": "What do these phrases tell us about Bilal and the Prophet?",
+      "matchingHeadings": {
+       "left": "From the chapter",
+       "right": "Meaning"
+      },
+      "matchingPairs": [
+       {
+        "left": "he often allowed only Bilal to stay with him",
+        "right": "Bilal was the one friend he let be near him"
+       },
+       {
+        "left": "After the Hijrah",
+        "right": "once the move to Medina was over"
+       },
+       {
+        "left": "He chose Bilal.",
+        "right": "He picked Bilal from all the Muslims."
+       },
+       {
+        "left": "certainly worthy of Bilal",
+        "right": "a job Bilal truly deserved"
+       }
+      ],
+      "correctAnswer": {
+       "he often allowed only Bilal to stay with him": "Bilal was the one friend he let be near him",
+       "After the Hijrah": "once the move to Medina was over",
+       "He chose Bilal.": "He picked Bilal from all the Muslims.",
+       "certainly worthy of Bilal": "a job Bilal truly deserved"
+      },
+      "explanation": "“Allowed + person + to + verb” means “let someone do something”. “After + event” puts one event later than another. “Chose + person” shows a selection.",
+      "feedback": {
+       "correct": "Correct. You understood each phrase.",
+       "incorrect": "Find each phrase in Chapter 11 and read the sentence around it."
+      }
+     },
+     {
+      "id": "mecca-a2-language-11-time",
+      "type": "error-correction",
+      "title": "Find and Fix the Mistake",
+      "instructions": "Each sentence has one mistake. Tap it, then choose the correct words.",
+      "question": "Can you fix the sentences about Bilal and the Prophet?",
+      "errorItems": [
+       {
+        "sentence": "After the Hijrah, the Prophet (pbuh) wanted someone call people to prayer.",
+        "error": "call",
+        "options": [
+         "calling",
+         "to call",
+         "called"
+        ],
+        "answer": 1
+       },
+       {
+        "sentence": "After many years of hardship in Mecca, the Prophet (pbuh) told the Muslims move to Medina.",
+        "error": "move",
+        "options": [
+         "to move",
+         "moving",
+         "moved"
+        ],
+        "answer": 0
+       },
+       {
+        "sentence": "After Bilal became free, he became one of the Prophet’s most beloved and respected friend.",
+        "error": "friend",
+        "options": [
+         "friendship",
+         "a friend",
+         "friends"
+        ],
+        "answer": 2
+       }
+      ],
+      "correctAnswer": null,
+      "explanation": "“Wanted + person + to + verb” and “told + person + to + verb” need “to” before the action. After “one of the …”, use a plural noun: “one of the … friends”.",
+      "feedback": {
+       "correct": "Well done. You fixed all three sentences.",
+       "incorrect": "Compare with the first two paragraphs of Chapter 11. Look for the missing “to” and the plural noun."
+      }
+     },
+     {
+      "id": "mecca-a2-language-11-production",
+      "type": "reflection",
+      "title": "Choose Someone for a Task",
+      "instructions": "Write or say four sentences about choosing someone for a group job.",
+      "question": "Who was chosen for the job, and why?",
+      "correctAnswer": null,
+      "explanation": "Use at least three Chapter 11 patterns.",
+      "feedback": {
+       "correct": "Keep the example positive and clear.",
+       "incorrect": ""
+      },
+      "discussionPrompts": [
+       {
+        "question": "Sentence 1 — Say when: “After …, …”",
+        "mode": "Individual",
+        "example": "After the school trip, our class wanted to make a poster."
+       },
+       {
+        "question": "Sentence 2 — Say what someone wanted: “… wanted someone to …”",
+        "mode": "Individual",
+        "example": "Our teacher wanted someone to draw the pictures."
+       },
+       {
+        "question": "Sentence 3 — Say who was chosen: “We chose … because …”",
+        "mode": "Individual",
+        "example": "We chose Sara because she draws very well."
+       },
+       {
+        "question": "Sentence 4 — Show they did not stop: “… even when …”",
+        "mode": "Pair",
+        "example": "Sara kept working even when she was tired."
+       }
+      ]
+     }
+    ],
+    "beforeYouRead": {
+     "kind": "guess",
+     "question": "Guess first: What were the first words of the first Adhan?",
+     "options": [
+      "“Come and eat.”",
+      "“Welcome to Medina.”",
+      "“Allah is the greatest.”"
+     ],
+     "answer": 2,
+     "quote": "So Bilal gave the first Adhan: “Allah is the greatest"
+    },
+    "iCan": [
+     "I can tell why Bilal gave the first Adhan.",
+     "I can say who was chosen and why.",
+     "I can talk about choosing someone for a group job."
+    ]
+   },
+   {
+    "id": 12,
+    "type": "story",
+    "title": "Prayer Is Better Than Sleep",
+    "image": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Fimages%2Fmecca_a2_ch12.png?alt=media&token=6d17b5ad-0612-4921-afb1-a8a8d7464ea0",
+    "audioUrl": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Faudio%2F11_Chapter_12_Prayer_Is_Better_Than_Sleep.mp3?alt=media&token=a9931375-9370-4267-8d5f-422bf60a91f5",
+    "content": "Bilal used to start the morning call to prayer very early. He added the words “as-salatu khayrun minan-nawm,” which means “Prayer is better than sleep.” The Prophet (pbuh) was pleased with this and told him to repeat it every morning.\n\nProphet Muhammad (pbuh) taught that all people are equal. No skin color is better than another. Before he died in 632, he gave his last speech. This speech is called the Farewell Sermon.\n\nIn this speech, he said it is wrong to dislike or disrespect people because of the color of their skin. He taught that all people come from the same parents, Adam and Eve.",
+    "vocabulary": [
+     {
+      "word": "pleased",
+      "definition": "Happy about something."
+     },
+     {
+      "word": "repeat",
+      "definition": "To say or do something again."
+     },
+     {
+      "word": "speech",
+      "definition": "A talk given to a group of people."
+     },
+     {
+      "word": "disrespect",
+      "definition": "To treat someone rudely, as if they are not important."
+     }
+    ],
+    "hotspots": [
+     {
+      "id": "mecca-a2-en-h12a",
+      "x": 40,
+      "y": 29,
+      "title": "The Morning Adhan",
+      "description": "Bilal added the words “Prayer is better than sleep” to the morning call to prayer."
+     },
+     {
+      "id": "mecca-a2-en-h12b",
+      "x": 62,
+      "y": 69,
+      "title": "The Farewell Sermon",
+      "description": "The Prophet (pbuh) taught that it is wrong to disrespect people because of their skin color."
+     }
+    ],
+    "exercises": [
+     {
+      "id": "mecca-a2-quick-12",
+      "type": "matching",
+      "matchingHeadings": {
+       "left": "In the chapter",
+       "right": "What it tells us"
+      },
+      "title": "Prayer and Equality",
+      "instructions": "Match each idea with what Chapter 12 says about it.",
+      "question": "What does Chapter 12 tell us?",
+      "matchingPairs": [
+       {
+        "left": "The morning Adhan",
+        "right": "Bilal added “Prayer is better than sleep.”"
+       },
+       {
+        "left": "The Farewell Sermon",
+        "right": "It is wrong to disrespect people because of their skin color."
+       },
+       {
+        "left": "Adam and Eve",
+        "right": "All people come from the same parents."
+       }
+      ],
+      "correctAnswer": {
+       "The morning Adhan": "Bilal added “Prayer is better than sleep.”",
+       "The Farewell Sermon": "It is wrong to disrespect people because of their skin color.",
+       "Adam and Eve": "All people come from the same parents."
+      },
+      "explanation": "Chapter 12 tells us about the words Bilal added to the morning Adhan and about the Prophet’s (pbuh) teaching in the Farewell Sermon: All people are equal and come from the same parents, Adam and Eve.",
+      "feedback": {
+       "correct": "Great! You connected the morning Adhan and the lesson of equality.",
+       "incorrect": "The first paragraph is about the morning Adhan. The last paragraph is about the Farewell Sermon and Adam and Eve."
+      }
+     }
+    ],
+    "languageFocusExercises": [
+     {
+      "id": "mecca-a2-language-12-habit-message",
+      "type": "true-false",
+      "title": "A Morning Habit",
+      "instructions": "Read the sentence from Chapter 12. Is the statement true or false?",
+      "question": "“Bilal used to start the morning call to prayer very early.” This means Bilal did this many times, not only once.",
+      "correctAnswer": true,
+      "explanation": "“Used to + verb” describes a habit in the past: something that happened again and again. Bilal started the morning call early on many days.",
+      "feedback": {
+       "correct": "Correct. “Used to” shows a repeated past habit.",
+       "incorrect": "Look at “used to”. Does it talk about one day, or about many days?"
+      }
+     },
+     {
+      "id": "mecca-a2-language-12-habit",
+      "type": "word-bank",
+      "title": "Meaning and Equality",
+      "instructions": "Complete the lines with the word bank. Three words are extra.",
+      "question": "What did Bilal add, and what did the Prophet teach?",
+      "fillBlanksText": "He added the words “as-salatu khayrun minan-nawm,” [blank] “Prayer is better than sleep.” … Prophet Muhammad (pbuh) taught that [blank] people are equal. No skin color is [blank] than another.",
+      "wordBank": [
+       "which means",
+       "all",
+       "better",
+       "who means",
+       "every",
+       "good"
+      ],
+      "correctAnswer": [
+       "which means",
+       "all",
+       "better"
+      ],
+      "explanation": "“Which means” explains the meaning of words. “All + plural noun + are” makes a statement about everyone: “all people are equal”. “Every” needs a singular noun (“every person is”). “Better than” compares two things.",
+      "feedback": {
+       "correct": "Correct. You explained a meaning, made a statement about everyone and used a comparison.",
+       "incorrect": "Read the first two paragraphs of Chapter 12. Check the noun after the second blank: “people” is plural. Check the word “than” after the third blank."
+      }
+     },
+     {
+      "id": "mecca-a2-language-12-instruction",
+      "type": "sentence-building",
+      "title": "It Is Wrong",
+      "instructions": "Put the parts in order to make the sentence from Chapter 12.",
+      "question": "What did the Prophet say in his last speech?",
+      "sentenceChunks": [
+       "In this speech, he said",
+       "it is wrong",
+       "to dislike or disrespect people",
+       "because of",
+       "the color of their skin."
+      ],
+      "correctAnswer": null,
+      "explanation": "“It is wrong to + verb” says that an action is not right. “Because of + noun” gives the reason: here, the reason is skin color, and the Prophet said this reason is wrong.",
+      "feedback": {
+       "correct": "Correct. You built the sentence from the Farewell Sermon part of the chapter.",
+       "incorrect": "Start with “In this speech, he said”. Then say what is wrong, and finish with the reason. Check the last paragraph."
+      }
+     },
+     {
+      "id": "mecca-a2-language-12-production",
+      "type": "reflection",
+      "title": "Explain a Routine and a Principle",
+      "instructions": "Write or say four sentences about a habit and one fair rule.",
+      "question": "What was the old habit, and what is the fair rule?",
+      "correctAnswer": null,
+      "explanation": "Use at least three Chapter 12 patterns.",
+      "feedback": {
+       "correct": "Keep the language simple and respectful.",
+       "incorrect": ""
+      },
+      "discussionPrompts": [
+       {
+        "question": "Sentence 1 — Give an old habit: “… used to …”",
+        "mode": "Individual",
+        "example": "In our club, the oldest players used to choose the teams."
+       },
+       {
+        "question": "Sentence 2 — Explain a word: “…, which means …”",
+        "mode": "Individual",
+        "example": "Now we have a rule called “fair play”, which means everyone gets a turn."
+       },
+       {
+        "question": "Sentence 3 — Say what someone told you: “… told us to …”",
+        "mode": "Individual",
+        "example": "Our coach told us to take turns as team captain."
+       },
+       {
+        "question": "Sentence 4 — Say something about everyone: “All … are …”",
+        "mode": "Pair",
+        "example": "All players are important in our team."
+       }
+      ]
+     }
+    ],
+    "beforeYouRead": {
+     "kind": "guess",
+     "question": "Guess first: In which year did the Prophet (pbuh) die?",
+     "options": [
+      "in 570",
+      "in 632",
+      "in 700"
+     ],
+     "answer": 1,
+     "quote": "Before he died in 632"
+    },
+    "iCan": [
+     "I can tell what Bilal added to the morning Adhan.",
+     "I can explain what some words mean.",
+     "I can talk about a fair rule for everyone."
+    ]
+   },
+   {
+    "id": 13,
+    "type": "story",
+    "title": "Everyone Is Equal",
+    "image": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Fimages%2Fmecca_a2_ch13.png?alt=media&token=8c78587d-ea7d-48ec-815c-666ad38a66ac",
+    "audioUrl": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fa2%2Faudio%2F12_Chapter_13_Everyone_Is_Equal.mp3?alt=media&token=746f98e6-3e86-4e1e-8cab-7cb0ab7899c8",
+    "content": "No person is better than another because of skin color. Arabs are not better than non-Arabs, and white people are not better than black people. The only way to be better is to be good and do good actions.\n\nBilal loved the Prophet (pbuh) very much. When the Prophet (pbuh) died, Bilal was too sad to give the Adhan. He started crying when he said the Prophet’s name. He could not stay in Medina, so he asked Abu Bakr to let him leave. Abu Bakr allowed him to leave the city. He went to Damascus and died there.\n\nBilal’s story shows that in Islam, everyone is equal. His life teaches us that it is unfair to behave badly to people because of their skin color or nationality. A person’s skin color or past is not important. What matters is the heart and good actions.",
+    "vocabulary": [
+     {
+      "word": "Medina",
+      "definition": "__historical_entity__:mecca-medina-7th-century"
+     },
+     {
+      "word": "Arabs",
+      "definition": "__historical_entity__:mecca-pre-islamic-arabs"
+     },
+     {
+      "word": "behave badly",
+      "definition": "To act in a wrong or unkind way."
+     },
+     {
+      "word": "nationality",
+      "definition": "The country or people someone belongs to."
+     },
+     {
+      "word": "Damascus",
+      "definition": "A historic city in Syria."
+     },
+     {
+      "word": "matters",
+      "definition": "Is important."
+     }
+    ],
+    "hotspots": [
+     {
+      "id": "mecca-a2-en-h13a",
+      "x": 33,
+      "y": 31,
+      "title": "Equality",
+      "description": "No person is better than another because of skin color."
+     },
+     {
+      "id": "mecca-a2-en-h13b",
+      "x": 69,
+      "y": 66,
+      "title": "Heart and Actions",
+      "description": "The story ends by saying that the heart and good actions are what matter."
+     }
+    ],
+    "exercises": [
+     {
+      "id": "mecca-a2-quick-13",
+      "type": "multiple-choice",
+      "title": "After the Prophet (pbuh)",
+      "instructions": "Read the question. Choose the answer from Chapter 13.",
+      "question": "What did Bilal do after the Prophet (pbuh) died?",
+      "options": [
+       "He gave the Adhan in Medina every day.",
+       "He went back to live in Mecca.",
+       "He left Medina and went to Damascus."
+      ],
+      "correctAnswer": 2,
+      "explanation": "Bilal was too sad to give the Adhan. He asked Abu Bakr to let him leave Medina, and he went to Damascus and died there.",
+      "feedback": {
+       "correct": "Yes. Bilal loved the Prophet (pbuh) so much that he could not stay in Medina.",
+       "incorrect": "Read the middle paragraph of Chapter 13 again. Where did Bilal go?"
+      }
+     }
+    ],
+    "languageFocusExercises": [
+     {
+      "id": "mecca-a2-language-13-comparison",
+      "type": "multiple-choice",
+      "title": "Too Sad",
+      "instructions": "Read the sentence from Chapter 13. Then choose the best meaning.",
+      "question": "“When the Prophet (pbuh) died, Bilal was too sad to give the Adhan.” What does this mean?",
+      "options": [
+       "Bilal gave the Adhan with a sad voice.",
+       "Bilal was so sad that he could not give the Adhan.",
+       "Bilal was a little sad, but he gave the Adhan."
+      ],
+      "correctAnswer": 1,
+      "explanation": "“Too + adjective + to + verb” means the feeling was so strong that the action was not possible. Bilal’s sadness stopped him from giving the Adhan.",
+      "feedback": {
+       "correct": "Correct. His sadness stopped him.",
+       "incorrect": "Read the second paragraph of Chapter 13. What happened when Bilal said the Prophet’s name?"
+      }
+     },
+     {
+      "id": "mecca-a2-language-13-degree",
+      "type": "choose-form",
+      "title": "Comparing and Asking",
+      "instructions": "Choose the correct word or words for each sentence from Chapter 13.",
+      "question": "What really matters, and what did Bilal ask Abu Bakr?",
+      "formChoices": [
+       {
+        "sentence": "Arabs are not better [choice] non-Arabs, …",
+        "options": [
+         "then",
+         "than",
+         "as"
+        ],
+        "answer": 1
+       },
+       {
+        "sentence": "He could not stay in Medina, so he asked Abu Bakr [choice] him leave.",
+        "options": [
+         "to let",
+         "let",
+         "letting"
+        ],
+        "answer": 0
+       },
+       {
+        "sentence": "What [choice] is the heart and good actions.",
+        "options": [
+         "matter",
+         "mattering",
+         "matters"
+        ],
+        "answer": 2
+       }
+      ],
+      "correctAnswer": null,
+      "explanation": "“Better than” compares two groups; “than” is different from “then” (a time word). “Asked + person + to + verb” reports a request. “What matters is …” says what is important.",
+      "feedback": {
+       "correct": "Correct. You chose the right form each time.",
+       "incorrect": "Check the first paragraph (comparison), the second paragraph (Bilal’s request) and the last sentence of Chapter 13."
+      }
+     },
+     {
+      "id": "mecca-a2-language-13-importance",
+      "type": "error-correction",
+      "title": "Find and Fix the Mistake",
+      "instructions": "Each sentence has one mistake. Tap it, then choose the correct words.",
+      "question": "Can you fix the sentences about Bilal’s life?",
+      "errorItems": [
+       {
+        "sentence": "His life teaches us that it is unfair to behave badly to people because their skin color or nationality.",
+        "error": "because their",
+        "options": [
+         "because of their",
+         "because they",
+         "for because their"
+        ],
+        "answer": 0
+       },
+       {
+        "sentence": "He started crying when he say the Prophet’s name.",
+        "error": "say",
+        "options": [
+         "saying",
+         "said",
+         "says"
+        ],
+        "answer": 1
+       }
+      ],
+      "correctAnswer": null,
+      "explanation": "Use “because of + noun” (“because of their skin color”) and “because + sentence” (“because they …”). In a past story, “when” needs a past verb: “when he said …”.",
+      "feedback": {
+       "correct": "Well done. You fixed both sentences.",
+       "incorrect": "Compare with Chapter 13: the second paragraph (Bilal’s sadness) and the last paragraph (the lesson of his life)."
+      }
+     },
+     {
+      "id": "mecca-a2-language-13-production",
+      "type": "reflection",
+      "title": "State a Fair Principle",
+      "instructions": "Write or say four sentences about being fair to all people.",
+      "question": "What makes a person truly good?",
+      "correctAnswer": null,
+      "explanation": "Use at least three Chapter 13 patterns without adding claims outside the chapter’s theme.",
+      "feedback": {
+       "correct": "Keep the message respectful and clear.",
+       "incorrect": ""
+      },
+      "discussionPrompts": [
+       {
+        "question": "Sentence 1 — Say who is not better: “… is not better than …”",
+        "mode": "Individual",
+        "example": "A rich person is not better than a poor person."
+       },
+       {
+        "question": "Sentence 2 — Give a reason: “… because of …”",
+        "mode": "Individual",
+        "example": "We should not judge people because of their clothes."
+       },
+       {
+        "question": "Sentence 3 — Say what was too hard: “… was too … to …”",
+        "mode": "Individual",
+        "example": "The box was too heavy to carry alone, so my friend helped me."
+       },
+       {
+        "question": "Sentence 4 — Say what is important: “What matters is …”",
+        "mode": "Pair",
+        "example": "What matters is a kind heart and good actions."
+       }
+      ]
+     }
+    ],
+    "beforeYouRead": {
+     "kind": "guess",
+     "question": "Guess first: What matters most in a person?",
+     "options": [
+      "the heart and good actions",
+      "skin color and family",
+      "money and power"
+     ],
+     "answer": 0,
+     "quote": "What matters is the heart and good actions."
+    },
+    "iCan": [
+     "I can tell why Bilal left Medina.",
+     "I can say what is really important in a person.",
+     "I can write about being fair to all people."
+    ],
+    "groupTask": {
+     "type": "project",
+     "title": "What Matters Is the Heart",
+     "time": "20 min",
+     "groupSize": "3–4",
+     "roles": [
+      {
+       "name": "Quote Finder",
+       "job": "You copy one sentence from Chapter 1, 12 or 13 exactly."
+      },
+      {
+       "name": "Explainer",
+       "job": "You write two sentences about what it means."
+      },
+      {
+       "name": "Example Maker",
+       "job": "You write two real school examples of treating people equally."
+      },
+      {
+       "name": "Designer",
+       "job": "You put everything on the poster in a clear way."
+      }
+     ],
+     "steps": [
+      "Choose one sentence from Chapter 1, 12 or 13, for example: “What matters is the heart and good actions.”",
+      "Write what it means in two short sentences.",
+      "Add two school examples, like “Everyone can play in our team.”",
+      "Use phrases like “… is not better than …” or “What matters is …”."
+     ],
+     "share": "Each group shows its poster and reads the sentence from the book aloud.",
+     "solo": "Make a small poster alone with one sentence from the book, two sentences about its meaning and one school example."
+    }
+   },
+   {
+    "id": 101,
+    "type": "map",
+    "title": "Bilal’s World",
+    "subtitle": "Map · Chapters 1–13",
+    "content": "",
+    "map": {
+     "baseMap": "nearEast",
+     "home": {
+      "west": 31,
+      "east": 50,
+      "south": 10.5,
+      "north": 35
+     },
+     "overlays": [],
+     "features": {
+      "timeSlider": true,
+      "tour": true,
+      "challenge": true,
+      "classroom": true
+     },
+     "time": {
+      "start": 1,
+      "lastYear": 6,
+      "birth": 1,
+      "mode": "stages"
+     },
+     "legend": {
+      "route:hijra": "The move to Medina (Hijrah)",
+      "route:toDamascus": "Bilal goes to Damascus"
+     },
+     "routes": [
+      {
+       "id": "hijra",
+       "points": [
+        [
+         39.83,
+         21.42
+        ],
+        [
+         39.45,
+         22.5
+        ],
+        [
+         39.3,
+         23.5
+        ],
+        [
+         39.61,
+         24.47
+        ]
+       ],
+       "start": 4.6,
+       "end": 5,
+       "tone": "journey"
+      },
+      {
+       "id": "toDamascus",
+       "points": [
+        [
+         39.61,
+         24.47
+        ],
+        [
+         38.6,
+         26.5
+        ],
+        [
+         36.9,
+         28.4
+        ],
+        [
+         36.2,
+         30.3
+        ],
+        [
+         36,
+         32
+        ],
+        [
+         36.29,
+         33.51
+        ]
+       ],
+       "start": 5.6,
+       "end": 6,
+       "tone": "journey"
+      }
+     ],
+     "places": [
+      {
+       "id": "mecca",
+       "entityId": "mecca-mecca-7th-century",
+       "lon": 39.83,
+       "lat": 21.42,
+       "icon": "city",
+       "tone": "place",
+       "labelSide": "right",
+       "name": "Mecca",
+       "kind": "City",
+       "text": "Bilal was born in Mecca. Mecca was a business city. People bought and sold things there.",
+       "teacherNote": "Chapters 1–10 happen in Mecca: Umayya’s house, the desert of Mecca and Abu Bakr’s house. The book does not name these places, so the map shows only the city.",
+       "question": "Why was life hard for Bilal in Mecca?"
+      },
+      {
+       "id": "arabia",
+       "entityId": "mecca-arabian-peninsula",
+       "lon": 44.5,
+       "lat": 23.6,
+       "icon": "tent",
+       "tone": "place",
+       "areaRadiusKm": 600,
+       "showArea": true,
+       "labelSide": "top",
+       "name": "Arabia",
+       "kind": "Region",
+       "text": "Slave markets were very common in Arabia. Mecca was a center for buying and selling slaves.",
+       "teacherNote": "The circle is only approximate. The A2 book does not describe Arabia; it only mentions its slave markets (chapter 3).",
+       "question": "What was very common in Arabia at that time?"
+      },
+      {
+       "id": "abyssinia",
+       "entityId": "mecca-abyssinia",
+       "lon": 38.9,
+       "lat": 13.3,
+       "icon": "route",
+       "tone": "place",
+       "areaRadiusKm": 270,
+       "showArea": true,
+       "labelSide": "right",
+       "name": "Abyssinia",
+       "kind": "Region",
+       "text": "Bilal’s mother was an Ethiopian woman. Many slaves in the homes of Meccan people came from Abyssinia. But Bilal was born in Mecca.",
+       "teacherNote": "Chapter 1 says “Ethiopian” and chapter 3 says “Abyssinia”. Bilal himself was born in Mecca, so the map draws no journey for him from here. The circle is approximate.",
+       "question": "Where was Bilal born: in Abyssinia or in Mecca?"
+      },
+      {
+       "id": "medina",
+       "entityId": "mecca-medina-7th-century",
+       "lon": 39.61,
+       "lat": 24.47,
+       "icon": "palm",
+       "tone": "place",
+       "labelSide": "right",
+       "name": "Medina",
+       "kind": "City",
+       "text": "After many years of hardship in Mecca, the Muslims moved to Medina. After the Hijrah, Bilal gave the first Adhan. When the Prophet (pbuh) died, Bilal could not stay in Medina.",
+       "teacherNote": "The move to Medina is called the Hijrah (chapter 11). The book gives no year for it. The line from Mecca is only a guide.",
+       "question": "Who gave the first Adhan after the Hijrah?"
+      },
+      {
+       "id": "damascus",
+       "entityId": "mecca-damascus-7th-century",
+       "lon": 36.29,
+       "lat": 33.51,
+       "icon": "city",
+       "tone": "place",
+       "labelSide": "right",
+       "name": "Damascus",
+       "kind": "City",
+       "text": "The Prophet (pbuh) died in 632. Bilal was very sad. He left Medina and went to Damascus. He died there.",
+       "teacherNote": "Chapter 12 gives the year 632. Chapter 13 gives no year for Bilal’s journey or his death, and no route. The line on the map is only a guide.",
+       "question": "Why did Bilal leave Medina?"
+      }
+     ],
+     "towns": [],
+     "seas": [
+      {
+       "id": "redSea",
+       "lon": 38.8,
+       "lat": 19.5,
+       "name": "Red Sea"
+      },
+      {
+       "id": "mediterranean",
+       "lon": 32.6,
+       "lat": 33.3,
+       "name": "Mediterranean Sea"
+      }
+     ],
+     "timeline": [
+      {
+       "year": 1,
+       "chapter": 1,
+       "placeId": "mecca",
+       "camera": {
+        "lon": 39.9,
+        "lat": 21.8,
+        "zoom": 2
+       },
+       "scene": {
+        "kind": "dawn",
+        "placeId": "mecca"
+       },
+       "label": "Bilal is born"
+      },
+      {
+       "year": 2,
+       "chapter": 3,
+       "placeId": "abyssinia",
+       "camera": {
+        "lon": 39.6,
+        "lat": 17.6,
+        "zoom": 1.4
+       },
+       "scene": {
+        "kind": "radiate",
+        "placeId": "mecca",
+        "reach": [
+         "abyssinia",
+         "arabia"
+        ]
+       },
+       "label": "Slaves in Mecca"
+      },
+      {
+       "year": 3,
+       "chapter": 5,
+       "placeId": "mecca",
+       "camera": {
+        "lon": 39.9,
+        "lat": 21.8,
+        "zoom": 2.2
+       },
+       "scene": {
+        "kind": "radiate",
+        "placeId": "mecca",
+        "reach": []
+       },
+       "label": "A new message"
+      },
+      {
+       "year": 4,
+       "chapter": 10,
+       "placeId": "mecca",
+       "camera": {
+        "lon": 39.9,
+        "lat": 21.8,
+        "zoom": 1.9
+       },
+       "scene": {
+        "kind": "dawn",
+        "placeId": "mecca"
+       },
+       "label": "Bilal is free"
+      },
+      {
+       "year": 5,
+       "chapter": 11,
+       "placeId": "medina",
+       "camera": {
+        "lon": 39.7,
+        "lat": 23,
+        "zoom": 2
+       },
+       "scene": {
+        "kind": "radiate",
+        "placeId": "medina",
+        "reach": []
+       },
+       "label": "The Hijrah"
+      },
+      {
+       "year": 6,
+       "chapter": 13,
+       "placeId": "damascus",
+       "camera": {
+        "lon": 38.3,
+        "lat": 27.6,
+        "zoom": 1.3
+       },
+       "scene": {
+        "kind": "journey",
+        "fromId": "mecca",
+        "toIds": [
+         "medina",
+         "damascus"
+        ]
+       },
+       "label": "Bilal goes to Damascus"
+      }
+     ],
+     "challenge": [
+      {
+       "id": "mecca",
+       "lon": 39.83,
+       "lat": 21.42,
+       "radiusKm": 110,
+       "prompt": "Find Mecca. Bilal was born in this city."
+      },
+      {
+       "id": "medina",
+       "lon": 39.61,
+       "lat": 24.47,
+       "radiusKm": 100,
+       "prompt": "Find Medina. The Muslims moved here from Mecca."
+      },
+      {
+       "id": "damascus",
+       "lon": 36.29,
+       "lat": 33.51,
+       "radiusKm": 130,
+       "prompt": "Find Damascus. Bilal went here at the end of his life."
+      },
+      {
+       "id": "abyssinia",
+       "lon": 38.9,
+       "lat": 13.3,
+       "radiusKm": 300,
+       "prompt": "Find Abyssinia. Many slaves in Mecca came from here."
+      },
+      {
+       "id": "arabia",
+       "lon": 44.5,
+       "lat": 23.6,
+       "radiusKm": 350,
+       "prompt": "Find Arabia. Slave markets were very common here."
+      }
+     ]
+    }
+   },
+   {
+    "id": 14,
+    "type": "quiz",
+    "title": "Knowledge Check",
+    "image": "https://picsum.photos/seed/quiz-mecca-a2/1200/800",
+    "audioUrl": "",
+    "content": "Test your understanding of the A2 story of Bilal ibn Rabah and Mecca before Islam.",
+    "exercises": [
+     {
+      "id": "mecca-a2-kc-1-free-and-great",
+      "type": "multiple-choice",
+      "title": "What People Thought",
+      "instructions": "Read the question. Choose the answer.",
+      "question": "People in Mecca thought Bilal would never become someone important. What does the story show?",
+      "options": [
+       "He stayed a poor slave all his life.",
+       "Islam made him a free and great man.",
+       "He became a rich man in Mecca."
+      ],
+      "correctAnswer": 1,
+      "explanation": "Chapter 1: “They thought he had no power and would never become someone important. But Islam made him a free and great man.”",
+      "feedback": {
+       "correct": "Yes! The people of Mecca were wrong about Bilal. Islam made him free, and he became a great man.",
+       "incorrect": "Not this one. Read the last paragraph of Chapter 1 again. Find the sentence that starts with “But”."
+      }
+     },
+     {
+      "id": "mecca-a2-kc-2-money-and-power",
+      "type": "true-false",
+      "title": "Money and Power",
+      "instructions": "Read the sentence. Is it true or false?",
+      "question": "In Mecca, the rich people also had the most power.",
+      "correctAnswer": true,
+      "explanation": "Chapter 3: “The people with money were the most powerful people in the city.” Umayya was one of them: He was “one of the richest and most powerful leaders in Mecca.”",
+      "feedback": {
+       "correct": "Right, it is true. In Mecca, money and power went together. That is why life was so hard for the poor.",
+       "incorrect": "Look again at the first paragraph of Chapter 3. Who were the most powerful people in the city?"
+      }
+     },
+     {
+      "id": "mecca-a2-kc-3-why-he-worked-hard",
+      "type": "multiple-choice",
+      "title": "Hard Work",
+      "instructions": "Read the question. Choose the answer.",
+      "question": "Why did Bilal work so hard every day?",
+      "options": [
+       "He wanted to save money and buy his freedom.",
+       "Umayya promised to make him a free man.",
+       "He wanted to please his master and stay safe."
+      ],
+      "correctAnswer": 2,
+      "explanation": "Chapter 5: “Bilal had to work very hard to please his master and protect himself from his master’s anger.” He could not buy his freedom: “He did not have any money to pay for his freedom.”",
+      "feedback": {
+       "correct": "Yes. Bilal worked hard to please Umayya and to be safe from his anger. He had no money and no power.",
+       "incorrect": "Not quite. Read the first paragraph of Chapter 5 again. Why did Bilal have to work very hard?"
+      }
+     },
+     {
+      "id": "mecca-a2-kc-4-a-sleepless-night",
+      "type": "true-false",
+      "title": "A Long Night",
+      "instructions": "Read the sentence. Is it true or false?",
+      "question": "After Bilal met Abu Bakr, he went home and slept well.",
+      "correctAnswer": false,
+      "explanation": "Chapter 7: “He could not sleep during the night. He stayed awake and thought about his life.”",
+      "feedback": {
+       "correct": "Right, it is false. Bilal could not sleep. He stayed awake and thought about his life and his big decision.",
+       "incorrect": "Read the last paragraph of Chapter 7 again. What did Bilal do during the night?"
+      }
+     },
+     {
+      "id": "mecca-a2-kc-5-a-strong-answer",
+      "type": "multiple-choice",
+      "title": "Bilal’s Answer",
+      "instructions": "Read the question. Choose the answer.",
+      "question": "Umayya asked Bilal angrily about his new religion. How did Bilal answer?",
+      "options": [
+       "He answered with a strong and sure voice.",
+       "He answered with a quiet and afraid voice.",
+       "He did not answer and looked away."
+      ],
+      "correctAnswer": 0,
+      "explanation": "Chapter 8: “Bilal answered with a strong and sure voice: “Yes, Allah helped me to find the right way. Now I believe in the true religion.””",
+      "feedback": {
+       "correct": "Yes. Bilal was not afraid to say the truth, even to his angry master.",
+       "incorrect": "Not this one. Read the first paragraph of Chapter 8 again. How did Bilal answer Umayya?"
+      }
+     },
+     {
+      "id": "mecca-a2-kc-6-any-price",
+      "type": "multiple-choice",
+      "title": "One Hundred Pieces of Gold",
+      "instructions": "Read Abu Bakr’s words. Choose the answer.",
+      "question": "Abu Bakr said, “If you asked me for one hundred pieces of gold, I would still pay that price for him.” What does this show?",
+      "options": [
+       "Abu Bakr had a lot of gold and liked to spend it.",
+       "Bilal’s freedom was more important to him than money.",
+       "Abu Bakr wanted to pay less than Umayya asked."
+      ],
+      "correctAnswer": 1,
+      "explanation": "In Chapter 10, Umayya laughs and says he would sell Bilal for only one piece of gold. Abu Bakr answers that he would pay even one hundred. For Abu Bakr, Bilal was worth any price.",
+      "feedback": {
+       "correct": "Yes. Umayya thought Bilal was worth very little. Abu Bakr showed that Bilal’s freedom was worth more than any money.",
+       "incorrect": "Not quite. Read the first paragraph of Chapter 10 again. Compare what Umayya says with what Abu Bakr says."
+      }
+     },
+     {
+      "id": "mecca-a2-kc-7-a-close-friend",
+      "type": "true-false",
+      "title": "A Close Friend",
+      "instructions": "Read the sentence. Is it true or false?",
+      "question": "After Bilal became free, the Prophet (pbuh) trusted him and kept him close.",
+      "correctAnswer": true,
+      "explanation": "Chapter 11: “After Bilal became free, he became one of the Prophet’s most beloved and respected friends. When the Prophet (pbuh) wanted to be alone, he often allowed only Bilal to stay with him.”",
+      "feedback": {
+       "correct": "Right, it is true. Bilal was one of the Prophet’s most loved friends. Often, only Bilal could stay with him.",
+       "incorrect": "Read the first paragraph of Chapter 11 again. Who could stay with the Prophet (pbuh) when he wanted to be alone?"
+      }
+     },
+     {
+      "id": "mecca-a2-kc-8-too-sad",
+      "type": "multiple-choice",
+      "title": "After the Prophet (pbuh)",
+      "instructions": "Read the question. Choose the answer.",
+      "question": "Why did Bilal stop giving the Adhan after the Prophet (pbuh) died?",
+      "options": [
+       "Abu Bakr chose another man to give it.",
+       "He was too old and weak to call loudly.",
+       "He was very sad and cried at the Prophet’s name."
+      ],
+      "correctAnswer": 2,
+      "explanation": "Chapter 13: “When the Prophet (pbuh) died, Bilal was too sad to give the Adhan. He started crying when he said the Prophet’s name.”",
+      "feedback": {
+       "correct": "Yes. Bilal loved the Prophet (pbuh) very much. He was too sad to give the Adhan, and he cried when he said his name.",
+       "incorrect": "Not this one. Read the second paragraph of Chapter 13 again. How did Bilal feel when the Prophet (pbuh) died?"
+      }
+     }
+    ]
+   },
+   {
+    "id": 17,
+    "type": "glossary",
+    "title": "Master Glossary",
+    "image": "https://picsum.photos/seed/mecca-a2-glossary/1200/800",
+    "content": "Review all key vocabulary from the story in one place.",
+    "vocabulary": [
+     {
+      "word": "openly",
+      "definition": "In a way that is not hidden.",
+      "partOfSpeech": "adverb",
+      "level": "A2",
+      "pronunciation": "/ˈoʊpənli/",
+      "wordFamily": [
+       "open",
+       "openly"
+      ],
+      "collocations": [
+       "speak openly",
+       "say openly"
+      ],
+      "antonyms": [
+       "secretly"
+      ],
+      "chapter": 1,
+      "chapterTitle": "Bilal Ibn Rabah’s Place in Islam",
+      "storyExample": "Bilal ibn Rabah was one of the first seven people who openly said they were Muslims in Mecca.",
+      "category": "Communication"
+     },
+     {
+      "word": "Adhan",
+      "definition": "The call to prayer in Islam.",
+      "partOfSpeech": "noun",
+      "level": "A2",
+      "pronunciation": "/ˈɑːðɑːn/",
+      "collocations": [
+       "give the Adhan",
+       "the first Adhan"
+      ],
+      "chapter": 1,
+      "chapterTitle": "Bilal Ibn Rabah’s Place in Islam",
+      "storyExample": "He was also the first person to give the Adhan, the call to prayer, in the history of Islam.",
+      "category": "Spiritual Life"
+     },
+     {
+      "word": "slave",
+      "definition": "A person who is owned by another person and must work for them.",
+      "partOfSpeech": "noun",
+      "level": "A2",
+      "pronunciation": "/sleɪv/",
+      "wordFamily": [
+       "slave",
+       "slavery"
+      ],
+      "collocations": [
+       "be a slave",
+       "born into slavery"
+      ],
+      "antonyms": [
+       "free person"
+      ],
+      "chapter": 1,
+      "chapterTitle": "Bilal Ibn Rabah’s Place in Islam",
+      "storyExample": "Bilal was a black slave.",
+      "category": "People & Society"
+     },
+     {
+      "word": "valuable",
+      "definition": "Worth a lot; very important.",
+      "partOfSpeech": "adjective",
+      "level": "A2",
+      "pronunciation": "/ˈvæljuəbəl/",
+      "wordFamily": [
+       "value",
+       "valuable"
+      ],
+      "collocations": [
+       "valuable person",
+       "less valuable"
+      ],
+      "synonyms": [
+       "important",
+       "worthy"
+      ],
+      "antonyms": [
+       "worthless"
+      ],
+      "chapter": 1,
+      "chapterTitle": "Bilal Ibn Rabah’s Place in Islam",
+      "storyExample": "His story teaches us that skin color or being a slave does not make a person less valuable.",
+      "category": "Values"
+     },
+     {
+      "word": "ignorance",
+      "definition": "Not knowing or not following the truth.",
+      "partOfSpeech": "noun",
+      "level": "A2",
+      "pronunciation": "/ˈɪɡnərəns/",
+      "wordFamily": [
+       "ignorant",
+       "ignorance"
+      ],
+      "collocations": [
+       "Age of Ignorance",
+       "live in ignorance"
+      ],
+      "antonyms": [
+       "knowledge"
+      ],
+      "chapter": 2,
+      "chapterTitle": "The Age of Ignorance",
+      "storyExample": "The period before Islam was called the Age of Ignorance, or Jahiliyyah.",
+      "category": "History & Society"
+     },
+     {
+      "word": "idols",
+      "definition": "Objects that people wrongly worship.",
+      "partOfSpeech": "noun",
+      "level": "A2",
+      "pronunciation": "/ˈaɪdəlz/",
+      "wordFamily": [
+       "idol",
+       "idols"
+      ],
+      "collocations": [
+       "worship idols",
+       "stone idols"
+      ],
+      "chapter": 2,
+      "chapterTitle": "The Age of Ignorance",
+      "storyExample": "They left the true belief and worshipped idols.",
+      "category": "Belief & Objects"
+     },
+     {
+      "word": "justice",
+      "definition": "Fair treatment for people.",
+      "partOfSpeech": "noun",
+      "level": "A2",
+      "pronunciation": "/ˈdʒʌstɪs/",
+      "wordFamily": [
+       "just",
+       "justice"
+      ],
+      "collocations": [
+       "peace and justice",
+       "social justice"
+      ],
+      "synonyms": [
+       "fairness"
+      ],
+      "antonyms": [
+       "injustice"
+      ],
+      "chapter": 2,
+      "chapterTitle": "The Age of Ignorance",
+      "storyExample": "There was no real peace and justice in society.",
+      "category": "Values & Society"
+     },
+     {
+      "word": "luxury",
+      "definition": "A very comfortable and expensive way of life.",
+      "partOfSpeech": "noun",
+      "level": "A2",
+      "pronunciation": "/ˈlʌkʃəri/",
+      "wordFamily": [
+       "luxury",
+       "luxurious"
+      ],
+      "collocations": [
+       "live in luxury",
+       "luxury life"
+      ],
+      "chapter": 2,
+      "chapterTitle": "The Age of Ignorance",
+      "storyExample": "Rich people had a lot of money and lived in luxury.",
+      "category": "Daily Life & Society"
+     },
+     {
+      "word": "system",
+      "definition": "A way that society or work is organized.",
+      "partOfSpeech": "noun",
+      "level": "A2",
+      "pronunciation": "/ˈsɪstəm/",
+      "wordFamily": [
+       "system",
+       "systematic"
+      ],
+      "collocations": [
+       "unfair system",
+       "social system"
+      ],
+      "chapter": 3,
+      "chapterTitle": "Slaves in Mecca",
+      "storyExample": "In this unfair system, the poor were getting poorer and the rich were getting richer.",
+      "category": "Society"
+     },
+     {
+      "word": "slave markets",
+      "definition": "Places where slaves were bought and sold.",
+      "partOfSpeech": "noun phrase",
+      "level": "A2",
+      "pronunciation": "/sleɪv ˈmɑːrkɪts/",
+      "collocations": [
+       "slave markets",
+       "buy and sell slaves"
+      ],
+      "chapter": 3,
+      "chapterTitle": "Slaves in Mecca",
+      "storyExample": "Slave markets were very common in Arabia.",
+      "category": "History & Society"
+     },
+     {
+      "word": "Abyssinia",
+      "definition": "An old name for Ethiopia and nearby areas.",
+      "partOfSpeech": "proper noun",
+      "level": "A2",
+      "pronunciation": "/ˌæbɪˈsɪniə/",
+      "collocations": [
+       "from Abyssinia",
+       "ancient Abyssinia"
+      ],
+      "chapter": 3,
+      "chapterTitle": "Slaves in Mecca",
+      "storyExample": "Many slaves from different lands, especially from Abyssinia, lived in the homes of Meccan people.",
+      "category": "Places & History"
+     },
+     {
+      "word": "master",
+      "definition": "A person who owns a slave.",
+      "partOfSpeech": "noun",
+      "level": "A2",
+      "pronunciation": "/ˈmæstər/",
+      "wordFamily": [
+       "master",
+       "masters"
+      ],
+      "collocations": [
+       "his master",
+       "slave master"
+      ],
+      "chapter": 3,
+      "chapterTitle": "Slaves in Mecca",
+      "storyExample": "His master was Umayya ibn Khalaf.",
+      "category": "People & Society"
+     },
+     {
+      "word": "hatred",
+      "definition": "A very strong feeling of dislike.",
+      "partOfSpeech": "noun",
+      "level": "A2",
+      "pronunciation": "/ˈheɪtrɪd/",
+      "wordFamily": [
+       "hate",
+       "hatred"
+      ],
+      "collocations": [
+       "hatred of Islam",
+       "feel hatred"
+      ],
+      "synonyms": [
+       "hate"
+      ],
+      "antonyms": [
+       "love"
+      ],
+      "chapter": 4,
+      "chapterTitle": "Bilal’s Hard Life",
+      "storyExample": "Umayya never gave up his hatred of Islam and Muslims.",
+      "category": "Feelings"
+     },
+     {
+      "word": "rude",
+      "definition": "Not polite or respectful.",
+      "partOfSpeech": "adjective",
+      "level": "A2",
+      "pronunciation": "/ruːd/",
+      "wordFamily": [
+       "rude",
+       "rudely",
+       "rudeness"
+      ],
+      "collocations": [
+       "rude to someone",
+       "rude behaviour"
+      ],
+      "synonyms": [
+       "impolite"
+      ],
+      "antonyms": [
+       "polite"
+      ],
+      "chapter": 4,
+      "chapterTitle": "Bilal’s Hard Life",
+      "storyExample": "Every member of the family was rude to him.",
+      "category": "Character & Conduct"
+     },
+     {
+      "word": "harsh",
+      "definition": "Cruel, strict, or unkind.",
+      "partOfSpeech": "adjective",
+      "level": "A2",
+      "pronunciation": "/hɑːrʃ/",
+      "wordFamily": [
+       "harsh",
+       "harshly"
+      ],
+      "collocations": [
+       "harsh treatment",
+       "angry and harsh"
+      ],
+      "synonyms": [
+       "strict",
+       "cruel"
+      ],
+      "antonyms": [
+       "gentle"
+      ],
+      "chapter": 4,
+      "chapterTitle": "Bilal’s Hard Life",
+      "storyExample": "His master was often angry and harsh.",
+      "category": "Character & Conduct"
+     },
+     {
+      "word": "patient",
+      "definition": "Calm when you must wait or when life is hard.",
+      "partOfSpeech": "adjective",
+      "level": "A2",
+      "pronunciation": "/ˈpeɪʃənt/",
+      "wordFamily": [
+       "patient",
+       "patience",
+       "patiently"
+      ],
+      "collocations": [
+       "be patient",
+       "remain patient"
+      ],
+      "synonyms": [
+       "calm"
+      ],
+      "antonyms": [
+       "impatient"
+      ],
+      "chapter": 4,
+      "chapterTitle": "Bilal’s Hard Life",
+      "storyExample": "Bilal had to be patient and work hard every day.",
+      "category": "Values"
+     },
+     {
+      "word": "obedient",
+      "definition": "Doing what someone tells you to do.",
+      "partOfSpeech": "adjective",
+      "level": "A2",
+      "pronunciation": "/əˈbiːdiənt/",
+      "wordFamily": [
+       "obey",
+       "obedient",
+       "obedience"
+      ],
+      "collocations": [
+       "obedient servant",
+       "be obedient"
+      ],
+      "antonyms": [
+       "disobedient"
+      ],
+      "chapter": 5,
+      "chapterTitle": "A New Message",
+      "storyExample": "Umayya liked Bilal because he was an obedient and hardworking servant.",
+      "category": "Character & Conduct"
+     },
+     {
+      "word": "freedom",
+      "definition": "The state of not being a slave or prisoner.",
+      "partOfSpeech": "noun",
+      "level": "A2",
+      "pronunciation": "/ˈfriːdəm/",
+      "wordFamily": [
+       "free",
+       "freedom",
+       "freely"
+      ],
+      "collocations": [
+       "gain freedom",
+       "pay for freedom"
+      ],
+      "antonyms": [
+       "slavery"
+      ],
+      "chapter": 5,
+      "chapterTitle": "A New Message",
+      "storyExample": "He did not have any money to pay for his freedom.",
+      "category": "Rights & Values"
+     },
+     {
+      "word": "fair",
+      "definition": "Treating people in the right and equal way.",
+      "partOfSpeech": "adjective",
+      "level": "A2",
+      "pronunciation": "/fer/",
+      "wordFamily": [
+       "fair",
+       "fairness",
+       "unfair"
+      ],
+      "collocations": [
+       "be fair",
+       "fair treatment"
+      ],
+      "synonyms": [
+       "just"
+      ],
+      "antonyms": [
+       "unfair"
+      ],
+      "chapter": 5,
+      "chapterTitle": "A New Message",
+      "storyExample": "He taught that people must be fair and equal.",
+      "category": "Values"
+     },
+     {
+      "word": "equal",
+      "definition": "Having the same value or rights.",
+      "partOfSpeech": "adjective",
+      "level": "A2",
+      "pronunciation": "/ˈiːkwəl/",
+      "wordFamily": [
+       "equal",
+       "equality",
+       "equally"
+      ],
+      "collocations": [
+       "fair and equal",
+       "all people are equal"
+      ],
+      "synonyms": [
+       "the same"
+      ],
+      "antonyms": [
+       "unequal"
+      ],
+      "chapter": 5,
+      "chapterTitle": "A New Message",
+      "storyExample": "He taught that people must be fair and equal.",
+      "category": "Values & Equality"
+     },
+     {
+      "word": "Creator",
+      "definition": "Allah, Who created everything.",
+      "partOfSpeech": "noun",
+      "level": "A2",
+      "pronunciation": "/kriˈeɪtər/",
+      "wordFamily": [
+       "create",
+       "creation",
+       "Creator"
+      ],
+      "collocations": [
+       "the Creator",
+       "Creator and creation"
+      ],
+      "chapter": 6,
+      "chapterTitle": "Visiting Abu Bakr",
+      "storyExample": "He walked in the desert all day and thought deeply about the Creator and the creation.",
+      "category": "Belief & Faith"
+     },
+     {
+      "word": "secretly",
+      "definition": "In a hidden way.",
+      "partOfSpeech": "adverb",
+      "level": "A2",
+      "pronunciation": "/ˈsiːkrətli/",
+      "wordFamily": [
+       "secret",
+       "secretly"
+      ],
+      "collocations": [
+       "leave secretly",
+       "meet secretly"
+      ],
+      "synonyms": [
+       "privately"
+      ],
+      "antonyms": [
+       "openly"
+      ],
+      "chapter": 6,
+      "chapterTitle": "Visiting Abu Bakr",
+      "storyExample": "He left his room secretly and walked on a hidden path.",
+      "category": "Actions & Communication"
+     },
+     {
+      "word": "hidden path",
+      "definition": "A way that is not easy to see.",
+      "partOfSpeech": "noun phrase",
+      "level": "A2",
+      "pronunciation": "/ˈhɪdən pæθ/",
+      "wordFamily": [
+       "hide",
+       "hidden"
+      ],
+      "collocations": [
+       "hidden path",
+       "walk on a hidden path"
+      ],
+      "chapter": 6,
+      "chapterTitle": "Visiting Abu Bakr",
+      "storyExample": "He left his room secretly and walked on a hidden path.",
+      "category": "Places & Movement"
+     },
+     {
+      "word": "kind",
+      "definition": "Good and caring.",
+      "partOfSpeech": "adjective",
+      "level": "A2",
+      "pronunciation": "/kaɪnd/",
+      "wordFamily": [
+       "kind",
+       "kindness",
+       "kindly"
+      ],
+      "collocations": [
+       "kind man",
+       "be kind to someone"
+      ],
+      "synonyms": [
+       "caring"
+      ],
+      "antonyms": [
+       "unkind"
+      ],
+      "chapter": 6,
+      "chapterTitle": "Visiting Abu Bakr",
+      "storyExample": "Abu Bakr was a very kind man, and everybody knew that he was very nice to slaves.",
+      "category": "Character & Values"
+     },
+     {
+      "word": "partners",
+      "definition": "Others who share power or work with someone.",
+      "partOfSpeech": "noun",
+      "level": "A2",
+      "pronunciation": "/ˈpɑːrtnərz/",
+      "wordFamily": [
+       "partner",
+       "partners",
+       "partnership"
+      ],
+      "collocations": [
+       "have no partners",
+       "business partners"
+      ],
+      "chapter": 7,
+      "chapterTitle": "Bilal Accepts Islam",
+      "storyExample": "Allah has no partners or equals, not even a rich master or powerful people.",
+      "category": "Belief & Faith"
+     },
+     {
+      "word": "equals",
+      "definition": "People or things with the same value or power.",
+      "partOfSpeech": "noun",
+      "level": "A2",
+      "pronunciation": "/ˈiːkwəlz/",
+      "wordFamily": [
+       "equal",
+       "equality",
+       "equally"
+      ],
+      "collocations": [
+       "partners or equals",
+       "have no equals"
+      ],
+      "chapter": 7,
+      "chapterTitle": "Bilal Accepts Islam",
+      "storyExample": "Allah has no partners or equals, not even a rich master or powerful people.",
+      "category": "Belief & Faith"
+     },
+     {
+      "word": "supported",
+      "definition": "Helped and encouraged.",
+      "partOfSpeech": "verb",
+      "level": "A2",
+      "pronunciation": "/səˈpɔːrtɪd/",
+      "wordFamily": [
+       "support",
+       "supported",
+       "supportive"
+      ],
+      "collocations": [
+       "support someone",
+       "give support"
+      ],
+      "synonyms": [
+       "helped",
+       "encouraged"
+      ],
+      "chapter": 7,
+      "chapterTitle": "Bilal Accepts Islam",
+      "storyExample": "Abu Bakr supported Bilal and was very happy to hear this.",
+      "category": "Helping Others"
+     },
+     {
+      "word": "truth",
+      "definition": "What is real and right.",
+      "partOfSpeech": "noun",
+      "level": "A2",
+      "pronunciation": "/truːθ/",
+      "wordFamily": [
+       "true",
+       "truth",
+       "truthful"
+      ],
+      "collocations": [
+       "tell the truth",
+       "the truth"
+      ],
+      "antonyms": [
+       "lie"
+      ],
+      "chapter": 7,
+      "chapterTitle": "Bilal Accepts Islam",
+      "storyExample": "But he also knew that the religion of Allah was the truth.",
+      "category": "Values & Belief"
+     },
+     {
+      "word": "angrily",
+      "definition": "In a way that shows you are very upset with someone.",
+      "partOfSpeech": "adverb",
+      "level": "A2",
+      "pronunciation": "/ˈæŋɡrəli/",
+      "wordFamily": [
+       "anger",
+       "angry",
+       "angrily"
+      ],
+      "collocations": [
+       "speak angrily",
+       "ask angrily"
+      ],
+      "antonyms": [
+       "calmly"
+      ],
+      "chapter": 8,
+      "chapterTitle": "Allah Is One",
+      "storyExample": "Umayya asked Bilal angrily, “Is it true? Did you leave our religion and believe in this magic man Muhammad?”",
+      "category": "Feelings"
+     },
+     {
+      "word": "refused",
+      "definition": "Said no; did not agree to do something.",
+      "partOfSpeech": "verb",
+      "level": "A2",
+      "pronunciation": "/rɪˈfjuːzd/",
+      "wordFamily": [
+       "refuse",
+       "refused",
+       "refusal"
+      ],
+      "collocations": [
+       "refuse to do something",
+       "refuse an order"
+      ],
+      "synonyms": [
+       "said no"
+      ],
+      "antonyms": [
+       "accepted"
+      ],
+      "chapter": 8,
+      "chapterTitle": "Allah Is One",
+      "storyExample": "He forced him to look at idols and worship them, but Bilal refused.",
+      "category": "Choices & Actions"
+     },
+     {
+      "word": "whipped",
+      "definition": "Hit with a whip.",
+      "partOfSpeech": "verb",
+      "level": "A2",
+      "pronunciation": "/wɪpt/",
+      "wordFamily": [
+       "whip",
+       "whipped"
+      ],
+      "collocations": [
+       "whip someone",
+       "was whipped"
+      ],
+      "chapter": 8,
+      "chapterTitle": "Allah Is One",
+      "storyExample": "He whipped Bilal and put a huge burning rock on his chest in the hot sun.",
+      "category": "Actions & Harm"
+     },
+     {
+      "word": "Allah is One",
+      "definition": "There is no god but Allah.",
+      "partOfSpeech": "phrase",
+      "level": "A2",
+      "pronunciation": "/əˈlɑː ɪz wʌn/",
+      "collocations": [
+       "say “Allah is One”",
+       "believe Allah is One"
+      ],
+      "chapter": 8,
+      "chapterTitle": "Allah Is One",
+      "storyExample": "But Bilal only said, “Allah is One, Allah is One.”",
+      "category": "Belief & Faith"
+     },
+     {
+      "word": "pain",
+      "definition": "The feeling you have when your body is hurt.",
+      "partOfSpeech": "noun",
+      "level": "A2",
+      "pronunciation": "/peɪn/",
+      "wordFamily": [
+       "pain",
+       "painful"
+      ],
+      "collocations": [
+       "be in pain",
+       "feel pain"
+      ],
+      "antonyms": [
+       "comfort"
+      ],
+      "chapter": 9,
+      "chapterTitle": "Abu Bakr Saves Bilal",
+      "storyExample": "Bilal was in pain under a heavy rock.",
+      "category": "Health & Feelings"
+     },
+     {
+      "word": "right away",
+      "definition": "Immediately, without waiting.",
+      "partOfSpeech": "adverb phrase",
+      "level": "A2",
+      "pronunciation": "/raɪt əˈweɪ/",
+      "collocations": [
+       "go right away",
+       "leave right away"
+      ],
+      "synonyms": [
+       "immediately"
+      ],
+      "chapter": 9,
+      "chapterTitle": "Abu Bakr Saves Bilal",
+      "storyExample": "He went to see Umayya right away.",
+      "category": "Time"
+     },
+     {
+      "word": "price",
+      "definition": "The money needed to buy something.",
+      "partOfSpeech": "noun",
+      "level": "A2",
+      "pronunciation": "/praɪs/",
+      "wordFamily": [
+       "price",
+       "priced"
+      ],
+      "collocations": [
+       "high price",
+       "pay a price"
+      ],
+      "chapter": 9,
+      "chapterTitle": "Abu Bakr Saves Bilal",
+      "storyExample": "If you want him, you can take him for a high price.",
+      "category": "Money & Trade"
+     },
+     {
+      "word": "crime",
+      "definition": "A wrong action against the law.",
+      "partOfSpeech": "noun",
+      "level": "A2",
+      "pronunciation": "/kraɪm/",
+      "wordFamily": [
+       "crime",
+       "criminal"
+      ],
+      "collocations": [
+       "commit a crime",
+       "is it a crime"
+      ],
+      "chapter": 9,
+      "chapterTitle": "Abu Bakr Saves Bilal",
+      "storyExample": "Is it a crime to believe in the one true Allah?",
+      "category": "Law & Society"
+     },
+     {
+      "word": "agreed",
+      "definition": "Said yes.",
+      "partOfSpeech": "verb",
+      "level": "A2",
+      "pronunciation": "/əˈɡriːd/",
+      "wordFamily": [
+       "agree",
+       "agreed",
+       "agreement"
+      ],
+      "collocations": [
+       "agree to do something",
+       "agree with someone"
+      ],
+      "synonyms": [
+       "accepted"
+      ],
+      "antonyms": [
+       "refused"
+      ],
+      "chapter": 10,
+      "chapterTitle": "A Free Muslim",
+      "storyExample": "Finally, Umayya agreed to sell Bilal for five pieces of gold.",
+      "category": "Choices & Actions"
+     },
+     {
+      "word": "gold",
+      "definition": "A valuable yellow metal.",
+      "partOfSpeech": "noun",
+      "level": "A2",
+      "pronunciation": "/ɡoʊld/",
+      "collocations": [
+       "piece of gold",
+       "gold coin"
+      ],
+      "chapter": 10,
+      "chapterTitle": "A Free Muslim",
+      "storyExample": "Finally, Umayya agreed to sell Bilal for five pieces of gold.",
+      "category": "Objects & Money"
+     },
+     {
+      "word": "rescued",
+      "definition": "Saved from danger.",
+      "partOfSpeech": "verb",
+      "level": "A2",
+      "pronunciation": "/ˈreskjuːd/",
+      "wordFamily": [
+       "rescue",
+       "rescued"
+      ],
+      "collocations": [
+       "rescue someone",
+       "rescued from danger"
+      ],
+      "synonyms": [
+       "saved"
+      ],
+      "chapter": 10,
+      "chapterTitle": "A Free Muslim",
+      "storyExample": "Abu Bakr bought Bilal and rescued him from his master’s hands.",
+      "category": "Helping Others"
+     },
+     {
+      "word": "freely",
+      "definition": "Without being forced or stopped.",
+      "partOfSpeech": "adverb",
+      "level": "A2",
+      "pronunciation": "/ˈfriːli/",
+      "wordFamily": [
+       "free",
+       "freedom",
+       "freely"
+      ],
+      "collocations": [
+       "live freely",
+       "worship freely"
+      ],
+      "chapter": 10,
+      "chapterTitle": "A Free Muslim",
+      "storyExample": "He could worship Allah freely.",
+      "category": "Freedom & Rights"
+     },
+     {
+      "word": "beloved",
+      "definition": "Loved very much.",
+      "partOfSpeech": "adjective",
+      "level": "A2",
+      "pronunciation": "/bɪˈlʌvɪd/",
+      "wordFamily": [
+       "love",
+       "beloved"
+      ],
+      "collocations": [
+       "beloved friend",
+       "most beloved"
+      ],
+      "synonyms": [
+       "dear"
+      ],
+      "chapter": 11,
+      "chapterTitle": "The First Call to Prayer",
+      "storyExample": "After Bilal became free, he became one of the Prophet’s most beloved and respected friends.",
+      "category": "Relationships & Feelings"
+     },
+     {
+      "word": "hardship",
+      "definition": "A difficult time or problem.",
+      "partOfSpeech": "noun",
+      "level": "A2",
+      "pronunciation": "/ˈhɑːrdʃɪp/",
+      "wordFamily": [
+       "hardship",
+       "hardships"
+      ],
+      "collocations": [
+       "years of hardship",
+       "face hardship"
+      ],
+      "synonyms": [
+       "difficulty"
+      ],
+      "chapter": 11,
+      "chapterTitle": "The First Call to Prayer",
+      "storyExample": "After many years of hardship in Mecca, the Prophet (pbuh) told the Muslims to move to Medina.",
+      "category": "Life & Challenges"
+     },
+     {
+      "word": "Hijrah",
+      "definition": "The move of the Muslims from Mecca to Medina.",
+      "partOfSpeech": "proper noun",
+      "level": "A2",
+      "pronunciation": "/ˈhɪdʒrə/",
+      "collocations": [
+       "after the Hijrah",
+       "the Hijrah to Medina"
+      ],
+      "chapter": 11,
+      "chapterTitle": "The First Call to Prayer",
+      "storyExample": "After the Hijrah, the Prophet (pbuh) wanted someone to call people to prayer.",
+      "category": "History & Faith"
+     },
+     {
+      "word": "fearlessly",
+      "definition": "Bravely, not afraid of anyone.",
+      "partOfSpeech": "adverb",
+      "level": "A2",
+      "pronunciation": "/ˈfɪrləsli/",
+      "wordFamily": [
+       "fear",
+       "fearless",
+       "fearlessly"
+      ],
+      "collocations": [
+       "speak fearlessly",
+       "act fearlessly"
+      ],
+      "synonyms": [
+       "bravely"
+      ],
+      "antonyms": [
+       "fearfully"
+      ],
+      "chapter": 11,
+      "chapterTitle": "The First Call to Prayer",
+      "storyExample": "Even when people hurt him, he shouted fearlessly, “There is no god but Allah.”",
+      "category": "Character & Values"
+     },
+     {
+      "word": "pleased",
+      "definition": "Happy about something.",
+      "partOfSpeech": "adjective",
+      "level": "A2",
+      "pronunciation": "/pliːzd/",
+      "collocations": [
+       "be pleased with something",
+       "very pleased"
+      ],
+      "synonyms": [
+       "happy"
+      ],
+      "antonyms": [
+       "unhappy"
+      ],
+      "wordFamily": [
+       "please",
+       "pleased",
+       "pleasure"
+      ],
+      "chapter": 12,
+      "chapterTitle": "Prayer Is Better Than Sleep",
+      "storyExample": "The Prophet (pbuh) was pleased with this and told him to repeat it every morning.",
+      "category": "Feelings"
+     },
+     {
+      "word": "repeat",
+      "definition": "To say or do something again.",
+      "partOfSpeech": "verb",
+      "level": "A2",
+      "pronunciation": "/rɪˈpiːt/",
+      "collocations": [
+       "repeat the words",
+       "repeat something every day"
+      ],
+      "synonyms": [
+       "say again"
+      ],
+      "wordFamily": [
+       "repeat",
+       "repetition"
+      ],
+      "chapter": 12,
+      "chapterTitle": "Prayer Is Better Than Sleep",
+      "storyExample": "The Prophet (pbuh) was pleased with this and told him to repeat it every morning.",
+      "category": "Communication"
+     },
+     {
+      "word": "speech",
+      "definition": "A talk given to a group of people.",
+      "partOfSpeech": "noun",
+      "level": "A2",
+      "pronunciation": "/spiːtʃ/",
+      "wordFamily": [
+       "speak",
+       "speech"
+      ],
+      "collocations": [
+       "give a speech",
+       "last speech"
+      ],
+      "chapter": 12,
+      "chapterTitle": "Prayer Is Better Than Sleep",
+      "storyExample": "Before he died in 632, he gave his last speech.",
+      "category": "Communication"
+     },
+     {
+      "word": "disrespect",
+      "definition": "To treat someone rudely, as if they are not important.",
+      "partOfSpeech": "verb",
+      "level": "A2",
+      "pronunciation": "/ˌdɪsrɪˈspekt/",
+      "wordFamily": [
+       "respect",
+       "disrespect",
+       "disrespectful"
+      ],
+      "collocations": [
+       "disrespect people",
+       "show disrespect"
+      ],
+      "antonyms": [
+       "respect"
+      ],
+      "chapter": 12,
+      "chapterTitle": "Prayer Is Better Than Sleep",
+      "storyExample": "In this speech, he said it is wrong to dislike or disrespect people because of the color of their skin.",
+      "category": "Values & Conduct"
+     },
+     {
+      "word": "behave badly",
+      "definition": "To act in a wrong or unkind way.",
+      "partOfSpeech": "verb phrase",
+      "level": "A2",
+      "pronunciation": "/bɪˈheɪv ˈbædli/",
+      "collocations": [
+       "behave badly to people",
+       "behave well"
+      ],
+      "antonyms": [
+       "behave well"
+      ],
+      "wordFamily": [
+       "behave",
+       "behaviour"
+      ],
+      "chapter": 13,
+      "chapterTitle": "Everyone Is Equal",
+      "storyExample": "His life teaches us that it is unfair to behave badly to people because of their skin color or nationality.",
+      "category": "Character & Conduct"
+     },
+     {
+      "word": "nationality",
+      "definition": "The country or people someone belongs to.",
+      "partOfSpeech": "noun",
+      "level": "A2",
+      "pronunciation": "/ˌnæʃəˈnæləti/",
+      "wordFamily": [
+       "nation",
+       "national",
+       "nationality"
+      ],
+      "collocations": [
+       "country and nationality",
+       "because of nationality"
+      ],
+      "chapter": 13,
+      "chapterTitle": "Everyone Is Equal",
+      "storyExample": "His life teaches us that it is unfair to behave badly to people because of their skin color or nationality.",
+      "category": "People & Identity"
+     },
+     {
+      "word": "Damascus",
+      "definition": "A historic city in Syria.",
+      "partOfSpeech": "proper noun",
+      "level": "A2",
+      "pronunciation": "/dəˈmæskəs/",
+      "collocations": [
+       "go to Damascus",
+       "city of Damascus"
+      ],
+      "chapter": 13,
+      "chapterTitle": "Everyone Is Equal",
+      "storyExample": "He went to Damascus and died there.",
+      "category": "Places & History"
+     },
+     {
+      "word": "matters",
+      "definition": "Is important.",
+      "partOfSpeech": "verb",
+      "level": "A2",
+      "pronunciation": "/ˈmætərz/",
+      "wordFamily": [
+       "matter",
+       "matters"
+      ],
+      "collocations": [
+       "what matters",
+       "it matters"
+      ],
+      "synonyms": [
+       "is important"
+      ],
+      "chapter": 13,
+      "chapterTitle": "Everyone Is Equal",
+      "storyExample": "What matters is the heart and good actions.",
+      "category": "Ideas & Values"
+     }
+    ]
+   },
+   {
+    "id": 102,
+    "type": "places",
+    "title": "Places & People",
+    "content": "Find every city, land, sea and person from the story on the map.",
+    "entityBookKey": "mecca-a2"
+   },
+   {
+    "id": 15,
+    "type": "vocabulary-match",
+    "title": "Vocabulary Challenge",
+    "image": "https://picsum.photos/seed/vocab-match-mecca-a2/1200/800",
+    "audioUrl": "",
+    "content": "Match important words from the story with their meanings.",
+    "vocabularyPairs": [
+     {
+      "word": "justice",
+      "meaning": "Fair treatment for people.",
+      "partOfSpeech": "noun",
+      "chapter": 2,
+      "context": "There was no real peace and justice in society."
+     },
+     {
+      "word": "patient",
+      "meaning": "Calm when you must wait or when life is hard.",
+      "partOfSpeech": "adjective",
+      "chapter": 4,
+      "context": "Bilal had to be patient and work hard every day."
+     },
+     {
+      "word": "freedom",
+      "meaning": "The state of not being a slave or prisoner.",
+      "partOfSpeech": "noun",
+      "chapter": 5,
+      "context": "Bilal did not have any money to pay for his freedom."
+     },
+     {
+      "word": "refused",
+      "meaning": "Said no; did not agree to do something.",
+      "partOfSpeech": "verb",
+      "chapter": 8,
+      "context": "Umayya forced him to look at idols and worship them, but Bilal refused."
+     },
+     {
+      "word": "rescued",
+      "meaning": "Saved from danger.",
+      "partOfSpeech": "verb",
+      "chapter": 10,
+      "context": "Abu Bakr bought Bilal and rescued him from his master’s hands."
+     },
+     {
+      "word": "beloved",
+      "meaning": "Loved very much.",
+      "partOfSpeech": "adjective",
+      "chapter": 11,
+      "context": "After Bilal became free, he became one of the Prophet’s most beloved and respected friends."
+     }
+    ]
+   },
+   {
+    "id": 16,
+    "type": "exercises",
+    "title": "Language Review",
+    "image": "https://picsum.photos/seed/mecca-a2-exercises/1200/800",
+    "content": "Review and use the grammar patterns and language functions from all thirteen chapters.",
+    "exercises": [
+     {
+      "id": "mecca-a2-language-review-1-habit-or-event",
+      "type": "drag-drop",
+      "title": "Look: Again and Again, or One Time?",
+      "instructions": "Put each sentence in the right group.",
+      "question": "Did it happen again and again, or only one time?",
+      "dragDropGroups": [
+       {
+        "group": "Again and again (a habit)",
+        "items": [
+         "Umayya was always very unkind to Bilal.",
+         "… the Prophet (pbuh) often allowed only Bilal to stay with him.",
+         "Bilal used to start the morning call to prayer very early."
+        ]
+       },
+       {
+        "group": "One time (one event)",
+        "items": [
+         "One day, Bilal heard people talking about a new Prophet …",
+         "In the end, Bilal accepted Islam.",
+         "Before the Prophet (pbuh) died in 632, he gave his last speech."
+        ]
+       }
+      ],
+      "correctAnswer": {
+       "Again and again (a habit)": [
+        "Umayya was always very unkind to Bilal.",
+        "… the Prophet (pbuh) often allowed only Bilal to stay with him.",
+        "Bilal used to start the morning call to prayer very early."
+       ],
+       "One time (one event)": [
+        "One day, Bilal heard people talking about a new Prophet …",
+        "In the end, Bilal accepted Islam.",
+        "Before the Prophet (pbuh) died in 632, he gave his last speech."
+       ]
+      },
+      "explanation": "“Always” and “often” tell us how often. “Used to + verb” tells us about a habit in the past: Bilal started the call to prayer early on many mornings. Time words like “One day”, “In the end” and “Before he died” point to one event at one time.",
+      "feedback": {
+       "correct": "Well done. You found the habits and the single events.",
+       "incorrect": "Look for the small time words: always, often, used to … or One day, In the end, Before … . Check Chapters 4, 5, 7, 11 and 12."
+      }
+     },
+     {
+      "id": "mecca-a2-language-review-2-had-to-could-would",
+      "type": "matching",
+      "title": "Look: Had To, Could, Would",
+      "matchingHeadings": {
+       "left": "From the book",
+       "right": "Meaning"
+      },
+      "instructions": "Match each sentence from the book with its meaning.",
+      "question": "What do “had to”, “could” and “would” mean here?",
+      "matchingPairs": [
+       {
+        "left": "Bilal had to be patient and work hard every day.",
+        "right": "There was no other way for him."
+       },
+       {
+        "left": "He could not sleep during the night.",
+        "right": "Sleep was impossible for him."
+       },
+       {
+        "left": "He could worship Allah freely.",
+        "right": "Now nothing stopped him."
+       },
+       {
+        "left": "Bilal thought he would be a slave forever.",
+        "right": "This was his idea about his future."
+       }
+      ],
+      "correctAnswer": {
+       "Bilal had to be patient and work hard every day.": "There was no other way for him.",
+       "He could not sleep during the night.": "Sleep was impossible for him.",
+       "He could worship Allah freely.": "Now nothing stopped him.",
+       "Bilal thought he would be a slave forever.": "This was his idea about his future."
+      },
+      "explanation": "“Had to + verb” shows a past duty: there was no choice. “Could + verb” shows that someone was able to do something; “could not” shows that it was not possible. After “thought” or “knew”, “would + verb” tells us what a person expected for the future.",
+      "feedback": {
+       "correct": "Correct. Had to = no choice, could = able, could not = not possible, would = the expected future.",
+       "incorrect": "Look at the small verb in each sentence: had to, could, could not, would. Is it about a duty, being able, or the future?"
+      }
+     },
+     {
+      "id": "mecca-a2-language-review-3-if-sentences",
+      "type": "multiple-choice",
+      "title": "Look: If … Will, If … Would",
+      "instructions": "Read the two sentences. Then choose the best answer.",
+      "question": "Chapter 8: “If you speak well of our idols, you will be free.” Chapter 10: “If you offered me only one piece of gold, I would still sell him to you.” Which sentence is about a real choice Bilal could make?",
+      "options": [
+       "the sentence from Chapter 8 (If … will …)",
+       "the sentence from Chapter 10 (If … would …)",
+       "both sentences"
+      ],
+      "correctAnswer": 0,
+      "explanation": "“If + present verb …, will + verb” talks about a real possible future: Umayya gave Bilal a real choice. “If + past verb …, would + verb” talks about an imagined situation: nobody offered one piece of gold. The real price was different.",
+      "feedback": {
+       "correct": "Correct. If … will is a real possible future. If … would only imagines.",
+       "incorrect": "Look at the verbs: speak … will be, or offered … would sell? Which one is only imagined?"
+      }
+     },
+     {
+      "id": "mecca-a2-language-review-4-linking-ideas",
+      "type": "word-bank",
+      "title": "Practise: But, So, Because",
+      "instructions": "Complete the lines with the word bank. Two words are extra.",
+      "question": "Does each gap need a reason, a result or a different idea?",
+      "fillBlanksText": "People in Mecca thought Bilal was just a poor slave. … [blank] Islam made him a free and great man. … Some rich people lent money to the poor and wanted more money back. … [blank], the rich became richer and the poor became poorer. … Umayya liked Bilal [blank] he was an obedient and hardworking servant. … He could not stay in Medina, [blank] he asked Abu Bakr …",
+      "wordBank": [
+       "But",
+       "Because of this",
+       "because",
+       "so",
+       "because of",
+       "When"
+      ],
+      "correctAnswer": [
+       "But",
+       "Because of this",
+       "because",
+       "so"
+      ],
+      "explanation": "“But” gives a different idea: People thought he was just a poor slave, but Islam made him free and great. “Because of this” and “so” give a result. “Because” + a sentence gives the reason. “Because of” needs a noun after it (“because of skin color”), not a sentence.",
+      "feedback": {
+       "correct": "Well done. You linked different ideas, reasons and results.",
+       "incorrect": "For each gap, ask: Does the next part give a different idea, a reason or a result? Is there a sentence or only a noun after the gap?"
+      }
+     },
+     {
+      "id": "mecca-a2-language-review-5-person-to-verb",
+      "type": "choose-form",
+      "title": "Practise: Wanted Him To …, Let Him …",
+      "instructions": "Choose the correct form to complete each sentence from the book.",
+      "question": "After “forced him”, “wanted Bilal” and “let him”: “to” or no “to”?",
+      "formChoices": [
+       {
+        "sentence": "He forced him [choice] at idols and worship them …",
+        "options": [
+         "look",
+         "to look",
+         "looking"
+        ],
+        "answer": 1
+       },
+       {
+        "sentence": "Umayya wanted Bilal [choice] sorry and leave his new religion.",
+        "options": [
+         "to feel",
+         "feel",
+         "feeling"
+        ],
+        "answer": 0
+       },
+       {
+        "sentence": "… he asked Abu Bakr to let him [choice].",
+        "options": [
+         "to leave",
+         "leaving",
+         "leave"
+        ],
+        "answer": 2
+       }
+      ],
+      "correctAnswer": null,
+      "explanation": "After “force”, “want”, “ask”, “tell” or “allow” + person, use “to + verb”: “forced him to look”, “wanted Bilal to feel”. After “let” + person, use the base verb without “to”: “let him leave”.",
+      "feedback": {
+       "correct": "Correct. Force, want and ask + person + to + verb; let + person + base verb.",
+       "incorrect": "Look at the verb before the person: forced, wanted or let? Check Chapters 8, 9 and 13."
+      }
+     },
+     {
+      "id": "mecca-a2-language-review-6-fix-the-past",
+      "type": "error-correction",
+      "title": "Practise: Fix One Mistake",
+      "instructions": "Each sentence has one mistake. Tap it, then choose the correct words.",
+      "question": "Can you fix the verbs in these past sentences?",
+      "errorItems": [
+       {
+        "sentence": "He leaved his room secretly and walked on a hidden path.",
+        "error": "leaved",
+        "options": [
+         "leave",
+         "left",
+         "leaving"
+        ],
+        "answer": 1
+       },
+       {
+        "sentence": "Umayya did not wanted to set Bilal free.",
+        "error": "wanted",
+        "options": [
+         "wants",
+         "wanting",
+         "want"
+        ],
+        "answer": 2
+       },
+       {
+        "sentence": "Abu Bakr buyed Bilal and rescued him from his master’s hands.",
+        "error": "buyed",
+        "options": [
+         "bought",
+         "buys",
+         "buying"
+        ],
+        "answer": 0
+       }
+      ],
+      "correctAnswer": null,
+      "explanation": "“Leave” and “buy” change in the past: left, bought (not leaved, buyed). Many other verbs just add -ed: walked, rescued. After “did not”, use the base verb: “did not want” (no -ed).",
+      "feedback": {
+       "correct": "Well done. You fixed all three sentences.",
+       "incorrect": "Compare with the book: Chapter 6 (the hidden path), Chapter 9 (set Bilal free) and Chapter 10 (rescued him)."
+      }
+     },
+     {
+      "id": "mecca-a2-language-review-7-one-of-the-most",
+      "type": "sentence-building",
+      "title": "Practise: One of the Most …",
+      "instructions": "Put the parts in order to make the sentence from Chapter 11.",
+      "question": "What did Bilal become after he was free?",
+      "sentenceChunks": [
+       "After Bilal became free,",
+       "he became",
+       "one of",
+       "the Prophet’s most beloved and respected",
+       "friends."
+      ],
+      "correctAnswer": null,
+      "explanation": "“One of the + most … / -est + plural noun” puts one person in a top group: “one of the Prophet’s most beloved and respected friends”. The noun at the end is plural. Chapter 3 uses the same pattern for Umayya: “one of the richest and most powerful leaders in Mecca”.",
+      "feedback": {
+       "correct": "Well done. One of + most … + plural noun puts Bilal in a top group.",
+       "incorrect": "Start with the time: After Bilal became free. Then say what he became: One of … friends."
+      }
+     },
+     {
+      "id": "mecca-a2-language-review-8-new-context",
+      "type": "word-bank",
+      "title": "Use: A New Student",
+      "instructions": "Complete this new text from the word bank. Two words are extra.",
+      "question": "Can you use the book’s words in a school story?",
+      "fillBlanksText": "Deniz is a new student from another country. On her first day, she could not [blank] the lessons, and she was very quiet. Our teacher asked us [blank] help her. [blank], we sat with her at lunch every day. Now she is one of the happiest [blank] in our class.",
+      "wordBank": [
+       "understand",
+       "to",
+       "Because of this",
+       "students",
+       "understood",
+       "student"
+      ],
+      "correctAnswer": [
+       "understand",
+       "to",
+       "Because of this",
+       "students"
+      ],
+      "explanation": "“Could not” takes the base verb: “could not understand”. “Asked + person + to + verb” reports a request. “Because of this” gives the result. After “one of the happiest”, the noun is plural: “students”. A small kind action can change a new student’s day.",
+      "feedback": {
+       "correct": "Well done. You used the book’s language in a new place.",
+       "incorrect": "Ask for each gap: Which form comes after could not? after asked us? Is it a result? After one of the …, one or many?"
+      }
+     },
+     {
+      "id": "mecca-a2-language-review-9-transfer",
+      "type": "reflection",
+      "title": "Use: Someone Helped Me",
+      "instructions": "Tell a partner. Then write 4–5 sentences about someone who helped.",
+      "question": "Who helped you with a problem?",
+      "correctAnswer": null,
+      "explanation": "Example: “Last year, I was often late for school. I had to take two buses, and I could not wake up early. My brother told me to go to bed at ten, and my mother let me use her alarm clock. Because of this, I am never late now. My mornings are easier than before.”",
+      "feedback": {
+       "correct": "Check your sentences: often / used to, had to, could not, told / asked me to …, let me …, because / so / because of this, -er than.",
+       "incorrect": ""
+      },
+      "discussionPrompts": [
+       {
+        "question": "Sentence 1 — Give a past habit: “Last year, I was often …” or “I used to …”",
+        "mode": "Individual",
+        "example": "Last year, I was often tired in maths lessons."
+       },
+       {
+        "question": "Sentence 2 — Give the problem: “I had to …, and I could not …”",
+        "mode": "Individual",
+        "example": "I had to do a lot of homework, and I could not understand the lessons."
+       },
+       {
+        "question": "Sentence 3 — Say who helped: “My … told me to … / asked me to … / let me …”",
+        "mode": "Pair",
+        "example": "My sister told me to study with her every evening."
+       },
+       {
+        "question": "Sentence 4 — Give the result: “Because of this, … . Now my … is/are …-er than before.”",
+        "mode": "Pair",
+        "example": "Because of this, I understand more now. Now my marks are higher than before."
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "id": 19,
+    "type": "final-challenge",
+    "title": "Final Challenge",
+    "image": "https://picsum.photos/seed/mecca-a2-final-challenge/1200/800",
+    "content": "Show what you understand from the whole story of Bilal ibn Rabah and Mecca.",
+    "exercises": [
+     {
+      "id": "mecca-a2-final-1",
+      "type": "multiple-choice",
+      "title": "Born a Slave",
+      "instructions": "Choose the best answer.",
+      "question": "Bilal’s father and mother were slaves. What did this mean for Bilal?",
+      "options": [
+       "He came to Mecca from Abyssinia.",
+       "He was born into slavery.",
+       "He paid for his freedom with gold."
+      ],
+      "correctAnswer": 1,
+      "explanation": "Chapter 1 says: “His father, Rabah, and his mother, Hamama, were also slaves. So Bilal was born into slavery.”",
+      "feedback": {
+       "correct": "Yes. Bilal did not choose this life. He was a slave from the day he was born.",
+       "incorrect": "Read the second paragraph of Chapter 1. What does the word “So” tell us?"
+      }
+     },
+     {
+      "id": "mecca-a2-final-2",
+      "type": "true-false",
+      "title": "Gold and Silver",
+      "instructions": "Is the sentence true or false?",
+      "question": "Before Islam, some rich people in Mecca used gold plates and silver cups.",
+      "correctAnswer": true,
+      "explanation": "Chapter 2 says: “Rich people had a lot of money and lived in luxury. They used gold plates and silver cups. But many poor people lived in need.”",
+      "feedback": {
+       "correct": "True. The rich lived in luxury, but many poor people lived in need.",
+       "incorrect": "Read the second paragraph of Chapter 2. What did rich people use?"
+      }
+     },
+     {
+      "id": "mecca-a2-final-3",
+      "type": "multiple-choice",
+      "title": "Fair and Equal",
+      "instructions": "Choose the best answer.",
+      "question": "What did the Prophet (pbuh) teach about people?",
+      "options": [
+       "They must be fair and equal.",
+       "They must work for rich masters.",
+       "They must stay in their own city."
+      ],
+      "correctAnswer": 0,
+      "explanation": "Chapter 5 says: “The Prophet (pbuh) was telling everyone to worship only Allah. He taught that people must be fair and equal.”",
+      "feedback": {
+       "correct": "Yes. This was good news for a slave like Bilal.",
+       "incorrect": "Read the last paragraph of Chapter 5. What did the Prophet (pbuh) teach?"
+      }
+     },
+     {
+      "id": "mecca-a2-final-4",
+      "type": "fill-blanks",
+      "title": "No Partners",
+      "instructions": "Complete the sentence from Chapter 7 with one word: partners, houses or children.",
+      "question": "What did Abu Bakr tell Bilal about Allah?",
+      "fillBlanksText": "Allah has no [blank] or equals, not even a rich master or powerful people.",
+      "correctAnswer": [
+       "partners"
+      ],
+      "explanation": "Chapter 7 says: “Islam says there is no god but Allah. Allah has no partners or equals, not even a rich master or powerful people.”",
+      "feedback": {
+       "correct": "Yes. No one is equal to Allah, not even a rich master like Umayya.",
+       "incorrect": "Read the first paragraph of Chapter 7. What does Allah not have?"
+      }
+     },
+     {
+      "id": "mecca-a2-final-5",
+      "type": "matching",
+      "title": "Who Did It?",
+      "instructions": "Match each person with what they did.",
+      "question": "Who did these things in the story?",
+      "matchingPairs": [
+       {
+        "left": "Bilal",
+        "right": "walked on a hidden path at night"
+       },
+       {
+        "left": "Umayya",
+        "right": "locked Bilal in a house without food or water"
+       },
+       {
+        "left": "Abu Bakr",
+        "right": "moved the heavy rock from Bilal’s chest"
+       },
+       {
+        "left": "The Prophet (pbuh)",
+        "right": "chose Bilal to call people to prayer"
+       }
+      ],
+      "correctAnswer": {
+       "Bilal": "walked on a hidden path at night",
+       "Umayya": "locked Bilal in a house without food or water",
+       "Abu Bakr": "moved the heavy rock from Bilal’s chest",
+       "The Prophet (pbuh)": "chose Bilal to call people to prayer"
+      },
+      "explanation": "Chapter 6: “He left his room secretly and walked on a hidden path.” Chapter 8: “He locked Bilal in a house without food or water.” Chapter 10: “Abu Bakr moved the heavy rock from Bilal’s chest.” Chapter 11: “the Prophet (pbuh) wanted someone to call people to prayer. He chose Bilal.”",
+      "feedback": {
+       "correct": "Yes. You remembered who did each thing in the story.",
+       "incorrect": "Look again at Chapters 6, 8, 10 and 11."
+      }
+     },
+     {
+      "id": "mecca-a2-final-6",
+      "type": "multiple-choice",
+      "title": "My Slave",
+      "instructions": "Choose the best answer.",
+      "question": "Umayya said, “He is my slave. I can do whatever I want with him.” What does this show?",
+      "options": [
+       "He wanted to sell Bilal for one piece of gold.",
+       "He was afraid of Abu Bakr.",
+       "He did not see Bilal as a person with rights."
+      ],
+      "correctAnswer": 2,
+      "explanation": "In Chapter 9 Abu Bakr asks: “Is it a crime to believe in the one true Allah?” Umayya answers: “He is my slave. I can do whatever I want with him.”",
+      "feedback": {
+       "correct": "Yes. Umayya thought a master could do anything to a slave.",
+       "incorrect": "Read Umayya’s answer at the end of Chapter 9. How did he see Bilal?"
+      }
+     },
+     {
+      "id": "mecca-a2-final-7",
+      "type": "true-false",
+      "title": "After the Sale",
+      "instructions": "Is the sentence true or false?",
+      "question": "Abu Bakr bought Bilal and kept him as his own slave.",
+      "correctAnswer": false,
+      "explanation": "Chapter 10 says: “Abu Bakr could keep Bilal as a slave, but he did not. He freed him.”",
+      "feedback": {
+       "correct": "Right. Abu Bakr did not buy Bilal to own him. He bought him to free him.",
+       "incorrect": "Read the last two sentences of Chapter 10. What did Abu Bakr do?"
+      }
+     },
+     {
+      "id": "mecca-a2-final-8",
+      "type": "matching",
+      "title": "Places in the Story",
+      "instructions": "Match each place with what the story says about it.",
+      "question": "What happened in each place?",
+      "matchingPairs": [
+       {
+        "left": "Mecca",
+        "right": "a center for buying and selling slaves"
+       },
+       {
+        "left": "Abyssinia",
+        "right": "a land many slaves came from"
+       },
+       {
+        "left": "Medina",
+        "right": "the city where Bilal gave the first Adhan"
+       },
+       {
+        "left": "Damascus",
+        "right": "the city where Bilal died"
+       }
+      ],
+      "correctAnswer": {
+       "Mecca": "a center for buying and selling slaves",
+       "Abyssinia": "a land many slaves came from",
+       "Medina": "the city where Bilal gave the first Adhan",
+       "Damascus": "the city where Bilal died"
+      },
+      "explanation": "Chapter 3: “Mecca was a center for buying and selling slaves. Many slaves from different lands, especially from Abyssinia, lived in the homes of Meccan people.” Chapter 11: after the Hijrah to Medina, “So Bilal gave the first Adhan”. Chapter 13: “He went to Damascus and died there.”",
+      "feedback": {
+       "correct": "Yes. Bilal’s life moved from Mecca to Medina, and it ended in Damascus.",
+       "incorrect": "Look again at Chapters 3, 11 and 13."
+      }
+     },
+     {
+      "id": "mecca-a2-final-9",
+      "type": "fill-blanks",
+      "title": "The Way to Be Better",
+      "instructions": "Complete the sentence from Chapter 13 with one word: actions, clothes or money.",
+      "question": "What is the only way to be better?",
+      "fillBlanksText": "The only way to be better is to be good and do good [blank].",
+      "correctAnswer": [
+       "actions"
+      ],
+      "explanation": "Chapter 13 says: “No person is better than another because of skin color. … The only way to be better is to be good and do good actions.”",
+      "feedback": {
+       "correct": "Yes. Skin color does not make a person better. Good actions do.",
+       "incorrect": "Read the first paragraph of Chapter 13. What makes a person better?"
+      }
+     },
+     {
+      "id": "mecca-a2-final-10",
+      "type": "sequencing",
+      "title": "Bilal’s Journey",
+      "instructions": "Put these events in the order of the story.",
+      "question": "What happened first, next and last?",
+      "sequencingItems": [
+       {
+        "id": "3",
+        "text": "Umayya locks Bilal in a house."
+       },
+       {
+        "id": "1",
+        "text": "Bilal hears people talking about a new Prophet."
+       },
+       {
+        "id": "5",
+        "text": "Bilal gives the first Adhan."
+       },
+       {
+        "id": "2",
+        "text": "Bilal visits Abu Bakr at night."
+       },
+       {
+        "id": "4",
+        "text": "Abu Bakr buys Bilal for five pieces of gold."
+       }
+      ],
+      "correctAnswer": [
+       "1",
+       "2",
+       "3",
+       "4",
+       "5"
+      ],
+      "explanation": "The new Prophet (Chapter 5), the night visit (Chapter 6), Umayya’s anger (Chapter 8), the sale (Chapter 10) and the first Adhan (Chapter 11).",
+      "feedback": {
+       "correct": "Yes. Bilal heard the message, suffered for it, became free and then called people to prayer.",
+       "incorrect": "Remember that Bilal became free before the Muslims moved to Medina."
+      }
+     }
+    ]
+   }
+  ],
+  "teacherGuide": [],
+  "selfStudyGuide": []
+ }
+}

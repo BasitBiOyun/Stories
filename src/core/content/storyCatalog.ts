@@ -1,4 +1,14 @@
 import type { Level, ProphetStory } from '../../types';
+import storyFile from '../../content/stories.json';
+
+interface StoryFile {
+  id: string;
+  text: Record<'en' | 'ar', { name: string; description: string }>;
+  availableLevels: string[];
+  collection: string;
+  englishOnly?: boolean;
+  hidden?: boolean;
+}
 
 import adamCover from '../../assets/images/adam_cover.webp';
 import adamCoverSmall from '../../assets/images/adam_cover_sm.webp';
@@ -105,96 +115,45 @@ export const readerTokenVariables = (tokens: ReaderTokens): Record<string, strin
   ...Object.fromEntries(Object.entries(tokens.scale).map(([shade, value]) => [`--brand-${shade}`, value])),
 });
 
-export const storyCatalog: StoryCatalogItem[] = [
-  {
-    id: 'adam',
-    name: 'Prophet Adam',
-    nameAr: 'آدم عليه السلام',
-    description: 'The first human, the knowledge of names, and the beginning of humanity.',
-    descriptionAr: 'الإنسان الأول، وتعليم الأسماء، وبداية البشرية.',
-    image: adamCover,
-    imageSmall: adamCoverSmall,
-    availableLevels: ['A2', 'B1', 'B2'],
-    collection: 'prophets',
-  },
-  {
-    id: 'ibrahim',
-    name: 'Prophet Abraham',
-    nameAr: 'إبراهيم عليه السلام',
-    description: 'The search for truth, the building of the Ka’ba, and unwavering faith.',
-    descriptionAr: 'البحث عن الحقيقة، وبناء الكعبة، والإيمان الراسخ.',
-    image: abrahamCover,
-    imageSmall: abrahamCoverSmall,
-    availableLevels: ['A2', 'B1', 'B2'],
-    collection: 'prophets',
-  },
-  {
-    id: 'musa',
-    name: 'Prophet Moses',
-    nameAr: 'موسى عليه السلام',
-    description: 'The journey from the palace to the desert, and the liberation of a people.',
-    descriptionAr: 'الرحلة من القصر إلى الصحراء، وتحرير بني إسرائيل من فرعون.',
-    image: mosesCover,
-    imageSmall: mosesCoverSmall,
-    availableLevels: ['A2', 'B1', 'B2'],
-    collection: 'prophets',
-  },
-  {
-    id: 'mecca',
-    name: 'Mecca Before Islam',
-    nameAr: 'مكة قبل الإسلام',
-    description: 'The City and the Age of Ignorance: Mecca before the dawn of Islam.',
-    descriptionAr: 'المدينة وعصر الجاهلية: مكة قبل بزوغ فجر الإسلام.',
-    image: meccaCover,
-    imageSmall: meccaCoverSmall,
-    availableLevels: ['A2', 'B1', 'B2'],
-    collection: 'history',
-  },
-  {
-    id: 'ibnJubayr',
-    name: 'Ibn Jubayr',
-    nameAr: 'ابن جبير',
-    description: 'A Great Andalusian Traveler of the Middle Ages',
-    descriptionAr: 'رحّالة أندلسي كبير في العصور الوسطى',
-    image: ibnJubayrCover,
-    imageSmall: ibnJubayrCoverSmall,
-    availableLevels: ['A2'],
-    collection: 'history',
-    englishOnly: true,
-  },
-  {
-    id: 'yunusEmre',
-    name: 'Yunus Emre',
-    nameAr: 'يونس إمره',
-    description: 'The story of a wise Anatolian dervish who taught love, humility, and devotion through simple Turkish poetry.',
-    descriptionAr: 'قصة يونس إمره وشعره وفكره الأخلاقي وتراثه الروحي في الأناضول.',
-    image: yunusEmreCover,
-    imageSmall: yunusEmreCoverSmall,
-    availableLevels: ['A2', 'B1', 'B2'],
-    collection: 'turkish',
-  },
-];
+const covers: Record<string, { image: string; imageSmall?: string }> = {
+  adam: { image: adamCover, imageSmall: adamCoverSmall },
+  ibrahim: { image: abrahamCover, imageSmall: abrahamCoverSmall },
+  musa: { image: mosesCover, imageSmall: mosesCoverSmall },
+  mecca: { image: meccaCover, imageSmall: meccaCoverSmall },
+  ibnJubayr: { image: ibnJubayrCover, imageSmall: ibnJubayrCoverSmall },
+  yunusEmre: { image: yunusEmreCover, imageSmall: yunusEmreCoverSmall },
+  gevherNesibe: { image: scholarsIcon },
+};
+
+/**
+ * The books themselves live in src/content/stories.json: name and description per language,
+ * levels, collection. Only the cover pictures stay in code, because the bundler has to see them.
+ * A new book, or a new language for a book, is a change to that file.
+ */
+const toCatalogItem = (story: StoryFile): StoryCatalogItem => ({
+  id: story.id,
+  name: story.text.en.name,
+  nameAr: story.text.ar.name,
+  description: story.text.en.description,
+  descriptionAr: story.text.ar.description,
+  image: covers[story.id]?.image ?? scholarsIcon,
+  imageSmall: covers[story.id]?.imageSmall,
+  availableLevels: story.availableLevels as Level[],
+  collection: story.collection as StoryCollectionId,
+  englishOnly: story.englishOnly,
+  hidden: story.hidden,
+});
+
+export const storyCatalog: StoryCatalogItem[] = storyFile.stories.filter(story => !story.hidden).map(toCatalogItem);
 
 /**
  * Books that are loaded in the app but not shown to anyone yet: they are kept out of
  * `storyCatalog`, so the home page, shelf, search, next-book links and result codes never
  * see them. They open only from a preview link: `?gizli=1#/<storyId>/<level>`.
- * A book moves into `storyCatalog` when its Arabic edition is ready and the user approves it.
+ * A book is shown by removing its "hidden" line in src/content/stories.json.
  */
-export const hiddenStoryCatalog: StoryCatalogItem[] = [
-  {
-    id: 'gevherNesibe',
-    name: 'The Gevher Nesibe Hospital',
-    nameAr: 'دار شفاء جوهر نسيبة',
-    description: 'The first hospital and medical school together in the world, in Seljuk Kayseri.',
-    descriptionAr: 'أول مستشفى ومدرسة طبية معًا في العالم، في قيصري السلجوقية.',
-    image: scholarsIcon,
-    availableLevels: ['A2'],
-    collection: 'turkish',
-    englishOnly: true,
-    hidden: true,
-  },
-];
+export const hiddenStoryCatalog: StoryCatalogItem[] = storyFile.stories.filter(story => story.hidden).map(toCatalogItem);
+
 
 export const isHiddenStory = (storyId: string): boolean =>
   hiddenStoryCatalog.some(story => story.id === storyId);

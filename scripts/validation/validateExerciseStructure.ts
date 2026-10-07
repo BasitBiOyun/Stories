@@ -1,3 +1,5 @@
+// Reads the content JSON from disk (the browser build reads it through Vite instead).
+import '../lib/nodeContent';
 import type { BookData, Exercise } from '../../src/types';
 import { bookRegistry } from '../../src/core/content/bookRegistry';
 

@@ -1,0 +1,1805 @@
+{
+ "schema": 1,
+ "storyId": "adam",
+ "level": "B1",
+ "language": "en",
+ "teacherGuide": {
+  "content": [
+   {
+    "chapter": "Chapter 1: Introduction & The Creation",
+    "timing": "40 minutes",
+    "objectives": [
+     "Separate what the chapter presents as true now (Adam’s place as the first Messenger, what the Qur’an does, what we can learn) from the events it narrates in the past.",
+     "Explain the role announced for humans on earth (a ruler, khalifah) with the chapter’s own words.",
+     "Discover how present and past forms, after + past simple, told/said and would / was going to order time and look forward from a past moment.",
+     "Frame the ruler’s role as responsibility rather than unlimited power."
+    ],
+    "pedagogy": "The chapter opens with a frame in the present (is, tells, can learn) and then moves into the story in the past. Learners first vote on two board sentences (true now / happened once), then colour present and past verbs in the first paragraph and build a three-step timeline: sky and earth → the angels are told → the ruler’s future life on earth. Grammar is discovered from meaning: You ask “Is this still true today, or did it happen once?” and “When the angels heard this, had the ruler’s life on earth started?”, and learners find that would / was going to look forward from a past moment before you name the form.",
+    "priorKnowledge": [
+     "Present simple vs past simple; after as a time linker; the difference between say and tell."
+    ],
+    "anticipatedMisconceptions": [
+     "Do not present the ruler’s role as unlimited power, and do not describe the angels as hostile: The chapter says they were surprised and waited with curiosity. Learners may also think every sentence in the first paragraph is present; “Allah created him from soil” is a past event."
+    ],
+    "grammarFocus": "Targets: present simple and can for what is true now (is, tells, can learn) vs past simple for story events (created, gave, were) · After + past simple to order two events · tell someone vs say · would / was going to for a future seen from a past moment · a reported earlier decision (He said He had decided …) · began to + base verb.\nNotice (Activity 1): learners sort six parts of the chapter into “true now” and “happened in the story”. Ask: “Is this still true today, or did it happen once?” Then ask why “Allah created him from soil” is past although it stands in the present-tense paragraph (it is an event, not a present fact).\nBuild (Activities 2–3): complete “… Allah created the sky and the earth, He … the angels that He was going to create a human. … This ruler … live there for many years.” with After / told / would, then fix “He said He has decided …” and “began wait”. After each item ask: “When the angels were told, had the ruler’s life on earth started yet?”\nLikely errors: *He said the angels · *will live in a story told in the past · *He said He has decided · *began wait / began to waiting.\nUse (Activity 4): four connected sentences that start with a present fact about a source (a book, a museum, a family story), move into past narration with after, and end with was going to or would.",
+    "pronunciationFocus": "Chunk the announcement with two short pauses: “AFter alLAH creATed the SKY and the EARTH, | He TOLD the ANgels | that He was GOing to creATE a HUman.”\nWeak forms: “was” /wəz/, “to” /tə/ in “going to”, “that” /ðət/, “would” /wəd/ in “This RUler would LIVE there …”.\n-ed endings: created /ɪd/, decided /ɪd/, showed /d/, surprised /d/.\nContrastive stress in the first paragraph: “this FABulous but TRUE story”.\nWord focus: MES-sen-ger, FAB-u-lous, NU-mer-ous, cu-ri-OS-i-ty, GRAND-chil-dren.",
+    "beforeReading": [
+     "Write two sentences on the board: “Our school library has three thousand books.” / “Our school library opened last year.” Learners raise one hand for “true now” and two hands for “happened once”, then name the verb that decided. Ask them to predict: Will the chapter begin with “is” sentences or with “was / did” sentences?"
+    ],
+    "duringReading": [
+     "First listening, books closed: What does Allah tell the angels?",
+     "Second reading: Mark present verbs in the first paragraph in one colour and past verbs in another.",
+     "Draw a three-step timeline: Sky and earth created → angels told → the ruler’s life on earth.",
+     "Underline “was going to” and “would” and write “still in the future then” next to them."
+    ],
+    "afterReading": [
+     "Complete the Quick Challenge with the timeline in view.",
+     "Language Focus: Sort present and past (Activity 1), then order, report and look forward (Activities 2–3).",
+     "Write four connected sentences about a source you know (a book, a museum, a family story) following the Activity 4 route.",
+     "Say in one sentence what “ruler” means if it is a responsibility and not only power (see the Word Note)."
+    ],
+    "lessonPlan": "0–5 Hook: Two board sentences (true now / happened once), learners vote with their hands and name the verb that decided; 5–13 Listen with books closed (What does Allah tell the angels?), then read along and colour present and past verbs in the first paragraph; 13–19 Pairs draw the three-step timeline and add “would live there for many years” as an arrow into the future, then check the meaning of the role with the Responsibility on Earth hotspot and the Word Note “ruler”; 19–23 Quick Challenge; 23–32 Language Focus: Activity 1 as a whole-class sort with the question “still true or happened once?”, Activities 2–3 in pairs with a quick board check of said / told; 32–38 Use: Four sentences about a source (a history book, a museum, a family photo) moving from present to past to would, two pairs read aloud and the class names each time shift; 38–40 Exit ticket.",
+    "discussionPoints": [
+     "Which sentences are true now, and which tell events inside the story?",
+     "From which past moment do “was going to” and “would” look forward?",
+     "What in the chapter and in the Word Note “ruler” shows that the role is a responsibility?"
+    ],
+    "interactiveTips": [
+     "Use the Soil hotspot with “Allah created him from soil” and the Responsibility on Earth hotspot with the announcement of the ruler (khalifah).",
+     "Replay the second paragraph and ask learners to raise a hand when they hear “was going to” and again at “would”.",
+     "Keep the angels’ reaction exactly as the chapter states it: Surprised and waiting with curiosity."
+    ],
+    "differentiation": {
+     "strugglingLearners": "Give a two-column chart (true now / happened then) with the first item done, and the frames “After ____, ____.” and “He told ____ that ____ was going to ____.”",
+     "fastFinishers": "Write six connected sentences about a real source that move from present to past, include one reported earlier decision (said that … had decided …) and end with would."
+    },
+    "formativeAssessment": [
+     "Sorts present facts and past events and gives the reason.",
+     "Orders events with after and uses told / said correctly.",
+     "Uses would / was going to for a future seen from the past."
+    ],
+    "expectedResponses": [
+     "The chapter presents Adam (pbuh) in the present as the first Messenger and the father of all humans; in the past it narrates that Allah created him from soil and told the angels He was going to create a human, a ruler who would live on earth for many years."
+    ],
+    "transferTask": "Describe a past plan in your school or family: What was decided, and what was going to happen next.",
+    "teacherReflection": "Did learners explain why the tense changes before I named the rule, and did the ruler’s role stay a responsibility rather than power?",
+    "assessmentTools": {
+     "rubric": [
+      "Present fact vs past event",
+      "Sequence with after",
+      "Reporting and future-from-the-past",
+      "Responsibility, not power"
+     ],
+     "exitTicket": [
+      "Write one sentence that is true now about a book you know and one sentence with “was going to” about a past plan."
+     ]
+    },
+    "extraResources": {
+     "links": [
+      {
+       "label": "TYMM Foreign Language Skills",
+       "url": "https://tymm.meb.gov.tr/beceriler/yabanci-dil-alan-becerileri"
+      },
+      {
+       "label": "TYMM Erdem-Değer-Eylem",
+       "url": "https://tymm.meb.gov.tr/beceriler/erdem-deger-eylem-cercevesi"
+      }
+     ]
+    }
+   },
+   {
+    "chapter": "Chapter 2: The Shaping of Adam",
+    "timing": "40 minutes",
+    "objectives": [
+     "Explain the chapter’s two cause–result links: Soil from different parts of the earth → different skin colours, and life and intellect → learning and understanding.",
+     "Follow the order in Allah’s instruction to the angels (creation, life and knowledge first, then respect) and the later gift of knowledge.",
+     "Discover how after + present perfect, to + verb, later, more … than and That’s why / because / so show order, purpose, comparison and cause.",
+     "Turn respect for human diversity into an observable classroom action."
+    ],
+    "pedagogy": "Learners fill three evidence rows on the board (Why different skin colours? / Why life and intellect? / What did Adam receive later?), each with a quoted phrase. The Language Focus then starts from a question of order, not from a rule: “When were the angels to show respect?” Learners discover that “After I have created …” names an action that must be complete first. Finally they turn “That’s why” into “because” and “so” and see that the same cause can be told in either order.",
+    "priorKnowledge": [
+     "Because and so; simple comparatives; purpose with to."
+    ],
+    "anticipatedMisconceptions": [
+     "The chapter explains different skin colours by where the soil came from; it does not rank colours. Knowledge is not only memorised facts: Allah taught Adam “everything he needed to do good on earth”."
+    ],
+    "grammarFocus": "Targets: After + have/has + past participle for an action that must be complete first · to + base verb for purpose · Later for the next stage · more … than · a reason followed by That’s why, and the same link with because (result first) or so (reason first).\nNotice (Activity 1): “After I have created Adam (pbuh) and given him life and knowledge, show respect to him.” Ask only: “What must happen first? What comes second?” Learners find that the instruction waits for a completed action before you name the form.\nBuild (Activities 2–3): complete “Allah gave Adam (pbuh) life and intellect … learn and understand. …, He taught Adam (pbuh) everything he needed to do good on earth. He gave Adam (pbuh) more knowledge … the angels.” with to / Later / than, then rewrite the That’s why sentence with because and with so.\nLikely errors: *for learn · *more knowledge as the angels · *Humans have different skin colors so … (so placed before the reason) · *because of + a full clause.\nUse (Activity 4): four connected sentences about a new learning situation: What a teacher said, why a learner received a tool, the result, and one comparison.",
+    "pronunciationFocus": "Pause before the result link: “… and alLAH SHAPED ADam. | THAT’S why HUmans have DIFferent SKIN colors.”\nSay the instruction in two parts: “AFter I have creATed ADam … | SHOW reSPECT to him.” — “have” is weak (/əv/).\nComparison: “MORE KNOWLedge than the ANgels” — “than” is weak (/ðən/).\n-ed endings: collected /ɪd/, shaped /t/, needed /ɪd/.\nWord focus: IN-tel-lect, KNOWL-edge (/ˈnɒlɪdʒ/, silent k), HAND-ful, un-der-STAND, DIF-fer-ent.",
+    "beforeReading": [
+     "Show the Different Lands hotspot image and ask pairs to predict in one sentence what soil from many places might explain in the chapter. Keep two predictions on the board to check."
+    ],
+    "duringReading": [
+     "First listening: What is the reason for different skin colours?",
+     "Fill the three evidence rows with quoted phrases.",
+     "Underline Allah’s words to the angels and number the two steps (first … then …).",
+     "Circle That’s why, so, to, Later and than."
+    ],
+    "afterReading": [
+     "Complete the Quick Challenge with the evidence rows visible.",
+     "Language Focus: Discover the order in Allah’s words (Activity 1), complete purpose, sequence and comparison (Activity 2), then say the same cause in a different order (Activity 3).",
+     "Write four sentences about a new learning situation with one reason–result link and one comparison.",
+     "Name one respectful action towards classmates who look or speak differently."
+    ],
+    "lessonPlan": "0–4 Hook: The Different Lands hotspot image, pairs predict what the soil will explain; 4–12 Listen and read, then pairs copy one quoted phrase into each of the three evidence rows; 12–18 Order cards in pairs: Soil collected / Adam shaped / life and knowledge given / respect ordered, learners justify the last card with “After I have created …”; 18–22 Quick Challenge; 22–31 Language Focus: Activity 1 as whole-class discovery (What must happen first?), Activity 2 in pairs, Activity 3 on paper, learners hold up their because and so versions; 31–38 Use: Four sentences about a new learning situation (a new tool, a new club), a partner underlines every linker; 38–40 Exit ticket.",
+    "discussionPoints": [
+     "Which phrase gives the reason for different skin colours, and which phrase gives the result?",
+     "According to Allah’s words, what must be complete before the angels show respect?",
+     "Why does the chapter explain difference without ranking one colour above another?"
+    ],
+    "interactiveTips": [
+     "Use the Different Lands hotspot for the soil–colour link and the Knowledge and Intellect hotspot for the purpose of life and intellect.",
+     "Replay Allah’s words to the angels and ask learners to raise one finger at the first action and two fingers at the instruction.",
+     "In the Quick Challenge, ask for the exact linking word (That’s why, so, to, than) before accepting an answer."
+    ],
+    "differentiation": {
+     "strugglingLearners": "Frames: “Humans have different skin colours because ____.”, “Allah gave Adam life and intellect to ____.”, “He gave Adam more ____ than ____.”",
+     "fastFinishers": "Write the That’s why sentence in three versions (That’s why / because / so) and explain in one sentence which version puts the result first."
+    },
+    "formativeAssessment": [
+     "Keeps the two cause–result links separate.",
+     "Uses to + verb for purpose and more … than correctly.",
+     "Rewrites a reason–result link with because and so without changing the meaning."
+    ],
+    "expectedResponses": [
+     "Allah’s angels collected soil from different parts of the earth, so humans have different skin colours; Allah gave Adam life and intellect to learn and understand, later taught him everything he needed to do good on earth, and gave him more knowledge than the angels."
+    ],
+    "transferTask": "Explain one way your class can show respect to people from different places, using one reason and one result.",
+    "teacherReflection": "Did learners discover the order in “After I have created …” before I named the form, and did the diversity discussion stay respectful and text-based?",
+    "assessmentTools": {
+     "rubric": [
+      "Two cause–result links",
+      "Order and purpose",
+      "Comparison",
+      "Respect for diversity"
+     ],
+     "exitTicket": [
+      "Write the chapter’s reason for different skin colours twice: once with “That’s why” and once with “because”."
+     ]
+    }
+   },
+   {
+    "chapter": "Chapter 3: Iblis’s Arrogance",
+    "timing": "40 minutes",
+    "objectives": [
+     "Separate the characters’ views (thought, believed, said) from the narrator’s own statements.",
+     "Explain Iblis’s criterion for superiority (his origin: fire, not soil) and why the chapter rejects it.",
+     "Discover how thought / believed that, more … than, superior to, However, but and “, which made …” build a viewpoint and its answer.",
+     "Connect humility with checking an opinion against evidence."
+    ],
+    "pedagogy": "The chapter has two voices: The characters and the narrator. While you read eight sentences aloud, learners hold up C (character) or N (narrator) cards; the Language Focus sort then confirms what they found: thought / believed / said mark an opinion that belongs to someone, and the narrator can report it without agreeing (“Iblis was arrogant”, “was wrong about Adam”). Comparison is treated as part of an argument: Iblis compares origins, the narrator answers with “However, in the sight of Allah …”.",
+    "priorKnowledge": [
+     "Think that / believe; comparatives with -er and more; because; but."
+    ],
+    "anticipatedMisconceptions": [
+     "The story does not accept that fire is better than soil; Iblis’s words in quotation marks are his claim. The chapter rejects race, colour or group membership as the measure of greatness."
+    ],
+    "grammarFocus": "Targets: reporting a view (thought that, believed, said) vs the narrator’s statements · comparatives with long adjectives (more important and more valuable than) · superior to (not than) · However for a contrasting view, but inside one sentence · the reported belief stays past (Iblis thought that Adam was …) · “, which made …” for a comment on the whole idea.\nNotice (Activity 1): learners sort six parts into “a character’s view” and “the narrator’s own statement”. Ask: “Does the narrator agree with Iblis? Which words tell you that the idea belongs to him?”\nBuild (Activities 2–3): choose more important / to / However in “He thought he was more important and more valuable than Adam (pbuh) …”, “According to Satan, fire was superior to clay.” and “However, in the sight of Allah, …”, then fix “Adam is”, “and Iblis” and “what made”. After each item ask: “Whose view is this sentence now?”\nLikely errors: *importanter · *superior than · So instead of However · *Iblis thought that Adam is … · *what made / that made after a comma.\nUse (Activity 4): four connected sentences about a new situation with two different opinions, a reason, a comparison and a contrasting conclusion.",
+    "pronunciationFocus": "Contrastive stress in Iblis’s claim, read calmly as a reported claim: “I am BETter than ADam (pbuh). | You created ME from FIRE, | and You created ADam (pbuh) from SOIL.”\nA clear pause and fall-rise on “HOWever, | in the SIGHT of alLAH, | …”.\nComparatives: “MORE imPORtant and MORE VALuable than …” — “than” is weak (/ðən/).\n-ed endings: admired /d/, created /ɪd/, believed /d/.\nWord focus: AR-ro-gant, su-PE-ri-or, su-pe-ri-OR-i-ty, OR-i-gin, ad-MIRED.",
+    "beforeReading": [
+     "Board two sentences: “Ali thinks that his team is the best.” / “Ali’s team won the match.” Ask which one is Ali’s view and which one the writer tells us as a fact, and which words show the difference (thinks that)."
+    ],
+    "duringReading": [
+     "First listening: Who does not respect Adam, and what reason does he give?",
+     "Colour character views (thought / believed / said) and narrator statements differently.",
+     "Box Iblis’s comparison (fire / soil) and the narrator’s “However …” answer.",
+     "Underline what Iblis could not see and accept."
+    ],
+    "afterReading": [
+     "Quick Challenge: For every answer, say whose view it is.",
+     "Language Focus: Sort the voices (Activity 1), compare and contrast (Activity 2), then correct the reported belief, the contrast and the which-clause (Activity 3).",
+     "Write four sentences about two different opinions on a school question and end with an evidence-based conclusion."
+    ],
+    "lessonPlan": "0–5 Hook: “thinks that” vs fact on the board, learners name the signal words; 5–12 Listen and read, then a voice check: You read eight sentences, learners hold up C or N cards; 12–19 Argument map in pairs: Iblis’s claim → his reason (origin) → what he could not see (Adam’s perfect knowledge) → the narrator’s However, each box with a quoted phrase; 19–23 Quick Challenge with speaker ownership; 23–32 Language Focus: Activity 1 whole class (Does the narrator agree?), Activities 2–3 in pairs, then two errors analysed on the board; 32–38 Use: Four sentences about a neutral disagreement (which club is better, which route to school is faster) with thought that, because, more … than and however; 38–40 Exit ticket.",
+    "discussionPoints": [
+     "What criterion does Iblis use to decide who is better?",
+     "Which sentences show that the narrator does not share his view?",
+     "According to the chapter, what does greatness not come from?",
+     "How does humility change the way we react to evidence that we are wrong?"
+    ],
+    "interactiveTips": [
+     "Use the Fire and Soil hotspot for Iblis’s comparison and the Arrogance hotspot for the narrator’s judgement.",
+     "Replay “Iblis said, …” and “Iblis was arrogant.” back to back and ask whose voice each one is.",
+     "Do not accept “Fire was superior to clay.” in an answer without “According to Satan” or “Iblis believed that”."
+    ],
+    "differentiation": {
+     "strugglingLearners": "A two-column voice chart and the frame “Iblis believed that ____ because ____. However, the chapter says that ____.”",
+     "fastFinishers": "Write six sentences reporting two opinions on a neutral question, with one comment clause (“, which made …”) and a However conclusion based on evidence."
+    },
+    "formativeAssessment": [
+     "Attributes each view to the right voice.",
+     "Uses more … than and superior to accurately.",
+     "States the chapter’s conclusion with However."
+    ],
+    "expectedResponses": [
+     "Iblis believed he was better because he was created from fire, but the narrator says he was arrogant and wrong: Adam had perfect knowledge, which made him more valuable, and in the sight of Allah greatness did not come from race, colour or group."
+    ],
+    "transferTask": "Report two opinions about a neutral school question and add a contrasting conclusion based on evidence.",
+    "teacherReflection": "Did learners keep the character’s view and the narrator’s statement apart without my prompting?",
+    "assessmentTools": {
+     "rubric": [
+      "Voice attribution",
+      "Comparison forms",
+      "Contrast and conclusion",
+      "Humility in judgement"
+     ],
+     "exitTicket": [
+      "Complete: “____ thought that ____ because ____. However, ____.”"
+     ]
+    }
+   },
+   {
+    "chapter": "Chapter 4: The Expulsion of Iblis",
+    "timing": "40 minutes",
+    "objectives": [
+     "Trace the chain: Iblis continues his claim → he is sent away → anger and hatred → blame → waiting for a chance → Allah’s warning to Adam.",
+     "Distinguish blaming someone else from taking responsibility.",
+     "Discover how the past perfect (had put), continued + -ing, want + person + to, because of + noun, wait for a chance to and keep + person + away from show order, persistence, wishes and plans.",
+     "Explain why the warning at the end of the chapter matters later in the story."
+    ],
+    "pedagogy": "Draw a two-moment timeline on the board: (A) Allah sends Iblis away, (B) Iblis thinks about it and blames Adam. Learners place “had put” under A and “He thought” under B and so discover the past perfect before you name it. Groups then order six chain cards, each backed by a quoted phrase, and mark where blame enters and where the warning comes. The chapter’s verb patterns are rebuilt from chunk cards before the screen activity.",
+    "priorKnowledge": [
+     "Chapter 3: Iblis’s view and the narrator’s judgement; past simple; because."
+    ],
+    "anticipatedMisconceptions": [
+     "Iblis does not admit he is wrong; he continues his claim and blames Adam. Adam is not left without help: Allah tells him that Iblis is his enemy and warns him."
+    ],
+    "grammarFocus": "Targets: past perfect for the earlier of two past events (He thought that … Allah had put him far from His help) · continued + -ing · want + person + to + verb · because of + noun vs because + clause · wait for a chance to + verb · keep + person + away from · warned + person + to be careful of.\nNotice (Activity 1): “He thought that because of Adam (pbuh), Allah had put him far from His help.” Ask: “What happened first: Allah’s ‘Go away!’ or Iblis’s thought? Which verb shows it?”\nBuild (Activities 2–3): choose saying / to be / because of in “But Iblis continued saying he was right …”, “He didn’t want Allah to be kind to Adam (pbuh).” and “He thought that because of Adam (pbuh), …”, then rebuild “He waited for a chance to keep Adam (pbuh) away from Allah’s kindness, just as he himself was.” from chunks.\nLikely errors: *continued say · *He didn’t want that Allah is kind · *because Adam · *keep away Adam from.\nUse (Activity 4): four sentences about a new situation in which someone continues a harmful plan and another person gives a warning.",
+    "pronunciationFocus": "Keep verb patterns as chunks: “conTINued SAYing”, “didn’t WANT alLAH to be KIND”, “WAITed for a CHANCE | to KEEP ADam (pbuh) aWAY from …”.\nWeak forms: “had” in “had PUT” (/həd/), “to” (/tə/), “of” (/əv/) in “CAREful of”.\n-ed endings: continued /d/, hated /ɪd/, waited /ɪd/, warned /d/.\nRead Allah’s words “Go away! …” as reported speech in a calm, steady voice, not as a shout.\nWord focus: cre-A-tor, EN-e-my, CARE-ful, KIND-ness, ex-PUL-sion.",
+    "beforeReading": [
+     "Retrieve Chapter 3 in one minute: What did Iblis believe, and was he right? Then ask learners to predict: Will Iblis change his mind or continue? Keep the prediction on the board."
+    ],
+    "duringReading": [
+     "Listen: Was the prediction right? Which word tells you (continued)?",
+     "Number the stages: Continues his claim → sent away → angry and hating → blames Adam → waits for a chance → Adam is warned.",
+     "Underline “had put” and label it “earlier”.",
+     "Box the warning and the enemy it names."
+    ],
+    "afterReading": [
+     "Quick Challenge using the numbered chain.",
+     "Language Focus: Discover the order of the two past events (Activity 1), choose the verb patterns (Activity 2) and rebuild Iblis’s plan (Activity 3).",
+     "Compare blame and responsibility in a neutral example (a lost football, a broken project) in four sentences that end with a warning."
+    ],
+    "lessonPlan": "0–5 Retrieval and prediction: Did Iblis accept he was wrong, will he continue?; 5–12 Listen and read, check the prediction with the word “continued”; 12–19 Chain cards in groups of three: Six stages to order, each card backed by a quoted phrase, groups mark where blame enters and where the warning comes; 19–23 Quick Challenge; 23–32 Language Focus: Activity 1 as discovery with the two-moment timeline on the board, Activity 2 in pairs, Activity 3 first with chunk cards on the desk, then on screen; 32–38 Use: blame vs responsibility in a neutral scenario, four sentences with continued + -ing, because of and warned … to be careful of; 38–40 Exit ticket.",
+    "discussionPoints": [
+     "Which word shows that Iblis did not change his mind?",
+     "Why is “because of Adam (pbuh)” blame rather than responsibility?",
+     "What does Iblis wait for, and what does Allah warn Adam about?"
+    ],
+    "interactiveTips": [
+     "Use the Distance from Mercy hotspot with “Go away! You are far from My love and care.” and The Warning hotspot with the last sentence of the chapter.",
+     "Replay the first paragraph and ask learners to raise a hand when they hear the earlier event (had put).",
+     "Keep Iblis’s words and plans reported; never role-play them."
+    ],
+    "differentiation": {
+     "strugglingLearners": "Six ordered chain cards with one gap each and the frames “Iblis continued ____ing.”, “He blamed Adam: because of ____, …”, “Allah warned Adam to be careful of ____.”",
+     "fastFinishers": "Write a six-sentence analysis of the chain using had + past participle, continued + -ing, because of and keep … away from, and explain the difference between blame and responsibility."
+    },
+    "formativeAssessment": [
+     "Orders the stages and places the warning at the end.",
+     "Explains why “had put” is used.",
+     "Uses continued + -ing, want + person + to and keep … away from accurately."
+    ],
+    "expectedResponses": [
+     "Iblis continued saying he was right, was sent away, got angry with Adam, hated him and blamed him; he waited for a chance to keep Adam away from Allah’s kindness, and Allah told Adam that Iblis was his enemy and warned him to be careful of Iblis."
+    ],
+    "transferTask": "Write a neutral scenario in which someone blames another person and someone else gives a responsible warning.",
+    "teacherReflection": "Did the two-moment timeline help learners find the meaning of “had put” themselves, and did they see blame as the opposite of responsibility?",
+    "assessmentTools": {
+     "rubric": [
+      "Chain order",
+      "Earlier past",
+      "Verb patterns",
+      "Blame vs responsibility"
+     ],
+     "exitTicket": [
+      "Write one sentence with “had + past participle” and one warning with “warned … to be careful of”."
+     ]
+    }
+   },
+   {
+    "chapter": "Chapter 5: Life in Paradise and the Warning",
+    "timing": "40 minutes",
+    "objectives": [
+     "Identify the one restriction among all the blessings of Paradise.",
+     "Keep Iblis’s promise attributed to him and marked as a lie, as the chapter does.",
+     "Discover what called, to be + role, more … than we can imagine and pretending to be mean, and how start / begin, ask … not to and a reported if … would work.",
+     "Explain why a friendly-sounding claim needs checking."
+    ],
+    "pedagogy": "Establish the exact boundary first: Learners list the blessings and the single restriction in a T-chart. Then a “claim check” line: What Iblis said / what the narrator says (It was a big lie.). In the Language Focus learners discover the reported/direct change themselves by asking “What would Iblis have said in his own words?”: they → you, ate → eat, would → will.",
+    "priorKnowledge": [
+     "Start / begin + verb; negative instructions (Don’t …); first conditional (If …, … will …)."
+    ],
+    "anticipatedMisconceptions": [
+     "There is only one restriction, and the promise “they would never die” is Iblis’s claim, which the chapter calls a big lie. Iblis only pretends to be their friend."
+    ],
+    "grammarFocus": "Targets: meaning of key phrases (a wife called Eve (Hawwa), to be his companion, more wonderful than we can imagine, pretending to be their friend, whispered) · start / begin + to + verb or -ing · ask + person + not to + verb · a reported condition (if they ate …, they would never die) vs the speaker’s direct words (If you eat …, you will never die).\nNotice (Activity 1): learners match five phrases with their meanings. Then ask: “Was Iblis really their friend? Which sentence in the chapter tells you?” (It was a big lie.)\nBuild (Activities 2–3): choose to feel / living / not to go in “Adam was in Paradise, but he started to feel lonely.”, “They began living in Paradise.” and “Allah only asked them not to go near one tree.”, then turn “He whispered to them that if they ate from that one tree, they would never die.” into Iblis’s direct words.\nLikely errors: *started feel · *began to living · *asked them don’t go · *If you will eat · keeping would in the direct words.\nUse (Activity 4): four sentences about a new situation with a beginning, one clear rule and a conditional claim that must be checked.",
+    "pronunciationFocus": "The restriction as one chunk with stress on the negative: “alLAH ONly ASKED them | NOT to GO NEAR | ONE TREE”.\nThe reported claim with a pause after the if-clause, in a neutral voice: “if they ATE from that ONE TREE, | they would NEVer DIE”.\nComparative: “MORE WONderful than we can iMAGine” — “than” and “can” are weak.\n-ed endings: asked /t/, whispered /d/, started /ɪd/.\nWord focus: PAR-a-dise, com-PAN-ion, BLESS-ings, pre-TEND-ing, LONE-ly.",
+    "beforeReading": [
+     "Ask: “If a place has hundreds of good things and one rule, what do people usually talk about — the good things or the rule?” Then learners predict: Will the chapter have one rule or many?"
+    ],
+    "duringReading": [
+     "Listen with books closed: How many rules does Allah give?",
+     "T-chart: blessings / the one restriction.",
+     "Underline how Iblis comes near them (pretending to be their friend) and the narrator’s comment (It was a big lie.).",
+     "Label the if-sentence “Iblis’s claim”."
+    ],
+    "afterReading": [
+     "Quick Challenge: Check the one restriction and who made the promise.",
+     "Language Focus: Match the phrases (Activity 1), choose the verb patterns (Activity 2), then turn the reported claim into direct words (Activity 3).",
+     "Write four sentences about a new situation (a club, a school trip) with a beginning, one rule and a claim that needs checking."
+    ],
+    "lessonPlan": "0–5 Hook: The “many good things, one rule” question and a class prediction; 5–12 Listen with books closed (how many rules?), then read along; 12–18 T-chart in pairs: blessings / the one restriction, then a claim-check line under it: What Iblis said / what the narrator says; 18–22 Quick Challenge; 22–31 Language Focus: Activity 1 in pairs with the follow-up (Was Iblis really their friend?), Activity 2 individually, Activity 3 as whole-class discovery of what changes when Iblis speaks himself (they → you, ate → eat, would → will); 31–38 Use: Four sentences about a new place with one rule and a friendly-sounding claim, partners add one question that would check the claim; 38–40 Exit ticket.",
+    "discussionPoints": [
+     "How many restrictions are stated, and how many blessings?",
+     "What does “pretending to be their friend” tell us before Iblis even speaks?",
+     "Why must “they would never die” stay attributed to Iblis?"
+    ],
+    "interactiveTips": [
+     "Use the Life in Paradise hotspot for the blessings and The One Tree hotspot for the single restriction.",
+     "Replay “It was a big lie.” right after “pretending to be their friend”.",
+     "Correct any Quick Challenge explanation that turns Iblis’s promise into a fact."
+    ],
+    "differentiation": {
+     "strugglingLearners": "Frames: “They were asked not to ____.”, “He pretended to be ____.”, “He said that if ____, they would ____. It was a lie.”",
+     "fastFinishers": "Write six sentences about a new situation: A beginning (started to …), a comparison (more … than), a negative request (asked … not to …), a reported claim with if … would, and the same claim as direct words."
+    },
+    "formativeAssessment": [
+     "States the single restriction accurately.",
+     "Keeps the claim attributed and identifies it as a lie.",
+     "Changes a reported if … would sentence into direct words."
+    ],
+    "expectedResponses": [
+     "Adam started to feel lonely, and Allah gave him Eve to be his companion; all the blessings of Paradise were for them and Allah only asked them not to go near one tree, but Iblis, pretending to be their friend, whispered that if they ate from that tree they would never die, which was a big lie."
+    ],
+    "transferTask": "Write a neutral claim with “If … will …”, report it with “said that if … would …”, and add one question that checks it.",
+    "teacherReflection": "Did learners discover the reported/direct change themselves, and did the promise stay labelled as Iblis’s lie?",
+    "assessmentTools": {
+     "rubric": [
+      "The one restriction",
+      "Attribution of the claim",
+      "Verb patterns",
+      "Reported vs direct condition"
+     ],
+     "exitTicket": [
+      "Write “He said that if ____, ____ would ____.” and the same claim as direct words."
+     ]
+    }
+   },
+   {
+    "chapter": "Chapter 6: Satan’s Lies and Adam’s Departure from Paradise",
+    "timing": "40 minutes",
+    "objectives": [
+     "Order the events: trick → forgotten warning → eating → feelings → discovery → covering.",
+     "Explain what “eventually” and “managed to” say together about Iblis’s effort.",
+     "Discover the past perfect (the warning Allah had given them), a chain of past simple actions, when-clauses, and so / to / because for result, purpose and reason.",
+     "Keep the explanation of modesty (haya) within the chapter’s own words."
+    ],
+    "pedagogy": "The warning from Chapter 4 goes above an empty timeline; learners stick six event strips under it and read the order aloud. “Had given” is linked with an arrow to the warning above the line, so learners see why it is earlier. In the Language Focus they first decide “Was it easy for Iblis? Did he succeed?” and find that “eventually” and “managed to” answer both questions, then label so / to / because as result, purpose and reason. The last paragraph is read once, calmly and briefly.",
+    "priorKnowledge": [
+     "Chapter 4 warning; past simple; so and because; to + verb for purpose."
+    ],
+    "anticipatedMisconceptions": [
+     "“Managed to” does not mean that tricking them was easy. Do not add detail to the last paragraph or turn the chapter’s explanation of haya into a general rule of your own."
+    ],
+    "grammarFocus": "Targets: Eventually + managed to (success after effort) · convinced + person + to + verb · past perfect for the earlier warning (the warning Allah had given them) · a chain of past simple actions (stretched out, picked, offered) · When + past simple for a turning point · so (result) / to + verb (purpose) / because + clause (reason).\nNotice (Activity 1): “Eventually, Iblis managed to trick them.” Ask: “Was it easy for Iblis? Did he succeed? Which two words tell you?” Then point to “the warning Allah had given them”: which came first, the warning or the forgetting?\nBuild (Activities 2–3): put five parts of the chapter in order using the verbs and “When Adam finished eating, …”, then complete “… were uncovered, so they both started cutting tree leaves in Paradise to cover themselves. They hurried to hide their private parts because …”.\nLikely errors: *managed tricking · *convinced them believe · *for cover themselves · *because of + a full clause.\nUse (Activity 4): four sentences about a new situation in which an earlier warning is forgotten, an action changes something and someone reacts for a clear purpose.",
+    "pronunciationFocus": "Success after effort: “eVENtually, | IBlis MANaged to TRICK them.”\nThe action chain with an even rhythm and small pauses: “ADam STRETCHED OUT his HAND, | PICKED one of the FRUITS | and OFfered it to EVE.”\n-ed endings: tricked /t/, convinced /t/, stretched /t/, picked /t/, offered /d/, changed /d/, ceased /t/, hurried /d/.\nRead the last paragraph quietly and factually, without lingering.\nWord focus: e-VEN-tu-al-ly, for-BID-den, AT-mos-phere, HAR-mo-ny, VIS-i-ble, sur-ROUND-ing.",
+    "beforeReading": [
+     "Recall the warning from Chapter 4 (Allah warned Adam to be careful of Iblis) and write it above an empty timeline. Ask: “What could make someone forget a warning?”"
+    ],
+    "duringReading": [
+     "Listen: Which word tells us that Iblis finally succeeded?",
+     "Add the events to the timeline under the warning.",
+     "Circle “had given” and connect it with an arrow to the warning above the line.",
+     "Label so / to / because in the last paragraph as RESULT / PURPOSE / REASON."
+    ],
+    "afterReading": [
+     "Quick Challenge from the timeline.",
+     "Language Focus: discover “eventually” + “managed to” (Activity 1), order the events (Activity 2), then choose so / to / because (Activity 3).",
+     "Write four connected sentences about a neutral forgotten-warning situation (a safety rule in the science lab, a missed deadline)."
+    ],
+    "lessonPlan": "0–5 Retrieve the Chapter 4 warning and place it above an empty timeline on the board; 5–12 Listen and read, then learners say which word shows that Iblis finally succeeded; 12–18 Strip sequencing in pairs: Six event strips (trick, forget, eat, feel, discover, cover) stuck under the warning and read aloud in order; 18–22 Quick Challenge; 22–31 Language Focus: Activity 1 as whole-class discovery (easy or difficult, success or not?), Activity 2 as a check of the strip order, Activity 3 in pairs with the labels result / purpose / reason; 31–38 Use: A neutral consequence chain (a forgotten warning on a school trip or in the science lab), four sentences with managed to, when, so and to; 38–40 Exit ticket.",
+    "discussionPoints": [
+     "Which event happened before the main events of this chapter, and which verb form shows it?",
+     "How do so, to and because do different jobs in the last paragraph?",
+     "What reason does the chapter give for covering themselves, and why should we not add more to it?"
+    ],
+    "interactiveTips": [
+     "Use The Forbidden Tree hotspot for the sequence of actions and the Modesty hotspot for the chapter’s own explanation (haya).",
+     "Replay the first paragraph and ask learners to count the past simple actions in the chain.",
+     "Keep the discussion of the last paragraph brief and non-graphic, and return to the exact sentence if interpretation grows."
+    ],
+    "differentiation": {
+     "strugglingLearners": "The six event strips and the frames “Eventually, ____ managed to ____.”, “They ____, so they ____.”, “They ____ to ____.”",
+     "fastFinishers": "Write seven sentences about a neutral situation using eventually, managed to, had + past participle, when, so, to and because, and label each linker."
+    },
+    "formativeAssessment": [
+     "Orders the events with the earlier warning above the line.",
+     "Explains “eventually” and “managed to” together.",
+     "Distinguishes result, purpose and reason."
+    ],
+    "expectedResponses": [
+     "Eventually Iblis managed to trick them, and they forgot the warning Allah had given them; Adam picked a fruit and offered it to Eve, they both ate, Adam felt pain, sadness and shame, and when they discovered they were uncovered they cut leaves to cover themselves because a sense of shame (haya) is part of inborn human nature."
+    ],
+    "transferTask": "Describe a neutral situation in which an earlier warning is forgotten, and explain the result, the purpose of the reaction and the reason.",
+    "teacherReflection": "Did the timeline keep the earlier warning visible, and did the discussion of modesty stay within the chapter’s words?",
+    "assessmentTools": {
+     "rubric": [
+      "Chronology",
+      "Eventually / managed to",
+      "Result–purpose–reason",
+      "Source boundary"
+     ],
+     "exitTicket": [
+      "Write one sentence with “so” (result) and one with “to + verb” (purpose) about the same situation."
+     ]
+    }
+   },
+   {
+    "chapter": "Chapter 7: Forgiveness and Repentance",
+    "timing": "40 minutes",
+    "objectives": [
+     "Compare Adam and Eve’s response to their mistake with Iblis’s response.",
+     "Explain repentance through the chapter’s steps: sadness, saying sorry, learning, deciding never to repeat, asking for pardon.",
+     "Discover the meaning of the key phrases and how but, On the other hand, because, decide never to, want + person + to and to + verb express intention, contrast and decision.",
+     "Apply admit → learn → decide to a small everyday mistake."
+    ],
+    "pedagogy": "Learners build two response profiles in columns (Adam and Eve / Iblis), each step with a quoted phrase, and number the steps of repentance in the second paragraph. The Language Focus then asks why the chapter uses “but” inside one sentence and “On the other hand” at the start of a new paragraph: Learners discover that the second one moves the whole text to a contrasting person. Adam’s words at the start are read calmly as reported words; prophets are never acted out.",
+    "priorKnowledge": [
+     "Chapter 6 events; but and because; want to / decide to."
+    ],
+    "anticipatedMisconceptions": [
+     "Repentance in the chapter is more than sadness: It includes saying sorry, learning and a decision about the future. Life on earth is not presented only as punishment: Allah pardoned them, taught them and made them rulers of the earth."
+    ],
+    "grammarFocus": "Targets: key phrases (it wasn’t on purpose, learned from their mistake, pardon, chose an opposite path, the biggest barrier) · but inside one sentence vs On the other hand between two paths · because + clause · decide never to + verb · want + person + to + verb · to + verb for purpose (put them on earth to live there).\nNotice (Activity 1): learners match five phrases with their meanings. Then ask: “Which phrases describe Adam and Eve, and which describe Iblis? What is the biggest difference between them?”\nBuild (Activities 2–3): complete “They made a mistake, but it wasn’t on purpose. … On the other hand, Iblis chose an opposite path. He never admitted he was wrong because he was arrogant.”, then choose to repeat / to pardon / to live.\nLikely errors: *decided never repeating · *wanted that Allah pardons them · *for live there · but used to open a new paragraph where On the other hand is needed.\nUse (Activity 4): four sentences about an unintentional mistake, a responsible response and a useful next step.",
+    "pronunciationFocus": "Read the opening words calmly as reported words, not as acting: “forGIVEness! forGIVEness!”, “NO, my LORD, | but I am SHY of YOU.”\nContrast: “They made a misTAKE, | but it WASn’t on PURpose.”, then a longer pause and a fresh start for “On the OTHer HAND, | …”.\nDecision: “deCIDed NEVer to rePEAT it” — the stress is on NEVer.\nWord focus: for-GIVE-ness, re-PENT-ance, PAR-don, BAR-ri-er, dis-TIN-guish-ing, AR-ro-gance.",
+    "beforeReading": [
+     "Offer three responses to a small mistake (a borrowed ruler is broken): hide it / blame someone / admit it and change. Learners vote and give one reason."
+    ],
+    "duringReading": [
+     "Listen: What does Adam answer when he is asked “Are you running away from Me?”",
+     "Two columns: Adam and Eve / Iblis, each with quoted phrases.",
+     "Number the steps of repentance in the second paragraph.",
+     "Underline the role given at the end (the rulers of planet Earth)."
+    ],
+    "afterReading": [
+     "Quick Challenge with evidence from both columns.",
+     "Language Focus: Match the phrases (Activity 1), link the two responses (Activity 2), choose the decision, wish and purpose forms (Activity 3).",
+     "Write a four-sentence repair plan for a small school mistake with “wasn’t on purpose”, “learned from”, “decided never to” and “on the other hand”."
+    ],
+    "lessonPlan": "0–4 Hook: Three responses to a small mistake, class vote with a reason; 4–11 Listen and read, then learners say what Adam’s answer shows (he is shy before Allah, not running away); 11–18 Two response profiles in pairs: Five quoted steps for Adam and Eve, two for Iblis, then a whole-class check of the order (sad → sorry → learned → decided → asked for pardon); 18–22 Quick Challenge; 22–31 Language Focus: Activity 1 in pairs with the follow-up (who does each phrase describe?), Activity 2 as discovery of but vs On the other hand, Activity 3 individually; 31–38 Use: A four-sentence repair plan for a neutral school mistake (a lost library book), a partner checks that the plan contains a decision about the future; 38–40 Exit ticket.",
+    "discussionPoints": [
+     "What shows that repentance in the chapter is more than feeling sad?",
+     "How do the two responses differ, and what reason does the chapter give for Iblis’s path?",
+     "What does the chapter call the biggest barrier to acting the right way?",
+     "What role do Adam and Eve receive on earth after they are pardoned?"
+    ],
+    "interactiveTips": [
+     "Use the Mistake and Pardon hotspot for Adam and Eve’s steps and the Arrogance as a Barrier hotspot for Iblis’s path.",
+     "Replay the sentence with “On the other hand” and ask what changes in the text at that point.",
+     "Do not ask learners to act out Adam’s words; read them calmly as reported speech."
+    ],
+    "differentiation": {
+     "strugglingLearners": "Frames: “It wasn’t on purpose, but ____.”, “I learned from ____ and decided never to ____.”, “On the other hand, ____.”",
+     "fastFinishers": "Write six connected sentences comparing two responses to a neutral mistake with but, on the other hand, because, decided never to and wanted + person + to."
+    },
+    "formativeAssessment": [
+     "Names the steps of repentance with evidence.",
+     "Uses but and On the other hand for the right kind of contrast.",
+     "Uses decide never to, want + person + to and to + verb accurately."
+    ],
+    "expectedResponses": [
+     "Adam and Eve made a mistake that wasn’t on purpose; they were very sad, said sorry, learned from it, decided never to repeat it and wanted Allah to pardon them. On the other hand, Iblis never admitted he was wrong because he was arrogant. Allah pardoned Adam and Eve and put them on earth to live there as its rulers."
+    ],
+    "transferTask": "Apply admit → learn → decide to a small everyday mistake in four sentences.",
+    "teacherReflection": "Did learners discover the difference between but and On the other hand, and did the repair plans stay small, safe and personal rather than religious claims?",
+    "assessmentTools": {
+     "rubric": [
+      "Two response profiles",
+      "Contrast control",
+      "Decision and purpose forms",
+      "Safe transfer"
+     ],
+     "exitTicket": [
+      "Write one “learned from … and decided never to …” sentence and one “On the other hand, …” sentence."
+     ]
+    }
+   },
+   {
+    "chapter": "Chapter 8: Struggle and Survival on Earth",
+    "timing": "40 minutes",
+    "objectives": [
+     "Classify the responsibilities in the chapter: crops and animals, shelter, nature, the weak, protection.",
+     "Separate the expected role (would), what was necessary (had to) and what happened (left, arrived, lived).",
+     "Discover to + verb and for + noun for purpose, with + noun for means, for + a period for duration, and how would, had to, in addition, both … and and want + person + not to are used.",
+     "Distinguish personal survival from wider responsibility for nature and the weak."
+    ],
+    "pedagogy": "Three questions go on the board: Why? With what? How long? Learners sort phrases under them and discover that “for” has two jobs (for shelter / for many years). A group action map then turns the chapter into responsibilities with a purpose or a means for each. Finally learners compare the first paragraph (They would …) with the second (they had to …) and decide which describes a role still ahead and which a necessity.",
+    "priorKnowledge": [
+     "Must / have to; purpose with to; because."
+    ],
+    "anticipatedMisconceptions": [
+     "The chapter is not only about personal survival: Protecting nature and helping the weak are part of the role. The first paragraph describes what they would do (a role still ahead), not what had already happened."
+    ],
+    "grammarFocus": "Targets: to + verb and for + noun for purpose · with + noun for means · for + a period of time for duration · would for an expected role seen from the past · had to for past necessity · In addition · both … and … · want + person + not to + verb.\nNotice (Activity 1): learners sort five phrases into Why? / With what? / How long? Ask: “‘for shelter’ and ‘for many years’ both use for. Do they answer the same question?”\nBuild (Activities 2–3): correct “They will use land …”, “to struggle for survive” and “he wanted people don’t remember Allah”, then complete “In addition, they had to protect themselves with clothes and weapons … They had both good and difficult times …”.\nLikely errors: *They will use land (in a past story) · *for survive · *wanted people don’t remember · *they must protect (for the past) · *either good and difficult.\nUse (Activity 4): four sentences about people beginning life in a difficult new place.",
+    "pronunciationFocus": "“had to” is /ˈhæd tə/: practise “they HAD to STRUGgle | to surVIVE”.\nPurpose phrases stay with their action: “use LAND | to GROW CROPS | and KEEP ANimals”.\nContrast the two jobs of for: “for SHELter” / “for MAny YEARS”.\nWeak forms: “to” /tə/, “and” /ən/, “would” /wəd/.\nWord focus: sur-VIVE, STRUG-gle, SHEL-ter, WEAP-ons (/ˈwepənz/), de-SCEN-dants.",
+    "beforeReading": [
+     "Ask pairs: “You arrive in a new, empty place. What three things must you do first?” Collect answers under three headings: survival / nature / people."
+    ],
+    "duringReading": [
+     "Listen: Which of our ideas are in the chapter?",
+     "Sort each responsibility under survival / nature / people.",
+     "Mark would (expected role), had to (necessity) and past simple (what happened) in three colours.",
+     "Underline why Iblis was still there."
+    ],
+    "afterReading": [
+     "Quick Challenge with the action map.",
+     "Language Focus: Sort why / with what / how long (Activity 1), correct would, to survive and wanted people not to (Activity 2), then add In addition / had to / both (Activity 3).",
+     "Write a four-sentence responsibility plan for a class project or a school garden."
+    ],
+    "lessonPlan": "0–5 Hook: “a new, empty place” brainstorm under survival / nature / people; 5–12 Listen and read, then tick the brainstorm ideas that the chapter mentions; 12–18 Action map in groups of four: Each learner takes one area (survival, nature, the weak, protection), finds the phrase and adds its purpose or means; 18–22 Quick Challenge; 22–31 Language Focus: Activity 1 whole class with the “two jobs of for” question, Activities 2–3 in pairs, then learners say which sentences describe what would happen, what had to happen and what did happen; 31–38 Use: A responsibility plan for a school garden or class project (would, had to, to + verb, in addition, with), shown in a short gallery walk; 38–40 Exit ticket.",
+    "discussionPoints": [
+     "Which responsibilities go beyond staying alive?",
+     "What is the difference between “They would …” and “they had to …” in this chapter?",
+     "Why was Iblis still there, according to the chapter?"
+    ],
+    "interactiveTips": [
+     "Use the Work on Earth hotspot for the expected role and the Struggle and Survival hotspot for the necessities.",
+     "Replay the first paragraph and ask “necessary for what?” after each purpose phrase.",
+     "Use the Quick Challenge to check the action map, not to test memory of the list."
+    ],
+    "differentiation": {
+     "strugglingLearners": "Responsibility cards and the frames “They had to ____ to ____.”, “In addition, they ____.”, “They protected themselves with ____.”",
+     "fastFinishers": "Write a seven-sentence plan with would, had to, to + verb, with + noun, for + a period, in addition and both … and."
+    },
+    "formativeAssessment": [
+     "Identifies responsibilities beyond survival.",
+     "Separates expected role, necessity and events.",
+     "Uses the two meanings of for correctly."
+    ],
+    "expectedResponses": [
+     "The chapter first describes the role they would have (grow crops, keep animals, build buildings for shelter, protect nature, help the weak); on earth they had to struggle to survive, work hard and protect themselves with clothes and weapons, and Iblis was still there because he wanted people not to remember Allah."
+    ],
+    "transferTask": "Describe four responsibilities in a class project, with a purpose for each.",
+    "teacherReflection": "Did the three questions (Why? With what? How long?) make the forms meaningful, and did responsibility become concrete action?",
+    "assessmentTools": {
+     "rubric": [
+      "Responsibility coverage",
+      "Would / had to / past",
+      "Purpose, means and duration",
+      "Observable transfer"
+     ],
+     "exitTicket": [
+      "Write one “had to … to …” sentence and one “In addition, …” sentence about a class project."
+     ]
+    }
+   },
+   {
+    "chapter": "Chapter 9: The First Messenger and the Path of Guidance",
+    "timing": "40 minutes",
+    "objectives": [
+     "Explain how Adam’s role develops when a community forms.",
+     "Distinguish a beginning (started teaching) from continuation (never stopped sending).",
+     "Discover stop + -ing vs stop + to, the chapter’s time markers, teach + person + to, to + verb for purpose and if + present for a general truth.",
+     "Explain guidance as continuing through many messengers who followed the same path."
+    ],
+    "pedagogy": "Learners draw a role line (first human → first father → first Messenger who teaches) with a quoted phrase at each step. A time-marker race follows: Pairs match At that time / After a period of time / Thus / Years later with their sentences from memory and check in the text. In the Language Focus learners test two school sentences (I stopped talking / I stopped to talk) and discover why “never stopped sending” means the sending went on.",
+    "priorKnowledge": [
+     "Chapter 8; become; start + -ing; if-sentences with the present simple."
+    ],
+    "anticipatedMisconceptions": [
+     "Guidance is not a single event: Allah never stopped sending messengers and sacred texts, and all the messengers followed the same path. “Stopped to send” would change the meaning."
+    ],
+    "grammarFocus": "Targets: stop + -ing vs stop + to + verb (Allah never stopped sending messengers …) · time markers (At that time, After a period of time, when …, Thus, Years later, after the death of …) · became for a new role · teach + person + to + verb · to + verb for purpose · if + present simple, present simple for a general truth.\nNotice (Activity 1): true or false: “Allah never stopped sending messengers …” has the same meaning as “Allah never stopped to send messengers.” Ask: “Did the sending end? What would ‘stopped to send’ mean?”\nBuild (Activities 2–3): order four parts of the chapter with the time markers, then correct “teaching people live”, “for show people the right path” and “if people will forget Allah”.\nLikely errors: *never stopped to send · *teaching people live · *for show · *if people will forget.\nUse (Activity 4): four sentences about someone who begins guiding a group.",
+    "pronunciationFocus": "Time markers at the start of a sentence take a short pause: “At THAT TIME, |”, “AFter a PEriod of TIME, |”, “YEARS LAter, |”.\nContinuation: “NEVer STOPPED SENDing” — “stopped” is one syllable (/stɒpt/).\nGeneral truth: “if PEOple forGET alLAH, | they LOSE the MEANing and PURpose of LIFE”.\nWord focus: com-MU-ni-ty, RIGHT-eous-ly (/ˈraɪtʃəsli/), SA-cred, MES-sen-gers, PUR-pose.",
+    "beforeReading": [
+     "Ask: “A group of five friends becomes a class of thirty. What new responsibilities appear?” Collect two answers."
+    ],
+    "duringReading": [
+     "Listen: What new role does Adam have when a community forms?",
+     "Draw the role line with a quoted phrase at each step.",
+     "Circle the time markers.",
+     "Underline what Adam and Eve taught their children and why."
+    ],
+    "afterReading": [
+     "Quick Challenge with the role line.",
+     "Language Focus: Stopped sending vs stopped to send (Activity 1), order with time markers (Activity 2), correct teach … to, the purpose and the general if-clause (Activity 3).",
+     "Write four sentences about someone who began guiding a group (a team captain, a club leader) and kept doing it."
+    ],
+    "lessonPlan": "0–4 Hook: “five friends become thirty” question; 4–11 Listen and read, then the role line on the board with a quoted phrase at each step; 11–18 Time-marker race in pairs: Four time phrases on slips matched with their sentences from memory, then checked in the text; 18–22 Quick Challenge; 22–31 Language Focus: Activity 1 as whole-class discovery with two school sentences (I stopped talking / I stopped to talk), Activity 2 as a check of the race, Activity 3 in pairs; 31–38 Use: A guidance paragraph about a team captain or club leader (when …, became, started teaching … to …, never stopped + -ing), two volunteers read and the class names the time markers; 38–40 Exit ticket.",
+    "discussionPoints": [
+     "How does Adam’s role change when a community forms?",
+     "What is the difference between “started teaching” and “never stopped sending”?",
+     "According to the chapter, what do people lose if they forget Allah, and what did all the messengers want?"
+    ],
+    "interactiveTips": [
+     "Use the A Community Forms hotspot for the role change and the Continuing Guidance hotspot for “never stopped sending”.",
+     "Replay the second paragraph and ask what Adam and Eve taught their children and why.",
+     "Require the role change, not only an event, in Quick Challenge explanations."
+    ],
+    "differentiation": {
+     "strugglingLearners": "A three-stage role line and the frames “When ____, he became ____.”, “He started teaching people to ____.”, “____ never stopped ____ing.”",
+     "fastFinishers": "Write six sentences with four time markers, teach + person + to, never stopped + -ing and one general if-sentence."
+    },
+    "formativeAssessment": [
+     "Explains the role change with evidence.",
+     "Distinguishes stop + -ing from stop + to.",
+     "Uses time markers and teach + person + to correctly."
+    ],
+    "expectedResponses": [
+     "When a community formed, Adam became the first Messenger of Allah and started teaching people to live righteously and act honestly; Allah never stopped sending messengers and sacred texts, and years after Adam’s death many messengers followed the same path."
+    ],
+    "transferTask": "Describe someone who began guiding a group and never stopped doing it.",
+    "teacherReflection": "Did learners discover the two meanings of stop themselves, and did they see guidance as continuing rather than a single event?",
+    "assessmentTools": {
+     "rubric": [
+      "Role development",
+      "Beginning vs continuation",
+      "Time markers",
+      "Purpose and general truth"
+     ],
+     "exitTicket": [
+      "Write one “became …” sentence and one “never stopped …ing” sentence about someone you know."
+     ]
+    }
+   },
+   {
+    "chapter": "Chapter 10: The Two Sons: Habil and Qabil",
+    "timing": "40 minutes",
+    "objectives": [
+     "Describe the two brothers’ character and work with evidence.",
+     "Identify the shared obligation (to make an offering) and the different choices.",
+     "Discover the meaning of the key phrases and how became, had to, best / healthiest, loved + -ing, but and care about + -ing are used, together with the closing general principle.",
+     "Explain goodness through care and effort, not through profession or amount alone."
+    ],
+    "pedagogy": "Learners fill profile cards (character, work, gift, attitude) for each brother with quoted phrases, and the class agrees on the one obligation they share. The Language Focus starts from meaning: “Which word makes Qabil’s gift sound small, and what is it contrasted with?” Learners find “just” and “but” before any rule is named, then notice that the last sentence switches to the present (real goodness is giving …) because it states a general principle.",
+    "priorKnowledge": [
+     "Superlatives; had to; but and however."
+    ],
+    "anticipatedMisconceptions": [
+     "Do not explain the difference by the brothers’ jobs (shepherd / farmer) or by the amount alone: The chapter points to care and effort (his best and healthiest sheep / just a handful of crops that were not very valuable; didn’t care about pleasing Allah)."
+    ],
+    "grammarFocus": "Targets: key phrases (grew up to be, mostly jealous, a serious disagreement, just a handful of) · became (irregular past) · had to for a past obligation · superlatives (best and healthiest, the best and the most loved) · loved + -ing · but for contrast · care about + -ing · a general principle in the present (real goodness is giving out …).\nNotice (Activity 1): learners match four phrases with their meanings. Then ask: “Which word makes Qabil’s gift sound small? What is it contrasted with?”\nBuild (Activities 2–3): choose became / had to / best in “When they grew up, Habil became a shepherd.”, “To solve the problem, they had to make an offering to Allah.” and “Habil brought his best and healthiest sheep …”, then fix “loved take care of”, “and Qabil” and “care about please”.\nLikely errors: *becomed · must for the past · *most good · *loved take · *care about please.\nUse (Activity 4): four sentences about two people who respond differently to the same task, ending with a general principle.",
+    "pronunciationFocus": "Contrast the two gifts with stress: “HAbil brought his BEST and HEALthiest SHEEP … | but QAbil brought JUST a HANDful of his CROPS”.\nThe principle is present and general — slow down: “REAL GOODness | is GIVing OUT the BEST | and the MOST LOVED”.\n-ed ending in “loved” /d/ (one syllable).\nWord focus: JEAL-ous (/ˈdʒeləs/), SHEP-herd (/ˈʃepəd/, silent h), dis-a-GREE-ment, OF-fer-ing, HEALTH-i-est, VAL-u-a-ble.",
+    "beforeReading": [
+     "Neutral example: Two classmates must each bring one item to a charity box; one chooses a good book, one brings a torn page. Ask: “Same task? Same care?”"
+    ],
+    "duringReading": [
+     "Listen: How are the brothers different?",
+     "Profile cards: Habil / Qabil (character, work, gift, attitude).",
+     "Underline the shared obligation (had to make an offering).",
+     "Box the general principle in the last sentence."
+    ],
+    "afterReading": [
+     "Quick Challenge with evidence for both brothers.",
+     "Language Focus: Phrase meanings (Activity 1), became / had to / best (Activity 2), then corrections with loved + -ing, but and care about + -ing (Activity 3).",
+     "Write four sentences comparing two approaches to the same neutral task and end with a principle."
+    ],
+    "lessonPlan": "0–5 Hook: The charity-box example, learners decide what makes a gift valuable; 5–12 Listen and read, then a quick true/false round on the brothers’ work (shepherd / farmer); 12–19 Profile cards in pairs: Four rows for each brother, each with a quoted phrase, then the class agrees on the shared obligation; 19–23 Quick Challenge; 23–31 Language Focus: Activity 1 in pairs with the follow-up (Which word makes the gift sound small?), Activities 2–3 individually, then learners explain one correction to a partner; 31–38 Use: Four sentences comparing two approaches to one school task (a group poster) with had to, but and a principle (Real teamwork is …ing); 38–40 Exit ticket.",
+    "discussionPoints": [
+     "What obligation do the brothers share, and why?",
+     "What evidence shows that the two gifts differed in care, not only in type?",
+     "Why is it not enough to say “Habil was a shepherd, so his gift was better”?",
+     "What general principle does the chapter state?"
+    ],
+    "interactiveTips": [
+     "Use the Two Different Brothers hotspot for character and work and The Two Offerings hotspot for the gifts.",
+     "Replay the sentence with “but Qabil brought just a handful …” and ask learners to name the two sides of the contrast.",
+     "Attach “had to” to the shared obligation before comparing choices."
+    ],
+    "differentiation": {
+     "strugglingLearners": "Frame: “Both brothers had to ____. Habil brought ____, but Qabil brought ____. Qabil didn’t care about ____ing.”",
+     "fastFinishers": "Write six sentences separating obligation, action, attitude and principle, with one superlative and one “care about + -ing”."
+    },
+    "formativeAssessment": [
+     "Identifies the shared obligation.",
+     "Uses evidence from both brothers.",
+     "Uses had to, superlatives and care about + -ing accurately."
+    ],
+    "expectedResponses": [
+     "Habil became a shepherd and Qabil was a farmer; to solve their disagreement they had to make an offering, but Habil brought his best and healthiest sheep while Qabil brought just a handful of crops and didn’t care about pleasing Allah and his father. Real goodness is giving out the best and the most loved."
+    ],
+    "transferTask": "Compare two approaches to the same neutral task and finish with a principle (Real … is …ing).",
+    "teacherReflection": "Did learners judge the brothers from evidence of care and effort rather than from their jobs?",
+    "assessmentTools": {
+     "rubric": [
+      "Shared obligation",
+      "Two-sided evidence",
+      "Contrast and superlatives",
+      "General principle"
+     ],
+     "exitTicket": [
+      "Complete: “Both had to ____, but ____. Real ____ is ____ing.”"
+     ]
+    }
+   },
+   {
+    "chapter": "Chapter 11: The First Conflict and the Raven",
+    "timing": "40 + 40 minutes",
+    "objectives": [
+     "Trace the events calmly: Offering accepted → Qabil’s anger and threat → Habil’s refusal → the killing → sadness and panic → the raven shows the way.",
+     "Distinguish a threat (will) from a refusal (won’t) and keep each speaker’s words attributed.",
+     "Discover how will / won’t, past simple admissions, present judgments (am worse than, cannot), because, start to, show … the way to and reported speech (admitted that he had killed, did not know what he should do) work.",
+     "Develop safe, non-violent steps for stopping an argument."
+    ],
+    "pedagogy": "Two lessons. Lesson 1 protects meaning and atmosphere: A class rule (calm reading, no acting), one listening for Habil’s answer, calm event cards and speaker labels, and a close look at threat vs refusal. Lesson 2 starts from the bridge note and opens the language: Learners discover that the only difference between the threat and the refusal is will / won’t, then report Qabil’s words and transfer the language to a neutral situation and to safe prevention steps.",
+    "priorKnowledge": [
+     "Chapter 10: the brothers’ different attitudes; will for the future; reported speech with said that."
+    ],
+    "anticipatedMisconceptions": [
+     "Habil does not answer with violence; he refuses. The raven does not cause anything; it shows Qabil the way to put the body in the pit. No re-enactment and no added graphic detail."
+    ],
+    "grammarFocus": "Targets: will for a threat vs won’t for a refusal · past simple to admit finished actions (I killed, I did) · present for a judgment or inability (I am worse than this raven, I cannot hide …) · worst vs worse than · because + clause vs because of + noun · start + to + verb · show + person + the way to + verb · reporting an admission and a question (admitted that he had killed, did not know what he should do / what to do).\nNotice (Activity 1): learners sort six spoken sentences into the future, the past and now. Ask: “Which sentence is a threat and which is a refusal? What is the only difference in the verb?”\nBuild (Activities 2–3): choose because / to panic / to put in “Allah accepted Habil’s offering because he gave from his heart.”, “He also started to panic.” and “It showed Qabil the way to put …”, then report “I killed my brother.” and “Now I don’t know what I should do …”.\nLikely errors: *because of he gave · *started panic · *the way for put · *did not know what should he do · worse where worst is needed.\nUse (Activity 4): four sentences about someone who makes a serious mistake in a neutral, non-violent situation and must decide the next step.",
+    "pronunciationFocus": "Contrast will and won’t in a calm voice, without performing the threat: “I WON’T FIGHT BACK | and HARM you.” — won’t /wəʊnt/ is not want /wɒnt/.\nHabil’s reasons in two calm chunks: “You are my BROther, | and I FEAR alLAH.”\nComparatives: “the WORST THING in LIFE” / “WORSE than this RAven”.\nRead the whole chapter in a low, even voice.\nWord focus: RA-ven, PAN-ic, OF-fer-ing, DIG-ging, AN-ger.",
+    "beforeReading": [
+     "Set the class rule: We read this chapter calmly, we do not act it out, and we focus on choices. Retrieve from Chapter 10 how the two brothers were different."
+    ],
+    "duringReading": [
+     "Lesson 1, first listening: What does Habil answer when he hears the threat?",
+     "Order six calm event cards: Offering accepted → anger → Habil’s refusal → the killing → sadness and panic → the raven.",
+     "Label each spoken sentence with its speaker.",
+     "Bridge note: the turning point + one quoted phrase + one question."
+    ],
+    "afterReading": [
+     "Lesson 1: Quick Challenge with calm, text-based justification.",
+     "Lesson 2: retrieve the bridge note, then Language Focus: future / past / now (Activity 1), reason, beginning and guidance (Activity 2), reporting Qabil’s words (Activity 3).",
+     "Write two safe steps for stopping an argument before anger controls action."
+    ],
+    "lessonPlan": "Lesson 1 (40 min): 0–5 Class rule (calm reading, no acting) and retrieval of the brothers’ differences from Chapter 10; 5–15 Teacher or audio reads once while learners listen with books closed for one question (What does Habil answer?), then read along; 15–24 Event cards in pairs: Six cards in order, each with a quoted phrase, plus speaker labels for the spoken lines; 24–31 Threat vs refusal: Pairs compare the two spoken lines and write what Habil refuses and why (You are my brother, and I fear Allah); 31–36 Quick Challenge; 36–40 Bridge note: turning point + evidence + question; Lesson 2 (40 min): 0–4 Retrieve the bridge notes; 4–13 Language Focus Activity 1 as whole-class discovery (What is the only difference between the threat and the refusal?); 13–21 Activities 2–3 in pairs, then learners explain the statement order in “what he should do”; 21–28 Raven check: One sentence about what the raven did and one about what Qabil realised (I am worse than this raven); 28–36 Use: A neutral situation (a broken school item, a serious argument between friends) in four sentences with because, won’t, didn’t know what to do and showed … the way to; 36–38 Safe steps: Pairs write two steps for stopping an argument; 38–40 Exit ticket.",
+    "discussionPoints": [
+     "Where is the turning point of the chapter?",
+     "How is Habil’s refusal different from Qabil’s threat, and what reasons does Habil give?",
+     "What does the raven do, and what does Qabil realise about himself?",
+     "What safe action can stop an argument before anger controls it?"
+    ],
+    "interactiveTips": [
+     "Open The Conflict hotspot only after the event order is clear, and use The Raven hotspot for what the raven showed Qabil.",
+     "Replay the threat and the refusal separately and without performance, then ask which verb changes.",
+     "Start Lesson 2 from the bridge note rather than rereading the whole scene."
+    ],
+    "differentiation": {
+     "strugglingLearners": "Six event cards and the frames “Habil said that he ____ because ____.”, “Qabil admitted that he ____.”, “The raven showed Qabil the way to ____.”",
+     "fastFinishers": "Write eight analytical sentences about anger, refusal, consequence and regret, with reported speech (admitted that …, did not know what …) and one comparison."
+    },
+    "formativeAssessment": [
+     "Orders the events calmly and without extra detail.",
+     "Attributes each spoken line to its speaker and names threat vs refusal.",
+     "Reports words with backshift and statement order.",
+     "Proposes a safe prevention step."
+    ],
+    "expectedResponses": [
+     "Allah accepted Habil’s offering because he gave from his heart; Qabil threatened him, but Habil refused to fight back because Qabil was his brother and he feared Allah. Qabil killed him, then felt very sad and started to panic, and a raven showed him the way to put his brother’s body in the pit."
+    ],
+    "transferTask": "Write two steps for stopping an argument before anger controls action.",
+    "teacherReflection": "Did the two-lesson split protect both comprehension and a calm atmosphere, and did learners find the will / won’t contrast themselves?",
+    "assessmentTools": {
+     "rubric": [
+      "Sequence and speakers",
+      "Threat vs refusal",
+      "Reported speech",
+      "Safe prevention"
+     ],
+     "exitTicket": [
+      "Write one sentence reporting Habil’s refusal (Habil said that he …) and one safe step for stopping an argument."
+     ]
+    }
+   },
+   {
+    "chapter": "Chapter 12: The Legacy of Adam",
+    "timing": "40 minutes",
+    "objectives": [
+     "Synthesise the book’s lessons: Stay away from jealousy, control anger, admit mistakes and turn back to Allah, do good and avoid evil, and guidance that continues.",
+     "Distinguish events (Adam lost both sons, got old, his children spread his message) from the writer’s interpretation (The story suggests that …).",
+     "Discover how the story suggests that … should, had to, over the years, still, never, a parallel to-list and the importance of + -ing are used.",
+     "Prepare for the review pages that follow the story."
+    ],
+    "pedagogy": "Learners test a hypothesis (three earlier chapters the ending will revisit), then build a synthesis map with four headings, linking each lesson in Chapter 12 to an earlier chapter with a quoted phrase. The Language Focus begins with one question: “Is this sentence an event on that day, or a lesson the writer takes from the story?” Learners find that “The story suggests that … should …” marks interpretation and advice. Personal application is written last and labelled as the learner’s own.",
+    "priorKnowledge": [
+     "Key events of Chapters 1–11; should for advice; still."
+    ],
+    "anticipatedMisconceptions": [
+     "The legacy is not only the story of the two sons: The chapter adds admitting mistakes, turning back to Allah and continuing guidance. “He” in the first sentence refers back to Chapter 11 (Qabil); learners should infer this from the previous chapter."
+    ],
+    "grammarFocus": "Targets: The story suggests that … should … for an interpretation and advice · had to for a past necessity (as a prophet and the father …) · over the years for slow change · still (before the main verb) for something that continues now · never (Allah never left people alone) · parallel lists (to turn away …, to do good, and to avoid evil) · the importance of + -ing (admitting … and turning back …).\nNotice (Activity 1): “The story suggests that true believers should stay away from jealousy and control their anger.” Ask: “Is this an event on that day, or a lesson the writer takes from the story? Which words tell you?”\nBuild (Activities 2–3): complete “… Adam (pbuh) had to continue his life. He got old over the years. … their stories still guide us.”, then correct “the importance of admit mistakes” and “to do good, and avoiding evil”.\nLikely errors: Must for the past · *in the years · *their stories guide still us · *the importance of admit · mixed forms in a list (to turn …, to do …, and avoiding …).\nUse (Activity 4): four sentences about a person, family, class or community whose experience leaves a useful lesson.",
+    "pronunciationFocus": "The interpretation frame as one chunk: “the STOry sugGESTS that | TRUE beLIEVers should STAY aWAY from JEALousy”.\nStress still for continuity: “their STOries STILL GUIDE us”.\nParallel list with an even rhythm and a fall at the end: “to TURN aWAY …, | to DO GOOD, | and to aVOID Evil↘”.\nWord focus: LEG-a-cy, JEAL-ous-y, sug-GEST (/səˈdʒest/), ad-MIT-ting, world-WIDE, PROPH-ets.",
+    "beforeReading": [
+     "Learners choose three earlier chapters they expect the last chapter to come back to and write the chapter numbers on a sticky note as a hypothesis to check."
+    ],
+    "duringReading": [
+     "Listen: Who is “He” in the first sentence? (Infer from Chapter 11.)",
+     "Mark events in one colour and the writer’s lessons in another.",
+     "Underline had to, over the years and still.",
+     "Link each lesson to an earlier chapter number."
+    ],
+    "afterReading": [
+     "Quick Challenge with evidence from Chapter 12 and one earlier chapter.",
+     "Language Focus: Event or interpretation (Activity 1), necessity, time and continuity (Activity 2), parallel forms (Activity 3).",
+     "Write a six-sentence synthesis with one clearly labelled personal application.",
+     "Then follow Knowledge Check → Language Review → Vocabulary Challenge → Master Glossary Part 1 → Master Glossary Part 2 → Final Challenge."
+    ],
+    "lessonPlan": "0–5 Hypothesis sticky notes: Three chapters the ending may revisit; 5–12 Listen and read, then learners check their sticky notes and say who “He” is in the first sentence; 12–20 Synthesis map in groups: Four headings (jealousy and anger / admitting mistakes / doing good / continuing guidance), each lesson from Chapter 12 linked to an earlier chapter with a quoted phrase; 20–24 Quick Challenge; 24–32 Language Focus: Activity 1 as whole-class discovery (event or lesson?), Activities 2–3 in pairs, learners explain why “still” means the message has not stopped; 32–38 Use: Four sentences about a family, class or community whose experience leaves a useful lesson (had to, over the years, still, the importance of …ing), with the personal part labelled; 38–40 Exit ticket and a one-minute orientation to the review pages.",
+    "discussionPoints": [
+     "Which sentence in the chapter is an interpretation rather than an event, and how do you know?",
+     "Which lesson needs evidence from more than one earlier chapter?",
+     "What does “still” tell us about the message and the prophets’ stories?",
+     "Which part of your answer is the story and which is your own application?"
+    ],
+    "interactiveTips": [
+     "Use the Adam’s Family hotspot for the events of the chapter and the Continuing Guidance hotspot for the message that still guides.",
+     "Attach an earlier chapter number to every lesson on the synthesis map.",
+     "Do not treat the review pages as story chapters."
+    ],
+    "differentiation": {
+     "strugglingLearners": "Four synthesis headings and the frames “The story suggests that we should ____.”, “Over the years, ____.”, “The message still ____.”, “It teaches the importance of ____ing.”",
+     "fastFinishers": "Write eight sentences using evidence from at least four earlier chapters, a parallel to-list and one “the importance of + -ing” phrase."
+    },
+    "formativeAssessment": [
+     "Separates event from interpretation.",
+     "Links final lessons to earlier chapters.",
+     "Uses had to, over the years, still and parallel forms accurately.",
+     "Labels personal application."
+    ],
+    "expectedResponses": [
+     "Adam lost both of his sons on the same day and became very sad, but as a prophet and a father he had to continue his life; the story suggests that true believers should stay away from jealousy and control their anger, and the message still calls people to do good and avoid evil and teaches the importance of admitting mistakes and turning back to Allah."
+    ],
+    "transferTask": "Describe a lesson from a family, class or community experience that still matters today and one action it suggests.",
+    "teacherReflection": "Did learners synthesise across the book and keep the writer’s interpretation, the events and their own application clearly apart?",
+    "assessmentTools": {
+     "rubric": [
+      "Cross-chapter evidence",
+      "Event vs interpretation",
+      "Continuity and parallel forms",
+      "Labelled application"
+     ],
+     "exitTicket": [
+      "Write one sentence with “still” and one “The story suggests that … should …” sentence about a story you know."
+     ]
+    }
+   }
+  ],
+  "metadata": {
+   "title": "Teacher Guide — Prophet Adam (B1)",
+   "subtitle": "TYMM-aligned guide with chapter-specific support, inductive grammar and 40-minute lesson plans",
+   "level": "B1",
+   "estimatedDuration": "12 chapter units: Chapters 1–10 and 12 are planned for 40 minutes; Chapter 11 is planned as 40 + 40 minutes. Review and assessment pages follow separately.",
+   "targetAudience": "B1 English learners, especially lower- and upper-secondary students.",
+   "targetLearners": "Learners who can follow a connected narrative, trace cause, contrast, purpose, viewpoint and consequence, and produce short evidence-based explanations.",
+   "purpose": "Develop evidence-based B1 reading, listening, speaking and writing through the story of Prophet Adam (pbuh), using the Language Focus attached to every story chapter and connected production about the learners’ own world.",
+   "approachDesc": "Every story chapter follows the TYMM route. YDAB1 listening and YDAB2 reading establish meaning and evidence; the Quick Challenge checks comprehension. Grammar is then learned inductively, as the Maarif Model expects for English: in the Language Focus, learners first NOTICE a form in a real chapter sentence and work out what it does (the rule is confirmed only after they formulate it), then BUILD it in controlled, meaningful practice, and finally USE it in connected YDAB3 speaking and YDAB4 writing about their own world. The story’s sensitive chapters (6 and 11) are handled calmly and non-graphically, and Chapter 11 is divided into two 40-minute lessons. See https://tymm.meb.gov.tr/beceriler/yabanci-dil-alan-becerileri.",
+   "assessmentEvidence": "12 Quick Challenges, text-evidence checks, chapter Language Focus tasks and connected production, exit tickets, Knowledge Check, Language Review, Vocabulary Challenge and Final Challenge.",
+   "assessmentOverview": {
+    "formative": [
+     "Quick Challenge after each chapter",
+     "Evidence and voice checks",
+     "Language Focus: Noticing and controlled practice",
+     "Connected B1 speaking/writing transfer",
+     "Exit tickets",
+     "Knowledge Check",
+     "Language Review",
+     "Vocabulary Challenge"
+    ],
+    "summative": [
+     "Final Challenge"
+    ]
+   },
+   "readingFramework": {
+    "before": "Activate only what the chapter needs, with a short chapter-specific prediction, image, question or card task.",
+    "during": "Listen first for gist, then read and follow the chapter’s own evidence structure: time frame, cause chain, voice, sequence, contrast, role change or synthesis.",
+    "after": "Complete the Quick Challenge, then the chapter’s Language Focus (notice → build → use), then a connected B1 transfer about the learners’ own world. In Chapter 11, Lesson 1 secures meaning and evidence and Lesson 2 develops language and production."
+   },
+   "vocabularyApproach": {
+    "selection": "Prioritise chapter Word Notes and the words needed for the chapter’s key relationship.",
+    "method": "Infer meaning from context, image or audio before any direct explanation.",
+    "recycling": "Reuse vocabulary in Language Focus production, exit tickets and the review pages."
+   },
+   "grammarApproach": "Inductive and text-based. Start from the story sentence, ask a meaning question (What does this form tell us? What happened first? Whose view is it?), let learners formulate the rule in their own words, then confirm it and practise it in context. Rule explanations appear in the app only after learners answer. Do not replace the chapter work with unrelated grammar drills.",
+   "grammarSequence": [
+    "Ch1: present facts vs past events; after + past; told vs said; would / was going to; said He had decided; began to",
+    "Ch2: after + have + past participle; to + verb for purpose; later; more … than; that’s why / because / so",
+    "Ch3: thought / believed / said vs narrator statements; more … than; superior to; however / but; “, which made …”",
+    "Ch4: past perfect (had put); continued + -ing; want + person + to; because of + noun; wait for a chance to; keep … away from",
+    "Ch5: key phrases (called, to be, pretending to be); start / begin + to / -ing; ask … not to; reported if … would vs direct if … will",
+    "Ch6: eventually + managed to; convinced … to; had given; time order and when-clauses; so / to / because",
+    "Ch7: key phrases (on purpose, learn from, pardon); but vs on the other hand; because; decide never to; want + person + to; to + verb",
+    "Ch8: to / for for purpose, with for means, for + period; would; had to; in addition; both … and; want + person + not to",
+    "Ch9: stop + -ing vs stop + to; time markers; became; teach + person + to; to + verb; if + present for a general truth",
+    "Ch10: key phrases (grew up to be, just a handful of); became; had to; best / healthiest; loved + -ing; but; care about + -ing",
+    "Ch11: will vs won’t; past for admission, present for judgment; worse / worst; because; start to; show … the way to; reported speech",
+    "Ch12: the story suggests that … should; had to; over the years; still; never; parallel lists; the importance of + -ing"
+   ],
+   "skillsFocus": {
+    "listening": "TYMM YDAB1: follow narration and spoken words for gist, sequence, speaker and key details.",
+    "reading": "TYMM YDAB2: identify main ideas, direct evidence, character vs narrator voice, cause-result chains, contrast and interpretation.",
+    "speaking": "TYMM YDAB3: explain relationships, compare responses, attribute viewpoints and justify claims respectfully.",
+    "writing": "TYMM YDAB4: produce connected B1 paragraphs using evidence, chapter patterns and a clearly labelled personal application."
+   },
+   "valuesFocus": [
+    "D5 Sensitivity — calm, respectful handling of conflict and loss",
+    "D6 Honesty — admitting mistakes and keeping claims attributed",
+    "D9 Compassion — non-harm and care for the weak",
+    "D10 Humility — rejecting arrogance and superiority by origin",
+    "D12 Patience — controlling anger",
+    "D14 Respect — respect for human diversity",
+    "D16 Responsibility — work, care for nature and repair after a mistake",
+    "D20 Helpfulness — helping the weak and the community"
+   ],
+   "languageFocus": [
+    "All 12 story chapters have an active Language Focus set built as notice → build → use.",
+    "Use Language Focus after basic comprehension and the Quick Challenge.",
+    "Always start from the story sentence: Ask what the form does (or whose view it is) before naming it.",
+    "Let learners answer first; the explanation shown after each answer confirms the rule they have found.",
+    "At B1 the last step is always connected production about the learners’ own world, not a retelling of the chapter.",
+    "After Chapter 12, follow Knowledge Check → Language Review → Vocabulary Challenge → Master Glossary Part 1 → Master Glossary Part 2 → Final Challenge."
+   ],
+   "differentiationNotes": "Reduce linguistic load without lowering the reasoning target: One evidence sentence at a time, selected vocabulary, audio replay, sentence frames and oral rehearsal. Extend by combining more chapter patterns or adding a second evidence relationship, not by introducing outside facts.",
+   "sensitiveNotes": {
+    "title": "Source fidelity and respectful discussion",
+    "notes": [
+     "Keep religious content within the wording of the story; do not add details, legends or explanations from outside this B1 book.",
+     "Qur’anic references, prophetic sayings, prayers and quoted words of Allah (for example Allah’s words to the angels, Adam’s plea for forgiveness) are read, explained and matched to meanings; they are never gapped, “corrected” or rewritten.",
+     "Prophets are never role-played or shown in freeze-frames; spoken lines are read calmly as reported speech.",
+     "Keep character claims separate from the narrator’s statements (Iblis in Chapters 3–5).",
+     "Chapter 2 explains different skin colours without ranking them; reject any comment that ranks people by colour, origin or group (Chapter 3).",
+     "Chapter 6: treat the covering and modesty (haya) briefly, factually and non-graphically.",
+     "Chapter 11: calm, non-graphic reading, no re-enactment of the threat or the killing; the focus is on choices and prevention.",
+     "Do not present learners’ transfer sentences as new religious facts."
+    ]
+   },
+   "globalCitizenship": {
+    "title": "Global Citizenship and Cultural Bridges",
+    "description": "The story of Adam (pbuh), the father of all humans, raises questions every community shares: How we treat people who look different from us, how we respond to our own mistakes, how we care for the earth and the weak, and how we stop anger before it causes harm.",
+    "themes": [
+     {
+      "title": "One human family:",
+      "description": "Chapter 2 explains different skin colours by soil from different parts of the earth, and Chapter 3 says greatness does not come from race, colour or group. Discuss how this can shape the way we treat classmates and people from other countries."
+     },
+     {
+      "title": "Admitting mistakes:",
+      "description": "Chapter 7 contrasts learning from a mistake with arrogance that never admits it. Discuss why admitting mistakes builds trust in teams, schools and communities."
+     },
+     {
+      "title": "Caring for the earth and the weak:",
+      "description": "Chapter 8 names protecting nature and helping the weak as part of the human role on earth. Connect this with local environmental and volunteering projects."
+     },
+     {
+      "title": "Stopping anger before harm:",
+      "description": "Chapters 10–11 show jealousy and anger leading to harm, and Habil refusing to fight back; Chapter 12 advises controlling anger. Discuss peaceful ways to solve disagreements at school and online."
+     }
+    ],
+    "actions": [
+     "Make a class poster “One human family” with one sentence from Chapter 2 or 3 and three ways to treat everyone fairly.",
+     "Plan one small action for nature or for someone who needs help (a school clean-up, a visit to an older neighbour) and report it in four sentences.",
+     "Agree on three class steps for calming an argument before it grows."
+    ]
+   },
+   "appendices": {
+    "exitTicket": [
+     "One idea from today’s chapter, with the sentence that supports it, is …",
+     "One language pattern I noticed today, and what it does in the sentence, is …",
+     "One action I can take this week that shows a value from the chapter (respect, responsibility, humility, controlling anger) is …"
+    ],
+    "miniProject": {
+     "title": "Lessons That Still Guide Us",
+     "desc": "In groups, choose one lesson from Chapter 12 (staying away from jealousy, controlling anger, admitting mistakes, doing good). Make a one-page poster or a short audio clip in clear English: Quote the sentence from the book, link it to an earlier chapter (for example Chapter 7 or Chapter 11), explain what it means, and give two realistic school examples. Use at least two Language Focus patterns such as “decided never to …”, “the importance of + -ing” or “still”."
+    },
+    "reflectivePrompt": {
+     "title": "After a Mistake",
+     "desc": "Adam and Eve said sorry, learned from their mistake and decided never to repeat it; Iblis never admitted he was wrong because he was arrogant. Write six to eight sentences about a time when you or someone you know admitted a mistake at school or at home. What happened, what did you learn, and what did you decide to do differently?"
+    }
+   },
+   "valuesEducation": {
+    "title": "TYMM Values in Action",
+    "description": "Use only values genuinely supported by the chapter. Require evidence first, then connect the value to an observable, age-appropriate action. See https://tymm.meb.gov.tr/beceriler/erdem-deger-eylem-cercevesi.",
+    "items": [
+     {
+      "label": "D14 Respect / D10 Humility",
+      "value": "Reject superiority by origin, colour or group (Chapters 2–3) and practise fair treatment."
+     },
+     {
+      "label": "D6 Honesty / D16 Responsibility",
+      "value": "Admit mistakes, learn from them and decide what to do next (Chapters 7 and 12)."
+     },
+     {
+      "label": "D5 Sensitivity / D20 Helpfulness",
+      "value": "Care for nature and help the weak (Chapter 8)."
+     },
+     {
+      "label": "D12 Patience / D9 Compassion",
+      "value": "Control anger and refuse to harm (Chapters 11–12)."
+     }
+    ],
+    "questions": [
+     "Which sentence supports the value?",
+     "What action could show it?",
+     "Which part is source evidence and which part is your own application?"
+    ]
+   }
+  }
+ },
+ "selfStudyGuide": {
+  "content": [
+   {
+    "chapter": "Chapter 1: Introduction & The Creation",
+    "timing": "About 25 minutes",
+    "objectives": [
+     "I can explain who Adam (pbuh) is and how the Holy Qur’an tells his story.",
+     "I can explain what Allah told the angels and how they reacted.",
+     "I can separate facts that are true now from events that happened in the story."
+    ],
+    "pedagogy": "Read and listen for meaning, find the evidence, do the Quick Challenge, then use the chapter’s Language Focus in your own sentences.",
+    "grammarFocus": "Sort parts of the chapter into what is true now (is, tells, can learn) and what happened in the story (created, gave, were surprised), complete the lines with After, told and would, then fix two mistakes: had decided in reported speech, and began to wait.",
+    "pronunciationFocus": "Stress: MES-sen-ger, FAB-u-lous, RUL-er, cu-ri-OS-i-ty. Make a small pause after “After Allah created the sky and the earth”, then go on with “He told the angels”.",
+    "lessonPlan": "Before you read, look at the two hotspots. What does a ruler on earth have to do? Listen once for the main idea: Who is Adam (pbuh), and what did Allah announce? Read paragraph 1 again and mark the present verbs (is, tells, can learn). Then mark the past verbs in paragraph 2.",
+    "discussionPoints": [
+     "Allah placed a ruler (khalifah) on earth, a person given responsibility. What is one responsibility you have at home or at school, and how do you take care of it?"
+    ],
+    "interactiveTips": [
+     "Open the picture hotspots “Created from Soil” and “Responsibility on Earth”."
+    ],
+    "differentiation": {
+     "strugglingLearners": "Go back to the end of paragraph 2. Read the last sentence and find two things the angels did. Check each option: Does it belong to the angels, and does it happen in this chapter? Then try again.",
+     "fastFinishers": "Language Focus, last activity: Write or say four connected sentences. Start with a fact that is true now about a source (a book, a website, a teacher), move into past events with after and told, and end with something that was going to happen or would happen later."
+    },
+    "whatToNotice": [
+     "The chapter has two parts: Paragraph 1 introduces Adam (pbuh) and the sources of his story, and paragraph 2 tells the first event.",
+     "Notice “This ruler would live there for many years.” Would looks forward from a past moment: The ruler was not on earth yet."
+    ],
+    "readListen": [
+     "Before you read, look at the two hotspots. What does a ruler on earth have to do?",
+     "Listen once for the main idea: Who is Adam (pbuh), and what did Allah announce?",
+     "Read paragraph 1 again and mark the present verbs (is, tells, can learn). Then mark the past verbs in paragraph 2.",
+     "Open the picture hotspots “Created from Soil” and “Responsibility on Earth” and connect each one to a sentence in the chapter."
+    ],
+    "findAnswerInStory": [
+     "Paragraph 1: find two things Allah gave Adam (pbuh) as the first human, and the surahs that tell his tale.",
+     "Paragraph 1: find what we can learn from this story and what its messages are about.",
+     "Paragraph 2: find what Allah told the angels and what He had decided."
+    ],
+    "vocabularyInContext": [
+     "Word Notes: messenger, fabulous, ruler, curiosity.",
+     "“He said He had decided to place a ruler (khalifah) on earth.” What does a ruler do, according to the Word Note?",
+     "Use curiosity in one sentence about something you waited to find out."
+    ],
+    "quickChallengeGuide": "The question asks how the angels reacted to Allah’s news. The answer is in the last sentence of paragraph 2. Remember that Adam (pbuh) is not created yet in this chapter.",
+    "wrongAnswerSupport": [
+     "Go back to the end of paragraph 2.",
+     "Read the last sentence and find two things the angels did.",
+     "Check each option: Does it belong to the angels, and does it happen in this chapter? Then try again."
+    ],
+    "selfCheck": [
+     "Can I say who Adam (pbuh) is with two facts?",
+     "Can I explain what the ruler (khalifah) would do?",
+     "Can I tell a present fact from a past event in this chapter?"
+    ],
+    "useWhatYouLearned": "Language Focus, last activity: Write or say four connected sentences. Start with a fact that is true now about a source (a book, a website, a teacher), move into past events with after and told, and end with something that was going to happen or would happen later.",
+    "reflectionPrompt": "Allah placed a ruler (khalifah) on earth, a person given responsibility. What is one responsibility you have at home or at school, and how do you take care of it?"
+   },
+   {
+    "chapter": "Chapter 2: The Shaping of Adam",
+    "timing": "About 25 minutes",
+    "objectives": [
+     "I can explain why humans have different skin colors, using evidence from the chapter.",
+     "I can explain what Allah gave Adam (pbuh) and why.",
+     "I can show the same cause and result with That’s why, because and so."
+    ],
+    "pedagogy": "Read and listen for meaning, find the evidence, do the Quick Challenge, then use the chapter’s Language Focus in your own sentences.",
+    "grammarFocus": "Decide when the angels were to show respect (After I have created …), complete the lines with to, Later and than, then say the soil-and-skin-color link in two new ways: Result first with because, and reason first with so or which is why.",
+    "pronunciationFocus": "Stress: IN-tel-lect, KNOWL-edge, HAND-ful, SHAPED (one syllable). The k in knowledge is silent. Stress the compared words in “more knowledge than the angels”.",
+    "lessonPlan": "Look at both hotspots. What do soil and knowledge have to do with being human? Listen once and follow the text. Read the chapter again and draw three arrows: One in paragraph 1 and two in paragraph 2.",
+    "discussionPoints": [
+     "The chapter says people have different skin colors because the soil came from different lands. How can this idea help people treat each other fairly?"
+    ],
+    "interactiveTips": [
+     "Open the picture hotspots “Soil from Many Lands” and “A Gift of Knowledge”."
+    ],
+    "differentiation": {
+     "strugglingLearners": "Go back to paragraph 1 and find “That’s why”. What does it point back to? In paragraph 2, read the words after “life and intellect” and after “He taught Adam (pbuh)”. Keep three separate arrows, then match again.",
+     "fastFinishers": "Language Focus, last activity: Write or say four connected sentences about a new learning situation. Report what a teacher said, explain a reason and a result with so or that’s why, give a purpose with to, and finish with a more … than comparison."
+    },
+    "whatToNotice": [
+     "The chapter gives three links: Soil from different lands → different skin colors; life and intellect → learning and understanding; Allah’s teaching → doing good on earth.",
+     "Notice “After I have created Adam (pbuh) and given him life and knowledge, show respect to him.” The respect comes only after the creation is complete."
+    ],
+    "readListen": [
+     "Look at both hotspots. What do soil and knowledge have to do with being human?",
+     "Listen once and follow the text.",
+     "Read the chapter again and draw three arrows: One in paragraph 1 and two in paragraph 2.",
+     "Open the picture hotspots “Soil from Many Lands” and “A Gift of Knowledge” and connect each one to a sentence in the chapter."
+    ],
+    "findAnswerInStory": [
+     "Paragraph 1: find where the soil came from and the sentence that starts with “That’s why”.",
+     "Paragraph 1: find what Prophet Muhammad (pbuh) said about the children of Adam (pbuh).",
+     "Paragraph 2: find the purpose of life and intellect, what Allah taught Adam (pbuh), and the comparison with the angels."
+    ],
+    "vocabularyInContext": [
+     "Word Notes: handful, intellect, knowledge, shaped.",
+     "“a handful of dust from different lands”: how much dust is a handful?",
+     "Write one sentence with intellect and one with knowledge about how you learn."
+    ],
+    "quickChallengeGuide": "You will match three gifts or actions with their results. The first link is in paragraph 1 and the other two are in paragraph 2. Follow the linking words.",
+    "wrongAnswerSupport": [
+     "Go back to paragraph 1 and find “That’s why”. What does it point back to?",
+     "In paragraph 2, read the words after “life and intellect” and after “He taught Adam (pbuh)”.",
+     "Keep three separate arrows, then match again."
+    ],
+    "selfCheck": [
+     "Can I explain all three links without mixing them?",
+     "Can I say why the angels had to wait before showing respect?",
+     "Can I say the same cause and result with because and with so?"
+    ],
+    "useWhatYouLearned": "Language Focus, last activity: Write or say four connected sentences about a new learning situation. Report what a teacher said, explain a reason and a result with so or that’s why, give a purpose with to, and finish with a more … than comparison.",
+    "reflectionPrompt": "The chapter says people have different skin colors because the soil came from different lands. How can this idea help people treat each other fairly?"
+   },
+   {
+    "chapter": "Chapter 3: Iblis’s Arrogance",
+    "timing": "About 25 minutes",
+    "objectives": [
+     "I can explain why Iblis thought he was better than Adam (pbuh).",
+     "I can explain, with evidence, why the narrator says Iblis was wrong.",
+     "I can separate a character’s view from the narrator’s own statement."
+    ],
+    "pedagogy": "Read and listen for meaning, find the evidence, do the Quick Challenge, then use the chapter’s Language Focus in your own sentences.",
+    "grammarFocus": "Sort parts of the chapter into a character’s view (thought, believed, said) and the narrator’s own statement, choose more important, superior to and However, then fix three mistakes: Adam was after thought that, but for the opposite reaction, and which for a comment on the idea before it.",
+    "pronunciationFocus": "Stress: AR-ro-gant, OR-i-gin, su-pe-ri-OR-i-ty, ad-MIRED. Stress the compared words in “I am better than Adam (pbuh).” and pause after However.",
+    "lessonPlan": "Look at the Fire and Soil hotspot. What did Iblis compare? Listen once and follow the text. Read paragraph 2 again and mark what Iblis believed and what the narrator says.",
+    "discussionPoints": [
+     "The chapter says greatness does not come from race, color or group. Why do people sometimes judge others by where they come from, and what should we look at instead?"
+    ],
+    "interactiveTips": [
+     "Open the picture hotspots “Fire and Soil” and “Equal in Allah’s Sight”."
+    ],
+    "differentiation": {
+     "strugglingLearners": "Go back to paragraph 2. Read the sentence with “couldn’t see and accept” to the end, then the sentence that starts with However. Remove any option that only repeats Iblis’s own view, then try again.",
+     "fastFinishers": "Language Focus, last activity: Write or say four connected sentences about a new situation with two different opinions. Report both views with thought that or believed, add a reason with because, compare with better than or more … than, and give your conclusion with but or however."
+    },
+    "whatToNotice": [
+     "The angels and Iblis look at the same being but react in opposite ways. The word but in paragraph 1 marks the contrast.",
+     "Notice “Iblis thought that Adam was an unimportant being created from clay.” Thought that tells us this is Iblis’s view, not the truth."
+    ],
+    "readListen": [
+     "Look at the Fire and Soil hotspot. What did Iblis compare?",
+     "Listen once and follow the text.",
+     "Read paragraph 2 again and mark what Iblis believed and what the narrator says.",
+     "Open the picture hotspots “Fire and Soil” and “Equal in Allah’s Sight” and connect each one to a sentence in the chapter."
+    ],
+    "findAnswerInStory": [
+     "Paragraph 1: find how the angels reacted to Adam (pbuh) and what Iblis thought instead.",
+     "Paragraph 1: find Iblis’s answer to Allah’s question and the reason he gave.",
+     "Paragraph 2: find what Iblis could not see, and the sentence that starts with However."
+    ],
+    "vocabularyInContext": [
+     "Word Notes: admired, arrogant, origin, superiority.",
+     "“he believed his origin was superior”: what was his origin, and why did he think it mattered?",
+     "Write one sentence with admired and one with arrogant."
+    ],
+    "quickChallengeGuide": "The question asks why Iblis was wrong. Compare what he says about fire and soil in paragraph 1 with paragraph 2, where the narrator says what he could not see.",
+    "wrongAnswerSupport": [
+     "Go back to paragraph 2.",
+     "Read the sentence with “couldn’t see and accept” to the end, then the sentence that starts with However.",
+     "Remove any option that only repeats Iblis’s own view, then try again."
+    ],
+    "selfCheck": [
+     "Can I say Iblis’s claim and his reason?",
+     "Can I give the narrator’s evidence that he was wrong?",
+     "Can I use thought that and more … than correctly?"
+    ],
+    "useWhatYouLearned": "Language Focus, last activity: Write or say four connected sentences about a new situation with two different opinions. Report both views with thought that or believed, add a reason with because, compare with better than or more … than, and give your conclusion with but or however.",
+    "reflectionPrompt": "The chapter says greatness does not come from race, color or group. Why do people sometimes judge others by where they come from, and what should we look at instead?"
+   },
+   {
+    "chapter": "Chapter 4: The Expulsion of Iblis",
+    "timing": "About 25 minutes",
+    "objectives": [
+     "I can explain why Iblis became angry with Adam (pbuh).",
+     "I can explain what Iblis planned and how Allah protected Adam (pbuh) with a warning.",
+     "I can use the past perfect to show which past event came first."
+    ],
+    "pedagogy": "Read and listen for meaning, find the evidence, do the Quick Challenge, then use the chapter’s Language Focus in your own sentences.",
+    "grammarFocus": "Decide why the writer says had put and not put, choose continued saying, want Allah to be and because of, then rebuild the sentence about Iblis’s plan: He waited for a chance to keep Adam (pbuh) away from Allah’s kindness.",
+    "pronunciationFocus": "Stress: CRE-a-tor, EN-e-my, CARE-ful. Warned has one syllable: /wɔːnd/. Say Allah’s command short and strong: “Go away!”",
+    "lessonPlan": "Look at The Warning hotspot. Who warned whom? Listen once and follow the text. Read paragraph 1 again and underline what Iblis continued saying, what he felt and what he thought.",
+    "discussionPoints": [
+     "Iblis blamed Adam (pbuh) instead of admitting his own mistake. Why is it easier to blame someone else, and what does it cost us?"
+    ],
+    "interactiveTips": [
+     "Open the picture hotspots “Distance from Mercy” and “The Warning”."
+    ],
+    "differentiation": {
+     "strugglingLearners": "Go back to paragraph 1. Read what Iblis continued saying, then the sentence with “because of Adam (pbuh)”. Ask: Whom did Iblis blame? Then try again.",
+     "fastFinishers": "Language Focus, last activity: Write or say four connected sentences about a new situation in which someone continues a harmful plan and another person gives a warning. Use continued + -ing, because of, waited for a chance to and warned … to be careful of."
+    },
+    "whatToNotice": [
+     "Iblis does not accept that he was wrong. He blames Adam (pbuh) instead, and his anger becomes a plan.",
+     "Notice “Allah had put him far from His help.” Had put shows that being sent away came before Iblis’s thought."
+    ],
+    "readListen": [
+     "Look at The Warning hotspot. Who warned whom?",
+     "Listen once and follow the text.",
+     "Read paragraph 1 again and underline what Iblis continued saying, what he felt and what he thought.",
+     "Open the picture hotspots “Distance from Mercy” and “The Warning” and connect each one to a sentence in the chapter."
+    ],
+    "findAnswerInStory": [
+     "Paragraph 1: find what Iblis continued saying and what Allah said to him.",
+     "Paragraph 1: find whom Iblis blamed and the words “because of”.",
+     "Paragraph 2: find what Iblis waited for and what Allah told Adam (pbuh)."
+    ],
+    "vocabularyInContext": [
+     "Word Notes: Creator, warned, enemy, careful.",
+     "“warned him to be careful of Iblis”: why is a warning a kind of help?",
+     "Write one sentence with warned and one with careful."
+    ],
+    "quickChallengeGuide": "The statement says Iblis blamed himself. Read paragraph 1 and find the sentence that starts with “He thought that” before you decide.",
+    "wrongAnswerSupport": [
+     "Go back to paragraph 1.",
+     "Read what Iblis continued saying, then the sentence with “because of Adam (pbuh)”.",
+     "Ask: Whom did Iblis blame? Then try again."
+    ],
+    "selfCheck": [
+     "Can I explain whom Iblis blamed and why?",
+     "Can I say which came first: Allah’s words or Iblis’s thought?",
+     "Can I use continued + -ing and because of correctly?"
+    ],
+    "useWhatYouLearned": "Language Focus, last activity: Write or say four connected sentences about a new situation in which someone continues a harmful plan and another person gives a warning. Use continued + -ing, because of, waited for a chance to and warned … to be careful of.",
+    "reflectionPrompt": "Iblis blamed Adam (pbuh) instead of admitting his own mistake. Why is it easier to blame someone else, and what does it cost us?"
+   },
+   {
+    "chapter": "Chapter 5: Life in Paradise and the Warning",
+    "timing": "About 25 minutes",
+    "objectives": [
+     "I can describe life in Paradise and explain why Allah gave Adam (pbuh) a companion.",
+     "I can explain the one rule and the lie Iblis told.",
+     "I can change reported words into direct words with if … will."
+    ],
+    "pedagogy": "Read and listen for meaning, find the evidence, do the Quick Challenge, then use the chapter’s Language Focus in your own sentences.",
+    "grammarFocus": "Match phrases such as “a wife called Eve (Hawwa)” and “more wonderful than we can imagine” with their meanings, choose started to feel, began living and asked them not to go, then change the reported whisper into Iblis’s direct words with if + present and will.",
+    "pronunciationFocus": "Stress: LONE-ly, com-PAN-ion, BLESS-ings, pre-TEND-ing. Say the whisper in two parts: “if they ate from that one tree,” then “they would never die”.",
+    "lessonPlan": "Look at The One Tree hotspot. Why does one tree matter in a place with so many blessings? Listen once and follow the text. Read paragraph 2 again and mark the rule, the lie and the false promise.",
+    "discussionPoints": [
+     "Iblis came with a friendly face, but his words were a lie. How can you check whether someone’s friendly advice is really good for you?"
+    ],
+    "interactiveTips": [
+     "Open the picture hotspots “A Companion for Adam” and “The One Tree”."
+    ],
+    "differentiation": {
+     "strugglingLearners": "Go back to the last two sentences of this chapter. Then read the first sentence of paragraph 2 in Chapter 4: what was Iblis waiting for? Ask: What did Iblis want Adam (pbuh) and Eve to do? Then try again.",
+     "fastFinishers": "Language Focus, last activity: Write or say four connected sentences about a new situation with a beginning, one clear restriction and a conditional result. Use started to or began + -ing, asked … not to, and an if … would sentence."
+    },
+    "whatToNotice": [
+     "Paragraph 1 is full of good things (a companion, blessings). Paragraph 2 brings one rule and one danger.",
+     "Notice “pretending to be their friend” and the next sentence: “It was a big lie.” The narrator tells us plainly not to trust Iblis’s friendly face."
+    ],
+    "readListen": [
+     "Look at The One Tree hotspot. Why does one tree matter in a place with so many blessings?",
+     "Listen once and follow the text.",
+     "Read paragraph 2 again and mark the rule, the lie and the false promise.",
+     "Open the picture hotspots “A Companion for Adam” and “The One Tree” and connect each one to a sentence in the chapter."
+    ],
+    "findAnswerInStory": [
+     "Paragraph 1: find how Adam (pbuh) felt and why Allah gave him a wife.",
+     "Paragraph 1: find how the writer compares Paradise with our imagination.",
+     "Paragraph 2: find the one thing Allah asked, and what Iblis whispered to them."
+    ],
+    "vocabularyInContext": [
+     "Word Notes: lonely, companion, blessings, pretending.",
+     "“to be his companion”: what does a companion do for a person who feels lonely?",
+     "Write one sentence with blessings and one with pretending."
+    ],
+    "quickChallengeGuide": "The question asks why Iblis pretended to be their friend. Read the end of paragraph 2 here, and the first sentence of paragraph 2 in Chapter 4, where Iblis waits for something.",
+    "wrongAnswerSupport": [
+     "Go back to the last two sentences of this chapter.",
+     "Then read the first sentence of paragraph 2 in Chapter 4: what was Iblis waiting for?",
+     "Ask: What did Iblis want Adam (pbuh) and Eve to do? Then try again."
+    ],
+    "selfCheck": [
+     "Can I describe Paradise and the one rule in two sentences?",
+     "Can I explain why Iblis pretended to be a friend?",
+     "Can I say Iblis’s whisper as direct words with if … will?"
+    ],
+    "useWhatYouLearned": "Language Focus, last activity: Write or say four connected sentences about a new situation with a beginning, one clear restriction and a conditional result. Use started to or began + -ing, asked … not to, and an if … would sentence.",
+    "reflectionPrompt": "Iblis came with a friendly face, but his words were a lie. How can you check whether someone’s friendly advice is really good for you?"
+   },
+   {
+    "chapter": "Chapter 6: Satan’s lies and Adam’s Departure from Paradise",
+    "timing": "About 25 minutes",
+    "objectives": [
+     "I can put the events of the chapter in order.",
+     "I can explain how Adam (pbuh) and Eve felt after they ate from the tree.",
+     "I can explain why they covered themselves, using so, to and because."
+    ],
+    "pedagogy": "Read and listen for meaning, find the evidence, do the Quick Challenge, then use the chapter’s Language Focus in your own sentences.",
+    "grammarFocus": "Decide what eventually and managed to tell us together, put five events in the order they happened, then complete the lines with so (a result), to (a purpose) and because (a reason).",
+    "pronunciationFocus": "Stress: for-BID-den, VIS-i-ble, in-BORN, HAR-mo-ny. Say the list of actions with a small rise on each verb: “stretched out his hand, picked one of the fruits and offered it to Eve”.",
+    "lessonPlan": "Look at the Modesty hotspot. What is modesty? Listen once and follow the events. Read the chapter again and number the events in your notebook.",
+    "discussionPoints": [
+     "They forgot the warning Allah had given them. What helps you remember good advice at the moment you really need it?"
+    ],
+    "interactiveTips": [
+     "Open the picture hotspots “The Forbidden Tree” and “Modesty”."
+    ],
+    "differentiation": {
+     "strugglingLearners": "Go back to paragraph 3. Read the last sentence and find the reason after because. Remove any option that belongs to another chapter, then try again.",
+     "fastFinishers": "Language Focus, last activity: Write or say four connected sentences about a new situation in which an earlier warning is forgotten, an action causes a change, and someone reacts for a clear purpose. Use managed to, when, so, to + verb and because."
+    },
+    "whatToNotice": [
+     "The chapter is a chain: A trick → a forgotten warning → eating from the tree → pain and shame → covering themselves.",
+     "Notice “Eventually, Iblis managed to trick them.” Eventually and managed to show that Iblis tried for some time before he succeeded."
+    ],
+    "readListen": [
+     "Look at the Modesty hotspot. What is modesty?",
+     "Listen once and follow the events.",
+     "Read the chapter again and number the events in your notebook.",
+     "Open the picture hotspots “The Forbidden Tree” and “Modesty” and connect each one to a sentence in the chapter."
+    ],
+    "findAnswerInStory": [
+     "Paragraph 1: find what Iblis did and what Adam (pbuh) and Eve forgot.",
+     "Paragraph 2: find how Adam (pbuh) felt when he finished eating and what changed around him.",
+     "Paragraph 3: find what they discovered, what they did, and the word because."
+    ],
+    "vocabularyInContext": [
+     "Word Notes: forbidden, shame, visible, inborn.",
+     "“a sense of shame (haya) is part of inborn human nature”: what does inborn tell you about haya?",
+     "Write one sentence with forbidden and one with visible."
+    ],
+    "quickChallengeGuide": "The question asks why they hurried to cover themselves. The answer is in the last sentence of paragraph 3, after because.",
+    "wrongAnswerSupport": [
+     "Go back to paragraph 3.",
+     "Read the last sentence and find the reason after because.",
+     "Remove any option that belongs to another chapter, then try again."
+    ],
+    "selfCheck": [
+     "Can I tell the events in order?",
+     "Can I describe their feelings after eating?",
+     "Can I give a result with so, a purpose with to and a reason with because?"
+    ],
+    "useWhatYouLearned": "Language Focus, last activity: Write or say four connected sentences about a new situation in which an earlier warning is forgotten, an action causes a change, and someone reacts for a clear purpose. Use managed to, when, so, to + verb and because.",
+    "reflectionPrompt": "They forgot the warning Allah had given them. What helps you remember good advice at the moment you really need it?"
+   },
+   {
+    "chapter": "Chapter 7: Forgiveness and Repentance",
+    "timing": "About 25 minutes",
+    "objectives": [
+     "I can compare how Adam (pbuh) and Eve responded to their mistake with how Iblis responded.",
+     "I can explain why arrogance is called the biggest barrier.",
+     "I can use but, On the other hand and because to connect two responses."
+    ],
+    "pedagogy": "Read and listen for meaning, find the evidence, do the Quick Challenge, then use the chapter’s Language Focus in your own sentences.",
+    "grammarFocus": "Match phrases such as “learned from their mistake” and “chose an opposite path” with their meanings, complete the lines with but, On the other hand and because, then choose decided never to repeat, wanted Allah to pardon and to live.",
+    "pronunciationFocus": "Stress: OP-po-site, PAR-don, BAR-ri-er, dis-TIN-guish-ing. Say Adam’s answer gently: “No, my Lord, but I am shy of You.”",
+    "lessonPlan": "Look at the Arrogance as a Barrier hotspot. What can a barrier stop? Listen once and follow the text. Read paragraphs 2 and 3 again and make two lists: What Adam (pbuh) and Eve did, and what Iblis did.",
+    "discussionPoints": [
+     "Adam (pbuh) said sorry and learned from his mistake. What makes an apology real, and why is it sometimes hard to say sorry?"
+    ],
+    "interactiveTips": [
+     "Open the picture hotspots “Mistake and Pardon” and “Arrogance as a Barrier”."
+    ],
+    "differentiation": {
+     "strugglingLearners": "Go back to paragraphs 2 and 3. Find “On the other hand” and read the two sentences after it. Match again.",
+     "fastFinishers": "Language Focus, last activity: Write or say four connected sentences about a new situation where someone makes a mistake that was not on purpose, responds responsibly and takes a useful next step. Use at least four patterns, such as learned from, decided never to, wanted … to, because and on the other hand."
+    },
+    "whatToNotice": [
+     "The chapter puts two paths side by side: Adam (pbuh) and Eve say sorry and learn, while Iblis never admits he was wrong.",
+     "Notice “it wasn’t on purpose”: the mistake was real, but it was not planned."
+    ],
+    "readListen": [
+     "Look at the Arrogance as a Barrier hotspot. What can a barrier stop?",
+     "Listen once and follow the text.",
+     "Read paragraphs 2 and 3 again and make two lists: What Adam (pbuh) and Eve did, and what Iblis did.",
+     "Open the picture hotspots “Mistake and Pardon” and “Arrogance as a Barrier” and connect each one to a sentence in the chapter."
+    ],
+    "findAnswerInStory": [
+     "Paragraph 1: find what Adam (pbuh) cried and how he answered Allah’s question.",
+     "Paragraph 2: find four things Adam (pbuh) and Eve did after their mistake.",
+     "Paragraphs 3–4: find why Iblis never admitted he was wrong, and what Allah did for Adam (pbuh) and Eve."
+    ],
+    "vocabularyInContext": [
+     "Word Notes: opposite, pardon, barrier, distinguishing.",
+     "“the biggest barrier to acting the right way”: what does arrogance stop people from doing?",
+     "Write one sentence with pardon and one with opposite."
+    ],
+    "quickChallengeGuide": "You will match Adam (pbuh) and Eve, Iblis and arrogance with what the chapter says. Use paragraph 2 for Adam (pbuh) and Eve, and paragraph 3 for Iblis and arrogance.",
+    "wrongAnswerSupport": [
+     "Go back to paragraphs 2 and 3.",
+     "Find “On the other hand” and read the two sentences after it.",
+     "Match again."
+    ],
+    "selfCheck": [
+     "Can I describe the two paths in one sentence with on the other hand?",
+     "Can I explain why arrogance is a barrier?",
+     "Can I use decided never to and wanted … to correctly?"
+    ],
+    "useWhatYouLearned": "Language Focus, last activity: Write or say four connected sentences about a new situation where someone makes a mistake that was not on purpose, responds responsibly and takes a useful next step. Use at least four patterns, such as learned from, decided never to, wanted … to, because and on the other hand.",
+    "reflectionPrompt": "Adam (pbuh) said sorry and learned from his mistake. What makes an apology real, and why is it sometimes hard to say sorry?"
+   },
+   {
+    "chapter": "Chapter 8: Struggle and Survival on Earth",
+    "timing": "About 25 minutes",
+    "objectives": [
+     "I can describe the work Adam (pbuh) and Eve would do on earth.",
+     "I can explain why life on earth was a struggle.",
+     "I can say why, with what and how long with to, with and for."
+    ],
+    "pedagogy": "Read and listen for meaning, find the evidence, do the Quick Challenge, then use the chapter’s Language Focus in your own sentences.",
+    "grammarFocus": "Sort phrases by what they add: why (to grow, for shelter), with what (with clothes and weapons) or how long (for many years), fix three mistakes (would, to survive, people not to remember), then complete the lines with In addition, had to and both.",
+    "pronunciationFocus": "Stress: SHEL-ter, STRUG-gle, sur-VIVE, WEAP-ons. The ea in weapons sounds like the e in bed.",
+    "lessonPlan": "Look at the Work on Earth hotspot. What kinds of work do you see? Listen once and follow the text. Read paragraph 2 again and list everything they had to do.",
+    "discussionPoints": [
+     "Adam (pbuh) and Eve would protect nature and help the weak. What is one small way you can do these two things this week?"
+    ],
+    "interactiveTips": [
+     "Open the picture hotspots “Work on Earth” and “Protection from Danger”."
+    ],
+    "differentiation": {
+     "strugglingLearners": "Go back to paragraph 2 of this chapter and read what they had to do. Then read about the blessings in paragraph 1 of Chapter 5. Decide if life was the same in both places, then try again.",
+     "fastFinishers": "Language Focus, last activity: Write or say four connected sentences about people who begin life in a difficult new place. Use at least four patterns: would for an expected role, had to, to + verb for purpose, in addition, with + noun, because, or for + a period of time."
+    },
+    "whatToNotice": [
+     "Paragraph 1 describes the role that was still ahead of them (would). Paragraph 2 describes what they really had to do (had to).",
+     "Notice “He was still there because he wanted people not to remember Allah.” The danger of Iblis did not end in Paradise; he followed them to earth."
+    ],
+    "readListen": [
+     "Look at the Work on Earth hotspot. What kinds of work do you see?",
+     "Listen once and follow the text.",
+     "Read paragraph 2 again and list everything they had to do.",
+     "Open the picture hotspots “Work on Earth” and “Protection from Danger” and connect each one to a sentence in the chapter."
+    ],
+    "findAnswerInStory": [
+     "Paragraph 1: find five things they would do on earth.",
+     "Paragraph 2: find what they had to do to survive, and the words “In addition”.",
+     "Paragraph 3: find why Iblis followed them and how long Adam (pbuh) and Eve lived on earth."
+    ],
+    "vocabularyInContext": [
+     "Word Notes: shelter, struggle, survive, weapons.",
+     "“they had to struggle to survive”: why is this very different from life in Paradise?",
+     "Write one sentence with shelter and one with survive."
+    ],
+    "quickChallengeGuide": "The statement compares life on earth with life in Paradise. Compare paragraph 1 of Chapter 5 with paragraph 2 of this chapter.",
+    "wrongAnswerSupport": [
+     "Go back to paragraph 2 of this chapter and read what they had to do.",
+     "Then read about the blessings in paragraph 1 of Chapter 5.",
+     "Decide if life was the same in both places, then try again."
+    ],
+    "selfCheck": [
+     "Can I name three things they had to do on earth?",
+     "Can I explain why Iblis followed them?",
+     "Can I use to, with and for with the right meaning?"
+    ],
+    "useWhatYouLearned": "Language Focus, last activity: Write or say four connected sentences about people who begin life in a difficult new place. Use at least four patterns: would for an expected role, had to, to + verb for purpose, in addition, with + noun, because, or for + a period of time.",
+    "reflectionPrompt": "Adam (pbuh) and Eve would protect nature and help the weak. What is one small way you can do these two things this week?"
+   },
+   {
+    "chapter": "Chapter 9: The First Messenger and the Path of Guidance",
+    "timing": "About 25 minutes",
+    "objectives": [
+     "I can explain when and how Adam (pbuh) became the first Messenger.",
+     "I can explain why Allah kept sending messengers.",
+     "I can follow the chapter’s time markers from the beginning to years later."
+    ],
+    "pedagogy": "Read and listen for meaning, find the evidence, do the Quick Challenge, then use the chapter’s Language Focus in your own sentences.",
+    "grammarFocus": "Decide if never stopped sending means the same as never stopped to send, put four parts of the chapter in order with the time markers, then fix three mistakes: teaching people to live, to show (not for show), and if people forget (not will forget).",
+    "pronunciationFocus": "Stress: com-MU-ni-ty, RIGHT-eous-ly, SA-cred, PUR-pose. Righteously sounds like RIGHT-chus-ly.",
+    "lessonPlan": "Look at The First Community hotspot. Why does a community need a guide? Listen once and follow the text. Read the chapter again and circle At that time, After a period of time, Thus and Years later.",
+    "discussionPoints": [
+     "The chapter says that if people forget Allah, they lose the meaning and purpose of life. What gives your day meaning and purpose?"
+    ],
+    "interactiveTips": [
+     "Open the picture hotspots “The First Community” and “Messengers and Sacred Texts”."
+    ],
+    "differentiation": {
+     "strugglingLearners": "Go back to paragraph 3. Read the last sentence from because to the end. Try again.",
+     "fastFinishers": "Language Focus, last activity: Write or say four connected sentences about someone who begins guiding a group. Use at least four patterns: after or when, became, started teaching … to, never stopped + -ing, to + verb for purpose, wanted … to, or if + present for a general result."
+    },
+    "whatToNotice": [
+     "The chapter moves through time: No community → a community and the first Messenger → many messengers after the death of Adam (pbuh).",
+     "Notice “Allah never stopped sending messengers and sacred texts to remind people of Him.” Never stopped sending means the sending went on."
+    ],
+    "readListen": [
+     "Look at The First Community hotspot. Why does a community need a guide?",
+     "Listen once and follow the text.",
+     "Read the chapter again and circle At that time, After a period of time, Thus and Years later.",
+     "Open the picture hotspots “The First Community” and “Messengers and Sacred Texts” and connect each one to a sentence in the chapter."
+    ],
+    "findAnswerInStory": [
+     "Paragraph 1: find when Adam (pbuh) became the first Messenger and what he taught people.",
+     "Paragraph 2: find what Adam (pbuh) and Eve taught their children, and why.",
+     "Paragraph 3: find why Allah sent many other messengers and why people should keep Allah in their minds."
+    ],
+    "vocabularyInContext": [
+     "Word Notes: community, righteously, sacred, purpose.",
+     "“to live righteously and act honestly”: what does a person who lives righteously do?",
+     "Write one sentence with community and one with purpose."
+    ],
+    "quickChallengeGuide": "The question asks why the messengers wanted people to keep Allah in their minds. The answer is in the last sentence of paragraph 3, after because.",
+    "wrongAnswerSupport": [
+     "Go back to paragraph 3.",
+     "Read the last sentence from because to the end.",
+     "Try again."
+    ],
+    "selfCheck": [
+     "Can I tell the three stages of the chapter with time markers?",
+     "Can I explain why messengers kept coming?",
+     "Can I use teach + person + to and never stopped + -ing?"
+    ],
+    "useWhatYouLearned": "Language Focus, last activity: Write or say four connected sentences about someone who begins guiding a group. Use at least four patterns: after or when, became, started teaching … to, never stopped + -ing, to + verb for purpose, wanted … to, or if + present for a general result.",
+    "reflectionPrompt": "The chapter says that if people forget Allah, they lose the meaning and purpose of life. What gives your day meaning and purpose?"
+   },
+   {
+    "chapter": "Chapter 10: The Two Sons: Habil and Qabil",
+    "timing": "About 25 minutes",
+    "objectives": [
+     "I can describe how Habil and Qabil were different.",
+     "I can compare the two offerings and explain what they show.",
+     "I can use but, had to and best to compare and explain."
+    ],
+    "pedagogy": "Read and listen for meaning, find the evidence, do the Quick Challenge, then use the chapter’s Language Focus in your own sentences.",
+    "grammarFocus": "Match phrases such as “grew up to be” and “a serious disagreement” with their meanings, choose became, had to and best, then fix three mistakes: loved taking, but Qabil, and care about pleasing.",
+    "pronunciationFocus": "Stress: JEAL-ous, SHEP-herd, dis-a-GREE-ment, OF-fer-ing. The h in shepherd is silent: SHEP-erd.",
+    "lessonPlan": "Look at The Two Offerings hotspot. What did each brother bring? Listen once and follow the text. Read the chapter again and make a table: Habil / Qabil (character, work, gift).",
+    "discussionPoints": [
+     "The chapter says real goodness is giving out the best and the most loved. When did someone give you their best, and how did it feel?"
+    ],
+    "interactiveTips": [
+     "Open the picture hotspots “Two Different Brothers” and “The Two Offerings”."
+    ],
+    "differentiation": {
+     "strugglingLearners": "Go back to paragraph 2. Read the sentence about Qabil that comes after the two gifts. Check each option against that sentence, then try again.",
+     "fastFinishers": "Language Focus, last activity: Write or say four connected sentences about two people who respond differently to the same task. Use at least four patterns: when … grew up, became, to + verb for purpose, had to, but or however, didn’t care about + -ing, and a general principle such as real responsibility is + -ing."
+    },
+    "whatToNotice": [
+     "Paragraph 1 compares the brothers’ characters and work. Paragraph 2 shows the difference in action, in their gifts.",
+     "Notice “just a handful of his crops that were not very valuable”. Just makes the gift sound small next to Habil’s best sheep."
+    ],
+    "readListen": [
+     "Look at The Two Offerings hotspot. What did each brother bring?",
+     "Listen once and follow the text.",
+     "Read the chapter again and make a table: Habil / Qabil (character, work, gift).",
+     "Open the picture hotspots “Two Different Brothers” and “The Two Offerings” and connect each one to a sentence in the chapter."
+    ],
+    "findAnswerInStory": [
+     "Paragraph 1: find how Habil and Qabil were different in character.",
+     "Paragraph 1: find the work each brother did when they grew up.",
+     "Paragraph 2: find why they made an offering, what each one brought, and the sentence that starts with However."
+    ],
+    "vocabularyInContext": [
+     "Word Notes: jealous, shepherd, disagreement, offering.",
+     "“Qabil was mostly jealous.” What does mostly add?",
+     "Write one sentence with disagreement and one with offering."
+    ],
+    "quickChallengeGuide": "The question asks what Qabil’s offering shows about him. Compare the two gifts in paragraph 2, then read the sentence that comes after them.",
+    "wrongAnswerSupport": [
+     "Go back to paragraph 2.",
+     "Read the sentence about Qabil that comes after the two gifts.",
+     "Check each option against that sentence, then try again."
+    ],
+    "selfCheck": [
+     "Can I describe both brothers in one sentence with but?",
+     "Can I explain what the two offerings show?",
+     "Can I use had to and best correctly?"
+    ],
+    "useWhatYouLearned": "Language Focus, last activity: Write or say four connected sentences about two people who respond differently to the same task. Use at least four patterns: when … grew up, became, to + verb for purpose, had to, but or however, didn’t care about + -ing, and a general principle such as real responsibility is + -ing.",
+    "reflectionPrompt": "The chapter says real goodness is giving out the best and the most loved. When did someone give you their best, and how did it feel?"
+   },
+   {
+    "chapter": "Chapter 11: The First Conflict and the Raven",
+    "timing": "About 25 minutes",
+    "objectives": [
+     "I can put the events of the chapter in order, from the accepted offering to Qabil’s regret.",
+     "I can compare Qabil’s threat with Habil’s refusal.",
+     "I can report what someone said with admitted that and did not know what."
+    ],
+    "pedagogy": "Read and listen for meaning, find the evidence, do the Quick Challenge, then use the chapter’s Language Focus in your own sentences.",
+    "grammarFocus": "Sort the spoken words into the future (a threat or a refusal), the past (an admission) and now (a judgment or an inability), choose because, started to panic and the way to put, then report Qabil’s words with admitted that he had killed and did not know what he should do.",
+    "pronunciationFocus": "Stress: RA-ven, PAN-ic, DIG-ging. Compare worse and worst: “I am worse than this raven” compares two things, and “the worst thing in life” compares with everything.",
+    "lessonPlan": "Look at the A Lesson from a Bird hotspot. What did the raven show Qabil? Listen once and follow the text. The chapter describes a killing, so read it calmly and focus on the choices and feelings. Read the chapter again and mark who says each line of direct speech.",
+    "discussionPoints": [
+     "Habil said he would not fight back because he feared Allah. What can a person do to stop anger before it grows?"
+    ],
+    "interactiveTips": [
+     "Open the picture hotspots “Brother Against Brother” and “A Lesson from a Bird”."
+    ],
+    "differentiation": {
+     "strugglingLearners": "Read the chapter again and stop after each event. Remember that the raven comes only after Qabil does not know what to do. Put the events in order again.",
+     "fastFinishers": "Language Focus, last activity: Write or say four connected sentences about someone who makes a serious mistake and then has to decide what to do next. Use at least four patterns: because, will or won’t, when, started + -ing, didn’t know what … should, showed … the way to, or worse than. Write about a new situation, not this chapter."
+    },
+    "whatToNotice": [
+     "Qabil’s anger comes first and his sadness comes later. Notice “Soon, Qabil’s anger cooled, and he felt very sad.”",
+     "The spoken words show three times: a threat and a refusal about the future, an admission about the past, and a judgment about now."
+    ],
+    "readListen": [
+     "Look at the A Lesson from a Bird hotspot. What did the raven show Qabil?",
+     "Listen once and follow the text. The chapter describes a killing, so read it calmly and focus on the choices and feelings.",
+     "Read the chapter again and mark who says each line of direct speech.",
+     "Open the picture hotspots “Brother Against Brother” and “A Lesson from a Bird” and connect each one to a sentence in the chapter."
+    ],
+    "findAnswerInStory": [
+     "Beginning: Find why Allah accepted Habil’s offering and how Qabil reacted.",
+     "Middle: Find Habil’s answer and the two reasons he gives.",
+     "End: Find how Qabil felt after his anger cooled, what the raven did, and what Qabil said about himself."
+    ],
+    "vocabularyInContext": [
+     "Word Notes: harm, panic, raven, digging.",
+     "“I won’t fight back and harm you.” What does Habil refuse to do?",
+     "Write one sentence with panic about a calm way to deal with it."
+    ],
+    "quickChallengeGuide": "You will put five events in order. The chapter is one paragraph: Follow it from the first sentence to the last.",
+    "wrongAnswerSupport": [
+     "Read the chapter again and stop after each event.",
+     "Remember that the raven comes only after Qabil does not know what to do.",
+     "Put the events in order again."
+    ],
+    "selfCheck": [
+     "Can I tell the events in order without adding details?",
+     "Can I explain the difference between Qabil’s threat and Habil’s refusal?",
+     "Can I report Qabil’s words with admitted that?"
+    ],
+    "useWhatYouLearned": "Language Focus, last activity: Write or say four connected sentences about someone who makes a serious mistake and then has to decide what to do next. Use at least four patterns: because, will or won’t, when, started + -ing, didn’t know what … should, showed … the way to, or worse than. Write about a new situation, not this chapter.",
+    "reflectionPrompt": "Habil said he would not fight back because he feared Allah. What can a person do to stop anger before it grows?"
+   },
+   {
+    "chapter": "Chapter 12: The Legacy of Adam",
+    "timing": "About 25 minutes",
+    "objectives": [
+     "I can explain why Adam (pbuh) had to continue his life after losing his sons.",
+     "I can name the lessons the story leaves for people today.",
+     "I can use had to, over the years and still for necessity, time and continuity."
+    ],
+    "pedagogy": "Read and listen for meaning, find the evidence, do the Quick Challenge, then use the chapter’s Language Focus in your own sentences.",
+    "grammarFocus": "Decide what “The story suggests that” does in the sentence about jealousy and anger, complete the lines with had to, over and still, then fix two mistakes: the importance of admitting, and to avoid to keep the list parallel.",
+    "pronunciationFocus": "Stress: MES-sage, ad-MIT-ting, world-WIDE, JEAL-ous-y. Stress still for continuity: “their stories still guide us”.",
+    "lessonPlan": "Look at the A Lasting Message hotspot. What does the message still teach? Listen once and follow the text. Read the chapter again and underline every still.",
+    "discussionPoints": [
+     "The message teaches the importance of admitting mistakes and turning back to Allah. Why is admitting a mistake a sign of strength, not weakness?"
+    ],
+    "interactiveTips": [
+     "Open the picture hotspots “A Family Across the World” and “A Lasting Message”."
+    ],
+    "differentiation": {
+     "strugglingLearners": "Go back to the middle of the chapter. Read the sentence that starts with But, up to had to. Remove any option that belongs to Chapter 11, then try again.",
+     "fastFinishers": "Language Focus, last activity: Write or say four connected sentences about a person, family, class or community whose experience leaves a useful lesson. Use at least four patterns: as a … had to, over the years, still, never, suggests that … should, or the importance of + -ing."
+    },
+    "whatToNotice": [
+     "The chapter moves from sadness to continuity: a loss, a duty, a family across the world and a message that still guides people.",
+     "Notice “The story suggests that true believers should stay away from jealousy and control their anger.” This is advice the writer takes from the story, not an event in it."
+    ],
+    "readListen": [
+     "Look at the A Lasting Message hotspot. What does the message still teach?",
+     "Listen once and follow the text.",
+     "Read the chapter again and underline every still.",
+     "Open the picture hotspots “A Family Across the World” and “A Lasting Message” and connect each one to a sentence in the chapter."
+    ],
+    "findAnswerInStory": [
+     "Beginning: Find why Adam (pbuh) became very sad.",
+     "Middle: Find the sentence that starts with But, and what his children and grandchildren did.",
+     "End: Find what the message still calls people to do and what it teaches about mistakes."
+    ],
+    "vocabularyInContext": [
+     "Word Notes: spread, admitting, message, guide.",
+     "“spread his message worldwide”: how did the message reach the whole world?",
+     "Write one sentence with admitting and one with guide."
+    ],
+    "quickChallengeGuide": "The question asks why Adam (pbuh) still had to continue his life. Read the middle of the chapter and find the sentence that starts with But.",
+    "wrongAnswerSupport": [
+     "Go back to the middle of the chapter.",
+     "Read the sentence that starts with But, up to had to.",
+     "Remove any option that belongs to Chapter 11, then try again."
+    ],
+    "selfCheck": [
+     "Can I explain the two roles of Adam (pbuh) in one sentence?",
+     "Can I name two lessons the message still teaches?",
+     "Can I use had to, over the years and still correctly?"
+    ],
+    "useWhatYouLearned": "Language Focus, last activity: Write or say four connected sentences about a person, family, class or community whose experience leaves a useful lesson. Use at least four patterns: as a … had to, over the years, still, never, suggests that … should, or the importance of + -ing.",
+    "reflectionPrompt": "The message teaches the importance of admitting mistakes and turning back to Allah. Why is admitting a mistake a sign of strength, not weakness?"
+   }
+  ],
+  "metadata": {
+   "title": "Prophet Adam B1 — Self-Study Guide",
+   "subtitle": "Read • Find • Check • Build • Use",
+   "level": "B1",
+   "language": "English",
+   "estimatedStudyTime": "About 25 minutes per chapter, plus the review pages at the end",
+   "whoIsThisFor": "B1 learners who study the story of Prophet Adam (pbuh) on their own or at home.",
+   "learningGoals": [
+    "Understand the 12 chapters of the story of Prophet Adam (pbuh).",
+    "Find evidence in the story before answering.",
+    "Explain causes, contrasts and results.",
+    "Use each chapter’s Language Focus in connected sentences.",
+    "Connect humility, responsibility and self-control with real actions."
+   ],
+   "recommendedUse": [
+    "Study one chapter at a time.",
+    "Listen and read before the Quick Challenge.",
+    "Repair wrong answers with the text.",
+    "Do the Language Focus after you understand the chapter.",
+    "Do the review pages after Chapter 12."
+   ]
+  },
+  "sections": [
+   {
+    "title": "1. One Chapter per Session",
+    "icon": "Target",
+    "text": "Each chapter takes about 25 minutes. Open “Study Path” for the steps of your chapter.",
+    "points": [
+     "Preview the title and hotspots.",
+     "Listen and read for the main idea.",
+     "Find the evidence.",
+     "Do the Quick Challenge.",
+     "Do the Language Focus."
+    ]
+   },
+   {
+    "title": "2. Listen and Read",
+    "icon": "Ear",
+    "text": "Use the audio twice: Once for the main idea, once to follow the exact words.",
+    "points": [
+     "First listening: What is the chapter about?",
+     "Second listening: Follow the text line by line.",
+     "Replay one long sentence and say it with the same pauses."
+    ]
+   },
+   {
+    "title": "3. Word Notes and Hotspots",
+    "icon": "BookOpen",
+    "text": "Each chapter has four Word Notes and two picture hotspots. Use them after you have tried to understand the sentence yourself.",
+    "points": [
+     "Guess the meaning from the sentence.",
+     "Check the Word Note.",
+     "Write the word in a new sentence of your own."
+    ]
+   },
+   {
+    "title": "4. Quick Challenge",
+    "icon": "CheckCircle",
+    "text": "Answer before you read the feedback. If you are wrong, repair the answer with the text.",
+    "points": [
+     "Find the paragraph the question is about.",
+     "Read the key sentence again.",
+     "Explain why the right answer is right, then try again."
+    ]
+   },
+   {
+    "title": "5. Language Focus",
+    "icon": "Eye",
+    "text": "Each chapter has four Language Focus activities built from the chapter’s own sentences.",
+    "points": [
+     "Activity 1 (Notice): look at a sentence and what it means.",
+     "Activities 2–3 (Build): choose, complete, correct or rewrite forms.",
+     "Activity 4 (Use): write or say four connected sentences about a new situation."
+    ]
+   },
+   {
+    "title": "6. When It Is Hard",
+    "icon": "HelpCircle",
+    "text": "Change how you study, not your goal.",
+    "points": [
+     "Work one paragraph at a time.",
+     "Use the hotspots to get the big picture first.",
+     "Write a one-line summary of each paragraph.",
+     "Focus on two Word Notes today."
+    ]
+   },
+   {
+    "title": "7. Values in the Story",
+    "icon": "Heart",
+    "text": "The book contrasts arrogance and jealousy with humility, repentance and good action. Connect each value to one action.",
+    "points": [
+     "Humility: Value comes from knowledge and goodness, not from origin, race or color (Chapter 3).",
+     "Responsibility: Admit your mistake, say sorry and learn from it instead of blaming others (Chapters 4, 7 and 12).",
+     "Care with trust: Check friendly words before you believe them (Chapters 5 and 6).",
+     "Generosity: Give your best, not what is left over (Chapter 10).",
+     "Self-control: Stop jealousy and anger before they grow (Chapters 11 and 12)."
+    ]
+   },
+   {
+    "title": "8. At the End of the Book",
+    "icon": "Stars",
+    "text": "After Chapter 12, do the review pages in this order. Go back to the chapter when an answer is not clear.",
+    "points": [
+     "Knowledge Check",
+     "Language Review",
+     "B1 Vocabulary Challenge",
+     "Master Glossary",
+     "Final Challenge"
+    ]
+   }
+  ]
+ }
+}
