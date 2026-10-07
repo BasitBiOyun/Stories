@@ -1,7 +1,7 @@
 import { appImage } from './lib/mediaImage';
 import { usePreloadAudio } from './components/book/ChapterAudio';
 import React, { Suspense, lazy, useState, useEffect, useMemo, useRef } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
+import { motion, AnimatePresence, useReducedMotion } from 'motion/react';
 import {
   BookMarked,
   ChevronLeft,
@@ -210,6 +210,13 @@ const AppContent = () => {
   );
   usePreloadAudio(nextChapterAudio);
   const isFinalChallengePage = currentPage?.type === 'final-challenge';
+  // Pages slide the way the reader turns them (forward = towards the reading direction), like a book.
+  const reduceMotion = useReducedMotion();
+  const pageTurnRef = useRef({ index: currentPageIndex, dir: 1 });
+  if (pageTurnRef.current.index !== currentPageIndex) {
+    pageTurnRef.current = { index: currentPageIndex, dir: currentPageIndex > pageTurnRef.current.index ? 1 : -1 };
+  }
+  const pageShift = reduceMotion ? 0 : pageTurnRef.current.dir * (isRTL ? -1 : 1) * 28;
   const totalPages = currentBook?.pages.length || 0;
   const progress = totalPages > 0 ? (currentPageIndex + 1) / totalPages : 0;
 
@@ -1044,13 +1051,19 @@ const AppContent = () => {
               "w-full max-w-[1700px] desk:max-w-[1900px] wide:max-w-none mx-auto h-full flex flex-col min-h-0",
               !showSummary && "p-3 sm:p-5 md:p-7 lg:py-7 lg:px-10 xl:px-14 2xl:px-18 wide:lg:px-6 wide:xl:px-8 wide:2xl:px-10"
             )}>
-              <AnimatePresence mode="wait">
+              <AnimatePresence mode="wait" custom={pageShift}>
                 <motion.div
                   key={showSummary ? 'summary' : storyMode && currentPage?.type === 'story' ? `${currentLevel}-story-flow` : `${currentLevel}-${currentPageIndex}`}
-                  initial={{ opacity: 0, scale: showSummary ? 1.05 : 1, y: showSummary ? 0 : 15 }}
-                  animate={{ opacity: 1, scale: 1, y: 0 }}
-                  exit={{ opacity: 0, scale: showSummary ? 0.95 : 1, y: showSummary ? 0 : -15 }}
-                  transition={{ duration: 0.35, ease: "easeOut" }}
+                  custom={pageShift}
+                  variants={{
+                    enter: (shift: number) => ({ opacity: 0, x: showSummary ? 0 : shift, scale: showSummary && !reduceMotion ? 1.03 : 1 }),
+                    center: { opacity: 1, x: 0, scale: 1 },
+                    exit: (shift: number) => ({ opacity: 0, x: showSummary ? 0 : -shift, scale: 1 }),
+                  }}
+                  initial="enter"
+                  animate="center"
+                  exit="exit"
+                  transition={{ duration: 0.26, ease: [0.22, 0.8, 0.3, 1] }}
                   className="h-full flex flex-col overflow-hidden min-h-0"
                 >
                   <Suspense fallback={null}>{renderPage()}</Suspense>

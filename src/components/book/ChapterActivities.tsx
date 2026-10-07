@@ -458,7 +458,7 @@ export const ChapterActivityRail = ({ page, completedExercises, onOpenExercise, 
             onClick={row.onClick}
             aria-label={`${row.label} · ${row.status}`}
             title={`${row.label} · ${row.status}`}
-            className="group flex w-14 flex-col items-center gap-1 rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
+            className="group flex w-16 flex-col items-center gap-1.5 rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
           >
             <span className={cn(
               'relative flex h-12 w-12 items-center justify-center rounded-2xl border shadow-[0_10px_20px_-16px_rgba(63,49,28,0.6)] transition-colors',
@@ -467,7 +467,7 @@ export const ChapterActivityRail = ({ page, completedExercises, onOpenExercise, 
               <Icon size={21} />
               {(row.done || row.key === 'lf' || row.key === 'ic') && (
                 <span className={cn(
-                  'absolute -bottom-1 -end-1 flex h-[18px] min-w-[18px] items-center justify-center rounded-full px-1 font-display text-[9px] font-bold tabular-nums ring-2 ring-white',
+                  'absolute -bottom-1 -end-1 flex h-[18px] min-w-[18px] items-center justify-center rounded-full px-1 font-display text-[10px] font-bold tabular-nums ring-2 ring-white',
                   row.done ? 'bg-emerald-600 text-white' : 'bg-brand-700 text-white',
                 )}>
                   {row.done ? <CheckCircle2 size={11} /> : row.status.replace(/\s/g, '')}
@@ -475,7 +475,7 @@ export const ChapterActivityRail = ({ page, completedExercises, onOpenExercise, 
               )}
             </span>
             {/* Always visible, so a touch board needs no hover to tell the icons apart */}
-            <span className={cn('max-w-full truncate font-display font-semibold leading-tight', isArabic ? 'text-[12px]' : 'text-[11px]', row.done ? 'text-emerald-700' : 'text-wood/70')}>
+            <span className={cn('max-w-full truncate font-display font-semibold leading-tight', isArabic ? 'text-[13px]' : 'text-[12.5px]', row.done ? 'text-emerald-700' : 'text-wood/80')}>
               {row.short}
             </span>
           </button>

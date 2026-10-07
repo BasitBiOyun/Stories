@@ -18,12 +18,14 @@ interface MyWordsPanelProps {
   book?: { storyId: string; level: Level };
   /** Review only words from other books (the reminder at the start of a new book). */
   excludeBook?: { storyId: string; level: Level };
+  /** Phones: shown as a tab of the dark library, not as a page over it. */
+  embedded?: boolean;
 }
 
 const sameBook = (word: MyWord, book: { storyId: string; level: Level }) => word.storyId === book.storyId && word.level === book.level;
 
 /** "My words": the Word Notes the reader saved, with a short flashcard review. Everything stays on the device. */
-export const MyWordsPanel: React.FC<MyWordsPanelProps> = ({ isOpen, onClose, startInReview = false, book, excludeBook }) => {
+export const MyWordsPanel: React.FC<MyWordsPanelProps> = ({ isOpen, onClose, startInReview = false, book, excludeBook, embedded = false }) => {
   const { language, isRTL, formatNumber } = useLanguage();
   const lang = language === 'ar' ? 'ar' : 'en';
   const allWords = useMyWords();
@@ -121,39 +123,10 @@ export const MyWordsPanel: React.FC<MyWordsPanelProps> = ({ isOpen, onClose, sta
     setIndex(i => i + 1);
   };
 
-  return createPortal(
-    <AnimatePresence>
-      {isOpen && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.18 }}
-          className="fixed inset-0 z-[300] overflow-y-auto overscroll-contain bg-[#FBF8F1]"
-          data-my-words
-        >
-          <motion.div
-            initial={{ y: 12, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            exit={{ y: 12, opacity: 0 }}
-            role="dialog"
-            aria-modal="true"
-            aria-label={SECTION_ICONS.myWords[lang]}
-            dir={isRTL ? 'rtl' : 'ltr'}
-            onClick={event => event.stopPropagation()}
-            className={cn('relative mx-auto min-h-full w-full max-w-4xl px-5 pb-16 pt-5 text-wood sm:px-8 sm:pt-8', isRTL && 'font-arabic')}
-          >
-            {/* A page of its own: the way back is a clear button at the top, not a close cross. */}
-            <button
-              ref={closeRef}
-              type="button"
-              onClick={onClose}
-              className="mb-6 inline-flex min-h-10 items-center gap-1.5 rounded-full border border-brand-200 bg-white ps-3 pe-4 font-display text-[13px] font-semibold text-brand-800 hover:bg-brand-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 sm:text-sm"
-            >
-              <ChevronLeft size={16} className="rtl:rotate-180" aria-hidden="true" />
-              {isRTL ? 'رُجُوع' : 'Back'}
-            </button>
-
+  const body = (
+    <>
+            {/* Embedded on phones, the top bar already names the tab. */}
+            {!embedded && (
             <div className="flex items-center gap-3">
               <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-brand-100 text-brand-800">
                 <Icon size={22} />
@@ -163,6 +136,7 @@ export const MyWordsPanel: React.FC<MyWordsPanelProps> = ({ isOpen, onClose, sta
                 {book && <p className="text-sm text-wood/60">{bookName({ storyId: book.storyId, level: book.level } as MyWord)}</p>}
               </div>
             </div>
+            )}
 
             {mode === 'list' && (
               <>
@@ -273,6 +247,51 @@ export const MyWordsPanel: React.FC<MyWordsPanelProps> = ({ isOpen, onClose, sta
                 )}
               </div>
             )}
+    </>
+  );
+
+  if (embedded) {
+    return (
+      <div className={cn('my-words-dark px-4 pb-6 pt-2', isRTL && 'font-arabic')} dir={isRTL ? 'rtl' : 'ltr'} data-my-words>
+        {body}
+      </div>
+    );
+  }
+
+  return createPortal(
+    <AnimatePresence>
+      {isOpen && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.18 }}
+          className="fixed inset-0 z-[300] overflow-y-auto overscroll-contain bg-[#FBF8F1]"
+          data-my-words
+        >
+          <motion.div
+            initial={{ y: 12, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            exit={{ y: 12, opacity: 0 }}
+            role="dialog"
+            aria-modal="true"
+            aria-label={SECTION_ICONS.myWords[lang]}
+            dir={isRTL ? 'rtl' : 'ltr'}
+            onClick={event => event.stopPropagation()}
+            className={cn('relative mx-auto min-h-full w-full max-w-4xl px-5 pb-16 pt-5 text-wood sm:px-8 sm:pt-8', isRTL && 'font-arabic')}
+          >
+            {/* A page of its own: the way back is a clear button at the top, not a close cross. */}
+            <button
+              ref={closeRef}
+              type="button"
+              onClick={onClose}
+              className="mb-6 inline-flex min-h-10 items-center gap-1.5 rounded-full border border-brand-200 bg-white ps-3 pe-4 font-display text-[13px] font-semibold text-brand-800 hover:bg-brand-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 sm:text-sm"
+            >
+              <ChevronLeft size={16} className="rtl:rotate-180" aria-hidden="true" />
+              {isRTL ? 'رُجُوع' : 'Back'}
+            </button>
+
+            {body}
           </motion.div>
         </motion.div>
       )}

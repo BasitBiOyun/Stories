@@ -13,6 +13,7 @@ import { summarizeBookProgress } from '../../lib/bookProgress';
 import { type ReaderPosition } from '../../lib/readerPosition';
 import { aboutIntro } from '../../data/aboutContent';
 import { useSheetDrag } from '../../lib/phone';
+import { MyWordsPanel } from '../book/MyWordsPanel';
 import { ArrowRight, BookMarked, BookOpen, GraduationCap, Info, Library, Play, Settings, X } from '../ui/icons';
 import {
   collectionStoryIds,
@@ -23,7 +24,7 @@ import {
 } from '../../core/content/storyCatalog';
 
 type CatalogStory = (typeof storyCatalog)[number];
-type Tab = 'library' | 'settings';
+type Tab = 'library' | 'words' | 'settings';
 
 const LEVELS: Level[] = ['A2', 'B1', 'B2'];
 const COLLECTIONS: StoryCollectionId[] = ['prophets', 'history', 'turkish'];
@@ -193,7 +194,7 @@ export const PhoneLibrary: React.FC<PhoneLibraryProps> = ({
           <img src={homeIcon} alt="" className="h-full w-full object-contain" />
         </div>
         <p className="clip-room min-w-0 flex-1 line-clamp-2 text-[15px] font-semibold leading-tight text-[#F7F1E5]">
-          {tab === 'settings' ? copy.settings : t('nav.homeTitle')}
+          {tab === 'settings' ? copy.settings : tab === 'words' ? copy.myWords : t('nav.homeTitle')}
         </p>
         <InstallAppButton />
         <LanguageToggle />
@@ -295,6 +296,8 @@ export const PhoneLibrary: React.FC<PhoneLibraryProps> = ({
               </section>
             ))}
           </div>
+        ) : tab === 'words' ? (
+          <MyWordsPanel isOpen embedded onClose={() => setTab('library')} />
         ) : (
           <div className="space-y-6 px-4 pt-3">
             <section>
@@ -314,7 +317,7 @@ export const PhoneLibrary: React.FC<PhoneLibraryProps> = ({
                   suggestedLevel ? <span className="text-[13px] font-semibold text-[#E9C46A]">{copy.suggested}: {suggestedLevel}</span> : undefined,
                 )}
                 {isTeacher && settingsRow(copy.checkCode, <SECTION_ICONS.checkCode.icon size={18} />, onOpenCheckCode)}
-                {settingsRow(copy.myWords, <BookMarked size={18} />, onOpenMyWords, <span className="text-[13px] font-semibold tabular-nums text-[#EDE5D4]/55">{formatNumber(myWordCount)}</span>)}
+                {settingsRow(copy.myWords, <BookMarked size={18} />, () => setTab('words'), <span className="text-[13px] font-semibold tabular-nums text-[#EDE5D4]/55">{formatNumber(myWordCount)}</span>)}
               </div>
             </section>
             <section>
@@ -333,7 +336,7 @@ export const PhoneLibrary: React.FC<PhoneLibraryProps> = ({
       >
         {tabButton('library', copy.library, <Library size={22} />, () => { setTab('library'); scrollRef.current?.scrollTo({ top: 0, behavior: 'smooth' }); }, tab === 'library')}
         {tabButton('continue', copy.continueTab, <Play size={22} />, resume, false, !lastStory)}
-        {tabButton('words', copy.myWords, <BookMarked size={22} />, onOpenMyWords, false)}
+        {tabButton('words', copy.myWords, <BookMarked size={22} />, () => { setTab('words'); scrollRef.current?.scrollTo({ top: 0 }); }, tab === 'words')}
         {tabButton('settings', copy.settings, <Settings size={22} />, () => setTab('settings'), tab === 'settings')}
       </nav>
 
