@@ -1,4 +1,4 @@
-import { getDownloadURL, listAll, ref } from 'firebase/storage';
+import { getDownloadURL, listAll, ref } from '@firebase/storage';
 import { storage } from '../../src/lib/firebase';
 import { getBookDefinition } from '../../src/core/content/bookRegistry';
 import { narrativeLearningPages } from '../../src/data/learningPageRoles';

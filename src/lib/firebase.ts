@@ -1,5 +1,5 @@
-import { initializeApp } from 'firebase/app';
-import { getStorage } from 'firebase/storage';
+import { initializeApp } from '@firebase/app';
+import { getStorage } from '@firebase/storage';
 
 const firebaseConfig = {
   projectId: "gen-lang-client-0373200489",

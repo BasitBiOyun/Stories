@@ -29,6 +29,37 @@ const contentTypes = {
   '.pdf': 'application/pdf',
 };
 
+// Security headers on every response. The Content-Security-Policy goes on pages only and lists
+// exactly what the app loads: its own files, pictures and audio from Firebase Storage, the
+// OpenDyslexic font from jsDelivr and the About page film from youtube-nocookie. The app may be
+// framed only by itself and by MEB sites (EBA), never by anyone else.
+const storageHosts = 'https://firebasestorage.googleapis.com https://storage.googleapis.com';
+const contentSecurityPolicy = [
+  "default-src 'self'",
+  "script-src 'self'",
+  "style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net",
+  "font-src 'self' data: https://cdn.jsdelivr.net",
+  `img-src 'self' data: blob: ${storageHosts}`,
+  `media-src 'self' blob: ${storageHosts}`,
+  `connect-src 'self' ${storageHosts} https://firebase.googleapis.com https://firebaseinstallations.googleapis.com`,
+  'frame-src https://www.youtube-nocookie.com',
+  "worker-src 'self'",
+  "manifest-src 'self'",
+  "object-src 'none'",
+  "base-uri 'self'",
+  "form-action 'self'",
+  "frame-ancestors 'self' https://*.eba.gov.tr https://*.meb.gov.tr",
+  'upgrade-insecure-requests',
+].join('; ');
+const securityHeaders = {
+  'X-Content-Type-Options': 'nosniff',
+  'Strict-Transport-Security': 'max-age=31536000; includeSubDomains',
+  'Referrer-Policy': 'strict-origin-when-cross-origin',
+  'Permissions-Policy': 'camera=(), geolocation=(), payment=(), usb=(), microphone=(self), fullscreen=(self)',
+  'Cross-Origin-Opener-Policy': 'same-origin',
+};
+const pageSecurityHeaders = { ...securityHeaders, 'Content-Security-Policy': contentSecurityPolicy };
+
 // Text files go out compressed (about a quarter of their size), which matters most on slow
 // school networks. Files never change inside one revision, so each is compressed once and kept.
 const compressible = new Set(['.html', '.js', '.css', '.json', '.svg', '.ttf']);
@@ -52,7 +83,7 @@ const sendFile = (req, res, filePath) => {
     'Content-Type': contentTypes[ext] || 'application/octet-stream',
     // PDFs keep their names when they are rebuilt, so they are only cached for an hour.
     'Cache-Control': ext === '.html' ? 'no-cache' : ext === '.pdf' ? 'public, max-age=3600' : 'public, max-age=31536000, immutable',
-    'X-Content-Type-Options': 'nosniff',
+    ...(ext === '.html' ? pageSecurityHeaders : securityHeaders),
     'X-Stories-Git-Sha': gitSha,
     'X-Stories-Revision': revision,
   };
@@ -75,7 +106,7 @@ const sendMissingAsset = (res) => {
   res.writeHead(404, {
     'Content-Type': 'text/plain; charset=utf-8',
     'Cache-Control': 'no-store',
-    'X-Content-Type-Options': 'nosniff',
+    ...securityHeaders,
     'X-Stories-Git-Sha': gitSha,
     'X-Stories-Revision': revision,
   });
@@ -115,28 +146,52 @@ const loadSharp = async () => {
   if (sharpModule === undefined) sharpModule = await import('sharp').then(m => m.default).catch(() => null);
   return sharpModule;
 };
+// Only a few widths are made, and the Storage address is rebuilt from its path, `alt` and
+// `token` alone, so extra query parameters cannot force a new conversion for the same picture.
+const IMAGE_WIDTHS = [480, 800, 1200, 1600, 2000];
+const pickWidth = (requested) => IMAGE_WIDTHS.find(w => w >= requested) ?? IMAGE_WIDTHS[IMAGE_WIDTHS.length - 1];
+// New conversions are limited per visitor; pictures already in the cache are not counted.
+const CONVERSIONS_PER_MINUTE = 60;
+const conversionCounts = new Map();
+const clientAddress = (req) => String(req.headers['x-forwarded-for'] || req.socket.remoteAddress || '').split(',')[0].trim();
+const allowConversion = (req) => {
+  const now = Date.now();
+  const address = clientAddress(req);
+  const entry = conversionCounts.get(address);
+  if (!entry || now - entry.start > 60_000) {
+    if (conversionCounts.size > 10_000) conversionCounts.clear();
+    conversionCounts.set(address, { start: now, count: 1 });
+    return true;
+  }
+  entry.count += 1;
+  return entry.count <= CONVERSIONS_PER_MINUTE;
+};
 const sendMediaImage = async (req, res) => {
   const params = new URL(req.url || '/', 'http://local').searchParams;
   const src = params.get('src') || '';
-  const width = Math.min(Math.max(Number(params.get('w')) || 1200, 200), 2000);
-  let source;
+  const width = pickWidth(Number(params.get('w')) || 1200);
+  let requested;
   try {
-    source = new URL(src);
+    requested = new URL(src);
   } catch {
-    source = null;
+    requested = null;
   }
-  if (!source || source.protocol !== 'https:' || source.hostname !== 'firebasestorage.googleapis.com' || !source.pathname.startsWith(`/v0/b/${storageBucket}/o/`)) {
-    res.writeHead(400, { 'Content-Type': 'text/plain; charset=utf-8', 'Cache-Control': 'no-store' });
+  if (!requested || requested.protocol !== 'https:' || requested.hostname !== 'firebasestorage.googleapis.com' || !requested.pathname.startsWith(`/v0/b/${storageBucket}/o/`)) {
+    res.writeHead(400, { 'Content-Type': 'text/plain; charset=utf-8', 'Cache-Control': 'no-store', ...securityHeaders });
     res.end('Bad image source');
     return;
   }
+  const source = new URL(`https://firebasestorage.googleapis.com${requested.pathname}`);
+  source.searchParams.set('alt', 'media');
+  const token = requested.searchParams.get('token');
+  if (token) source.searchParams.set('token', token);
   const key = `${width}:${source.href}`;
   const send = (body) => {
     res.writeHead(200, {
       'Content-Type': 'image/webp',
       'Content-Length': body.length,
       'Cache-Control': 'public, max-age=31536000, immutable',
-      'X-Content-Type-Options': 'nosniff',
+      ...securityHeaders,
     });
     res.end(req.method === 'HEAD' ? undefined : body);
   };
@@ -153,7 +208,7 @@ const sendMediaImage = async (req, res) => {
     res.writeHead(302, { Location: source.href, 'Cache-Control': 'no-store' });
     res.end();
   };
-  if (!sharp) return fallBack();
+  if (!sharp || !allowConversion(req)) return fallBack();
   try {
     const upstream = await fetch(source.href);
     if (!upstream.ok) return fallBack();

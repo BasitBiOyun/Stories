@@ -1,0 +1,18 @@
+# Weekly dependency updates. Pull requests target the platform-v2 work branch, never preview,
+# so an update can never reach the live app without a person merging it.
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    target-branch: platform-v2
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+    groups:
+      minor-and-patch:
+        update-types: [minor, patch]
+  - package-ecosystem: docker
+    directory: /
+    target-branch: platform-v2
+    schedule:
+      interval: monthly

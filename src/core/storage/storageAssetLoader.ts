@@ -37,7 +37,7 @@ const loadMergedFolders = async ({ paths, kind }: StoragePathCandidates): Promis
 
   const request = (async () => {
     const [{ getDownloadURL, listAll, ref }, { storage }] = await Promise.all([
-      import('firebase/storage'),
+      import('@firebase/storage'),
       import('../../lib/firebase'),
     ]);
     const resolved: Record<number, string> = {};
