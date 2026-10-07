@@ -1001,7 +1001,7 @@ export const StoryMapPage: React.FC<StoryMapPageProps> = ({ page }) => {
         </span>
       )}
       <span key={selected?.id ?? 'intro'} className="story-map-fade min-w-0 flex-1" style={{ animationDuration: '.25s' }}>
-        <span className={cn('block truncate font-display font-bold text-brand-700', language === 'ar' ? 'text-[11.5px]' : 'text-[10px] uppercase tracking-[0.1em]')}>
+        <span className={cn('block truncate font-display font-bold text-brand-700', language === 'ar' ? 'text-[12px]' : 'text-[11px] uppercase tracking-[0.08em]')}>
           {selected ? `${formatNumber(selectedIndex + 1)} · ${selected.kind} · ` : ''}{t('map.explored')} {formatNumber(visited.size)}/{formatNumber(places.length)}
         </span>
         <span className={cn('block truncate font-display font-bold leading-tight text-wood', language === 'ar' ? 'text-[17px]' : 'text-[16px]')}>
@@ -1547,7 +1547,7 @@ export const StoryMapPage: React.FC<StoryMapPageProps> = ({ page }) => {
           {!challengeOn && (
             <div className="pointer-events-none absolute bottom-3 start-3 end-3 flex flex-wrap items-end justify-between gap-2">
               <div className="hidden sm:block">{legend}</div>
-              <div className="ms-auto rounded-lg bg-white/75 px-2 py-1 text-[10px] font-semibold text-[#3c3428] shadow-sm backdrop-blur-sm" dir="ltr">
+              <div className="ms-auto rounded-lg bg-white/75 px-2 py-1 text-[11px] font-semibold text-[#3c3428] shadow-sm backdrop-blur-sm" dir="ltr">
                 <div className="h-1.5 border-x-2 border-b-2 border-[#3c3428]/70" style={{ width: `${Math.max(24, Math.min(160, scaleBarPx))}px` }} aria-hidden="true" />
                 <div className="mt-0.5 text-center">{formatNumber(scaleKm)} {t('map.km')}</div>
               </div>

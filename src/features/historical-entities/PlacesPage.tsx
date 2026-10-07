@@ -340,7 +340,7 @@ export const PlacesPage = ({
           <Target size={24} className="shrink-0" />
           <span className="min-w-0 flex-1">
             <span className="block font-display text-[15px] font-bold leading-tight">{text.play}</span>
-            <span className="block text-[12px] leading-snug text-white/85">{text.gameHint(formatNumber(entries.length))}</span>
+            <span className="block text-[12px] leading-snug text-white">{text.gameHint(formatNumber(entries.length))}</span>
           </span>
           <span className="shrink-0 rounded-xl bg-white px-3 py-1.5 font-display text-[13px] font-bold text-teal-800">
             {playing ? text.gameClose : text.gameGo}
@@ -449,7 +449,7 @@ export const PlacesPage = ({
                   square and cards never stretch to fill a tall screen. The padding keeps the selected
                   card's ring inside the scroll box. */}
               <div className="-mx-1 mt-1 px-1 py-1 lg:min-h-0 lg:flex-1 lg:overflow-y-auto custom-scrollbar">
-                <div className="grid grid-cols-1 items-stretch gap-2 sm:grid-cols-2 content-start">
+                <div className="grid grid-cols-1 items-stretch gap-2.5 sm:grid-cols-2 lg:grid-cols-1 min-[1800px]:grid-cols-2 content-start">
                   {visibleEntries.map(renderCard)}
                 </div>
               </div>

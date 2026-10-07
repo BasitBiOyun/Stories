@@ -893,7 +893,7 @@ const AppContent = () => {
 
               <div className="min-w-0">
                 <h2
-                  className="clip-room max-w-[min(15rem,58vw)] truncate font-display text-[14px] font-semibold leading-tight tracking-[-0.01em] text-parchment sm:max-w-xs sm:text-[15px] md:max-w-md md:text-[17px]"
+                  className="clip-room max-w-[min(15rem,58vw)] truncate font-display text-[14px] font-semibold leading-tight tracking-[-0.01em] text-parchment sm:max-w-xs sm:text-[15px] md:max-w-md md:text-[17px] xl:max-w-[20rem] 2xl:max-w-md"
                   title={currentBookTitle}
                 >
                   <span className="sm:hidden">{currentPage?.title || currentBookTitle}</span>
@@ -980,7 +980,7 @@ const AppContent = () => {
           </div>
 
           <div
-            className="pointer-events-none absolute left-1/2 top-1/2 hidden w-[400px] -translate-x-1/2 -translate-y-1/2 flex-col items-center text-center xl:flex 2xl:w-[520px]"
+            className="pointer-events-none absolute left-1/2 top-1/2 hidden w-[540px] -translate-x-1/2 -translate-y-1/2 flex-col items-center text-center xl:flex 2xl:w-[520px]"
             aria-label="Surah Yusuf 12:111"
           >
             <p
@@ -999,11 +999,11 @@ const AppContent = () => {
               <p
                 dir="ltr"
                 lang="en"
-                className="mt-0.5 text-xs font-medium leading-tight text-parchment/70"
+                className="mt-0.5 whitespace-nowrap text-xs font-medium leading-tight text-parchment/70"
                 style={{ fontFamily: 'Poppins, sans-serif' }}
               >
                 “In their stories there is truly a lesson for people of understanding.”
-                <span className="ms-1 whitespace-nowrap text-parchment/50">Yusuf 12:111</span>
+                <span className="ms-1 whitespace-nowrap text-parchment/65">Yusuf 12:111</span>
               </p>
             )}
           </div>

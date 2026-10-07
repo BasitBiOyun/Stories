@@ -680,7 +680,7 @@ export const VocabularyMatch = ({ pairs, collectionId = 'prophets', level, onRev
                 type="button"
                 onClick={verifyRecall}
                 disabled={policy.vocabularyRecallMode === 'choice' ? !recallChoice : !typedRecall.trim()}
-                className={cn('w-full min-h-12 rounded-xl font-display uppercase tracking-widest font-bold transition-colors disabled:cursor-not-allowed bg-brand-600 text-white hover:bg-brand-700 disabled:bg-gray-100 disabled:text-gray-400', isArabic ? 'text-sm sm:text-base' : 'text-xs sm:text-sm')}
+                className={cn('w-full min-h-12 rounded-xl font-display uppercase tracking-widest font-bold transition-colors disabled:cursor-not-allowed bg-brand-700 text-white hover:bg-brand-800 disabled:bg-gray-100 disabled:text-gray-400', isArabic ? 'text-sm sm:text-base' : 'text-xs sm:text-sm')}
               >
                 {copy.check}
               </button>
@@ -800,7 +800,7 @@ export const VocabularyMatch = ({ pairs, collectionId = 'prophets', level, onRev
             className={cn(
               'mt-4 w-full min-h-12 rounded-xl font-display uppercase tracking-widest font-bold transition-colors',
               isArabic ? 'text-sm sm:text-base' : 'text-xs sm:text-sm',
-              allPlaced ? 'bg-brand-600 text-white hover:bg-brand-700' : 'bg-gray-100 text-gray-400 cursor-not-allowed',
+              allPlaced ? 'bg-brand-700 text-white hover:bg-brand-800' : 'bg-gray-100 text-gray-400 cursor-not-allowed',
             )}
           >
             {t('nav.matchedThem')}

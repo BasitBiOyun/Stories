@@ -24,7 +24,7 @@ const getTheme = (bookData: BookData) => {
 
   if (isHistory) {
     return {
-      accent: 'bg-emerald-600 hover:bg-emerald-700',
+      accent: 'bg-emerald-700 hover:bg-emerald-800',
       accentSolid: 'bg-emerald-600',
       soft: 'bg-emerald-50 border-emerald-200',
       border: 'border-emerald-200',
@@ -47,7 +47,7 @@ const getTheme = (bookData: BookData) => {
   }
 
   return {
-    accent: 'bg-amber-600 hover:bg-amber-700',
+    accent: 'bg-amber-700 hover:bg-amber-800',
     accentSolid: 'bg-amber-600',
     soft: 'bg-amber-50 border-amber-200',
     border: 'border-amber-200',
@@ -719,7 +719,7 @@ export const FinalChallenge: React.FC<FinalChallengeProps> = ({ bookData, onComp
             <button
               type="button"
               onClick={goNext}
-              className={cn('w-full mt-4 min-h-12 rounded-xl text-white font-display uppercase tracking-widest font-bold flex items-center justify-center gap-2 bg-brand-600 hover:bg-brand-700', isArabic ? 'text-sm sm:text-base' : 'text-xs')}
+              className={cn('w-full mt-4 min-h-12 rounded-xl text-white font-display uppercase tracking-widest font-bold flex items-center justify-center gap-2 bg-brand-700 hover:bg-brand-800', isArabic ? 'text-sm sm:text-base' : 'text-xs')}
             >
               {currentStep < questions.length - 1 ? t('nav.nextQuestion') : (isArabic ? 'عرض ملخص التعلم' : 'View Learning Summary')}
               <ArrowRight className={cn('w-4 h-4', isRTL && 'rotate-180')} />

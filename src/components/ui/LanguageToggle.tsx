@@ -14,9 +14,9 @@ export const LanguageToggle: React.FC = () => {
         aria-label="Use English"
         aria-pressed={language === 'en'}
         className={cn(
-          "min-h-8 xs:min-h-9 px-2 xs:px-2.5 sm:px-4 py-1 sm:py-1.5 rounded-full text-[9px] xs:text-[10px] sm:text-[12px] font-display font-semibold uppercase tracking-wider transition-all duration-300 cursor-pointer",
+          "min-h-8 xs:min-h-9 px-2 xs:px-2.5 sm:px-4 py-1 sm:py-1.5 rounded-full text-[11px] sm:text-[12px] font-display font-semibold uppercase tracking-wider transition-all duration-300 cursor-pointer",
           language === 'en' 
-            ? "bg-gold text-white shadow-md shadow-gold/30 font-bold" 
+            ? "bg-gold text-[#22180a] shadow-md shadow-gold/30 font-bold" 
             : "text-parchment/70 hover:text-parchment hover:bg-white/5"
         )}
       >
@@ -28,9 +28,9 @@ export const LanguageToggle: React.FC = () => {
         aria-label="استخدام العربية"
         aria-pressed={language === 'ar'}
         className={cn(
-          "min-h-8 xs:min-h-9 px-2 xs:px-2.5 sm:px-4 py-1 sm:py-1.5 rounded-full text-[10px] xs:text-[11px] sm:text-[13px] font-arabic font-semibold transition-all duration-300 cursor-pointer",
+          "min-h-8 xs:min-h-9 px-2 xs:px-2.5 sm:px-4 py-1 sm:py-1.5 rounded-full text-[12px] sm:text-[13px] font-arabic font-semibold transition-all duration-300 cursor-pointer",
           language === 'ar' 
-            ? "bg-gold text-white shadow-md shadow-gold/30 font-bold" 
+            ? "bg-gold text-[#22180a] shadow-md shadow-gold/30 font-bold" 
             : "text-parchment/70 hover:text-parchment hover:bg-white/5"
         )}
       >

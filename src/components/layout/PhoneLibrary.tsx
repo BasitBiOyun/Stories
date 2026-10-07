@@ -192,7 +192,7 @@ export const PhoneLibrary: React.FC<PhoneLibraryProps> = ({
         <div className="h-9 w-9 shrink-0 overflow-hidden rounded-xl bg-white/[0.045] p-1">
           <img src={homeIcon} alt="" className="h-full w-full object-contain" />
         </div>
-        <p className="clip-room min-w-0 flex-1 truncate text-[15px] font-semibold text-[#F7F1E5]">
+        <p className="clip-room min-w-0 flex-1 line-clamp-2 text-[15px] font-semibold leading-tight text-[#F7F1E5]">
           {tab === 'settings' ? copy.settings : t('nav.homeTitle')}
         </p>
         <InstallAppButton />

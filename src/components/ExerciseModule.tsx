@@ -1056,7 +1056,7 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
                       <RotateCcw size={16} /> {t('nav.tryAgain')}
                     </button>
                   ) : (
-                    <button type="button" onClick={onNext ?? onComplete} data-feedback-next className={cn('min-h-12 rounded-xl font-display uppercase tracking-widest font-bold flex items-center justify-center gap-2 text-white bg-brand-600 hover:bg-brand-700', isArabic ? 'text-sm sm:text-base' : 'text-xs')}>
+                    <button type="button" onClick={onNext ?? onComplete} data-feedback-next className={cn('min-h-12 rounded-xl font-display uppercase tracking-widest font-bold flex items-center justify-center gap-2 text-white bg-brand-700 hover:bg-brand-800', isArabic ? 'text-sm sm:text-base' : 'text-xs')}>
                       {onNext ? (isLast ? closing.finish : closing.next) : t('nav.next')} <ArrowRight className={cn('w-4 h-4', isRTL && 'rotate-180')} />
                     </button>
                   )}

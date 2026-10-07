@@ -219,7 +219,7 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({
   }, [isRTL, bookData.level]);
 
   const colTheme = {
-      brand600: 'bg-brand-600',
+      brand600: 'bg-brand-700',
       brand700: 'bg-brand-700',
       brandText: 'text-brand-700',
       brandTextStrong: 'text-brand-950',
@@ -231,7 +231,7 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({
       progressTrack: 'bg-brand-100',
       progressFill: 'bg-brand-500',
       audio: 'bg-brand-100 text-brand-700 hover:bg-brand-200',
-      audioPlaying: 'bg-brand-600 text-white',
+      audioPlaying: 'bg-brand-700 text-white',
       hero: 'from-brand-50/95 via-white/80 to-brand-50/70',
       heroGlow: 'bg-brand-300/20',
       accentBorder: 'border-brand-200/70',

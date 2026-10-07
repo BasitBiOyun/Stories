@@ -49,7 +49,7 @@ export const ExercisePage = ({
 
   const colTheme = {
         audioBg: "bg-brand-50/90 border-brand-200 backdrop-blur-md shadow-lg",
-        audioBtn: "bg-brand-600 hover:bg-brand-700 text-white",
+        audioBtn: "bg-brand-700 hover:bg-brand-800 text-white",
         audioSlider: "text-brand-600 bg-brand-200",
         audioIcon: "hover:bg-brand-200/50 text-brand-600",
         speedBtn: "bg-brand-100/80 text-brand-700 hover:bg-brand-200",

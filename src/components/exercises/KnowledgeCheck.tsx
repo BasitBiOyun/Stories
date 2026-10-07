@@ -338,7 +338,7 @@ export const KnowledgeCheck = ({
                 {isArabic ? 'بعد إكمال القصة' : 'After the story'}
               </p>
               <h3 className={cn('mt-1 font-display text-2xl sm:text-3xl font-semibold tracking-[-0.03em] leading-tight', theme.title)}>{title}</h3>
-              <p className={cn('font-serif text-wood/55 mt-2 max-w-2xl leading-relaxed', isArabic ? 'text-base sm:text-lg' : 'text-sm sm:text-base')}>
+              <p className={cn('font-serif text-wood/70 mt-2 max-w-2xl leading-relaxed', isArabic ? 'text-base sm:text-lg' : 'text-sm sm:text-base')}>
                 {isArabic
                   ? 'اختبر فهمك للعلاقات والأحداث والأفكار الرئيسة في الكتاب كله.'
                   : 'Check your understanding of the key relationships, events and ideas across the whole book.'}

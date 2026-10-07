@@ -590,7 +590,7 @@ export const StoryPage = ({
                       <button
                         type="button"
                         onClick={() => setRailPanel(page.iCan?.length ? 'iCan' : null)}
-                        className="inline-flex min-h-11 items-center gap-2 rounded-xl bg-brand-600 px-6 font-display text-xs font-bold uppercase tracking-widest text-white shadow-lg hover:bg-brand-700"
+                        className="inline-flex min-h-11 items-center gap-2 rounded-xl bg-brand-700 px-6 font-display text-xs font-bold uppercase tracking-widest text-white shadow-lg hover:bg-brand-800"
                       >
                         {page.iCan?.length
                           ? (language === 'ar' ? 'النشاط التالي' : 'Next activity')

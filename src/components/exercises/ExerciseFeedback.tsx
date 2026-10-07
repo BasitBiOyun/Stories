@@ -84,7 +84,7 @@ export const FeedbackBox = ({ state, message, explanation, children, onRetry, on
           </button>
         </>
       ) : (
-        <button type="button" onClick={onNext} disabled={nextDisabled} data-feedback-next className={cn(primaryButton, 'mt-4 bg-brand-600 text-white hover:bg-brand-700 disabled:cursor-not-allowed disabled:opacity-40', isArabic ? 'text-sm sm:text-base' : 'text-xs')}>
+        <button type="button" onClick={onNext} disabled={nextDisabled} data-feedback-next className={cn(primaryButton, 'mt-4 bg-brand-700 text-white hover:bg-brand-800 disabled:cursor-not-allowed disabled:opacity-40', isArabic ? 'text-sm sm:text-base' : 'text-xs')}>
           {nextLabel ?? t('nav.next')} <ArrowRight className={cn('w-4 h-4', isRTL && 'rotate-180')} aria-hidden="true" />
         </button>
       )}
@@ -150,7 +150,7 @@ export const EndCard = ({ title, firstTry, onRestart, onNext, nextLabel, childre
           </button>
         )}
         {onNext && nextLabel && (
-          <button type="button" onClick={onNext} data-end-next className={cn('inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-brand-600 px-5 font-display font-semibold text-white hover:bg-brand-700', isArabic ? 'text-sm' : 'text-[12px]')}>
+          <button type="button" onClick={onNext} data-end-next className={cn('inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-brand-700 px-5 font-display font-semibold text-white hover:bg-brand-800', isArabic ? 'text-sm' : 'text-[12px]')}>
             {copy.next(nextLabel)} <ArrowRight className={cn('w-4 h-4', isRTL && 'rotate-180')} aria-hidden="true" />
           </button>
         )}
