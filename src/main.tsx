@@ -13,6 +13,7 @@ import { ArabicUiSanitizer } from './components/ArabicUiSanitizer';
 import { UserRoleProvider } from './contexts/UserRoleContext';
 import { ClassModeProvider } from './contexts/ClassModeContext';
 import { registerServiceWorker } from './lib/pwa';
+import { startTelemetry } from './lib/telemetry';
 import { preloadDeferredChunks } from './lib/preloadDeferred';
 
 const CHUNK_RELOAD_KEY = 'stories_chunk_reload_at';
@@ -38,6 +39,7 @@ window.setTimeout(() => {
 }, 30_000);
 
 registerServiceWorker();
+startTelemetry();
 preloadDeferredChunks();
 
 createRoot(document.getElementById('root')!).render(

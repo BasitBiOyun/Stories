@@ -244,6 +244,53 @@ const previewCookieFor = (req) => {
   return `${PREVIEW_COOKIE}=${encodeURIComponent(previewKey)}; Path=/; Max-Age=2592000; HttpOnly; Secure; SameSite=Lax`;
 };
 
+// Anonymous counters. The app reports that a page was opened and that a script failed; nothing
+// that identifies a visitor is read, kept or logged. The totals are written to the service log
+// every five minutes, so a broken release is visible without collecting anybody's data.
+const eventTotals = { open: 0, error: 0 };
+const errorMessages = new Map();
+const EVENT_BODY_LIMIT = 2048;
+
+const logEventTotals = () => {
+  if (eventTotals.open === 0 && eventTotals.error === 0) return;
+  const top = [...errorMessages.entries()].sort((a, b) => b[1] - a[1]).slice(0, 5);
+  console.log(JSON.stringify({
+    message: '[Stories] anonymous totals',
+    openedPages: eventTotals.open,
+    scriptErrors: eventTotals.error,
+    topErrors: top.map(([text, count]) => ({ text, count })),
+    revision,
+  }));
+  eventTotals.open = 0;
+  eventTotals.error = 0;
+  errorMessages.clear();
+};
+setInterval(logEventTotals, 5 * 60 * 1000).unref?.();
+
+const readEvent = (req, res) => {
+  let body = '';
+  let tooBig = false;
+  req.on('data', chunk => {
+    body += chunk;
+    if (body.length > EVENT_BODY_LIMIT) { tooBig = true; req.destroy(); }
+  });
+  req.on('end', () => {
+    res.writeHead(204, { 'Cache-Control': 'no-store' });
+    res.end();
+    if (tooBig) return;
+    try {
+      const event = JSON.parse(body);
+      if (event.kind === 'open') { eventTotals.open += 1; return; }
+      if (event.kind !== 'error') return;
+      eventTotals.error += 1;
+      const text = `${String(event.message ?? '').slice(0, 200)} (${String(event.source ?? '').slice(0, 60)}:${Number(event.line) || 0}, ${String(event.screen ?? '').slice(0, 20)})`;
+      errorMessages.set(text, (errorMessages.get(text) ?? 0) + 1);
+    } catch {
+      /* a malformed report is ignored */
+    }
+  });
+};
+
 const server = http.createServer((req, res) => {
   const urlPath = decodeURIComponent((req.url || '/').split('?')[0]);
 
@@ -256,6 +303,11 @@ const server = http.createServer((req, res) => {
       'X-Stories-Revision': revision,
     });
     res.end(payload);
+    return;
+  }
+
+  if (urlPath === '/__event' && req.method === 'POST') {
+    readEvent(req, res);
     return;
   }
 

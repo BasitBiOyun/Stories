@@ -29,6 +29,10 @@ export const policySections: PolicySection[] = [
         ar: 'لا يُرسَل إلينا شيء مما تفعله في التطبيق. لا إعلانات ولا تحليلات ولا تتبّع.',
       },
       {
+        en: 'Two things do reach our server, and neither says anything about you: that a page was opened (counted once per visit) and, if the app breaks, what failed and where in our code. No name, no account, no reading progress and no cookie travels with them, and they are not kept per visitor. If your browser is set to "Do Not Track", not even these are sent.',
+        ar: 'يصل إلى خادمنا شيئان فقط، ولا يدلّ أيٌّ منهما عليك: أنّ صفحةً فُتِحت (تُحسَب مرّةً واحدة في الزيارة)، وإذا تعطّل التطبيق، ما الذي أخفق وأين في شيفرتنا. لا يُرسَل معهما اسم ولا حساب ولا تقدّم في القراءة ولا ملفّ تعريف ارتباط، ولا يُحفَظان لكلّ زائر على حدة. وإذا كان متصفّحك مضبوطًا على «عدم التتبّع» فلن يُرسَلا أصلًا.',
+      },
+      {
         en: 'Your reading progress, scores, My words, settings and the name you type on a result card are saved only in this browser on this device. Nobody else can see them. Clearing the browser’s site data deletes them.',
         ar: 'تقدّمك في القراءة ونتائجك وكلماتي وإعداداتك والاسم الذي تكتبه على بطاقة النتيجة تُحفَظ في هذا المتصفح على هذا الجهاز فقط. لا يراها أحد غيرك. ومسح بيانات الموقع من المتصفح يحذفها.',
       },

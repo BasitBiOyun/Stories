@@ -61,11 +61,15 @@ test.describe('book-end pages', () => {
   });
 
   test('journey map lists the places and opens one', async ({ page }) => {
+    test.slow(); // the map draws itself, its places and its time tour before it answers a tap
     await openPage(page, 'mecca/a2/14');
     if (!isPhone(page)) await expect(page.getByRole('heading', { name: 'Bilal’s World' })).toBeVisible();
     const place = page.getByRole('button', { name: '3. Abyssinia', exact: true });
-    await place.click();
-    await expect(place).toHaveAttribute('aria-pressed', 'true');
+    // The map sets up its own zoom and panning first; a tap that lands during that is ignored.
+    await expect(async () => {
+      await place.click();
+      await expect(place).toHaveAttribute('aria-pressed', 'true', { timeout: 2000 });
+    }).toPass({ timeout: 20_000 });
     await expect(page.locator('main').first()).toContainText(/Explored 1 ?\/ ?5/);
   });
 
