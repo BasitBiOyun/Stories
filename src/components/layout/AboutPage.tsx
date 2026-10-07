@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { cn } from '../../lib/utils';
 import { useLanguage } from '../../contexts/LanguageContext';
-import { BookOpen, Info, Link as LinkIcon, Play, Users, X } from '../ui/icons';
+import { BookOpen, Info, Link as LinkIcon, Play, ShieldCheck, Users, X } from '../ui/icons';
 import {
   aboutIntro,
   advisoryBoard,
@@ -10,8 +10,9 @@ import {
   sourceGroups,
   teamSections,
 } from '../../data/aboutContent';
+import { policySections, policyUpdated } from '../../data/policyContent';
 
-type AboutTab = 'about' | 'sources';
+type AboutTab = 'about' | 'sources' | 'privacy';
 
 interface AboutPageProps {
   isOpen: boolean;
@@ -40,6 +41,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ isOpen, onClose }) => {
         heading: 'عن المشروع والمصادر',
         about: 'عن المشروع',
         sources: 'المصادر',
+        privacy: 'الخصوصية',
         close: 'إغلاق',
         video: 'الفيلم التعريفي',
         openYoutube: 'افتح على يوتيوب',
@@ -54,6 +56,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ isOpen, onClose }) => {
         heading: 'About & Sources',
         about: 'About',
         sources: 'Sources',
+        privacy: 'Privacy',
         close: 'Close',
         video: 'Introduction film',
         openYoutube: 'Open on YouTube',
@@ -71,6 +74,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ isOpen, onClose }) => {
   const tabs: { id: AboutTab; label: string; icon: React.ReactNode }[] = [
     { id: 'about', label: copy.about, icon: <Info size={17} /> },
     { id: 'sources', label: copy.sources, icon: <BookOpen size={17} /> },
+    { id: 'privacy', label: copy.privacy, icon: <ShieldCheck size={17} /> },
   ];
 
   return (
@@ -217,6 +221,28 @@ export const AboutPage: React.FC<AboutPageProps> = ({ isOpen, onClose }) => {
                     ))}
                   </ul>
                 </section>
+              </div>
+            ) : tab === 'privacy' ? (
+              <div className="max-w-3xl space-y-10 text-start">
+                {policySections.map(section => (
+                  <section key={section.id} aria-labelledby={`policy-${section.id}`}>
+                    <h2 id={`policy-${section.id}`} className="border-b border-white/[0.08] pb-2 font-display text-[20px] font-semibold text-[#FFF9EC]">
+                      {section.title[lang]}
+                    </h2>
+                    {section.intro && (
+                      <p className="mt-4 text-[16px] font-semibold leading-relaxed text-[#F3D58C]">{section.intro[lang]}</p>
+                    )}
+                    <ul className="mt-4 space-y-3">
+                      {section.points.map(point => (
+                        <li key={point.en} className="flex gap-3 text-[15px] leading-relaxed text-[#F6F0E2]/85">
+                          <span aria-hidden="true" className="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#D8B35C]/80" />
+                          <span>{point[lang]}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </section>
+                ))}
+                <p className="text-[13px] text-[#F6F0E2]/60">{policyUpdated[lang]}</p>
               </div>
             ) : (
               <div className="space-y-8 text-start">

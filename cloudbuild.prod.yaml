@@ -1,0 +1,60 @@
+# Live (production) deployment: GitHub prod branch -> Cloud Build -> Cloud Run service stories-prod.
+# preview stays the place where changes are tried; prod only receives what was approved there.
+# It builds the same Dockerfile, never runs the narration steps and never touches Storage.
+# Setup (once, in the GCP console) is described in docs/OPERATIONS.md.
+
+substitutions:
+  _REGION: us-west1
+  _AR_REPOSITORY: cloud-run-source-deploy
+  _IMAGE: stories-prod
+  _SERVICE: stories-prod
+
+steps:
+  - id: guard
+    name: gcr.io/google.com/cloudsdktool/cloud-sdk:slim
+    entrypoint: bash
+    args:
+      - -c
+      - |
+        set -eu
+        if [ "${BRANCH_NAME}" != "prod" ]; then
+          echo "[Stories prod] Branch ${BRANCH_NAME} is not prod; nothing is built or deployed."
+          touch /workspace/.skip-deploy
+        fi
+
+  - id: build
+    waitFor: ['guard']
+    name: gcr.io/cloud-builders/docker
+    entrypoint: bash
+    env:
+      - DOCKER_BUILDKIT=1
+    args:
+      - -c
+      - |
+        set -euo pipefail
+        [ -f /workspace/.skip-deploy ] && exit 0
+        docker build -t ${_REGION}-docker.pkg.dev/$PROJECT_ID/${_AR_REPOSITORY}/${_IMAGE}:$COMMIT_SHA .
+        docker push ${_REGION}-docker.pkg.dev/$PROJECT_ID/${_AR_REPOSITORY}/${_IMAGE}:$COMMIT_SHA
+
+  - id: deploy
+    waitFor: ['build']
+    name: gcr.io/google.com/cloudsdktool/cloud-sdk:slim
+    entrypoint: bash
+    args:
+      - -c
+      - |
+        set -euo pipefail
+        [ -f /workspace/.skip-deploy ] && exit 0
+        gcloud run deploy ${_SERVICE} \
+          --image=${_REGION}-docker.pkg.dev/$PROJECT_ID/${_AR_REPOSITORY}/${_IMAGE}:$COMMIT_SHA \
+          --region=${_REGION} \
+          --platform=managed \
+          --allow-unauthenticated \
+          --min-instances=0 \
+          --quiet \
+          --update-env-vars=APP_GIT_SHA=$COMMIT_SHA,APP_GIT_REF=$BRANCH_NAME \
+          --update-labels=git-sha=$SHORT_SHA,deployed-by=cloud-build
+
+options:
+  logging: CLOUD_LOGGING_ONLY
+timeout: 1800s

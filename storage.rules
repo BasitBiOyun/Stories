@@ -1,0 +1,20 @@
+rules_version = '2';
+
+// Firebase Storage rules for the Stories bucket (gen-lang-client-0373200489.firebasestorage.app).
+// The app reads pictures, audio and word timings and lists chapter folders (storageAssetLoader.ts),
+// so reading is open. Nobody can write from a browser: files are uploaded in the Firebase
+// console or by Cloud Build with its service account, which these rules do not restrict.
+// This file is the source of truth; publish it with `firebase deploy --only storage`
+// (see docs/OPERATIONS.md).
+service firebase.storage {
+  match /b/{bucket}/o {
+    // Build state used by the narration steps; never public.
+    match /tts-state/{allPaths=**} {
+      allow read, write: if false;
+    }
+    match /{allPaths=**} {
+      allow get, list: if true;
+      allow write: if false;
+    }
+  }
+}
