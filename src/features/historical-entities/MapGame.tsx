@@ -1,4 +1,5 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import React, { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
+import { useIsPhone } from '../../lib/phone';
 import { Check, RotateCcw, Target, X } from '../../components/ui/icons';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { cn } from '../../lib/utils';
@@ -178,19 +179,44 @@ export const MapGame = ({
   // Zoom and pan, as in the story maps: + and − buttons, the mouse wheel, dragging,
   // and pinching. A tap that ends a drag is not an answer.
   const frameRef = useRef<HTMLDivElement>(null);
+  /** The map itself, unzoomed. On phones the frame is taller than the map, so the two differ. */
+  const contentRef = useRef<HTMLDivElement>(null);
+  const isPhone = useIsPhone();
+  const [resultSlot, setResultSlot] = useState<HTMLDivElement | null>(null);
   const [view, setView] = useState({ s: 1, x: 0, y: 0 });
   const [gliding, setGliding] = useState(true);
   const pointers = useRef(new Map<number, { x: number; y: number }>());
   const gesture = useRef<{ s: number; x: number; y: number; px: number; py: number; dist: number; moved: boolean } | null>(null);
   const suppressClick = useRef(false);
 
+  const mapHeight = () => contentRef.current?.offsetHeight || frameRef.current?.clientHeight || 1;
+  /** Phones: the map starts filling the tall frame, centred on the story's places (not on the answer). */
+  const homeView = () => {
+    const frame = frameRef.current;
+    if (!frame || !isPhone) return { s: 1, x: 0, y: 0 };
+    const s = Math.max(1, frame.clientHeight / mapHeight());
+    const xs = pool.map(entity => ((entity.focus?.x ?? 50) / 100) * frame.clientWidth);
+    const centre = xs.length ? (Math.min(...xs) + Math.max(...xs)) / 2 : frame.clientWidth / 2;
+    return fit(s, frame.clientWidth / 2 - centre * s, 0);
+  };
+  const maxZoom = () => {
+    const frame = frameRef.current;
+    return frame ? Math.max(MAX_ZOOM, (frame.clientHeight / mapHeight()) * 2.5) : MAX_ZOOM;
+  };
   const fit = (s: number, x: number, y: number) => {
     const frame = frameRef.current;
     if (!frame) return { s: 1, x: 0, y: 0 };
-    const scale = Math.min(MAX_ZOOM, Math.max(1, s));
+    const scale = Math.min(maxZoom(), Math.max(1, s));
     const width = frame.clientWidth;
     const height = frame.clientHeight;
-    return { s: scale, x: Math.min(0, Math.max(width * (1 - scale), x)), y: Math.min(0, Math.max(height * (1 - scale), y)) };
+    // A map smaller than the frame sits in its middle; a bigger one never shows an empty edge.
+    const shownWidth = width * scale;
+    const shownHeight = mapHeight() * scale;
+    return {
+      s: scale,
+      x: shownWidth <= width ? (width - shownWidth) / 2 : Math.min(0, Math.max(width - shownWidth, x)),
+      y: shownHeight <= height ? (height - shownHeight) / 2 : Math.min(0, Math.max(height - shownHeight, y)),
+    };
   };
   const zoomAt = (factor: number, px?: number, py?: number) => {
     const frame = frameRef.current;
@@ -199,14 +225,21 @@ export const MapGame = ({
     const cy = py ?? frame.clientHeight / 2;
     setGliding(px === undefined);
     setView(current => {
-      const s = Math.min(MAX_ZOOM, Math.max(1, current.s * factor));
+      const s = Math.min(maxZoom(), Math.max(1, current.s * factor));
       return fit(s, cx - (cx - current.x) * (s / current.s), cy - (cy - current.y) * (s / current.s));
     });
   };
   const resetView = () => {
     setGliding(true);
-    setView({ s: 1, x: 0, y: 0 });
+    setView(homeView());
   };
+  useLayoutEffect(() => {
+    setGliding(false);
+    setView(homeView());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isPhone]);
+  const home = homeView();
+  const atHome = Math.abs(view.s - home.s) < 0.01 && Math.abs(view.x - home.x) < 1 && Math.abs(view.y - home.y) < 1;
 
   useEffect(() => {
     const frame = frameRef.current;
@@ -245,7 +278,7 @@ export const MapGame = ({
     event.currentTarget.setPointerCapture?.(event.pointerId);
     setGliding(false);
     const s = list.length > 1 ? start.s * (Math.hypot(list[0].x - list[1].x, list[0].y - list[1].y) / start.dist) : start.s;
-    const ratioNow = Math.min(MAX_ZOOM, Math.max(1, s)) / start.s;
+    const ratioNow = Math.min(maxZoom(), Math.max(1, s)) / start.s;
     setView(fit(s, px - (start.px - start.x) * ratioNow, py - (start.py - start.y) * ratioNow));
   };
   const onPointerUp = (event: React.PointerEvent<HTMLDivElement>) => {
@@ -284,15 +317,22 @@ export const MapGame = ({
     // Show the answer and the right place together, close enough to tell them apart.
     const frame = frameRef.current;
     if (frame) {
-      const unit = frame.clientWidth / VIEW_WIDTH;
+      // Map units to unzoomed pixels, each axis on its own (the map is stretched to its box).
+      const unitX = frame.clientWidth / VIEW_WIDTH;
+      const unitY = mapHeight() / VIEW_HEIGHT;
       const reach = target.focus?.mode === 'point' ? reachAround(point[1]) : { rx: 0, ry: 0 };
-      const width = (Math.abs(point[0] - x) + reach.rx * 2 + 60) * unit;
-      const height = (Math.abs(point[1] - y) + reach.ry * 2 + 60) * unit;
-      const s = Math.min(3.5, frame.clientWidth / width, frame.clientHeight / height);
-      const cx = ((point[0] + x) / 2) * unit;
-      const cy = ((point[1] + y) / 2) * unit;
+      // Phones: extra room in screen pixels, so labels clear the question strip and the buttons.
+      const room = isPhone ? 110 : 0;
+      const width = (Math.abs(point[0] - x) + reach.rx * 2 + 60) * unitX + room;
+      const height = (Math.abs(point[1] - y) + reach.ry * 2 + 60) * unitY + room;
+      const homeScale = homeView().s;
+      const s = Math.min(maxZoom(), isPhone ? homeScale * 2 : 3.5, frame.clientWidth / width, frame.clientHeight / height);
+      const cx = ((point[0] + x) / 2) * unitX;
+      const cy = ((point[1] + y) / 2) * unitY;
+      const settled = fit(s, frame.clientWidth / 2 - cx * s, frame.clientHeight / 2 - cy * s);
       setGliding(true);
-      setView(current => (s > current.s * 1.15 ? fit(s, frame.clientWidth / 2 - cx * s, frame.clientHeight / 2 - cy * s) : current));
+      // Zoom in when it helps; otherwise just bring both pins into the middle.
+      setView(current => (s > current.s * 1.15 ? settled : fit(current.s, frame.clientWidth / 2 - cx * current.s, frame.clientHeight / 2 - cy * current.s)));
     }
     buzz();
     playMapSound('drop');
@@ -348,10 +388,11 @@ export const MapGame = ({
         @media (prefers-reduced-motion: reduce) { .story-map-grow, .story-map-line, .story-map-fade, .story-map-tapring, .story-map-pinland, .story-map-shake, .story-map-cue { animation: none; opacity: 1; } }
       `}</style>
 
-      <section className="flex items-center justify-center rounded-2xl border border-black/5 bg-white/55 p-3 shadow-sm backdrop-blur-sm lg:min-h-0 lg:[container-type:size]">
+      <section className="flex items-center justify-center rounded-2xl border border-black/5 bg-white/55 p-3 shadow-sm backdrop-blur-sm max-sm:p-1.5 lg:min-h-0 lg:[container-type:size]">
         <div
           ref={frameRef}
-          className="relative w-full overflow-hidden rounded-xl lg:w-[min(100cqw,calc(100cqh*var(--map-ratio)))]"
+          data-map-game
+          className="relative w-full overflow-hidden rounded-xl max-sm:h-[64svh] max-sm:bg-[#b9d3cf] lg:w-[min(100cqw,calc(100cqh*var(--map-ratio)))]"
           style={{ '--map-ratio': ratio, touchAction: 'none' } as React.CSSProperties}
           onPointerDown={onPointerDown}
           onPointerMove={onPointerMove}
@@ -364,7 +405,8 @@ export const MapGame = ({
           }}
         >
           <div
-            className={cn(gliding && 'transition-transform duration-500 ease-out motion-reduce:transition-none')}
+            ref={contentRef}
+            className={cn('relative', gliding && 'transition-transform duration-500 ease-out motion-reduce:transition-none')}
             style={{ transform: `translate(${view.x}px, ${view.y}px) scale(${view.s})`, transformOrigin: '0 0' }}
           >
           <EntityMap
@@ -374,7 +416,7 @@ export const MapGame = ({
             focus={answer && target?.focus ? { ...target.focus, zoom: 1 } : undefined}
             showFocus={Boolean(answer && isFeature)}
             color={GOOD}
-            label={answer && isFeature && target ? resolveHistoricalCopy(target, locale).title : undefined}
+            label={answer && isFeature && target && !isPhone ? resolveHistoricalCopy(target, locale).title : undefined}
             onMapClick={done || answer ? undefined : handleTap}
             className={cn('w-full', !done && !answer && 'cursor-crosshair')}
           />
@@ -389,7 +431,8 @@ export const MapGame = ({
                 const showLine = !answer.correct && length > 1;
                 const km = `${formatNumber(Math.round(answer.distanceKm))} ${t('map.km')}`;
                 // Pins and labels keep their size when the map is zoomed.
-                const k = 1 / view.s;
+                // Phones: the map is drawn smaller than its own units, so pins are scaled back up to screen size.
+                const k = 1 / (view.s * (isPhone ? (frameRef.current?.clientWidth ?? VIEW_WIDTH) / VIEW_WIDTH : 1));
                 const reach = reachAround(ty);
                 // The distance label never sits under a pin. On a long line it rides above the
                 // middle of the line; on a short one it stands beside your answer, on the side
@@ -452,11 +495,11 @@ export const MapGame = ({
           </div>
 
           <div className="absolute right-2 top-2 z-10 flex flex-col overflow-hidden rounded-xl border border-brand-200 bg-white/90 shadow-md backdrop-blur-sm">
-            <button type="button" onClick={() => zoomAt(1.5)} aria-label={t('map.zoomIn')} title={t('map.zoomIn')} className="flex h-10 w-10 items-center justify-center font-display text-xl font-semibold text-brand-800 hover:bg-brand-50">+</button>
+            <button type="button" onClick={() => zoomAt(1.5)} aria-label={t('map.zoomIn')} title={t('map.zoomIn')} className="flex h-10 w-10 max-sm:h-9 max-sm:w-9 items-center justify-center font-display text-xl font-semibold text-brand-800 hover:bg-brand-50">+</button>
             <span className="mx-2 h-px bg-brand-100" aria-hidden="true" />
-            <button type="button" onClick={() => zoomAt(1 / 1.5)} disabled={view.s <= 1} aria-label={t('map.zoomOut')} title={t('map.zoomOut')} className="flex h-10 w-10 items-center justify-center font-display text-xl font-semibold text-brand-800 hover:bg-brand-50 disabled:opacity-35">−</button>
+            <button type="button" onClick={() => zoomAt(1 / 1.5)} disabled={view.s <= 1} aria-label={t('map.zoomOut')} title={t('map.zoomOut')} className="flex h-10 w-10 max-sm:h-9 max-sm:w-9 items-center justify-center font-display text-xl font-semibold text-brand-800 hover:bg-brand-50 disabled:opacity-35">−</button>
             <span className="mx-2 h-px bg-brand-100" aria-hidden="true" />
-            <button type="button" onClick={resetView} disabled={view.s <= 1} aria-label={t('map.reset')} title={t('map.reset')} className="flex h-10 w-10 items-center justify-center text-brand-800 hover:bg-brand-50 disabled:opacity-35">
+            <button type="button" onClick={resetView} disabled={atHome} aria-label={t('map.reset')} title={t('map.reset')} className="flex h-10 w-10 max-sm:h-9 max-sm:w-9 items-center justify-center text-brand-800 hover:bg-brand-50 disabled:opacity-35">
               <RotateCcw size={17} />
             </button>
           </div>
@@ -473,11 +516,16 @@ export const MapGame = ({
             onRetry={restart}
             onExit={onClose}
             detail={detail}
+            compact={isPhone}
+            resultSlot={resultSlot}
           />
         </div>
       </section>
 
-      <aside className="flex flex-col gap-3 rounded-2xl border border-brand-200/90 bg-brand-50/88 p-4 shadow-sm lg:min-h-0 lg:overflow-y-auto custom-scrollbar" aria-live="polite">
+      {/* Phones: the tap hint and the result, under the map */}
+      {isPhone && !done && <div ref={setResultSlot} />}
+
+      <aside className="flex flex-col gap-3 max-sm:hidden rounded-2xl border border-brand-200/90 bg-brand-50/88 p-4 shadow-sm lg:min-h-0 lg:overflow-y-auto custom-scrollbar" aria-live="polite">
         <div className="flex items-center gap-3">
           <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-brand-100 text-brand-700">
             <Target size={22} aria-hidden="true" />

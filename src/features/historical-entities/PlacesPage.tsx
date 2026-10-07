@@ -335,7 +335,7 @@ export const PlacesPage = ({
           type="button"
           onClick={() => setPlaying(value => !value)}
           aria-pressed={playing}
-          className="flex w-full items-center gap-3 rounded-2xl bg-teal-700 px-3.5 py-2.5 text-start text-white shadow-md sm:hidden"
+          className={cn('flex w-full items-center gap-3 rounded-2xl bg-teal-700 px-3.5 py-2.5 text-start text-white shadow-md sm:hidden', playing && 'hidden')}
         >
           <Target size={24} className="shrink-0" />
           <span className="min-w-0 flex-1">

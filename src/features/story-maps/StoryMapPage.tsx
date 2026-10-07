@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useId, useMemo, useRef, useState } from 'react';
-import { PHONE_QUERY } from '../../lib/phone';
+import { createPortal } from 'react-dom';
+import { PHONE_QUERY, useIsPhone, useSheetDrag } from '../../lib/phone';
 import { AnimatePresence, motion } from 'motion/react';
 import type { PageData } from '../../types';
 import { getHistoricalEntity } from '../historical-entities/registry';
@@ -8,7 +9,7 @@ import { useLanguage } from '../../contexts/LanguageContext';
 import { useUserRole } from '../../contexts/UserRoleContext';
 import { SECTION_ICONS } from '../../lib/sectionIcons';
 import { cn } from '../../lib/utils';
-import { ArrowRight, Check, MapPin, RotateCcw, Target, Volume2, VolumeX } from '../../components/ui/icons';
+import { ArrowRight, Check, ChevronUp, MapPin, RotateCcw, Target, Volume2, VolumeX, X } from '../../components/ui/icons';
 import { isMapSoundOn, playMapSound, setMapSoundOn, subscribeMapSound } from './mapSounds';
 import { BASE_MAPS } from './baseMaps';
 import {
@@ -95,6 +96,12 @@ export const StoryMapPage: React.FC<StoryMapPageProps> = ({ page }) => {
   useEffect(() => subscribeMapSound(setSoundOn), []);
   const [answers, setAnswers] = useState<ChallengeAnswer[]>([]);
   const challengeOn = mode === 'challenge';
+  // Phones: the map keeps the screen; the place card is a strip under it that opens a sheet.
+  const isPhone = useIsPhone();
+  const [sheetOpen, setSheetOpen] = useState(false);
+  const infoSheet = useSheetDrag(() => setSheetOpen(false));
+  const [resultSlot, setResultSlot] = useState<HTMLDivElement | null>(null);
+  useEffect(() => { if (challengeOn || !isPhone) setSheetOpen(false); }, [challengeOn, isPhone]);
   const question = map.challenge[cIndex];
   const answer = answers[cIndex];
   const challengeDone = challengeOn && cIndex >= map.challenge.length;
@@ -753,6 +760,311 @@ export const StoryMapPage: React.FC<StoryMapPageProps> = ({ page }) => {
 
   const pillButton = 'inline-flex h-9 items-center gap-1.5 rounded-full border px-3 font-display text-[12px] font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500';
 
+  const infoPanel = (
+          <AnimatePresence mode="wait" initial={false}>
+            {challengeOn ? (
+              <motion.div key="challenge" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.2 }} className="flex flex-1 flex-col gap-3">
+                <span className="flex h-11 w-11 max-sm:h-9 max-sm:w-9 items-center justify-center rounded-full bg-brand-100 text-brand-700">
+                  <Target size={22} aria-hidden="true" />
+                </span>
+                <h4 className="font-display text-xl font-semibold leading-tight text-wood sm:text-2xl">{t('map.challengeTitle')}</h4>
+                <ol className="flex flex-col gap-1.5" aria-label={t('map.challengeText')}>
+                  {(['map.step1', 'map.step2', 'map.step3'] as const).map((key, step) => {
+                    const activeStep = challengeDone ? -1 : answer ? 2 : 1;
+                    const on = step === activeStep || (step === 0 && !answer && !challengeDone);
+                    return (
+                      <li key={key} className={cn('flex items-center gap-2.5 text-wood transition-opacity', on ? 'opacity-100' : 'opacity-45')}>
+                        <span className={cn('flex h-6 w-6 shrink-0 items-center justify-center rounded-full font-display text-[12px] font-bold', on ? 'bg-brand-700 text-white' : 'bg-brand-200 text-brand-800')}>{formatNumber(step + 1)}</span>
+                        <span className={cn('font-serif', language === 'ar' ? 'text-[16px] leading-snug' : 'text-[14px] leading-snug')}>{t(key)}</span>
+                      </li>
+                    );
+                  })}
+                </ol>
+                <div className="flex flex-wrap gap-x-4 gap-y-1.5 rounded-xl border border-brand-200/80 bg-white/70 px-3 py-2 text-[12px] text-wood/85">
+                  <span className="flex items-center gap-1.5">
+                    <svg width="16" height="16" viewBox="-9 -9 18 18" aria-hidden="true"><circle r="6.5" fill="#fff" stroke={PALETTE.mongol} strokeWidth="2.5" /></svg>
+                    {t('map.yourAnswer')}
+                  </span>
+                  <span className="flex items-center gap-1.5">
+                    <svg width="18" height="18" viewBox="-9 -9 18 18" aria-hidden="true"><circle r="7" fill={GOOD} fillOpacity="0.2" stroke={GOOD} strokeWidth="1.8" strokeDasharray="3 2.5" /></svg>
+                    {t('map.rightPlace')}
+                  </span>
+                </div>
+                <ol className="flex flex-col gap-1.5">
+                  {map.challenge.map((item, index) => {
+                    const result = answers[index];
+                    const current = index === cIndex && !challengeDone;
+                    return (
+                      <li
+                        key={item.id}
+                        className={cn('flex min-h-11 items-center gap-3 rounded-xl border px-3 py-2', current ? 'border-brand-500 bg-white' : 'border-brand-200/80 bg-white/70')}
+                      >
+                        <span
+                          className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full font-display text-[12px] font-bold text-white"
+                          style={{ background: result ? (result.correct ? GOOD : PALETTE.mongol) : current ? 'var(--brand-700)' : 'var(--brand-300)' }}
+                        >
+                          {result ? (result.correct ? <Check size={14} aria-hidden="true" /> : '×') : formatNumber(index + 1)}
+                        </span>
+                        <span className="min-w-0 flex-1 text-[13px] leading-snug text-wood/85">{item.prompt}</span>
+                      </li>
+                    );
+                  })}
+                </ol>
+              </motion.div>
+            ) : selected ? (
+              <motion.div
+                key={selected.id}
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -6 }}
+                transition={{ duration: 0.2 }}
+                className="flex flex-1 flex-col gap-3"
+              >
+                <div className="flex items-center gap-2.5">
+                  <span
+                    className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-white shadow-sm"
+                    style={{ background: selected.tone === 'event' ? PALETTE.mongol : 'var(--brand-700)' }}
+                  >
+                    <MapGlyph icon={selected.icon} size={21} strokeWidth={2} />
+                  </span>
+                  <div className="min-w-0">
+                    <div className="font-display text-[11px] font-semibold uppercase tracking-[0.14em] text-brand-700">
+                      {formatNumber(selectedIndex + 1)} · {selected.kind}
+                    </div>
+                    <h4 className="font-display text-xl font-semibold leading-tight text-wood sm:text-2xl">{selected.name}</h4>
+                  </div>
+                </div>
+
+                <p className={cn('font-serif text-wood/90', language === 'ar' ? 'text-[19px] leading-[1.95]' : 'text-[16px] leading-[1.7] sm:text-[17px]')}>
+                  {selected.text}
+                </p>
+
+                {isTeacher && selected.teacherNote && (
+                  <div className="rounded-2xl border border-dashed border-brand-300 bg-white/70 p-3 text-[13px] leading-relaxed text-wood/80 sm:text-[14px]">
+                    <div className="mb-1 flex items-center gap-1.5 font-display text-[11px] font-semibold uppercase tracking-[0.12em] text-brand-700">
+                      <SECTION_ICONS.teacherGuide.icon size={15} aria-hidden="true" />
+                      {t('map.teacherNote')}
+                    </div>
+                    <p>{selected.teacherNote}</p>
+                  </div>
+                )}
+
+                {isTeacher && selected.question && (
+                  <div className="rounded-2xl border border-brand-300/70 bg-brand-100/70 p-3 text-[14px] leading-relaxed text-wood sm:text-[15px]">
+                    <div className="mb-1 font-display text-[11px] font-semibold uppercase tracking-[0.12em] text-brand-700">
+                      {t('map.askClass')}
+                    </div>
+                    <p className="font-semibold">{selected.question}</p>
+                  </div>
+                )}
+
+                {/* The place's square picture fills the free space under the text: it sits a
+                    little low, keeps a margin above and below, and shrinks when the text is long. */}
+                {(() => {
+                  const entity = selected.entityId ? getHistoricalEntity(selected.entityId) : undefined;
+                  const picture = entity ? entityPictureUrl(entity) : undefined;
+                  if (!picture) return null;
+                  return (
+                    <div className="flex justify-center pb-1 pt-3 lg:relative lg:min-h-[9rem] lg:flex-1 lg:p-0">
+                      <div className="contents lg:absolute lg:inset-x-0 lg:bottom-2 lg:top-6 lg:flex lg:items-center lg:justify-center">
+                        <img
+                          src={picture}
+                          alt=""
+                          loading="lazy"
+                          className="aspect-square w-44 rounded-2xl object-cover shadow-sm ring-1 ring-brand-200/70 sm:w-52 lg:h-full lg:max-h-64 lg:w-auto"
+                        />
+                      </div>
+                    </div>
+                  );
+                })()}
+
+                <div className="mt-auto flex items-center justify-between gap-2 pt-2">
+                  <button
+                    type="button"
+                    onClick={() => { stopTour(); selectPlace(shownPlaces[(shownPlaces.indexOf(selected) - 1 + shownPlaces.length) % shownPlaces.length].id, true); }}
+                    disabled={shownPlaces.length < 2}
+                    className="inline-flex min-h-11 items-center gap-1.5 rounded-full border border-brand-200 bg-white px-4 font-display text-[12px] font-semibold text-brand-800 hover:bg-brand-50 disabled:opacity-40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
+                  >
+                    <ArrowRight size={15} className={cn(!isRTL && 'rotate-180')} aria-hidden="true" />
+                    {t('map.previous')}
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      if (classroom && hiddenPlaces.length > 0) { revealNext(); return; }
+                      stopTour();
+                      selectPlace(shownPlaces[(shownPlaces.indexOf(selected) + 1) % shownPlaces.length].id, true);
+                    }}
+                    className="inline-flex min-h-11 items-center gap-1.5 rounded-full bg-brand-700 px-4 font-display text-[12px] font-semibold text-white shadow-md hover:bg-brand-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2"
+                  >
+                    {classroom && hiddenPlaces.length > 0 ? t('map.showNext') : t('map.next')}
+                    <ArrowRight size={15} className={cn(isRTL && 'rotate-180')} aria-hidden="true" />
+                  </button>
+                </div>
+                {visited.size === places.length && (
+                  <p className="flex items-center gap-1.5 rounded-xl bg-emerald-500/10 px-3 py-2 font-display text-[12px] font-semibold text-emerald-800">
+                    <Check size={15} aria-hidden="true" />
+                    {t('map.allExplored')}
+                  </p>
+                )}
+              </motion.div>
+            ) : (
+              <motion.div
+                key={classroom ? 'classroom' : 'intro'}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.2 }}
+                className="flex flex-1 flex-col gap-3"
+              >
+                <span className="flex h-11 w-11 max-sm:h-9 max-sm:w-9 items-center justify-center rounded-full bg-brand-100 text-brand-700">
+                  {classroom ? <SECTION_ICONS.classMode.icon size={22} aria-hidden="true" /> : <MapPin size={22} aria-hidden="true" />}
+                </span>
+                <h4 className="font-display text-xl font-semibold leading-tight text-wood sm:text-2xl">{classroom ? t('map.classroom') : t('map.startTitle')}</h4>
+                <p className={cn('font-serif text-wood/80', language === 'ar' ? 'text-[18px] leading-[1.9]' : 'text-[15px] leading-[1.7] sm:text-[16px]')}>
+                  {classroom ? t('map.classroomText') : t('map.startText')}
+                </p>
+                {classroom && (
+                  <button
+                    type="button"
+                    onClick={revealNext}
+                    disabled={hiddenPlaces.length === 0}
+                    className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-brand-700 px-5 font-display text-[14px] font-semibold text-white shadow-md hover:bg-brand-800 disabled:opacity-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2"
+                  >
+                    {hiddenPlaces.length === 0 ? t('map.allShown') : revealed.size === 0 ? t('map.showFirst') : t('map.showNext')}
+                    {hiddenPlaces.length > 0 && <ArrowRight size={16} className={cn(isRTL && 'rotate-180')} aria-hidden="true" />}
+                  </button>
+                )}
+                <ol className="flex flex-col gap-1.5">
+                  {shownPlaces.map(place => (
+                    <li key={place.id}>
+                      <button
+                        type="button"
+                        onClick={() => { stopTour(); selectPlace(place.id, true); }}
+                        className="flex min-h-11 w-full items-center gap-3 rounded-xl border border-brand-200/80 bg-white/80 px-3 py-2 text-start hover:border-brand-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
+                      >
+                        {pictures[place.id] ? (
+                          <img
+                            src={pictures[place.id]}
+                            alt=""
+                            loading="lazy"
+                            className="h-9 w-9 shrink-0 rounded-full object-cover ring-2"
+                            style={{ '--tw-ring-color': place.tone === 'event' ? PALETTE.mongol : 'var(--brand-700)' } as React.CSSProperties}
+                          />
+                        ) : (
+                          <span
+                            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-white"
+                            style={{ background: place.tone === 'event' ? PALETTE.mongol : 'var(--brand-700)' }}
+                          >
+                            <MapGlyph icon={place.icon} size={18} strokeWidth={2.1} />
+                          </span>
+                        )}
+                        <span className="min-w-0 flex-1 truncate font-display text-[14px] font-semibold text-wood">
+                          {formatNumber(places.indexOf(place) + 1)}. {place.name}
+                        </span>
+                        <span className="shrink-0 text-[11px] text-wood/55">{place.kind}</span>
+                      </button>
+                    </li>
+                  ))}
+                </ol>
+                {classroom && revealed.size > 0 && (
+                  <button type="button" onClick={hideAll} className="self-start text-[12px] font-semibold text-brand-700 underline-offset-2 hover:underline">
+                    {t('map.hideAll')}
+                  </button>
+                )}
+                <p className="mt-auto text-[12px] leading-snug text-wood/55">{t('map.hint')}</p>
+              </motion.div>
+            )}
+          </AnimatePresence>
+  );
+
+  // Phones: the chosen place in one line under the map; "More" opens the whole card from below.
+  const stripPicture = selected ? pictures[selected.id] : undefined;
+  const placeStrip = (
+    <button
+      type="button"
+      onClick={() => setSheetOpen(true)}
+      data-map-strip
+      aria-haspopup="dialog"
+      dir={isRTL ? 'rtl' : 'ltr'}
+      className="relative flex w-full items-center gap-3 rounded-2xl border border-brand-200/90 bg-white px-3 pb-2.5 pt-3.5 text-start shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
+    >
+      <span className="absolute left-1/2 top-1.5 h-1 w-9 -translate-x-1/2 rounded-full bg-black/10" aria-hidden="true" />
+      {stripPicture ? (
+        <img src={stripPicture} alt="" className="h-[52px] w-[52px] shrink-0 rounded-xl object-cover" />
+      ) : (
+        <span
+          className="flex h-[52px] w-[52px] shrink-0 items-center justify-center rounded-xl text-white"
+          style={{ background: selected?.tone === 'event' ? PALETTE.mongol : 'var(--brand-700)' }}
+        >
+          {selected ? <MapGlyph icon={selected.icon} size={24} strokeWidth={2} /> : <MapPin size={24} aria-hidden="true" />}
+        </span>
+      )}
+      <span key={selected?.id ?? 'intro'} className="story-map-fade min-w-0 flex-1" style={{ animationDuration: '.25s' }}>
+        <span className={cn('block truncate font-display font-bold text-brand-700', language === 'ar' ? 'text-[11.5px]' : 'text-[10px] uppercase tracking-[0.1em]')}>
+          {selected ? `${formatNumber(selectedIndex + 1)} · ${selected.kind} · ` : ''}{t('map.explored')} {formatNumber(visited.size)}/{formatNumber(places.length)}
+        </span>
+        <span className={cn('block truncate font-display font-bold leading-tight text-wood', language === 'ar' ? 'text-[17px]' : 'text-[16px]')}>
+          {selected ? selected.name : t('map.startTitle')}
+        </span>
+        <span className={cn('block font-serif text-wood/70', language === 'ar' ? 'line-clamp-1 text-[14px] leading-snug' : 'line-clamp-1 text-[12.5px] leading-snug')}>
+          {selected ? selected.text : t('map.startText')}
+        </span>
+      </span>
+      <span className="flex shrink-0 items-center gap-0.5 font-display text-[12px] font-semibold text-brand-700">
+        {t('map.more')}
+        <ChevronUp size={15} aria-hidden="true" />
+      </span>
+    </button>
+  );
+
+  const placeSheet = isPhone && typeof document !== 'undefined' ? createPortal(
+    <AnimatePresence>
+      {sheetOpen && !challengeOn && (
+        <>
+          <motion.button
+            type="button"
+            key="scrim"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[90] cursor-default bg-black/40"
+            aria-label={t('map.closeDetails')}
+            onClick={() => setSheetOpen(false)}
+          />
+          <motion.div
+            key="sheet"
+            role="dialog"
+            aria-label={selected?.name ?? t('map.startTitle')}
+            data-map-sheet
+            dir={isRTL ? 'rtl' : 'ltr'}
+            initial={{ y: '100%' }}
+            animate={{ y: 0 }}
+            exit={{ y: '100%' }}
+            transition={{ duration: 0.22, ease: 'easeOut' }}
+            {...infoSheet.sheet}
+            className={cn('fixed inset-x-0 bottom-0 z-[91] flex max-h-[85dvh] flex-col overflow-y-auto rounded-t-[22px] bg-brand-50 px-4 pb-[calc(1.25rem+env(safe-area-inset-bottom))] pt-2 shadow-2xl', language === 'ar' && 'font-arabic')}
+          >
+            <div className="-mx-4 flex cursor-grab items-center justify-center pb-2 pt-1" {...infoSheet.grip}>
+              <span className="block h-1 w-10 rounded-full bg-black/15" aria-hidden="true" />
+            </div>
+            <button
+              type="button"
+              onClick={() => setSheetOpen(false)}
+              aria-label={t('map.closeDetails')}
+              className="absolute end-3 top-3 flex h-8 w-8 items-center justify-center rounded-full bg-white text-wood/60 shadow-sm"
+            >
+              <X size={14} aria-hidden="true" />
+            </button>
+            {infoPanel}
+            <div className="mt-4">{legend}</div>
+          </motion.div>
+        </>
+      )}
+    </AnimatePresence>,
+    document.body,
+  ) : null;
+
   // --- Render -----------------------------------------------------------------------------------
   return (
     <div className="h-full min-h-0 flex flex-col overflow-y-auto lg:overflow-hidden custom-scrollbar">
@@ -803,7 +1115,7 @@ export const StoryMapPage: React.FC<StoryMapPageProps> = ({ page }) => {
       `}</style>
 
       {/* Title row, matching the chapter pages */}
-      <div className={cn('flex flex-col sm:flex-row sm:items-end justify-between gap-2 mb-3 sm:mb-5 shrink-0', isRTL && 'text-right')}>
+      <div className={cn('flex flex-col sm:flex-row sm:items-end justify-between gap-2 mb-3 sm:mb-5 shrink-0 max-sm:hidden', isRTL && 'text-right')}>
         {/* Phones: the map's name is already in the top bar. */}
         <div className="min-w-0 max-sm:hidden">
           <h3 className="font-display text-xl sm:text-3xl lg:text-4xl text-wood font-semibold tracking-[-0.03em] leading-tight">
@@ -858,7 +1170,7 @@ export const StoryMapPage: React.FC<StoryMapPageProps> = ({ page }) => {
           tabIndex={0}
           onKeyDown={onStageKey}
           aria-label={page.title}
-          className="relative h-[52svh] min-h-[300px] max-sm:h-[58svh] max-lg:order-1 lg:h-auto lg:min-h-0 lg:col-start-1 lg:row-start-1 overflow-hidden rounded-[1.5rem] border border-brand-200/80 shadow-[0_14px_40px_rgba(63,49,28,0.14)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
+          className={cn('relative h-[52svh] min-h-[300px] max-lg:order-1', challengeOn ? 'max-sm:h-[64svh]' : 'max-sm:h-[55svh]', ' lg:h-auto lg:min-h-0 lg:col-start-1 lg:row-start-1 overflow-hidden rounded-[1.5rem] border border-brand-200/80 shadow-[0_14px_40px_rgba(63,49,28,0.14)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500')}
           style={{ background: PALETTE.seaBottom, touchAction: zoomed || challengeOn ? 'none' : 'pan-y' }}
         >
           <svg
@@ -1084,7 +1396,19 @@ export const StoryMapPage: React.FC<StoryMapPageProps> = ({ page }) => {
                         </g>
                       </g>
                     </g>
-                    <text
+                    {isPhone && isSelected ? (() => {
+                      // Phones: the chosen place's name as a filled pill, so the choice is plain to see.
+                      const width = place.name.replace(/[\u064B-\u0652\u0670]/g, '').length * (language === 'ar' ? 8.4 : 9.2) + 22;
+                      const left = label.anchor === 'start' ? label.dx - 6 : label.anchor === 'end' ? label.dx + 6 - width : label.dx - width / 2;
+                      return (
+                        <g className="story-map-fade" style={{ animationDuration: '.2s' }} data-map-selected-label>
+                          <rect x={left} y={label.dy - 18} width={width} height={26} rx={13} fill="var(--brand-700)" stroke="#fffdf7" strokeWidth={2} />
+                          <text x={left + width / 2} y={label.dy} textAnchor="middle" fontSize={16} fontWeight={700} fill="#ffffff" style={{ fontFamily: svgFont }}>
+                            {place.name}
+                          </text>
+                        </g>
+                      );
+                    })() : <text
                       x={label.dx}
                       y={label.dy}
                       textAnchor={label.anchor}
@@ -1098,7 +1422,7 @@ export const StoryMapPage: React.FC<StoryMapPageProps> = ({ page }) => {
                       style={{ fontFamily: svgFont }}
                     >
                       {place.name}
-                    </text>
+                    </text>}
                   </g>
                 </g>
               );
@@ -1159,28 +1483,51 @@ export const StoryMapPage: React.FC<StoryMapPageProps> = ({ page }) => {
           </svg>
 
           {/* Compass */}
-          <div className="pointer-events-none absolute left-3 top-3 flex h-11 w-11 flex-col items-center justify-center rounded-full border border-white/70 bg-white/60 font-display text-[10px] font-bold text-[#5f8f9c] shadow-sm backdrop-blur-sm" aria-hidden="true" dir="ltr">
+          <div className="pointer-events-none absolute left-3 top-3 flex h-11 w-11 max-sm:hidden flex-col items-center justify-center rounded-full border border-white/70 bg-white/60 font-display text-[10px] font-bold text-[#5f8f9c] shadow-sm backdrop-blur-sm" aria-hidden="true" dir="ltr">
             <svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 2 L15 12 L12 10.5 L9 12 Z" fill="#b8573f" /><path d="M12 22 L9 12 L12 13.5 L15 12 Z" fill="#9fb9c0" /></svg>
             N
           </div>
 
+          {/* Phones: the challenge (and class mode) as small pills where the compass sits */}
+          {isPhone && !challengeOn && (
+            <div className="absolute left-2 top-2 z-10 flex flex-col items-start gap-1.5" dir={isRTL ? 'rtl' : 'ltr'}>
+              {features.challenge && map.challenge.length > 0 && (
+                <button type="button" onClick={enterChallenge} data-map-challenge className="inline-flex h-9 items-center gap-1.5 rounded-full border border-white/70 bg-white/95 px-3 font-display text-[12px] font-semibold text-brand-800 shadow-md">
+                  <Target size={15} aria-hidden="true" />
+                  {t('map.challenge')}
+                </button>
+              )}
+              {features.classroom && isTeacher && (
+                <button type="button" onClick={toggleClassroom} aria-pressed={classroom} className={cn('inline-flex h-9 items-center gap-1.5 rounded-full border px-3 font-display text-[12px] font-semibold shadow-md', classroom ? 'border-transparent bg-brand-700 text-white' : 'border-white/70 bg-white/95 text-brand-800')}>
+                  <SECTION_ICONS.classMode.icon size={15} aria-hidden="true" />
+                  {t('map.classroom')}
+                </button>
+              )}
+            </div>
+          )}
+
           {/* Zoom controls */}
-          <div className="absolute right-3 top-3 z-10 flex flex-col overflow-hidden rounded-2xl border border-brand-200 bg-white/90 shadow-md backdrop-blur-sm">
-            <button type="button" onClick={() => { stopTour(); zoomBy(0.7); }} aria-label={t('map.zoomIn')} title={t('map.zoomIn')} className="flex h-11 w-11 items-center justify-center font-display text-xl font-semibold text-brand-800 hover:bg-brand-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-brand-500">+</button>
+          <div className="absolute right-3 top-3 max-sm:right-2 max-sm:top-2 z-10 flex flex-col overflow-hidden rounded-2xl border border-brand-200 bg-white/90 shadow-md backdrop-blur-sm">
+            <button type="button" onClick={() => { stopTour(); zoomBy(0.7); }} aria-label={t('map.zoomIn')} title={t('map.zoomIn')} className="flex h-11 w-11 max-sm:h-9 max-sm:w-9 items-center justify-center font-display text-xl font-semibold text-brand-800 hover:bg-brand-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-brand-500">+</button>
             <span className="mx-2 h-px bg-brand-100" aria-hidden="true" />
-            <button type="button" onClick={() => { stopTour(); zoomBy(1 / 0.7); }} disabled={!zoomed} aria-label={t('map.zoomOut')} title={t('map.zoomOut')} className="flex h-11 w-11 items-center justify-center font-display text-xl font-semibold text-brand-800 hover:bg-brand-50 disabled:opacity-35 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-brand-500">−</button>
+            <button type="button" onClick={() => { stopTour(); zoomBy(1 / 0.7); }} disabled={!zoomed} aria-label={t('map.zoomOut')} title={t('map.zoomOut')} className="flex h-11 w-11 max-sm:h-9 max-sm:w-9 items-center justify-center font-display text-xl font-semibold text-brand-800 hover:bg-brand-50 disabled:opacity-35 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-brand-500">−</button>
             <span className="mx-2 h-px bg-brand-100" aria-hidden="true" />
-            <button type="button" onClick={() => setMapSoundOn(!soundOn)} aria-pressed={soundOn} aria-label={soundOn ? t('map.soundOff') : t('map.soundOn')} title={soundOn ? t('map.soundOff') : t('map.soundOn')} className="flex h-11 w-11 items-center justify-center text-brand-800 hover:bg-brand-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-brand-500">
+            <button type="button" onClick={() => setMapSoundOn(!soundOn)} aria-pressed={soundOn} aria-label={soundOn ? t('map.soundOff') : t('map.soundOn')} title={soundOn ? t('map.soundOff') : t('map.soundOn')} className="flex h-11 w-11 max-sm:h-9 max-sm:w-9 items-center justify-center text-brand-800 hover:bg-brand-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-brand-500">
               {soundOn ? <Volume2 size={18} /> : <VolumeX size={18} />}
             </button>
             <span className="mx-2 h-px bg-brand-100" aria-hidden="true" />
-            <button type="button" onClick={resetView} disabled={isHome} aria-label={t('map.reset')} title={t('map.reset')} className="flex h-11 w-11 items-center justify-center text-brand-800 hover:bg-brand-50 disabled:opacity-35 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-brand-500">
+            <button type="button" onClick={resetView} disabled={isHome} aria-label={t('map.reset')} title={t('map.reset')} className="flex h-11 w-11 max-sm:h-9 max-sm:w-9 items-center justify-center text-brand-800 hover:bg-brand-50 disabled:opacity-35 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-brand-500">
               <RotateCcw size={18} />
             </button>
           </div>
 
           {/* The year and what is happening in it */}
-          {timeOn && !challengeOn && (
+          {timeOn && !challengeOn && isPhone && ageLine && (
+            <div className="pointer-events-none absolute bottom-2 left-2 z-10 max-w-[60%] rounded-xl bg-white/88 px-2.5 py-1 shadow-sm" dir={isRTL ? 'rtl' : 'ltr'}>
+              <div className={cn('text-[#3c3428]/80', language === 'ar' ? 'text-[13px] leading-snug' : 'text-[11px] leading-snug')}>{ageLine}</div>
+            </div>
+          )}
+          {timeOn && !challengeOn && !isPhone && (
             <div className="pointer-events-none absolute left-[64px] right-[64px] top-3 z-10 flex justify-center" dir={isRTL ? 'rtl' : 'ltr'}>
               <div className="max-w-full rounded-2xl border border-white/70 bg-white/88 px-3 py-1.5 text-center shadow-sm backdrop-blur-sm">
                 <div className="flex items-center justify-center gap-2 font-display text-[13px] font-bold text-[#3c3428] sm:text-[14px]">
@@ -1219,236 +1566,27 @@ export const StoryMapPage: React.FC<StoryMapPageProps> = ({ page }) => {
               onNext={nextQuestion}
               onRetry={restartChallenge}
               onExit={exitChallenge}
+              compact={isPhone}
+              resultSlot={resultSlot}
             />
           )}
         </div>
 
-        {/* Info card */}
-        <aside
+        {/* Info card (phones: the strip and sheet below) */}
+        {!isPhone && <aside
           className="min-w-0 max-lg:order-3 lg:col-start-2 lg:row-start-1 lg:row-span-2 lg:min-h-0 lg:overflow-y-auto custom-scrollbar rounded-[1.5rem] border border-brand-200/90 bg-brand-50/88 p-4 sm:p-5 shadow-[0_10px_30px_rgba(63,49,28,0.10)] flex flex-col"
           aria-live="polite"
         >
-          <AnimatePresence mode="wait" initial={false}>
-            {challengeOn ? (
-              <motion.div key="challenge" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.2 }} className="flex flex-1 flex-col gap-3">
-                <span className="flex h-11 w-11 items-center justify-center rounded-full bg-brand-100 text-brand-700">
-                  <Target size={22} aria-hidden="true" />
-                </span>
-                <h4 className="font-display text-xl font-semibold leading-tight text-wood sm:text-2xl">{t('map.challengeTitle')}</h4>
-                <ol className="flex flex-col gap-1.5" aria-label={t('map.challengeText')}>
-                  {(['map.step1', 'map.step2', 'map.step3'] as const).map((key, step) => {
-                    const activeStep = challengeDone ? -1 : answer ? 2 : 1;
-                    const on = step === activeStep || (step === 0 && !answer && !challengeDone);
-                    return (
-                      <li key={key} className={cn('flex items-center gap-2.5 text-wood transition-opacity', on ? 'opacity-100' : 'opacity-45')}>
-                        <span className={cn('flex h-6 w-6 shrink-0 items-center justify-center rounded-full font-display text-[12px] font-bold', on ? 'bg-brand-700 text-white' : 'bg-brand-200 text-brand-800')}>{formatNumber(step + 1)}</span>
-                        <span className={cn('font-serif', language === 'ar' ? 'text-[16px] leading-snug' : 'text-[14px] leading-snug')}>{t(key)}</span>
-                      </li>
-                    );
-                  })}
-                </ol>
-                <div className="flex flex-wrap gap-x-4 gap-y-1.5 rounded-xl border border-brand-200/80 bg-white/70 px-3 py-2 text-[12px] text-wood/85">
-                  <span className="flex items-center gap-1.5">
-                    <svg width="16" height="16" viewBox="-9 -9 18 18" aria-hidden="true"><circle r="6.5" fill="#fff" stroke={PALETTE.mongol} strokeWidth="2.5" /></svg>
-                    {t('map.yourAnswer')}
-                  </span>
-                  <span className="flex items-center gap-1.5">
-                    <svg width="18" height="18" viewBox="-9 -9 18 18" aria-hidden="true"><circle r="7" fill={GOOD} fillOpacity="0.2" stroke={GOOD} strokeWidth="1.8" strokeDasharray="3 2.5" /></svg>
-                    {t('map.rightPlace')}
-                  </span>
-                </div>
-                <ol className="flex flex-col gap-1.5">
-                  {map.challenge.map((item, index) => {
-                    const result = answers[index];
-                    const current = index === cIndex && !challengeDone;
-                    return (
-                      <li
-                        key={item.id}
-                        className={cn('flex min-h-11 items-center gap-3 rounded-xl border px-3 py-2', current ? 'border-brand-500 bg-white' : 'border-brand-200/80 bg-white/70')}
-                      >
-                        <span
-                          className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full font-display text-[12px] font-bold text-white"
-                          style={{ background: result ? (result.correct ? GOOD : PALETTE.mongol) : current ? 'var(--brand-700)' : 'var(--brand-300)' }}
-                        >
-                          {result ? (result.correct ? <Check size={14} aria-hidden="true" /> : '×') : formatNumber(index + 1)}
-                        </span>
-                        <span className="min-w-0 flex-1 text-[13px] leading-snug text-wood/85">{item.prompt}</span>
-                      </li>
-                    );
-                  })}
-                </ol>
-              </motion.div>
-            ) : selected ? (
-              <motion.div
-                key={selected.id}
-                initial={{ opacity: 0, y: 8 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -6 }}
-                transition={{ duration: 0.2 }}
-                className="flex flex-1 flex-col gap-3"
-              >
-                <div className="flex items-center gap-2.5">
-                  <span
-                    className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-white shadow-sm"
-                    style={{ background: selected.tone === 'event' ? PALETTE.mongol : 'var(--brand-700)' }}
-                  >
-                    <MapGlyph icon={selected.icon} size={21} strokeWidth={2} />
-                  </span>
-                  <div className="min-w-0">
-                    <div className="font-display text-[11px] font-semibold uppercase tracking-[0.14em] text-brand-700">
-                      {formatNumber(selectedIndex + 1)} · {selected.kind}
-                    </div>
-                    <h4 className="font-display text-xl font-semibold leading-tight text-wood sm:text-2xl">{selected.name}</h4>
-                  </div>
-                </div>
+          {infoPanel}
+        </aside>}
 
-                <p className={cn('font-serif text-wood/90', language === 'ar' ? 'text-[19px] leading-[1.95]' : 'text-[16px] leading-[1.7] sm:text-[17px]')}>
-                  {selected.text}
-                </p>
+        {/* Phones: the challenge's hint and result, under the map */}
+        {isPhone && challengeOn && !challengeDone && <div ref={setResultSlot} className="max-lg:order-2" />}
 
-                {isTeacher && selected.teacherNote && (
-                  <div className="rounded-2xl border border-dashed border-brand-300 bg-white/70 p-3 text-[13px] leading-relaxed text-wood/80 sm:text-[14px]">
-                    <div className="mb-1 flex items-center gap-1.5 font-display text-[11px] font-semibold uppercase tracking-[0.12em] text-brand-700">
-                      <SECTION_ICONS.teacherGuide.icon size={15} aria-hidden="true" />
-                      {t('map.teacherNote')}
-                    </div>
-                    <p>{selected.teacherNote}</p>
-                  </div>
-                )}
-
-                {isTeacher && selected.question && (
-                  <div className="rounded-2xl border border-brand-300/70 bg-brand-100/70 p-3 text-[14px] leading-relaxed text-wood sm:text-[15px]">
-                    <div className="mb-1 font-display text-[11px] font-semibold uppercase tracking-[0.12em] text-brand-700">
-                      {t('map.askClass')}
-                    </div>
-                    <p className="font-semibold">{selected.question}</p>
-                  </div>
-                )}
-
-                {/* The place's square picture fills the free space under the text: it sits a
-                    little low, keeps a margin above and below, and shrinks when the text is long. */}
-                {(() => {
-                  const entity = selected.entityId ? getHistoricalEntity(selected.entityId) : undefined;
-                  const picture = entity ? entityPictureUrl(entity) : undefined;
-                  if (!picture) return null;
-                  return (
-                    <div className="flex justify-center pb-1 pt-3 lg:relative lg:min-h-[9rem] lg:flex-1 lg:p-0">
-                      <div className="contents lg:absolute lg:inset-x-0 lg:bottom-2 lg:top-6 lg:flex lg:items-center lg:justify-center">
-                        <img
-                          src={picture}
-                          alt=""
-                          loading="lazy"
-                          className="aspect-square w-44 rounded-2xl object-cover shadow-sm ring-1 ring-brand-200/70 sm:w-52 lg:h-full lg:max-h-64 lg:w-auto"
-                        />
-                      </div>
-                    </div>
-                  );
-                })()}
-
-                <div className="mt-auto flex items-center justify-between gap-2 pt-2">
-                  <button
-                    type="button"
-                    onClick={() => { stopTour(); selectPlace(shownPlaces[(shownPlaces.indexOf(selected) - 1 + shownPlaces.length) % shownPlaces.length].id, true); }}
-                    disabled={shownPlaces.length < 2}
-                    className="inline-flex min-h-11 items-center gap-1.5 rounded-full border border-brand-200 bg-white px-4 font-display text-[12px] font-semibold text-brand-800 hover:bg-brand-50 disabled:opacity-40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
-                  >
-                    <ArrowRight size={15} className={cn(!isRTL && 'rotate-180')} aria-hidden="true" />
-                    {t('map.previous')}
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      if (classroom && hiddenPlaces.length > 0) { revealNext(); return; }
-                      stopTour();
-                      selectPlace(shownPlaces[(shownPlaces.indexOf(selected) + 1) % shownPlaces.length].id, true);
-                    }}
-                    className="inline-flex min-h-11 items-center gap-1.5 rounded-full bg-brand-700 px-4 font-display text-[12px] font-semibold text-white shadow-md hover:bg-brand-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2"
-                  >
-                    {classroom && hiddenPlaces.length > 0 ? t('map.showNext') : t('map.next')}
-                    <ArrowRight size={15} className={cn(isRTL && 'rotate-180')} aria-hidden="true" />
-                  </button>
-                </div>
-                {visited.size === places.length && (
-                  <p className="flex items-center gap-1.5 rounded-xl bg-emerald-500/10 px-3 py-2 font-display text-[12px] font-semibold text-emerald-800">
-                    <Check size={15} aria-hidden="true" />
-                    {t('map.allExplored')}
-                  </p>
-                )}
-              </motion.div>
-            ) : (
-              <motion.div
-                key={classroom ? 'classroom' : 'intro'}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.2 }}
-                className="flex flex-1 flex-col gap-3"
-              >
-                <span className="flex h-11 w-11 items-center justify-center rounded-full bg-brand-100 text-brand-700">
-                  {classroom ? <SECTION_ICONS.classMode.icon size={22} aria-hidden="true" /> : <MapPin size={22} aria-hidden="true" />}
-                </span>
-                <h4 className="font-display text-xl font-semibold leading-tight text-wood sm:text-2xl">{classroom ? t('map.classroom') : t('map.startTitle')}</h4>
-                <p className={cn('font-serif text-wood/80', language === 'ar' ? 'text-[18px] leading-[1.9]' : 'text-[15px] leading-[1.7] sm:text-[16px]')}>
-                  {classroom ? t('map.classroomText') : t('map.startText')}
-                </p>
-                {classroom && (
-                  <button
-                    type="button"
-                    onClick={revealNext}
-                    disabled={hiddenPlaces.length === 0}
-                    className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-brand-700 px-5 font-display text-[14px] font-semibold text-white shadow-md hover:bg-brand-800 disabled:opacity-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2"
-                  >
-                    {hiddenPlaces.length === 0 ? t('map.allShown') : revealed.size === 0 ? t('map.showFirst') : t('map.showNext')}
-                    {hiddenPlaces.length > 0 && <ArrowRight size={16} className={cn(isRTL && 'rotate-180')} aria-hidden="true" />}
-                  </button>
-                )}
-                <ol className="flex flex-col gap-1.5">
-                  {shownPlaces.map(place => (
-                    <li key={place.id}>
-                      <button
-                        type="button"
-                        onClick={() => { stopTour(); selectPlace(place.id, true); }}
-                        className="flex min-h-11 w-full items-center gap-3 rounded-xl border border-brand-200/80 bg-white/80 px-3 py-2 text-start hover:border-brand-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
-                      >
-                        {pictures[place.id] ? (
-                          <img
-                            src={pictures[place.id]}
-                            alt=""
-                            loading="lazy"
-                            className="h-9 w-9 shrink-0 rounded-full object-cover ring-2"
-                            style={{ '--tw-ring-color': place.tone === 'event' ? PALETTE.mongol : 'var(--brand-700)' } as React.CSSProperties}
-                          />
-                        ) : (
-                          <span
-                            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-white"
-                            style={{ background: place.tone === 'event' ? PALETTE.mongol : 'var(--brand-700)' }}
-                          >
-                            <MapGlyph icon={place.icon} size={18} strokeWidth={2.1} />
-                          </span>
-                        )}
-                        <span className="min-w-0 flex-1 truncate font-display text-[14px] font-semibold text-wood">
-                          {formatNumber(places.indexOf(place) + 1)}. {place.name}
-                        </span>
-                        <span className="shrink-0 text-[11px] text-wood/55">{place.kind}</span>
-                      </button>
-                    </li>
-                  ))}
-                </ol>
-                {classroom && revealed.size > 0 && (
-                  <button type="button" onClick={hideAll} className="self-start text-[12px] font-semibold text-brand-700 underline-offset-2 hover:underline">
-                    {t('map.hideAll')}
-                  </button>
-                )}
-                <p className="mt-auto text-[12px] leading-snug text-wood/55">{t('map.hint')}</p>
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </aside>
-
-        {/* Legend (phones) and the time panel */}
+        {/* Place strip (phones) and the time panel */}
         {!challengeOn && (
           <div className="min-w-0 flex flex-col gap-3 max-lg:order-2 max-sm:-mt-1 lg:col-start-1 lg:row-start-2">
-            <div className="sm:hidden max-sm:order-2">{legend}</div>
+            {isPhone && placeStrip}
             {timeOn && (
               <MapTimePanel
                 map={map}
@@ -1464,6 +1602,7 @@ export const StoryMapPage: React.FC<StoryMapPageProps> = ({ page }) => {
           </div>
         )}
       </div>
+      {placeSheet}
     </div>
   );
 };

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { AnimatePresence, motion } from 'motion/react';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { cn } from '../../lib/utils';
@@ -26,6 +27,10 @@ interface MapChallengeOverlayProps {
   onExit: () => void;
   /** Replaces the distance line under "Correct!" or "Not quite.", e.g. for a sea or a land. */
   detail?: string;
+  /** Phones: a slim question strip with its own close button, so the map keeps the screen. */
+  compact?: boolean;
+  /** Phones: where the tap hint and the result go, under the map instead of over it. */
+  resultSlot?: HTMLElement | null;
 }
 
 const GOOD = '#0f8a5f';
@@ -128,13 +133,98 @@ const ScoreDialog: React.FC<{ score: number; total: number; results: (ChallengeA
 };
 
 /** Prompt on top of the map, a tap cue while waiting, the feedback sheet, and the final score. */
-export const MapChallengeOverlay: React.FC<MapChallengeOverlayProps> = ({ question, index, total, answer, results, done, score, onNext, onRetry, onExit, detail }) => {
+export const MapChallengeOverlay: React.FC<MapChallengeOverlayProps> = ({ question, index, total, answer, results, done, score, onNext, onRetry, onExit, detail, compact = false, resultSlot }) => {
   const { t, language, isRTL, formatNumber } = useLanguage();
   const isLast = index >= total - 1;
   const textSize = language === 'ar' ? 'text-[17px] leading-[1.8]' : 'text-[14px] leading-snug sm:text-[15px]';
 
   if (done) return <ScoreDialog score={score} total={total} results={results} onRetry={onRetry} onExit={onExit} />;
   if (!question) return null;
+
+  const detailText = detail ?? (
+    <>
+      {t('map.kmAway').replace('{n}', formatNumber(Math.round(answer?.distanceKm ?? 0)))}
+      {answer && !answer.correct && <> {t('map.greenCircle')}</>}
+    </>
+  );
+
+  if (compact) {
+    const isArabic = language === 'ar';
+    const bar = (
+      <AnimatePresence mode="wait" initial={false}>
+        {answer ? (
+          <motion.div
+            key={`result-${question.id}`}
+            role="status"
+            data-map-result
+            className={cn('flex items-center gap-2.5 rounded-2xl border-2 px-3 py-2', answer.correct ? 'border-emerald-300 bg-emerald-50' : 'border-rose-300 bg-rose-50')}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25, delay: 0.8 }}
+          >
+            <span className="flex h-[30px] w-[30px] shrink-0 items-center justify-center rounded-full text-white" style={{ background: answer.correct ? GOOD : BAD }}>
+              {answer.correct ? <Check size={16} aria-hidden="true" /> : <X size={16} aria-hidden="true" />}
+            </span>
+            <div className="min-w-0 flex-1">
+              <div className={cn('font-display font-bold', isArabic ? 'text-[15px]' : 'text-[14px]', answer.correct ? 'text-emerald-800' : 'text-rose-800')}>
+                {answer.correct ? t('map.correct') : t('map.notQuite')}
+              </div>
+              <p className={cn('font-serif text-[#3c3428]/80', isArabic ? 'text-[13px] leading-snug' : 'text-[12px] leading-snug')}>{detailText}</p>
+            </div>
+            <button
+              type="button"
+              onClick={onNext}
+              data-map-next
+              className="inline-flex h-[42px] shrink-0 items-center gap-1 rounded-xl bg-brand-700 px-3.5 font-display text-[13px] font-semibold text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
+            >
+              {isLast ? t('map.seeScore') : t('nav.next')}
+              <ArrowRight size={15} className={cn(isRTL && 'rotate-180')} aria-hidden="true" />
+            </button>
+          </motion.div>
+        ) : (
+          <motion.p
+            key={`cue-${question.id}`}
+            className={cn('flex min-h-[50px] items-center justify-center gap-2 rounded-2xl border border-dashed border-brand-300 bg-white/70 px-3 font-display font-semibold text-brand-800', isArabic ? 'text-[14px]' : 'text-[13px]')}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            <Target size={16} aria-hidden="true" />
+            {t('map.tapHint')}
+          </motion.p>
+        )}
+      </AnimatePresence>
+    );
+    return (
+      <>
+        <div className="pointer-events-none absolute left-2 right-[52px] top-2 z-20">
+          <div
+            className="pointer-events-auto flex items-center gap-2 rounded-[14px] border border-white/70 bg-white/95 px-2 py-1.5 shadow-md"
+            dir={isRTL ? 'rtl' : 'ltr'}
+            data-map-question
+          >
+            <button
+              type="button"
+              onClick={onExit}
+              aria-label={t('map.backToMap')}
+              title={t('map.backToMap')}
+              className="flex h-[30px] w-[30px] shrink-0 items-center justify-center rounded-full bg-brand-50 text-brand-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
+            >
+              <X size={14} aria-hidden="true" />
+            </button>
+            <div className="min-w-0">
+              <div className="font-display text-[10.5px] font-bold tabular-nums tracking-[0.08em] text-brand-700">
+                {formatNumber(index + 1)} / {formatNumber(total)}
+              </div>
+              <p className={cn('font-serif font-semibold text-[#3c3428]', isArabic ? 'text-[15px] leading-snug' : 'text-[13.5px] leading-tight')}>{question.prompt}</p>
+            </div>
+          </div>
+        </div>
+        {resultSlot ? createPortal(bar, resultSlot) : null}
+      </>
+    );
+  }
 
   return (
     <>

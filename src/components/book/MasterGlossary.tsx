@@ -590,6 +590,8 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({
                     : cn('bg-white/60 hover:bg-white', colTheme.brandText, colTheme.border)
                 )}
               >
+                {isPhone && opt.value === 'known' && <Check size={12} className="me-1 inline-block align-[-1px]" aria-hidden="true" />}
+                {isPhone && opt.value === 'unknown' && <RotateCcw size={12} className="me-1 inline-block align-[-1px]" aria-hidden="true" />}
                 {opt.label} <span className="opacity-70">· {formatNumber(opt.count)}</span>
               </button>
             ))}
@@ -677,9 +679,12 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({
       </section>
 
       {isPhone ? (
-        // Phones: a plain word list (all words, no pages). Tap a row to hear the word;
-        // the round button cycles New → I know → Practice again.
+        // Phones: a plain word list (all words, no pages). Tap a row for more; ✓ and ↻ mark it.
         <div className="flex-1 min-h-0 overflow-y-auto -mx-3 border-t border-black/5">
+          <div className="flex items-center gap-4 px-4 py-2 text-[12px] text-wood/65" aria-hidden="true">
+            <span className="flex items-center gap-1.5"><span className="flex h-5 w-5 items-center justify-center rounded-full bg-emerald-600 text-white"><Check size={11} /></span>{copy.knownBadge}</span>
+            <span className="flex items-center gap-1.5"><span className="flex h-5 w-5 items-center justify-center rounded-full bg-amber-500 text-white"><RotateCcw size={10} /></span>{copy.reviewBadge}</span>
+          </div>
           {filteredVocab.length === 0 && (
             <p className="px-4 py-10 text-center text-sm text-wood/55">
               {searchTerm ? t('nav.noWordsFound') : t('nav.noWordsCategory')}
@@ -688,8 +693,6 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({
           <ul className="divide-y divide-black/5">
             {filteredVocab.map(v => {
               const state: KnownState = knownMap[v.key] ?? 'unreviewed';
-              const nextState: KnownState = state === 'unreviewed' ? 'known' : state === 'known' ? 'unknown' : 'unreviewed';
-              const stateLabel = state === 'known' ? copy.knownBadge : state === 'unknown' ? copy.reviewBadge : copy.newBadge;
               return (
                 <li key={v.key} className="bg-white/55 ps-4 pe-3">
                   <div className="flex items-center gap-2">
@@ -714,25 +717,38 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({
                     type="button"
                     onClick={() => playWord(v.word)}
                     aria-label={v.word}
-                    className={cn('shrink-0 w-10 h-10 rounded-full flex items-center justify-center', playingWord === v.word ? colTheme.audioPlaying : colTheme.audio)}
+                    className={cn('shrink-0 w-9 h-9 rounded-full flex items-center justify-center', playingWord === v.word ? colTheme.audioPlaying : colTheme.audio)}
                   >
-                    <Volume2 size={16} className={playingWord === v.word ? 'animate-pulse' : ''} />
+                    <Volume2 size={15} className={playingWord === v.word ? 'animate-pulse' : ''} />
+                  </button>
+                  {/* One tap each: ✓ I know, ↻ Practice. Tapping the lit one again clears it. */}
+                  <button
+                    type="button"
+                    onClick={() => markWord(v.key, state === 'known' ? 'unreviewed' : 'known')}
+                    aria-pressed={state === 'known'}
+                    title={copy.knownBadge}
+                    aria-label={`${v.word}: ${copy.knownBadge}`}
+                    data-gloss-known
+                    className={cn(
+                      'shrink-0 w-[38px] h-[38px] rounded-full flex items-center justify-center border-[1.5px] transition-colors',
+                      state === 'known' ? 'bg-emerald-600 border-emerald-600 text-white' : 'bg-white border-black/10 text-wood/45'
+                    )}
+                  >
+                    <Check size={17} />
                   </button>
                   <button
                     type="button"
-                    onClick={() => markWord(v.key, nextState)}
-                    title={stateLabel}
-                    aria-label={`${v.word}: ${stateLabel}`}
+                    onClick={() => markWord(v.key, state === 'unknown' ? 'unreviewed' : 'unknown')}
+                    aria-pressed={state === 'unknown'}
+                    title={copy.reviewBadge}
+                    aria-label={`${v.word}: ${copy.reviewBadge}`}
+                    data-gloss-practice
                     className={cn(
-                      'shrink-0 w-11 h-11 rounded-full flex items-center justify-center border-2 transition-colors',
-                      state === 'known'
-                        ? 'bg-emerald-600 border-emerald-600 text-white'
-                        : state === 'unknown'
-                          ? 'bg-rose-50 border-rose-300 text-rose-600'
-                          : 'bg-white border-black/10 text-wood/30'
+                      'shrink-0 w-[38px] h-[38px] rounded-full flex items-center justify-center border-[1.5px] transition-colors',
+                      state === 'unknown' ? 'bg-amber-500 border-amber-500 text-white' : 'bg-white border-black/10 text-wood/45'
                     )}
                   >
-                    {state === 'unknown' ? <RotateCcw size={17} /> : <Check size={18} />}
+                    <RotateCcw size={16} />
                   </button>
                   </div>
                   {expandedWord === v.key && (
