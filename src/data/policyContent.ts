@@ -59,8 +59,8 @@ export const policySections: PolicySection[] = [
     },
     points: [
       {
-        en: 'Already in place: every chapter has audio narration, text size can be changed, a dyslexia-friendly font can be turned on, and reduced motion is respected.',
-        ar: 'المتوفّر الآن: لكل فصل تسجيل صوتي، ويمكن تغيير حجم النص، وتفعيل خط مناسب لعُسر القراءة، ويُراعى خيار تقليل الحركة.',
+        en: 'Already in place: the stories come with audio narration, text size can be changed, a dyslexia-friendly font can be turned on, and reduced motion is respected.',
+        ar: 'المتوفّر الآن: القصص مصحوبة بتسجيل صوتي، ويمكن تغيير حجم النص، وتفعيل خط مناسب لعُسر القراءة، ويُراعى خيار تقليل الحركة.',
       },
       {
         en: 'Text contrast on the main screens meets the 4.5:1 rule, buttons on phones have 44-pixel touch areas, and Arabic pages read from right to left.',

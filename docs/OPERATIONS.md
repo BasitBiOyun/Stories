@@ -34,6 +34,7 @@ Books in `hiddenStoryCatalog` (`src/core/content/storyCatalog.ts`) are built int
 ## Firebase Storage
 - Rules live in `storage.rules`. Reading and listing are public (the app lists chapter folders); writing from browsers is closed. `tts-state/` is private.
 - Publish after a change: `npx firebase-tools deploy --only storage` (logged in with an owner account), or paste the file into Firebase console → Storage → Rules.
+- The Firebase web API key in `src/lib/firebase.ts` is public by design. Limit it in GCP console → APIs & Services → Credentials: API restrictions to Cloud Storage for Firebase, and HTTP referrers to the app's own addresses.
 - App Check is not on yet. Turning on enforcement before the app sends App Check tokens would stop every picture and audio file, so it needs an app change first (reCAPTCHA Enterprise key + `initializeAppCheck`).
 
 ## Dependencies
