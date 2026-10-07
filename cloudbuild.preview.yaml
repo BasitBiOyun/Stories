@@ -24,6 +24,13 @@ steps:
       - -c
       - |
         set -eu
+        # Only the preview branch deploys or touches Storage. Any other branch (for example the
+        # platform-v2 work branch) is skipped here, so pushing it never changes the live app.
+        if [ "${BRANCH_NAME}" != "preview" ]; then
+          echo "[Stories] Branch ${BRANCH_NAME} is not preview; nothing is built or deployed."
+          touch /workspace/.skip-deploy
+          exit 0
+        fi
         head="$$(git ls-remote https://github.com/BasitBiOyun/Stories 2>/dev/null | awk '$$2 == "refs/heads/${BRANCH_NAME}" {print $$1}' || true)"
         if [ -n "$$head" ] && [ "$$head" != "$COMMIT_SHA" ]; then
           echo "[Stories] A newer commit ($$head) is already on ${BRANCH_NAME}; its build deploys this change too. Skipping."
@@ -67,6 +74,10 @@ steps:
       - -c
       - |
         set -euo pipefail
+        if [ "${BRANCH_NAME}" != "preview" ]; then
+          echo "[Stories TTS] Branch ${BRANCH_NAME} is not preview; skipping."
+          exit 0
+        fi
         if [ ! -f tts/requests.json ]; then
           echo "[Stories TTS] No tts/requests.json; skipping narration generation."
           exit 0
@@ -101,6 +112,10 @@ steps:
       - -c
       - |
         set -euo pipefail
+        if [ "${BRANCH_NAME}" != "preview" ]; then
+          echo "[Stories TTS Arabic] Branch ${BRANCH_NAME} is not preview; skipping."
+          exit 0
+        fi
         if [ ! -f tts/arabic_requests.json ]; then
           echo "[Stories TTS Arabic] No tts/arabic_requests.json; skipping."
           exit 0
@@ -133,6 +148,10 @@ steps:
       - -c
       - |
         set -euo pipefail
+        if [ "${BRANCH_NAME}" != "preview" ]; then
+          echo "[Stories Align] Branch ${BRANCH_NAME} is not preview; skipping."
+          exit 0
+        fi
         if [ ! -f tts/alignment_requests.json ]; then
           echo "[Stories Align] No tts/alignment_requests.json; skipping."
           exit 0
