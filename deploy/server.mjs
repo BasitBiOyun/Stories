@@ -87,6 +87,10 @@ const sendFile = (req, res, filePath) => {
     'X-Stories-Git-Sha': gitSha,
     'X-Stories-Revision': revision,
   };
+  if (ext === '.html') {
+    const cookie = previewCookieFor(req);
+    if (cookie) headers['Set-Cookie'] = cookie;
+  }
   if (compressible.has(ext)) {
     const accepted = String(req.headers['accept-encoding'] || '');
     const encoding = /\bbr\b/.test(accepted) ? 'br' : /\bgzip\b/.test(accepted) ? 'gzip' : null;
@@ -225,6 +229,21 @@ const sendMediaImage = async (req, res) => {
   }
 };
 
+// Unpublished books are built into assets/hidden-*.js (vite.config.ts). When PREVIEW_KEY is set,
+// those files are sent only to a browser that opened the app with ?gizli=<PREVIEW_KEY> (it then
+// keeps a cookie for 30 days). Without PREVIEW_KEY everything is served as before.
+const previewKey = process.env.PREVIEW_KEY || '';
+const PREVIEW_COOKIE = 'stories_preview';
+const hasPreviewCookie = (req) => String(req.headers.cookie || '')
+  .split(';')
+  .some(part => part.trim() === `${PREVIEW_COOKIE}=${encodeURIComponent(previewKey)}`);
+const previewCookieFor = (req) => {
+  if (!previewKey) return null;
+  const query = new URL(req.url || '/', 'http://local').searchParams;
+  if (query.get('gizli') !== previewKey) return null;
+  return `${PREVIEW_COOKIE}=${encodeURIComponent(previewKey)}; Path=/; Max-Age=2592000; HttpOnly; Secure; SameSite=Lax`;
+};
+
 const server = http.createServer((req, res) => {
   const urlPath = decodeURIComponent((req.url || '/').split('?')[0]);
 
@@ -254,6 +273,10 @@ const server = http.createServer((req, res) => {
     }
     sendAudioTimings(res, storagePath);
     return;
+  }
+
+  if (previewKey && urlPath.startsWith('/assets/hidden-') && !hasPreviewCookie(req)) {
+    return sendMissingAsset(res);
   }
 
   const safePath = normalize(urlPath).replace(/^([.][.][/\\])+/, '');
