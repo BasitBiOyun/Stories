@@ -56,9 +56,9 @@ export const ChapterSteps = ({
           const chip = (
             <span
               className={cn(
-                // Phones: smaller and without icons, so the four steps fit on one line.
-                'inline-flex items-center gap-1 whitespace-nowrap rounded-full px-1.5 py-0.5 font-display text-[10px] font-semibold sm:px-2 sm:text-[11px]',
-                language === 'ar' && 'text-[11px]',
+                // Phones: without icons, so the four steps fit on one line; the tap area reaches 44px (see the button).
+                'inline-flex min-h-7 items-center gap-1 whitespace-nowrap rounded-full px-1.5 font-display text-[11.5px] font-semibold sm:px-2.5 sm:text-[12px]',
+                language === 'ar' && 'text-[12.5px]',
                 step.done ? 'bg-emerald-100 text-emerald-800' : 'bg-black/[0.05] text-wood/62',
               )}
             >
@@ -70,7 +70,7 @@ export const ChapterSteps = ({
           return (
             <li key={step.key} className="flex">
               {step.onClick ? (
-                <button type="button" onClick={step.onClick} className="inline-flex rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500">
+                <button type="button" onClick={step.onClick} className="relative inline-flex rounded-full before:absolute before:-inset-y-2 before:inset-x-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500">
                   {chip}
                 </button>
               ) : chip}
@@ -83,7 +83,7 @@ export const ChapterSteps = ({
               type="button"
               onClick={onOpenLessonCard}
               data-lesson-card-open
-              className="inline-flex items-center gap-1 rounded-full border border-brand-300 bg-white px-2 py-0.5 font-display text-[11px] font-semibold text-brand-800 hover:bg-brand-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
+              className="inline-flex min-h-7 items-center gap-1 rounded-full border border-brand-300 bg-white px-2.5 font-display text-[12px] font-semibold text-brand-800 hover:bg-brand-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
             >
               <LessonIcon size={12} aria-hidden="true" />
               {SECTION_ICONS.lessonCard[language === 'ar' ? 'ar' : 'en']}

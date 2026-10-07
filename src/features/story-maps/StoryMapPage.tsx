@@ -764,7 +764,7 @@ export const StoryMapPage: React.FC<StoryMapPageProps> = ({ page }) => {
           <AnimatePresence mode="wait" initial={false}>
             {challengeOn ? (
               <motion.div key="challenge" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.2 }} className="flex flex-1 flex-col gap-3">
-                <span className="flex h-11 w-11 max-sm:h-9 max-sm:w-9 items-center justify-center rounded-full bg-brand-100 text-brand-700">
+                <span className="flex h-11 w-11 max-sm:h-10 max-sm:w-10 items-center justify-center rounded-full bg-brand-100 text-brand-700">
                   <Target size={22} aria-hidden="true" />
                 </span>
                 <h4 className="font-display text-xl font-semibold leading-tight text-wood sm:text-2xl">{t('map.challengeTitle')}</h4>
@@ -917,7 +917,7 @@ export const StoryMapPage: React.FC<StoryMapPageProps> = ({ page }) => {
                 transition={{ duration: 0.2 }}
                 className="flex flex-1 flex-col gap-3"
               >
-                <span className="flex h-11 w-11 max-sm:h-9 max-sm:w-9 items-center justify-center rounded-full bg-brand-100 text-brand-700">
+                <span className="flex h-11 w-11 max-sm:h-10 max-sm:w-10 items-center justify-center rounded-full bg-brand-100 text-brand-700">
                   {classroom ? <SECTION_ICONS.classMode.icon size={22} aria-hidden="true" /> : <MapPin size={22} aria-hidden="true" />}
                 </span>
                 <h4 className="font-display text-xl font-semibold leading-tight text-wood sm:text-2xl">{classroom ? t('map.classroom') : t('map.startTitle')}</h4>
@@ -1508,15 +1508,15 @@ export const StoryMapPage: React.FC<StoryMapPageProps> = ({ page }) => {
 
           {/* Zoom controls */}
           <div className="absolute right-3 top-3 max-sm:right-2 max-sm:top-2 z-10 flex flex-col overflow-hidden rounded-2xl border border-brand-200 bg-white/90 shadow-md backdrop-blur-sm">
-            <button type="button" onClick={() => { stopTour(); zoomBy(0.7); }} aria-label={t('map.zoomIn')} title={t('map.zoomIn')} className="flex h-11 w-11 max-sm:h-9 max-sm:w-9 items-center justify-center font-display text-xl font-semibold text-brand-800 hover:bg-brand-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-brand-500">+</button>
+            <button type="button" onClick={() => { stopTour(); zoomBy(0.7); }} aria-label={t('map.zoomIn')} title={t('map.zoomIn')} className="flex h-11 w-11 max-sm:h-10 max-sm:w-10 items-center justify-center font-display text-xl font-semibold text-brand-800 hover:bg-brand-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-brand-500">+</button>
             <span className="mx-2 h-px bg-brand-100" aria-hidden="true" />
-            <button type="button" onClick={() => { stopTour(); zoomBy(1 / 0.7); }} disabled={!zoomed} aria-label={t('map.zoomOut')} title={t('map.zoomOut')} className="flex h-11 w-11 max-sm:h-9 max-sm:w-9 items-center justify-center font-display text-xl font-semibold text-brand-800 hover:bg-brand-50 disabled:opacity-35 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-brand-500">−</button>
+            <button type="button" onClick={() => { stopTour(); zoomBy(1 / 0.7); }} disabled={!zoomed} aria-label={t('map.zoomOut')} title={t('map.zoomOut')} className="flex h-11 w-11 max-sm:h-10 max-sm:w-10 items-center justify-center font-display text-xl font-semibold text-brand-800 hover:bg-brand-50 disabled:opacity-35 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-brand-500">−</button>
             <span className="mx-2 h-px bg-brand-100" aria-hidden="true" />
-            <button type="button" onClick={() => setMapSoundOn(!soundOn)} aria-pressed={soundOn} aria-label={soundOn ? t('map.soundOff') : t('map.soundOn')} title={soundOn ? t('map.soundOff') : t('map.soundOn')} className="flex h-11 w-11 max-sm:h-9 max-sm:w-9 items-center justify-center text-brand-800 hover:bg-brand-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-brand-500">
+            <button type="button" onClick={() => setMapSoundOn(!soundOn)} aria-pressed={soundOn} aria-label={soundOn ? t('map.soundOff') : t('map.soundOn')} title={soundOn ? t('map.soundOff') : t('map.soundOn')} className="flex h-11 w-11 max-sm:h-10 max-sm:w-10 items-center justify-center text-brand-800 hover:bg-brand-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-brand-500">
               {soundOn ? <Volume2 size={18} /> : <VolumeX size={18} />}
             </button>
             <span className="mx-2 h-px bg-brand-100" aria-hidden="true" />
-            <button type="button" onClick={resetView} disabled={isHome} aria-label={t('map.reset')} title={t('map.reset')} className="flex h-11 w-11 max-sm:h-9 max-sm:w-9 items-center justify-center text-brand-800 hover:bg-brand-50 disabled:opacity-35 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-brand-500">
+            <button type="button" onClick={resetView} disabled={isHome} aria-label={t('map.reset')} title={t('map.reset')} className="flex h-11 w-11 max-sm:h-10 max-sm:w-10 items-center justify-center text-brand-800 hover:bg-brand-50 disabled:opacity-35 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-brand-500">
               <RotateCcw size={18} />
             </button>
           </div>

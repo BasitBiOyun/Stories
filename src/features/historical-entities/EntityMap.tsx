@@ -198,7 +198,7 @@ export const EntityMap = ({
               event.stopPropagation();
               onMarkerClick?.(marker.id);
             }}
-            className="absolute h-2.5 w-2.5 rounded-full border border-white/90 shadow-sm"
+            className="absolute h-2.5 w-2.5 rounded-full border border-white/90 shadow-sm before:absolute before:-inset-[15px] before:rounded-full"
             style={{
               left: `${marker.x}%`,
               top: `${marker.y}%`,

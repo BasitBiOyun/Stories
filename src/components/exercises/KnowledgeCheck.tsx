@@ -364,7 +364,8 @@ export const KnowledgeCheck = ({
             nextLabel={nextPageLabel}
           />
         ) : (
-          <>
+          // Wide screens: one question reads best at a comfortable width, centred.
+          <div className="mx-auto w-full max-w-3xl space-y-5">
             <div className="flex items-center justify-between gap-3 px-1" data-kc-progress>
               <span className={cn('font-display font-semibold text-wood/60 tabular-nums shrink-0', isArabic ? 'text-sm' : 'text-xs')}>
                 {t('nav.question')} {formatNumber(safeStep + 1)} {t('nav.of')} {formatNumber(supportedExercises.length)}
@@ -418,7 +419,7 @@ export const KnowledgeCheck = ({
                 nextLabel={isLastStep ? t('ex.seeResults') : t('nav.nextQuestion')}
               />
             )}
-          </>
+          </div>
         )}
       </div>
     </section>

@@ -216,6 +216,25 @@
       min-width: 2.5rem;
       min-height: 2.5rem;
     }
+    /* The buttons look smaller, but each still takes a 44px tap. */
+    .reader-header .touch-target,
+    .reader-header .ui-control,
+    .reader-footer .touch-target,
+    .reader-footer .ui-control {
+      position: relative;
+    }
+    .reader-header .touch-target::after,
+    .reader-header .ui-control::after {
+      content: '';
+      position: absolute;
+      inset: -4px;
+    }
+    .reader-footer .touch-target::after,
+    .reader-footer .ui-control::after {
+      content: '';
+      position: absolute;
+      inset: -2px;
+    }
   }
 
   .safe-area-x {

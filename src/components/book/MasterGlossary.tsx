@@ -707,7 +707,7 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({
                         {v.word}
                         <ChevronUp size={14} className={cn('ms-1 inline-block align-middle opacity-60 transition-transform', expandedWord !== v.key && 'rotate-180')} />
                       </span>
-                      <span className="text-[11px] font-semibold text-wood/55">
+                      <span className="text-xs font-semibold text-wood/60">
                         {[v.partOfSpeech, v.chapter ? `${copy.chapterLabel} ${formatNumber(v.chapter)}` : null].filter(Boolean).join(' · ')}
                       </span>
                     </span>
@@ -717,7 +717,7 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({
                     type="button"
                     onClick={() => playWord(v.word)}
                     aria-label={v.word}
-                    className={cn('shrink-0 w-9 h-9 rounded-full flex items-center justify-center', playingWord === v.word ? colTheme.audioPlaying : colTheme.audio)}
+                    className={cn('relative shrink-0 w-10 h-10 rounded-full flex items-center justify-center before:absolute before:-inset-[2px]', playingWord === v.word ? colTheme.audioPlaying : colTheme.audio)}
                   >
                     <Volume2 size={15} className={playingWord === v.word ? 'animate-pulse' : ''} />
                   </button>
@@ -730,7 +730,7 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({
                     aria-label={`${v.word}: ${copy.knownBadge}`}
                     data-gloss-known
                     className={cn(
-                      'shrink-0 w-[38px] h-[38px] rounded-full flex items-center justify-center border-[1.5px] transition-colors',
+                      'relative shrink-0 w-10 h-10 rounded-full flex items-center justify-center border-[1.5px] transition-colors before:absolute before:-inset-[2px]',
                       state === 'known' ? 'bg-emerald-600 border-emerald-600 text-white' : 'bg-white border-black/10 text-wood/45'
                     )}
                   >
@@ -744,7 +744,7 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({
                     aria-label={`${v.word}: ${copy.reviewBadge}`}
                     data-gloss-practice
                     className={cn(
-                      'shrink-0 w-[38px] h-[38px] rounded-full flex items-center justify-center border-[1.5px] transition-colors',
+                      'relative shrink-0 w-10 h-10 rounded-full flex items-center justify-center border-[1.5px] transition-colors before:absolute before:-inset-[2px]',
                       state === 'unknown' ? 'bg-amber-500 border-amber-500 text-white' : 'bg-white border-black/10 text-wood/45'
                     )}
                   >

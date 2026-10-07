@@ -489,14 +489,14 @@ export const VocabularyMatch = ({ pairs, collectionId = 'prophets', level, onRev
                     setStage(item.key);
                   }}
                   className={cn(
-                    'min-h-10 rounded-xl px-2.5 py-2 text-center font-display text-[11px] font-semibold tracking-[0.02em] ring-1 transition-all sm:text-xs md:text-[13px] max-sm:min-h-9 max-sm:flex-1 max-sm:rounded-lg max-sm:px-1 max-sm:py-1 max-sm:leading-tight max-sm:ring-0',
+                    'min-h-10 rounded-xl px-2.5 py-2 text-center font-display text-[12px] font-semibold tracking-[0.02em] ring-1 transition-all sm:text-xs md:text-[13px] max-sm:min-h-10 max-sm:flex-1 max-sm:rounded-lg max-sm:px-1 max-sm:py-1 max-sm:leading-tight max-sm:ring-0',
                     isActive
                       ? cn(theme.selected, 'ring-1')
                       : isComplete
                       ? 'bg-emerald-50 text-emerald-700 ring-emerald-200 hover:bg-emerald-100'
                       : isUnlocked
-                      ? 'bg-white/80 text-wood/62 ring-black/[0.07] hover:bg-white'
-                      : 'cursor-not-allowed bg-white/45 text-wood/28 ring-black/[0.04]'
+                      ? 'bg-white/80 text-wood/75 ring-black/[0.07] hover:bg-white'
+                      : 'cursor-not-allowed bg-white/45 text-wood/50 ring-black/[0.04]'
                   )}
                 >
                   {isComplete ? '✓ ' : ''}{item.label}

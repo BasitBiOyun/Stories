@@ -224,7 +224,7 @@ export const PlacesPage = ({
       </>
     );
     const tag = (
-      <span className="shrink-0 text-[10px] leading-tight text-wood/55 min-[1800px]:text-[11px]" title={chapterLine(entry.chapters)}>
+      <span className="shrink-0 text-[11px] leading-tight text-wood/60 min-[1800px]:text-xs" title={chapterLine(entry.chapters)}>
         {chapterTag(entry.chapters)}
       </span>
     );
@@ -289,7 +289,7 @@ export const PlacesPage = ({
             {tag}
           </div>
           <h4 className="font-display text-[15px] font-bold leading-tight text-brand-950 min-[1800px]:text-[17px]">{title}</h4>
-          <span className="mt-1 text-[11px] font-semibold" style={{ color }}>{copy.periodLabel}</span>
+          <span className="mt-1 text-xs font-semibold" style={{ color }}>{copy.periodLabel}</span>
           <p className="mt-1 font-serif text-[13.5px] leading-snug text-wood/85 min-[1800px]:text-[15px]">
             {copy.summary}
             {copy.more && <> {copy.more}</>}
@@ -313,7 +313,7 @@ export const PlacesPage = ({
                     event.stopPropagation();
                     onOpenPage(quote.pageIndex);
                   }}
-                  className="-ms-1.5 mt-0.5 inline-flex items-center gap-1 rounded-md px-1.5 py-0.5 text-[11px] font-bold hover:bg-white/80"
+                  className="-ms-1.5 mt-0.5 inline-flex min-h-8 items-center gap-1 rounded-md px-1.5 py-1 text-xs font-bold hover:bg-white/80"
                   style={{ color }}
                 >
                   {text.readChapter(formatNumber(quote.chapter))}
@@ -429,7 +429,7 @@ export const PlacesPage = ({
                       type="button"
                       onClick={() => setActiveGroup(key)}
                       className={cn(
-                        'inline-flex items-center gap-1.5 whitespace-nowrap rounded-lg border px-2.5 py-1.5 text-[11px] font-bold transition-all xl:text-xs',
+                        'inline-flex min-h-9 items-center gap-1.5 whitespace-nowrap rounded-lg border px-2.5 py-1.5 text-xs font-bold transition-all',
                         active ? 'text-white shadow-sm' : 'bg-white/70 text-wood/85 hover:bg-white',
                       )}
                       style={{

@@ -495,11 +495,11 @@ export const MapGame = ({
           </div>
 
           <div className="absolute right-2 top-2 z-10 flex flex-col overflow-hidden rounded-xl border border-brand-200 bg-white/90 shadow-md backdrop-blur-sm">
-            <button type="button" onClick={() => zoomAt(1.5)} aria-label={t('map.zoomIn')} title={t('map.zoomIn')} className="flex h-10 w-10 max-sm:h-9 max-sm:w-9 items-center justify-center font-display text-xl font-semibold text-brand-800 hover:bg-brand-50">+</button>
+            <button type="button" onClick={() => zoomAt(1.5)} aria-label={t('map.zoomIn')} title={t('map.zoomIn')} className="flex h-10 w-10 items-center justify-center font-display text-xl font-semibold text-brand-800 hover:bg-brand-50">+</button>
             <span className="mx-2 h-px bg-brand-100" aria-hidden="true" />
-            <button type="button" onClick={() => zoomAt(1 / 1.5)} disabled={view.s <= 1} aria-label={t('map.zoomOut')} title={t('map.zoomOut')} className="flex h-10 w-10 max-sm:h-9 max-sm:w-9 items-center justify-center font-display text-xl font-semibold text-brand-800 hover:bg-brand-50 disabled:opacity-35">−</button>
+            <button type="button" onClick={() => zoomAt(1 / 1.5)} disabled={view.s <= 1} aria-label={t('map.zoomOut')} title={t('map.zoomOut')} className="flex h-10 w-10 items-center justify-center font-display text-xl font-semibold text-brand-800 hover:bg-brand-50 disabled:opacity-35">−</button>
             <span className="mx-2 h-px bg-brand-100" aria-hidden="true" />
-            <button type="button" onClick={resetView} disabled={atHome} aria-label={t('map.reset')} title={t('map.reset')} className="flex h-10 w-10 max-sm:h-9 max-sm:w-9 items-center justify-center text-brand-800 hover:bg-brand-50 disabled:opacity-35">
+            <button type="button" onClick={resetView} disabled={atHome} aria-label={t('map.reset')} title={t('map.reset')} className="flex h-10 w-10 items-center justify-center text-brand-800 hover:bg-brand-50 disabled:opacity-35">
               <RotateCcw size={17} />
             </button>
           </div>

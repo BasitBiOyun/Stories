@@ -980,7 +980,7 @@ const AppContent = () => {
           </div>
 
           <div
-            className="pointer-events-none absolute left-1/2 top-1/2 hidden w-[360px] -translate-x-1/2 -translate-y-1/2 flex-col items-center text-center xl:flex 2xl:w-[520px]"
+            className="pointer-events-none absolute left-1/2 top-1/2 hidden w-[400px] -translate-x-1/2 -translate-y-1/2 flex-col items-center text-center xl:flex 2xl:w-[520px]"
             aria-label="Surah Yusuf 12:111"
           >
             <p
@@ -992,14 +992,14 @@ const AppContent = () => {
               ﴿لَقَدْ كَانَ فِي قَصَصِهِمْ عِبْرَةٌ لِأُولِي الْأَلْبَابِ﴾
             </p>
             {language === 'ar' ? (
-              <p dir="rtl" lang="ar" className="mt-0.5 text-[11px] font-medium leading-tight text-parchment/62 2xl:text-xs">
+              <p dir="rtl" lang="ar" className="mt-0.5 text-xs font-medium leading-tight text-parchment/62">
                 سُورَةُ يُوسُف، الآيَة ١١١
               </p>
             ) : (
               <p
                 dir="ltr"
                 lang="en"
-                className="mt-0.5 text-[11px] font-medium leading-tight text-parchment/70 2xl:text-xs"
+                className="mt-0.5 text-xs font-medium leading-tight text-parchment/70"
                 style={{ fontFamily: 'Poppins, sans-serif' }}
               >
                 “In their stories there is truly a lesson for people of understanding.”

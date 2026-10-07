@@ -360,14 +360,14 @@ export const ExercisePage = ({
                               disabled={!unlocked}
                               onClick={() => { if (!unlocked) return; setReviewDone(false); setReviewIndex(reviewStageStarts[stageIndex]); }}
                               className={cn(
-                                "min-h-11 rounded-xl px-2 py-2 font-display text-[11px] font-semibold transition-all ring-1 sm:text-xs md:text-sm",
+                                "min-h-11 rounded-xl px-2 py-2 font-display text-[12px] font-semibold transition-all ring-1 sm:text-xs md:text-sm",
                                 active
                                   ? cn(colTheme.exerciseIdxBg, 'ring-current/15')
                                   : complete
                                   ? 'bg-emerald-50 text-emerald-700 ring-emerald-200'
                                   : unlocked
-                                  ? 'bg-white text-wood/58 ring-black/[0.07] hover:bg-white/85'
-                                  : 'cursor-not-allowed bg-white/45 text-wood/25 ring-black/[0.04]'
+                                  ? 'bg-white text-wood/75 ring-black/[0.07] hover:bg-white/85'
+                                  : 'cursor-not-allowed bg-white/45 text-wood/50 ring-black/[0.04]'
                               )}
                             >
                               {complete ? '✓ ' : ''}{label}
