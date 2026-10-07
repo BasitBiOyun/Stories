@@ -1,5 +1,4 @@
 import type { StoryMap } from './features/story-maps/types';
-import React from 'react';
 
 export type PageType = 'story' | 'quiz' | 'vocabulary-match' | 'exercises' | 'glossary' | 'final-challenge' | 'map' | 'places';
 

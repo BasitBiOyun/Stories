@@ -171,7 +171,6 @@ export const StoryPage = ({
 
   const renderContent = useStoryTextRenderer({ page, allPages, currentIndex, showHighlights, fontSize, collectionId });
 
-  const isA2 = level === 'A2';
 
   // Before you read: one optional guess above the story; the text is always visible.
   const extrasKey = `v2:${level}:${language}:${page.id}:${page.title}`;

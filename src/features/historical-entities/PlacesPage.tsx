@@ -262,20 +262,12 @@ export const PlacesPage = ({
     // Every card is complete on its own: text, extra sentence and story quote.
     // Selecting a card only highlights it and shows it on the map; its size never changes.
     return (
+      // The card is clickable but not itself a button: it holds the "Read Chapter" button,
+      // and a button inside a button is invalid. The title button carries the keyboard path.
       <div
         key={entry.entity.id}
         ref={element => { if (element) cardRefs.current.set(entry.entity.id, element); else cardRefs.current.delete(entry.entity.id); }}
-        role="button"
-        tabIndex={0}
-        aria-pressed={isActive}
         onClick={() => select(entry.entity.id, true)}
-        onKeyDown={event => {
-          if (event.target !== event.currentTarget) return;
-          if (event.key === 'Enter' || event.key === ' ') {
-            event.preventDefault();
-            select(entry.entity.id, true);
-          }
-        }}
         style={cardStyle}
         className={cn(
           'flex cursor-pointer items-stretch gap-3 rounded-2xl border border-black/5 border-s-[3px] p-2.5 text-start transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500/50',
@@ -288,7 +280,16 @@ export const PlacesPage = ({
             <span className="text-[10px] font-black uppercase tracking-[0.14em]" style={{ color }}>{copy.kindLabel}</span>
             {tag}
           </div>
-          <h4 className="font-display text-[15px] font-bold leading-tight text-brand-950 min-[1800px]:text-[17px]">{title}</h4>
+          <h4 className="font-display text-[15px] font-bold leading-tight text-brand-950 min-[1800px]:text-[17px]">
+            <button
+              type="button"
+              aria-pressed={isActive}
+              onClick={event => { event.stopPropagation(); select(entry.entity.id, true); }}
+              className="text-start focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500/50"
+            >
+              {title}
+            </button>
+          </h4>
           <span className="mt-1 text-xs font-semibold" style={{ color }}>{copy.periodLabel}</span>
           <p className="mt-1 font-serif text-[13.5px] leading-snug text-wood/85 min-[1800px]:text-[15px]">
             {copy.summary}
@@ -438,7 +439,7 @@ export const PlacesPage = ({
                       }}
                     >
                       {color && !active && <span className="h-2 w-2 rounded-full" style={{ backgroundColor: color }} />}
-                      {key === 'all' ? text.all : text.groups[key]} <span className="opacity-70">· {formatNumber(count)}</span>
+                      {key === 'all' ? text.all : text.groups[key]} <span className="opacity-90">· {formatNumber(count)}</span>
                     </button>
                   );
                 })}

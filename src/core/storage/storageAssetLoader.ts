@@ -123,10 +123,8 @@ const reconciledImage = (
   arabicPage: PageData | undefined,
   images: Record<number, string>,
 ): string => {
-  if (isValidImageUrl(images[pageId])) return images[pageId];
-  if (isValidImageUrl(englishPage?.image)) return englishPage!.image;
-  if (isValidImageUrl(arabicPage?.image)) return arabicPage!.image;
-  return '';
+  const candidates = [images[pageId], englishPage?.image, arabicPage?.image];
+  return candidates.find((url): url is string => isValidImageUrl(url)) ?? '';
 };
 
 const reconciledAudio = (

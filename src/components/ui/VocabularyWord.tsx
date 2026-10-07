@@ -14,7 +14,6 @@ export const VocabularyWord = ({
   word, 
   definition,
   customStyle,
-  collectionId = 'prophets'
 }: { 
   word: string; 
   definition: string;

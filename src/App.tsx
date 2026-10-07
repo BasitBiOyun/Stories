@@ -7,11 +7,9 @@ import {
   ChevronLeft,
   ChevronRight,
   ChevronUp,
-  ClipboardList,
   Download,
   Eye,
   EyeOff,
-  GraduationCap,
   Home,
   Info,
   LoaderCircle,
@@ -468,14 +466,6 @@ const AppContent = () => {
     resetStats();
   };
 
-  const handleLevelSelect = (level: Level) => {
-    setCurrentLevel(level);
-    setCurrentPageIndex(0);
-    setUserAnswers({});
-    setIsMenuOpen(false);
-    setShowSummary(false);
-    resetStats();
-  };
 
   const handleReturnToLibrary = () => {
     setSelectedProphetId(null);
@@ -660,18 +650,6 @@ const AppContent = () => {
     else handlePrevPage();
   };
 
-  const handleProgressBarClick = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (totalPages <= 1 || isFinalChallengePage) return;
-    const rect = e.currentTarget.getBoundingClientRect();
-    const clickX = e.clientX - rect.left;
-    const width = rect.width;
-    const percentage = clickX / width;
-    const pageIdx = Math.min(
-      totalPages - 1,
-      Math.max(0, Math.floor(percentage * totalPages))
-    );
-    setCurrentPageIndex(pageIdx);
-  };
 
   const handleAnswer = (id: string, answer: boolean) => {
     setUserAnswers(prev => ({ ...prev, [id]: answer }));

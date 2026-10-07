@@ -21,7 +21,7 @@ const normalizeArabic = (text: string) => {
     .replace(/ى/g, "ي"); // Normalize Alef Maksura
 };
 
-export const getResponsiveStoryFontStyle = (baseSize: number, isRTL: boolean, isDyslexic?: boolean) => {
+export const getResponsiveStoryFontStyle = (baseSize: number, isRTL: boolean, _isDyslexic?: boolean) => {
   const desktopPt = baseSize * (isRTL ? 1.35 : 1.1) + (isRTL ? 1 : 0);
   const desktopPx = desktopPt * 1.3333;
   const minPx = Math.max(13, desktopPx * 0.76);
@@ -81,7 +81,7 @@ export const useStoryTextRenderer = ({
     const map = new Map<string, string>();
     allPages.forEach(p => {
       p.vocabulary?.forEach(v => {
-        const wordClean = v.word.replace(/[.,!?;:\"'“”‘’`()]/g, '').toLowerCase().trim();
+        const wordClean = v.word.replace(/[.,!?;:"'“”‘’`()]/g, '').toLowerCase().trim();
         map.set(wordClean, v.definition);
         const norm = normalizeArabic(wordClean);
         if (norm !== wordClean) {
@@ -121,7 +121,7 @@ export const useStoryTextRenderer = ({
   }, []);
 
   const getEnglishDefinition = (text: string) => {
-    const clean = text.replace(/[.,!?;:\"'“”‘’`()]/g, '').toLowerCase().trim();
+    const clean = text.replace(/[.,!?;:"'“”‘’`()]/g, '').toLowerCase().trim();
     if (bookVocabularyMap.has(clean)) {
       return bookVocabularyMap.get(clean)!;
     }
@@ -162,7 +162,7 @@ export const useStoryTextRenderer = ({
   };
 
   const getArabicDefinition = (text: string) => {
-    const clean = text.replace(/[.,!?;:\"'“”‘’`()]/g, '').toLowerCase().trim();
+    const clean = text.replace(/[.,!?;:"'“”‘’`()]/g, '').toLowerCase().trim();
     const norm = normalizeArabic(clean);
     const stripped = normalizeArabic(clean.replace(/^ال/, ''));
 

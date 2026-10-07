@@ -173,6 +173,47 @@ steps:
           echo "[Stories Align] WARNING: word timings incomplete; the deploy continues and the queue is retried on the next build."
         fi
 
+  # Test gate: the image is built while GitHub Actions runs the tests, but the deploy waits
+  # for their result. A failed "Tests" run stops the deploy, so a red test never reaches the
+  # preview address. If GitHub cannot be reached (for example on a private repository without
+  # a token), the gate logs it and the deploy goes on as before.
+  - id: tests-gate
+    waitFor: ['-']
+    name: gcr.io/google.com/cloudsdktool/cloud-sdk:slim
+    entrypoint: bash
+    args:
+      - -c
+      - |
+        set -eu
+        if [ "${BRANCH_NAME}" != "preview" ]; then
+          echo "[Stories Tests] Branch ${BRANCH_NAME} is not preview; nothing to gate."
+          exit 0
+        fi
+        api="https://api.github.com/repos/BasitBiOyun/Stories/commits/$COMMIT_SHA/check-runs"
+        for attempt in $$(seq 1 40); do
+          body="$$(curl -fsS -H 'Accept: application/vnd.github+json' "$$api" 2>/dev/null || true)"
+          if [ -z "$$body" ]; then
+            echo "[Stories Tests] GitHub could not be read; the deploy continues without the gate."
+            exit 0
+          fi
+          status="$$(printf '%s' "$$body" | python3 -c 'import json,sys; runs=[r for r in json.load(sys.stdin).get("check_runs", []) if r.get("name") == "checks"]; print("" if not runs else (runs[0]["conclusion"] or "running"))' 2>/dev/null || true)"
+          case "$$status" in
+            success|skipped|neutral)
+              echo "[Stories Tests] Tests passed ($$status); deploying."
+              exit 0 ;;
+            failure|timed_out|cancelled|action_required|startup_failure)
+              echo "[Stories Tests] Tests did not pass ($$status); the deploy is skipped. Fix the tests and push again."
+              touch /workspace/.skip-deploy
+              exit 0 ;;
+            "")
+              echo "[Stories Tests] No test run found for this commit yet (attempt $$attempt)." ;;
+            *)
+              echo "[Stories Tests] Tests are still running (attempt $$attempt)." ;;
+          esac
+          sleep 20
+        done
+        echo "[Stories Tests] Tests did not finish in time; the deploy continues so a stuck run never blocks a release."
+
   - id: build
     waitFor: ['check-app-changes', 'pull-cache']
     name: gcr.io/cloud-builders/docker
@@ -209,7 +250,7 @@ steps:
         docker push ${_REGION}-docker.pkg.dev/$PROJECT_ID/${_AR_REPOSITORY}/${_IMAGE}:build-cache
 
   - id: deploy
-    waitFor: ['push']
+    waitFor: ['push', 'tests-gate']
     name: gcr.io/google.com/cloudsdktool/cloud-sdk:slim
     entrypoint: bash
     args:

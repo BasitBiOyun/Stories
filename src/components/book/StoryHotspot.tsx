@@ -11,7 +11,6 @@ export const HotspotButton = ({
   hotspot, 
   isActive, 
   onToggle,
-  collectionId = 'prophets'
 }: { 
   hotspot: Hotspot; 
   isActive: boolean; 

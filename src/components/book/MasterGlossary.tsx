@@ -66,7 +66,6 @@ const pickPreferredVoice = (lang: string) => {
 export const MasterGlossary: React.FC<MasterGlossaryProps> = ({
   bookData,
   page,
-  collectionId,
 }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [playingWord, setPlayingWord] = useState<string | null>(null);
@@ -547,7 +546,7 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({
                   </div>
                   <span className="text-xl sm:text-2xl font-black tabular-nums">{formatNumber(item.value)}</span>
                 </div>
-                <div className="mt-2 text-[11px] sm:text-xs font-black uppercase tracking-[0.08em] opacity-80">
+                <div className="mt-2 text-[11px] sm:text-xs font-black uppercase tracking-[0.08em]">
                   {item.label}
                 </div>
               </button>
@@ -592,7 +591,7 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({
               >
                 {isPhone && opt.value === 'known' && <Check size={12} className="me-1 inline-block align-[-1px]" aria-hidden="true" />}
                 {isPhone && opt.value === 'unknown' && <RotateCcw size={12} className="me-1 inline-block align-[-1px]" aria-hidden="true" />}
-                {opt.label} <span className="opacity-70">· {formatNumber(opt.count)}</span>
+                {opt.label} <span className="opacity-90">· {formatNumber(opt.count)}</span>
               </button>
             ))}
           </div>
@@ -891,7 +890,7 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({
                       <div className="flex items-center justify-between gap-2">
                         {v.category ? (
                           <button
-                            onClick={() => setActiveCategory(activeCategory === v.category ? null : v.category)}
+                            onClick={() => setActiveCategory(activeCategory === v.category ? null : v.category ?? null)}
                             title={activeCategory === v.category ? v.category : `${copy.categoryLabel}: ${v.category}`}
                             className={cn(
                               'px-2 py-1 rounded-lg text-[11px] font-black uppercase tracking-[0.08em] border transition-all',

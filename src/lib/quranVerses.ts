@@ -44,6 +44,7 @@ const EXTRA_AR: Record<string, Record<number, [string, string][]>> = {
 const EN_CITE = /^\s*\((see |See )?(Surah|[A-Z][\w’'-]+:\s?\d)/;
 const EN_INTRO = /(Qur’an|Qur'an|Surah|verses? \d|Allah related|Allah narrated)[^“”.]*[.:,]?\s*$|(Qur’an|Surah [\w’'-]+, verses? [\d–-]+)[^“”]*$/;
 /** Arabic text without harakat, so the rules match vowelled and plain text alike. */
+// eslint-disable-next-line no-misleading-character-class -- harakat are listed on purpose
 const bare = (text: string) => text.replace(/[\u0640\u064B-\u065F\u0670]/g, '');
 const AR_CITE = /^\s*[.،؛]?\s*\((انظر:?\s*)?سور[ةه]/;
 const AR_INTRO = /(القرآن|سور[ةه]|الآي[ةات]|قال تعالى|قوله تعالى)[^«».]*[.:،]?\s*$/;

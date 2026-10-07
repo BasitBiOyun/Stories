@@ -109,7 +109,6 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
   onNext,
   onFirstTry,
   isLast = false,
-  collectionId = 'prophets',
   variant = 'default',
   embedded = false,
 }) => {

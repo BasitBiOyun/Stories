@@ -66,7 +66,6 @@ export const PhoneLibrary: React.FC<PhoneLibraryProps> = ({
   collectionLabels,
   myWordCount,
   usageGuideTitle,
-  onOpenMyWords,
   onOpenAbout,
   onOpenUsageGuide,
   onOpenLevelTest,

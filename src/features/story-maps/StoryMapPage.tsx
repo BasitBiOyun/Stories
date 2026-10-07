@@ -56,7 +56,6 @@ const PALETTE = {
 const prefersReducedMotion = () =>
   typeof window !== 'undefined' && window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
 
-const wait = (ms: number) => new Promise<void>(resolve => { window.setTimeout(resolve, ms); });
 const buzz = () => { try { navigator.vibrate?.(10); } catch { /* not available */ } };
 const easeInOut = (p: number) => (p < 0.5 ? 4 * p * p * p : 1 - Math.pow(-2 * p + 2, 3) / 2);
 

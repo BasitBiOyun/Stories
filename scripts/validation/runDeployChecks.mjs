@@ -16,6 +16,7 @@ const checks = checksOnly
     ];
 
 const cleanOutput = (value = '') => value
+  // eslint-disable-next-line no-control-regex -- strips terminal colour codes
   .replace(/\u001b\[[0-9;]*m/g, '')
   .replace(/\r/g, '')
   .trim();

@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { CheckCircle2, XCircle, RotateCcw, Zap, Lightbulb, ArrowRight } from '../ui/icons';
+import { RotateCcw, Zap, Lightbulb } from '../ui/icons';
 import { MatchingBoard } from './MatchingBoard';
 import type { Level, VocabularyChallengePair } from '../../types';
 import { getLearningLevelPolicy } from '../../data/learningLevelPolicy';
@@ -108,7 +108,7 @@ const theme = {
     selected: 'border-brand-500 ring-brand-500 bg-brand-50', matched: 'border-emerald-300 bg-emerald-50', idle: 'border-brand-100 bg-white hover:border-brand-300',
   };
 
-export const VocabularyMatch = ({ pairs, collectionId = 'prophets', level, onReviewGlossary, onComplete, onNextPage, nextPageLabel }: Props) => {
+export const VocabularyMatch = ({ pairs, level, onReviewGlossary, onComplete, onNextPage, nextPageLabel }: Props) => {
   const { t, formatNumber, language, isRTL } = useLanguage();
   const policy = getLearningLevelPolicy(level);
   const isArabic = language === 'ar';
@@ -160,7 +160,6 @@ export const VocabularyMatch = ({ pairs, collectionId = 'prophets', level, onRev
     () => Object.fromEntries(pairs.map((pair) => [pair.word, pair.meaning])),
     [pairs]
   );
-  const matchedMeanings = Object.values(matches);
   const correctCount = Object.keys(matches).length;
   const total = pairs.length;
   const progress = total ? Math.round((correctCount / total) * 100) : 0;

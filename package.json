@@ -12,14 +12,18 @@
     "preview": "vite preview",
     "clean": "rm -rf dist",
     "typecheck": "tsc --noEmit",
-    "lint": "npm run typecheck",
+    "lint": "eslint . && npm run typecheck",
     "validate": "node scripts/validation/runDeployChecks.mjs --checks-only",
     "validate:deploy": "node scripts/validation/runDeployChecks.mjs",
     "validate:bundle": "tsx scripts/validation/validateBundle.ts",
     "audit:media": "tsx scripts/validation/auditStorageMedia.ts",
     "inventory:storage": "tsx scripts/validation/exportStorageInventory.ts",
     "validate:vocabulary": "tsx scripts/validation/validateVocabularyFlow.ts",
-    "validate:exercises": "tsx scripts/validation/validateExerciseStructure.ts"
+    "validate:exercises": "tsx scripts/validation/validateExerciseStructure.ts",
+    "format": "prettier --write e2e playwright.config.ts eslint.config.js",
+    "format:check": "prettier --check e2e playwright.config.ts eslint.config.js",
+    "test:e2e": "playwright test",
+    "test:e2e:update": "playwright test --update-snapshots"
   },
   "dependencies": {
     "@firebase/app": "^0.15.1",
@@ -33,14 +37,24 @@
     "tailwind-merge": "^3.5.0"
   },
   "devDependencies": {
+    "@axe-core/playwright": "^4.13.0",
+    "@eslint/js": "^9.39.5",
+    "@playwright/test": "^1.56.1",
     "@tailwindcss/vite": "^4.1.14",
     "@types/canvas-confetti": "^1.9.0",
     "@types/node": "^22.14.0",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
     "@vitejs/plugin-react": "^4.5.0",
+    "eslint": "^9.39.5",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "globals": "^17.13.0",
     "google-auth-library": "^10.9.0",
+    "prettier": "^3.9.9",
     "tailwindcss": "^4.1.14",
     "tsx": "^4.21.0",
     "typescript": "~5.8.2",
+    "typescript-eslint": "^8.71.1",
     "vite": "^6.2.0"
   }
 }

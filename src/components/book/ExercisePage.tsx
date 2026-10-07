@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { motion } from 'motion/react';
-import { Play, Pause, Volume2, VolumeX, CheckCircle2, ChevronLeft } from '../ui/icons';
+import { Play, Pause, Volume2, VolumeX } from '../ui/icons';
 import { PageData, Level } from '../../types';
 import { KnowledgeCheck } from '../exercises/KnowledgeCheck';
 import { VocabularyMatch } from '../exercises/VocabularyMatch';
@@ -32,7 +32,7 @@ export const ExercisePage = ({
   onNextPage?: () => void;
   nextPageLabel?: string;
 }) => {
-  const { t, language, formatNumber } = useLanguage();
+  const { language, formatNumber } = useLanguage();
   const { trackExerciseComplete } = useStoryProgress();
   const isArabic = language === 'ar';
   const audioRef = useRef<HTMLAudioElement>(null);

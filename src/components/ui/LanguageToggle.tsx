@@ -1,10 +1,9 @@
 import React from 'react';
-import { motion } from 'motion/react';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { cn } from '../../lib/utils';
 
 export const LanguageToggle: React.FC = () => {
-  const { language, setLanguage, isRTL } = useLanguage();
+  const { language, setLanguage } = useLanguage();
 
   return (
     <div className="flex items-center gap-0.5 xs:gap-1 sm:gap-2 bg-black/35 backdrop-blur-md p-0.5 xs:p-1 rounded-full border border-gold/40 shadow-lg transition-all duration-300 hover:border-gold/60" role="group" aria-label="Language selection">

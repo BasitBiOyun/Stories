@@ -63,7 +63,7 @@ const ChapterBlock = React.memo(({
   const { language, t, formatNumber, isRTL } = useLanguage();
   const renderContent = useStoryTextRenderer({ page, allPages, currentIndex: index, showHighlights, fontSize, collectionId });
   const storyText = useMemo(
-    () => markQuranVerses(page.content, /[؀-ۿ]/.test(page.content) ? 'ar' : 'en', storyId, level, page.id),
+    () => markQuranVerses(page.content, /[؀-ۿ]/.test(page.content) ? 'ar' : 'en', storyId ?? '', level, page.id),
     [page.content, page.id, storyId, level],
   );
   // Building a chapter's text (word notes, highlights) is the slow part; it only changes with these inputs, not

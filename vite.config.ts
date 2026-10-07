@@ -30,7 +30,7 @@ const hiddenStoryIds = (): string[] => {
   const start = source.indexOf('export const hiddenStoryCatalog');
   if (start < 0) return [];
   const block = source.slice(start, source.indexOf('\n];', start));
-  return [...block.matchAll(/^    id: '([A-Za-z0-9]+)'/gm)].map(match => match[1]);
+  return [...block.matchAll(/^ {4}id: '([A-Za-z0-9]+)'/gm)].map(match => match[1]);
 };
 const hiddenDataFolders = hiddenStoryIds().map(id => `${path.sep}src${path.sep}data${path.sep}${id}${path.sep}`);
 const isHiddenModule = (id: string) => hiddenDataFolders.some(folder => id.includes(folder));

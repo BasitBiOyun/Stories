@@ -3,7 +3,6 @@ import { motion, AnimatePresence } from 'motion/react';
 import { 
   GraduationCap, 
   X, 
-  BookOpen, 
   Scroll,
   ListOrdered,
   Accessibility,
@@ -20,7 +19,6 @@ import {
   Lightbulb,
   Move,
   Globe,
-  Link as LinkIcon,
   Award,
   Download,
   ChevronRight,
@@ -59,7 +57,6 @@ export const TeacherGuide = ({
   onClose, 
   title,
   subtitle,
-  footerText,
   content = [],
   pages = [],
   metadata,
@@ -453,19 +450,19 @@ entries.set(key, { word, definition });
               <div className="space-y-3 sm:space-y-6">
                 <h4 className="font-display text-gold text-[13px] sm:text-[15px] uppercase tracking-widest border-b border-gold/20 pb-2 sm:pb-3">{t('tg.beforeReading')}</h4>
                 <div className="font-serif text-[13px] sm:text-base md:text-[17px] text-parchment/70 leading-relaxed">
-                  {metadata?.readingFramework.before}
+                  {metadata?.readingFramework?.before}
                 </div>
               </div>
               <div className="space-y-3 sm:space-y-6">
                 <h4 className="font-display text-gold text-[13px] sm:text-[15px] uppercase tracking-widest border-b border-gold/20 pb-2 sm:pb-3">{t('tg.duringReading')}</h4>
                 <div className="font-serif text-[13px] sm:text-base md:text-[17px] text-parchment/70 leading-relaxed">
-                  {metadata?.readingFramework.during}
+                  {metadata?.readingFramework?.during}
                 </div>
               </div>
               <div className="space-y-3 sm:space-y-6">
                 <h4 className="font-display text-gold text-[13px] sm:text-[15px] uppercase tracking-widest border-b border-gold/20 pb-2 sm:pb-3">{t('tg.afterReading')}</h4>
                 <div className="font-serif text-[13px] sm:text-base md:text-[17px] text-parchment/70 leading-relaxed">
-                  {metadata?.readingFramework.after}
+                  {metadata?.readingFramework?.after}
                 </div>
               </div>
             </div>
