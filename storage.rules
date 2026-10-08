@@ -10,9 +10,9 @@ service firebase.storage {
   match /b/{bucket}/o {
     // Rules add up (one allow is enough), so a separate "deny" block cannot close a folder that a
     // catch-all opens. The folder is checked here instead: tts-state/ holds the build state of the
-    // narration steps and is never public.
+    // narration steps and panel-state/ the content panel's team list; neither is ever public.
     match /{folder}/{rest=**} {
-      allow get, list: if folder != 'tts-state';
+      allow get, list: if folder != 'tts-state' && folder != 'panel-state';
       allow write: if false;
     }
     match /{file} {

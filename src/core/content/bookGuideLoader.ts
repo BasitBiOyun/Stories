@@ -8,6 +8,7 @@ import type {
 import type { StoryId } from './contracts';
 import { readContent } from '../../content/contentSource';
 import { editionName } from './bookRegistry';
+import { isPanelPreview, onPanelPreviewChange } from '../../content/panelPreview';
 
 export interface TeacherGuideData {
   content: TeacherGuideSection[];
@@ -38,6 +39,7 @@ interface GuideFile {
 }
 
 const fileCache = new Map<string, Promise<GuideFile>>();
+if (isPanelPreview()) onPanelPreviewChange(() => fileCache.clear());
 
 const guideFile = (storyId: StoryId, level: Level, language: 'en' | 'ar'): Promise<GuideFile> => {
   const name = editionName(storyId, level, language);

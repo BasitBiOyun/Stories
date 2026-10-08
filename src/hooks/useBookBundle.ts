@@ -1,10 +1,12 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import type { Level } from '../types';
 import { getBookDefinition } from '../core/content/bookRegistry';
 import type { BookDefinition } from '../core/content/bookRegistry';
 import type { BookPair } from '../core/content/contracts';
 import { setActiveBilingualBookPair } from '../data/bilingualHighlightCards';
 import { loadReaderChunks } from '../components/book/readerChunks';
+import { panelAssetOverrides, usePanelPreviewRevision } from '../content/panelPreview';
+import type { ResolvedBookAssets } from '../core/storage/contracts';
 import {
   applyResolvedAssets,
   EMPTY_RESOLVED_ASSETS,
@@ -30,12 +32,21 @@ export const useBookBundle = (storyId: string | null, level: Level | null): Book
   const [pair, setPair] = useState<BookPair | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<Error | null>(null);
+  // Grows only inside the content panel's frame, when an edited file changes.
+  const panelRevision = usePanelPreviewRevision();
+  const [loadedFor, setLoadedFor] = useState<BookDefinition | null>(null);
+  // The media found for the open book, so a panel reload shows the edit at once with its pictures.
+  const lastAssets = useRef<ResolvedBookAssets>(EMPTY_RESOLVED_ASSETS);
 
   useEffect(() => {
     let cancelled = false;
     let mediaTimer: number | null = null;
-    setActiveBilingualBookPair(null);
-    setPair(null);
+    // A panel change reloads the open book in place; a new book starts from an empty reader.
+    const softReload = loadedFor === definition && panelRevision > 0;
+    if (!softReload) {
+      setActiveBilingualBookPair(null);
+      setPair(null);
+    }
     setError(null);
 
     if (!definition) {
@@ -46,7 +57,7 @@ export const useBookBundle = (storyId: string | null, level: Level | null): Book
       };
     }
 
-    setLoading(true);
+    if (!softReload) setLoading(true);
     const loadStartedAt = performance.now();
 
     const load = async () => {
@@ -57,19 +68,33 @@ export const useBookBundle = (storyId: string | null, level: Level | null): Book
       // Open the book as soon as its reviewed content chunk is ready. Existing
       // authored media URLs are validated immediately, while Firebase folder
       // discovery continues without blocking the first render.
-      const immediatePair = applyResolvedAssets(loadedPair, EMPTY_RESOLVED_ASSETS);
+      const withPanelMedia = (assets: ResolvedBookAssets): ResolvedBookAssets => {
+        const overrides = panelAssetOverrides(definition.storyId, definition.level);
+        if (!overrides) return assets;
+        return {
+          images: { ...assets.images, ...overrides.images },
+          englishAudio: { ...assets.englishAudio, ...overrides.englishAudio },
+          arabicAudio: { ...assets.arabicAudio, ...overrides.arabicAudio },
+        };
+      };
+      if (!softReload) lastAssets.current = EMPTY_RESOLVED_ASSETS;
+      const immediatePair = applyResolvedAssets(loadedPair, withPanelMedia(lastAssets.current));
       setActiveBilingualBookPair(immediatePair);
       setPair(immediatePair);
+      setLoadedFor(definition);
       setLoading(false);
       console.info(
         `[Book performance] ${definition.storyId} ${definition.level} reader ready in ${Math.round(performance.now() - loadStartedAt)} ms`,
       );
 
+      // A panel reload keeps the media already found; only the first load looks for it.
+      if (softReload && lastAssets.current !== EMPTY_RESOLVED_ASSETS) return;
       mediaTimer = window.setTimeout(() => {
         loadBookAssets(definition.storage)
           .then(loadedAssets => {
             if (cancelled) return;
-            const resolvedPair = applyResolvedAssets(loadedPair, loadedAssets);
+            lastAssets.current = loadedAssets;
+            const resolvedPair = applyResolvedAssets(loadedPair, withPanelMedia(loadedAssets));
             setActiveBilingualBookPair(resolvedPair);
             setPair(resolvedPair);
             console.info(
@@ -81,7 +106,7 @@ export const useBookBundle = (storyId: string | null, level: Level | null): Book
             // usable even when Firebase listing is slow or temporarily unavailable.
             console.warn('[Book media] Background media resolution failed.', reason);
           });
-      }, 250);
+      }, softReload ? 0 : 250);
     };
 
     load().catch(reason => {
@@ -96,7 +121,9 @@ export const useBookBundle = (storyId: string | null, level: Level | null): Book
       if (mediaTimer !== null) window.clearTimeout(mediaTimer);
       setActiveBilingualBookPair(null);
     };
-  }, [definition]);
+    // loadedFor only tells a panel reload from a new book; it must not start a load itself.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [definition, panelRevision]);
 
   return { definition, pair, loading, error };
 };

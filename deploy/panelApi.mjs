@@ -1,51 +1,172 @@
-import { createVerify } from 'node:crypto';
+import { createHash, createVerify } from 'node:crypto';
+import { createGithubRepo } from './panel/github.mjs';
+import { createCloudStorage } from './panel/storage.mjs';
+import { createFakeRepo, createFakeStorage } from './panel/fakes.mjs';
 
 /**
- * The team side of the content panel.
+ * The server side of the content panel.
  *
- * Who may work in the panel is a short list kept outside the repository, in the PANEL_TEAM
- * environment variable: {"name@example.com": "admin", "other@example.com": "editor", ...}.
- * People sign in with their Google account through Firebase; the server checks the signed
- * Firebase ID token itself, so nobody can claim an address they do not own.
+ * Who may work in the panel: the owners in the PANEL_TEAM environment variable
+ * ({"name@example.com": "admin", ...}) plus the people an admin adds in the panel (kept in
+ * Storage, panel-state/team.json, a folder the Storage rules keep closed). People sign in with
+ * Google through Firebase; the server checks the signed token itself.
  *
- * Nothing is written to the live app directly. A saved change becomes a proposal: a branch and a
- * pull request on GitHub, named after the person who made it, which runs the same tests and rule
- * checks as any other change. Only an admin approves (merges) or rejects (closes) a proposal, so
- * GitHub keeps the full record of who changed what and who published it.
+ * How a change travels: every person has one "basket", a branch on GitHub
+ * (panel/sepet-<id>) with a pull request into the preview branch. Saving in the panel adds a
+ * commit to that branch, so nothing is built or published while people work. The tests run on
+ * the basket for free on GitHub. An admin looks at the basket (before and after, in plain
+ * words) and publishes it: the branch is merged, which starts one preview build for everything
+ * in it, and the pictures and recordings in the basket replace the book's own files.
+ *
+ * Nothing personal goes to the public repository: commits and pull requests carry the person's
+ * display name, never their e-mail address.
  */
 
 export const ROLES = {
-  admin: { label: 'Admin', propose: 'all', approve: true },
-  editor: { label: 'Editor', propose: 'all', approve: false },
-  teacher: { label: 'Teacher (story text)', propose: 'all', approve: false },
-  translator: { label: 'Translator', propose: 'translations', approve: false },
-  viewer: { label: 'Read only', propose: 'none', approve: false },
+  admin: { label: 'Yönetici', propose: 'all', approve: true },
+  editor: { label: 'Editör', propose: 'all', approve: false },
+  teacher: { label: 'Hoca', propose: 'all', approve: false },
+  translator: { label: 'Çevirmen', propose: 'translations', approve: false },
+  viewer: { label: 'Sadece bakar', propose: 'none', approve: false },
 };
 
-const EDITION = /^[a-z][a-zA-Z]*-(a1|a2|b1|b2|c1)-([a-z]{2})$/;
-const BRANCH_PREFIX = 'panel/';
+const BASKET_PREFIX = 'panel/sepet-';
+const NEW_BOOK_PREFIX = 'panel/yeni-kitap-';
+const TEAM_PATH = 'panel-state/team.json';
+const BASKET_STATE = id => `panel-state/baskets/${id}.json`;
+const UPLOAD_PREFIX = 'panel-uploads/';
 const BODY_LIMIT = 8 * 1024 * 1024;
+const UPLOAD_LIMIT = 30 * 1024 * 1024;
+const NEW_BOOK_WORKFLOW = 'yeni-kitap.yml';
+
+/** The files the panel may change, and how each is written back (indent as in the repository). */
+const EDITABLE = [
+  { kind: 'book', re: /^src\/content\/books\/([a-z][a-zA-Z]*)-(a1|a2|b1|b2|c1)-([a-z]{2})\.json$/, indent: 1 },
+  { kind: 'guide', re: /^src\/content\/guides\/([a-z][a-zA-Z]*)-(a1|a2|b1|b2|c1)-([a-z]{2})\.json$/, indent: 1 },
+  { kind: 'stories', re: /^src\/content\/stories\.json$/, indent: 1 },
+  { kind: 'entityCards', re: /^src\/content\/entityCards\.json$/, indent: 1 },
+  { kind: 'tts', re: /^tts\/requests\.json$/, indent: 2, language: 'en' },
+  { kind: 'tts', re: /^tts\/arabic_requests\.json$/, indent: 2, language: 'ar' },
+];
+
+export const editableFile = path => {
+  const clean = String(path || '');
+  if (clean.includes('..') || clean.startsWith('/')) return null;
+  for (const entry of EDITABLE) {
+    const match = entry.re.exec(clean);
+    if (match) {
+      const language = entry.language ?? (entry.kind === 'book' || entry.kind === 'guide' ? match[3] : null);
+      return { ...entry, path: clean, match, language };
+    }
+  }
+  return null;
+};
+
+export const mayPropose = (role, file) => {
+  const rule = ROLES[role]?.propose;
+  if (rule === 'all') return true;
+  if (rule === 'translations') return file.language === 'ar';
+  return false;
+};
+
+/** Checks that a changed file still has the shape the app needs; the full rule check runs in the tests. */
+export const checkFileShape = (file, value) => {
+  if (!value || typeof value !== 'object') return 'dosya boş';
+  if (file.kind === 'book') {
+    const [, , level, language] = file.match;
+    if (String(value.level).toLowerCase() !== level || value.language !== language) return 'dosya başka bir kitaba ait';
+    if (!Array.isArray(value.book?.pages) || value.book.pages.length === 0) return 'kitapta hiç sayfa yok';
+    for (const page of value.book.pages) {
+      if (typeof page.id !== 'number' || typeof page.type !== 'string') return 'bir sayfanın numarası veya türü eksik';
+    }
+  }
+  if (file.kind === 'guide') {
+    const [, , level, language] = file.match;
+    if (String(value.level).toLowerCase() !== level || value.language !== language) return 'rehber başka bir kitaba ait';
+    if (!value.teacherGuide || !value.selfStudyGuide) return 'öğretmen veya öğrenci rehberi eksik';
+  }
+  if (file.kind === 'stories') {
+    if (!Array.isArray(value.stories) || value.stories.length === 0) return 'kitap listesi boş';
+    if (value.stories.some(story => !story.id || !story.text?.en?.name)) return 'bir kitabın adı eksik';
+  }
+  if (file.kind === 'entityCards') {
+    if (!value.cards || typeof value.cards !== 'object' || Object.keys(value.cards).length === 0) return 'kart listesi boş';
+    if (Object.values(value.cards).some(card => !card?.en?.title || !card?.en?.summary)) return 'bir kartın İngilizce adı veya özeti eksik';
+  }
+  if (file.kind === 'tts') {
+    if (!Array.isArray(value.requests)) return 'seslendirme listesi bozuk';
+    for (const item of value.requests) {
+      if (!item.id || typeof item.narrationText !== 'string' || !item.narrationText.trim()) return 'bir seslendirme isteğinin metni eksik';
+      const target = String(item.storagePath || '');
+      if (!target.endsWith('.mp3') || target.includes('..') || target.startsWith('/')) return 'bir seslendirme isteğinin dosya yeri bozuk';
+    }
+    if (new Set(value.requests.map(item => item.id)).size !== value.requests.length) return 'aynı seslendirme isteği iki kez var';
+  }
+  return null;
+};
+
+const serialize = (file, value) => `${JSON.stringify(value, null, file.indent)}\n`;
+
+const MEDIA_TARGET = /\.(png|jpe?g|webp|mp3|m4a)$/i;
+export const validMediaTarget = target => {
+  const clean = String(target || '');
+  if (!MEDIA_TARGET.test(clean) || clean.includes('..') || clean.startsWith('/')) return false;
+  const top = clean.split('/')[0];
+  return !['tts-state', 'panel-state', 'panel-uploads'].includes(top) && clean.split('/').length >= 2;
+};
+
+const same = (a, b) => JSON.stringify(a) === JSON.stringify(b);
+const isPlain = value => Boolean(value) && typeof value === 'object' && !Array.isArray(value);
+
+/**
+ * Undoes one old change without undoing what came after it: every place that change touched goes
+ * back to how it was before, unless someone has changed that place again since (a conflict, kept
+ * as it is now and counted).
+ */
+export const revertChange = (before, after, now) => {
+  if (same(before, after)) return { value: now, conflicts: 0 };
+  if (same(now, after)) return { value: before, conflicts: 0 };
+  if (same(now, before)) return { value: now, conflicts: 0 };
+  if (isPlain(before) && isPlain(after) && isPlain(now)) {
+    const value = {};
+    let conflicts = 0;
+    for (const key of new Set([...Object.keys(now), ...Object.keys(before), ...Object.keys(after)])) {
+      const result = revertChange(before[key], after[key], now[key]);
+      conflicts += result.conflicts;
+      if (result.value !== undefined) value[key] = result.value;
+    }
+    return { value, conflicts };
+  }
+  if (Array.isArray(before) && Array.isArray(after) && Array.isArray(now) && before.length === after.length && after.length === now.length) {
+    let conflicts = 0;
+    const value = now.map((item, index) => {
+      const result = revertChange(before[index], after[index], item);
+      conflicts += result.conflicts;
+      return result.value;
+    });
+    return { value, conflicts };
+  }
+  return { value: now, conflicts: 1 };
+};
+
+const personId = email => createHash('sha256').update(String(email).toLowerCase()).digest('hex').slice(0, 12);
+const nameFromEmail = email => String(email).split('@')[0].replace(/[._-]+/g, ' ').replace(/\b\w/g, letter => letter.toUpperCase());
 
 const readTeam = raw => {
   if (!raw) return null;
   try {
     const parsed = JSON.parse(raw);
     const team = new Map();
-    for (const [email, role] of Object.entries(parsed)) {
-      if (ROLES[role]) team.set(email.trim().toLowerCase(), role);
+    for (const [email, value] of Object.entries(parsed)) {
+      const role = typeof value === 'string' ? value : value?.role;
+      const name = typeof value === 'object' && value?.name ? String(value.name) : null;
+      if (ROLES[role]) team.set(email.trim().toLowerCase(), { role, name });
     }
     return team.size > 0 ? team : null;
   } catch {
     console.error('[Panel] PANEL_TEAM is not valid JSON; the team panel stays closed.');
     return null;
   }
-};
-
-export const mayPropose = (role, edition) => {
-  const rule = ROLES[role]?.propose;
-  if (rule === 'all') return true;
-  if (rule === 'translations') return !edition.endsWith('-en');
-  return false;
 };
 
 // --- Firebase ID token check ----------------------------------------------------------------
@@ -92,30 +213,6 @@ export const verifyFirebaseToken = async (token, projectId, getCerts = fetchGoog
   return String(claims.email).toLowerCase();
 };
 
-// --- GitHub ---------------------------------------------------------------------------------
-
-const github = (token, repo) => async (method, path, body) => {
-  const response = await fetch(`https://api.github.com/repos/${repo}${path}`, {
-    method,
-    headers: {
-      Authorization: `Bearer ${token}`,
-      Accept: 'application/vnd.github+json',
-      'X-GitHub-Api-Version': '2022-11-28',
-      'User-Agent': 'stories-content-panel',
-      ...(body ? { 'Content-Type': 'application/json' } : {}),
-    },
-    body: body ? JSON.stringify(body) : undefined,
-  });
-  const text = await response.text();
-  const data = text ? JSON.parse(text) : null;
-  if (!response.ok) {
-    const error = new Error(`GitHub ${method} ${path} answered ${response.status}: ${data?.message ?? ''}`);
-    error.status = response.status;
-    throw error;
-  }
-  return data;
-};
-
 // --- HTTP -----------------------------------------------------------------------------------
 
 const sendJson = (res, status, payload) => {
@@ -123,14 +220,14 @@ const sendJson = (res, status, payload) => {
   res.end(JSON.stringify(payload));
 };
 
-const readJsonBody = req =>
+const readJsonBody = (req, limit = BODY_LIMIT) =>
   new Promise((resolve, reject) => {
     let size = 0;
     const chunks = [];
     req.on('data', chunk => {
       size += chunk.length;
-      if (size > BODY_LIMIT) {
-        reject(new Error('too large'));
+      if (size > limit) {
+        reject(Object.assign(new Error('too large'), { status: 413 }));
         req.destroy();
         return;
       }
@@ -138,9 +235,9 @@ const readJsonBody = req =>
     });
     req.on('end', () => {
       try {
-        resolve(JSON.parse(Buffer.concat(chunks).toString('utf8')));
+        resolve(JSON.parse(Buffer.concat(chunks).toString('utf8') || '{}'));
       } catch {
-        reject(new Error('not JSON'));
+        reject(Object.assign(new Error('not JSON'), { status: 400 }));
       }
     });
     req.on('error', reject);
@@ -148,106 +245,667 @@ const readJsonBody = req =>
 
 const audit = (action, details) => console.log(JSON.stringify({ message: '[Panel] ' + action, ...details }));
 
-/** The edition file must keep its shape; the full rule check runs in the proposal's tests. */
-const checkEditionFile = (edition, file) => {
-  const [, level, language] = EDITION.exec(edition);
-  if (!file || typeof file !== 'object') return 'the file is empty';
-  if (file.level?.toLowerCase() !== level || file.language !== language) return 'the file belongs to another edition';
-  if (!Array.isArray(file.book?.pages) || file.book.pages.length === 0) return 'the book has no pages';
-  return null;
+/** A plain-words error that reaches the person in the panel. */
+const problem = (status, message) => Object.assign(new Error(message), { status, plain: true });
+
+const META = /<!-- panel-meta (\{.*?\}) -->/s;
+const readMeta = body => {
+  try {
+    return JSON.parse(META.exec(body || '')?.[1] ?? '{}');
+  } catch {
+    return {};
+  }
 };
 
 export const createPanelApi = (env = process.env, deps = {}) => {
-  const team = readTeam(env.PANEL_TEAM);
+  // The demo runs the whole panel against in-memory stand-ins (local testing only, never on Cloud Run).
+  const demo = env.PANEL_DEMO === '1' && !env.K_SERVICE;
+  const owners = readTeam(env.PANEL_TEAM);
   const projectId = env.FIREBASE_PROJECT_ID || 'gen-lang-client-0373200489';
-  const repo = env.PANEL_REPO || 'kitapkomisyonukonya/Stories';
+  const repoName = env.PANEL_REPO || 'kitapkomisyonukonya/Stories';
   const baseBranch = env.PANEL_BASE_BRANCH || 'preview';
-  const verify = deps.verify ?? (token => verifyFirebaseToken(token, projectId));
-  const gh = deps.github ?? (env.PANEL_GITHUB_TOKEN ? github(env.PANEL_GITHUB_TOKEN, repo) : null);
+  const releaseBranch = env.PANEL_RELEASE_BRANCH || '';
+  const bucket = env.PANEL_BUCKET || 'gen-lang-client-0373200489.firebasestorage.app';
+  const verify = deps.verify ?? (demo ? async token => (String(token).startsWith('demo:') ? String(token).slice(5).toLowerCase() : null) : token => verifyFirebaseToken(token, projectId));
+  const repo = deps.repo ?? (demo ? createFakeRepo({ base: baseBranch }) : env.PANEL_GITHUB_TOKEN ? createGithubRepo(env.PANEL_GITHUB_TOKEN, repoName) : null);
+  const storage = deps.storage ?? (demo ? createFakeStorage() : env.K_SERVICE ? createCloudStorage(bucket) : null);
 
-  const enabled = Boolean(team);
+  const enabled = Boolean(owners);
+
+  // --- team ---------------------------------------------------------------------------------
+
+  let teamCache = { members: null, until: 0 };
+  const storedTeam = async () => {
+    if (!storage) return [];
+    if (teamCache.members && Date.now() < teamCache.until) return teamCache.members;
+    const file = await storage.readJson(TEAM_PATH).catch(error => {
+      console.error('[Panel] team list unreadable:', error.message);
+      return null;
+    });
+    const members = Array.isArray(file?.members) ? file.members.filter(member => member.email && ROLES[member.role]) : [];
+    teamCache = { members, until: Date.now() + 30_000 };
+    return members;
+  };
+
+  const teamList = async () => {
+    const stored = await storedTeam();
+    const list = [];
+    for (const [email, owner] of owners ?? []) {
+      const extra = stored.find(member => member.email === email);
+      list.push({ email, role: owner.role, name: extra?.name || owner.name || nameFromEmail(email), owner: true });
+    }
+    for (const member of stored) {
+      if (owners?.has(member.email)) continue;
+      list.push({ email: member.email, role: member.role, name: member.name || nameFromEmail(member.email), owner: false, addedBy: member.addedBy, addedAt: member.addedAt });
+    }
+    return list;
+  };
 
   /** The signed-in team member for a request, or null. */
   const memberFor = async req => {
-    if (!team) return null;
+    if (!owners) return null;
     const header = String(req.headers.authorization || '');
     if (!header.startsWith('Bearer ')) return null;
     const email = await verify(header.slice(7)).catch(() => null);
-    if (!email || !team.has(email)) return null;
-    return { email, role: team.get(email) };
+    if (!email) return null;
+    const member = (await teamList()).find(item => item.email === email);
+    if (!member) return null;
+    return { ...member, id: personId(email), label: ROLES[member.role].label, approve: ROLES[member.role].approve };
   };
 
-  const listProposals = async () => {
-    const pulls = await gh('GET', `/pulls?state=open&base=${encodeURIComponent(baseBranch)}&per_page=50`);
-    return pulls
-      .filter(pull => pull.head?.ref?.startsWith(BRANCH_PREFIX))
-      .map(pull => ({
-        number: pull.number,
-        title: pull.title,
-        url: pull.html_url,
-        branch: pull.head.ref,
-        createdAt: pull.created_at,
-        body: pull.body ?? '',
-      }));
+  const writeTeam = async (by, change) => {
+    if (!storage) throw problem(503, 'Ekip listesi şu an değiştirilemiyor: depolama bağlı değil.');
+    if (!(await storage.isPrivate(TEAM_PATH))) {
+      throw problem(409, 'Ekip listesi kaydedilmedi: Storage kuralları panel-state klasörünü henüz kapatmıyor. Kuralların yayınlanması gerekiyor.');
+    }
+    const members = [...(await storedTeam())];
+    change(members);
+    await storage.writeJson(TEAM_PATH, { members });
+    teamCache = { members, until: Date.now() + 30_000 };
+    audit('team changed', { by: by.id });
   };
 
-  const propose = async (member, { edition, file, note }) => {
-    const path = `src/content/books/${edition}.json`;
-    const base = await gh('GET', `/git/ref/heads/${encodeURIComponent(baseBranch)}`);
-    const current = await gh('GET', `/contents/${path}?ref=${encodeURIComponent(baseBranch)}`);
-    const stamp = new Date().toISOString().replace(/[-:]/g, '').replace(/\..*/, '').replace('T', '-');
-    const branch = `${BRANCH_PREFIX}${edition}-${stamp}`;
-    const summary =
-      String(note || '')
-        .trim()
-        .slice(0, 200) || 'text changes';
-    await gh('POST', '/git/refs', { ref: `refs/heads/${branch}`, sha: base.object.sha });
-    await gh('PUT', `/contents/${path}`, {
-      message: `Panel: ${edition}: ${summary}\n\nProposed in the content panel by ${member.email} (${ROLES[member.role].label}).`,
-      content: Buffer.from(`${JSON.stringify(file, null, 1)}\n`).toString('base64'),
-      sha: current.sha,
-      branch,
-    });
-    const pull = await gh('POST', '/pulls', {
-      title: `Panel: ${edition}: ${summary}`,
+  // --- baskets ------------------------------------------------------------------------------
+
+  const basketBranch = member => `${BASKET_PREFIX}${member.id}`;
+
+  const basketState = async id => (storage ? ((await storage.readJson(BASKET_STATE(id)).catch(() => null)) ?? {}) : {});
+  const saveBasketState = async (id, state) => {
+    if (storage) await storage.writeJson(BASKET_STATE(id), { ...state, updatedAt: new Date().toISOString() });
+  };
+
+  const findPull = async branch => (await repo.listPulls(baseBranch)).find(pull => pull.branch === branch) ?? null;
+
+  const ensureBasket = async member => {
+    const branch = basketBranch(member);
+    let sha = await repo.branchSha(branch);
+    if (!sha) {
+      const baseSha = await repo.branchSha(baseBranch);
+      await repo.createBranch(branch, baseSha);
+      sha = baseSha;
+    }
+    return branch;
+  };
+
+  const ensurePull = async member => {
+    const branch = basketBranch(member);
+    const existing = await findPull(branch);
+    if (existing) return existing;
+    const meta = { owner: member.id, name: member.name, kind: 'basket' };
+    const created = await repo.createPull({
+      title: `Panel: ${member.name} değişiklikleri`,
       head: branch,
       base: baseBranch,
-      body: `Proposed in the content panel by **${member.email}** (${ROLES[member.role].label}).\n\n${summary}\n\nThe tests and the house-rule checks run on this proposal. An admin approves or rejects it in the panel.`,
+      body: `Bu değişiklikler içerik panelinde yapıldı (${member.name}, ${member.label}). Panelde bir yönetici bakıp yayınlar.\n\n<!-- panel-meta ${JSON.stringify(meta)} -->`,
     });
-    return { number: pull.number, url: pull.html_url };
+    return { ...created, branch };
   };
 
-  const decide = async (member, number, approve) => {
-    const pull = await gh('GET', `/pulls/${number}`);
-    if (pull.state !== 'open' || !pull.head?.ref?.startsWith(BRANCH_PREFIX) || pull.base?.ref !== baseBranch) {
-      const error = new Error('not an open panel proposal');
-      error.status = 404;
-      throw error;
-    }
-    if (approve) {
-      // A proposal goes live only when the same tests that guard every deploy have passed on it.
-      const runs = await gh('GET', `/commits/${pull.head.sha}/check-runs?check_name=checks`);
-      const run = runs.check_runs?.[0];
-      if (!run || run.status !== 'completed' || run.conclusion !== 'success') {
-        const error = new Error('checks not green');
-        error.status = 409;
-        error.reason =
-          !run || run.status !== 'completed'
-            ? 'The tests are still running on this proposal. Try again in a few minutes.'
-            : 'The tests failed on this proposal, so it cannot be published. Open it on GitHub to see why.';
-        throw error;
-      }
-      await gh('PUT', `/pulls/${number}/merge`, {
-        merge_method: 'squash',
-        commit_title: `${pull.title} (#${number})`,
-        commit_message: `Approved in the content panel by ${member.email}.`,
-      });
-    } else {
-      await gh('PATCH', `/pulls/${number}`, { state: 'closed' });
-    }
-    await gh('DELETE', `/git/refs/heads/${pull.head.ref}`).catch(() => undefined);
-    return { number, url: pull.html_url };
+  const basketSummary = async (branch, pull, ownerId) => {
+    const exists = Boolean(await repo.branchSha(branch));
+    const comparison = exists ? await repo.compare(baseBranch, branch) : { files: [], commits: [], behindBy: 0 };
+    const state = await basketState(ownerId);
+    let checks = 'none';
+    if (pull && comparison.files.length > 0) checks = await repo.checkState(pull.headSha ?? (await repo.branchSha(branch)));
+    return {
+      branch,
+      number: pull?.number ?? null,
+      url: pull?.url ?? null,
+      files: comparison.files,
+      commits: comparison.commits,
+      behind: comparison.behindBy,
+      media: state.media ?? [],
+      submitted: Boolean(state.submitted),
+      note: state.note ?? '',
+      checks,
+      rejected: state.rejected ?? null,
+    };
   };
+
+  const listBaskets = async () => {
+    const pulls = await repo.listPulls(baseBranch);
+    const team = await teamList();
+    const nameFor = id => team.find(member => personId(member.email) === id)?.name;
+    const result = [];
+    for (const pull of pulls) {
+      if (!pull.branch.startsWith(BASKET_PREFIX) && !pull.branch.startsWith(NEW_BOOK_PREFIX)) continue;
+      const meta = readMeta(pull.body);
+      const ownerId = pull.branch.startsWith(BASKET_PREFIX) ? pull.branch.slice(BASKET_PREFIX.length) : meta.owner ?? '';
+      const summary = await basketSummary(pull.branch, pull, ownerId);
+      result.push({
+        ...summary,
+        title: pull.title,
+        owner: ownerId,
+        ownerName: nameFor(ownerId) ?? meta.name ?? 'Bilinmeyen kişi',
+        kind: pull.branch.startsWith(NEW_BOOK_PREFIX) ? 'new-book' : 'basket',
+        updatedAt: pull.updatedAt,
+      });
+    }
+    // Baskets that hold only pictures or recordings have no pull request.
+    if (storage) {
+      for (const path of await storage.list('panel-state/baskets/').catch(() => [])) {
+        const id = path.slice('panel-state/baskets/'.length).replace(/\.json$/, '');
+        if (result.some(item => item.owner === id && item.kind === 'basket')) continue;
+        const state = await basketState(id);
+        if (!state.media?.length) continue;
+        result.push({
+          branch: `${BASKET_PREFIX}${id}`,
+          number: null,
+          url: null,
+          files: [],
+          commits: [],
+          behind: 0,
+          media: state.media,
+          submitted: Boolean(state.submitted),
+          note: state.note ?? '',
+          checks: 'none',
+          title: `Panel: ${state.name ?? nameFor(id) ?? 'Bilinmeyen kişi'} değişiklikleri`,
+          owner: id,
+          ownerName: nameFor(id) ?? state.name ?? 'Bilinmeyen kişi',
+          kind: 'basket',
+          updatedAt: state.updatedAt,
+        });
+      }
+    }
+    return result;
+  };
+
+  const save = async (member, { files, message }) => {
+    if (!Array.isArray(files) || files.length === 0) throw problem(400, 'Kaydedilecek bir değişiklik yok.');
+    const prepared = [];
+    for (const item of files) {
+      const file = editableFile(item.path);
+      if (!file) throw problem(400, `Bu dosya panelden değiştirilemez: ${item.path}`);
+      if (!mayPropose(member.role, file)) throw problem(403, 'Rolün bu dosyayı değiştirmeye izin vermiyor.');
+      const shape = checkFileShape(file, item.json);
+      if (shape) throw problem(400, `Değişiklik kaydedilmedi: ${shape}.`);
+      prepared.push({ path: file.path, text: serialize(file, item.json) });
+    }
+    const branch = await ensureBasket(member);
+    const summary = String(message || '').trim().slice(0, 300) || 'İçerik değişikliği';
+    await repo.commitFiles(branch, prepared, `Panel: ${summary}\n\n${member.name} (${member.label}) panelde yaptı.`);
+    const pull = await ensurePull(member);
+    const state = await basketState(member.id);
+    if (state.submitted) await saveBasketState(member.id, { ...state, name: member.name, submitted: false });
+    audit('basket saved', { by: member.id, files: prepared.map(file => file.path) });
+    return basketSummary(branch, pull, member.id);
+  };
+
+  /** Puts one file in the basket back to how it is on the preview branch. */
+  const discard = async (member, path) => {
+    const file = editableFile(path);
+    if (!file) throw problem(400, 'Bilinmeyen dosya.');
+    const branch = basketBranch(member);
+    if (!(await repo.branchSha(branch))) throw problem(404, 'Sepet boş.');
+    const original = await repo.readFile(baseBranch, file.path);
+    await repo.commitFiles(branch, [{ path: file.path, text: original }], `Panel: ${file.path} sepetten çıkarıldı\n\n${member.name} panelde yaptı.`);
+    return closeIfEmpty(member);
+  };
+
+  const closeIfEmpty = async member => {
+    const branch = basketBranch(member);
+    const pull = await findPull(branch);
+    const comparison = await repo.compare(baseBranch, branch);
+    if (comparison.files.length === 0 && pull) {
+      await repo.updatePull(pull.number, { state: 'closed' });
+      await repo.deleteBranch(branch);
+      return basketSummary(branch, null, member.id);
+    }
+    return basketSummary(branch, pull, member.id);
+  };
+
+  const removeStaged = async media => {
+    for (const item of media ?? []) await storage?.remove(item.staged).catch(() => undefined);
+  };
+
+  const clearBasket = async member => {
+    const branch = basketBranch(member);
+    const pull = await findPull(branch);
+    if (pull) await repo.updatePull(pull.number, { state: 'closed' });
+    await repo.deleteBranch(branch);
+    const state = await basketState(member.id);
+    await removeStaged(state.media);
+    await saveBasketState(member.id, { name: member.name, media: [], submitted: false });
+    audit('basket cleared', { by: member.id });
+    return basketSummary(branch, null, member.id);
+  };
+
+  /** Publishes a basket: merges its branch (one build) and puts its pictures and recordings in place. */
+  const publish = async (member, ownerId, { force = false } = {}) => {
+    const baskets = await listBaskets();
+    const basket = baskets.find(item => item.owner === ownerId && item.kind === 'basket') ?? baskets.find(item => String(item.number) === String(ownerId));
+    if (!basket) throw problem(404, 'Bu sepet artık yok; başka biri yayınlamış veya boşaltmış olabilir.');
+    let merged = null;
+    if (basket.number && basket.files.length > 0) {
+      const pull = await repo.getPull(basket.number);
+      if (!pull || pull.state !== 'open') throw problem(404, 'Bu sepet artık açık değil.');
+      const checks = await repo.checkState(pull.headSha);
+      if (checks !== 'passed' && !(force && checks === 'missing')) {
+        throw problem(
+          409,
+          checks === 'running' || checks === 'missing'
+            ? 'Testler bu sepette hâlâ çalışıyor. Bitince (genellikle 10-15 dakika) yayınlanabilir.'
+            : 'Testler bu sepette hata buldu, bu yüzden yayınlanamaz. Sepetteki değişiklikleri gözden geçirin.',
+        );
+      }
+      if (pull.mergeable === false) {
+        await repo.updateBranch(basket.number).catch(() => {
+          throw problem(409, 'Bu sepetteki bir dosya, o arada yayınlanan başka bir değişiklikle çakışıyor. Çakışan dosyayı sepetten çıkarıp yeniden düzenleyin.');
+        });
+        throw problem(409, 'Sepet en son hâle getirildi; testler yeniden çalışıyor. Bitince tekrar yayınlayın.');
+      }
+      // The history shows what changed, not just whose basket it was.
+      const lines = basket.commits.map(commit => String(commit.message).split('\n')[0].replace(/^Panel: /, '')).filter(Boolean);
+      const title = lines.length === 1 ? `Panel: ${lines[0]}` : `Panel: ${basket.ownerName}, ${lines.length} değişiklik`;
+      merged = await repo.mergePull(basket.number, {
+        title: `${title.slice(0, 200)} (#${basket.number})`,
+        message: `${lines.length > 1 ? `${lines.map(line => `- ${line}`).join('\n')}\n\n` : ''}${basket.ownerName} yaptı; panelde ${member.name} onayladı ve yayınladı.`,
+      });
+      await repo.deleteBranch(basket.branch);
+    }
+    const mediaErrors = [];
+    for (const item of basket.media) {
+      try {
+        await storage.replace(item.staged, item.target);
+        await storage.remove(item.staged).catch(() => undefined);
+      } catch (error) {
+        mediaErrors.push(`${item.label || item.target}: ${error.message}`);
+      }
+    }
+    await saveBasketState(basket.owner, { name: basket.ownerName, media: [], submitted: false });
+    audit('basket published', { by: member.id, owner: basket.owner, pull: basket.number, media: basket.media.length, mediaErrors: mediaErrors.length });
+    return { published: true, merged, mediaErrors };
+  };
+
+  const reject = async (member, ownerId, reason) => {
+    const basket = (await listBaskets()).find(item => item.owner === ownerId || String(item.number) === String(ownerId));
+    if (!basket) throw problem(404, 'Bu sepet artık yok.');
+    if (basket.number) {
+      if (reason) await repo.comment(basket.number, `Panelde ${member.name} geri çevirdi: ${String(reason).slice(0, 500)}`).catch(() => undefined);
+      await repo.updatePull(basket.number, { state: 'closed' });
+      await repo.deleteBranch(basket.branch);
+    }
+    await removeStaged(basket.media);
+    if (basket.kind === 'basket') await saveBasketState(basket.owner, { name: basket.ownerName, media: [], submitted: false, rejected: { by: member.name, reason: String(reason || ''), at: new Date().toISOString() } });
+    audit('basket rejected', { by: member.id, owner: basket.owner, pull: basket.number });
+    return { rejected: true };
+  };
+
+  // --- routes -------------------------------------------------------------------------------
+
+  const requireRepo = () => {
+    if (!repo) throw problem(503, 'Kaydetme henüz açık değil: GitHub bağlantısı (PANEL_GITHUB_TOKEN) kurulmadı. Şimdilik sadece bakabilirsiniz.');
+  };
+  const requireAdmin = member => {
+    if (!member.approve) throw problem(403, 'Bunu yalnızca bir yönetici yapabilir.');
+  };
+  const requireWriter = member => {
+    if (ROLES[member.role].propose === 'none') throw problem(403, 'Rolün değişiklik yapmaya izin vermiyor.');
+  };
+
+  const routes = [
+    [
+      'GET',
+      /^me$/,
+      async ({ member }) => ({ email: member.email, name: member.name, role: member.role, label: member.label, approve: member.approve, id: member.id }),
+    ],
+    ['GET', /^team$/, async () => ({ members: await teamList(), roles: Object.fromEntries(Object.entries(ROLES).map(([key, role]) => [key, role.label])), canWrite: Boolean(storage) })],
+    [
+      'POST',
+      /^team$/,
+      async ({ member, body }) => {
+        requireAdmin(member);
+        const email = String(body.email || '').trim().toLowerCase();
+        const role = String(body.role || '');
+        const name = String(body.name || '').trim().slice(0, 80);
+        if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) throw problem(400, 'Geçerli bir e-posta adresi yazın.');
+        if (!ROLES[role]) throw problem(400, 'Bir rol seçin.');
+        if (owners.has(email) && role !== owners.get(email).role) throw problem(400, 'Kurucu yöneticilerin rolü panelden değiştirilemez.');
+        await writeTeam(member, members => {
+          const existing = members.find(item => item.email === email);
+          if (existing) Object.assign(existing, { role, name: name || existing.name });
+          else members.push({ email, role, name: name || nameFromEmail(email), addedBy: member.name, addedAt: new Date().toISOString() });
+        });
+        return { members: await teamList() };
+      },
+    ],
+    [
+      'POST',
+      /^team\/remove$/,
+      async ({ member, body }) => {
+        requireAdmin(member);
+        const email = String(body.email || '').trim().toLowerCase();
+        if (owners.has(email)) throw problem(400, 'Kurucu yöneticiler panelden çıkarılamaz.');
+        if (email === member.email) throw problem(400, 'Kendinizi çıkaramazsınız.');
+        await writeTeam(member, members => {
+          const index = members.findIndex(item => item.email === email);
+          if (index >= 0) members.splice(index, 1);
+        });
+        return { members: await teamList() };
+      },
+    ],
+    [
+      'GET',
+      /^file$/,
+      async ({ member, query }) => {
+        const file = editableFile(query.get('path'));
+        if (!file) throw problem(400, 'Bilinmeyen dosya.');
+        const ref = query.get('ref');
+        if (ref === 'base' || !repo) {
+          return { text: repo ? await repo.readFile(baseBranch, file.path) : null, from: 'preview' };
+        }
+        if (ref && ref.startsWith('basket:')) {
+          const branch = `${BASKET_PREFIX}${ref.slice(7).replace(/[^a-f0-9]/g, '')}`;
+          return { text: await repo.readFile(branch, file.path), from: 'basket' };
+        }
+        if (ref && ref.startsWith('branch:')) {
+          const branch = ref.slice(7);
+          if (!branch.startsWith(NEW_BOOK_PREFIX)) throw problem(400, 'Bilinmeyen dal.');
+          return { text: await repo.readFile(branch, file.path), from: 'new-book' };
+        }
+        if (ref && /^[a-f0-9]{7,40}$/.test(ref)) return { text: await repo.readFile(ref, file.path), from: 'history' };
+        const branch = basketBranch(member);
+        if (await repo.branchSha(branch)) {
+          const text = await repo.readFile(branch, file.path);
+          if (text !== null) return { text, from: 'basket' };
+        }
+        return { text: await repo.readFile(baseBranch, file.path), from: 'preview' };
+      },
+    ],
+    [
+      'GET',
+      /^basket$/,
+      async ({ member }) => {
+        if (!repo) return { ...(await basketState(member.id)), files: [], commits: [], number: null, checks: 'none', media: (await basketState(member.id)).media ?? [] };
+        const branch = basketBranch(member);
+        return basketSummary(branch, await findPull(branch), member.id);
+      },
+    ],
+    [
+      'POST',
+      /^basket\/save$/,
+      async ({ member, body }) => {
+        requireRepo();
+        requireWriter(member);
+        return save(member, body);
+      },
+    ],
+    [
+      'POST',
+      /^basket\/discard$/,
+      async ({ member, body }) => {
+        requireRepo();
+        return discard(member, body.path);
+      },
+    ],
+    [
+      'POST',
+      /^basket\/clear$/,
+      async ({ member }) => {
+        requireRepo();
+        return clearBasket(member);
+      },
+    ],
+    [
+      'POST',
+      /^basket\/submit$/,
+      async ({ member, body }) => {
+        const state = await basketState(member.id);
+        await saveBasketState(member.id, { ...state, name: member.name, submitted: true, note: String(body.note || '').slice(0, 500), rejected: undefined });
+        audit('basket submitted', { by: member.id });
+        return { submitted: true };
+      },
+    ],
+    ['GET', /^baskets$/, async () => (repo ? { baskets: await listBaskets() } : { baskets: [] })],
+    [
+      'POST',
+      /^baskets\/([a-f0-9]{12}|\d+)\/publish$/,
+      async ({ member, match, body }) => {
+        requireRepo();
+        requireAdmin(member);
+        return publish(member, match[1], { force: Boolean(body.force) && demo });
+      },
+    ],
+    [
+      'POST',
+      /^baskets\/([a-f0-9]{12}|\d+)\/reject$/,
+      async ({ member, match, body }) => {
+        requireRepo();
+        requireAdmin(member);
+        return reject(member, match[1], body.reason);
+      },
+    ],
+    [
+      'GET',
+      /^locks$/,
+      async ({ member }) => {
+        if (!repo) return { locks: {} };
+        const locks = {};
+        for (const basket of await listBaskets()) {
+          if (basket.owner === member.id) continue;
+          for (const file of basket.files) (locks[file.path] ??= []).push(basket.ownerName);
+        }
+        return { locks };
+      },
+    ],
+    [
+      'GET',
+      /^history$/,
+      async ({ query }) => {
+        if (!repo) return { commits: [] };
+        const path = query.get('path') || undefined;
+        if (path && !editableFile(path)) throw problem(400, 'Bilinmeyen dosya.');
+        const commits = await repo.listCommits(baseBranch, { path, perPage: 60 });
+        return { commits };
+      },
+    ],
+    [
+      'GET',
+      /^history\/([a-f0-9]{7,40})$/,
+      async ({ match }) => {
+        requireRepo();
+        const commit = await repo.getCommit(match[1]);
+        if (!commit) throw problem(404, 'Bu değişiklik bulunamadı.');
+        return { ...commit, files: commit.files.filter(file => editableFile(file.path)) };
+      },
+    ],
+    [
+      'POST',
+      /^history\/([a-f0-9]{7,40})\/undo$/,
+      async ({ member, match }) => {
+        requireRepo();
+        requireWriter(member);
+        const commit = await repo.getCommit(match[1]);
+        if (!commit || commit.parents.length === 0) throw problem(404, 'Bu değişiklik geri alınamaz.');
+        const files = [];
+        let conflicts = 0;
+        for (const changed of commit.files) {
+          const file = editableFile(changed.path);
+          if (!file || !mayPropose(member.role, file)) continue;
+          const before = await repo.readFile(commit.parents[0], file.path);
+          const after = await repo.readFile(commit.sha ?? match[1], file.path);
+          if (before === null || after === null) continue;
+          // What the person sees now: their basket if it holds the file, else the preview.
+          const branch = basketBranch(member);
+          const now = ((await repo.branchSha(branch)) && (await repo.readFile(branch, file.path))) || (await repo.readFile(baseBranch, file.path));
+          if (now === null) continue;
+          const result = revertChange(JSON.parse(before), JSON.parse(after), JSON.parse(now));
+          conflicts += result.conflicts;
+          files.push({ path: file.path, json: result.value });
+        }
+        if (files.length === 0) throw problem(400, 'Bu değişiklikte panelden geri alınabilecek bir içerik yok.');
+        const title = commit.message.split('\n')[0].replace(/^Panel: /, '');
+        return { ...(await save(member, { files, message: `Geri alındı: ${title}` })), conflicts };
+      },
+    ],
+    [
+      'POST',
+      /^media\/upload$/,
+      async ({ member, body }) => {
+        requireWriter(member);
+        if (!storage) throw problem(503, 'Dosya yükleme şu an kapalı: depolama bağlı değil.');
+        const target = String(body.target || '');
+        if (!validMediaTarget(target)) throw problem(400, 'Bu dosya için geçerli bir yer bulunamadı.');
+        const contentType = String(body.contentType || '');
+        if (!/^(image\/(png|jpeg|webp)|audio\/(mpeg|mp3|mp4|x-m4a))$/.test(contentType)) throw problem(400, 'Sadece PNG, JPG, WebP resim veya MP3/M4A ses yüklenebilir.');
+        const data = Buffer.from(String(body.data || ''), 'base64');
+        if (data.length === 0) throw problem(400, 'Dosya boş.');
+        const safe = String(body.name || 'dosya').normalize('NFKD').replace(/[^a-zA-Z0-9._-]+/g, '-').slice(-80);
+        const staged = `${UPLOAD_PREFIX}${member.id}/${Date.now()}-${safe}`;
+        const uploaded = await storage.upload(staged, data, contentType);
+        const state = await basketState(member.id);
+        const media = (state.media ?? []).filter(item => item.target !== target);
+        const replaced = (state.media ?? []).find(item => item.target === target);
+        if (replaced) await storage.remove(replaced.staged).catch(() => undefined);
+        media.push({ staged, target, url: uploaded.url, label: String(body.label || '').slice(0, 120), kind: contentType.startsWith('image') ? 'image' : 'audio', edition: String(body.edition || ''), chapter: Number(body.chapter) || null, by: member.name, at: new Date().toISOString() });
+        await saveBasketState(member.id, { ...state, name: member.name, media, submitted: false });
+        audit('media staged', { by: member.id, target });
+        return { media };
+      },
+    ],
+    [
+      'POST',
+      /^media\/remove$/,
+      async ({ member, body }) => {
+        const state = await basketState(member.id);
+        const media = (state.media ?? []).filter(item => item.staged !== body.staged);
+        const removed = (state.media ?? []).find(item => item.staged === body.staged);
+        if (removed) await storage?.remove(removed.staged).catch(() => undefined);
+        await saveBasketState(member.id, { ...state, media });
+        return { media };
+      },
+    ],
+    [
+      'POST',
+      /^new-book$/,
+      async ({ member, body }) => {
+        requireRepo();
+        requireWriter(member);
+        const story = String(body.storyId || '').replace(/[^a-zA-Z]/g, '');
+        const level = String(body.level || '').toLowerCase();
+        if (!story || !['a2', 'b1', 'b2'].includes(level)) throw problem(400, 'Kitabın adını ve seviyesini seçin.');
+        // The panel reads the Word file in the browser and sends its text: chapters as headings,
+        // bold words kept. No Word file goes into the public repository (its hidden author notes
+        // and comments stay on the person's computer).
+        const text = String(body.text || '').trim();
+        if (text.length < 200) throw problem(400, 'Word dosyasından metin okunamadı.');
+        if (text.length > 400_000) throw problem(413, 'Metin çok uzun.');
+        const stamp = new Date().toISOString().replace(/[-:]/g, '').replace(/\..*/, '').replace('T', '-');
+        const branch = `${NEW_BOOK_PREFIX}${story}-${level}-${stamp}`;
+        const folder = `story-intake/panel/${story}-${level}`;
+        const request = [
+          `# Yeni kitap isteği: ${String(body.title || story).slice(0, 120)} ${level.toUpperCase()}`,
+          '',
+          `- Kitap kimliği: ${story}`,
+          `- Seviye: ${level.toUpperCase()}`,
+          `- Yeni kitap mı: ${body.isNew ? 'evet' : 'hayır, var olan kitaba seviye ekleniyor'}`,
+          body.isNew ? `- Adı: ${String(body.nameEn || '').slice(0, 120)} / ${String(body.nameAr || '').slice(0, 120)}` : null,
+          body.isNew ? `- Koleksiyon: ${String(body.collection || '').slice(0, 40)}` : null,
+          `- Yükleyen: ${member.name}`,
+          `- Yazan: ${body.mode === 'manual' ? 'elle' : 'Claude'}`,
+          '',
+          '## Notlar',
+          '',
+          String(body.brief || '').slice(0, 20_000) || '(not yok)',
+          '',
+        ]
+          .filter(line => line !== null)
+          .join('\n');
+        await repo.createBranch(branch, await repo.branchSha(baseBranch));
+        await repo.commitFiles(
+          branch,
+          [
+            { path: `${folder}/hikaye.md`, text: `${text}\n` },
+            { path: `${folder}/istek.md`, text: request },
+          ],
+          `Panel: yeni kitap metni (${story} ${level.toUpperCase()})\n\n${member.name} panelde yükledi.`,
+        );
+        const meta = { owner: member.id, name: member.name, kind: 'new-book', story, level };
+        const pull = await repo.createPull({
+          title: `Panel: Yeni kitap taslağı: ${String(body.title || story).slice(0, 80)} ${level.toUpperCase()}`,
+          head: branch,
+          base: baseBranch,
+          body: `Yeni kitap: ${member.name} panelden Word dosyasını yükledi. Claude alıştırmaları ve kitabın geri kalanını bu dala yazar; kitap gizli kalır. Panelde bakılır, düzeltilir ve yayınlanır.\n\n<!-- panel-meta ${JSON.stringify(meta)} -->`,
+        });
+        // The push of hikaye.md and istek.md starts .github/workflows/yeni-kitap.yml on this branch
+        // (unless the request says the book is written by hand).
+        audit('new book started', { by: member.id, branch, pull: pull.number });
+        return { branch, number: pull.number };
+      },
+    ],
+    [
+      'GET',
+      /^new-book$/,
+      async () => {
+        if (!repo) return { runs: [] };
+        return { runs: await repo.listWorkflowRuns(NEW_BOOK_WORKFLOW).catch(() => []) };
+      },
+    ],
+    [
+      'POST',
+      /^new-book\/(\d+)\/ask$/,
+      async ({ member, match, body }) => {
+        requireRepo();
+        requireWriter(member);
+        const pull = await repo.getPull(Number(match[1]));
+        if (!pull || pull.state !== 'open' || !pull.branch.startsWith(NEW_BOOK_PREFIX)) throw problem(404, 'Bu yeni kitap taslağı artık açık değil.');
+        const text = String(body.text || '').trim().slice(0, 4000);
+        if (!text) throw problem(400, 'Ne değişsin, yazın.');
+        // A new request file on the branch starts the writer again; it reads only the new file.
+        const stamp = new Date().toISOString().replace(/[-:]/g, '').replace(/\..*/, '').replace('T', '-');
+        const folder = (await repo.compare(baseBranch, pull.branch)).files.map(file => file.path).find(path => /^story-intake\/panel\/[^/]+\/hikaye\.md$/.test(path))?.replace(/\/hikaye\.md$/, '');
+        if (!folder) throw problem(409, 'Bu taslağın Word metni bulunamadı.');
+        await repo.commitFiles(pull.branch, [{ path: `${folder}/istekler/${stamp}.md`, text: `# ${member.name} istedi\n\n${text}\n` }], `Panel: yeni kitap için istek\n\n${member.name} panelden istedi.`);
+        audit('new book request', { by: member.id, pull: pull.number });
+        return { asked: true };
+      },
+    ],
+    [
+      'GET',
+      /^release$/,
+      async () => {
+        if (!repo || !releaseBranch) return { enabled: false };
+        const live = await repo.branchSha(releaseBranch);
+        const comparison = live ? await repo.compare(releaseBranch, baseBranch) : null;
+        return { enabled: true, branch: releaseBranch, exists: Boolean(live), waiting: comparison?.commits ?? [], aheadBy: comparison?.aheadBy ?? null };
+      },
+    ],
+    [
+      'POST',
+      /^release$/,
+      async ({ member }) => {
+        requireRepo();
+        requireAdmin(member);
+        if (!releaseBranch) throw problem(400, 'Canlı site henüz kurulmadı.');
+        const head = await repo.branchSha(baseBranch);
+        const checks = await repo.checkState(head);
+        if (checks !== 'passed') throw problem(409, 'Önizlemenin son hâlinde testler henüz geçmedi; canlıya alınamaz.');
+        await repo.moveBranch(releaseBranch, head);
+        audit('released', { by: member.id, sha: head });
+        return { released: head };
+      },
+    ],
+  ];
 
   /** Handles /panel-api/*. Returns true when the request was answered. */
   const handle = async (req, res, urlPath) => {
@@ -257,87 +915,54 @@ export const createPanelApi = (env = process.env, deps = {}) => {
       return true;
     }
     const route = urlPath.slice('/panel-api/'.length);
+    const query = new URL(req.url || urlPath, 'http://local').searchParams;
 
     if (route === 'config' && req.method === 'GET') {
       sendJson(res, 200, {
         roles: Object.fromEntries(Object.entries(ROLES).map(([key, role]) => [key, role.label])),
-        proposals: Boolean(gh),
+        proposals: Boolean(repo),
+        storage: Boolean(storage),
+        demo,
+        demoPeople: demo ? [...owners.entries()].map(([email, owner]) => ({ email, role: owner.role })) : undefined,
         baseBranch,
+        release: Boolean(releaseBranch),
+        bucket,
       });
       return true;
     }
 
-    const member = await memberFor(req);
-    if (!member) {
-      sendJson(res, 401, { error: 'Sign in with an address on the team list.' });
-      return true;
-    }
-
     try {
-      if (route === 'me' && req.method === 'GET') {
-        sendJson(res, 200, {
-          email: member.email,
-          role: member.role,
-          label: ROLES[member.role].label,
-          approve: ROLES[member.role].approve,
-        });
+      const member = await memberFor(req);
+      if (!member) {
+        sendJson(res, 401, { error: 'Ekip listesindeki bir Google hesabıyla giriş yapın.' });
         return true;
       }
-      if (!gh) {
-        sendJson(res, 503, { error: 'Proposals are not switched on yet (PANEL_GITHUB_TOKEN is missing).' });
-        return true;
-      }
-      if (route === 'proposals' && req.method === 'GET') {
-        sendJson(res, 200, { proposals: await listProposals() });
-        return true;
-      }
-      if (route === 'proposals' && req.method === 'POST') {
-        const body = await readJsonBody(req);
-        const edition = String(body.edition || '');
-        if (!EDITION.test(edition)) {
-          sendJson(res, 400, { error: 'Unknown book.' });
-          return true;
-        }
-        if (!mayPropose(member.role, edition)) {
-          sendJson(res, 403, { error: 'Your role cannot propose changes to this book.' });
-          return true;
-        }
-        const problem = checkEditionFile(edition, body.file);
-        if (problem) {
-          sendJson(res, 400, { error: `The file was not accepted: ${problem}.` });
-          return true;
-        }
-        const result = await propose(member, { edition, file: body.file, note: body.note });
-        audit('proposal opened', { by: member.email, role: member.role, edition, pull: result.number });
-        sendJson(res, 201, result);
-        return true;
-      }
-      const decision = /^proposals\/(\d+)\/(approve|reject)$/.exec(route);
-      if (decision && req.method === 'POST') {
-        if (!ROLES[member.role].approve) {
-          sendJson(res, 403, { error: 'Only an admin approves or rejects proposals.' });
-          return true;
-        }
-        const approve = decision[2] === 'approve';
-        const result = await decide(member, Number(decision[1]), approve);
-        audit(approve ? 'proposal approved' : 'proposal rejected', { by: member.email, pull: result.number });
-        sendJson(res, 200, result);
+      for (const [method, pattern, run] of routes) {
+        const match = pattern.exec(route);
+        if (!match || method !== req.method) continue;
+        const body = method === 'POST' ? await readJsonBody(req, route === 'media/upload' || route === 'new-book' ? UPLOAD_LIMIT : BODY_LIMIT) : {};
+        sendJson(res, 200, await run({ member, body, match, query }));
         return true;
       }
       sendJson(res, 404, { error: 'not found' });
     } catch (error) {
+      if (error.plain) {
+        sendJson(res, error.status, { error: error.message });
+        return true;
+      }
       console.error('[Panel]', error.message);
-      const status = error.status === 404 ? 404 : error.status === 405 || error.status === 409 ? 409 : 502;
+      const status = error.status === 413 ? 413 : error.status === 400 ? 400 : error.status === 404 ? 404 : error.status === 409 || error.status === 422 ? 409 : 502;
       sendJson(res, status, {
         error:
-          error.reason ??
-          (status === 409
-            ? 'GitHub could not merge this proposal (it may conflict with a newer change).'
-            : 'The request could not be completed.'),
+          status === 413
+            ? 'Dosya çok büyük.'
+            : status === 409
+              ? 'GitHub bu işlemi şu an yapamadı (başka bir değişiklikle çakışıyor olabilir). Biraz sonra tekrar deneyin.'
+              : 'İşlem tamamlanamadı. Biraz sonra tekrar deneyin.',
       });
     }
     return true;
   };
 
-  return { enabled, handle, memberFor };
+  return { enabled, handle, memberFor, demo };
 };

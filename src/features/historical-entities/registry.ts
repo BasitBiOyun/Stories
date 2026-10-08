@@ -2,11 +2,47 @@ import type { PageData } from '../../types';
 import { findPlaceName } from './placeMatch';
 import type { HistoricalEntity, HistoricalEntityCopy, HistoricalEntityLocale } from './types';
 import { BOOK_SETS } from './books';
+import cardWords from '../../content/entityCards.json';
 
 const HISTORICAL_ENTITY_MARKER = '__historical_entity__:';
 
+type CardWords = Pick<HistoricalEntityCopy, 'title' | 'kindLabel' | 'periodLabel' | 'summary' | 'more'>;
+interface CardFileEntry {
+  en?: CardWords;
+  ar?: CardWords;
+  aliases?: Partial<Record<HistoricalEntityLocale, string[]>>;
+  tr?: string;
+}
+
+/**
+ * The cards' words live in src/content/entityCards.json, where the panel edits them; the maps,
+ * pictures and chapters stay in ./books. A card missing from the file keeps the words in code.
+ */
+const withCardWords = (entity: HistoricalEntity): HistoricalEntity => {
+  const words = (cardWords as { cards: Record<string, CardFileEntry> }).cards[entity.id];
+  if (!words) return entity;
+  const copy = { ...entity.copy };
+  for (const locale of ['en', 'ar'] as const) {
+    const next = words[locale];
+    const current = copy[locale];
+    if (!next || !current) continue;
+    const { more: _more, ...rest } = current;
+    copy[locale] = {
+      ...rest,
+      ...next,
+      mapAlt: current.mapAlt && next.title ? current.mapAlt.replace(current.title, next.title) : current.mapAlt,
+    };
+  }
+  return {
+    ...entity,
+    copy: copy as HistoricalEntity['copy'],
+    aliases: { ...entity.aliases, ...(words.aliases ?? {}) },
+    ...(words.tr ? { learnerNames: { ...entity.learnerNames, tr: words.tr } } : {}),
+  };
+};
+
 export const historicalEntities: Record<string, HistoricalEntity> = Object.fromEntries(
-  BOOK_SETS.flatMap(set => set.entities).map(entity => [entity.id, entity]),
+  BOOK_SETS.flatMap(set => set.entities).map(entity => [entity.id, withCardWords(entity)]),
 );
 
 /** A book level, e.g. 'mecca-b1': which cards each story chapter offers. */

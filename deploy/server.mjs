@@ -64,6 +64,8 @@ const pageSecurityHeaders = { ...securityHeaders, 'Content-Security-Policy': con
 // The content panel signs its team in with Google through Firebase, which needs a sign-in popup
 // and Google's sign-in scripts. Those are allowed on the panel page only, never in the app.
 const firebaseAuthDomain = 'https://gen-lang-client-0373200489.firebaseapp.com';
+// The panel shows the app itself in a frame (same origin), its pictures and recordings, and lists
+// the chapter folders in Storage to find which file a new picture replaces.
 const panelPageHeaders = {
   ...securityHeaders,
   'Cross-Origin-Opener-Policy': 'same-origin-allow-popups',
@@ -71,9 +73,11 @@ const panelPageHeaders = {
     "default-src 'self'",
     "script-src 'self' https://apis.google.com",
     "style-src 'self' 'unsafe-inline'",
-    "img-src 'self' data: https://*.googleusercontent.com",
-    "connect-src 'self' https://identitytoolkit.googleapis.com https://securetoken.googleapis.com https://apis.google.com",
-    `frame-src ${firebaseAuthDomain} https://accounts.google.com`,
+    "font-src 'self' data:",
+    `img-src 'self' data: blob: https://*.googleusercontent.com ${storageHosts}`,
+    `media-src 'self' blob: ${storageHosts}`,
+    `connect-src 'self' https://identitytoolkit.googleapis.com https://securetoken.googleapis.com https://apis.google.com ${storageHosts}`,
+    `frame-src 'self' ${firebaseAuthDomain} https://accounts.google.com`,
     "object-src 'none'",
     "base-uri 'self'",
     "form-action 'self'",
@@ -317,6 +321,17 @@ const panelApi = createPanelApi();
 
 const server = http.createServer(async (req, res) => {
   const urlPath = decodeURIComponent((req.url || '/').split('?')[0]);
+
+  // A signed-in team member gets the preview cookie, so the app shown inside the panel can open
+  // the hidden books too. The key itself never reaches the browser's scripts (the cookie is HttpOnly).
+  if (urlPath === '/panel-api/preview-access' && req.method === 'POST') {
+    const member = await panelApi.memberFor(req);
+    const headers = { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store' };
+    if (member && previewKey) headers['Set-Cookie'] = `${PREVIEW_COOKIE}=${encodeURIComponent(previewKey)}; Path=/; Max-Age=2592000; HttpOnly; Secure; SameSite=Lax`;
+    res.writeHead(member ? 200 : 401, headers);
+    res.end(JSON.stringify({ hidden: Boolean(member && previewKey) }));
+    return;
+  }
 
   if (urlPath.startsWith('/panel-api/')) {
     await panelApi.handle(req, res, urlPath);

@@ -1,0 +1,127 @@
+name: Yeni kitap
+
+# The content panel's "Yeni kitap" page pushes the story text (hikaye.md) and the request (istek.md)
+# to a panel/yeni-kitap-* branch; later "ask for a change" requests add a file under istekler/.
+# Each such push starts this workflow on that branch: Claude writes or changes the book there
+# (.github/yeni-kitap/talimat.md), the result is committed to the same branch, and the same
+# checks as tests.yml run on the new commit. The branch is a basket in the panel: people look at
+# it, ask for more, and an admin publishes it.
+#
+# Pushes made by this workflow do not start workflows again (GitHub's rule for GITHUB_TOKEN), so
+# the checks job below reports its result itself, as the "checks" check the panel waits for.
+on:
+  push:
+    branches: ['panel/yeni-kitap-**']
+    paths: ['story-intake/panel/**']
+
+permissions:
+  contents: write
+  checks: write
+  pull-requests: write
+  id-token: write
+
+concurrency:
+  group: yeni-kitap-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  write:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    outputs:
+      sha: ${{ steps.commit.outputs.sha }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: What was asked
+        id: ask
+        env:
+          BEFORE: ${{ github.event.before }}
+        run: |
+          set -eu
+          if ! git cat-file -e "$BEFORE^{commit}" 2>/dev/null; then BEFORE=$(git merge-base origin/preview HEAD); fi
+          files=$(git diff --name-only --diff-filter=AM "$BEFORE" HEAD -- story-intake/panel | grep -E '/(hikaye|istek)\.md$|/istekler/[^/]+\.md$' || true)
+          # A book the team writes by hand only gets the text; later requests still ask Claude.
+          if ! printf '%s\n' "$files" | grep -q '/istekler/' && printf '%s\n' "$files" | grep -q '/istek\.md$' && grep -q '^- Yazan: elle' $(printf '%s\n' "$files" | grep '/istek\.md$'); then files=''; fi
+          echo "files=$(printf '%s ' $files)" >> "$GITHUB_OUTPUT"
+      - uses: actions/setup-node@v4
+        if: steps.ask.outputs.files != ''
+        with:
+          node-version: 22
+          cache: npm
+      - if: steps.ask.outputs.files != ''
+        run: npm ci
+      - name: Claude writes the book
+        if: steps.ask.outputs.files != ''
+        uses: anthropics/claude-code-action@v1
+        with:
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          prompt: |
+            Read .github/yeni-kitap/talimat.md and follow it exactly.
+            This run was started by these files on branch ${{ github.ref_name }}: ${{ steps.ask.outputs.files }}
+          claude_args: >-
+            --max-turns 250
+            --allowedTools "Read,Write,Edit,MultiEdit,Glob,Grep,Bash(npm run validate:*),Bash(npx tsx:*),Bash(node:*),Bash(git diff:*),Bash(git status:*),Bash(git log:*)"
+      - name: Commit to the basket
+        id: commit
+        if: steps.ask.outputs.files != ''
+        env:
+          BRANCH: ${{ github.ref_name }}
+        run: |
+          set -eu
+          git config user.name "Claude (yeni kitap)"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          # Only the library's content and the request folder: the writer never changes code.
+          git add -A src/content story-intake/panel
+          if git diff --cached --quiet; then echo "sha=" >> "$GITHUB_OUTPUT"; exit 0; fi
+          git commit -q -m "Yeni kitap: Claude yazdı" -m "Panelden gelen istek üzerine. Bakılıp yayınlanana kadar okurlar görmez."
+          # Someone may have saved a change in the panel meanwhile: take it in, never overwrite it.
+          git fetch -q origin "$BRANCH"
+          git merge -q --no-edit "origin/$BRANCH"
+          git push -q origin "HEAD:$BRANCH"
+          echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+      - name: Summary on the pull request
+        if: steps.commit.outputs.sha != ''
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: ${{ github.ref_name }}
+        run: |
+          summary=$(ls -t story-intake/panel/*/ozet.md 2>/dev/null | head -1)
+          if [ -n "$summary" ]; then gh pr comment "$BRANCH" --body-file "$summary" || true; fi
+
+  checks:
+    needs: write
+    if: needs.write.outputs.sha != ''
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      SHA: ${{ needs.write.outputs.sha }}
+    steps:
+      - name: Open the "checks" check on the new commit
+        id: open
+        run: |
+          id=$(gh api "repos/${{ github.repository }}/check-runs" -f name=checks -f head_sha="$SHA" -f status=in_progress --jq .id)
+          echo "id=$id" >> "$GITHUB_OUTPUT"
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ needs.write.outputs.sha }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run lint
+      - run: npm run format:check
+      - run: npm run test:unit
+      - run: npm run build
+      - run: npx playwright install --with-deps chromium
+      - run: npm run test:e2e
+      - name: Close the check
+        if: always() && steps.open.outputs.id != ''
+        env:
+          ID: ${{ steps.open.outputs.id }}
+          RESULT: ${{ job.status == 'success' && 'success' || 'failure' }}
+        run: gh api -X PATCH "repos/${{ github.repository }}/check-runs/$ID" -f status=completed -f conclusion="$RESULT"

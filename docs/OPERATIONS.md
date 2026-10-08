@@ -32,30 +32,46 @@ Books in `hiddenStoryCatalog` (`src/core/content/storyCatalog.ts`) are built int
 - Places & People cards of hidden books are still in the shared files; only the story, exercises and guides are protected.
 
 ## The content panel
-`/panel` is the editing tool for the library (docs/CONTENT.md). It works in two ways:
+`/panel` is the library's management panel (docs/CONTENT.md). It opens the app itself: a click on
+any text, exercise, word note, picture or hotspot opens it for editing, and the change shows in the
+app at once. Pictures and recordings are uploaded or re-narrated there, Places & People cards,
+book names and visibility, the team and new books too. It works in two ways:
 
 - **Preview link only** (no `PANEL_TEAM`): sent only to a browser that opened `?gizli=<PREVIEW_KEY>`
-  once. Changes are downloaded as a file. Not served at all when `PREVIEW_KEY` is not set either.
-- **Team panel** (`PANEL_TEAM` set): anyone can open the page, but it asks for a Google sign-in
-  and the server lets in only the addresses on the team list. The book files under `/content/` go
-  only to a signed-in member (or to the preview link).
+  once. It only reads; a changed file can be downloaded. Not served at all without `PREVIEW_KEY`.
+- **Team panel** (`PANEL_TEAM` set): Google sign-in; the server lets in only the team. The owners
+  in `PANEL_TEAM` keep their role and cannot be removed from the panel; everyone else is added, changed and removed in the panel
+  ("Ekip"), stored in Storage `panel-state/team.json`. So a later admin never needs this setting.
 
 Settings on the Cloud Run service (never in the repository):
 
 | Variable | What it holds |
 |---|---|
-| `PANEL_TEAM` | JSON: `{"name@example.com": "admin", "x@example.com": "editor"}`. Roles: `admin` (approves and publishes), `editor`, `teacher` (both propose changes to any book), `translator` (proposes changes to translations only), `viewer` (reads only). |
-| `PANEL_GITHUB_TOKEN` | From Secret Manager. A fine-grained GitHub token for this repository only, with Contents and Pull requests read/write. Without it the team can sign in and read, but not send proposals. |
-| `PANEL_BASE_BRANCH` | Where proposals go, `preview` by default. |
+| `PANEL_TEAM` | JSON of the owners: `{"name@example.com": "admin"}`. Roles: `admin` (approves and publishes), `editor`, `teacher` (change any book), `translator` (translations only), `viewer` (reads only). |
+| `PANEL_GITHUB_TOKEN` | From Secret Manager. A fine-grained token for this repository only: Contents read/write, Pull requests read/write, Actions read. Without it the team can sign in and read, not save. |
+| `PANEL_BASE_BRANCH` | Where published changes go, `preview` by default. |
+| `PANEL_RELEASE_BRANCH` | Optional, e.g. `prod`: shows "go live" in the panel, which moves that branch to the tested preview. |
+| `PANEL_REPO`, `PANEL_BUCKET` | The repository and the Storage bucket, with the current ones as defaults. |
 
-How a change travels: Send proposal → the server opens a branch `panel/<edition>-<time>` and a pull
-request named after the person → the tests and the house-rule checks run on it → an admin presses
-"Approve and publish" (the pull request is merged, the next build deploys it) or "Reject" (closed).
-The panel refuses a change that adds a house-rule finding. Every action is also written to the
-service log as `[Panel] ...` with the person's address, and GitHub keeps the full history.
+How a change travels: Save → the change goes to the person's own basket (branch
+`panel/sepet-<id>` with a pull request) and the tests run on it; nothing is built yet. An admin
+looks at the basket in "Onay bekleyenler" and publishes it: the whole basket becomes **one** commit
+on the preview (one build), named after what changed, who made it and who approved it. Pictures and
+recordings wait in Storage `panel-uploads/` and replace the book's files only when published.
+"Geçmiş" lists every published change and puts its undo in a basket. Every action is also written
+to the service log as `[Panel] ...`.
+
+New books: the panel reads the Word file in the browser and pushes its text (never the .docx) to a
+`panel/yeni-kitap-*` branch. That push starts `.github/workflows/yeni-kitap.yml`, where Claude
+writes the hidden book by `.github/yeni-kitap/talimat.md` and the checks run on the result. It
+needs the repository secret `CLAUDE_CODE_OAUTH_TOKEN` (made once with `claude setup-token`).
+
+Local trial without GitHub or Storage: `PANEL_DEMO=1 node deploy/server.mjs` after a build (never
+on Cloud Run): everything is kept in memory.
 
 Firebase needs, once: Authentication → Sign-in method → Google switched on, and the app's address
-added under Authentication → Settings → Authorized domains.
+added under Authentication → Settings → Authorized domains. Storage rules must keep `panel-state/`
+closed (publish `storage.rules`).
 
 ## Firebase Storage
 - Rules live in `storage.rules`. Reading and listing are public (the app lists chapter folders); writing from browsers is closed. `tts-state/` is private.

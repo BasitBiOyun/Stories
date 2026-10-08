@@ -28,7 +28,32 @@ const bundledReader: Reader = (kind, name) => {
   return loader();
 };
 
-let reader: Reader = bundledReader;
+/**
+ * Inside the content panel the app is shown in a frame with ?panel-preview. The panel (same
+ * origin) then lends the book and guide files it is editing, so the page shows a change before it
+ * is saved. Anywhere else, or when the panel has no edited copy, the app's own files are used.
+ */
+interface PanelPreviewBridge {
+  read: (kind: 'books' | 'guides', name: string) => unknown;
+}
+
+const panelPreviewReader = (): Reader | null => {
+  if (typeof window === 'undefined' || window.parent === window) return null;
+  if (!new URLSearchParams(window.location.search).has('panel-preview')) return null;
+  try {
+    const bridge = (window.parent as unknown as { __panelPreview?: PanelPreviewBridge }).__panelPreview;
+    if (!bridge) return null;
+    return (kind, name) => {
+      const lent = bridge.read(kind, name);
+      return lent === undefined || lent === null ? bundledReader(kind, name) : Promise.resolve(lent);
+    };
+  } catch {
+    // A frame from another site: no access to the parent, so no lent files.
+    return null;
+  }
+};
+
+let reader: Reader = panelPreviewReader() ?? bundledReader;
 
 /** Node scripts call this once with a disk reader before touching any content. */
 export const setContentReader = (value: Reader) => {

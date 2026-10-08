@@ -44,16 +44,17 @@ sure of.
 
 ## The content panel
 
-`/panel` lists every edition, opens a book page by page, lets the text and the activity
-instructions be changed, and shows which house rules the page breaks while they are typed.
+`/panel` opens the app with every book in it. A click on anything a reader sees (a paragraph, a
+title, a question, an answer, a word note, a picture hotspot) opens it on the right, with the house
+rules spoken while typing; the app shows the change at once. Pages that are not on a book page
+(Teacher's Book, Places & People cards, book names and visibility, pictures and recordings, the
+team, new books) have their own pages. Ctrl+K finds any sentence in any book.
 
-With a team list on the server, people sign in with Google and press **Send proposal**: the change
-becomes a pull request named after them, the tests run on it, and only an admin approves it (it then
-goes live with the next build) or rejects it. A change that adds a house-rule finding cannot be sent.
-Translators change translations only; viewers only read. Without a team list the panel opens from
-the preview link and gives the changed file to download instead. Setup: docs/OPERATIONS.md.
+Saving puts the change in the person's basket; an admin publishes a basket as one commit (one
+build), and every published change can be undone from "Geçmiş". Setup: docs/OPERATIONS.md.
 
-Changing text after an English edit still needs the narration queue (`tts/requests.json`) by hand.
+What stays in code: book covers, the app's own interface texts and layout, the pictures of Places
+& People cards, and new kinds of exercise.
 
 ## Seeing what the library holds
 

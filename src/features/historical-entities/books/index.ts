@@ -6,6 +6,10 @@ import { YUNUS_EMRE_SET } from './yunus';
 import { MECCA_SET } from './mecca';
 import { GEVHER_NESIBE_SET } from './gevherNesibe';
 
+// The words of the cards are edited in src/content/entityCards.json (the panel's Places & People
+// page); the words written here are only the first version, copied there by
+// scripts/content/exportEntityCards.ts when a book's cards are added.
+
 /** One story's cards and, per book level, the cards each chapter offers. */
 export interface EntityBookSet {
   entities: HistoricalEntity[];

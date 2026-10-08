@@ -1,37 +1,48 @@
 import { test, expect } from '@playwright/test';
 import { PREVIEW_KEY } from '../playwright.config';
 
-// The content panel is a work tool: it opens only with the preview key, and it never publishes.
-test.describe('content panel', () => {
+// The management panel is a work tool. Without a team list (as in these tests) it opens only
+// with the preview link and only reads: changes can be tried in the app and downloaded, never sent.
+// Saving, approving and the team are covered by tests/panelApi.test.mjs.
+test.describe('management panel', () => {
   test.skip(({ isMobile }) => isMobile, 'the panel is used on a computer');
 
   test('is not served without the preview key', async ({ request }) => {
     expect((await request.get('/panel')).status()).toBe(404);
-    expect((await request.get('/content/mecca-a2-en.json')).status()).toBe(404);
+    expect((await request.get('/content/books/mecca-a2-en.json')).status()).toBe(404);
+    expect((await request.get('/content/search-index.json')).status()).toBe(404);
   });
 
-  test('opens a book, checks the house rules while typing and offers the changed file', async ({ page, context }) => {
-    await context.addCookies([
-      { name: 'stories_preview', value: PREVIEW_KEY, url: page.url().startsWith('http') ? page.url() : 'http://localhost' },
-    ]);
-    await page.goto('/panel');
+  test('a click in the app opens its text, and an edit shows in the app at once', async ({ page, context, baseURL }) => {
+    await context.addCookies([{ name: 'stories_preview', value: PREVIEW_KEY, url: baseURL! }]);
+    await page.goto('/panel/#/duzenle/mecca/a2/1?dil=en');
+    await expect(page.getByText('Panel sunucusuz açıldı: sadece okunur.')).toBeVisible();
 
-    await page.getByRole('button', { name: 'Mecca Before Islam · A2 · EN' }).click();
-    await expect(page.getByLabel('Title', { exact: true })).toHaveValue('Bilal Ibn Rabah’s Place in Islam');
-    await expect(page.getByText('No rule is broken on this page.')).toBeVisible();
+    const app = page.frameLocator('iframe[title="Uygulama"]');
+    const paragraph = app.locator('p', { hasText: 'one of the first seven people' }).first();
+    await paragraph.scrollIntoViewIfNeeded();
+    await paragraph.click();
 
-    const download = page.getByRole('button', { name: /^Download/ });
-    await expect(download).toBeDisabled();
-
-    const text = page.getByLabel('Text', { exact: true });
-    await text.fill("The colour of the Ka'ba. Qur'an.");
-    await expect(page.getByText(/American spelling/)).toBeVisible();
-    await expect(page.getByText(/write Ka’ba with the curly apostrophe/)).toBeVisible();
-    await expect(page.getByText('changed — not saved yet')).toBeVisible();
-    await expect(download).toBeEnabled();
+    const form = page.locator('.inspector textarea').first();
+    await expect(form).toHaveValue(/Bilal/);
+    const before = await form.inputValue();
+    await form.fill(`${before} The colour was white.`);
+    // The house rules speak while typing, and the app in the frame shows the new sentence.
+    await expect(page.getByText(/Amerikan yazımı/).first()).toBeVisible();
+    await expect(app.getByText('The colour was white.', { exact: false }).first()).toBeVisible();
 
     const saved = page.waitForEvent('download');
-    await download.click();
+    await page.getByRole('button', { name: 'Dosyayı indir' }).click();
     expect((await saved).suggestedFilename()).toBe('mecca-a2-en.json');
+  });
+
+  test('search finds a sentence in any book and opens it', async ({ page, context, baseURL }) => {
+    await context.addCookies([{ name: 'stories_preview', value: PREVIEW_KEY, url: baseURL! }]);
+    await page.goto('/panel/');
+    await page.keyboard.press('Control+k');
+    await page.getByRole('dialog', { name: 'Ara' }).getByRole('textbox').fill('Bilal');
+    await page.getByRole('option').filter({ hasText: 'Mecca' }).first().click();
+    await expect(page).toHaveURL(/#\/duzenle\/mecca\//);
+    await expect(page.locator('.inspector')).toBeVisible();
   });
 });

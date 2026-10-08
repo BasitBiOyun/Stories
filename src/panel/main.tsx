@@ -1,10 +1,13 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
-import { Panel } from './Panel';
+import { PanelApp } from './App';
+import { installBridge } from './bridge';
 import './panel.css';
+
+installBridge();
 
 createRoot(document.getElementById('panel-root')!).render(
   <StrictMode>
-    <Panel />
+    <PanelApp />
   </StrictMode>,
 );

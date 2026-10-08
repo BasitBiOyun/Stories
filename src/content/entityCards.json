@@ -1,0 +1,4136 @@
+{
+ "schema": 1,
+ "cards": {
+  "ibnjubayr-valencia": {
+   "en": {
+    "title": "Valencia",
+    "kindLabel": "City",
+    "periodLabel": "Al-Andalus · Spain",
+    "summary": "Valencia is a city on the east coast of Spain, near the Mediterranean Sea. Ibn Jubayr was born here in 1145.",
+    "more": "Today, it is the third biggest city in Spain."
+   },
+   "aliases": {
+    "en": [
+     "Valencia"
+    ],
+    "ar": []
+   },
+   "tr": "Valensiya"
+  },
+  "ibnjubayr-granada": {
+   "en": {
+    "title": "Granada",
+    "kindLabel": "City",
+    "periodLabel": "Al-Andalus · Spain",
+    "summary": "Granada is a city in the south of Spain, near high mountains. Ibn Jubayr worked here. His long journey started and ended here.",
+    "more": "The famous Alhambra palace is in Granada."
+   },
+   "aliases": {
+    "en": [
+     "Granada"
+    ],
+    "ar": []
+   },
+   "tr": "Gırnata"
+  },
+  "ibnjubayr-seville": {
+   "en": {
+    "title": "Sevilla",
+    "kindLabel": "City",
+    "periodLabel": "Al-Andalus · Spain",
+    "summary": "Sevilla (Seville) is a city in the south-west of Spain, on a big river. In Al-Andalus, it was a large and rich city.",
+    "more": "Its big river is the Guadalquivir."
+   },
+   "aliases": {
+    "en": [
+     "Sevilla",
+     "Seville"
+    ],
+    "ar": []
+   },
+   "tr": "İşbîliye"
+  },
+  "ibnjubayr-cordoba": {
+   "en": {
+    "title": "Córdoba",
+    "kindLabel": "City",
+    "periodLabel": "Al-Andalus · Spain",
+    "summary": "Córdoba is a city in the south of Spain. For a long time, it was the capital of Al-Andalus and a great city of learning.",
+    "more": "Its Great Mosque is one of the most famous buildings in Spain."
+   },
+   "aliases": {
+    "en": [
+     "Córdoba",
+     "Cordoba"
+    ],
+    "ar": []
+   },
+   "tr": "Kurtuba"
+  },
+  "ibnjubayr-ceuta": {
+   "en": {
+    "title": "Ceuta",
+    "kindLabel": "Port city",
+    "periodLabel": "North Africa",
+    "summary": "Ceuta is a port city in North Africa, across the sea from Spain. Here, Ibn Jubayr got on a ship to the east.",
+    "more": "It is on the narrow sea between Africa and Europe."
+   },
+   "aliases": {
+    "en": [
+     "Ceuta"
+    ],
+    "ar": []
+   },
+   "tr": "Sebte"
+  },
+  "ibnjubayr-genoa": {
+   "en": {
+    "title": "Genoa",
+    "kindLabel": "Port city",
+    "periodLabel": "Italy",
+    "summary": "Genoa is a port city in the north-west of Italy. In the Middle Ages, its ships carried people and goods across the Mediterranean. \"Genoese\" means \"from Genoa\".",
+    "more": "Ibn Jubayr sailed on a Genoese ship from Ceuta to Alexandria."
+   },
+   "aliases": {
+    "en": [
+     "Genoese",
+     "Genoa"
+    ],
+    "ar": []
+   },
+   "tr": "Cenova"
+  },
+  "ibnjubayr-alexandria": {
+   "en": {
+    "title": "Alexandria",
+    "kindLabel": "Port city",
+    "periodLabel": "Egypt",
+    "summary": "Alexandria is a port city in Egypt, on the Mediterranean Sea. Ibn Jubayr arrived here by ship. At the end of his life, he died here.",
+    "more": "Alexander the Great started the city a very long time ago."
+   },
+   "aliases": {
+    "en": [
+     "Alexandria"
+    ],
+    "ar": []
+   },
+   "tr": "İskenderiye"
+  },
+  "ibnjubayr-cairo": {
+   "en": {
+    "title": "Cairo",
+    "kindLabel": "City",
+    "periodLabel": "Egypt",
+    "summary": "Cairo is a big city in Egypt, near the Nile River. In Ibn Jubayr’s time, it was the capital of Saladin’s state.",
+    "more": "Today, it is the capital of Egypt and one of the biggest cities in Africa."
+   },
+   "aliases": {
+    "en": [
+     "Cairo"
+    ],
+    "ar": []
+   },
+   "tr": "Kahire"
+  },
+  "ibnjubayr-mecca": {
+   "en": {
+    "title": "Mecca",
+    "kindLabel": "Holy city",
+    "periodLabel": "Western Arabia",
+    "summary": "Mecca is the holy city of Islam, in western Arabia. The Ka’bah is here. Muslims come to Mecca for Hajj.",
+    "more": "Ibn Jubayr stayed in Mecca for more than eight months."
+   },
+   "aliases": {
+    "en": [
+     "Mecca"
+    ],
+    "ar": []
+   },
+   "tr": "Mekke"
+  },
+  "ibnjubayr-medina": {
+   "en": {
+    "title": "Medina",
+    "kindLabel": "Holy city",
+    "periodLabel": "Western Arabia",
+    "summary": "Medina is a holy city in western Arabia, north of Mecca. The Prophet Muhammad (pbuh) lived here, and his mosque is here.",
+    "more": "Ibn Jubayr stayed in Medina for five nights."
+   },
+   "aliases": {
+    "en": [
+     "Medina"
+    ],
+    "ar": []
+   },
+   "tr": "Medine"
+  },
+  "ibnjubayr-baghdad": {
+   "en": {
+    "title": "Baghdad",
+    "kindLabel": "City",
+    "periodLabel": "Iraq",
+    "summary": "Baghdad is a big city on the Tigris River, in today’s Iraq. For a long time, it was the capital of the Abbasids.",
+    "more": "In Ibn Jubayr’s time, it had many bathhouses and mosques."
+   },
+   "aliases": {
+    "en": [
+     "Baghdad"
+    ],
+    "ar": []
+   },
+   "tr": "Bağdat"
+  },
+  "ibnjubayr-mosul": {
+   "en": {
+    "title": "Mosul",
+    "kindLabel": "City",
+    "periodLabel": "Iraq",
+    "summary": "Mosul is an old city on the Tigris River, in the north of today’s Iraq.",
+    "more": "Ibn Jubayr visited Mosul on his journey."
+   },
+   "aliases": {
+    "en": [
+     "Mosul"
+    ],
+    "ar": []
+   },
+   "tr": "Musul"
+  },
+  "ibnjubayr-aleppo": {
+   "en": {
+    "title": "Aleppo",
+    "kindLabel": "City",
+    "periodLabel": "Syria",
+    "summary": "Aleppo is one of the oldest cities in the world. It is in the north of Syria and has a famous castle on a hill.",
+    "more": "Ibn Jubayr went through Aleppo on his way to Damascus."
+   },
+   "aliases": {
+    "en": [
+     "Aleppo"
+    ],
+    "ar": []
+   },
+   "tr": "Halep"
+  },
+  "ibnjubayr-damascus": {
+   "en": {
+    "title": "Damascus",
+    "kindLabel": "City",
+    "periodLabel": "Syria",
+    "summary": "Damascus is a very old city in Syria. It was the capital of the Umayyads, and its Great Mosque is famous.",
+    "more": "Ibn Jubayr wrote a lot about its Great Mosque."
+   },
+   "aliases": {
+    "en": [
+     "Damascus"
+    ],
+    "ar": []
+   },
+   "tr": "Şam"
+  },
+  "ibnjubayr-jerusalem": {
+   "en": {
+    "title": "Jerusalem",
+    "kindLabel": "Holy city",
+    "periodLabel": "Palestine",
+    "summary": "Jerusalem is a holy city for Muslims, Christians and Jews. Al-Aqsa Mosque is here.",
+    "more": "In 1187, Saladin took Jerusalem back from the Crusaders."
+   },
+   "aliases": {
+    "en": [
+     "Jerusalem"
+    ],
+    "ar": []
+   },
+   "tr": "Kudüs"
+  },
+  "ibnjubayr-acre": {
+   "en": {
+    "title": "Acre",
+    "kindLabel": "Port city",
+    "periodLabel": "Palestine",
+    "summary": "Acre is an old port city on the coast of Palestine. In Ibn Jubayr’s time, the Crusaders ruled it.",
+    "more": "Ibn Jubayr waited here for nearly two weeks for good winds."
+   },
+   "aliases": {
+    "en": [
+     "Acre"
+    ],
+    "ar": []
+   },
+   "tr": "Akkâ"
+  },
+  "ibnjubayr-al-andalus": {
+   "en": {
+    "title": "Al-Andalus",
+    "kindLabel": "Historical land",
+    "periodLabel": "711–1492",
+    "summary": "Al-Andalus was the name of the Muslim lands in Spain and Portugal. Its borders changed many times.",
+    "more": "Muslims, Christians and Jews lived side by side here."
+   },
+   "aliases": {
+    "en": [
+     "Al-Andalus"
+    ],
+    "ar": []
+   },
+   "tr": "Endülüs"
+  },
+  "ibnjubayr-middle-east": {
+   "en": {
+    "title": "The Middle East",
+    "kindLabel": "Region",
+    "periodLabel": "Western Asia and Egypt",
+    "summary": "The Middle East is a large area in western Asia and Egypt. Today, it has countries like Egypt, Syria, Iraq and Saudi Arabia.",
+    "more": "Ibn Jubayr visited many great cities in the Middle East."
+   },
+   "aliases": {
+    "en": [
+     "Middle East"
+    ],
+    "ar": []
+   },
+   "tr": "Ortadoğu"
+  },
+  "ibnjubayr-north-africa": {
+   "en": {
+    "title": "North Africa",
+    "kindLabel": "Region",
+    "periodLabel": "Africa",
+    "summary": "North Africa is the north part of Africa, along the Mediterranean Sea.",
+    "more": "Ibn Jubayr started his sea journey from Ceuta, a city in North Africa."
+   },
+   "aliases": {
+    "en": [
+     "North Africa"
+    ],
+    "ar": []
+   },
+   "tr": "Kuzey Afrika"
+  },
+  "ibnjubayr-egypt": {
+   "en": {
+    "title": "Egypt",
+    "kindLabel": "Country",
+    "periodLabel": "North-east Africa",
+    "summary": "Egypt is a country in the north-east of Africa. The Nile River runs through it from south to north.",
+    "more": "Cairo and Alexandria are two big cities in Egypt."
+   },
+   "aliases": {
+    "en": [
+     "Egypt"
+    ],
+    "ar": []
+   },
+   "tr": "Mısır"
+  },
+  "ibnjubayr-syria": {
+   "en": {
+    "title": "Syria",
+    "kindLabel": "Historical land",
+    "periodLabel": "East of the Mediterranean",
+    "summary": "In the Middle Ages, Syria was a large land east of the Mediterranean Sea. Aleppo and Damascus were its great cities.",
+    "more": "Ibn Jubayr traveled through northern Syria to Damascus."
+   },
+   "aliases": {
+    "en": [
+     "Syria"
+    ],
+    "ar": []
+   },
+   "tr": "Suriye"
+  },
+  "ibnjubayr-palestine": {
+   "en": {
+    "title": "Palestine",
+    "kindLabel": "Historical land",
+    "periodLabel": "East of the Mediterranean",
+    "summary": "Palestine is a land on the east coast of the Mediterranean Sea. Jerusalem is its most famous city.",
+    "more": "In Ibn Jubayr’s time, the Crusaders ruled it."
+   },
+   "aliases": {
+    "en": [
+     "Palestine"
+    ],
+    "ar": []
+   },
+   "tr": "Filistin"
+  },
+  "ibnjubayr-kingdom-of-jerusalem": {
+   "en": {
+    "title": "Kingdom of Jerusalem",
+    "kindLabel": "Crusader state",
+    "periodLabel": "1099–1291",
+    "summary": "The Kingdom of Jerusalem was a Christian state. The Crusaders started it in 1099. Acre was its main port.",
+    "more": "Ibn Jubayr stayed here for about a month."
+   },
+   "aliases": {
+    "en": [
+     "Kingdom of Jerusalem"
+    ],
+    "ar": []
+   },
+   "tr": "Kudüs Krallığı"
+  },
+  "ibnjubayr-mediterranean": {
+   "en": {
+    "title": "The Mediterranean Sea",
+    "kindLabel": "Sea",
+    "periodLabel": "Between Europe, Africa and Asia",
+    "summary": "The Mediterranean is a big sea between Europe, Africa and Asia. Ibn Jubayr crossed it two times, to the east and back.",
+    "more": "In the twelfth century, storms and wars made it very dangerous."
+   },
+   "aliases": {
+    "en": [
+     "Mediterranean"
+    ],
+    "ar": []
+   },
+   "tr": "Akdeniz"
+  },
+  "ibnjubayr-red-sea": {
+   "en": {
+    "title": "The Red Sea",
+    "kindLabel": "Sea",
+    "periodLabel": "Between Africa and Arabia",
+    "summary": "The Red Sea is a long, narrow sea between Africa and Arabia. Ibn Jubayr crossed it by ship on his way to Mecca.",
+    "more": "Ibn Jubayr went to it with a camel caravan."
+   },
+   "aliases": {
+    "en": [
+     "Red Sea"
+    ],
+    "ar": []
+   },
+   "tr": "Kızıldeniz"
+  },
+  "ibnjubayr-nile": {
+   "en": {
+    "title": "The Nile",
+    "kindLabel": "River",
+    "periodLabel": "Egypt",
+    "summary": "The Nile is a very long river in Africa. It flows north through Egypt to the Mediterranean Sea. Every year, its floods brought water to the farms.",
+    "more": "In Cairo, Ibn Jubayr saw a Nilometer, a tool to measure the floods."
+   },
+   "aliases": {
+    "en": [
+     "Nile"
+    ],
+    "ar": []
+   },
+   "tr": "Nil Nehri"
+  },
+  "ibnjubayr-euphrates": {
+   "en": {
+    "title": "The Euphrates",
+    "kindLabel": "River",
+    "periodLabel": "Türkiye · Syria · Iraq",
+    "summary": "The Euphrates is a long river. It starts in the mountains of Türkiye and flows through Syria and Iraq.",
+    "more": "On his way to Baghdad, Ibn Jubayr passed near it."
+   },
+   "aliases": {
+    "en": [
+     "Euphrates River",
+     "Euphrates"
+    ],
+    "ar": []
+   },
+   "tr": "Fırat Nehri"
+  },
+  "ibnjubayr-sardinia": {
+   "en": {
+    "title": "Sardinia",
+    "kindLabel": "Island",
+    "periodLabel": "Mediterranean Sea",
+    "summary": "Sardinia is a large island in the Mediterranean Sea, west of Italy.",
+    "more": "Ibn Jubayr’s ship passed it on the way to the east and on the way home."
+   },
+   "aliases": {
+    "en": [
+     "Sardinia"
+    ],
+    "ar": []
+   },
+   "tr": "Sardinya"
+  },
+  "ibnjubayr-sicily": {
+   "en": {
+    "title": "Sicily",
+    "kindLabel": "Island",
+    "periodLabel": "Mediterranean Sea",
+    "summary": "Sicily is the largest island in the Mediterranean Sea, south of Italy. On the way home, Ibn Jubayr’s ship hit the ground near its coast.",
+    "more": "The king of Sicily, William II, helped the passengers."
+   },
+   "aliases": {
+    "en": [
+     "Sicily"
+    ],
+    "ar": []
+   },
+   "tr": "Sicilya"
+  },
+  "ibnjubayr-crete": {
+   "en": {
+    "title": "Crete",
+    "kindLabel": "Island",
+    "periodLabel": "Mediterranean Sea",
+    "summary": "Crete is a large island in the Mediterranean Sea, south of Greece.",
+    "more": "After a big storm, Ibn Jubayr’s ship sailed toward Crete."
+   },
+   "aliases": {
+    "en": [
+     "Crete"
+    ],
+    "ar": []
+   },
+   "tr": "Girit"
+  },
+  "ibnjubayr-lighthouse-of-alexandria": {
+   "en": {
+    "title": "Lighthouse of Alexandria",
+    "kindLabel": "Building",
+    "periodLabel": "Egypt",
+    "summary": "The Lighthouse of Alexandria was a very tall tower near the port. Its light helped ships find the port. Later, earthquakes destroyed it.",
+    "more": "Ibn Jubayr wrote that it was more than 50 men tall."
+   },
+   "aliases": {
+    "en": [
+     "Lighthouse of Alexandria"
+    ],
+    "ar": []
+   },
+   "tr": "İskenderiye Feneri"
+  },
+  "ibnjubayr-great-mosque-of-damascus": {
+   "en": {
+    "title": "Great Mosque of Damascus",
+    "kindLabel": "Mosque",
+    "periodLabel": "Syria · early 700s",
+    "summary": "The Great Mosque of Damascus is also called the Umayyad Mosque. The Umayyads built it in the early 700s. It is one of the oldest great mosques in the world.",
+    "more": "Ibn Jubayr described its dome, its minarets and its beautiful mosaics."
+   },
+   "aliases": {
+    "en": [
+     "Great Mosque of Damascus"
+    ],
+    "ar": []
+   },
+   "tr": "Emevî Camii"
+  },
+  "ibnjubayr-kerak": {
+   "en": {
+    "title": "Kerak",
+    "kindLabel": "Castle",
+    "periodLabel": "East of the Dead Sea",
+    "summary": "Kerak is a big castle on a hill, east of the Dead Sea, in today’s Jordan. The Crusaders built it.",
+    "more": "In 1184, Saladin attacked it."
+   },
+   "aliases": {
+    "en": [
+     "Kerak"
+    ],
+    "ar": []
+   },
+   "tr": "Kerek Kalesi"
+  },
+  "ibnjubayr-crusaders": {
+   "en": {
+    "title": "The Crusaders",
+    "kindLabel": "Soldiers",
+    "periodLabel": "1096–1291",
+    "summary": "The Crusaders were Christian soldiers from Europe. They came to the Middle East and took Jerusalem and other lands in 1099.",
+    "more": "In Ibn Jubayr’s time, they ruled Palestine."
+   },
+   "aliases": {
+    "en": [
+     "Crusaders"
+    ],
+    "ar": []
+   },
+   "tr": "Haçlılar"
+  },
+  "ibnjubayr-ayyubids": {
+   "en": {
+    "title": "The Ayyubids",
+    "kindLabel": "Ruling family",
+    "periodLabel": "From 1171",
+    "summary": "The Ayyubids were a Muslim family of rulers. Saladin started their state in Egypt. They also ruled Syria, Yemen and other lands.",
+    "more": "Their capital was Cairo."
+   },
+   "aliases": {
+    "en": [
+     "Ayyubid state"
+    ],
+    "ar": []
+   },
+   "tr": "Eyyûbîler"
+  },
+  "ibnjubayr-saladin": {
+   "en": {
+    "title": "Saladin",
+    "kindLabel": "Sultan",
+    "periodLabel": "1138–1193",
+    "summary": "Saladin (Salah ad-Din al-Ayyubi) was a great Muslim ruler and army leader. He ruled Egypt and Syria. In 1187, he took Jerusalem back from the Crusaders.",
+    "more": "Ibn Jubayr praised his kindness and his fair rules."
+   },
+   "aliases": {
+    "en": [
+     "Saladin al-Ayyubi",
+     "Salah ad-Din al-Ayyubi",
+     "Saladin"
+    ],
+    "ar": []
+   },
+   "tr": "Selâhaddîn-i Eyyûbî"
+  },
+  "ibnjubayr-abbasids": {
+   "en": {
+    "title": "The Abbasids",
+    "kindLabel": "Ruling family",
+    "periodLabel": "750–1258",
+    "summary": "The Abbasids were a family of caliphs. They ruled from Baghdad until the Mongols attacked the city in 1258.",
+    "more": "Ibn Jubayr visited their capital, Baghdad."
+   },
+   "aliases": {
+    "en": [
+     "Abbasids"
+    ],
+    "ar": []
+   },
+   "tr": "Abbâsîler"
+  },
+  "ibnjubayr-mongols": {
+   "en": {
+    "title": "The Mongols",
+    "kindLabel": "People",
+    "periodLabel": "13th century",
+    "summary": "The Mongols were people from Central Asia. In 1258, their army attacked Baghdad and destroyed a large part of it.",
+    "more": "They came from the east on horses and built a very big empire."
+   },
+   "aliases": {
+    "en": [
+     "Mongols"
+    ],
+    "ar": []
+   },
+   "tr": "Moğollar"
+  },
+  "ibnjubayr-umayyads": {
+   "en": {
+    "title": "The Umayyads",
+    "kindLabel": "Ruling family",
+    "periodLabel": "661–750",
+    "summary": "The Umayyads were the first family of caliphs. They ruled from Damascus from 661 to 750. Later, another Umayyad family ruled Al-Andalus from Córdoba.",
+    "more": "The Great Mosque of Damascus is one of their famous buildings."
+   },
+   "aliases": {
+    "en": [
+     "Umayyads"
+    ],
+    "ar": []
+   },
+   "tr": "Emevîler"
+  },
+  "mecca-mecca-7th-century": {
+   "en": {
+    "title": "Mecca",
+    "kindLabel": "City",
+    "periodLabel": "Before Islam · Arabia",
+    "summary": "Mecca is a city in a dry valley in the west of the Arabian Peninsula. The Ka’ba is here, and before Islam it was a busy trade city.",
+    "more": "Today, millions of Muslims visit Mecca every year for Hajj."
+   },
+   "ar": {
+    "title": "مَكَّةُ",
+    "kindLabel": "مَدِينَةٌ",
+    "periodLabel": "قَبْلَ الْإِسْلَامِ · شِبْهُ الْجَزِيرَةِ الْعَرَبِيَّةِ",
+    "summary": "مَكَّةُ مَدِينَةٌ فِي وَادٍ جَافٍّ غَرْبَ شِبْهِ الْجَزِيرَةِ الْعَرَبِيَّةِ. فِيهَا الْكَعْبَةُ الْمُشَرَّفَةُ، وَكَانَتْ قَبْلَ الْإِسْلَامِ مَدِينَةً تِجَارِيَّةً نَشِيطَةً.",
+    "more": "يَزُورُ مَكَّةَ الْيَوْمَ مَلَايِينُ الْمُسْلِمِينَ كُلَّ عَامٍ لِأَدَاءِ الْحَجِّ."
+   },
+   "aliases": {
+    "en": [
+     "Mecca"
+    ],
+    "ar": [
+     "مكة"
+    ]
+   },
+   "tr": "Mekke"
+  },
+  "mecca-mecca-valley-ancient": {
+   "en": {
+    "title": "Valley of Mecca",
+    "kindLabel": "Valley",
+    "periodLabel": "Time of Abraham (pbuh)",
+    "summary": "In the time of Abraham (pbuh), Mecca was an empty, dry valley where no crops grew. No people lived there before Zamzam water was found.",
+    "more": "Bare, rocky mountains stand all around the valley."
+   },
+   "ar": {
+    "title": "وَادِي مَكَّةَ",
+    "kindLabel": "وَادٍ",
+    "periodLabel": "زَمَنُ إِبْرَاهِيمَ عَلَيْهِ السَّلَامُ",
+    "summary": "فِي زَمَنِ إِبْرَاهِيمَ عَلَيْهِ السَّلَامُ، كَانَتْ مَكَّةُ وَادِيًا جَافًّا خَالِيًا لَا زَرْعَ فِيهِ. وَلَمْ يَكُنْ فِيهِ سُكَّانٌ قَبْلَ اكْتِشَافِ مَاءِ زَمْزَمَ.",
+    "more": "تُحِيطُ بِالْوَادِي جِبَالٌ صَخْرِيَّةٌ جَرْدَاءُ مِنْ كُلِّ جِهَةٍ."
+   },
+   "aliases": {
+    "en": [
+     "a valley where no crops grow"
+    ],
+    "ar": [
+     "واد غير ذي زرع"
+    ]
+   },
+   "tr": "Mekke"
+  },
+  "mecca-medina-7th-century": {
+   "en": {
+    "title": "Medina",
+    "kindLabel": "City",
+    "periodLabel": "7th century · Arabia",
+    "summary": "Medina is a city north of Mecca, in the west of the Arabian Peninsula. After many hard years in Mecca, the Prophet (pbuh) and the Muslims moved here; this move is called the Hijrah.",
+    "more": "Before Islam, the city was called Yathrib."
+   },
+   "ar": {
+    "title": "الْمَدِينَةُ",
+    "kindLabel": "مَدِينَةٌ",
+    "periodLabel": "الْقَرْنُ السَّابِعُ · شِبْهُ الْجَزِيرَةِ الْعَرَبِيَّةِ",
+    "summary": "الْمَدِينَةُ بَلْدَةٌ تَقَعُ شَمَالَ مَكَّةَ، فِي غَرْبِ شِبْهِ الْجَزِيرَةِ الْعَرَبِيَّةِ. هَاجَرَ إِلَيْهَا الرَّسُولُ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ وَالْمُسْلِمُونَ بَعْدَ سَنَوَاتٍ صَعْبَةٍ فِي مَكَّةَ، وَتُسَمَّى هَذِهِ الرِّحْلَةُ الْهِجْرَةَ.",
+    "more": "كَانَ اسْمُهَا قَبْلَ الْإِسْلَامِ يَثْرِبَ."
+   },
+   "aliases": {
+    "en": [
+     "Medina"
+    ],
+    "ar": [
+     "الهجرة إلى المدينة",
+     "هجرته إلى المدينة"
+    ]
+   },
+   "tr": "Medine"
+  },
+  "mecca-damascus-7th-century": {
+   "en": {
+    "title": "Damascus",
+    "kindLabel": "City",
+    "periodLabel": "7th century · Syria",
+    "summary": "Damascus is an old city in Syria, north of Arabia. After the Prophet (pbuh) died, Bilal left Medina, went to Damascus and died there.",
+    "more": "Today, it is the capital of Syria."
+   },
+   "ar": {
+    "title": "دِمَشْقُ",
+    "kindLabel": "مَدِينَةٌ",
+    "periodLabel": "الْقَرْنُ السَّابِعُ · الشَّامُ",
+    "summary": "دِمَشْقُ مَدِينَةٌ قَدِيمَةٌ فِي بِلَادِ الشَّامِ، شَمَالَ شِبْهِ الْجَزِيرَةِ الْعَرَبِيَّةِ. وَبَعْدَ وَفَاةِ الرَّسُولِ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ، خَرَجَ بِلَالٌ مِنَ الْمَدِينَةِ إِلَى دِمَشْقَ وَمَاتَ فِيهَا.",
+    "more": "وَهِيَ الْيَوْمَ عَاصِمَةُ سُورِيَا."
+   },
+   "aliases": {
+    "en": [
+     "Damascus"
+    ],
+    "ar": [
+     "دمشق"
+    ]
+   },
+   "tr": "Şam"
+  },
+  "mecca-constantinople-byzantine": {
+   "en": {
+    "title": "Constantinople",
+    "kindLabel": "City",
+    "periodLabel": "Byzantine Empire",
+    "summary": "Constantinople was the capital city of the Byzantine Empire. Today we call it Istanbul.",
+    "more": "It stands on the Bosphorus, where Europe meets Asia."
+   },
+   "ar": {
+    "title": "الْقُسْطَنْطِينِيَّةُ",
+    "kindLabel": "مَدِينَةٌ",
+    "periodLabel": "الْإِمْبِرَاطُورِيَّةُ الْبِيزَنْطِيَّةُ",
+    "summary": "كَانَتِ الْقُسْطَنْطِينِيَّةُ عَاصِمَةَ الْإِمْبِرَاطُورِيَّةِ الْبِيزَنْطِيَّةِ. وَنُسَمِّيهَا الْيَوْمَ إِسْطَنْبُولَ.",
+    "more": "تَقَعُ عَلَى مَضِيقِ الْبُوسْفُورِ، حَيْثُ تَلْتَقِي أُورُوبَّا بِآسِيَا."
+   },
+   "aliases": {
+    "en": [
+     "Constantinople",
+     "Istanbul"
+    ],
+    "ar": [
+     "القسطنطينية",
+     "إسطنبول"
+    ]
+   },
+   "tr": "Kostantiniyye"
+  },
+  "mecca-arabian-peninsula": {
+   "en": {
+    "title": "Arabian Peninsula",
+    "kindLabel": "Peninsula",
+    "periodLabel": "Before Islam",
+    "summary": "The Arabian Peninsula is a large, dry land with water on three sides. Before Islam, it had no single government, and people lived in tribes.",
+    "more": "Most of it is desert, and it gets very little rain."
+   },
+   "ar": {
+    "title": "شِبْهُ الْجَزِيرَةِ الْعَرَبِيَّةِ",
+    "kindLabel": "شِبْهُ جَزِيرَةٍ",
+    "periodLabel": "قَبْلَ الْإِسْلَامِ",
+    "summary": "شِبْهُ الْجَزِيرَةِ الْعَرَبِيَّةِ أَرْضٌ وَاسِعَةٌ جَافَّةٌ، يُحِيطُ بِهَا الْمَاءُ مِنْ ثَلَاثِ جِهَاتٍ. وَلَمْ تَكُنْ فِيهَا قَبْلَ الْإِسْلَامِ حُكُومَةٌ وَاحِدَةٌ، بَلْ كَانَ النَّاسُ يَعِيشُونَ فِي قَبَائِلَ.",
+    "more": "أَكْثَرُهَا صَحْرَاءُ، وَالْمَطَرُ فِيهَا قَلِيلٌ جِدًّا."
+   },
+   "aliases": {
+    "en": [
+     "Arabian Peninsula",
+     "Arabia"
+    ],
+    "ar": [
+     "شبه الجزيرة العربية",
+     "شبه جزيرة العرب",
+     "بلاد العرب"
+    ]
+   },
+   "tr": "Arap Yarımadası"
+  },
+  "mecca-abyssinia": {
+   "en": {
+    "title": "Abyssinia (Ethiopia)",
+    "kindLabel": "Land",
+    "periodLabel": "East Africa",
+    "summary": "Abyssinia is the old name of Ethiopia, a land in East Africa, across the Red Sea from Arabia. Bilal’s mother was from Abyssinia, and Meccan merchants traded with it.",
+    "more": "A great old kingdom there was called Aksum."
+   },
+   "ar": {
+    "title": "الْحَبَشَةُ",
+    "kindLabel": "بِلَادٌ",
+    "periodLabel": "شَرْقُ إِفْرِيقِيَا",
+    "summary": "الْحَبَشَةُ اسْمٌ قَدِيمٌ لِإِثْيُوبِيَا، وَهِيَ بِلَادٌ فِي شَرْقِ إِفْرِيقِيَا تُقَابِلُ بِلَادَ الْعَرَبِ عَبْرَ الْبَحْرِ الْأَحْمَرِ. كَانَتْ أُمُّ بِلَالٍ حَبَشِيَّةً، وَكَانَ تُجَّارُ مَكَّةَ يُتَاجِرُونَ مَعَهَا.",
+    "more": "كَانَتْ فِيهَا مَمْلَكَةٌ قَدِيمَةٌ عَظِيمَةٌ اسْمُهَا أَكْسُومُ."
+   },
+   "aliases": {
+    "en": [
+     "Abyssinia",
+     "Ethiopia"
+    ],
+    "ar": [
+     "الحبشة",
+     "حبشي",
+     "إثيوبيا"
+    ]
+   },
+   "tr": "Habeşistan"
+  },
+  "mecca-yemen-6th-century": {
+   "en": {
+    "title": "Yemen",
+    "kindLabel": "Land",
+    "periodLabel": "South Arabia",
+    "summary": "Yemen is a land in the south-west of the Arabian Peninsula. Goods from the East came to its coast, and caravans carried them to the north.",
+    "more": "Its green mountains get more rain than the rest of Arabia."
+   },
+   "ar": {
+    "title": "الْيَمَنُ",
+    "kindLabel": "بِلَادٌ",
+    "periodLabel": "جَنُوبُ شِبْهِ الْجَزِيرَةِ الْعَرَبِيَّةِ",
+    "summary": "الْيَمَنُ بِلَادٌ فِي جَنُوبِ غَرْبِ شِبْهِ الْجَزِيرَةِ الْعَرَبِيَّةِ. كَانَتْ بَضَائِعُ الشَّرْقِ تَصِلُ إِلَى سَوَاحِلِهِ، ثُمَّ تَحْمِلُهَا الْقَوَافِلُ إِلَى الشَّمَالِ.",
+    "more": "تَنْزِلُ عَلَى جِبَالِهِ الْخَضْرَاءِ أَمْطَارٌ أَكْثَرُ مِنْ بَقِيَّةِ بِلَادِ الْعَرَبِ."
+   },
+   "aliases": {
+    "en": [
+     "Yemen"
+    ],
+    "ar": [
+     "اليمن"
+    ]
+   }
+  },
+  "mecca-palestine-ancient": {
+   "en": {
+    "title": "Palestine",
+    "kindLabel": "Land",
+    "periodLabel": "Eastern Mediterranean",
+    "summary": "Palestine is a land by the Mediterranean Sea, north of Arabia. Abraham (pbuh) went back there after his visit to Mecca, and trade caravans also traveled there.",
+    "more": "The city of Jerusalem is in Palestine."
+   },
+   "ar": {
+    "title": "فِلَسْطِينُ",
+    "kindLabel": "بِلَادٌ",
+    "periodLabel": "شَرْقُ الْبَحْرِ الْأَبْيَضِ الْمُتَوَسِّطِ",
+    "summary": "فِلَسْطِينُ بِلَادٌ عَلَى سَاحِلِ الْبَحْرِ الْأَبْيَضِ الْمُتَوَسِّطِ، شَمَالَ بِلَادِ الْعَرَبِ. عَادَ إِلَيْهَا إِبْرَاهِيمُ عَلَيْهِ السَّلَامُ بَعْدَ زِيَارَتِهِ لِمَكَّةَ، وَكَانَتِ الْقَوَافِلُ التِّجَارِيَّةُ تَذْهَبُ إِلَيْهَا أَيْضًا.",
+    "more": "مَدِينَةُ الْقُدْسِ فِي فِلَسْطِينَ."
+   },
+   "aliases": {
+    "en": [
+     "Palestine"
+    ],
+    "ar": [
+     "فلسطين"
+    ]
+   },
+   "tr": "Filistin"
+  },
+  "mecca-iraq-6th-century": {
+   "en": {
+    "title": "Iraq",
+    "kindLabel": "Land",
+    "periodLabel": "6th century",
+    "summary": "Iraq is the land of two great rivers, the Tigris and the Euphrates, north-east of Arabia. Meccan merchants traveled there to trade.",
+    "more": "In those days, the Sassanid Persians ruled it."
+   },
+   "ar": {
+    "title": "الْعِرَاقُ",
+    "kindLabel": "بِلَادٌ",
+    "periodLabel": "الْقَرْنُ السَّادِسُ",
+    "summary": "الْعِرَاقُ بِلَادُ النَّهْرَيْنِ الْعَظِيمَيْنِ دِجْلَةَ وَالْفُرَاتِ، شَمَالَ شَرْقِ بِلَادِ الْعَرَبِ. وَكَانَ تُجَّارُ مَكَّةَ يُسَافِرُونَ إِلَيْهِ لِلتِّجَارَةِ.",
+    "more": "كَانَ الْفُرْسُ السَّاسَانِيُّونَ يَحْكُمُونَهُ فِي ذَلِكَ الْوَقْتِ."
+   },
+   "aliases": {
+    "en": [
+     "Iraq"
+    ],
+    "ar": [
+     "العراق"
+    ]
+   },
+   "tr": "Irak"
+  },
+  "mecca-syria-byzantine": {
+   "en": {
+    "title": "Syria",
+    "kindLabel": "Land",
+    "periodLabel": "6th century",
+    "summary": "Syria is a land north of Arabia, by the Mediterranean Sea. Trade caravans from Arabia carried goods there.",
+    "more": "Damascus is one of its most famous cities."
+   },
+   "ar": {
+    "title": "الشَّامُ",
+    "kindLabel": "بِلَادٌ",
+    "periodLabel": "الْقَرْنُ السَّادِسُ",
+    "summary": "الشَّامُ بِلَادٌ تَقَعُ شَمَالَ شِبْهِ الْجَزِيرَةِ الْعَرَبِيَّةِ، عَلَى سَاحِلِ الْبَحْرِ الْأَبْيَضِ الْمُتَوَسِّطِ. وَكَانَتِ الْقَوَافِلُ التِّجَارِيَّةُ تَحْمِلُ الْبَضَائِعَ إِلَيْهَا مِنْ بِلَادِ الْعَرَبِ.",
+    "more": "دِمَشْقُ مِنْ أَشْهَرِ مُدُنِهَا."
+   },
+   "aliases": {
+    "en": [
+     "Syria"
+    ],
+    "ar": [
+     "الشام"
+    ]
+   },
+   "tr": "Suriye"
+  },
+  "mecca-egypt-byzantine": {
+   "en": {
+    "title": "Egypt",
+    "kindLabel": "Land",
+    "periodLabel": "Byzantine Empire",
+    "summary": "Egypt is a land in North Africa, on the Nile River. It was the richest part of the Byzantine Empire, and Meccan caravans went there to trade.",
+    "more": "The great pyramids are in Egypt."
+   },
+   "ar": {
+    "title": "مِصْرُ",
+    "kindLabel": "بِلَادٌ",
+    "periodLabel": "الْإِمْبِرَاطُورِيَّةُ الْبِيزَنْطِيَّةُ",
+    "summary": "مِصْرُ بِلَادٌ فِي شَمَالِ إِفْرِيقِيَا عَلَى نَهْرِ النِّيلِ. كَانَتْ أَغْنَى مَنَاطِقِ الْإِمْبِرَاطُورِيَّةِ الْبِيزَنْطِيَّةِ، وَكَانَتْ قَوَافِلُ قُرَيْشٍ تَذْهَبُ إِلَيْهَا لِلتِّجَارَةِ.",
+    "more": "تُوجَدُ الْأَهْرَامَاتُ الشَّهِيرَةُ فِي مِصْرَ."
+   },
+   "aliases": {
+    "en": [
+     "Egypt"
+    ],
+    "ar": [
+     "مصر"
+    ]
+   },
+   "tr": "Mısır"
+  },
+  "mecca-india-ancient": {
+   "en": {
+    "title": "India",
+    "kindLabel": "Land",
+    "periodLabel": "South Asia",
+    "summary": "India is a large land far to the east of Arabia. It made many goods, and these goods came to Arabia for trade.",
+    "more": "Spices like pepper come from India."
+   },
+   "ar": {
+    "title": "الْهِنْدُ",
+    "kindLabel": "بِلَادٌ",
+    "periodLabel": "جَنُوبُ آسِيَا",
+    "summary": "الْهِنْدُ بِلَادٌ وَاسِعَةٌ تَقَعُ بَعِيدًا شَرْقَ بِلَادِ الْعَرَبِ. كَانَتْ تُنْتِجُ بَضَائِعَ كَثِيرَةً، وَكَانَتْ هَذِهِ الْبَضَائِعُ تَصِلُ إِلَى بِلَادِ الْعَرَبِ لِلتِّجَارَةِ.",
+    "more": "تَأْتِي مِنَ الْهِنْدِ تَوَابِلُ مِثْلُ الْفُلْفُلِ."
+   },
+   "aliases": {
+    "en": [
+     "India"
+    ],
+    "ar": [
+     "الهند"
+    ]
+   },
+   "tr": "Hindistan"
+  },
+  "mecca-indonesia-ancient": {
+   "en": {
+    "title": "Indonesia",
+    "kindLabel": "Islands",
+    "periodLabel": "Southeast Asia",
+    "summary": "Indonesia is a land of many islands, far away in Southeast Asia. Its goods reached Arabia through trade.",
+    "more": "Spices like cloves and nutmeg grow there."
+   },
+   "ar": {
+    "title": "إِنْدُونِيسِيَا",
+    "kindLabel": "جُزُرٌ",
+    "periodLabel": "جَنُوبُ شَرْقِ آسِيَا",
+    "summary": "إِنْدُونِيسِيَا بِلَادٌ مِنْ جُزُرٍ كَثِيرَةٍ، بَعِيدَةٌ فِي جَنُوبِ شَرْقِ آسِيَا. وَكَانَتْ بَضَائِعُهَا تَصِلُ إِلَى بِلَادِ الْعَرَبِ عَنْ طَرِيقِ التِّجَارَةِ.",
+    "more": "يَنْمُو فِيهَا الْقَرَنْفُلُ وَجَوْزَةُ الطِّيبِ."
+   },
+   "aliases": {
+    "en": [
+     "Indonesia"
+    ],
+    "ar": [
+     "إندونيسيا"
+    ]
+   },
+   "tr": "Endonezya"
+  },
+  "mecca-china-ancient": {
+   "en": {
+    "title": "China",
+    "kindLabel": "Land",
+    "periodLabel": "East Asia",
+    "summary": "China is a very large land far in the east of Asia. It made many goods, and these goods reached Arabia through trade.",
+    "more": "China was famous for its silk."
+   },
+   "ar": {
+    "title": "الصِّينُ",
+    "kindLabel": "بِلَادٌ",
+    "periodLabel": "شَرْقُ آسِيَا",
+    "summary": "الصِّينُ بِلَادٌ وَاسِعَةٌ جِدًّا فِي أَقْصَى شَرْقِ آسِيَا. كَانَتْ تُنْتِجُ بَضَائِعَ كَثِيرَةً تَصِلُ إِلَى بِلَادِ الْعَرَبِ عَنْ طَرِيقِ التِّجَارَةِ.",
+    "more": "اشْتَهَرَتِ الصِّينُ بِالْحَرِيرِ."
+   },
+   "aliases": {
+    "en": [
+     "China"
+    ],
+    "ar": [
+     "الصين"
+    ]
+   },
+   "tr": "Çin"
+  },
+  "mecca-africa": {
+   "en": {
+    "title": "Africa",
+    "kindLabel": "Continent",
+    "periodLabel": "Across the Red Sea",
+    "summary": "Africa is a very large continent across the Red Sea from Arabia. Many slaves in Mecca were brought from Africa.",
+    "more": "Egypt and Abyssinia are both in Africa."
+   },
+   "ar": {
+    "title": "إِفْرِيقِيَا",
+    "kindLabel": "قَارَّةٌ",
+    "periodLabel": "عَبْرَ الْبَحْرِ الْأَحْمَرِ",
+    "summary": "إِفْرِيقِيَا قَارَّةٌ كَبِيرَةٌ جِدًّا، تَقَعُ عَبْرَ الْبَحْرِ الْأَحْمَرِ مِنْ بِلَادِ الْعَرَبِ. وَكَانَ كَثِيرٌ مِنَ الْعَبِيدِ فِي مَكَّةَ مَجْلُوبِينَ مِنْ إِفْرِيقِيَا.",
+    "more": "مِصْرُ وَالْحَبَشَةُ كِلْتَاهُمَا فِي إِفْرِيقِيَا."
+   },
+   "aliases": {
+    "en": [
+     "Africa"
+    ],
+    "ar": [
+     "إفريقيا"
+    ]
+   },
+   "tr": "Afrika"
+  },
+  "mecca-arafat": {
+   "en": {
+    "title": "Arafat",
+    "kindLabel": "Plain",
+    "periodLabel": "Near Mecca",
+    "summary": "Arafat is a wide plain east of Mecca. Even before Islam, pilgrims stood there in the Hajj season.",
+    "more": "Standing at Arafat is still the most important part of Hajj."
+   },
+   "ar": {
+    "title": "عَرَفَاتٌ",
+    "kindLabel": "سَهْلٌ",
+    "periodLabel": "قُرْبَ مَكَّةَ",
+    "summary": "عَرَفَاتٌ سَهْلٌ وَاسِعٌ شَرْقَ مَكَّةَ. وَحَتَّى قَبْلَ الْإِسْلَامِ، كَانَ الْحُجَّاجُ يَقِفُونَ فِيهِ فِي مَوْسِمِ الْحَجِّ.",
+    "more": "مَا زَالَ الْوُقُوفُ بِعَرَفَةَ أَهَمَّ أَرْكَانِ الْحَجِّ."
+   },
+   "aliases": {
+    "en": [
+     "Arafat"
+    ],
+    "ar": [
+     "عرفات"
+    ]
+   }
+  },
+  "mecca-safa-and-marwa": {
+   "en": {
+    "title": "Safa and Marwa",
+    "kindLabel": "Two hills",
+    "periodLabel": "Mecca",
+    "summary": "Safa and Marwa are two small hills in Mecca, near the Ka’ba. Even before Islam, pilgrims went back and forth between them.",
+    "more": "This walk, called sa’y, remembers Hagar’s search for water for her son Ishmael (pbuh)."
+   },
+   "ar": {
+    "title": "الصَّفَا وَالْمَرْوَةُ",
+    "kindLabel": "تَلَّانِ",
+    "periodLabel": "مَكَّةُ",
+    "summary": "الصَّفَا وَالْمَرْوَةُ تَلَّانِ صَغِيرَانِ فِي مَكَّةَ، قُرْبَ الْكَعْبَةِ. وَحَتَّى قَبْلَ الْإِسْلَامِ، كَانَ الْحُجَّاجُ يَسْعَوْنَ بَيْنَهُمَا.",
+    "more": "يُسَمَّى هَذَا الْمَشْيُ السَّعْيَ، وَهُوَ يُذَكِّرُ بِسَعْيِ هَاجَرَ بَحْثًا عَنِ الْمَاءِ لِابْنِهَا إِسْمَاعِيلَ عَلَيْهِ السَّلَامُ."
+   },
+   "aliases": {
+    "en": [
+     "Safa and Marwa",
+     "Safa and Marwah"
+    ],
+    "ar": [
+     "الصفا والمروة"
+    ]
+   },
+   "tr": "Safa ve Merve"
+  },
+  "mecca-ukaz": {
+   "en": {
+    "title": "Ukaz",
+    "kindLabel": "Trade fair",
+    "periodLabel": "Before Islam",
+    "summary": "Ukaz was a big trade fair east of Mecca before Islam. People came to it in the Hajj season, and after the fair they went to Arafat.",
+    "more": "Famous poets read their poems at Ukaz."
+   },
+   "ar": {
+    "title": "سُوقُ عُكَاظٍ",
+    "kindLabel": "سُوقٌ مَوْسِمِيَّةٌ",
+    "periodLabel": "قَبْلَ الْإِسْلَامِ",
+    "summary": "عُكَاظٌ سُوقٌ تِجَارِيَّةٌ كُبْرَى كَانَتْ تُقَامُ شَرْقَ مَكَّةَ قَبْلَ الْإِسْلَامِ. وَكَانَ النَّاسُ يَحْضُرُونَهَا فِي مَوْسِمِ الْحَجِّ، ثُمَّ يَذْهَبُونَ بَعْدَهَا إِلَى عَرَفَاتٍ.",
+    "more": "كَانَ الشُّعَرَاءُ الْمَشْهُورُونَ يُلْقُونَ قَصَائِدَهُمْ فِي عُكَاظٍ."
+   },
+   "aliases": {
+    "en": [
+     "Ukaz"
+    ],
+    "ar": [
+     "عكاظ"
+    ]
+   },
+   "tr": "Ukâz Panayırı"
+  },
+  "mecca-majannah": {
+   "en": {
+    "title": "Majannah",
+    "kindLabel": "Trade fair",
+    "periodLabel": "Before Islam",
+    "summary": "Majannah was a trade fair near Mecca before Islam. It was held in the Hajj season, like Ukaz and Dhul-Majaz.",
+    "more": "People usually went there after the Ukaz fair."
+   },
+   "ar": {
+    "title": "سُوقُ مَجَنَّةَ",
+    "kindLabel": "سُوقٌ مَوْسِمِيَّةٌ",
+    "periodLabel": "قَبْلَ الْإِسْلَامِ",
+    "summary": "مَجَنَّةُ سُوقٌ تِجَارِيَّةٌ كَانَتْ تُقَامُ قُرْبَ مَكَّةَ قَبْلَ الْإِسْلَامِ. وَكَانَتْ فِي مَوْسِمِ الْحَجِّ، مِثْلَ عُكَاظٍ وَذِي الْمَجَازِ.",
+    "more": "كَانَ النَّاسُ يَذْهَبُونَ إِلَيْهَا عَادَةً بَعْدَ سُوقِ عُكَاظٍ."
+   },
+   "aliases": {
+    "en": [
+     "Majannah"
+    ],
+    "ar": [
+     "مجنة"
+    ]
+   },
+   "tr": "Mecenne Panayırı"
+  },
+  "mecca-dhul-majaz": {
+   "en": {
+    "title": "Dhul-Majaz",
+    "kindLabel": "Trade fair",
+    "periodLabel": "Before Islam",
+    "summary": "Dhul-Majaz was a trade fair near Arafat, not far from Mecca. It was held in the Hajj season, and from there people went to Arafat.",
+    "more": "It was the last of the three big fairs before Hajj."
+   },
+   "ar": {
+    "title": "سُوقُ ذِي الْمَجَازِ",
+    "kindLabel": "سُوقٌ مَوْسِمِيَّةٌ",
+    "periodLabel": "قَبْلَ الْإِسْلَامِ",
+    "summary": "ذُو الْمَجَازِ سُوقٌ تِجَارِيَّةٌ كَانَتْ تُقَامُ قُرْبَ عَرَفَاتٍ، غَيْرَ بَعِيدٍ عَنْ مَكَّةَ. وَكَانَتْ فِي مَوْسِمِ الْحَجِّ، وَمِنْهَا كَانَ النَّاسُ يَذْهَبُونَ إِلَى عَرَفَاتٍ.",
+    "more": "كَانَتْ آخِرَ الْأَسْوَاقِ الثَّلَاثِ الْكُبْرَى قَبْلَ الْحَجِّ."
+   },
+   "aliases": {
+    "en": [
+     "Dhul-Majaz"
+    ],
+    "ar": [
+     "ذي المجاز"
+    ]
+   },
+   "tr": "Zülmecâz Panayırı"
+  },
+  "mecca-silk-road": {
+   "en": {
+    "title": "Silk Road",
+    "kindLabel": "Trade route",
+    "periodLabel": "East to West",
+    "summary": "The Silk Road was the most important trade route from the East to the Mediterranean. In the 6th century, wars closed it, so the routes through Arabia became more important.",
+    "more": "It got its name from Chinese silk."
+   },
+   "ar": {
+    "title": "طَرِيقُ الْحَرِيرِ",
+    "kindLabel": "طَرِيقٌ تِجَارِيٌّ",
+    "periodLabel": "مِنَ الشَّرْقِ إِلَى الْغَرْبِ",
+    "summary": "كَانَ طَرِيقُ الْحَرِيرِ أَهَمَّ طَرِيقٍ تِجَارِيٍّ بَيْنَ الشَّرْقِ وَالْبَحْرِ الْأَبْيَضِ الْمُتَوَسِّطِ. وَفِي الْقَرْنِ السَّادِسِ أَغْلَقَتْهُ الْحُرُوبُ، فَصَارَتِ الطُّرُقُ عَبْرَ بِلَادِ الْعَرَبِ أَكْثَرَ أَهَمِّيَّةً.",
+    "more": "سُمِّيَ بِهَذَا الِاسْمِ نِسْبَةً إِلَى الْحَرِيرِ الصِّينِيِّ."
+   },
+   "aliases": {
+    "en": [
+     "Silk Road"
+    ],
+    "ar": [
+     "طريق الحرير"
+    ]
+   },
+   "tr": "İpek Yolu"
+  },
+  "mecca-red-sea": {
+   "en": {
+    "title": "Red Sea",
+    "kindLabel": "Sea",
+    "periodLabel": "West of Arabia",
+    "summary": "The Red Sea is a long, narrow sea between Arabia and Africa. In the 6th century, the trade route on the Red Sea became very important.",
+    "more": "It is famous for its colorful coral reefs."
+   },
+   "ar": {
+    "title": "الْبَحْرُ الْأَحْمَرُ",
+    "kindLabel": "بَحْرٌ",
+    "periodLabel": "غَرْبَ شِبْهِ الْجَزِيرَةِ الْعَرَبِيَّةِ",
+    "summary": "الْبَحْرُ الْأَحْمَرُ بَحْرٌ طَوِيلٌ ضَيِّقٌ بَيْنَ شِبْهِ الْجَزِيرَةِ الْعَرَبِيَّةِ وَإِفْرِيقِيَا. وَفِي الْقَرْنِ السَّادِسِ، صَارَ طَرِيقُ التِّجَارَةِ عَبْرَهُ مُهِمًّا جِدًّا.",
+    "more": "يَشْتَهِرُ بِشِعَابِهِ الْمَرْجَانِيَّةِ الْمُلَوَّنَةِ."
+   },
+   "aliases": {
+    "en": [
+     "Red Sea"
+    ],
+    "ar": [
+     "البحر الأحمر"
+    ]
+   },
+   "tr": "Kızıldeniz"
+  },
+  "mecca-mediterranean": {
+   "en": {
+    "title": "Mediterranean Sea",
+    "kindLabel": "Sea",
+    "periodLabel": "Between three continents",
+    "summary": "The Mediterranean is a large sea between Europe, Asia and Africa. Trade routes from the East reached its coasts.",
+    "more": "Great empires, like the Roman Empire, grew up around this sea."
+   },
+   "ar": {
+    "title": "الْبَحْرُ الْأَبْيَضُ الْمُتَوَسِّطُ",
+    "kindLabel": "بَحْرٌ",
+    "periodLabel": "بَيْنَ ثَلَاثِ قَارَّاتٍ",
+    "summary": "الْبَحْرُ الْأَبْيَضُ الْمُتَوَسِّطُ بَحْرٌ كَبِيرٌ بَيْنَ أُورُوبَّا وَآسِيَا وَإِفْرِيقِيَا. وَكَانَتْ طُرُقُ التِّجَارَةِ الْقَادِمَةُ مِنَ الشَّرْقِ تَصِلُ إِلَى سَوَاحِلِهِ.",
+    "more": "نَشَأَتْ حَوْلَهُ إِمْبِرَاطُورِيَّاتٌ عَظِيمَةٌ، مِثْلُ الْإِمْبِرَاطُورِيَّةِ الرُّومَانِيَّةِ."
+   },
+   "aliases": {
+    "en": [
+     "Mediterranean"
+    ],
+    "ar": [
+     "البحر الأبيض المتوسط"
+    ]
+   },
+   "tr": "Akdeniz"
+  },
+  "mecca-persian-gulf": {
+   "en": {
+    "title": "Arabian Gulf (Persian Gulf)",
+    "kindLabel": "Gulf",
+    "periodLabel": "East of Arabia",
+    "summary": "The Arabian Gulf, also called the Persian Gulf, is a sea east of the Arabian Peninsula. It lies between Arabia and Iran.",
+    "more": "For a very long time, people dived there for pearls."
+   },
+   "ar": {
+    "title": "الْخَلِيجُ الْعَرَبِيُّ",
+    "kindLabel": "خَلِيجٌ",
+    "periodLabel": "شَرْقَ شِبْهِ الْجَزِيرَةِ الْعَرَبِيَّةِ",
+    "summary": "الْخَلِيجُ الْعَرَبِيُّ، وَيُسَمَّى أَيْضًا الْخَلِيجَ الْفَارِسِيَّ، بَحْرٌ يَقَعُ شَرْقَ شِبْهِ الْجَزِيرَةِ الْعَرَبِيَّةِ، بَيْنَ بِلَادِ الْعَرَبِ وَإِيرَانَ.",
+    "more": "كَانَ النَّاسُ مُنْذُ زَمَنٍ طَوِيلٍ يَغُوصُونَ فِيهِ بَحْثًا عَنِ اللُّؤْلُؤِ."
+   },
+   "aliases": {
+    "en": [
+     "Arabian/Persian Gulf"
+    ],
+    "ar": [
+     "الخليج العربي"
+    ]
+   },
+   "tr": "Basra Körfezi"
+  },
+  "mecca-indian-ocean": {
+   "en": {
+    "title": "Indian Ocean",
+    "kindLabel": "Ocean",
+    "periodLabel": "South of Arabia",
+    "summary": "The Indian Ocean is the big ocean south of the Arabian Peninsula. Ships carried goods across it between India, Africa and Arabia.",
+    "more": "It is the third largest ocean in the world."
+   },
+   "ar": {
+    "title": "الْمُحِيطُ الْهِنْدِيُّ",
+    "kindLabel": "مُحِيطٌ",
+    "periodLabel": "جَنُوبَ شِبْهِ الْجَزِيرَةِ الْعَرَبِيَّةِ",
+    "summary": "الْمُحِيطُ الْهِنْدِيُّ مُحِيطٌ كَبِيرٌ يَقَعُ جَنُوبَ شِبْهِ الْجَزِيرَةِ الْعَرَبِيَّةِ. وَكَانَتِ السُّفُنُ تَنْقُلُ الْبَضَائِعَ عَبْرَهُ بَيْنَ الْهِنْدِ وَإِفْرِيقِيَا وَبِلَادِ الْعَرَبِ.",
+    "more": "هُوَ ثَالِثُ أَكْبَرِ مُحِيطٍ فِي الْعَالَمِ."
+   },
+   "aliases": {
+    "en": [
+     "Indian Ocean"
+    ],
+    "ar": [
+     "المحيط الهندي"
+    ]
+   },
+   "tr": "Hint Okyanusu"
+  },
+  "mecca-zamzam": {
+   "en": {
+    "title": "Zamzam",
+    "kindLabel": "Well",
+    "periodLabel": "Mecca",
+    "summary": "Zamzam is a well of water in Mecca, near the Ka’ba. After it was found, people began to live in the empty valley of Mecca.",
+    "more": "Pilgrims still drink Zamzam water today."
+   },
+   "ar": {
+    "title": "زَمْزَمُ",
+    "kindLabel": "بِئْرٌ",
+    "periodLabel": "مَكَّةُ",
+    "summary": "زَمْزَمُ بِئْرُ مَاءٍ فِي مَكَّةَ، قُرْبَ الْكَعْبَةِ. وَبَعْدَ اكْتِشَافِ مَائِهَا، بَدَأَ النَّاسُ يَسْكُنُونَ وَادِيَ مَكَّةَ الْخَالِيَ.",
+    "more": "مَا زَالَ الْحُجَّاجُ يَشْرَبُونَ مَاءَ زَمْزَمَ إِلَى الْيَوْمِ."
+   },
+   "aliases": {
+    "en": [
+     "Zamzam"
+    ],
+    "ar": [
+     "زمزم"
+    ]
+   },
+   "tr": "Zemzem"
+  },
+  "mecca-kaaba-7th-century": {
+   "en": {
+    "title": "Ka’ba",
+    "kindLabel": "Holy building",
+    "periodLabel": "Mecca",
+    "summary": "The Ka’ba is the holy House of Allah in Mecca. Abraham (pbuh) and his son Ishmael (pbuh) rebuilt it, but before Islam people put idols in and around it.",
+    "more": "Muslims all over the world face the Ka’ba when they pray."
+   },
+   "ar": {
+    "title": "الْكَعْبَةُ الْمُشَرَّفَةُ",
+    "kindLabel": "بَيْتٌ مُقَدَّسٌ",
+    "periodLabel": "مَكَّةُ",
+    "summary": "الْكَعْبَةُ الْمُشَرَّفَةُ بَيْتُ اللَّهِ فِي مَكَّةَ. أَعَادَ بِنَاءَهَا إِبْرَاهِيمُ عَلَيْهِ السَّلَامُ وَابْنُهُ إِسْمَاعِيلُ عَلَيْهِ السَّلَامُ، وَلَكِنَّ النَّاسَ وَضَعُوا الْأَصْنَامَ فِيهَا وَحَوْلَهَا قَبْلَ الْإِسْلَامِ.",
+    "more": "يَتَوَجَّهُ الْمُسْلِمُونَ فِي كُلِّ الْعَالَمِ إِلَى الْكَعْبَةِ فِي صَلَاتِهِمْ."
+   },
+   "aliases": {
+    "en": [
+     "Ka’ba"
+    ],
+    "ar": [
+     "الكعبة"
+    ]
+   },
+   "tr": "Kâbe"
+  },
+  "mecca-quraysh": {
+   "en": {
+    "title": "Quraysh",
+    "kindLabel": "Tribe",
+    "periodLabel": "5th–7th century · Mecca",
+    "summary": "The Quraysh were the tribe that ruled Mecca and the Ka’ba from the 5th century. Their rich merchants sent big trade caravans to many lands.",
+    "more": "Prophet Muhammad (pbuh) was born into the Quraysh tribe."
+   },
+   "ar": {
+    "title": "قُرَيْشٌ",
+    "kindLabel": "قَبِيلَةٌ",
+    "periodLabel": "الْقَرْنُ الْخَامِسُ إِلَى السَّابِعِ · مَكَّةُ",
+    "summary": "قُرَيْشٌ قَبِيلَةٌ عَرَبِيَّةٌ حَكَمَتْ مَكَّةَ وَالْكَعْبَةَ مُنْذُ الْقَرْنِ الْخَامِسِ. وَكَانَ تُجَّارُهَا الْأَغْنِيَاءُ يُرْسِلُونَ قَوَافِلَ تِجَارِيَّةً كَبِيرَةً إِلَى بِلَادٍ كَثِيرَةٍ.",
+    "more": "وُلِدَ النَّبِيُّ مُحَمَّدٌ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ فِي قَبِيلَةِ قُرَيْشٍ."
+   },
+   "aliases": {
+    "en": [
+     "Quraysh"
+    ],
+    "ar": [
+     "قريش"
+    ]
+   },
+   "tr": "Kureyş"
+  },
+  "mecca-jurhum": {
+   "en": {
+    "title": "Jurhum tribe",
+    "kindLabel": "Tribe",
+    "periodLabel": "Ancient times · Mecca",
+    "summary": "The Jurhumites were a tribe from Yemen. They settled in Mecca after Zamzam water was found, and Ishmael (pbuh) learned Arabic from them.",
+    "more": "Ishmael (pbuh) married a woman from this tribe."
+   },
+   "ar": {
+    "title": "جُرْهُمٌ",
+    "kindLabel": "قَبِيلَةٌ",
+    "periodLabel": "زَمَنٌ قَدِيمٌ · مَكَّةُ",
+    "summary": "جُرْهُمٌ قَبِيلَةٌ جَاءَتْ مِنَ الْيَمَنِ، وَاسْتَقَرَّتْ فِي مَكَّةَ بَعْدَ اكْتِشَافِ مَاءِ زَمْزَمَ. وَمِنْهُمْ تَعَلَّمَ إِسْمَاعِيلُ عَلَيْهِ السَّلَامُ اللُّغَةَ الْعَرَبِيَّةَ.",
+    "more": "تَزَوَّجَ إِسْمَاعِيلُ عَلَيْهِ السَّلَامُ امْرَأَةً مِنْ هَذِهِ الْقَبِيلَةِ."
+   },
+   "aliases": {
+    "en": [
+     "Jurhum"
+    ],
+    "ar": [
+     "جرهم"
+    ]
+   },
+   "tr": "Cürhümlüler"
+  },
+  "mecca-khuzaa": {
+   "en": {
+    "title": "Khuza’a tribe",
+    "kindLabel": "Tribe",
+    "periodLabel": "Before the Quraysh · Mecca",
+    "summary": "The Khuza’a were an Arab tribe that defeated the Jurhum tribe and ruled Mecca. In their time, people forgot the religion of Abraham (pbuh) and began to worship idols.",
+    "more": "Later, the Quraysh took control of Mecca and the Ka’ba from them."
+   },
+   "ar": {
+    "title": "خُزَاعَةُ",
+    "kindLabel": "قَبِيلَةٌ",
+    "periodLabel": "قَبْلَ قُرَيْشٍ · مَكَّةُ",
+    "summary": "خُزَاعَةُ قَبِيلَةٌ عَرَبِيَّةٌ هَزَمَتْ قَبِيلَةَ جُرْهُمٍ وَحَكَمَتْ مَكَّةَ. وَفِي زَمَنِهَا نَسِيَ النَّاسُ دِينَ إِبْرَاهِيمَ عَلَيْهِ السَّلَامُ وَبَدَؤُوا يَعْبُدُونَ الْأَصْنَامَ.",
+    "more": "ثُمَّ انْتَزَعَتْ قُرَيْشٌ مِنْهَا حُكْمَ مَكَّةَ وَالْكَعْبَةِ."
+   },
+   "aliases": {
+    "en": [
+     "Khuza’a"
+    ],
+    "ar": [
+     "خزاعة",
+     "خزاعيون"
+    ]
+   },
+   "tr": "Huzâa"
+  },
+  "mecca-pre-islamic-arabs": {
+   "en": {
+    "title": "Arabs",
+    "kindLabel": "People",
+    "periodLabel": "Before Islam",
+    "summary": "The Arabs are the people of the Arabian Peninsula. Before Islam, they lived in tribes, and most of them worshipped idols.",
+    "more": "Their language, Arabic, is the language of the Qur’an."
+   },
+   "ar": {
+    "title": "الْعَرَبُ",
+    "kindLabel": "شَعْبٌ",
+    "periodLabel": "قَبْلَ الْإِسْلَامِ",
+    "summary": "الْعَرَبُ هُمْ أَهْلُ شِبْهِ الْجَزِيرَةِ الْعَرَبِيَّةِ. وَقَبْلَ الْإِسْلَامِ كَانُوا يَعِيشُونَ فِي قَبَائِلَ، وَكَانَ أَكْثَرُهُمْ يَعْبُدُونَ الْأَصْنَامَ.",
+    "more": "لُغَتُهُمُ الْعَرَبِيَّةُ هِيَ لُغَةُ الْقُرْآنِ الْكَرِيمِ."
+   },
+   "aliases": {
+    "en": [
+     "Arabs"
+    ],
+    "ar": [
+     "كان العرب",
+     "قبول العرب",
+     "عرب الجاهلية",
+     "لعربي على أعجمي"
+    ]
+   },
+   "tr": "Araplar"
+  },
+  "mecca-hanifs": {
+   "en": {
+    "title": "Hanifs",
+    "kindLabel": "Believers in one God",
+    "periodLabel": "Before Islam",
+    "summary": "The Hanifs were a few people before Islam who followed the old religion of Abraham (pbuh). They believed only in Allah and did not worship idols.",
+    "more": "The Qur’an calls Abraham (pbuh) a hanif."
+   },
+   "ar": {
+    "title": "الْحُنَفَاءُ",
+    "kindLabel": "مُوَحِّدُونَ",
+    "periodLabel": "قَبْلَ الْإِسْلَامِ",
+    "summary": "الْحُنَفَاءُ أَشْخَاصٌ قَلِيلُونَ قَبْلَ الْإِسْلَامِ، اتَّبَعُوا دِينَ إِبْرَاهِيمَ عَلَيْهِ السَّلَامُ الْقَدِيمَ. فَكَانُوا يُؤْمِنُونَ بِاللَّهِ وَحْدَهُ، وَلَا يَعْبُدُونَ الْأَصْنَامَ.",
+    "more": "وَصَفَ الْقُرْآنُ الْكَرِيمُ إِبْرَاهِيمَ عَلَيْهِ السَّلَامُ بِأَنَّهُ كَانَ حَنِيفًا."
+   },
+   "aliases": {
+    "en": [
+     "Hanifs"
+    ],
+    "ar": [
+     "حنفاء"
+    ]
+   },
+   "tr": "Hanîfler"
+  },
+  "mecca-byzantine-empire": {
+   "en": {
+    "title": "Byzantine Empire",
+    "kindLabel": "Empire",
+    "periodLabel": "6th–7th century",
+    "summary": "The Byzantine Empire was a large Christian empire north of Arabia. Its capital was Constantinople, and it ruled lands such as Egypt.",
+    "more": "It was the eastern part of the old Roman Empire."
+   },
+   "ar": {
+    "title": "الْإِمْبِرَاطُورِيَّةُ الْبِيزَنْطِيَّةُ",
+    "kindLabel": "إِمْبِرَاطُورِيَّةٌ",
+    "periodLabel": "الْقَرْنَانِ السَّادِسُ وَالسَّابِعُ",
+    "summary": "الْإِمْبِرَاطُورِيَّةُ الْبِيزَنْطِيَّةُ دَوْلَةٌ مَسِيحِيَّةٌ كَبِيرَةٌ كَانَتْ شَمَالَ بِلَادِ الْعَرَبِ. وَكَانَتْ عَاصِمَتُهَا الْقُسْطَنْطِينِيَّةَ، وَحَكَمَتْ بِلَادًا مِثْلَ مِصْرَ.",
+    "more": "كَانَتِ الْجُزْءَ الشَّرْقِيَّ مِنَ الْإِمْبِرَاطُورِيَّةِ الرُّومَانِيَّةِ الْقَدِيمَةِ."
+   },
+   "aliases": {
+    "en": [
+     "Byzantine",
+     "Byzantium"
+    ],
+    "ar": [
+     "بيزنطية",
+     "بيزنطة"
+    ]
+   },
+   "tr": "Bizans İmparatorluğu"
+  },
+  "mecca-sassanids": {
+   "en": {
+    "title": "Sassanids (Persians)",
+    "kindLabel": "Empire",
+    "periodLabel": "Before Islam",
+    "summary": "The Sassanids ruled the Persians in a large empire east of Arabia. They were the great rivals of the Byzantine Empire.",
+    "more": "Their capital was Ctesiphon, near today’s Baghdad."
+   },
+   "ar": {
+    "title": "السَّاسَانِيُّونَ (الْفُرْسُ)",
+    "kindLabel": "إِمْبِرَاطُورِيَّةٌ",
+    "periodLabel": "قَبْلَ الْإِسْلَامِ",
+    "summary": "حَكَمَ السَّاسَانِيُّونَ الْفُرْسَ فِي إِمْبِرَاطُورِيَّةٍ كَبِيرَةٍ شَرْقَ بِلَادِ الْعَرَبِ. وَكَانُوا الْمُنَافِسِينَ الْكِبَارَ لِلْإِمْبِرَاطُورِيَّةِ الْبِيزَنْطِيَّةِ.",
+    "more": "كَانَتْ عَاصِمَتُهُمُ الْمَدَائِنَ، قُرْبَ بَغْدَادَ الْيَوْمَ."
+   },
+   "aliases": {
+    "en": [
+     "Sassanid",
+     "Persians"
+    ],
+    "ar": [
+     "ساسانيون",
+     "ساسانيين",
+     "ساسانية",
+     "الفرس"
+    ]
+   },
+   "tr": "Sâsânîler"
+  },
+  "mecca-roman-empire": {
+   "en": {
+    "title": "Roman Empire",
+    "kindLabel": "Empire",
+    "periodLabel": "Ancient times",
+    "summary": "The Roman Empire was a great empire around the Mediterranean Sea. Its western part fell in 476, and this is often taken as the start of the Middle Ages.",
+    "more": "The city of Rome, in Italy, was its first capital."
+   },
+   "ar": {
+    "title": "الْإِمْبِرَاطُورِيَّةُ الرُّومَانِيَّةُ",
+    "kindLabel": "إِمْبِرَاطُورِيَّةٌ",
+    "periodLabel": "الْعُصُورُ الْقَدِيمَةُ",
+    "summary": "الْإِمْبِرَاطُورِيَّةُ الرُّومَانِيَّةُ دَوْلَةٌ عَظِيمَةٌ امْتَدَّتْ حَوْلَ الْبَحْرِ الْأَبْيَضِ الْمُتَوَسِّطِ. وَسَقَطَ جُزْؤُهَا الْغَرْبِيُّ عَامَ أَرْبَعِمِئَةٍ وَسِتَّةٍ وَسَبْعِينَ لِلْمِيلَادِ، وَيُعَدُّ ذَلِكَ بِدَايَةَ الْعُصُورِ الْوُسْطَى.",
+    "more": "كَانَتْ مَدِينَةُ رُومَا فِي إِيطَالِيَا عَاصِمَتَهَا الْأُولَى."
+   },
+   "aliases": {
+    "en": [
+     "Roman Empire"
+    ],
+    "ar": [
+     "الإمبراطورية الرومانية"
+    ]
+   },
+   "tr": "Roma İmparatorluğu"
+  },
+  "mecca-ottomans-15th-century": {
+   "en": {
+    "title": "Ottoman Turks",
+    "kindLabel": "People",
+    "periodLabel": "15th century",
+    "summary": "The Ottoman Turks built a great state in Anatolia and the Balkans. In 1453 they conquered Constantinople, and this is often taken as the end of the Middle Ages.",
+    "more": "Sultan Mehmed II (the Conqueror) led them in the conquest of Constantinople."
+   },
+   "ar": {
+    "title": "الْأَتْرَاكُ الْعُثْمَانِيُّونَ",
+    "kindLabel": "شَعْبٌ وَدَوْلَةٌ",
+    "periodLabel": "الْقَرْنُ الْخَامِسَ عَشَرَ",
+    "summary": "أَسَّسَ الْأَتْرَاكُ الْعُثْمَانِيُّونَ دَوْلَةً عَظِيمَةً فِي الْأَنَاضُولِ وَالْبَلْقَانِ. وَفَتَحُوا الْقُسْطَنْطِينِيَّةَ عَامَ أَلْفٍ وَأَرْبَعِمِئَةٍ وَثَلَاثَةٍ وَخَمْسِينَ لِلْمِيلَادِ، وَيُعَدُّ ذَلِكَ نِهَايَةَ الْعُصُورِ الْوُسْطَى.",
+    "more": "قَادَهُمُ السُّلْطَانُ مُحَمَّدٌ الْفَاتِحُ فِي فَتْحِ الْقُسْطَنْطِينِيَّةِ."
+   },
+   "aliases": {
+    "en": [
+     "Ottoman Turks"
+    ],
+    "ar": [
+     "الأتراك العثمانيين"
+    ]
+   },
+   "tr": "Osmanlı Türkleri"
+  },
+  "mecca-hilf-al-fudul": {
+   "en": {
+    "title": "Hilfü’l-Fudûl",
+    "kindLabel": "Alliance",
+    "periodLabel": "Before Islam · Mecca",
+    "summary": "Hilfü’l-Fudûl was an agreement made by some Quraysh tribes in Mecca to help people who were treated unfairly. Young Muhammad (pbuh) also took part in it.",
+    "more": "The meeting was held in the house of Abdullah ibn Jud’an in Mecca."
+   },
+   "ar": {
+    "title": "حِلْفُ الْفُضُولِ",
+    "kindLabel": "حِلْفٌ",
+    "periodLabel": "قَبْلَ الْإِسْلَامِ · مَكَّةُ",
+    "summary": "حِلْفُ الْفُضُولِ اتِّفَاقٌ عَقَدَتْهُ بَعْضُ قَبَائِلِ قُرَيْشٍ فِي مَكَّةَ لِنُصْرَةِ الْمَظْلُومِينَ. وَقَدْ حَضَرَهُ مُحَمَّدٌ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ فِي شَبَابِهِ.",
+    "more": "عُقِدَ هَذَا الْحِلْفُ فِي بَيْتِ عَبْدِ اللَّهِ بْنِ جُدْعَانَ فِي مَكَّةَ."
+   },
+   "aliases": {
+    "en": [
+     "Hilfü’l-fudûl",
+     "Hilfü’l-Fudûl"
+    ],
+    "ar": [
+     "حلف الفضول"
+    ]
+   },
+   "tr": "Hilfü'l-Fudûl"
+  },
+  "mecca-umayya-ibn-khalaf": {
+   "en": {
+    "title": "Umayya ibn Khalaf",
+    "kindLabel": "Person",
+    "periodLabel": "7th century · Mecca",
+    "summary": "Umayya ibn Khalaf was one of the rich and powerful leaders of Mecca. He was Bilal’s master and hurt him badly because Bilal became a Muslim.",
+    "more": "He was from the Quraysh tribe."
+   },
+   "ar": {
+    "title": "أُمَيَّةُ بْنُ خَلَفٍ",
+    "kindLabel": "شَخْصٌ",
+    "periodLabel": "الْقَرْنُ السَّابِعُ · مَكَّةُ",
+    "summary": "كَانَ أُمَيَّةُ بْنُ خَلَفٍ مِنْ أَغْنَى زُعَمَاءِ مَكَّةَ وَأَقْوَاهُمْ. وَكَانَ سَيِّدَ بِلَالٍ، فَعَذَّبَهُ عَذَابًا شَدِيدًا لِأَنَّهُ أَسْلَمَ.",
+    "more": "كَانَ مِنْ قَبِيلَةِ قُرَيْشٍ."
+   },
+   "aliases": {
+    "en": [
+     "Umayya"
+    ],
+    "ar": [
+     "أمية"
+    ]
+   },
+   "tr": "Ümeyye b. Halef"
+  },
+  "mecca-ubayy-ibn-khalaf": {
+   "en": {
+    "title": "Ubayy ibn Khalaf",
+    "kindLabel": "Person",
+    "periodLabel": "Before Islam · Mecca",
+    "summary": "Ubayy ibn Khalaf was one of the leading men of Mecca. He did not pay a merchant for his goods, but he paid at once when Hilfü’l-Fudûl stood with the merchant.",
+    "more": "He was a brother of Umayya ibn Khalaf."
+   },
+   "ar": {
+    "title": "أُبَيُّ بْنُ خَلَفٍ",
+    "kindLabel": "شَخْصٌ",
+    "periodLabel": "قَبْلَ الْإِسْلَامِ · مَكَّةُ",
+    "summary": "كَانَ أُبَيُّ بْنُ خَلَفٍ مِنَ الشَّخْصِيَّاتِ الْبَارِزَةِ فِي مَكَّةَ. لَمْ يَدْفَعْ لِتَاجِرٍ ثَمَنَ بَضَائِعِهِ، ثُمَّ دَفَعَهُ فَوْرًا حِينَ وَقَفَ حِلْفُ الْفُضُولِ مَعَ التَّاجِرِ.",
+    "more": "كَانَ أَخًا لِأُمَيَّةَ بْنِ خَلَفٍ."
+   },
+   "aliases": {
+    "en": [
+     "Ubayy"
+    ],
+    "ar": [
+     "أبي بن خلف"
+    ]
+   },
+   "tr": "Übey b. Halef"
+  },
+  "mecca-abu-jahl": {
+   "en": {
+    "title": "Abu Jahl",
+    "kindLabel": "Person",
+    "periodLabel": "7th century · Mecca",
+    "summary": "Abu Jahl was one of the leading men of the Quraysh in Mecca. He strongly rejected Islam and led his tribe against it.",
+    "more": "His real name was Amr ibn Hisham."
+   },
+   "ar": {
+    "title": "أَبُو جَهْلٍ",
+    "kindLabel": "شَخْصٌ",
+    "periodLabel": "الْقَرْنُ السَّابِعُ · مَكَّةُ",
+    "summary": "كَانَ أَبُو جَهْلٍ مِنْ أَبْرَزِ رِجَالِ قُرَيْشٍ فِي مَكَّةَ. رَفَضَ الْإِسْلَامَ بِشِدَّةٍ، وَقَادَ قَبِيلَتَهُ إِلَى مُعَارَضَتِهِ.",
+    "more": "كَانَ اسْمُهُ الْحَقِيقِيُّ عَمْرَو بْنَ هِشَامٍ."
+   },
+   "aliases": {
+    "en": [
+     "Abu Jahl"
+    ],
+    "ar": [
+     "أبو جهل"
+    ]
+   },
+   "tr": "Ebû Cehil"
+  },
+  "abraham-babylon": {
+   "en": {
+    "title": "Babylon",
+    "kindLabel": "Ancient city and kingdom",
+    "periodLabel": "Ancient Mesopotamia",
+    "summary": "Babylon was an old city and kingdom in Mesopotamia. In the story, Abraham (pbuh) lived in the kingdom of Babylon, and Nimrod was its king.",
+    "more": "Its ruins are near the Euphrates River, in Iraq today."
+   },
+   "ar": {
+    "title": "بَابِلُ",
+    "kindLabel": "مَدِينَةٌ وَمَمْلَكَةٌ قَدِيمَةٌ",
+    "periodLabel": "بِلَادُ مَا بَيْنَ النَّهْرَيْنِ قَدِيمًا",
+    "summary": "كَانَتْ بَابِلُ مَدِينَةً وَمَمْلَكَةً قَدِيمَةً فِي بِلَادِ مَا بَيْنَ النَّهْرَيْنِ. وَفِي الْقِصَّةِ عَاشَ إِبْرَاهِيمُ عَلَيْهِ السَّلَامُ فِي مَمْلَكَةِ بَابِلَ، وَكَانَ نُمْرُودُ مَلِكَهَا.",
+    "more": "وَتَقَعُ آثَارُهَا الْيَوْمَ فِي الْعِرَاقِ، قُرْبَ نَهْرِ الْفُرَاتِ."
+   },
+   "aliases": {
+    "en": [
+     "Babylon"
+    ],
+    "ar": [
+     "بابل"
+    ]
+   },
+   "tr": "Babil"
+  },
+  "abraham-ur": {
+   "en": {
+    "title": "Ur",
+    "kindLabel": "Ancient city",
+    "periodLabel": "Ancient Mesopotamia",
+    "summary": "Ur was an old city of the Sumerians in the south of Mesopotamia. Some sources say that Abraham (pbuh) was born in Ur or in Babylon.",
+    "more": "Its ruins, with a big stepped temple tower, are in the south of Iraq today."
+   },
+   "ar": {
+    "title": "أُورُ",
+    "kindLabel": "مَدِينَةٌ قَدِيمَةٌ",
+    "periodLabel": "بِلَادُ مَا بَيْنَ النَّهْرَيْنِ قَدِيمًا",
+    "summary": "كَانَتْ أُورُ مَدِينَةً قَدِيمَةً لِلسُّومَرِيِّينَ فِي جَنُوبِ بِلَادِ مَا بَيْنَ النَّهْرَيْنِ. وَتَقُولُ بَعْضُ الْمَصَادِرِ إِنَّ إِبْرَاهِيمَ عَلَيْهِ السَّلَامُ وُلِدَ فِي أُورَ أَوْ فِي بَابِلَ.",
+    "more": "وَتُوجَدُ آثَارُهَا الْيَوْمَ فِي جَنُوبِ الْعِرَاقِ، وَمِنْهَا مَعْبَدٌ كَبِيرٌ مُدَرَّجٌ يُسَمَّى الزِّقُّورَةَ."
+   },
+   "aliases": {
+    "en": [
+     "city of Ur"
+    ],
+    "ar": [
+     "مدينة أور"
+    ]
+   }
+  },
+  "abraham-harran": {
+   "en": {
+    "title": "Harran",
+    "kindLabel": "Ancient city",
+    "periodLabel": "Upper Mesopotamia",
+    "summary": "Harran is an old city in the north of Mesopotamia, in the south of Türkiye today. Some sources say that Abraham (pbuh) moved from the land of Sumer to Harran.",
+    "more": "Its old ruins are near the city of Şanlıurfa."
+   },
+   "ar": {
+    "title": "حَرَّانُ",
+    "kindLabel": "مَدِينَةٌ قَدِيمَةٌ",
+    "periodLabel": "شَمَالُ بِلَادِ مَا بَيْنَ النَّهْرَيْنِ",
+    "summary": "حَرَّانُ مَدِينَةٌ قَدِيمَةٌ فِي شَمَالِ بِلَادِ مَا بَيْنَ النَّهْرَيْنِ، وَتَقَعُ الْيَوْمَ فِي جَنُوبِ تُرْكِيَا. وَتَقُولُ بَعْضُ الْمَصَادِرِ إِنَّ إِبْرَاهِيمَ عَلَيْهِ السَّلَامُ هَاجَرَ مِنْ أَرْضِ سُومَرَ إِلَى حَرَّانَ.",
+    "more": "وَتَقَعُ آثَارُهَا الْقَدِيمَةُ قُرْبَ مَدِينَةِ شَانْلِي أُورْفَا."
+   },
+   "aliases": {
+    "en": [
+     "Harran"
+    ],
+    "ar": [
+     "حران"
+    ]
+   }
+  },
+  "abraham-mecca-valley-ancient": {
+   "en": {
+    "title": "Mecca",
+    "kindLabel": "Valley and city",
+    "periodLabel": "Western Arabia",
+    "summary": "Mecca is a city in a dry valley in western Arabia. In the story, Hagar and Ishmael (pbuh) lived in this valley, and more people came there because of the Zamzam water.",
+    "more": "Today, millions of Muslims visit Mecca for Hajj and Umrah."
+   },
+   "ar": {
+    "title": "مَكَّةُ",
+    "kindLabel": "وَادٍ وَمَدِينَةٌ",
+    "periodLabel": "غَرْبُ الْجَزِيرَةِ الْعَرَبِيَّةِ",
+    "summary": "مَكَّةُ مَدِينَةٌ فِي وَادٍ جَافٍّ فِي غَرْبِ الْجَزِيرَةِ الْعَرَبِيَّةِ. وَفِي الْقِصَّةِ عَاشَتْ هَاجَرُ وَابْنُهَا إِسْمَاعِيلُ عَلَيْهِ السَّلَامُ فِي هَذَا الْوَادِي، وَجَاءَ إِلَيْهِ نَاسٌ كَثِيرُونَ بِسَبَبِ مَاءِ زَمْزَمَ.",
+    "more": "وَيَزُورُ مَكَّةَ الْيَوْمَ مَلَايِينُ الْمُسْلِمِينَ لِأَدَاءِ الْحَجِّ وَالْعُمْرَةِ."
+   },
+   "aliases": {
+    "en": [
+     "Mecca"
+    ],
+    "ar": [
+     "مكة"
+    ]
+   },
+   "tr": "Mekke"
+  },
+  "abraham-damascus-pre-islamic": {
+   "en": {
+    "title": "Damascus",
+    "kindLabel": "City",
+    "periodLabel": "Syria · before Islam",
+    "summary": "Damascus is a very old city in Syria. In the story, Waraqa ibn Nawfal went there to look for Hanifism, the faith of Abraham (pbuh).",
+    "more": "It is one of the oldest cities in the world where people still live."
+   },
+   "ar": {
+    "title": "دِمَشْقُ",
+    "kindLabel": "مَدِينَةٌ",
+    "periodLabel": "بِلَادُ الشَّامِ قَبْلَ الْإِسْلَامِ",
+    "summary": "دِمَشْقُ مَدِينَةٌ قَدِيمَةٌ جِدًّا فِي بِلَادِ الشَّامِ. وَفِي الْقِصَّةِ ذَهَبَ إِلَيْهَا وَرَقَةُ بْنُ نَوْفَلٍ بَحْثًا عَنِ الْحَنِيفِيَّةِ، دِينِ إِبْرَاهِيمَ عَلَيْهِ السَّلَامُ.",
+    "more": "وَهِيَ مِنْ أَقْدَمِ مُدُنِ الْعَالَمِ الَّتِي مَا زَالَ النَّاسُ يَسْكُنُونَهَا."
+   },
+   "aliases": {
+    "en": [
+     "Damascus"
+    ],
+    "ar": [
+     "دمشق"
+    ]
+   },
+   "tr": "Şam"
+  },
+  "abraham-mesopotamia": {
+   "en": {
+    "title": "Mesopotamia",
+    "kindLabel": "Historical region",
+    "periodLabel": "Ancient Near East",
+    "summary": "Mesopotamia is the old name of the land between two rivers, the Tigris and the Euphrates. In the story, Abraham (pbuh) was born in this land.",
+    "more": "Most of this land is in Iraq today."
+   },
+   "ar": {
+    "title": "بِلَادُ مَا بَيْنَ النَّهْرَيْنِ",
+    "kindLabel": "مِنْطَقَةٌ تَارِيخِيَّةٌ",
+    "periodLabel": "الشَّرْقُ الْأَدْنَى الْقَدِيمُ",
+    "summary": "بِلَادُ مَا بَيْنَ النَّهْرَيْنِ اسْمٌ قَدِيمٌ لِلْأَرْضِ الَّتِي تَقَعُ بَيْنَ نَهْرَيْ دِجْلَةَ وَالْفُرَاتِ. وَفِي الْقِصَّةِ وُلِدَ إِبْرَاهِيمُ عَلَيْهِ السَّلَامُ فِي هَذِهِ الْأَرْضِ.",
+    "more": "وَيَقَعُ أَكْثَرُ هَذِهِ الْأَرْضِ الْيَوْمَ فِي الْعِرَاقِ."
+   },
+   "aliases": {
+    "en": [
+     "Mesopotamia"
+    ],
+    "ar": [
+     "ما بين النهرين"
+    ]
+   },
+   "tr": "Mezopotamya"
+  },
+  "abraham-sumer": {
+   "en": {
+    "title": "Sumer",
+    "kindLabel": "Ancient land",
+    "periodLabel": "Southern Mesopotamia",
+    "summary": "Sumer was an old land in the south of Mesopotamia. Some sources say that Abraham (pbuh) was born in the land of Sumer.",
+    "more": "The Sumerians were among the first people to use writing."
+   },
+   "ar": {
+    "title": "سُومَرُ",
+    "kindLabel": "أَرْضٌ قَدِيمَةٌ",
+    "periodLabel": "جَنُوبُ بِلَادِ مَا بَيْنَ النَّهْرَيْنِ",
+    "summary": "كَانَتْ سُومَرُ أَرْضًا قَدِيمَةً فِي جَنُوبِ بِلَادِ مَا بَيْنَ النَّهْرَيْنِ. وَتَقُولُ بَعْضُ الْمَصَادِرِ إِنَّ إِبْرَاهِيمَ عَلَيْهِ السَّلَامُ وُلِدَ فِي أَرْضِ سُومَرَ.",
+    "more": "وَكَانَ السُّومَرِيُّونَ مِنْ أَوَّلِ الشُّعُوبِ الَّتِي اسْتَعْمَلَتِ الْكِتَابَةَ."
+   },
+   "aliases": {
+    "en": [
+     "Sumer"
+    ],
+    "ar": [
+     "سومر"
+    ]
+   }
+  },
+  "abraham-syria-ancient": {
+   "en": {
+    "title": "Syria (al-Sham)",
+    "kindLabel": "Historical region",
+    "periodLabel": "The Levant",
+    "summary": "Syria, or al-Sham, is an old land west of Mesopotamia, near the Mediterranean Sea. In the story, Abraham (pbuh) travelled from Babylon to Syria and Palestine.",
+    "more": "Damascus and Aleppo are two of its old cities."
+   },
+   "ar": {
+    "title": "بِلَادُ الشَّامِ (سُورِيَا)",
+    "kindLabel": "مِنْطَقَةٌ تَارِيخِيَّةٌ",
+    "periodLabel": "بِلَادُ الشَّامِ",
+    "summary": "بِلَادُ الشَّامِ أَرْضٌ قَدِيمَةٌ تَقَعُ غَرْبَ بِلَادِ مَا بَيْنَ النَّهْرَيْنِ، قُرْبَ الْبَحْرِ الْمُتَوَسِّطِ. وَفِي الْقِصَّةِ سَافَرَ إِبْرَاهِيمُ عَلَيْهِ السَّلَامُ مِنْ بَابِلَ إِلَى بِلَادِ الشَّامِ وَفِلَسْطِينَ.",
+    "more": "وَمِنْ مُدُنِهَا الْقَدِيمَةِ دِمَشْقُ وَحَلَبُ."
+   },
+   "aliases": {
+    "en": [
+     "Syria"
+    ],
+    "ar": [
+     "الشام",
+     "سوريا"
+    ]
+   },
+   "tr": "Suriye"
+  },
+  "abraham-palestine-ancient": {
+   "en": {
+    "title": "Palestine",
+    "kindLabel": "Historical region",
+    "periodLabel": "Eastern Mediterranean",
+    "summary": "Palestine is an old land on the eastern coast of the Mediterranean Sea. In the story, Abraham (pbuh) travelled to Palestine and called people to Allah.",
+    "more": "The city of Jerusalem (al-Quds) is in Palestine."
+   },
+   "ar": {
+    "title": "فِلَسْطِينُ",
+    "kindLabel": "مِنْطَقَةٌ تَارِيخِيَّةٌ",
+    "periodLabel": "شَرْقُ الْبَحْرِ الْمُتَوَسِّطِ",
+    "summary": "فِلَسْطِينُ أَرْضٌ قَدِيمَةٌ عَلَى السَّاحِلِ الشَّرْقِيِّ لِلْبَحْرِ الْمُتَوَسِّطِ. وَفِي الْقِصَّةِ سَافَرَ إِبْرَاهِيمُ عَلَيْهِ السَّلَامُ إِلَيْهَا، وَدَعَا النَّاسَ إِلَى اللهِ.",
+    "more": "وَفِيهَا مَدِينَةُ الْقُدْسِ."
+   },
+   "aliases": {
+    "en": [
+     "Palestine"
+    ],
+    "ar": [
+     "فلسطين"
+    ]
+   },
+   "tr": "Filistin"
+  },
+  "abraham-egypt-ancient": {
+   "en": {
+    "title": "Egypt",
+    "kindLabel": "Ancient land",
+    "periodLabel": "North-east Africa · the Nile",
+    "summary": "Egypt is an old land in north-east Africa, along the River Nile. In the story, Abraham (pbuh) travelled to Egypt with Sarah and Lot (pbuh), and Hagar was from Egypt.",
+    "more": "The great pyramids of Giza are in Egypt."
+   },
+   "ar": {
+    "title": "مِصْرُ",
+    "kindLabel": "أَرْضٌ قَدِيمَةٌ",
+    "periodLabel": "شَمَالُ شَرْقِ أَفْرِيقِيَا · وَادِي النِّيلِ",
+    "summary": "مِصْرُ أَرْضٌ قَدِيمَةٌ فِي شَمَالِ شَرْقِ أَفْرِيقِيَا، عَلَى ضِفَافِ نَهْرِ النِّيلِ. وَفِي الْقِصَّةِ سَافَرَ إِبْرَاهِيمُ عَلَيْهِ السَّلَامُ إِلَيْهَا مَعَ سَارَةَ وَلُوطٍ عَلَيْهِ السَّلَامُ، وَكَانَتْ هَاجَرُ مِصْرِيَّةً.",
+    "more": "وَفِي مِصْرَ أَهْرَامُ الْجِيزَةِ الْعَظِيمَةُ."
+   },
+   "aliases": {
+    "en": [
+     "Egypt"
+    ],
+    "ar": [
+     "مصر"
+    ]
+   },
+   "tr": "Mısır"
+  },
+  "abraham-arabian-peninsula": {
+   "en": {
+    "title": "The Arabian Peninsula",
+    "kindLabel": "Region",
+    "periodLabel": "Arabia",
+    "summary": "The Arabian Peninsula is a large land of deserts and mountains between the Red Sea and the Gulf. In the story, the valley of Mecca is in it, and the children of Ishmael (pbuh) later spread all over it.",
+    "more": "Today, Saudi Arabia, Yemen, Oman and other countries are on this peninsula."
+   },
+   "ar": {
+    "title": "شِبْهُ الْجَزِيرَةِ الْعَرَبِيَّةِ",
+    "kindLabel": "مِنْطَقَةٌ",
+    "periodLabel": "بِلَادُ الْعَرَبِ",
+    "summary": "شِبْهُ الْجَزِيرَةِ الْعَرَبِيَّةِ أَرْضٌ وَاسِعَةٌ مِنَ الصَّحَارِي وَالْجِبَالِ بَيْنَ الْبَحْرِ الْأَحْمَرِ وَالْخَلِيجِ. وَفِي الْقِصَّةِ يَقَعُ فِيهَا وَادِي مَكَّةَ، وَقَدِ انْتَشَرَ أَبْنَاءُ إِسْمَاعِيلَ عَلَيْهِ السَّلَامُ فِي أَنْحَائِهَا.",
+    "more": "وَتَقَعُ فِيهَا الْيَوْمَ السُّعُودِيَّةُ وَالْيَمَنُ وَعُمَانُ وَدُوَلٌ أُخْرَى."
+   },
+   "aliases": {
+    "en": [
+     "Arabian Peninsula"
+    ],
+    "ar": [
+     "الجزيرة العربية"
+    ]
+   },
+   "tr": "Arap Yarımadası"
+  },
+  "abraham-hijaz": {
+   "en": {
+    "title": "The Hijaz",
+    "kindLabel": "Region",
+    "periodLabel": "Western Arabia",
+    "summary": "The Hijaz is a region in the west of the Arabian Peninsula, along the Red Sea. In the story, Ishmael (pbuh) taught the faith of his father in the Hijaz.",
+    "more": "The cities of Mecca and Medina are in the Hijaz."
+   },
+   "ar": {
+    "title": "الْحِجَازُ",
+    "kindLabel": "مِنْطَقَةٌ",
+    "periodLabel": "غَرْبُ الْجَزِيرَةِ الْعَرَبِيَّةِ",
+    "summary": "الْحِجَازُ مِنْطَقَةٌ فِي غَرْبِ شِبْهِ الْجَزِيرَةِ الْعَرَبِيَّةِ، عَلَى سَاحِلِ الْبَحْرِ الْأَحْمَرِ. وَفِي الْقِصَّةِ عَلَّمَ إِسْمَاعِيلُ عَلَيْهِ السَّلَامُ دِينَ أَبِيهِ فِي الْحِجَازِ.",
+    "more": "وَفِيهِ مَكَّةُ الْمُكَرَّمَةُ وَالْمَدِينَةُ الْمُنَوَّرَةُ."
+   },
+   "aliases": {
+    "en": [
+     "Hijaz"
+    ],
+    "ar": [
+     "حجاز"
+    ]
+   },
+   "tr": "Hicaz"
+  },
+  "abraham-yemen": {
+   "en": {
+    "title": "Yemen",
+    "kindLabel": "Region",
+    "periodLabel": "Southern Arabia",
+    "summary": "Yemen is a land in the south of the Arabian Peninsula, with high green mountains. In the story, the tribe of Jurham came from Yemen to the valley of Mecca.",
+    "more": "In old times, Yemen was famous for its trade in incense and spices."
+   },
+   "ar": {
+    "title": "الْيَمَنُ",
+    "kindLabel": "مِنْطَقَةٌ",
+    "periodLabel": "جَنُوبُ الْجَزِيرَةِ الْعَرَبِيَّةِ",
+    "summary": "الْيَمَنُ أَرْضٌ فِي جَنُوبِ شِبْهِ الْجَزِيرَةِ الْعَرَبِيَّةِ، فِيهَا جِبَالٌ عَالِيَةٌ خَضْرَاءُ. وَفِي الْقِصَّةِ جَاءَتْ قَبِيلَةُ جُرْهُمَ مِنَ الْيَمَنِ إِلَى وَادِي مَكَّةَ.",
+    "more": "وَكَانَ الْيَمَنُ قَدِيمًا مَشْهُورًا بِتِجَارَةِ الْبَخُورِ وَالتَّوَابِلِ."
+   },
+   "aliases": {
+    "en": [
+     "Yemen"
+    ],
+    "ar": [
+     "اليمن"
+    ]
+   }
+  },
+  "abraham-safa-and-marwa-ancient": {
+   "en": {
+    "title": "Safa and Marwa",
+    "kindLabel": "Two hills",
+    "periodLabel": "Mecca · Western Arabia",
+    "summary": "Safa and Marwa are two small hills in Mecca, near the Ka’ba. In the story, Hagar ran between them to look for water.",
+    "more": "During Hajj and Umrah, Muslims walk between these two hills seven times; this is called sa'y."
+   },
+   "ar": {
+    "title": "الصَّفَا وَالْمَرْوَةُ",
+    "kindLabel": "تَلَّانِ",
+    "periodLabel": "مَكَّةُ · غَرْبُ الْجَزِيرَةِ الْعَرَبِيَّةِ",
+    "summary": "الصَّفَا وَالْمَرْوَةُ تَلَّانِ صَغِيرَانِ فِي مَكَّةَ، قُرْبَ الْكَعْبَةِ. وَفِي الْقِصَّةِ سَعَتْ هَاجَرُ بَيْنَهُمَا تَبْحَثُ عَنِ الْمَاءِ.",
+    "more": "وَفِي الْحَجِّ وَالْعُمْرَةِ يَسْعَى الْمُسْلِمُونَ بَيْنَهُمَا سَبْعَةَ أَشْوَاطٍ، وَيُسَمَّى ذَلِكَ السَّعْيَ."
+   },
+   "aliases": {
+    "en": [
+     "Safa and Marwah",
+     "Safa and Marwa",
+     "Safa",
+     "Marwa"
+    ],
+    "ar": [
+     "الصفا",
+     "المروة"
+    ]
+   },
+   "tr": "Safa ve Merve"
+  },
+  "abraham-zamzam": {
+   "en": {
+    "title": "Zamzam",
+    "kindLabel": "Well (spring)",
+    "periodLabel": "Mecca · Western Arabia",
+    "summary": "Zamzam is the water that came out of the ground in the valley of Mecca, near little Ishmael (pbuh). It still flows today, near the Ka’ba.",
+    "more": "Pilgrims drink Zamzam water, and many take some home with them."
+   },
+   "ar": {
+    "title": "زَمْزَمُ",
+    "kindLabel": "بِئْرٌ (نَبْعٌ)",
+    "periodLabel": "مَكَّةُ · غَرْبُ الْجَزِيرَةِ الْعَرَبِيَّةِ",
+    "summary": "زَمْزَمُ مَاءٌ خَرَجَ مِنَ الْأَرْضِ فِي وَادِي مَكَّةَ، عِنْدَ الطِّفْلِ إِسْمَاعِيلَ عَلَيْهِ السَّلَامُ. وَمَا زَالَ يَتَدَفَّقُ إِلَى الْيَوْمِ قُرْبَ الْكَعْبَةِ.",
+    "more": "وَيَشْرَبُ الْحُجَّاجُ مِنْ مَاءِ زَمْزَمَ، وَيَأْخُذُ كَثِيرٌ مِنْهُمْ شَيْئًا مِنْهُ إِلَى بِلَادِهِمْ."
+   },
+   "aliases": {
+    "en": [
+     "Zamzam"
+    ],
+    "ar": [
+     "زمزم"
+    ]
+   },
+   "tr": "Zemzem"
+  },
+  "abraham-kaaba-abraham": {
+   "en": {
+    "title": "The Ka’ba",
+    "kindLabel": "Holy building",
+    "periodLabel": "Mecca · Western Arabia",
+    "summary": "The Ka’ba, the House of Allah, is the holy building in Mecca. In the story, Abraham (pbuh) and Ishmael (pbuh) built it again on its old foundations.",
+    "more": "Muslims all over the world face the Ka’ba when they pray."
+   },
+   "ar": {
+    "title": "الْكَعْبَةُ",
+    "kindLabel": "بَيْتٌ مُقَدَّسٌ",
+    "periodLabel": "مَكَّةُ · غَرْبُ الْجَزِيرَةِ الْعَرَبِيَّةِ",
+    "summary": "الْكَعْبَةُ هِيَ بَيْتُ اللهِ الْحَرَامُ فِي مَكَّةَ. وَفِي الْقِصَّةِ بَنَاهَا إِبْرَاهِيمُ وَإِسْمَاعِيلُ عَلَيْهِمَا السَّلَامُ مِنْ جَدِيدٍ عَلَى أُسُسِهَا الْقَدِيمَةِ.",
+    "more": "وَيَتَّجِهُ إِلَيْهَا الْمُسْلِمُونَ فِي كُلِّ الْعَالَمِ عِنْدَ الصَّلَاةِ؛ فَهِيَ قِبْلَتُهُمْ."
+   },
+   "aliases": {
+    "en": [
+     "Ka’ba",
+     "Ka’ba",
+     "House of Allah"
+    ],
+    "ar": [
+     "الكعبة",
+     "بيت الله"
+    ]
+   },
+   "tr": "Kâbe"
+  },
+  "abraham-nimrod": {
+   "en": {
+    "title": "Nimrod",
+    "kindLabel": "King",
+    "periodLabel": "Kingdom of Babylon",
+    "summary": "In the story, Nimrod was the king of Babylon. He argued with Abraham (pbuh) about Allah, but he could not answer him.",
+    "more": "The Qur’an tells about this argument, but it does not give the king's name."
+   },
+   "ar": {
+    "title": "نُمْرُودُ",
+    "kindLabel": "مَلِكٌ",
+    "periodLabel": "مَمْلَكَةُ بَابِلَ",
+    "summary": "فِي الْقِصَّةِ كَانَ نُمْرُودُ مَلِكَ بَابِلَ. وَقَدْ جَادَلَ إِبْرَاهِيمَ عَلَيْهِ السَّلَامُ فِي رَبِّهِ، فَلَمْ يَجِدْ جَوَابًا.",
+    "more": "وَيَذْكُرُ الْقُرْآنُ الْكَرِيمُ هَذَا الْجِدَالَ، وَلَكِنَّهُ لَا يَذْكُرُ اسْمَ الْمَلِكِ."
+   },
+   "aliases": {
+    "en": [
+     "Nimrod"
+    ],
+    "ar": [
+     "نمرود"
+    ]
+   },
+   "tr": "Nemrut"
+  },
+  "abraham-jurhum": {
+   "en": {
+    "title": "Jurham",
+    "kindLabel": "Arab tribe",
+    "periodLabel": "Yemen and Mecca",
+    "summary": "Jurham was an Arab tribe that came from Yemen, in southern Arabia, to the valley of Mecca. In the story, Ishmael (pbuh) grew up among them and learned Arabic from them.",
+    "more": "History books say that Jurham looked after the Ka’ba for a long time."
+   },
+   "ar": {
+    "title": "جُرْهُمُ",
+    "kindLabel": "قَبِيلَةٌ عَرَبِيَّةٌ",
+    "periodLabel": "الْيَمَنُ وَمَكَّةُ",
+    "summary": "جُرْهُمُ قَبِيلَةٌ عَرَبِيَّةٌ جَاءَتْ مِنَ الْيَمَنِ، فِي جَنُوبِ الْجَزِيرَةِ الْعَرَبِيَّةِ، إِلَى وَادِي مَكَّةَ. وَفِي الْقِصَّةِ نَشَأَ إِسْمَاعِيلُ عَلَيْهِ السَّلَامُ بَيْنَهُمْ، وَتَعَلَّمَ مِنْهُمُ الْعَرَبِيَّةَ.",
+    "more": "وَتَذْكُرُ كُتُبُ التَّارِيخِ أَنَّ جُرْهُمَ تَوَلَّتْ أَمْرَ الْكَعْبَةِ زَمَنًا طَوِيلًا."
+   },
+   "aliases": {
+    "en": [
+     "Jurham"
+    ],
+    "ar": [
+     "جرهم"
+    ]
+   },
+   "tr": "Cürhüm kabilesi"
+  },
+  "abraham-hanifs": {
+   "en": {
+    "title": "The hanîfs",
+    "kindLabel": "Believers in one God",
+    "periodLabel": "The Hijaz · before Islam",
+    "summary": "The hanîfs were a group of people in the Hijaz before Islam. They believed in one God and stayed away from idols.",
+    "more": "In the Qur’an, Abraham (pbuh) is called a hanîf."
+   },
+   "ar": {
+    "title": "الْحُنَفَاءُ",
+    "kindLabel": "مُؤْمِنُونَ بِإِلَهٍ وَاحِدٍ",
+    "periodLabel": "الْحِجَازُ قَبْلَ الْإِسْلَامِ",
+    "summary": "الْحُنَفَاءُ جَمَاعَةٌ مِنَ النَّاسِ كَانُوا فِي الْحِجَازِ قَبْلَ الْإِسْلَامِ. وَكَانُوا يُؤْمِنُونَ بِاللهِ الْوَاحِدِ، وَيَبْتَعِدُونَ عَنِ الْأَصْنَامِ.",
+    "more": "وَيَصِفُ الْقُرْآنُ الْكَرِيمُ إِبْرَاهِيمَ عَلَيْهِ السَّلَامُ بِأَنَّهُ كَانَ حَنِيفًا."
+   },
+   "aliases": {
+    "en": [
+     "hanîfs"
+    ],
+    "ar": [
+     "حنفاء"
+    ]
+   },
+   "tr": "Hanifler"
+  },
+  "abraham-waraqa-ibn-nawfal": {
+   "en": {
+    "title": "Waraqa ibn Nawfal",
+    "kindLabel": "Hanîf",
+    "periodLabel": "Time of Prophet Muhammad (pbuh)",
+    "summary": "Waraqa ibn Nawfal was a cousin of Khadija, the wife of Prophet Muhammad (pbuh). He was one of the last hanîfs, and he welcomed the prophethood of Muhammad (pbuh).",
+    "more": "He knew the earlier holy books very well."
+   },
+   "ar": {
+    "title": "وَرَقَةُ بْنُ نَوْفَلٍ",
+    "kindLabel": "حَنِيفٌ",
+    "periodLabel": "زَمَنُ النَّبِيِّ مُحَمَّدٍ صَلَّى اللهُ عَلَيْهِ وَسَلَّمَ",
+    "summary": "كَانَ وَرَقَةُ بْنُ نَوْفَلٍ ابْنَ عَمِّ خَدِيجَةَ زَوْجَةِ النَّبِيِّ مُحَمَّدٍ صَلَّى اللهُ عَلَيْهِ وَسَلَّمَ. وَكَانَ مِنْ آخِرِ الْحُنَفَاءِ، وَقَدْ رَحَّبَ بِنُبُوَّتِهِ.",
+    "more": "وَكَانَ عَالِمًا بِالْكُتُبِ السَّمَاوِيَّةِ السَّابِقَةِ."
+   },
+   "aliases": {
+    "en": [
+     "Waraqa ibn Nawfal",
+     "Waraqa"
+    ],
+    "ar": [
+     "ورقة بن نوفل"
+    ]
+   },
+   "tr": "Varaka b. Nevfel"
+  },
+  "moses-jerusalem-ancient": {
+   "en": {
+    "title": "Jerusalem",
+    "kindLabel": "City",
+    "periodLabel": "Canaan · Palestine",
+    "summary": "Jerusalem is an old city in the hills of Palestine. In the Pharaoh’s dream, a fire came from Jerusalem.",
+    "more": "It is a holy city for Muslims, Christians and Jews."
+   },
+   "ar": {
+    "title": "الْقُدْسُ",
+    "kindLabel": "مَدِينَةٌ",
+    "periodLabel": "أَرْضُ كَنْعَانَ · فِلَسْطِينُ",
+    "summary": "الْقُدْسُ، أَوْ بَيْتُ الْمَقْدِسِ، مَدِينَةٌ قَدِيمَةٌ فِي جِبَالِ فِلَسْطِينَ. وَفِي رُؤْيَا فِرْعَوْنَ جَاءَتْ نَارٌ مِنَ الْقُدْسِ.",
+    "more": "وَهِيَ مَدِينَةٌ مُقَدَّسَةٌ عِنْدَ الْمُسْلِمِينَ وَالْمَسِيحِيِّينَ وَالْيَهُودِ."
+   },
+   "aliases": {
+    "en": [
+     "Jerusalem"
+    ],
+    "ar": [
+     "القدس",
+     "بيت المقدس"
+    ]
+   },
+   "tr": "Kudüs"
+  },
+  "moses-pi-ramesses": {
+   "en": {
+    "title": "Pi-Ramesses",
+    "kindLabel": "Royal city",
+    "periodLabel": "Ancient Egypt · Nile Delta",
+    "summary": "Pi-Ramesses was the new capital city of Ramses II, in the Nile Delta. In the story, the Children of Israel were forced to work on it.",
+    "more": "Its name means “House of Ramses”."
+   },
+   "ar": {
+    "title": "بِي رَمْسِيس",
+    "kindLabel": "مَدِينَةٌ مَلَكِيَّةٌ",
+    "periodLabel": "مِصْرُ الْقَدِيمَةُ · دَلْتَا النِّيلِ",
+    "summary": "بِي رَمْسِيس هِيَ الْعَاصِمَةُ الْجَدِيدَةُ الَّتِي بَنَاهَا رَمْسِيسُ الثَّانِي فِي دَلْتَا النِّيلِ. وَفِي الْقِصَّةِ أُجْبِرَ بَنُو إِسْرَائِيلَ عَلَى الْعَمَلِ فِي بِنَائِهَا.",
+    "more": "وَمَعْنَى اسْمِهَا «بَيْتُ رَمْسِيسَ»."
+   },
+   "aliases": {
+    "en": [
+     "new capital city of Ramses"
+    ],
+    "ar": [
+     "العاصمة الجديدة لرمسيس"
+    ]
+   },
+   "tr": "Pi-Ramses"
+  },
+  "moses-egypt-ancient": {
+   "en": {
+    "title": "Egypt",
+    "kindLabel": "Land",
+    "periodLabel": "Ancient Egypt",
+    "summary": "Egypt is a land in the north-east of Africa, along the River Nile. In the time of Moses (pbuh), the Pharaoh ruled it.",
+    "more": "The pyramids of Giza were already very old in the time of Moses (pbuh)."
+   },
+   "ar": {
+    "title": "مِصْرُ",
+    "kindLabel": "بَلَدٌ",
+    "periodLabel": "مِصْرُ الْقَدِيمَةُ",
+    "summary": "مِصْرُ بَلَدٌ فِي شَمَالِ شَرْقِ إِفْرِيقِيَا، عَلَى ضِفَافِ نَهْرِ النِّيلِ. وَفِي زَمَنِ مُوسَى عَلَيْهِ السَّلَامُ كَانَ فِرْعَوْنُ يَحْكُمُهَا.",
+    "more": "وَكَانَتْ أَهْرَامُ الْجِيزَةِ قَدِيمَةً جِدًّا فِي زَمَنِ مُوسَى عَلَيْهِ السَّلَامُ."
+   },
+   "aliases": {
+    "en": [
+     "Egypt"
+    ],
+    "ar": [
+     "مصر"
+    ]
+   },
+   "tr": "Mısır"
+  },
+  "moses-nile-delta": {
+   "en": {
+    "title": "Nile Delta",
+    "kindLabel": "Region",
+    "periodLabel": "Northern Egypt",
+    "summary": "The Nile Delta is the wide, green land in the north of Egypt, where the Nile splits into branches and reaches the sea. In the time of Seti I and Ramses II, many canals were dug here for farming.",
+    "more": "It is one of the richest farming lands in the world."
+   },
+   "ar": {
+    "title": "دَلْتَا النِّيلِ",
+    "kindLabel": "مِنْطَقَةٌ",
+    "periodLabel": "شَمَالُ مِصْرَ",
+    "summary": "دَلْتَا النِّيلِ أَرْضٌ وَاسِعَةٌ خَضْرَاءُ فِي شَمَالِ مِصْرَ، يَتَفَرَّعُ فِيهَا النِّيلُ ثُمَّ يَصُبُّ فِي الْبَحْرِ. وَفِي عَهْدَيْ سِيتِي الْأَوَّلِ وَرَمْسِيسَ الثَّانِي حُفِرَتْ فِيهَا قَنَوَاتٌ كَثِيرَةٌ لِلزِّرَاعَةِ.",
+    "more": "وَهِيَ مِنْ أَخْصَبِ الْأَرَاضِي الزِّرَاعِيَّةِ فِي الْعَالَمِ."
+   },
+   "aliases": {
+    "en": [
+     "Nile Delta",
+     "delta"
+    ],
+    "ar": [
+     "دلتا النيل",
+     "الدلتا"
+    ]
+   },
+   "tr": "Nil Deltası"
+  },
+  "moses-midian": {
+   "en": {
+    "title": "Midian",
+    "kindLabel": "Land",
+    "periodLabel": "East of the Gulf of Aqaba",
+    "summary": "Midian was a land on the east side of the Gulf of Aqaba, between Egypt and Syria. Moses (pbuh) lived here for ten years with the family of Prophet Shu’ayb (pbuh).",
+    "more": "Today, this area is in the north-west of Saudi Arabia."
+   },
+   "ar": {
+    "title": "مَدْيَنُ",
+    "kindLabel": "أَرْضٌ",
+    "periodLabel": "شَرْقَ خَلِيجِ الْعَقَبَةِ",
+    "summary": "مَدْيَنُ أَرْضٌ تَقَعُ شَرْقَ خَلِيجِ الْعَقَبَةِ، بَيْنَ مِصْرَ وَالشَّامِ. عَاشَ فِيهَا مُوسَى عَلَيْهِ السَّلَامُ عَشْرَ سَنَوَاتٍ مَعَ أُسْرَةِ النَّبِيِّ شُعَيْبٍ عَلَيْهِ السَّلَامُ.",
+    "more": "وَتَقَعُ هَذِهِ الْمِنْطَقَةُ الْيَوْمَ فِي شَمَالِ غَرْبِ الْمَمْلَكَةِ الْعَرَبِيَّةِ السُّعُودِيَّةِ."
+   },
+   "aliases": {
+    "en": [
+     "Midian"
+    ],
+    "ar": [
+     "إلى مدين",
+     "في مدين",
+     "أرض مدين",
+     "أهل مدين",
+     "كانت مدين",
+     "خارج مدين",
+     "أي مدين",
+     "موسى مدين"
+    ]
+   },
+   "tr": "Medyen"
+  },
+  "moses-syria-ancient": {
+   "en": {
+    "title": "Syria",
+    "kindLabel": "Historical land",
+    "periodLabel": "East of the Mediterranean",
+    "summary": "In old times, Syria (al-Sham) was a large land north-east of Egypt, on the east coast of the Mediterranean Sea. The story places Midian between Egypt and Syria.",
+    "more": "Damascus and Aleppo are among its oldest cities."
+   },
+   "ar": {
+    "title": "الشَّامُ",
+    "kindLabel": "إِقْلِيمٌ تَارِيخِيٌّ",
+    "periodLabel": "شَرْقَ الْبَحْرِ الْمُتَوَسِّطِ",
+    "summary": "الشَّامُ أَرْضٌ وَاسِعَةٌ تَقَعُ شَمَالَ شَرْقِ مِصْرَ، عَلَى السَّاحِلِ الشَّرْقِيِّ لِلْبَحْرِ الْمُتَوَسِّطِ. وَتَذْكُرُ الْقِصَّةُ أَنَّ مَدْيَنَ بَيْنَ مِصْرَ وَالشَّامِ.",
+    "more": "وَمِنْ أَقْدَمِ مُدُنِهَا دِمَشْقُ وَحَلَبُ."
+   },
+   "aliases": {
+    "en": [
+     "Syria"
+    ],
+    "ar": [
+     "الشام"
+    ]
+   },
+   "tr": "Suriye"
+  },
+  "moses-sinai": {
+   "en": {
+    "title": "Sinai",
+    "kindLabel": "Peninsula",
+    "periodLabel": "Between Africa and Asia",
+    "summary": "The Sinai is a dry land of deserts and high mountains between Egypt and Midian. Moses (pbuh) crossed it with his family on his way back from Midian.",
+    "more": "It is shaped like a triangle between two arms of the Red Sea."
+   },
+   "ar": {
+    "title": "سَيْنَاءُ",
+    "kindLabel": "شِبْهُ جَزِيرَةٍ",
+    "periodLabel": "بَيْنَ إِفْرِيقِيَا وَآسِيَا",
+    "summary": "سَيْنَاءُ أَرْضٌ جَافَّةٌ مِنَ الصَّحَارِي وَالْجِبَالِ الْعَالِيَةِ، تَقَعُ بَيْنَ مِصْرَ وَمَدْيَنَ. عَبَرَهَا مُوسَى عَلَيْهِ السَّلَامُ مَعَ أَهْلِهِ فِي طَرِيقِ عَوْدَتِهِ مِنْ مَدْيَنَ.",
+    "more": "وَشَكْلُهَا يُشْبِهُ الْمُثَلَّثَ بَيْنَ ذِرَاعَيْنِ مِنَ الْبَحْرِ الْأَحْمَرِ."
+   },
+   "aliases": {
+    "en": [
+     "across the Sinai"
+    ],
+    "ar": [
+     "عبر سيناء"
+    ]
+   },
+   "tr": "Sina"
+  },
+  "moses-mount-sinai": {
+   "en": {
+    "title": "Mount Sinai (Mount Tur)",
+    "kindLabel": "Mountain",
+    "periodLabel": "Sinai",
+    "summary": "Mount Sinai, also called Mount Tur, is a high mountain in the Sinai. Here, on a cold winter night, Allah spoke to Moses (pbuh) and made him a prophet.",
+    "more": "Many people believe it is Jabal Musa, a peak in the south of Sinai."
+   },
+   "ar": {
+    "title": "جَبَلُ الطُّورِ (جَبَلُ سَيْنَاءَ)",
+    "kindLabel": "جَبَلٌ",
+    "periodLabel": "سَيْنَاءُ",
+    "summary": "جَبَلُ الطُّورِ، وَيُسَمَّى أَيْضًا جَبَلَ سَيْنَاءَ، جَبَلٌ عَالٍ فِي سَيْنَاءَ. وَهُنَا، فِي لَيْلَةٍ شَتْوِيَّةٍ بَارِدَةٍ، كَلَّمَ اللهُ مُوسَى عَلَيْهِ السَّلَامُ وَاخْتَارَهُ نَبِيًّا.",
+    "more": "وَيَرَى كَثِيرٌ مِنَ النَّاسِ أَنَّهُ «جَبَلُ مُوسَى» فِي جَنُوبِ سَيْنَاءَ."
+   },
+   "aliases": {
+    "en": [
+     "Mount Sinai",
+     "Mount Tur",
+     "climbed the mountain"
+    ],
+    "ar": [
+     "جبل سيناء",
+     "جبل الطور",
+     "الجبل"
+    ]
+   },
+   "tr": "Tur Dağı"
+  },
+  "moses-valley-of-tuwa": {
+   "en": {
+    "title": "Tuwa, the sacred valley",
+    "kindLabel": "Valley",
+    "periodLabel": "Sinai",
+    "summary": "Tuwa is a sacred valley at Mount Sinai (Mount Tur). This is where Allah first spoke to Moses (pbuh).",
+    "more": "The Qur’an names this valley in Surah Taha."
+   },
+   "ar": {
+    "title": "وَادِي طُوًى",
+    "kindLabel": "وَادٍ",
+    "periodLabel": "سَيْنَاءُ",
+    "summary": "طُوًى وَادٍ مُقَدَّسٌ عِنْدَ جَبَلِ الطُّورِ. وَفِيهِ كَلَّمَ اللهُ مُوسَى عَلَيْهِ السَّلَامُ أَوَّلَ مَرَّةٍ.",
+    "more": "وَقَدْ ذَكَرَ الْقُرْآنُ الْكَرِيمُ هَذَا الْوَادِيَ بِاسْمِهِ فِي سُورَةِ طٰهٰ."
+   },
+   "aliases": {
+    "en": [
+     "Tuwa",
+     "valley between mountains"
+    ],
+    "ar": [
+     "طوى",
+     "واد بين الجبال",
+     "واديا بين الجبال"
+    ]
+   },
+   "tr": "Tuva vadisi"
+  },
+  "moses-canaan": {
+   "en": {
+    "title": "Canaan",
+    "kindLabel": "Historical land",
+    "periodLabel": "Palestine",
+    "summary": "Canaan is the old name of the land of Palestine. After leaving Egypt, Moses (pbuh) led the Children of Israel toward this land.",
+    "more": "Prophet Abraham (pbuh), Isaac (pbuh) and Jacob (pbuh) lived in this land."
+   },
+   "ar": {
+    "title": "أَرْضُ كَنْعَانَ",
+    "kindLabel": "أَرْضٌ تَارِيخِيَّةٌ",
+    "periodLabel": "فِلَسْطِينُ",
+    "summary": "كَنْعَانُ هُوَ الِاسْمُ الْقَدِيمُ لِأَرْضِ فِلَسْطِينَ. وَبَعْدَ الْخُرُوجِ مِنْ مِصْرَ، قَادَ مُوسَى عَلَيْهِ السَّلَامُ بَنِي إِسْرَائِيلَ نَحْوَ هَذِهِ الْأَرْضِ.",
+    "more": "وَقَدْ عَاشَ فِي هَذِهِ الْأَرْضِ إِبْرَاهِيمُ وَإِسْحَاقُ وَيَعْقُوبُ عَلَيْهِمُ السَّلَامُ."
+   },
+   "aliases": {
+    "en": [
+     "Canaan",
+     "land of Palestine"
+    ],
+    "ar": [
+     "كنعان",
+     "أرض فلسطين"
+    ]
+   },
+   "tr": "Kenan diyarı"
+  },
+  "moses-nile": {
+   "en": {
+    "title": "The River Nile",
+    "kindLabel": "River",
+    "periodLabel": "Egypt",
+    "summary": "The Nile is the great river of Egypt. Baby Moses (pbuh) was put on its water, and it carried him near the Pharaoh’s palace.",
+    "more": "It is one of the longest rivers in the world."
+   },
+   "ar": {
+    "title": "نَهْرُ النِّيلِ",
+    "kindLabel": "نَهْرٌ",
+    "periodLabel": "مِصْرُ",
+    "summary": "النِّيلُ هُوَ النَّهْرُ الْعَظِيمُ فِي مِصْرَ. وَضَعَتْ أُمُّ مُوسَى عَلَيْهِ السَّلَامُ طِفْلَهَا فِي مَائِهِ، فَحَمَلَهُ إِلَى قُرْبِ قَصْرِ فِرْعَوْنَ.",
+    "more": "وَهُوَ مِنْ أَطْوَلِ أَنْهَارِ الْعَالَمِ."
+   },
+   "aliases": {
+    "en": [
+     "Nile"
+    ],
+    "ar": [
+     "النيل"
+    ]
+   },
+   "tr": "Nil Nehri"
+  },
+  "moses-red-sea": {
+   "en": {
+    "title": "The Red Sea",
+    "kindLabel": "Sea",
+    "periodLabel": "Between Africa and Arabia",
+    "summary": "The Red Sea is a long sea between Africa and Arabia. Allah opened a road in the sea for Moses (pbuh) and his people, and the Pharaoh’s army drowned in it.",
+    "more": "In the north, it splits into two gulfs: The Gulf of Suez and the Gulf of Aqaba."
+   },
+   "ar": {
+    "title": "الْبَحْرُ الْأَحْمَرُ",
+    "kindLabel": "بَحْرٌ",
+    "periodLabel": "بَيْنَ إِفْرِيقِيَا وَجَزِيرَةِ الْعَرَبِ",
+    "summary": "الْبَحْرُ الْأَحْمَرُ بَحْرٌ طَوِيلٌ بَيْنَ إِفْرِيقِيَا وَجَزِيرَةِ الْعَرَبِ. شَقَّهُ اللهُ لِمُوسَى عَلَيْهِ السَّلَامُ وَقَوْمِهِ فَعَبَرُوا، وَغَرِقَ فِيهِ فِرْعَوْنُ وَجَيْشُهُ.",
+    "more": "وَيَنْقَسِمُ فِي شَمَالِهِ إِلَى خَلِيجَيْنِ: خَلِيجِ السُّوَيْسِ وَخَلِيجِ الْعَقَبَةِ."
+   },
+   "aliases": {
+    "en": [
+     "Red Sea",
+     "arrived at the sea"
+    ],
+    "ar": [
+     "البحر الأحمر",
+     "وصلوا إلى البحر"
+    ]
+   },
+   "tr": "Kızıldeniz"
+  },
+  "moses-gulf-of-aqaba": {
+   "en": {
+    "title": "Gulf of Aqaba",
+    "kindLabel": "Gulf",
+    "periodLabel": "Red Sea",
+    "summary": "The Gulf of Aqaba is the long, narrow north-eastern arm of the Red Sea. The land of Midian was on its eastern side.",
+    "more": "Today, the port city of Aqaba is at its northern end."
+   },
+   "ar": {
+    "title": "خَلِيجُ الْعَقَبَةِ",
+    "kindLabel": "خَلِيجٌ",
+    "periodLabel": "الْبَحْرُ الْأَحْمَرُ",
+    "summary": "خَلِيجُ الْعَقَبَةِ ذِرَاعٌ طَوِيلَةٌ ضَيِّقَةٌ مِنَ الْبَحْرِ الْأَحْمَرِ فِي شَمَالِهِ الشَّرْقِيِّ. وَكَانَتْ أَرْضُ مَدْيَنَ عَلَى جَانِبِهِ الشَّرْقِيِّ.",
+    "more": "وَتَقَعُ مَدِينَةُ الْعَقَبَةِ الْيَوْمَ عِنْدَ طَرَفِهِ الشَّمَالِيِّ."
+   },
+   "aliases": {
+    "en": [
+     "Gulf of Aqaba"
+    ],
+    "ar": [
+     "خليج العقبة"
+    ]
+   },
+   "tr": "Akabe Körfezi"
+  },
+  "moses-pharaohs-palace": {
+   "en": {
+    "title": "The Pharaoh’s palace",
+    "kindLabel": "Palace",
+    "periodLabel": "Ancient Egypt",
+    "summary": "The Pharaoh’s palace was near the River Nile. Baby Moses (pbuh) was found near it, and he grew up inside it.",
+    "more": "No one knows today exactly where this palace was."
+   },
+   "ar": {
+    "title": "قَصْرُ فِرْعَوْنَ",
+    "kindLabel": "قَصْرٌ",
+    "periodLabel": "مِصْرُ الْقَدِيمَةُ",
+    "summary": "كَانَ قَصْرُ فِرْعَوْنَ قَرِيبًا مِنْ نَهْرِ النِّيلِ. وُجِدَ مُوسَى الرَّضِيعُ عَلَيْهِ السَّلَامُ بِالْقُرْبِ مِنْهُ، وَنَشَأَ فِيهِ.",
+    "more": "وَلَا يَعْرِفُ أَحَدٌ الْيَوْمَ مَكَانَهُ بِالضَّبْطِ."
+   },
+   "aliases": {
+    "en": [
+     "king’s palace",
+     "Pharaoh’s palace",
+     "palace"
+    ],
+    "ar": [
+     "قصر فرعون",
+     "القصر"
+    ]
+   },
+   "tr": "Firavun'un sarayı"
+  },
+  "moses-pharaoh": {
+   "en": {
+    "title": "Pharaoh",
+    "kindLabel": "King of Egypt",
+    "periodLabel": "Time of Moses (pbuh)",
+    "summary": "Pharaoh was the cruel king of Egypt in the time of Moses (pbuh). He thought he was a god, and in the end he drowned in the sea with his army.",
+    "more": "“Pharaoh” was the title of the kings of ancient Egypt."
+   },
+   "ar": {
+    "title": "فِرْعَوْنُ",
+    "kindLabel": "مَلِكُ مِصْرَ",
+    "periodLabel": "زَمَنُ مُوسَى عَلَيْهِ السَّلَامُ",
+    "summary": "فِرْعَوْنُ هُوَ مَلِكُ مِصْرَ الظَّالِمُ فِي زَمَنِ مُوسَى عَلَيْهِ السَّلَامُ. كَانَ يَظُنُّ أَنَّهُ إِلٰهٌ، وَفِي النِّهَايَةِ غَرِقَ فِي الْبَحْرِ مَعَ جَيْشِهِ.",
+    "more": "وَ«فِرْعَوْنُ» لَقَبٌ كَانَ يُطْلَقُ عَلَى مُلُوكِ مِصْرَ الْقَدِيمَةِ."
+   },
+   "aliases": {
+    "en": [
+     "Pharaoh"
+    ],
+    "ar": [
+     "فرعون"
+    ]
+   },
+   "tr": "Firavun"
+  },
+  "moses-children-of-israel": {
+   "en": {
+    "title": "The Children of Israel",
+    "kindLabel": "People",
+    "periodLabel": "Egypt · Time of Moses (pbuh)",
+    "summary": "The Children of Israel (the Israelites) were the descendants of Prophet Jacob (pbuh). They lived in Egypt, and the Pharaoh forced them to do hard work.",
+    "more": "“Israel” is another name of Prophet Jacob (pbuh)."
+   },
+   "ar": {
+    "title": "بَنُو إِسْرَائِيلَ",
+    "kindLabel": "قَوْمٌ",
+    "periodLabel": "مِصْرُ · زَمَنُ مُوسَى عَلَيْهِ السَّلَامُ",
+    "summary": "بَنُو إِسْرَائِيلَ هُمْ أَحْفَادُ النَّبِيِّ يَعْقُوبَ عَلَيْهِ السَّلَامُ. عَاشُوا فِي مِصْرَ، وَأَجْبَرَهُمْ فِرْعَوْنُ عَلَى الْأَعْمَالِ الشَّاقَّةِ.",
+    "more": "وَ«إِسْرَائِيلُ» اسْمٌ آخَرُ لِلنَّبِيِّ يَعْقُوبَ عَلَيْهِ السَّلَامُ."
+   },
+   "aliases": {
+    "en": [
+     "Children of Israel",
+     "Israelites",
+     "Israelite"
+    ],
+    "ar": [
+     "بني إسرائيل",
+     "بنو إسرائيل",
+     "الإسرائيليين"
+    ]
+   },
+   "tr": "İsrailoğulları"
+  },
+  "moses-ancient-egyptians": {
+   "en": {
+    "title": "The Egyptians (Copts)",
+    "kindLabel": "People",
+    "periodLabel": "Ancient Egypt",
+    "summary": "The Egyptians were the local people of ancient Egypt. They are also called Copts.",
+    "more": "Most of them lived in villages along the River Nile and worked as farmers."
+   },
+   "ar": {
+    "title": "الْمِصْرِيُّونَ (الْقِبْطُ)",
+    "kindLabel": "شَعْبٌ",
+    "periodLabel": "مِصْرُ الْقَدِيمَةُ",
+    "summary": "الْمِصْرِيُّونَ هُمْ أَهْلُ مِصْرَ الْقَدِيمَةِ، وَيُسَمَّوْنَ أَيْضًا الْقِبْطَ.",
+    "more": "وَكَانَ أَكْثَرُهُمْ يَعِيشُونَ فِي قُرًى عَلَى ضِفَافِ النِّيلِ، وَيَعْمَلُونَ فِي الزِّرَاعَةِ."
+   },
+   "aliases": {
+    "en": [
+     "Egyptians",
+     "Egyptian",
+     "Copts"
+    ],
+    "ar": [
+     "المصريين",
+     "المصريون",
+     "المصري",
+     "مصريا",
+     "القبط"
+    ]
+   },
+   "tr": "Kıptîler"
+  },
+  "moses-pharaohs-magicians": {
+   "en": {
+    "title": "The Pharaoh’s magicians",
+    "kindLabel": "Group of people",
+    "periodLabel": "Ancient Egypt",
+    "summary": "The magicians worked for the Pharaoh. When the staff of Moses (pbuh) swallowed what they had made, they bowed down to Allah and believed.",
+    "more": "In ancient Egypt, magicians were also important scholars at the king’s court."
+   },
+   "ar": {
+    "title": "سَحَرَةُ فِرْعَوْنَ",
+    "kindLabel": "جَمَاعَةٌ مِنَ النَّاسِ",
+    "periodLabel": "مِصْرُ الْقَدِيمَةُ",
+    "summary": "كَانَ السَّحَرَةُ يَعْمَلُونَ عِنْدَ فِرْعَوْنَ. وَلَمَّا ابْتَلَعَتْ عَصَا مُوسَى عَلَيْهِ السَّلَامُ مَا صَنَعُوا، سَجَدُوا لِلهِ وَآمَنُوا.",
+    "more": "وَكَانَ السَّحَرَةُ فِي مِصْرَ الْقَدِيمَةِ مِنْ كِبَارِ الْعُلَمَاءِ فِي بَلَاطِ الْمَلِكِ."
+   },
+   "aliases": {
+    "en": [
+     "magicians"
+    ],
+    "ar": [
+     "سحرة",
+     "سحرته",
+     "سحرتي"
+    ]
+   },
+   "tr": "Firavun'un sihirbazları"
+  },
+  "moses-seti-i": {
+   "en": {
+    "title": "Seti I",
+    "kindLabel": "King of Egypt",
+    "periodLabel": "c. 1290–1279 BC",
+    "summary": "Seti I was a king (pharaoh) of ancient Egypt and the father of Ramses II. Some sources say he was the Pharaoh who made the Children of Israel suffer.",
+    "more": "He built a great temple at Abydos, in southern Egypt."
+   },
+   "ar": {
+    "title": "سِيتِي الْأَوَّلُ",
+    "kindLabel": "مَلِكُ مِصْرَ",
+    "periodLabel": "نَحْوَ 1290–1279 قَبْلَ الْمِيلَادِ",
+    "summary": "سِيتِي الْأَوَّلُ أَحَدُ فَرَاعِنَةِ مِصْرَ الْقَدِيمَةِ، وَهُوَ وَالِدُ رَمْسِيسَ الثَّانِي. وَتَذْكُرُ بَعْضُ الْمَصَادِرِ أَنَّهُ الْفِرْعَوْنُ الَّذِي اضْطَهَدَ بَنِي إِسْرَائِيلَ.",
+    "more": "وَقَدْ بَنَى مَعْبَدًا عَظِيمًا فِي أَبِيدُوس، فِي جَنُوبِ مِصْرَ."
+   },
+   "aliases": {
+    "en": [
+     "Seti I"
+    ],
+    "ar": [
+     "سيتي الأول"
+    ]
+   },
+   "tr": "I. Seti"
+  },
+  "moses-ramses-ii": {
+   "en": {
+    "title": "Ramses II",
+    "kindLabel": "King of Egypt",
+    "periodLabel": "c. 1279–1213 BC",
+    "summary": "Ramses II was a famous king (pharaoh) of ancient Egypt and the son of Seti I. Many historians think the Children of Israel left Egypt in his time.",
+    "more": "He ruled for a very long time and built many great temples."
+   },
+   "ar": {
+    "title": "رَمْسِيسُ الثَّانِي",
+    "kindLabel": "مَلِكُ مِصْرَ",
+    "periodLabel": "نَحْوَ 1279–1213 قَبْلَ الْمِيلَادِ",
+    "summary": "رَمْسِيسُ الثَّانِي مِنْ أَشْهَرِ فَرَاعِنَةِ مِصْرَ الْقَدِيمَةِ، وَهُوَ ابْنُ سِيتِي الْأَوَّلِ. وَيَرَى كَثِيرٌ مِنَ الْمُؤَرِّخِينَ أَنَّ بَنِي إِسْرَائِيلَ خَرَجُوا مِنْ مِصْرَ فِي عَهْدِهِ.",
+    "more": "حَكَمَ مُدَّةً طَوِيلَةً جِدًّا، وَبَنَى مَعَابِدَ عَظِيمَةً كَثِيرَةً."
+   },
+   "aliases": {
+    "en": [
+     "Ramses II"
+    ],
+    "ar": [
+     "رمسيس الثاني"
+    ]
+   },
+   "tr": "II. Ramses"
+  },
+  "moses-herodotus": {
+   "en": {
+    "title": "Herodotus",
+    "kindLabel": "Historian",
+    "periodLabel": "Ancient Greece",
+    "summary": "Herodotus was a famous Greek historian. He wrote that “Egypt is the gift of the Nile.”",
+    "more": "He is often called “the Father of History”."
+   },
+   "ar": {
+    "title": "هِيرُودُوت",
+    "kindLabel": "مُؤَرِّخٌ",
+    "periodLabel": "الْيُونَانُ الْقَدِيمَةُ",
+    "summary": "هِيرُودُوت مُؤَرِّخٌ يُونَانِيٌّ مَشْهُورٌ. وَقَدْ قَالَ: «مِصْرُ هِيَ هِبَةُ النِّيلِ».",
+    "more": "وَكَثِيرًا مَا يُلَقَّبُ بِـ«أَبِي التَّارِيخِ»."
+   },
+   "aliases": {
+    "en": [
+     "Herodotus"
+    ],
+    "ar": [
+     "هيرودوت"
+    ]
+   },
+   "tr": "Herodot"
+  },
+  "yunus-konya": {
+   "en": {
+    "title": "Konya",
+    "kindLabel": "City",
+    "periodLabel": "Capital of the Anatolian Seljuks",
+    "summary": "Konya is a city in central Anatolia. It was the capital of the Anatolian Seljuks.",
+    "more": "Mevlana lived and taught in Konya, and his tomb is there."
+   },
+   "ar": {
+    "title": "قُونْيَة",
+    "kindLabel": "مَدِينَةٌ",
+    "periodLabel": "عَاصِمَةُ سَلَاجِقَةِ الْأَنَاضُولِ",
+    "summary": "قُونْيَةُ مَدِينَةٌ فِي وَسَطِ الْأَنَاضُولِ. وَكَانَتْ عَاصِمَةَ سَلَاجِقَةِ الْأَنَاضُولِ.",
+    "more": "عَاشَ مَوْلَانَا فِي قُونْيَةَ وَعَلَّمَ فِيهَا، وَفِيهَا قَبْرُهُ."
+   },
+   "aliases": {
+    "en": [
+     "Konya"
+    ],
+    "ar": [
+     "قونية"
+    ]
+   }
+  },
+  "yunus-erzurum": {
+   "en": {
+    "title": "Erzurum",
+    "kindLabel": "City",
+    "periodLabel": "Eastern Anatolia",
+    "summary": "Erzurum is a city on a high plain in eastern Anatolia. In 1242, the Mongols captured it and killed its people.",
+    "more": "It is one of the coldest cities in Türkiye in winter."
+   },
+   "ar": {
+    "title": "أَرْضُرُوم",
+    "kindLabel": "مَدِينَةٌ",
+    "periodLabel": "شَرْقُ الْأَنَاضُولِ",
+    "summary": "أَرْضُرُومُ مَدِينَةٌ عَلَى هَضْبَةٍ عَالِيَةٍ فِي شَرْقِ الْأَنَاضُولِ. فِي عَامِ أَلْفٍ وَمِئَتَيْنِ وَاثْنَيْنِ وَأَرْبَعِينَ، اسْتَوْلَى عَلَيْهَا الْمُغُولُ وَقَتَلُوا أَهْلَهَا.",
+    "more": "وَهِيَ مِنْ أَبْرَدِ مُدُنِ تُرْكِيَا فِي الشِّتَاءِ."
+   },
+   "aliases": {
+    "en": [
+     "Erzurum"
+    ],
+    "ar": [
+     "أرضروم",
+     "إرزوروم"
+    ]
+   }
+  },
+  "yunus-sivas": {
+   "en": {
+    "title": "Sivas",
+    "kindLabel": "City",
+    "periodLabel": "Central Anatolia",
+    "summary": "Sivas is a city in central Anatolia. After the battle of Kösedağ in 1243, the Mongols destroyed and robbed it.",
+    "more": "It stands on the Kızılırmak, the longest river in Türkiye."
+   },
+   "ar": {
+    "title": "سِيوَاس",
+    "kindLabel": "مَدِينَةٌ",
+    "periodLabel": "وَسَطُ الْأَنَاضُولِ",
+    "summary": "سِيوَاسُ مَدِينَةٌ فِي وَسَطِ الْأَنَاضُولِ. بَعْدَ مَعْرَكَةِ كُوسَه دَاغ عَامَ أَلْفٍ وَمِئَتَيْنِ وَثَلَاثَةٍ وَأَرْبَعِينَ، دَمَّرَهَا الْمُغُولُ وَنَهَبُوهَا.",
+    "more": "وَتَقَعُ عَلَى نَهْرِ قِزِلْ إِرْمَاق، أَطْوَلِ نَهْرٍ فِي تُرْكِيَا."
+   },
+   "aliases": {
+    "en": [
+     "Sivas"
+    ],
+    "ar": [
+     "سيواس",
+     "سيفاس"
+    ]
+   }
+  },
+  "yunus-kayseri": {
+   "en": {
+    "title": "Kayseri",
+    "kindLabel": "City",
+    "periodLabel": "Central Anatolia",
+    "summary": "Kayseri is an old city in central Anatolia. After the battle of Kösedağ in 1243, the Mongols destroyed and robbed it.",
+    "more": "It lies at the foot of Mount Erciyes, a high old volcano."
+   },
+   "ar": {
+    "title": "قَيْصَرِي",
+    "kindLabel": "مَدِينَةٌ",
+    "periodLabel": "وَسَطُ الْأَنَاضُولِ",
+    "summary": "قَيْصَرِي مَدِينَةٌ قَدِيمَةٌ فِي وَسَطِ الْأَنَاضُولِ. بَعْدَ مَعْرَكَةِ كُوسَه دَاغ عَامَ أَلْفٍ وَمِئَتَيْنِ وَثَلَاثَةٍ وَأَرْبَعِينَ، دَمَّرَهَا الْمُغُولُ وَنَهَبُوهَا.",
+    "more": "وَتَقَعُ عِنْدَ سَفْحِ جَبَلِ أَرْجِيَسَ، وَهُوَ بُرْكَانٌ قَدِيمٌ عَالٍ."
+   },
+   "aliases": {
+    "en": [
+     "Kayseri"
+    ],
+    "ar": [
+     "قيصري"
+    ]
+   }
+  },
+  "yunus-erzincan": {
+   "en": {
+    "title": "Erzincan",
+    "kindLabel": "City",
+    "periodLabel": "Eastern Anatolia",
+    "summary": "Erzincan is a city in eastern Anatolia. After the battle of Kösedağ in 1243, the Mongols destroyed and robbed it.",
+    "more": "It lies in a green plain between high mountains, near the Euphrates River."
+   },
+   "ar": {
+    "title": "أَرْزِنْجَان",
+    "kindLabel": "مَدِينَةٌ",
+    "periodLabel": "شَرْقُ الْأَنَاضُولِ",
+    "summary": "أَرْزِنْجَانُ مَدِينَةٌ فِي شَرْقِ الْأَنَاضُولِ. بَعْدَ مَعْرَكَةِ كُوسَه دَاغ عَامَ أَلْفٍ وَمِئَتَيْنِ وَثَلَاثَةٍ وَأَرْبَعِينَ، دَمَّرَهَا الْمُغُولُ وَنَهَبُوهَا.",
+    "more": "وَتَقَعُ فِي سَهْلٍ أَخْضَرَ بَيْنَ جِبَالٍ عَالِيَةٍ، قُرْبَ نَهْرِ الْفُرَاتِ."
+   },
+   "aliases": {
+    "en": [
+     "Erzincan"
+    ],
+    "ar": [
+     "أرزنجان",
+     "إرزنجان"
+    ]
+   }
+  },
+  "yunus-anatolia": {
+   "en": {
+    "title": "Anatolia",
+    "kindLabel": "Land",
+    "periodLabel": "The Asian part of Türkiye",
+    "summary": "Anatolia is a large land between the Black Sea and the Mediterranean Sea. Yunus Emre was born and lived here, and he travelled to many of its cities.",
+    "more": "Today, most of Türkiye is in Anatolia."
+   },
+   "ar": {
+    "title": "الْأَنَاضُول",
+    "kindLabel": "أَرْضٌ",
+    "periodLabel": "الْجُزْءُ الْآسْيَوِيُّ مِنْ تُرْكِيَا",
+    "summary": "الْأَنَاضُولُ أَرْضٌ وَاسِعَةٌ بَيْنَ الْبَحْرِ الْأَسْوَدِ وَالْبَحْرِ الْأَبْيَضِ الْمُتَوَسِّطِ. وُلِدَ فِيهَا يُونُسُ إِمْرَه وَعَاشَ، وَسَافَرَ إِلَى كَثِيرٍ مِنْ مُدُنِهَا.",
+    "more": "وَمُعْظَمُ أَرَاضِي تُرْكِيَا الْيَوْمَ فِي الْأَنَاضُولِ."
+   },
+   "aliases": {
+    "en": [
+     "Anatolia"
+    ],
+    "ar": [
+     "الأناضول"
+    ]
+   },
+   "tr": "Anadolu"
+  },
+  "yunus-syria": {
+   "en": {
+    "title": "Syria",
+    "kindLabel": "Region",
+    "periodLabel": "South of Anatolia",
+    "summary": "Syria is a land south of Anatolia, near the Mediterranean Sea. Yunus Emre travelled there.",
+    "more": "Damascus and Aleppo were its great cities."
+   },
+   "ar": {
+    "title": "سُورِيَا",
+    "kindLabel": "مِنْطَقَةٌ",
+    "periodLabel": "جَنُوبَ الْأَنَاضُولِ",
+    "summary": "سُورِيَا أَرْضٌ تَقَعُ جَنُوبَ الْأَنَاضُولِ، قُرْبَ الْبَحْرِ الْأَبْيَضِ الْمُتَوَسِّطِ. وَقَدْ سَافَرَ إِلَيْهَا يُونُسُ إِمْرَه.",
+    "more": "وَمِنْ أَشْهَرِ مُدُنِهَا دِمَشْقُ وَحَلَبُ."
+   },
+   "aliases": {
+    "en": [
+     "Syria"
+    ],
+    "ar": [
+     "سوريا"
+    ]
+   },
+   "tr": "Suriye"
+  },
+  "yunus-azerbaijan": {
+   "en": {
+    "title": "Azerbaijan",
+    "kindLabel": "Region",
+    "periodLabel": "East of Anatolia",
+    "summary": "Azerbaijan is a land east of Anatolia, near the Caspian Sea. Yunus Emre travelled there, and from there the Mongols attacked the Anatolian Seljuks.",
+    "more": "Today, this old land is part of Iran and of the country of Azerbaijan."
+   },
+   "ar": {
+    "title": "أَذْرَبِيجَان",
+    "kindLabel": "مِنْطَقَةٌ",
+    "periodLabel": "شَرْقَ الْأَنَاضُولِ",
+    "summary": "أَذْرَبِيجَانُ أَرْضٌ تَقَعُ شَرْقَ الْأَنَاضُولِ، قُرْبَ بَحْرِ قَزْوِينَ. سَافَرَ إِلَيْهَا يُونُسُ إِمْرَه، وَمِنْهَا هَاجَمَ الْمُغُولُ سَلَاجِقَةَ الْأَنَاضُولِ.",
+    "more": "وَهَذِهِ الْأَرْضُ الْقَدِيمَةُ الْيَوْمَ جُزْءٌ مِنْ إِيرَانَ وَمِنْ دَوْلَةِ أَذْرَبِيجَانَ."
+   },
+   "aliases": {
+    "en": [
+     "Azerbaijan"
+    ],
+    "ar": [
+     "أذربيجان"
+    ]
+   },
+   "tr": "Azerbaycan"
+  },
+  "yunus-middle-east": {
+   "en": {
+    "title": "The Middle East",
+    "kindLabel": "Region",
+    "periodLabel": "Western Asia and Egypt",
+    "summary": "The Middle East is a large area in western Asia and Egypt. When Sultan Alaeddin I died, the Anatolian Seljuks were the strongest and largest state in the Middle East.",
+    "more": "Today, it has countries like Türkiye, Iran, Iraq, Syria and Egypt."
+   },
+   "ar": {
+    "title": "الشَّرْقُ الْأَوْسَطُ",
+    "kindLabel": "مِنْطَقَةٌ",
+    "periodLabel": "غَرْبُ آسِيَا وَمِصْرُ",
+    "summary": "الشَّرْقُ الْأَوْسَطُ مِنْطَقَةٌ كَبِيرَةٌ فِي غَرْبِ آسِيَا وَمِصْرَ. وَعِنْدَ وَفَاةِ السُّلْطَانِ عَلَاءِ الدِّينِ الْأَوَّلِ، كَانَتْ دَوْلَةُ سَلَاجِقَةِ الْأَنَاضُولِ أَقْوَى دَوْلَةٍ فِيهِ وَأَكْبَرَهَا.",
+    "more": "وَفِيهِ الْيَوْمَ دُوَلٌ مِثْلُ تُرْكِيَا وَإِيرَانَ وَالْعِرَاقِ وَسُورِيَا وَمِصْرَ."
+   },
+   "aliases": {
+    "en": [
+     "Middle East"
+    ],
+    "ar": [
+     "الشرق الأوسط"
+    ]
+   },
+   "tr": "Orta Doğu"
+  },
+  "yunus-central-asia": {
+   "en": {
+    "title": "Central Asia",
+    "kindLabel": "Region",
+    "periodLabel": "East of the Caspian Sea",
+    "summary": "Central Asia is a large land of steppes and deserts east of the Caspian Sea. Because of the Mongol invasion, many people moved from here to Anatolia.",
+    "more": "It is the old homeland of the Turkic peoples."
+   },
+   "ar": {
+    "title": "آسِيَا الْوُسْطَى",
+    "kindLabel": "مِنْطَقَةٌ",
+    "periodLabel": "شَرْقَ بَحْرِ قَزْوِينَ",
+    "summary": "آسِيَا الْوُسْطَى أَرْضٌ وَاسِعَةٌ مِنَ السُّهُوبِ وَالصَّحَارِي شَرْقَ بَحْرِ قَزْوِينَ. وَبِسَبَبِ الْغَزْوِ الْمُغُولِيِّ، هَاجَرَ مِنْهَا كَثِيرٌ مِنَ النَّاسِ إِلَى الْأَنَاضُولِ.",
+    "more": "وَهِيَ الْمَوْطِنُ الْقَدِيمُ لِلشُّعُوبِ التُّرْكِيَّةِ."
+   },
+   "aliases": {
+    "en": [
+     "Central Asia"
+    ],
+    "ar": [
+     "آسيا الوسطى"
+    ]
+   },
+   "tr": "Orta Asya"
+  },
+  "yunus-turkestan": {
+   "en": {
+    "title": "Turkestan",
+    "kindLabel": "Region",
+    "periodLabel": "Central Asia",
+    "summary": "Turkestan means \"the land of the Turks\". It was the name of a large part of Central Asia, and under Mongol pressure, sheikhs came from here to Anatolia.",
+    "more": "Ahmed Yesevi, a famous Turkish Sufi, lived in Turkestan."
+   },
+   "ar": {
+    "title": "تُرْكِسْتَان",
+    "kindLabel": "مِنْطَقَةٌ",
+    "periodLabel": "آسِيَا الْوُسْطَى",
+    "summary": "اسْمُ تُرْكِسْتَانَ يَعْنِي «بِلَادَ التُّرْكِ»، وَكَانَ يُطْلَقُ عَلَى جُزْءٍ كَبِيرٍ مِنْ آسِيَا الْوُسْطَى. وَمِنْهَا جَاءَ شُيُوخٌ إِلَى الْأَنَاضُولِ تَحْتَ ضَغْطِ الْمُغُولِ.",
+    "more": "وَعَاشَ فِيهَا الصُّوفِيُّ التُّرْكِيُّ الْمَشْهُورُ أَحْمَدُ يَسَوِي."
+   },
+   "aliases": {
+    "en": [
+     "Turkestan"
+    ],
+    "ar": [
+     "تركستان"
+    ]
+   },
+   "tr": "Türkistan"
+  },
+  "yunus-khorasan": {
+   "en": {
+    "title": "Khorasan",
+    "kindLabel": "Region",
+    "periodLabel": "North-east Iran and Central Asia",
+    "summary": "Khorasan is a large old land in north-east Iran and the areas near it. Under Mongol pressure, sheikhs came from here to Anatolia.",
+    "more": "Nishapur, Merv and Herat were some of its great old cities."
+   },
+   "ar": {
+    "title": "خُرَاسَان",
+    "kindLabel": "مِنْطَقَةٌ",
+    "periodLabel": "شَمَالُ شَرْقِ إِيرَانَ وَآسِيَا الْوُسْطَى",
+    "summary": "خُرَاسَانُ أَرْضٌ قَدِيمَةٌ وَاسِعَةٌ فِي شَمَالِ شَرْقِ إِيرَانَ وَمَا حَوْلَهَا. وَمِنْهَا جَاءَ شُيُوخٌ إِلَى الْأَنَاضُولِ تَحْتَ ضَغْطِ الْمُغُولِ.",
+    "more": "وَمِنْ مُدُنِهَا الْكَبِيرَةِ الْقَدِيمَةِ نَيْسَابُورُ وَمَرْوُ وَهَرَاةُ."
+   },
+   "aliases": {
+    "en": [
+     "Khorasan"
+    ],
+    "ar": [
+     "خراسان"
+    ]
+   },
+   "tr": "Horasan"
+  },
+  "yunus-iran": {
+   "en": {
+    "title": "Iran",
+    "kindLabel": "Country",
+    "periodLabel": "East of Anatolia",
+    "summary": "Iran is a large country east of Anatolia. The Ilkhanate, a Mongol state, had its centre in Iran.",
+    "more": "The main language of Iran is Persian."
+   },
+   "ar": {
+    "title": "إِيرَان",
+    "kindLabel": "بَلَدٌ",
+    "periodLabel": "شَرْقَ الْأَنَاضُولِ",
+    "summary": "إِيرَانُ بَلَدٌ كَبِيرٌ يَقَعُ شَرْقَ الْأَنَاضُولِ. وَكَانَ مَرْكَزُ الدَّوْلَةِ الْإِيلْخَانِيَّةِ الْمُغُولِيَّةِ فِي إِيرَانَ.",
+    "more": "وَاللُّغَةُ الرَّئِيسِيَّةُ فِي إِيرَانَ هِيَ الْفَارِسِيَّةُ."
+   },
+   "aliases": {
+    "en": [
+     "Iran"
+    ],
+    "ar": [
+     "إيران"
+    ]
+   },
+   "tr": "İran"
+  },
+  "yunus-transoxiana": {
+   "en": {
+    "title": "Transoxiana",
+    "kindLabel": "Region",
+    "periodLabel": "Central Asia",
+    "summary": "Transoxiana is the land between two great rivers of Central Asia, the Amu Darya and the Syr Darya. Under Mongol pressure, sheikhs came from here to Anatolia.",
+    "more": "Bukhara and Samarkand are its most famous cities."
+   },
+   "ar": {
+    "title": "مَا وَرَاءَ النَّهْرِ",
+    "kindLabel": "مِنْطَقَةٌ",
+    "periodLabel": "آسِيَا الْوُسْطَى",
+    "summary": "مَا وَرَاءَ النَّهْرِ هِيَ الْأَرْضُ الَّتِي تَقَعُ بَيْنَ نَهْرَيْ جَيْحُونَ وَسَيْحُونَ فِي آسِيَا الْوُسْطَى. وَمِنْهَا جَاءَ شُيُوخٌ إِلَى الْأَنَاضُولِ تَحْتَ ضَغْطِ الْمُغُولِ.",
+    "more": "وَأَشْهَرُ مُدُنِهَا بُخَارَى وَسَمَرْقَنْدُ."
+   },
+   "aliases": {
+    "en": [
+     "Transoxiana"
+    ],
+    "ar": [
+     "ما وراء النهر"
+    ]
+   },
+   "tr": "Maveraünnehir"
+  },
+  "yunus-khwarezm": {
+   "en": {
+    "title": "Khwarezm",
+    "kindLabel": "Region",
+    "periodLabel": "Central Asia",
+    "summary": "Khwarezm is an old land on the lower Amu Darya River, south of the Aral Sea. Under Mongol pressure, sheikhs came from here to Anatolia.",
+    "more": "It was a land of rich oases in the middle of a desert."
+   },
+   "ar": {
+    "title": "خُوَارِزْم",
+    "kindLabel": "مِنْطَقَةٌ",
+    "periodLabel": "آسِيَا الْوُسْطَى",
+    "summary": "خُوَارِزْمُ أَرْضٌ قَدِيمَةٌ عَلَى الْمَجْرَى الْأَدْنَى لِنَهْرِ جَيْحُونَ، جَنُوبَ بَحْرِ آرَالَ. وَمِنْهَا جَاءَ شُيُوخٌ إِلَى الْأَنَاضُولِ تَحْتَ ضَغْطِ الْمُغُولِ.",
+    "more": "وَكَانَتْ أَرْضَ وَاحَاتٍ غَنِيَّةٍ وَسَطَ الصَّحْرَاءِ."
+   },
+   "aliases": {
+    "en": [
+     "Khwarezm"
+    ],
+    "ar": [
+     "خوارزم"
+    ]
+   },
+   "tr": "Harezm"
+  },
+  "yunus-kosedag": {
+   "en": {
+    "title": "Kösedağ",
+    "kindLabel": "Mountain",
+    "periodLabel": "Battle of 1243",
+    "summary": "Kösedağ is a mountain about 80 km north-east of Sivas. Here, in 1243, the Mongols defeated the army of the Anatolian Seljuks.",
+    "more": "This defeat opened the way for the Mongols into Anatolia."
+   },
+   "ar": {
+    "title": "كُوسَه دَاغ",
+    "kindLabel": "جَبَلٌ",
+    "periodLabel": "مَعْرَكَةُ عَامِ 1243",
+    "summary": "كُوسَه دَاغ جَبَلٌ يَقَعُ عَلَى بُعْدِ نَحْوِ ثَمَانِينَ كِيلُومِتْرًا شَمَالَ شَرْقِ سِيوَاسَ. وَعِنْدَهُ هَزَمَ الْمُغُولُ جَيْشَ سَلَاجِقَةِ الْأَنَاضُولِ عَامَ أَلْفٍ وَمِئَتَيْنِ وَثَلَاثَةٍ وَأَرْبَعِينَ.",
+    "more": "وَقَدْ فَتَحَتْ هَذِهِ الْهَزِيمَةُ الطَّرِيقَ أَمَامَ الْمُغُولِ إِلَى الْأَنَاضُولِ."
+   },
+   "aliases": {
+    "en": [
+     "Kösedağ"
+    ],
+    "ar": [
+     "كوسه داغ"
+    ]
+   }
+  },
+  "yunus-mediterranean": {
+   "en": {
+    "title": "Mediterranean Sea",
+    "kindLabel": "Sea",
+    "periodLabel": "South of Anatolia",
+    "summary": "The Mediterranean Sea is a large sea south of Anatolia. Sultan Alaeddin I built a navy on this sea.",
+    "more": "On its coast is Alanya, a port town that Alaeddin I took for his state."
+   },
+   "ar": {
+    "title": "الْبَحْرُ الْأَبْيَضُ الْمُتَوَسِّطُ",
+    "kindLabel": "بَحْرٌ",
+    "periodLabel": "جَنُوبَ الْأَنَاضُولِ",
+    "summary": "الْبَحْرُ الْأَبْيَضُ الْمُتَوَسِّطُ بَحْرٌ كَبِيرٌ جَنُوبَ الْأَنَاضُولِ. وَقَدْ أَنْشَأَ السُّلْطَانُ عَلَاءُ الدِّينِ الْأَوَّلُ أُسْطُولًا بَحْرِيًّا فِيهِ.",
+    "more": "وَعَلَى سَاحِلِهِ مَدِينَةُ أَلَانْيَا، الَّتِي ضَمَّهَا عَلَاءُ الدِّينِ الْأَوَّلُ إِلَى دَوْلَتِهِ."
+   },
+   "aliases": {
+    "en": [
+     "Mediterranean"
+    ],
+    "ar": [
+     "الأبيض المتوسط"
+    ]
+   },
+   "tr": "Akdeniz"
+  },
+  "yunus-black-sea": {
+   "en": {
+    "title": "Black Sea",
+    "kindLabel": "Sea",
+    "periodLabel": "North of Anatolia",
+    "summary": "The Black Sea is a large sea north of Anatolia. Sultan Alaeddin I also had a navy on this sea.",
+    "more": "Sinop was an important Seljuk port on its coast."
+   },
+   "ar": {
+    "title": "الْبَحْرُ الْأَسْوَدُ",
+    "kindLabel": "بَحْرٌ",
+    "periodLabel": "شَمَالَ الْأَنَاضُولِ",
+    "summary": "الْبَحْرُ الْأَسْوَدُ بَحْرٌ كَبِيرٌ شَمَالَ الْأَنَاضُولِ. وَكَانَ لِلسُّلْطَانِ عَلَاءِ الدِّينِ الْأَوَّلِ أُسْطُولٌ بَحْرِيٌّ فِيهِ أَيْضًا.",
+    "more": "وَكَانَتْ سِينُوبُ مِينَاءً سَلْجُوقِيًّا مُهِمًّا عَلَى سَاحِلِهِ."
+   },
+   "aliases": {
+    "en": [
+     "Black Sea",
+     "Black Seas"
+    ],
+    "ar": [
+     "البحر الأسود"
+    ]
+   },
+   "tr": "Karadeniz"
+  },
+  "yunus-tekke": {
+   "en": {
+    "title": "Tekke (dervish house)",
+    "kindLabel": "Building",
+    "periodLabel": "Sufi life",
+    "summary": "A tekke was a house where dervishes lived and learned under a sheikh. Yunus Emre trained at the tekke of his teacher, Taptuk Emre.",
+    "more": "Tekkes also helped poor people and travellers and gave them food."
+   },
+   "ar": {
+    "title": "التَّكِيَّةُ (دَارُ الدَّرَاوِيشِ)",
+    "kindLabel": "مَبْنًى",
+    "periodLabel": "حَيَاةُ الصُّوفِيَّةِ",
+    "summary": "التَّكِيَّةُ دَارٌ كَانَ الدَّرَاوِيشُ يَعِيشُونَ فِيهَا وَيَتَعَلَّمُونَ تَحْتَ إِرْشَادِ شَيْخٍ. وَقَدْ تَعَلَّمَ يُونُسُ إِمْرَه فِي تَكِيَّةِ مُعَلِّمِهِ تَابْتُوك إِمْرَه.",
+    "more": "وَكَانَتِ التَّكَايَا تُسَاعِدُ الْفُقَرَاءَ وَالْمُسَافِرِينَ، وَتُقَدِّمُ لَهُمُ الطَّعَامَ."
+   },
+   "aliases": {
+    "en": [
+     "dervish house",
+     "tekke"
+    ],
+    "ar": [
+     "بيوت الدراويش",
+     "دار الدراويش",
+     "تكية",
+     "تكايا"
+    ]
+   },
+   "tr": "Tekke"
+  },
+  "yunus-madrasa": {
+   "en": {
+    "title": "Madrasa",
+    "kindLabel": "School",
+    "periodLabel": "Islamic education",
+    "summary": "A madrasa was a school for the Islamic sciences. Some sources say that Yunus Emre studied at a madrasa.",
+    "more": "The Seljuks built many fine stone madrasas in Anatolia."
+   },
+   "ar": {
+    "title": "الْمَدْرَسَةُ",
+    "kindLabel": "مَدْرَسَةٌ",
+    "periodLabel": "التَّعْلِيمُ الْإِسْلَامِيُّ",
+    "summary": "الْمَدْرَسَةُ مَكَانٌ لِتَعْلِيمِ الْعُلُومِ الْإِسْلَامِيَّةِ. وَتَذْكُرُ بَعْضُ الْمَصَادِرِ أَنَّ يُونُسَ إِمْرَه دَرَسَ فِي مَدْرَسَةٍ.",
+    "more": "وَقَدْ بَنَى السَّلَاجِقَةُ فِي الْأَنَاضُولِ مَدَارِسَ جَمِيلَةً كَثِيرَةً مِنَ الْحَجَرِ."
+   },
+   "aliases": {
+    "en": [
+     "madrasa"
+    ],
+    "ar": [
+     "مدارس",
+     "المدرسة الدينية"
+    ]
+   },
+   "tr": "Medrese"
+  },
+  "yunus-yunus-emre": {
+   "en": {
+    "title": "Yunus Emre",
+    "kindLabel": "Poet and dervish",
+    "periodLabel": "About 1240–1320",
+    "summary": "Yunus Emre was a great Turkish poet and dervish from Anatolia. He wrote his poems in simple Turkish, about love for Allah and good morals.",
+    "more": "Many towns in Anatolia say that his grave is there."
+   },
+   "ar": {
+    "title": "يُونُسُ إِمْرَه",
+    "kindLabel": "شَاعِرٌ وَدَرْوِيشٌ",
+    "periodLabel": "نَحْوَ 1240–1320",
+    "summary": "كَانَ يُونُسُ إِمْرَه شَاعِرًا تُرْكِيًّا عَظِيمًا وَدَرْوِيشًا مِنَ الْأَنَاضُولِ. كَتَبَ قَصَائِدَهُ بِلُغَةٍ تُرْكِيَّةٍ بَسِيطَةٍ عَنْ حُبِّ اللَّهِ وَالْأَخْلَاقِ الْحَسَنَةِ.",
+    "more": "وَتَقُولُ مُدُنٌ كَثِيرَةٌ فِي الْأَنَاضُولِ إِنَّ قَبْرَهُ فِيهَا."
+   },
+   "aliases": {
+    "en": [
+     "Yunus Emre",
+     "Yunus"
+    ],
+    "ar": [
+     "يونس إمره",
+     "يونس"
+    ]
+   }
+  },
+  "yunus-taptuk-emre": {
+   "en": {
+    "title": "Taptuk Emre",
+    "kindLabel": "Sheikh (dervish teacher)",
+    "periodLabel": "13th century",
+    "summary": "Taptuk Emre was a sheikh and the teacher of Yunus Emre. Yunus served at his dervish house for forty years.",
+    "more": "Yunus Emre speaks of Taptuk with love in his poems."
+   },
+   "ar": {
+    "title": "تَابْتُوك إِمْرَه",
+    "kindLabel": "شَيْخٌ (مُعَلِّمُ الدَّرَاوِيشِ)",
+    "periodLabel": "الْقَرْنُ الثَّالِثَ عَشَرَ",
+    "summary": "كَانَ تَابْتُوك إِمْرَه شَيْخًا، وَكَانَ مُعَلِّمَ يُونُسَ إِمْرَه. وَقَدْ خَدَمَ يُونُسُ فِي دَارِهِ لِلدَّرَاوِيشِ أَرْبَعِينَ عَامًا.",
+    "more": "وَيَذْكُرُ يُونُسُ إِمْرَه شَيْخَهُ تَابْتُوك بِمَحَبَّةٍ فِي قَصَائِدِهِ."
+   },
+   "aliases": {
+    "en": [
+     "Taptuk Emre",
+     "Taptuk"
+    ],
+    "ar": [
+     "تابتوك إمره",
+     "تابتوك"
+    ]
+   }
+  },
+  "yunus-mevlana-rumi": {
+   "en": {
+    "title": "Mevlana Celaleddin Rumi",
+    "kindLabel": "Scholar and poet",
+    "periodLabel": "Died 1273",
+    "summary": "Mevlana Celaleddin Rumi was a great Muslim scholar and Sufi poet. He lived at the same time as Yunus Emre and died in 1273.",
+    "more": "He lived in Konya, and many people visit his tomb there."
+   },
+   "ar": {
+    "title": "مَوْلَانَا جَلَالُ الدِّينِ الرُّومِيُّ",
+    "kindLabel": "عَالِمٌ وَشَاعِرٌ",
+    "periodLabel": "تُوُفِّيَ عَامَ 1273",
+    "summary": "كَانَ مَوْلَانَا جَلَالُ الدِّينِ الرُّومِيُّ عَالِمًا مُسْلِمًا كَبِيرًا وَشَاعِرًا صُوفِيًّا. عَاشَ فِي زَمَنِ يُونُسَ إِمْرَه، وَتُوُفِّيَ عَامَ أَلْفٍ وَمِئَتَيْنِ وَثَلَاثَةٍ وَسَبْعِينَ.",
+    "more": "عَاشَ فِي قُونْيَةَ، وَيَزُورُ قَبْرَهُ فِيهَا كَثِيرٌ مِنَ النَّاسِ."
+   },
+   "aliases": {
+    "en": [
+     "Mevlana"
+    ],
+    "ar": [
+     "مولانا"
+    ]
+   },
+   "tr": "Mevlânâ Celâleddîn-i Rûmî"
+  },
+  "yunus-haci-bektas-veli": {
+   "en": {
+    "title": "Hacı Bektaş-ı Veli",
+    "kindLabel": "Sufi teacher",
+    "periodLabel": "13th century",
+    "summary": "Hacı Bektaş-ı Veli was a famous Sufi teacher in Anatolia. He lived at the same time as Yunus Emre.",
+    "more": "A town in central Anatolia, Hacıbektaş, carries his name."
+   },
+   "ar": {
+    "title": "حَاجِي بَكْتَاش وَلِيّ",
+    "kindLabel": "مُعَلِّمٌ صُوفِيٌّ",
+    "periodLabel": "الْقَرْنُ الثَّالِثَ عَشَرَ",
+    "summary": "كَانَ حَاجِي بَكْتَاش وَلِيّ مُعَلِّمًا صُوفِيًّا مَشْهُورًا فِي الْأَنَاضُولِ. وَعَاشَ فِي زَمَنِ يُونُسَ إِمْرَه.",
+    "more": "وَتَحْمِلُ اسْمَهُ بَلْدَةٌ فِي وَسَطِ الْأَنَاضُولِ، هِيَ بَلْدَةُ حَاجِي بَكْتَاش."
+   },
+   "aliases": {
+    "en": [
+     "Hacı Bektaş-ı Veli"
+    ],
+    "ar": [
+     "حاجي بكتاش"
+    ]
+   }
+  },
+  "yunus-saru-saltuk": {
+   "en": {
+    "title": "Saru Saltuk",
+    "kindLabel": "Dervish",
+    "periodLabel": "13th century",
+    "summary": "Saru Saltuk was a Turkish dervish. He lived at the same time as Yunus Emre.",
+    "more": "Stories say that he travelled west to the Balkans with groups of Turkmen."
+   },
+   "ar": {
+    "title": "سَارُو سَالْتُوك",
+    "kindLabel": "دَرْوِيشٌ",
+    "periodLabel": "الْقَرْنُ الثَّالِثَ عَشَرَ",
+    "summary": "كَانَ سَارُو سَالْتُوك دَرْوِيشًا تُرْكِيًّا، وَعَاشَ فِي زَمَنِ يُونُسَ إِمْرَه.",
+    "more": "وَتَرْوِي الْحِكَايَاتُ أَنَّهُ سَافَرَ غَرْبًا إِلَى الْبَلْقَانِ مَعَ جَمَاعَاتٍ مِنَ التُّرْكُمَانِ."
+   },
+   "aliases": {
+    "en": [
+     "Saru Saltuk"
+    ],
+    "ar": [
+     "سارو سالتوك"
+    ]
+   },
+   "tr": "Sarı Saltuk"
+  },
+  "yunus-alaeddin-keykubad-i": {
+   "en": {
+    "title": "Sultan Alaeddin I",
+    "kindLabel": "Sultan of the Anatolian Seljuks",
+    "periodLabel": "Ruled 1220–1237",
+    "summary": "Alaeddin I was a sultan of the Anatolian Seljuks. His rule was their strongest time, and he built a navy in the Mediterranean and Black Seas.",
+    "more": "Many stone caravanserais, inns for travellers on the trade roads, were built in his time."
+   },
+   "ar": {
+    "title": "السُّلْطَانُ عَلَاءُ الدِّينِ الْأَوَّلُ",
+    "kindLabel": "سُلْطَانُ سَلَاجِقَةِ الْأَنَاضُولِ",
+    "periodLabel": "حَكَمَ 1220–1237",
+    "summary": "كَانَ عَلَاءُ الدِّينِ الْأَوَّلُ سُلْطَانًا مِنْ سَلَاجِقَةِ الْأَنَاضُولِ. وَكَانَ عَهْدُهُ أَقْوَى فَتَرَاتِهِمْ، وَقَدْ أَنْشَأَ أُسْطُولًا بَحْرِيًّا فِي الْبَحْرِ الْأَبْيَضِ الْمُتَوَسِّطِ وَالْبَحْرِ الْأَسْوَدِ.",
+    "more": "وَبُنِيَتْ فِي عَهْدِهِ خَانَاتٌ حَجَرِيَّةٌ كَثِيرَةٌ لِلْمُسَافِرِينَ عَلَى طُرُقِ التِّجَارَةِ."
+   },
+   "aliases": {
+    "en": [
+     "Alaeddin I"
+    ],
+    "ar": [
+     "علاء الدين الأول"
+    ]
+   },
+   "tr": "I. Alâeddin Keykubad"
+  },
+  "yunus-giyaseddin-keyhusrev-ii": {
+   "en": {
+    "title": "Giyaseddin Keyhüsrev II",
+    "kindLabel": "Sultan of the Anatolian Seljuks",
+    "periodLabel": "Ruled 1237–1246",
+    "summary": "Giyaseddin Keyhüsrev II was the son of Alaeddin I and a sultan of the Anatolian Seljuks. Because of his poor rule, the state began to grow weak.",
+    "more": "In his time, the Mongols defeated the Seljuk army at Kösedağ."
+   },
+   "ar": {
+    "title": "غِيَاثُ الدِّينِ كَيْخُسْرَوْ الثَّانِي",
+    "kindLabel": "سُلْطَانُ سَلَاجِقَةِ الْأَنَاضُولِ",
+    "periodLabel": "حَكَمَ 1237–1246",
+    "summary": "كَانَ غِيَاثُ الدِّينِ كَيْخُسْرَوْ الثَّانِي ابْنَ عَلَاءِ الدِّينِ الْأَوَّلِ، وَسُلْطَانًا مِنْ سَلَاجِقَةِ الْأَنَاضُولِ. وَبِسَبَبِ سُوءِ إِدَارَتِهِ بَدَأَتِ الدَّوْلَةُ تَضْعُفُ.",
+    "more": "وَفِي عَهْدِهِ هَزَمَ الْمُغُولُ الْجَيْشَ السَّلْجُوقِيَّ فِي كُوسَه دَاغ."
+   },
+   "aliases": {
+    "en": [
+     "Giyaseddin Keyhüsrev II"
+    ],
+    "ar": [
+     "غياث الدين كيخسرو"
+    ]
+   },
+   "tr": "II. Gıyaseddin Keyhüsrev"
+  },
+  "yunus-baba-ilyas": {
+   "en": {
+    "title": "Baba İlyas",
+    "kindLabel": "Turkmen religious leader",
+    "periodLabel": "13th century",
+    "summary": "Baba İlyas was a religious and Sufi leader among the Turkmen in Anatolia. He started a movement that was not Sunni, and Baba İshak was his follower.",
+    "more": "It is said that he came from Khorasan and lived near Amasya."
+   },
+   "ar": {
+    "title": "بَابَا إِلْيَاس",
+    "kindLabel": "قَائِدٌ دِينِيٌّ تُرْكُمَانِيٌّ",
+    "periodLabel": "الْقَرْنُ الثَّالِثَ عَشَرَ",
+    "summary": "كَانَ بَابَا إِلْيَاسُ قَائِدًا دِينِيًّا صُوفِيًّا بَيْنَ التُّرْكُمَانِ فِي الْأَنَاضُولِ. أَسَّسَ حَرَكَةً دِينِيَّةً غَيْرَ سُنِّيَّةٍ، وَكَانَ بَابَا إِسْحَاقُ مِنْ مُرِيدِيهِ.",
+    "more": "وَيُقَالُ إِنَّهُ جَاءَ مِنْ خُرَاسَانَ، وَعَاشَ قُرْبَ مَدِينَةِ أَمَاسْيَا."
+   },
+   "aliases": {
+    "en": [
+     "Baba İlyas"
+    ],
+    "ar": [
+     "بابا إلياس"
+    ]
+   }
+  },
+  "yunus-baba-ishak": {
+   "en": {
+    "title": "Baba İshak",
+    "kindLabel": "Turkmen leader",
+    "periodLabel": "Revolt of 1240",
+    "summary": "Baba İshak was a follower of Baba İlyas. In 1240, he led the Turkmen in a revolt against the Anatolian Seljuks.",
+    "more": "This revolt is known as the Babai revolt."
+   },
+   "ar": {
+    "title": "بَابَا إِسْحَاق",
+    "kindLabel": "قَائِدٌ تُرْكُمَانِيٌّ",
+    "periodLabel": "ثَوْرَةُ عَامِ 1240",
+    "summary": "كَانَ بَابَا إِسْحَاقُ مُرِيدًا لِبَابَا إِلْيَاسَ. وَفِي عَامِ أَلْفٍ وَمِئَتَيْنِ وَأَرْبَعِينَ، قَادَ التُّرْكُمَانَ فِي ثَوْرَةٍ عَلَى سَلَاجِقَةِ الْأَنَاضُولِ.",
+    "more": "وَتُعْرَفُ هَذِهِ الثَّوْرَةُ بِثَوْرَةِ الْبَابَائِيِّينَ."
+   },
+   "aliases": {
+    "en": [
+     "Baba İshak"
+    ],
+    "ar": [
+     "بابا إسحاق"
+    ]
+   }
+  },
+  "yunus-celaleddin-karatay": {
+   "en": {
+    "title": "Celaleddin Karatay",
+    "kindLabel": "Statesman",
+    "periodLabel": "13th century",
+    "summary": "Celaleddin Karatay was a statesman of the Anatolian Seljuks. He tried to manage the Mongols and to help the state and the people.",
+    "more": "The Karatay Madrasa that he built in Konya is a museum today."
+   },
+   "ar": {
+    "title": "جَلَالُ الدِّينِ قَرَطَاي",
+    "kindLabel": "رَجُلُ دَوْلَةٍ",
+    "periodLabel": "الْقَرْنُ الثَّالِثَ عَشَرَ",
+    "summary": "كَانَ جَلَالُ الدِّينِ قَرَطَاي رَجُلَ دَوْلَةٍ عِنْدَ سَلَاجِقَةِ الْأَنَاضُولِ. حَاوَلَ أَنْ يُدِيرَ الْعَلَاقَةَ مَعَ الْمُغُولِ، وَأَنْ يُخَفِّفَ عَنِ الدَّوْلَةِ وَالشَّعْبِ.",
+    "more": "وَالْمَدْرَسَةُ الَّتِي بَنَاهَا فِي قُونْيَةَ، مَدْرَسَةُ قَرَطَاي، أَصْبَحَتِ الْيَوْمَ مُتْحَفًا."
+   },
+   "aliases": {
+    "en": [
+     "Celaleddin Karatay"
+    ],
+    "ar": [
+     "قرطاي"
+    ]
+   }
+  },
+  "yunus-anatolian-seljuks": {
+   "en": {
+    "title": "Anatolian Seljuks",
+    "kindLabel": "Sultanate",
+    "periodLabel": "11th–14th century",
+    "summary": "The Anatolian Seljuks were a Turkish Muslim state, and their capital was Konya. After the defeat at Kösedağ in 1243, they slowly came under Mongol rule.",
+    "more": "Many of their stone buildings can still be seen in Konya today."
+   },
+   "ar": {
+    "title": "سَلَاجِقَةُ الْأَنَاضُولِ",
+    "kindLabel": "سَلْطَنَةٌ",
+    "periodLabel": "الْقُرُونُ 11–14",
+    "summary": "كَانَتْ دَوْلَةُ سَلَاجِقَةِ الْأَنَاضُولِ دَوْلَةً تُرْكِيَّةً مُسْلِمَةً، وَعَاصِمَتُهَا قُونْيَةُ. وَبَعْدَ هَزِيمَةِ كُوسَه دَاغ عَامَ أَلْفٍ وَمِئَتَيْنِ وَثَلَاثَةٍ وَأَرْبَعِينَ، أَصْبَحُوا شَيْئًا فَشَيْئًا تَابِعِينَ لِلْمُغُولِ.",
+    "more": "وَلَا تَزَالُ كَثِيرٌ مِنْ مَبَانِيهِمُ الْحَجَرِيَّةِ قَائِمَةً فِي قُونْيَةَ حَتَّى الْيَوْمِ."
+   },
+   "aliases": {
+    "en": [
+     "Anatolian Seljuk",
+     "Seljuk Sultanate of Konya",
+     "Seljuk"
+    ],
+    "ar": [
+     "السلاجقة الأناضوليون",
+     "سلاجقة قونية",
+     "السلاجقة"
+    ]
+   },
+   "tr": "Anadolu Selçukluları"
+  },
+  "yunus-mongols": {
+   "en": {
+    "title": "The Mongols",
+    "kindLabel": "People",
+    "periodLabel": "13th century",
+    "summary": "The Mongols were a people from the steppes of Mongolia, far to the east. In the 13th century, their armies invaded Anatolia and destroyed many cities.",
+    "more": "They built one of the largest empires in history."
+   },
+   "ar": {
+    "title": "الْمُغُولُ",
+    "kindLabel": "شَعْبٌ",
+    "periodLabel": "الْقَرْنُ الثَّالِثَ عَشَرَ",
+    "summary": "الْمُغُولُ شَعْبٌ جَاءَ مِنْ سُهُوبِ مَنْغُولْيَا فِي شَرْقِ آسِيَا. وَفِي الْقَرْنِ الثَّالِثَ عَشَرَ، غَزَتْ جُيُوشُهُمُ الْأَنَاضُولَ وَدَمَّرَتْ مُدُنًا كَثِيرَةً.",
+    "more": "وَقَدْ أَسَّسُوا وَاحِدَةً مِنْ أَكْبَرِ الْإِمْبَرَاطُورِيَّاتِ فِي التَّارِيخِ."
+   },
+   "aliases": {
+    "en": [
+     "Mongols",
+     "Mongol"
+    ],
+    "ar": [
+     "مغول"
+    ]
+   },
+   "tr": "Moğollar"
+  },
+  "yunus-ilkhanate": {
+   "en": {
+    "title": "The Ilkhanate",
+    "kindLabel": "Mongol state",
+    "periodLabel": "13th–14th century",
+    "summary": "The Ilkhanate was a Mongol state with its centre in Iran. In 1308, the lands of Anatolia were joined directly to it.",
+    "more": "It was founded by Hülegü, a grandson of Genghis Khan."
+   },
+   "ar": {
+    "title": "الدَّوْلَةُ الْإِيلْخَانِيَّةُ",
+    "kindLabel": "دَوْلَةٌ مُغُولِيَّةٌ",
+    "periodLabel": "الْقَرْنَانِ الثَّالِثَ عَشَرَ وَالرَّابِعَ عَشَرَ",
+    "summary": "كَانَتِ الدَّوْلَةُ الْإِيلْخَانِيَّةُ دَوْلَةً مُغُولِيَّةً مَرْكَزُهَا إِيرَانُ. وَفِي عَامِ أَلْفٍ وَثَلَاثِمِئَةٍ وَثَمَانِيَةٍ، أُلْحِقَتْ بِهَا أَرَاضِي الْأَنَاضُولِ مُبَاشَرَةً.",
+    "more": "وَقَدْ أَسَّسَهَا هُولَاكُو، حَفِيدُ جِنْكِيزْ خَانْ."
+   },
+   "aliases": {
+    "en": [
+     "Ilkhanate"
+    ],
+    "ar": [
+     "إيلخان"
+    ]
+   },
+   "tr": "İlhanlılar"
+  },
+  "yunus-turkmens": {
+   "en": {
+    "title": "The Turkmen",
+    "kindLabel": "People",
+    "periodLabel": "Nomads in Anatolia",
+    "summary": "The Turkmen were Turkish nomads who lived in tents with their flocks. In the 13th century, their number in Anatolia grew, and they rose against the Anatolian Seljuks.",
+    "more": "Today, the people of Turkmenistan are also called Turkmen."
+   },
+   "ar": {
+    "title": "التُّرْكُمَانُ",
+    "kindLabel": "شَعْبٌ",
+    "periodLabel": "رُحَّلٌ فِي الْأَنَاضُولِ",
+    "summary": "كَانَ التُّرْكُمَانُ قَبَائِلَ تُرْكِيَّةً رُحَّلًا تَعِيشُ فِي الْخِيَامِ مَعَ قُطْعَانِهَا. وَفِي الْقَرْنِ الثَّالِثَ عَشَرَ ازْدَادَ عَدَدُهُمْ فِي الْأَنَاضُولِ، وَثَارُوا عَلَى سَلَاجِقَةِ الْأَنَاضُولِ.",
+    "more": "وَيُسَمَّى أَهْلُ تُرْكُمَانِسْتَانَ الْيَوْمَ تُرْكُمَانًا أَيْضًا."
+   },
+   "aliases": {
+    "en": [
+     "Turkmen"
+    ],
+    "ar": [
+     "تركمان"
+    ]
+   },
+   "tr": "Türkmenler"
+  },
+  "yunus-oghuz": {
+   "en": {
+    "title": "The Oguz",
+    "kindLabel": "Turkic tribes",
+    "periodLabel": "Nomads of Central Asia",
+    "summary": "The Oguz were nomadic Turkic tribes. To escape the Mongols, many of them moved from Central Asia to Anatolia.",
+    "more": "Most Turks of Türkiye, Azerbaijan and Turkmenistan come from the Oguz."
+   },
+   "ar": {
+    "title": "الْأُوغُوزُ",
+    "kindLabel": "قَبَائِلُ تُرْكِيَّةٌ",
+    "periodLabel": "رُحَّلُ آسِيَا الْوُسْطَى",
+    "summary": "كَانَ الْأُوغُوزُ قَبَائِلَ تُرْكِيَّةً رُحَّلًا. وَهَرَبًا مِنَ الْمُغُولِ، هَاجَرَ كَثِيرٌ مِنْهُمْ مِنْ آسِيَا الْوُسْطَى إِلَى الْأَنَاضُولِ.",
+    "more": "وَيَنْحَدِرُ مُعْظَمُ أَتْرَاكِ تُرْكِيَا وَأَذْرَبِيجَانَ وَتُرْكُمَانِسْتَانَ مِنَ الْأُوغُوزِ."
+   },
+   "aliases": {
+    "en": [
+     "Oguz"
+    ],
+    "ar": [
+     "أوغوز"
+    ]
+   },
+   "tr": "Oğuzlar"
+  },
+  "yunus-ottomans": {
+   "en": {
+    "title": "The Ottoman State",
+    "kindLabel": "State",
+    "periodLabel": "From about 1300",
+    "summary": "The Ottoman State began as a small principality in north-west Anatolia. In the time of Yunus Emre, it was still small.",
+    "more": "Later, it became a great empire that lasted for about six centuries."
+   },
+   "ar": {
+    "title": "الدَّوْلَةُ الْعُثْمَانِيَّةُ",
+    "kindLabel": "دَوْلَةٌ",
+    "periodLabel": "مُنْذُ نَحْوِ عَامِ 1300",
+    "summary": "بَدَأَتِ الدَّوْلَةُ الْعُثْمَانِيَّةُ إِمَارَةً صَغِيرَةً فِي شَمَالِ غَرْبِ الْأَنَاضُولِ. وَفِي زَمَنِ يُونُسَ إِمْرَه كَانَتْ لَا تَزَالُ صَغِيرَةً.",
+    "more": "ثُمَّ أَصْبَحَتْ بَعْدَ ذَلِكَ إِمْبَرَاطُورِيَّةً كَبِيرَةً دَامَتْ نَحْوَ سِتَّةِ قُرُونٍ."
+   },
+   "aliases": {
+    "en": [
+     "Ottoman state"
+    ],
+    "ar": [
+     "الدولة العثمانية"
+    ]
+   },
+   "tr": "Osmanlılar"
+  },
+  "gevher-gevher-nesibe-sultan": {
+   "en": {
+    "title": "Gevher Nesibe Sultan",
+    "kindLabel": "Seljuk princess",
+    "periodLabel": "Late 12th century",
+    "summary": "Gevher Nesibe Sultan was the daughter of Kılıçarslan II and the sister of Gıyâseddin Keyhusrev I. She died at a young age.",
+    "more": "Her last wish was a hospital for sick people. Her grave is inside the Gıyâsiye Medresesi."
+   },
+   "ar": {
+    "title": "Gevher Nesibe Sultan",
+    "kindLabel": "Seljuk princess",
+    "periodLabel": "Late 12th century",
+    "summary": "Gevher Nesibe Sultan was the daughter of Kılıçarslan II and the sister of Gıyâseddin Keyhusrev I. She died at a young age.",
+    "more": "Her last wish was a hospital for sick people. Her grave is inside the Gıyâsiye Medresesi."
+   },
+   "aliases": {
+    "en": [
+     "Gevher Nesibe Sultan"
+    ],
+    "ar": []
+   },
+   "tr": "Gevher Nesibe Sultan"
+  },
+  "gevher-giyaseddin-keyhusrev-i": {
+   "en": {
+    "title": "Gıyâseddin Keyhusrev I",
+    "kindLabel": "Seljuk sultan",
+    "periodLabel": "Early 13th century",
+    "summary": "Gıyâseddin Keyhusrev I was a ruler of the Anatolian Seljuks and the brother of Gevher Nesibe Sultan.",
+    "more": "To make his sister’s wish come true, he built the medical school and the hospital in Kayseri."
+   },
+   "ar": {
+    "title": "Gıyâseddin Keyhusrev I",
+    "kindLabel": "Seljuk sultan",
+    "periodLabel": "Early 13th century",
+    "summary": "Gıyâseddin Keyhusrev I was a ruler of the Anatolian Seljuks and the brother of Gevher Nesibe Sultan.",
+    "more": "To make his sister’s wish come true, he built the medical school and the hospital in Kayseri."
+   },
+   "aliases": {
+    "en": [
+     "Gıyâseddin Keyhusrev I",
+     "Gıyâseddin Keyhusrev"
+    ],
+    "ar": []
+   },
+   "tr": "I. Gıyâseddin Keyhusrev"
+  },
+  "gevher-kilicarslan-ii": {
+   "en": {
+    "title": "Kılıçarslan II",
+    "kindLabel": "Seljuk sultan",
+    "periodLabel": "12th century",
+    "summary": "Kılıçarslan II was a sultan of the Anatolian Seljuks. He was the father of Gevher Nesibe Sultan and Gıyâseddin Keyhusrev I."
+   },
+   "ar": {
+    "title": "Kılıçarslan II",
+    "kindLabel": "Seljuk sultan",
+    "periodLabel": "12th century",
+    "summary": "Kılıçarslan II was a sultan of the Anatolian Seljuks. He was the father of Gevher Nesibe Sultan and Gıyâseddin Keyhusrev I."
+   },
+   "aliases": {
+    "en": [
+     "Kılıçarslan II"
+    ],
+    "ar": []
+   },
+   "tr": "II. Kılıçarslan"
+  },
+  "gevher-mahmud-ii": {
+   "en": {
+    "title": "Sultan Mahmud II",
+    "kindLabel": "Ottoman sultan",
+    "periodLabel": "19th century",
+    "summary": "Mahmud II was an Ottoman sultan. He built the Imperial Medical School."
+   },
+   "ar": {
+    "title": "Sultan Mahmud II",
+    "kindLabel": "Ottoman sultan",
+    "periodLabel": "19th century",
+    "summary": "Mahmud II was an Ottoman sultan. He built the Imperial Medical School."
+   },
+   "aliases": {
+    "en": [
+     "Sultan Mahmud II",
+     "Mahmud II"
+    ],
+    "ar": []
+   },
+   "tr": "II. Mahmud"
+  },
+  "gevher-sadreddin-konevi": {
+   "en": {
+    "title": "Sadreddin Konevî",
+    "kindLabel": "Scholar",
+    "periodLabel": "13th century",
+    "summary": "Sadreddin Konevî was a famous scholar. He was one of the teachers at the school in Kayseri."
+   },
+   "ar": {
+    "title": "Sadreddin Konevî",
+    "kindLabel": "Scholar",
+    "periodLabel": "13th century",
+    "summary": "Sadreddin Konevî was a famous scholar. He was one of the teachers at the school in Kayseri."
+   },
+   "aliases": {
+    "en": [
+     "Sadreddin Konevî"
+    ],
+    "ar": []
+   },
+   "tr": "Sadreddin Konevî"
+  },
+  "gevher-ekmeleddin-nahcuvani": {
+   "en": {
+    "title": "Ekmeleddin al-Nahcuvânî",
+    "kindLabel": "Doctor",
+    "periodLabel": "13th century",
+    "summary": "Ekmeleddin al-Nahcuvânî was a doctor who taught at the school. He was Mevlânâ’s close friend and personal doctor."
+   },
+   "ar": {
+    "title": "Ekmeleddin al-Nahcuvânî",
+    "kindLabel": "Doctor",
+    "periodLabel": "13th century",
+    "summary": "Ekmeleddin al-Nahcuvânî was a doctor who taught at the school. He was Mevlânâ’s close friend and personal doctor."
+   },
+   "aliases": {
+    "en": [
+     "Ekmeleddin al-Nahcuvânî"
+    ],
+    "ar": []
+   },
+   "tr": "Ekmeleddin en-Nahcuvânî"
+  },
+  "gevher-mevlana": {
+   "en": {
+    "title": "Mevlânâ",
+    "kindLabel": "Scholar and poet",
+    "periodLabel": "13th century",
+    "summary": "Mevlânâ was a great Muslim scholar and poet. He lived in Konya.",
+    "more": "The doctor Ekmeleddin al-Nahcuvânî was his close friend."
+   },
+   "ar": {
+    "title": "Mevlânâ",
+    "kindLabel": "Scholar and poet",
+    "periodLabel": "13th century",
+    "summary": "Mevlânâ was a great Muslim scholar and poet. He lived in Konya.",
+    "more": "The doctor Ekmeleddin al-Nahcuvânî was his close friend."
+   },
+   "aliases": {
+    "en": [
+     "Mevlânâ"
+    ],
+    "ar": []
+   },
+   "tr": "Mevlânâ Celâleddîn-i Rûmî"
+  },
+  "gevher-ibn-sina": {
+   "en": {
+    "title": "İbn Sînâ",
+    "kindLabel": "Doctor and scientist",
+    "periodLabel": "11th century",
+    "summary": "İbn Sînâ was a famous doctor and scientist. Students at the school read his medical books.",
+    "more": "He wrote that doctors must make patients’ minds and hearts stronger."
+   },
+   "ar": {
+    "title": "İbn Sînâ",
+    "kindLabel": "Doctor and scientist",
+    "periodLabel": "11th century",
+    "summary": "İbn Sînâ was a famous doctor and scientist. Students at the school read his medical books.",
+    "more": "He wrote that doctors must make patients’ minds and hearts stronger."
+   },
+   "aliases": {
+    "en": [
+     "İbn Sînâ"
+    ],
+    "ar": []
+   },
+   "tr": "İbn Sînâ"
+  },
+  "gevher-hippocrates": {
+   "en": {
+    "title": "Hippocrates",
+    "kindLabel": "Doctor",
+    "periodLabel": "Ancient Greece",
+    "summary": "Hippocrates was an ancient Greek doctor. Students at the school also read his books."
+   },
+   "ar": {
+    "title": "Hippocrates",
+    "kindLabel": "Doctor",
+    "periodLabel": "Ancient Greece",
+    "summary": "Hippocrates was an ancient Greek doctor. Students at the school also read his books."
+   },
+   "aliases": {
+    "en": [
+     "Hippocrates"
+    ],
+    "ar": []
+   },
+   "tr": "Hipokrat"
+  },
+  "gevher-er-razi": {
+   "en": {
+    "title": "Er-Râzî",
+    "kindLabel": "Doctor and scientist",
+    "periodLabel": "10th century",
+    "summary": "Er-Râzî was a scientist and doctor. He said that doctors should help sad and stressed patients with music."
+   },
+   "ar": {
+    "title": "Er-Râzî",
+    "kindLabel": "Doctor and scientist",
+    "periodLabel": "10th century",
+    "summary": "Er-Râzî was a scientist and doctor. He said that doctors should help sad and stressed patients with music."
+   },
+   "aliases": {
+    "en": [
+     "Er-Râzî"
+    ],
+    "ar": []
+   },
+   "tr": "Ebû Bekir er-Râzî"
+  },
+  "gevher-farabi": {
+   "en": {
+    "title": "Fârâbî",
+    "kindLabel": "Scientist",
+    "periodLabel": "10th century",
+    "summary": "Fârâbî was a scientist. He studied how music changed human feelings.",
+    "more": "He showed the best time of the day for each type of music."
+   },
+   "ar": {
+    "title": "Fârâbî",
+    "kindLabel": "Scientist",
+    "periodLabel": "10th century",
+    "summary": "Fârâbî was a scientist. He studied how music changed human feelings.",
+    "more": "He showed the best time of the day for each type of music."
+   },
+   "aliases": {
+    "en": [
+     "Fârâbî"
+    ],
+    "ar": []
+   },
+   "tr": "Fârâbî"
+  },
+  "gevher-anatolian-seljuks": {
+   "en": {
+    "title": "Anatolian Seljuks",
+    "kindLabel": "State",
+    "periodLabel": "11th–14th century",
+    "summary": "The Anatolian Seljuks were a Turkish Muslim state in Anatolia. Their capital was Konya."
+   },
+   "ar": {
+    "title": "Anatolian Seljuks",
+    "kindLabel": "State",
+    "periodLabel": "11th–14th century",
+    "summary": "The Anatolian Seljuks were a Turkish Muslim state in Anatolia. Their capital was Konya."
+   },
+   "aliases": {
+    "en": [
+     "Anatolian Seljuk State",
+     "Anatolian Seljuk"
+    ],
+    "ar": []
+   },
+   "tr": "Anadolu Selçukluları"
+  },
+  "gevher-kayseri": {
+   "en": {
+    "title": "Kayseri",
+    "kindLabel": "City",
+    "periodLabel": "Central Anatolia",
+    "summary": "Kayseri is an old city in central Anatolia. The Gevher Nesibe Hospital and Medical School is here.",
+    "more": "Today, the old building is the Museum of the Seljuk Civilization."
+   },
+   "ar": {
+    "title": "Kayseri",
+    "kindLabel": "City",
+    "periodLabel": "Central Anatolia",
+    "summary": "Kayseri is an old city in central Anatolia. The Gevher Nesibe Hospital and Medical School is here.",
+    "more": "Today, the old building is the Museum of the Seljuk Civilization."
+   },
+   "aliases": {
+    "en": [
+     "Kayseri"
+    ],
+    "ar": []
+   }
+  },
+  "gevher-konya": {
+   "en": {
+    "title": "Konya",
+    "kindLabel": "City",
+    "periodLabel": "Capital of the Anatolian Seljuks",
+    "summary": "Konya is a city in central Anatolia. When the hospital opened, it was the capital city of the Anatolian Seljuk State."
+   },
+   "ar": {
+    "title": "Konya",
+    "kindLabel": "City",
+    "periodLabel": "Capital of the Anatolian Seljuks",
+    "summary": "Konya is a city in central Anatolia. When the hospital opened, it was the capital city of the Anatolian Seljuk State."
+   },
+   "aliases": {
+    "en": [
+     "Konya"
+    ],
+    "ar": []
+   }
+  },
+  "gevher-sivas": {
+   "en": {
+    "title": "Sivas",
+    "kindLabel": "City",
+    "periodLabel": "Central Anatolia",
+    "summary": "Sivas is a city in central Anatolia. The Keykâvus Hospital is here."
+   },
+   "ar": {
+    "title": "Sivas",
+    "kindLabel": "City",
+    "periodLabel": "Central Anatolia",
+    "summary": "Sivas is a city in central Anatolia. The Keykâvus Hospital is here."
+   },
+   "aliases": {
+    "en": [
+     "Sivas"
+    ],
+    "ar": []
+   }
+  },
+  "gevher-anatolia": {
+   "en": {
+    "title": "Anatolia",
+    "kindLabel": "Land",
+    "periodLabel": "The Asian part of Türkiye",
+    "summary": "Anatolia is a large land between the Black Sea and the Mediterranean Sea. The Gevher Nesibe Hospital is the oldest Seljuk hospital in Anatolia that is still standing."
+   },
+   "ar": {
+    "title": "Anatolia",
+    "kindLabel": "Land",
+    "periodLabel": "The Asian part of Türkiye",
+    "summary": "Anatolia is a large land between the Black Sea and the Mediterranean Sea. The Gevher Nesibe Hospital is the oldest Seljuk hospital in Anatolia that is still standing."
+   },
+   "aliases": {
+    "en": [
+     "Anatolia"
+    ],
+    "ar": []
+   },
+   "tr": "Anadolu"
+  },
+  "gevher-europe": {
+   "en": {
+    "title": "Europe",
+    "kindLabel": "Land",
+    "periodLabel": "West of Anatolia",
+    "summary": "Europe is the land west of Anatolia. Its universities started classroom and practical medical training much later, in the 16th and 17th centuries."
+   },
+   "ar": {
+    "title": "Europe",
+    "kindLabel": "Land",
+    "periodLabel": "West of Anatolia",
+    "summary": "Europe is the land west of Anatolia. Its universities started classroom and practical medical training much later, in the 16th and 17th centuries."
+   },
+   "aliases": {
+    "en": [
+     "Europe",
+     "European"
+    ],
+    "ar": []
+   },
+   "tr": "Avrupa"
+  },
+  "gevher-complex": {
+   "en": {
+    "title": "Gevher Nesibe Hospital and Medical School",
+    "kindLabel": "Building",
+    "periodLabel": "Built in 1205–1206",
+    "summary": "Two buildings side by side in Kayseri: A medical school and a hospital. People call them the Twin Madrasas.",
+    "more": "It was the first school and hospital together. Today it is the Museum of the Seljuk Civilization."
+   },
+   "ar": {
+    "title": "Gevher Nesibe Hospital and Medical School",
+    "kindLabel": "Building",
+    "periodLabel": "Built in 1205–1206",
+    "summary": "Two buildings side by side in Kayseri: A medical school and a hospital. People call them the Twin Madrasas.",
+    "more": "It was the first school and hospital together. Today it is the Museum of the Seljuk Civilization."
+   },
+   "aliases": {
+    "en": [
+     "Gevher Nesibe Hospital and Medical School",
+     "Gevher Nesibe Hospital",
+     "Twin Madrasas"
+    ],
+    "ar": []
+   },
+   "tr": "Gevher Nesibe Darüşşifası ve Tıp Medresesi (Çifte Medrese)"
+  },
+  "gevher-sifaiye": {
+   "en": {
+    "title": "Şifâiye (Dârüşşifâ)",
+    "kindLabel": "Hospital",
+    "periodLabel": "Built in 1205–1206",
+    "summary": "The Şifâiye was the hospital in Kayseri. People also called it the Dârüşşifâ, “the house of healing.”",
+    "more": "Students worked with real patients here."
+   },
+   "ar": {
+    "title": "Şifâiye (Dârüşşifâ)",
+    "kindLabel": "Hospital",
+    "periodLabel": "Built in 1205–1206",
+    "summary": "The Şifâiye was the hospital in Kayseri. People also called it the Dârüşşifâ, “the house of healing.”",
+    "more": "Students worked with real patients here."
+   },
+   "aliases": {
+    "en": [
+     "Şifâiye",
+     "Dârüşşifâ"
+    ],
+    "ar": []
+   },
+   "tr": "Şifâiye (Darüşşifa)"
+  },
+  "gevher-giyasiye": {
+   "en": {
+    "title": "Gıyâsiye Medresesi",
+    "kindLabel": "Medical school",
+    "periodLabel": "Built in 1205–1206",
+    "summary": "The Gıyâsiye was the medical school next to the hospital. Students learned their lessons here.",
+    "more": "The grave of Gevher Nesibe Sultan is inside it."
+   },
+   "ar": {
+    "title": "Gıyâsiye Medresesi",
+    "kindLabel": "Medical school",
+    "periodLabel": "Built in 1205–1206",
+    "summary": "The Gıyâsiye was the medical school next to the hospital. Students learned their lessons here.",
+    "more": "The grave of Gevher Nesibe Sultan is inside it."
+   },
+   "aliases": {
+    "en": [
+     "Gıyâsiye Medresesi",
+     "Gıyâsiye"
+    ],
+    "ar": []
+   },
+   "tr": "Gıyâsiye Medresesi"
+  },
+  "gevher-keykavus-hospital": {
+   "en": {
+    "title": "Keykâvus Hospital",
+    "kindLabel": "Hospital",
+    "periodLabel": "Seljuk period",
+    "summary": "The Keykâvus Hospital is in Sivas. Its team of doctors was very similar to the team in Kayseri."
+   },
+   "ar": {
+    "title": "Keykâvus Hospital",
+    "kindLabel": "Hospital",
+    "periodLabel": "Seljuk period",
+    "summary": "The Keykâvus Hospital is in Sivas. Its team of doctors was very similar to the team in Kayseri."
+   },
+   "aliases": {
+    "en": [
+     "Keykâvus Hospital"
+    ],
+    "ar": []
+   },
+   "tr": "İzzeddin Keykâvus Darüşşifası"
+  },
+  "gevher-imperial-medical-school": {
+   "en": {
+    "title": "Imperial Medical School",
+    "kindLabel": "Medical school",
+    "periodLabel": "Ottoman period",
+    "summary": "The Imperial Medical School was an Ottoman medical school. Sultan Mahmud II built it."
+   },
+   "ar": {
+    "title": "Imperial Medical School",
+    "kindLabel": "Medical school",
+    "periodLabel": "Ottoman period",
+    "summary": "The Imperial Medical School was an Ottoman medical school. Sultan Mahmud II built it."
+   },
+   "aliases": {
+    "en": [
+     "Imperial Medical School"
+    ],
+    "ar": []
+   },
+   "tr": "Mekteb-i Tıbbiyye-i Adliyye-i Şâhâne"
+  }
+ }
+}

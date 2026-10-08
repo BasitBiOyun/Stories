@@ -9,6 +9,7 @@ import { withPlacesLayer } from '../../features/historical-entities';
 import type { HistoricalEntityBookKey, HistoricalEntityLocale } from '../../features/historical-entities';
 import { bookCatalog, type BookCatalogEntry } from '../../content/bookCatalog';
 import { editionName } from '../../content/editionName';
+import { isPanelPreview, onPanelPreviewChange } from '../../content/panelPreview';
 
 export { editionName };
 
@@ -67,6 +68,11 @@ const createDefinition = (entry: BookCatalogEntry): BookDefinition => {
     }
     return preparedPromise;
   };
+
+  // In the content panel's frame an edited file replaces the loaded one, so forget the prepared book.
+  if (isPanelPreview()) onPanelPreviewChange(() => {
+    preparedPromise = null;
+  });
 
   return { storyId, level, collection, storage: getStorageManifest(storyId, level), loadSource, load };
 };
