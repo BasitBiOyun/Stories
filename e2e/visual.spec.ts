@@ -25,7 +25,7 @@ for (const [name, route] of screens) {
       await page.route(/firebasestorage\.googleapis\.com|storage\.googleapis\.com|\/media-image|\/audio-timings\//, route => route.abort());
       await page.addInitScript(() => {
         // An audio file can still load through the media element, so its length is never shown.
-        Object.defineProperty(HTMLMediaElement.prototype, 'duration', { get: () => NaN });
+        Object.defineProperty(HTMLMediaElement.prototype, 'duration', { get: () => 0 });
         let seed = 20261008;
         Math.random = () => {
           seed = (seed + 0x6d2b79f5) | 0;
