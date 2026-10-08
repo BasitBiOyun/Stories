@@ -5,6 +5,12 @@ on:
   push:
     branches: ['**']
   pull_request:
+  workflow_dispatch:
+    inputs:
+      update_screenshots:
+        description: Record the screenshot baselines on GitHub's runner (download screenshots-ci)
+        type: boolean
+        default: false
 
 jobs:
   checks:
@@ -29,7 +35,18 @@ jobs:
         run: npm run build
       - name: Install browser
         run: npx playwright install --with-deps chromium
+      # Run by hand with "update screenshots": records the screenshots on GitHub's runner and
+      # offers them as the screenshots-ci download, to be looked at and committed by a person.
+      - name: Record screenshot baselines
+        if: ${{ inputs.update_screenshots }}
+        run: npx playwright test e2e/visual.spec.ts --update-snapshots
+      - uses: actions/upload-artifact@v4
+        if: ${{ inputs.update_screenshots }}
+        with:
+          name: screenshots-ci
+          path: e2e/__screenshots__/ci/
       - name: End-to-end, accessibility and screenshot tests
+        if: ${{ !inputs.update_screenshots }}
         run: npm run test:e2e
       - uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}

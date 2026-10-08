@@ -19,7 +19,11 @@ export default defineConfig({
   retries: process.env.CI ? 1 : 0,
   workers: process.env.CI ? 2 : 4,
   reporter: process.env.CI ? [['list'], ['html', { open: 'never' }]] : 'list',
-  snapshotPathTemplate: '{testDir}/__screenshots__/{projectName}/{arg}{ext}',
+  // GitHub's runner draws text a little differently from the cloud sandbox, so each keeps its own
+  // screenshots: e2e/__screenshots__/ci/ is recorded on GitHub (run the Tests workflow by hand
+  // with "update screenshots" and commit its screenshots-ci download), the folders beside it
+  // locally with `npm run test:e2e:update`.
+  snapshotPathTemplate: `{testDir}/__screenshots__/${process.env.CI ? 'ci/' : ''}{projectName}/{arg}{ext}`,
   use: {
     baseURL,
     trace: 'retain-on-failure',
