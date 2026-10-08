@@ -8,11 +8,14 @@ rules_version = '2';
 // (see docs/OPERATIONS.md).
 service firebase.storage {
   match /b/{bucket}/o {
-    // Build state used by the narration steps; never public.
-    match /tts-state/{allPaths=**} {
-      allow read, write: if false;
+    // Rules add up (one allow is enough), so a separate "deny" block cannot close a folder that a
+    // catch-all opens. The folder is checked here instead: tts-state/ holds the build state of the
+    // narration steps and is never public.
+    match /{folder}/{rest=**} {
+      allow get, list: if folder != 'tts-state';
+      allow write: if false;
     }
-    match /{allPaths=**} {
+    match /{file} {
       allow get, list: if true;
       allow write: if false;
     }
