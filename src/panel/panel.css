@@ -1997,3 +1997,52 @@ small.bad {
 .diff-text ins + del {
   margin-inline-start: 3px;
 }
+
+/* On a phone the editor is one scrolling page: the app on top, its form under it. */
+@media (max-width: 980px) {
+  .shell {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .shell.editing .main {
+    overflow-y: auto;
+  }
+
+  .main > .editor {
+    display: block;
+    flex: none;
+  }
+
+  .stage-bar {
+    padding: 8px 10px;
+    gap: 6px;
+  }
+
+  .stage-bar select {
+    max-width: calc(100vw - 70px);
+  }
+
+  .stage-bar .device-seg {
+    display: none;
+  }
+
+  .frame-holder {
+    height: 72vh;
+    flex: none;
+    padding: 8px;
+  }
+
+  .frame-holder.phone iframe {
+    max-height: none;
+  }
+
+  .inspector {
+    min-height: 60vh;
+  }
+
+  .inspector-foot {
+    position: sticky;
+    bottom: 0;
+    z-index: 2;
+  }
+}

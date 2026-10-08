@@ -39,6 +39,8 @@ test.describe('management panel', () => {
   test('search finds a sentence in any book and opens it', async ({ page, context, baseURL }) => {
     await context.addCookies([{ name: 'stories_preview', value: PREVIEW_KEY, url: baseURL! }]);
     await page.goto('/panel/');
+    // The shortcut works once the panel has drawn its menu.
+    await expect(page.getByRole('button', { name: /Kitaplarda ara/ })).toBeVisible();
     await page.keyboard.press('Control+k');
     await page.getByRole('dialog', { name: 'Ara' }).getByRole('textbox').fill('Bilal');
     await page.getByRole('option').filter({ hasText: 'Mecca' }).first().click();

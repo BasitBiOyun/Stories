@@ -35,7 +35,9 @@ export const Editor = ({ storyId, level, pageNumber, language: initialLanguage, 
   const drafts = useStore(state => state.drafts);
   const locks = useStore(state => state.locks);
   const [language, setLanguage] = useState<'en' | 'ar'>(initialLanguage);
-  const [device, setDevice] = useState<Device>(() => (window.innerWidth < 980 ? 'desktop' : 'phone'));
+  // A link to the other language of the open book (search, a notice) switches the page too.
+  useEffect(() => setLanguage(initialLanguage), [initialLanguage]);
+  const [device, setDevice] = useState<Device>('phone');
   const [picking, setPicking] = useState(true);
   const [selection, setSelection] = useState<Selection | null>(null);
   const [frameKey, setFrameKey] = useState(0);
@@ -276,7 +278,7 @@ export const Editor = ({ storyId, level, pageNumber, language: initialLanguage, 
               العربية
             </button>
           </div>
-          <div className="seg" role="group" aria-label="Ekran">
+          <div className="seg device-seg" role="group" aria-label="Ekran">
             <button type="button" aria-pressed={device === 'phone'} onClick={() => setDevice('phone')} title="Telefon">
               <IconPhone size={16} />
               <span className="sr-only">Telefon</span>

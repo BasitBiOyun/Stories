@@ -93,7 +93,7 @@ export const Cards = ({ focus }: { focus?: string }) => {
           <IconSearch size={16} />
           <input value={query} onChange={event => setQuery(event.target.value)} placeholder="Kart ara (Mekke, Nil, Konya…)" aria-label="Kart ara" />
         </label>
-        <select value={book} onChange={event => setBook(event.target.value)} aria-label="Kitap">
+        <select value={book} onChange={event => setBook(event.target.value)} aria-label="Kitap" style={{ width: 'auto' }}>
           <option value="all">Bütün kitaplar</option>
           {Object.entries(BOOKS).map(([key, label]) => (
             <option key={key} value={key}>
