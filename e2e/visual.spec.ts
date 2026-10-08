@@ -20,6 +20,18 @@ const screens: [string, string][] = [
 for (const [name, route] of screens) {
   for (const language of ['en', 'ar'] as const) {
     test(`${name} looks the same (${language})`, async ({ page }) => {
+      // The same screen everywhere: no pictures or audio from Storage (a loaded picture takes
+      // room and a loaded audio file shows its length), and a fixed order for shuffled answers.
+      await page.route(/firebasestorage\.googleapis\.com|storage\.googleapis\.com|\/media-image|\/audio-timings\//, route => route.abort());
+      await page.addInitScript(() => {
+        let seed = 20261008;
+        Math.random = () => {
+          seed = (seed + 0x6d2b79f5) | 0;
+          let t = Math.imul(seed ^ (seed >>> 15), 1 | seed);
+          t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+          return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+        };
+      });
       await enterLibrary(page, { language });
       if (route) await openPage(page, route);
       else {
@@ -35,6 +47,7 @@ for (const [name, route] of screens) {
           '*, *::before, *::after { animation: none !important; transition: none !important; }',
         ].join('\n'),
       });
+      await page.evaluate(() => document.fonts.ready);
       await page.waitForTimeout(600);
       await expect(page).toHaveScreenshot(`${name}-${language}.png`, { fullPage: false, animations: 'disabled', caret: 'hide' });
     });
