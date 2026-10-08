@@ -13,7 +13,7 @@ How the app is built, deployed and kept safe. Keep this file true when any of it
 Work that is not ready for reviewers is done on `platform-v2` and merged into `preview` when it is. A release to the live service is a merge from `preview` into `prod`.
 
 ### Setting up `prod` (once, GCP console)
-1. Cloud Build → Triggers → Create: source `BasitBiOyun/Stories`, event "Push to a branch", branch `^prod$`, configuration file `cloudbuild.prod.yaml`, same service account as the preview trigger.
+1. Cloud Build → Triggers → Create: source `kitapkomisyonukonya/Stories`, event "Push to a branch", branch `^prod$`, configuration file `cloudbuild.prod.yaml`, same service account as the preview trigger.
 2. Create the `prod` branch from `preview` on GitHub. The first push creates the `stories-prod` service.
 3. Optional: map the custom domain to `stories-prod` (Cloud Run → Manage custom domains).
 

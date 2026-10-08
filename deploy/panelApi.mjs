@@ -160,7 +160,7 @@ const checkEditionFile = (edition, file) => {
 export const createPanelApi = (env = process.env, deps = {}) => {
   const team = readTeam(env.PANEL_TEAM);
   const projectId = env.FIREBASE_PROJECT_ID || 'gen-lang-client-0373200489';
-  const repo = env.PANEL_REPO || 'BasitBiOyun/Stories';
+  const repo = env.PANEL_REPO || 'kitapkomisyonukonya/Stories';
   const baseBranch = env.PANEL_BASE_BRANCH || 'preview';
   const verify = deps.verify ?? (token => verifyFirebaseToken(token, projectId));
   const gh = deps.github ?? (env.PANEL_GITHUB_TOKEN ? github(env.PANEL_GITHUB_TOKEN, repo) : null);

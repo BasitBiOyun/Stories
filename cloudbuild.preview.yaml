@@ -31,7 +31,7 @@ steps:
           touch /workspace/.skip-deploy
           exit 0
         fi
-        head="$$(git ls-remote https://github.com/BasitBiOyun/Stories 2>/dev/null | awk '$$2 == "refs/heads/${BRANCH_NAME}" {print $$1}' || true)"
+        head="$$(git ls-remote https://github.com/kitapkomisyonukonya/Stories 2>/dev/null | awk '$$2 == "refs/heads/${BRANCH_NAME}" {print $$1}' || true)"
         if [ -n "$$head" ] && [ "$$head" != "$COMMIT_SHA" ]; then
           echo "[Stories] A newer commit ($$head) is already on ${BRANCH_NAME}; its build deploys this change too. Skipping."
           touch /workspace/.skip-deploy
@@ -189,7 +189,7 @@ steps:
           echo "[Stories Tests] Branch ${BRANCH_NAME} is not preview; nothing to gate."
           exit 0
         fi
-        api="https://api.github.com/repos/BasitBiOyun/Stories/commits/$COMMIT_SHA/check-runs"
+        api="https://api.github.com/repos/kitapkomisyonukonya/Stories/commits/$COMMIT_SHA/check-runs"
         for attempt in $$(seq 1 40); do
           body="$$(curl -fsS -H 'Accept: application/vnd.github+json' "$$api" 2>/dev/null || true)"
           if [ -z "$$body" ]; then
@@ -260,7 +260,7 @@ steps:
         [ -f /workspace/.skip-deploy ] && exit 0
         # A newer commit pushed while this one was building deploys itself; never put an older
         # image over it.
-        head="$$(git ls-remote https://github.com/BasitBiOyun/Stories 2>/dev/null | awk '$$2 == "refs/heads/${BRANCH_NAME}" {print $$1}' || true)"
+        head="$$(git ls-remote https://github.com/kitapkomisyonukonya/Stories 2>/dev/null | awk '$$2 == "refs/heads/${BRANCH_NAME}" {print $$1}' || true)"
         if [ -n "$$head" ] && [ "$$head" != "$COMMIT_SHA" ]; then
           echo "[Stories] A newer commit ($$head) is on ${BRANCH_NAME}; its build deploys. Skipping this deploy."
           exit 0
