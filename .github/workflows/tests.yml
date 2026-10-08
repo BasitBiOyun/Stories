@@ -21,6 +21,8 @@ jobs:
         run: npm run lint
       - name: Formatting
         run: npm run format:check
+      - name: Server unit tests
+        run: npm run test:unit
       - name: Security audit (shipped packages)
         run: npm audit --omit=dev --audit-level=high
       - name: Build

@@ -44,14 +44,16 @@ sure of.
 
 ## The content panel
 
-`/panel` on the preview address. It lists every edition, opens a book page by page, lets the text
-and the activity instructions be changed, shows which house rules the page breaks while they are
-typed, and gives the changed file to download. It publishes nothing: the downloaded file goes into
-the repository the usual way.
+`/panel` lists every edition, opens a book page by page, lets the text and the activity
+instructions be changed, and shows which house rules the page breaks while they are typed.
 
-It is served only to a browser that opened the preview link (`?gizli=<PREVIEW_KEY>`), and not at
-all when `PREVIEW_KEY` is not set on the service. Signing in, roles, draft and approval steps and
-publishing from the panel itself wait for the accounts stage.
+With a team list on the server, people sign in with Google and press **Send proposal**: the change
+becomes a pull request named after them, the tests run on it, and only an admin approves it (it then
+goes live with the next build) or rejects it. A change that adds a house-rule finding cannot be sent.
+Translators change translations only; viewers only read. Without a team list the panel opens from
+the preview link and gives the changed file to download instead. Setup: docs/OPERATIONS.md.
+
+Changing text after an English edit still needs the narration queue (`tts/requests.json`) by hand.
 
 ## Seeing what the library holds
 

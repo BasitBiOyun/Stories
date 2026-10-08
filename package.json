@@ -24,6 +24,7 @@
     "format:check": "prettier --check e2e playwright.config.ts eslint.config.js",
     "test:e2e": "playwright test",
     "test:e2e:update": "playwright test --update-snapshots",
+    "test:unit": "node --test tests/*.test.mjs",
     "validate:content": "tsx scripts/validation/validateContentFiles.ts",
     "validate:rules": "tsx scripts/validation/validateContentRules.ts",
     "build:panel": "vite build --config vite.panel.config.ts && node scripts/content/copyForPanel.mjs",
@@ -31,6 +32,7 @@
   },
   "dependencies": {
     "@firebase/app": "^0.15.1",
+    "@firebase/auth": "1.13.6",
     "@firebase/storage": "^0.14.5",
     "canvas-confetti": "^1.9.4",
     "clsx": "^2.1.1",

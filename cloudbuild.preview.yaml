@@ -37,8 +37,8 @@ steps:
           touch /workspace/.skip-deploy
           exit 0
         fi
-        hash="$$(find src public deploy scripts/validation index.html package.json package-lock.json \
-          vite.config.ts tsconfig.json Dockerfile .dockerignore cloudbuild.preview.yaml \
+        hash="$$(find src public deploy scripts/validation scripts/content scripts/lib index.html panel.html package.json package-lock.json \
+          vite.config.ts vite.panel.config.ts tsconfig.json Dockerfile .dockerignore cloudbuild.preview.yaml \
           -type f -print0 2>/dev/null | LC_ALL=C sort -z | xargs -0 sha256sum | sha256sum | cut -c1-40)"
         echo "$$hash" > /workspace/.app-hash
         deployed="$$(gcloud run services describe ${_SERVICE} --region=${_REGION} \

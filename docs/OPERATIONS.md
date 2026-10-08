@@ -32,14 +32,35 @@ Books in `hiddenStoryCatalog` (`src/core/content/storyCatalog.ts`) are built int
 - Places & People cards of hidden books are still in the shared files; only the story, exercises and guides are protected.
 
 ## The content panel
-`/panel` on the preview address is the editing tool for the library (docs/CONTENT.md). It is sent
-only to a browser that opened `?gizli=<PREVIEW_KEY>` once, and not at all when `PREVIEW_KEY` is not
-set. The book files it reads are served the same way, under `/content/`.
+`/panel` is the editing tool for the library (docs/CONTENT.md). It works in two ways:
+
+- **Preview link only** (no `PANEL_TEAM`): sent only to a browser that opened `?gizli=<PREVIEW_KEY>`
+  once. Changes are downloaded as a file. Not served at all when `PREVIEW_KEY` is not set either.
+- **Team panel** (`PANEL_TEAM` set): anyone can open the page, but it asks for a Google sign-in
+  and the server lets in only the addresses on the team list. The book files under `/content/` go
+  only to a signed-in member (or to the preview link).
+
+Settings on the Cloud Run service (never in the repository):
+
+| Variable | What it holds |
+|---|---|
+| `PANEL_TEAM` | JSON: `{"name@example.com": "admin", "x@example.com": "editor"}`. Roles: `admin` (approves and publishes), `editor`, `teacher` (both propose changes to any book), `translator` (proposes changes to translations only), `viewer` (reads only). |
+| `PANEL_GITHUB_TOKEN` | From Secret Manager. A fine-grained GitHub token for this repository only, with Contents and Pull requests read/write. Without it the team can sign in and read, but not send proposals. |
+| `PANEL_BASE_BRANCH` | Where proposals go, `preview` by default. |
+
+How a change travels: Send proposal → the server opens a branch `panel/<edition>-<time>` and a pull
+request named after the person → the tests and the house-rule checks run on it → an admin presses
+"Approve and publish" (the pull request is merged, the next build deploys it) or "Reject" (closed).
+The panel refuses a change that adds a house-rule finding. Every action is also written to the
+service log as `[Panel] ...` with the person's address, and GitHub keeps the full history.
+
+Firebase needs, once: Authentication → Sign-in method → Google switched on, and the app's address
+added under Authentication → Settings → Authorized domains.
 
 ## Firebase Storage
 - Rules live in `storage.rules`. Reading and listing are public (the app lists chapter folders); writing from browsers is closed. `tts-state/` is private.
 - Publish after a change: `npx firebase-tools deploy --only storage` (logged in with an owner account), or paste the file into Firebase console → Storage → Rules.
-- The Firebase web API key in `src/lib/firebase.ts` is public by design. Limit it in GCP console → APIs & Services → Credentials: API restrictions to Cloud Storage for Firebase, and HTTP referrers to the app's own addresses.
+- The Firebase web API key in `src/lib/firebase.ts` is public by design. Limit it in GCP console → APIs & Services → Credentials: API restrictions to Cloud Storage for Firebase, Identity Toolkit API and Token Service API (the panel's sign-in needs the last two), and HTTP referrers to the app's own addresses.
 - App Check is not on yet. Turning on enforcement before the app sends App Check tokens would stop every picture and audio file, so it needs an app change first (reCAPTCHA Enterprise key + `initializeAppCheck`).
 
 ## Dependencies

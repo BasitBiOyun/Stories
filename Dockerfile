@@ -19,6 +19,6 @@ RUN npm install --no-save --no-package-lock --omit=dev sharp@0.34.5
 # The book PDFs get their own layer, so a code change does not copy (and store) them again.
 COPY public/pdfs/books ./dist/pdfs/books
 COPY --from=app-build /app/dist ./dist
-COPY deploy/server.mjs ./server.mjs
+COPY deploy/server.mjs deploy/panelApi.mjs ./
 EXPOSE 8080
 CMD ["node", "server.mjs"]

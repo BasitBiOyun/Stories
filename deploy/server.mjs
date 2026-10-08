@@ -2,6 +2,7 @@ import http from 'node:http';
 import { createReadStream, existsSync, readFileSync, statSync } from 'node:fs';
 import { extname, join, normalize } from 'node:path';
 import { brotliCompressSync, gzipSync, constants as zlibConstants } from 'node:zlib';
+import { createPanelApi } from './panelApi.mjs';
 
 const port = Number(process.env.PORT || 8080);
 const root = join(process.cwd(), 'dist');
@@ -60,6 +61,26 @@ const securityHeaders = {
 };
 const pageSecurityHeaders = { ...securityHeaders, 'Content-Security-Policy': contentSecurityPolicy };
 
+// The content panel signs its team in with Google through Firebase, which needs a sign-in popup
+// and Google's sign-in scripts. Those are allowed on the panel page only, never in the app.
+const firebaseAuthDomain = 'https://gen-lang-client-0373200489.firebaseapp.com';
+const panelPageHeaders = {
+  ...securityHeaders,
+  'Cross-Origin-Opener-Policy': 'same-origin-allow-popups',
+  'Content-Security-Policy': [
+    "default-src 'self'",
+    "script-src 'self' https://apis.google.com",
+    "style-src 'self' 'unsafe-inline'",
+    "img-src 'self' data: https://*.googleusercontent.com",
+    "connect-src 'self' https://identitytoolkit.googleapis.com https://securetoken.googleapis.com https://apis.google.com",
+    `frame-src ${firebaseAuthDomain} https://accounts.google.com`,
+    "object-src 'none'",
+    "base-uri 'self'",
+    "form-action 'self'",
+    "frame-ancestors 'none'",
+  ].join('; '),
+};
+
 // Text files go out compressed (about a quarter of their size), which matters most on slow
 // school networks. Files never change inside one revision, so each is compressed once and kept.
 const compressible = new Set(['.html', '.js', '.css', '.json', '.svg', '.ttf']);
@@ -77,13 +98,14 @@ const compressed = (filePath, encoding) => {
   return body;
 };
 
-const sendFile = (req, res, filePath) => {
+const sendFile = (req, res, filePath, overrides = {}) => {
   const ext = extname(filePath).toLowerCase();
   const headers = {
     'Content-Type': contentTypes[ext] || 'application/octet-stream',
     // PDFs keep their names when they are rebuilt, so they are only cached for an hour.
     'Cache-Control': ext === '.html' ? 'no-cache' : ext === '.pdf' ? 'public, max-age=3600' : 'public, max-age=31536000, immutable',
     ...(ext === '.html' ? pageSecurityHeaders : securityHeaders),
+    ...overrides,
     'X-Stories-Git-Sha': gitSha,
     'X-Stories-Revision': revision,
   };
@@ -291,8 +313,15 @@ const readEvent = (req, res) => {
   });
 };
 
-const server = http.createServer((req, res) => {
+const panelApi = createPanelApi();
+
+const server = http.createServer(async (req, res) => {
   const urlPath = decodeURIComponent((req.url || '/').split('?')[0]);
+
+  if (urlPath.startsWith('/panel-api/')) {
+    await panelApi.handle(req, res, urlPath);
+    return;
+  }
 
   if (urlPath === '/__version') {
     const payload = JSON.stringify({ gitSha, gitRef, revision });
@@ -331,17 +360,28 @@ const server = http.createServer((req, res) => {
     return sendMissingAsset(res);
   }
 
-  // The content panel and the book files it reads are a work tool: they are sent only to a
-  // browser that opened the preview link. Without PREVIEW_KEY nobody can be recognised, so
-  // they are not served at all.
+  // The content panel and the book files it reads are a work tool. The panel page opens for a
+  // browser that has the preview link, or for anyone once a team list (PANEL_TEAM) exists, since
+  // it then asks for a Google sign-in. The book files go only to the preview link or to a
+  // signed-in team member. With neither switched on, nothing here is served.
   if (urlPath === '/panel' || urlPath.startsWith('/panel/') || urlPath.startsWith('/content/')) {
-    if (!previewKey || !hasPreviewCookie(req)) {
+    const previewOpen = Boolean(previewKey) && hasPreviewCookie(req);
+    const isContent = urlPath.startsWith('/content/');
+    const allowed = isContent ? previewOpen || Boolean(await panelApi.memberFor(req)) : previewOpen || panelApi.enabled;
+    if (!allowed) {
       res.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8', 'Cache-Control': 'no-store' });
       res.end('Not found');
       return;
     }
     if (urlPath === '/panel' || urlPath === '/panel/') {
-      return sendFile(req, res, join(root, 'panel', 'panel.html'));
+      return sendFile(req, res, join(root, 'panel', 'panel.html'), panelPageHeaders);
+    }
+    if (isContent) {
+      // Book files keep their names when they change, so the panel always reads the current one.
+      const contentPath = join(root, normalize(urlPath).replace(/^([.][.][/\\])+/, ''));
+      if (existsSync(contentPath) && statSync(contentPath).isFile()) {
+        return sendFile(req, res, contentPath, { 'Cache-Control': 'private, no-store' });
+      }
     }
   }
 
