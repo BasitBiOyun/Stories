@@ -741,6 +741,17 @@ export const StoryMapPage: React.FC<StoryMapPageProps> = ({ page }) => {
   const seljukLegend = annexed > 0.5 && map.legend['ilkhanate-1308'] ? map.legend['ilkhanate-1308'] : pressure > 0.5 ? map.legend['seljuk-pressure'] : map.legend['seljuk-1243'];
   const legend = (
     <div className="rounded-xl border border-white/70 bg-white/80 px-3 py-2 text-[11px] leading-snug text-[#3c3428] shadow-sm backdrop-blur-sm sm:text-[12px]">
+      {/* the map's own symbols: numbered place pins, and battles or events in their own colour */}
+      <div className="flex items-center gap-2">
+        <span className="h-3 w-3 shrink-0 rounded-full border border-white" style={{ background: 'var(--brand-700)' }} aria-hidden="true" />
+        {t('map.legendPlace')}
+      </div>
+      {places.some(place => place.tone === 'event') && (
+        <div className="flex items-center gap-2">
+          <span className="h-3 w-3 shrink-0 rounded-full border border-white" style={{ background: PALETTE.mongol }} aria-hidden="true" />
+          {t('map.legendEvent')}
+        </div>
+      )}
       {map.overlays.includes('seljuk-1243') && seljukLegend && (
         <div className="flex items-center gap-2">
           <span
