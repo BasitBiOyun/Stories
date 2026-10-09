@@ -6,7 +6,8 @@ import { useLanguage } from '../../contexts/LanguageContext';
 import { useStoryProgressActions } from '../../contexts/StoryProgressContext';
 import { getActiveBilingualCounterpart } from '../../data/bilingualHighlightCards';
 import { HistoricalEntityWord, getHistoricalEntityIdFromDefinition } from '../../features/historical-entities';
-import { BookMarked, Check } from './icons';
+import { BookMarked, Check, Eye, EyeOff } from './icons';
+import { setWordNoteGlossShown, useWordNoteGlossShown } from '../../lib/wordNoteGloss';
 import { isMyWord, toggleMyWord, useMyWords } from '../../lib/myWords';
 import { useIsPhone, useSheetDrag } from '../../lib/phone';
 
@@ -49,6 +50,8 @@ export const VocabularyWord = ({
     normalizedDefinition,
   ), [word, normalizedDefinition, language]);
   const pairedLanguage = pairedEntry?.language ?? (language === 'ar' ? 'en' : 'ar');
+  const glossShown = useWordNoteGlossShown(wordLanguage);
+  const pairedLanguageName = pairedLanguage === 'ar' ? 'العربية' : 'English';
 
   const highlightStyle = customStyle || 'border-b-2 border-brand-600/40 hover:border-brand-700 font-bold text-brand-900 transition-colors';
 
@@ -208,7 +211,23 @@ export const VocabularyWord = ({
                   language === 'ar' ? "text-base sm:text-xl font-bold" : "text-xs sm:text-sm md:text-base"
                 )}>{normalizedDefinition}</span>
 
-                {pairedEntry && (
+                {pairedEntry && !glossShown && (
+                  <button
+                    type="button"
+                    data-gloss-toggle
+                    aria-expanded={false}
+                    onClick={() => setWordNoteGlossShown(wordLanguage, true)}
+                    className={cn(
+                      "mt-3 flex min-h-8 items-center gap-1.5 font-display text-[12px] font-semibold transition-colors hover:text-parchment focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/70 rounded",
+                      tooltipTheme.accentSoft,
+                    )}
+                  >
+                    <Eye size={14} />
+                    {language === 'ar' ? 'أَظْهِرِ الْإِنْجِلِيزِيَّةَ' : 'Show Arabic'}
+                  </button>
+                )}
+
+                {pairedEntry && glossShown && (
                   <div
                     dir={pairedLanguage === 'ar' ? 'rtl' : 'ltr'}
                     lang={pairedLanguage}
@@ -218,11 +237,28 @@ export const VocabularyWord = ({
                       pairedLanguage === 'ar' ? "text-right" : "text-left"
                     )}
                   >
-                    <span className={cn(
-                      "font-display uppercase tracking-widest text-[9px] sm:text-[10px] block mb-1.5",
-                      tooltipTheme.accentSoft
-                    )}>
-                      {pairedLanguage === 'ar' ? 'العربية' : 'English'}
+                    <span className="mb-1.5 flex items-center justify-between gap-3">
+                      <span className={cn(
+                        "font-display uppercase tracking-widest text-[9px] sm:text-[10px]",
+                        tooltipTheme.accentSoft
+                      )}>
+                        {pairedLanguageName}
+                      </span>
+                      <button
+                        type="button"
+                        data-gloss-toggle
+                        aria-expanded={true}
+                        dir={language === 'ar' ? 'rtl' : 'ltr'}
+                        lang={language}
+                        onClick={() => setWordNoteGlossShown(wordLanguage, false)}
+                        className={cn(
+                          "-my-1 inline-flex min-h-7 items-center gap-1 rounded px-1 font-display text-[11px] font-semibold transition-colors hover:text-parchment focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/70",
+                          tooltipTheme.accentSoft,
+                        )}
+                      >
+                        <EyeOff size={13} />
+                        {language === 'ar' ? 'إِخْفَاء' : 'Hide'}
+                      </button>
                     </span>
                     <span className={cn(
                       "font-serif font-bold block mb-1",
