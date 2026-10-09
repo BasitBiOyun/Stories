@@ -77,6 +77,7 @@ closed (publish `storage.rules`).
 - Rules live in `storage.rules`. Reading and listing are public (the app lists chapter folders); writing from browsers is closed. `tts-state/` is private.
 - Publish after a change: `npx firebase-tools deploy --only storage` (logged in with an owner account), or paste the file into Firebase console → Storage → Rules.
 - The Firebase web API key in `src/lib/firebase.ts` is public by design. Limit it in GCP console → APIs & Services → Credentials: API restrictions to Cloud Storage for Firebase, Identity Toolkit API and Token Service API (the panel's sign-in needs the last two), and HTTP referrers to the app's own addresses.
+- Many chapter pictures at once (a redrawn book): put each picture on R2 at `media-queue/<storage path>`, list it in `media/image_requests.json` with its SHA-256 and the Storage file it replaces, and push to `preview`. The build's `image-requests` step replaces the files in place (same name, new download token, like a panel publish); pictures already in place are skipped. Single pictures still go through the panel.
 - App Check is not on yet. Turning on enforcement before the app sends App Check tokens would stop every picture and audio file, so it needs an app change first (reCAPTCHA Enterprise key + `initializeAppCheck`).
 
 ## Dependencies

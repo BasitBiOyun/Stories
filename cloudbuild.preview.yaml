@@ -140,6 +140,37 @@ steps:
           echo "[Stories TTS Arabic] WARNING: Arabic narration failed; the deploy continues and the queue is retried on the next build."
         fi
 
+  # Picture queue: chapter pictures drawn outside the panel (a whole book redrawn at once) wait on
+  # R2 under media-queue/ and replace the book's own Storage files, keeping their names, like a
+  # panel publish. Only a changed queue is walked; a failure never blocks the deploy.
+  - id: image-requests
+    waitFor: ['-']
+    name: gcr.io/google.com/cloudsdktool/cloud-sdk:slim
+    entrypoint: bash
+    args:
+      - -c
+      - |
+        set -euo pipefail
+        if [ "${BRANCH_NAME}" != "preview" ]; then
+          echo "[Stories Images] Branch ${BRANCH_NAME} is not preview; skipping."
+          exit 0
+        fi
+        if [ ! -f media/image_requests.json ]; then
+          echo "[Stories Images] No media/image_requests.json; skipping."
+          exit 0
+        fi
+        state="gs://${_TTS_STATE_BUCKET}/tts-state/image-queue-hash.txt"
+        hash="$$(cat media/image_requests.json scripts/media/process_image_requests.py | sha256sum | cut -c1-40)"
+        if [ "$$(gcloud storage cat "$$state" 2>/dev/null || true)" = "$$hash" ]; then
+          echo "[Stories Images] Picture queue unchanged since the last complete run ($$hash); skipping."
+          exit 0
+        fi
+        if python3 scripts/media/process_image_requests.py; then
+          printf '%s' "$$hash" | gcloud storage cp - "$$state" || echo "[Stories Images] Could not save the queue hash; the next build checks again."
+        else
+          echo "[Stories Images] WARNING: some pictures were not replaced; the deploy continues and the queue is retried on the next build."
+        fi
+
   # Two builds so the dependency install (npm ci) is cached too: the first keeps the
   # build stage as its own cache image, the second builds the small runtime image.
   - id: audio-alignment
