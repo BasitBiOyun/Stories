@@ -346,7 +346,7 @@ export const fallbackDefinitions: Record<string, string> = {
   'salah': 'The ritual prayer of Muslims, performed five times a day in a specific direction.',
   'zamzam': 'The miraculous and holy well located in Mecca, which sprang open to save Hagar and Ishmael.',
   'jurhumites': 'An ancient Arabic tribe that settled in Mecca around the Zamzam well and allied with Ishmael.',
-  'ishmael': 'Prophet Isma’il (AS), the eldest son of Prophet Abraham (AS), who helped rebuild the holy Ka’ba.',
+  'ishmael': 'Prophet Isma’il (pbuh), the eldest son of Prophet Abraham (pbuh), who helped rebuild the holy Ka’ba.',
   'khuza’a': 'An ancient Arabic tribe that took control of Mecca after the Jurhumites.',
   'khuzaa': 'An ancient Arabic tribe that took control of Mecca after the Jurhumites.',
   'quraysh': 'The powerful merchant tribe of Mecca that controlled the city and opposed Islam initially.',

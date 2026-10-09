@@ -146,10 +146,10 @@
         "answers": [
          "would not become",
          "wouldn’t become",
-         "wouldn't become",
+         "wouldn’t become",
          "could not become",
          "couldn’t become",
-         "couldn't become"
+         "couldn’t become"
         ]
        }
       ],
@@ -1835,10 +1835,10 @@
         "answers": [
          "do not run away",
          "don’t run away",
-         "don't run away",
+         "don’t run away",
          "do not run",
          "don’t run",
-         "don't run"
+         "don’t run"
         ]
        }
       ],
@@ -2227,7 +2227,7 @@
         "answers": [
          "did not change",
          "didn’t change",
-         "didn't change"
+         "didn’t change"
         ]
        },
        {
@@ -2560,7 +2560,7 @@
         "sentence": "Due to Moses helped at the spring, they came back early and told him about it.",
         "error": "Moses helped",
         "options": [
-         "Moses's help",
+         "Moses’s help",
          "Moses help",
          "Moses was helping"
         ],
@@ -4483,7 +4483,7 @@
         "group": "Fear of the visible danger",
         "items": [
          "The Israelites panicked.",
-         "The Children of Israel were trapped with the Red Sea in front and the king's army behind them.",
+         "The Children of Israel were trapped with the Red Sea in front and the king’s army behind them.",
          "‘We are sure to be caught up with.’"
         ]
        },
@@ -4498,7 +4498,7 @@
       "correctAnswer": {
        "Fear of the visible danger": [
         "The Israelites panicked.",
-        "The Children of Israel were trapped with the Red Sea in front and the king's army behind them.",
+        "The Children of Israel were trapped with the Red Sea in front and the king’s army behind them.",
         "‘We are sure to be caught up with.’"
        ],
        "Trust before a way is visible": [
@@ -4542,7 +4542,7 @@
          "had found",
          "could not find any",
          "couldn’t find any",
-         "couldn't find any"
+         "couldn’t find any"
         ]
        }
       ],
@@ -4969,7 +4969,7 @@
       "question": "Can you fix the verb after “efforts”, and the verb after “saw his people”?",
       "errorItems": [
        {
-        "sentence": "Moses's (pbuh) efforts to guide them to the right path is the reason he is known as the Prophet of Great Determination.",
+        "sentence": "Moses’s (pbuh) efforts to guide them to the right path is the reason he is known as the Prophet of Great Determination.",
         "error": "is the reason",
         "options": [
          "are the reason",

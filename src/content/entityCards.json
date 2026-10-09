@@ -88,7 +88,7 @@
     "title": "Genoa",
     "kindLabel": "Port city",
     "periodLabel": "Italy",
-    "summary": "Genoa is a port city in the north-west of Italy. In the Middle Ages, its ships carried people and goods across the Mediterranean. \"Genoese\" means \"from Genoa\".",
+    "summary": "Genoa is a port city in the north-west of Italy. In the Middle Ages, its ships carried people and goods across the Mediterranean. “Genoese” means “from Genoa”.",
     "more": "Ibn Jubayr sailed on a Genoese ship from Ceuta to Alexandria."
    },
    "aliases": {
@@ -1466,7 +1466,7 @@
      "حنفاء"
     ]
    },
-   "tr": "Hanîfler"
+   "tr": "Hanifler"
   },
   "mecca-byzantine-empire": {
    "en": {
@@ -2003,7 +2003,7 @@
     "kindLabel": "Two hills",
     "periodLabel": "Mecca · Western Arabia",
     "summary": "Safa and Marwa are two small hills in Mecca, near the Ka’ba. In the story, Hagar ran between them to look for water.",
-    "more": "During Hajj and Umrah, Muslims walk between these two hills seven times; this is called sa'y."
+    "more": "During Hajj and Umrah, Muslims walk between these two hills seven times; this is called sa’y."
    },
    "ar": {
     "title": "الصَّفَا وَالْمَرْوَةُ",
@@ -2085,7 +2085,7 @@
     "kindLabel": "King",
     "periodLabel": "Kingdom of Babylon",
     "summary": "In the story, Nimrod was the king of Babylon. He argued with Abraham (pbuh) about Allah, but he could not answer him.",
-    "more": "The Qur’an tells about this argument, but it does not give the king's name."
+    "more": "The Qur’an tells about this argument, but it does not give the king’s name."
    },
    "ar": {
     "title": "نُمْرُودُ",
@@ -2131,11 +2131,11 @@
   },
   "abraham-hanifs": {
    "en": {
-    "title": "The hanîfs",
+    "title": "The hanifs",
     "kindLabel": "Believers in one God",
     "periodLabel": "The Hijaz · before Islam",
-    "summary": "The hanîfs were a group of people in the Hijaz before Islam. They believed in one God and stayed away from idols.",
-    "more": "In the Qur’an, Abraham (pbuh) is called a hanîf."
+    "summary": "The hanifs were a group of people in the Hijaz before Islam. They believed in one God and stayed away from idols.",
+    "more": "In the Qur’an, Abraham (pbuh) is called a hanif."
    },
    "ar": {
     "title": "الْحُنَفَاءُ",
@@ -2146,7 +2146,7 @@
    },
    "aliases": {
     "en": [
-     "hanîfs"
+     "hanifs"
     ],
     "ar": [
      "حنفاء"
@@ -2157,9 +2157,9 @@
   "abraham-waraqa-ibn-nawfal": {
    "en": {
     "title": "Waraqa ibn Nawfal",
-    "kindLabel": "Hanîf",
+    "kindLabel": "Hanif",
     "periodLabel": "Time of Prophet Muhammad (pbuh)",
-    "summary": "Waraqa ibn Nawfal was a cousin of Khadija, the wife of Prophet Muhammad (pbuh). He was one of the last hanîfs, and he welcomed the prophethood of Muhammad (pbuh).",
+    "summary": "Waraqa ibn Nawfal was a cousin of Khadija, the wife of Prophet Muhammad (pbuh). He was one of the last hanifs, and he welcomed the prophethood of Muhammad (pbuh).",
     "more": "He knew the earlier holy books very well."
    },
    "ar": {
@@ -2994,7 +2994,7 @@
     "title": "Turkestan",
     "kindLabel": "Region",
     "periodLabel": "Central Asia",
-    "summary": "Turkestan means \"the land of the Turks\". It was the name of a large part of Central Asia, and under Mongol pressure, sheikhs came from here to Anatolia.",
+    "summary": "Turkestan means “the land of the Turks”. It was the name of a large part of Central Asia, and under Mongol pressure, sheikhs came from here to Anatolia.",
     "more": "Ahmed Yesevi, a famous Turkish Sufi, lived in Turkestan."
    },
    "ar": {

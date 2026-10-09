@@ -967,11 +967,11 @@ entries.set(key, { word, definition });
                   isAdam ? 'تُركِّز قصة آدم عليه السلام على الأصل الإنساني المشترك، ورعاية الأمانة وعمارة الأرض، والاعتراف بالخطأ بتواضع ويقين.' :
                   'التركيز على بناء القيم الإنسانية المشتركة، والمسؤولية الأخلاقية، والعيش المشترك في ضوء العبر والدروس.'
                 ) : (
-                  isAbraham ? 'The story of Prophet Abraham (AS) focuses on seeking truth, using reason, and standing with gentle strength.' :
-                  isMoses ? 'The story of Prophet Moses (AS) focuses on standing against oppression, advocating for human dignity, and promoting justice.' :
+                  isAbraham ? 'The story of Prophet Abraham (pbuh) focuses on seeking truth, using reason, and standing with gentle strength.' :
+                  isMoses ? 'The story of Prophet Moses (pbuh) focuses on standing against oppression, advocating for human dignity, and promoting justice.' :
                   isMecca ? 'The study of Mecca and the rise of Islam focuses on social justice, fair economics, and universal human brotherhood.' :
                   isYunus ? 'The life and legacy of Yunus Emre focus on universal compassion, inner integrity, ethics of love, and social solidarity through art.' :
-                  isAdam ? 'The story of Prophet Adam (AS) focuses on our shared human origin, responsible stewardship of the earth, and the beauty of humility after a mistake.' :
+                  isAdam ? 'The story of Prophet Adam (pbuh) focuses on our shared human origin, responsible stewardship of the earth, and the beauty of humility after a mistake.' :
                   t('tg.coreGlobalValues')
                 )
               )}
@@ -1426,11 +1426,11 @@ entries.set(key, { word, definition });
       case 'appendices': {
         const appendicesData = metadata?.appendices;
         const fallbackExitTicket = isAbraham ? [
-          'One lesson I learned about Prophet Abraham (AS) today is...',
+          'One lesson I learned about Prophet Abraham (pbuh) today is...',
           'An action of courage I saw in this study was...',
           'A simple vocabulary word from this chapter I want to use is...'
         ] : isMoses ? [
-          'One lesson I learned about Prophet Moses (AS) today is...',
+          'One lesson I learned about Prophet Moses (pbuh) today is...',
           'An action showing safe courage in this study was...',
           'A CEFR A2 word I want to keep using from this chapter is...'
         ] : isMecca ? [
@@ -1448,7 +1448,7 @@ entries.set(key, { word, definition });
         ];
 
         const fallbackMiniProjectTitle = isAbraham ? 'Truth Search Board' : isMoses ? 'The Midian Kindness Poster' : isMecca ? 'The Brotherhood Scroll' : isYunus ? 'The Straight Path Lodge' : t('tg.miniProjectIdea');
-        const fallbackMiniProjectDesc = isAbraham ? 'Draw a simple representation of Abraham looking at the stars, moon, and sun and reflecting on the Creator. Write 2 simple English sentences explaining it.' : isMoses ? 'Draw or write about the scene in Midian where Prophet Moses (AS) helped the two sisters, and write 3 simple English sentences on how we can show kindness today.' : isMecca ? 'Design a physical scroll representing the Prophet\'s Farewell Sermon values of absolute racial equality and safety. Write 3 simple English sentences showing how these apply to global citizens.' : isYunus ? 'Draw or write about the scene of Taptuk Emre’s lodge where Yunus Emre carried only straight, uncrooked pieces of wood. Write 3 sentences in English on why integrity in little things matters for our hearts.' : t('tg.miniProjectDesc');
+        const fallbackMiniProjectDesc = isAbraham ? 'Draw a simple representation of Abraham looking at the stars, moon, and sun and reflecting on the Creator. Write 2 simple English sentences explaining it.' : isMoses ? 'Draw or write about the scene in Midian where Prophet Moses (pbuh) helped the two sisters, and write 3 simple English sentences on how we can show kindness today.' : isMecca ? 'Design a physical scroll representing the Prophet\'s Farewell Sermon values of absolute racial equality and safety. Write 3 simple English sentences showing how these apply to global citizens.' : isYunus ? 'Draw or write about the scene of Taptuk Emre’s lodge where Yunus Emre carried only straight, uncrooked pieces of wood. Write 3 sentences in English on why integrity in little things matters for our hearts.' : t('tg.miniProjectDesc');
 
         const fallbackReflectiveTitle = isAbraham ? 'Patience and Trust' : isMoses ? 'Trusting Allah in Difficult Times' : isMecca ? 'Ethical Economics & Character' : isYunus ? 'Guarding and Polishing the Heart' : t('tg.reflectiveWritingPrompt');
         const fallbackReflectiveDesc = isAbraham ? 'Hagar placed her trust in Allah in the desert. Write about a time when you had to be patient, hopeful, and trust things would work out.' : isMoses ? 'Moses’s mother placed him in a basket on the Nile, trusting Allah’s protection. Write about a time when you had to trust and be calm during a hard situation.' : isMecca ? 'Meccan society had high trade wealth but low ethical care for the poor, orphans, and widows. Write about a time you noticed that real richness and success come from helping others rather than just hoarding wealth.' : isYunus ? 'Yunus Emre taught that the heart is the "throne of the Lord," and hurting another person\'s feelings ruins any good deed. Write about a time when you had to control your anger, be patient, or speak kindly to save a sibling or classmate\'s heart.' : t('tg.reflectiveWritingDesc');

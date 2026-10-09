@@ -16,7 +16,7 @@
     "title": "Yunus Emre and Sûfîsm",
     "image": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/yunus%2Fb1%2Fimages%2Fyunus_b1_ch1-clean.png?alt=media&token=35c3e7df-520e-4293-916b-7312d4aba9a0",
     "audioUrl": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/yunus%2Fb1%2Faudio%2F00_Chapter_1.mp3?alt=media&token=8374c2f7-3dc6-480b-ae3b-3b0145c6f071",
-    "content": "Yunus Emre was a famous Turkish poet and a Sûfî from Anatolia. A Sûfî is a person who aims to get closer to Allah by following Islamic mysticism. Sûfîs lead a way of life within the outer (visible) and inner rules of Islam. The outer part is related to the body's acts of worship, while the inner side refers to the heart's intentions and morality.\n\nSûfîs follow moral principles such as seeking to improve and become better people, being patient in times of need, giving generously without expecting anything in return, doing good to everyone without biases, responding to evil with kindness, and not attaching importance to worldly matters such as wealth, status, and fame.\n\nIn addition to being a Sûfî, Yunus Emre was one of the first to write and recite poems in simple Turkish. The words and phrases which he used helped develop a better literary Turkish. Yunus Emre is known as one of the founders of Turkish Sûfî literature.",
+    "content": "Yunus Emre was a famous Turkish poet and a Sûfî from Anatolia. A Sûfî is a person who aims to get closer to Allah by following Islamic mysticism. Sûfîs lead a way of life within the outer (visible) and inner rules of Islam. The outer part is related to the body’s acts of worship, while the inner side refers to the heart’s intentions and morality.\n\nSûfîs follow moral principles such as seeking to improve and become better people, being patient in times of need, giving generously without expecting anything in return, doing good to everyone without biases, responding to evil with kindness, and not attaching importance to worldly matters such as wealth, status, and fame.\n\nIn addition to being a Sûfî, Yunus Emre was one of the first to write and recite poems in simple Turkish. The words and phrases which he used helped develop a better literary Turkish. Yunus Emre is known as one of the founders of Turkish Sûfî literature.",
     "vocabulary": [
      {
       "word": "Anatolia",
@@ -948,10 +948,10 @@
          "failed to manage",
          "did not manage",
          "didn’t manage",
-         "didn't manage",
+         "didn’t manage",
          "could not manage",
          "couldn’t manage",
-         "couldn't manage",
+         "couldn’t manage",
          "was unable to manage",
          "failed to handle",
          "did not manage to control"
@@ -2797,7 +2797,7 @@
     "title": "Morality and Good Habits",
     "image": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/yunus%2Fb1%2Fimages%2Fyunus_b1_ch12-clean.png?alt=media&token=dd15c0c8-a21b-424a-93a8-fbb6288eebd8",
     "audioUrl": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/yunus%2Fb1%2Faudio%2F11_Chapter_12_Morality_and_Good_Habits.mp3?alt=media&token=d1f94fde-9bcd-47b9-9dd7-64fad10e4dd3",
-    "content": "Yunus believes that true morality is about giving up bad habits that are not suitable for people. Moral principles such as honesty, patience, humility, generosity, respect, trust in Allah, and modesty are important in Yunus Emre’s works. With these principles, Yunus Emre teaches people the path to an honest life. He also taught people to avoid bad habits like being arrogant, stingy, greedy, selfish, or jealous, and gossiping.\n\nYunus Emre's poems are not only literary works but also a moral guide.\n\nHere are some of his verses about morality:\n\nYunus says:\n\n[POEM]\nEnglish:\n“I’ve fallen into the prison of greed and cannot escape\nIt’s a hard, rock-solid place; I cannot break free”\nTurkish:\nTamah hapsine düştüm çıkamam\nKatı berktir duvarı yıkamam\n[/POEM]",
+    "content": "Yunus believes that true morality is about giving up bad habits that are not suitable for people. Moral principles such as honesty, patience, humility, generosity, respect, trust in Allah, and modesty are important in Yunus Emre’s works. With these principles, Yunus Emre teaches people the path to an honest life. He also taught people to avoid bad habits like being arrogant, stingy, greedy, selfish, or jealous, and gossiping.\n\nYunus Emre’s poems are not only literary works but also a moral guide.\n\nHere are some of his verses about morality:\n\nYunus says:\n\n[POEM]\nEnglish:\n“I’ve fallen into the prison of greed and cannot escape\nIt’s a hard, rock-solid place; I cannot break free”\nTurkish:\nTamah hapsine düştüm çıkamam\nKatı berktir duvarı yıkamam\n[/POEM]",
     "vocabulary": [
      {
       "word": "Yunus Emre",
@@ -2948,7 +2948,7 @@
         "answer": 1
        },
        {
-        "sentence": "Yunus Emre's poems are not only literary works and also a moral guide.",
+        "sentence": "Yunus Emre’s poems are not only literary works and also a moral guide.",
         "error": "and also",
         "options": [
          "but also",
@@ -3836,7 +3836,7 @@
       "instructions": "Decide whether the statement is true or false according to the story.",
       "question": "According to Chapter 12, Yunus Emre’s poems are only literary works, not a guide for life.",
       "correctAnswer": false,
-      "explanation": "Chapter 12: “Yunus Emre's poems are not only literary works but also a moral guide.”",
+      "explanation": "Chapter 12: “Yunus Emre’s poems are not only literary works but also a moral guide.”",
       "feedback": {
        "correct": "Right, the statement is false. His poems are literature, and they also teach people how to live an honest life.",
        "incorrect": "Reread the short paragraph in the middle of Chapter 12. What else are his poems besides literary works?"
@@ -5428,7 +5428,7 @@
        "The heart": "the eye that sees the truth",
        "The intellect": "a light from Allah since eternity"
       },
-      "explanation": "Chapter 1: “The outer part is related to the body's acts of worship, while the inner side refers to the heart's intentions and morality.” Chapter 10: “The heart is the eye that sees the truth and the center of understanding.” Yunus describes intellect as “a light from Allah that has existed since eternity.”",
+      "explanation": "Chapter 1: “The outer part is related to the body’s acts of worship, while the inner side refers to the heart’s intentions and morality.” Chapter 10: “The heart is the eye that sees the truth and the center of understanding.” Yunus describes intellect as “a light from Allah that has existed since eternity.”",
       "feedback": {
        "correct": "Yes. The book shows a balance: Body and heart in worship, heart and intellect in understanding.",
        "incorrect": "Look again at the first paragraph of Chapter 1 and the end of Chapter 10."
