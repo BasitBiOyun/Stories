@@ -7,6 +7,8 @@ substitutions:
   _REGION: us-west1
   _AR_REPOSITORY: cloud-run-source-deploy
   _IMAGE: stories-prod
+  # Book PDFs on Cloudflare R2 (bucket from-language-to-culture); the server redirects /pdfs/books there.
+  _PDF_BASE_URL: https://pub-18750481345e4878b338a79a06de57df.r2.dev
   _SERVICE: stories-prod
 
 steps:
@@ -52,7 +54,7 @@ steps:
           --allow-unauthenticated \
           --min-instances=0 \
           --quiet \
-          --update-env-vars=APP_GIT_SHA=$COMMIT_SHA,APP_GIT_REF=$BRANCH_NAME \
+          --update-env-vars=APP_GIT_SHA=$COMMIT_SHA,APP_GIT_REF=$BRANCH_NAME,PDF_BASE_URL=${_PDF_BASE_URL} \
           --update-labels=git-sha=$SHORT_SHA,deployed-by=cloud-build
 
 options:

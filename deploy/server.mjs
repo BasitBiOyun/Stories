@@ -401,8 +401,8 @@ const server = http.createServer(async (req, res) => {
     }
   }
 
-  // The book PDFs can live on Cloudflare R2. With PDF_BASE_URL set, /pdfs/books/<name>.pdf answers
-  // with a redirect there, so the links in the app keep working whichever copy is used.
+  // The book PDFs live on Cloudflare R2 (README, "Book PDFs"); /pdfs/books/<name>.pdf answers with a
+  // redirect to PDF_BASE_URL, so the links in the app stay the same.
   if (pdfBaseUrl && /^\/pdfs\/books\/[a-z0-9-]+\.pdf$/.test(urlPath)) {
     res.writeHead(302, { Location: `${pdfBaseUrl}${urlPath.slice('/pdfs'.length)}`, 'Cache-Control': 'public, max-age=300' });
     res.end();

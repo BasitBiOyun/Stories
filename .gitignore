@@ -9,3 +9,6 @@ coverage/
 google-credentials.json
 test-results/
 playwright-report/
+
+# Book PDFs live on Cloudflare R2 (README, "Book PDFs")
+public/pdfs/books/

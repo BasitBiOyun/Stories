@@ -63,9 +63,9 @@ npm run build
 8. Run `npm run validate` and `npm run build` for technical integrity.
 9. Human-review and lock the finished book.
 
-## PDF status
+## Book PDFs
 
-The previous PDF generation/publication implementation has been retired. PDF download controls remain visible in the application but are temporarily locked until a new publication system is designed from scratch.
+Each book has five PDFs per level and language (`src/lib/bookPdfs.ts`). They are not in this repository: they live in the Cloudflare R2 bucket `from-language-to-culture` under `books/<name>.pdf`, and the server answers `/pdfs/books/<name>.pdf` with a redirect to `PDF_BASE_URL` (set by `_PDF_BASE_URL` in both Cloud Build files). After the PDFs are rebuilt into `public/pdfs/books/` (ignored by git), `bash scripts/r2/upload-pdfs.sh` uploads them. The short usage-guide PDFs (`public/pdfs/guides/`) stay in the app.
 
 ## Preview deployment
 

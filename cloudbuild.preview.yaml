@@ -5,7 +5,7 @@ substitutions:
   _REGION: us-west1
   _AR_REPOSITORY: cloud-run-source-deploy
   _IMAGE: stories-preview
-  # Book PDFs on Cloudflare R2 (bucket from-language-to-culture). Empty = the server sends its own copy.
+  # Book PDFs on Cloudflare R2 (bucket from-language-to-culture). The server redirects /pdfs/books there.
   _PDF_BASE_URL: https://pub-18750481345e4878b338a79a06de57df.r2.dev
   _SERVICE: stories-preview
   # Bucket that holds the narration MP3s; a small tts-state/ folder there remembers the last complete TTS run.
