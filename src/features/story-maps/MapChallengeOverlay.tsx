@@ -6,6 +6,7 @@ import { cn } from '../../lib/utils';
 import { ArrowRight, Check, RotateCcw, Target, X } from '../../components/ui/icons';
 import { playMapSound } from './mapSounds';
 import type { StoryMapChallengeQuestion } from './types';
+import { useDialogFocus } from '../../hooks/useDialogFocus';
 
 export interface ChallengeAnswer {
   lon: number;
@@ -62,6 +63,8 @@ const ScoreDialog: React.FC<{ score: number; total: number; results: (ChallengeA
   const radius = 44;
   const circumference = 2 * Math.PI * radius;
   const textSize = language === 'ar' ? 'text-[17px] leading-[1.8]' : 'text-[14px] leading-snug sm:text-[15px]';
+  // The score covers only the map, so Tab may leave it; Escape leaves the challenge.
+  const dialogRef = useDialogFocus(true, onExit, { modal: false });
 
   useEffect(() => {
     const frame = requestAnimationFrame(() => setFilled(true));
@@ -72,6 +75,7 @@ const ScoreDialog: React.FC<{ score: number; total: number; results: (ChallengeA
   return (
     <motion.div
       className="absolute inset-0 z-30 flex items-center justify-center bg-[#16322f]/40 p-4 backdrop-blur-[3px]"
+      ref={dialogRef}
       role="dialog"
       aria-label={t('map.scoreTitle')}
       initial={{ opacity: 0 }}

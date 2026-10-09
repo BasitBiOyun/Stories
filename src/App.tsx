@@ -37,6 +37,7 @@ import { ReaderSettings } from './components/book/ReaderSettings';
 import { useMediaQuery } from './lib/useMediaQuery';
 import { useReaderPreferences } from './hooks/useReaderPreferences';
 import { useIsPhone, useSheetDrag } from './lib/phone';
+import { useDialogFocus } from './hooks/useDialogFocus';
 import { StoryProgressProvider, useStoryProgress } from './contexts/StoryProgressContext';
 
 // Layout Components
@@ -97,6 +98,7 @@ const AppContent = () => {
   // Phones get native patterns: the menu opens as a sheet from the bottom, the header keeps only what is used most.
   const isPhone = useIsPhone();
   const menuSheet = useSheetDrag(() => setIsMenuOpen(false));
+  const menuRef = useDialogFocus<HTMLElement>(isMenuOpen, () => setIsMenuOpen(false));
   const [isReaderSettingsOpen, setIsReaderSettingsOpen] = useState(false);
   const [userAnswers, setUserAnswers] = useState<Record<string, boolean | null>>({});
   const [showSummary, setShowSummary] = useState(false);
@@ -783,13 +785,13 @@ const AppContent = () => {
               </button>
 
               <div className="min-w-0">
-                <h2
+                <h1
                   className="clip-room max-w-[min(15rem,58vw)] truncate font-display text-[14px] font-semibold leading-tight tracking-[-0.01em] text-parchment sm:max-w-xs sm:text-[15px] md:max-w-md md:text-[17px] xl:max-w-[20rem] 2xl:max-w-md"
                   title={currentBookTitle}
                 >
                   <span className="sm:hidden">{currentPage?.title || currentBookTitle}</span>
                   <span className="hidden sm:inline">{currentBookTitle}</span>
-                </h2>
+                </h1>
                 <span className={cn(
                   "ui-label mt-0.5 block truncate sm:text-xs max-sm:hidden",
                   themeClasses.headerSubtitle
@@ -922,6 +924,7 @@ const AppContent = () => {
 
       {/* Main Content Area */}
       <main
+        id="main"
         className="flex-1 relative z-10 flex flex-col overflow-hidden min-h-0"
         onTouchStart={handleSwipeStart}
         onTouchEnd={handleSwipeEnd}
@@ -1179,6 +1182,9 @@ const AppContent = () => {
                 themeClasses.menuBorder
               )}
               onClick={e => e.stopPropagation()}
+              ref={menuRef}
+              role="dialog"
+              aria-modal="true"
               aria-label={t('nav.mainMenu')}
               {...(isPhone ? menuSheet.sheet : {})}
             >
@@ -1203,7 +1209,7 @@ const AppContent = () => {
                   type="button"
                   onClick={() => setIsMenuOpen(false)}
                   className={cn("touch-target flex items-center justify-center rounded-full transition-colors hover:bg-white/[0.06]", themeClasses.menuCloseButton)}
-                  aria-label="Close menu"
+                  aria-label={t('nav.closeMenu')}
                 >
                   <X size={22} />
                 </button>

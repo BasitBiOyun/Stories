@@ -141,12 +141,12 @@ export const QuickChallengePanel = ({ page, completedExercises, onOpenExercise }
 
               <div className="min-w-0 pt-0.5">
                 <div className="flex flex-wrap items-center gap-2.5">
-                  <h4 className={cn(
+                  <h3 className={cn(
                     'font-display text-xl font-semibold tracking-[-0.025em] sm:text-2xl',
                     quickTheme.title
                   )}>
                     {t('nav.quickChallenge')}
-                  </h4>
+                  </h3>
                   {completed && (
                     <span className="rounded-full bg-emerald-500/10 px-2.5 py-1 font-display text-[11px] font-semibold uppercase tracking-[0.14em] text-emerald-700">
                       {t('nav.completed')}
@@ -272,12 +272,12 @@ export const LanguageFocusPanel = ({ page, completedExercises, onOpenExercise, i
                     {formatNumber(exercises.length)} {language === 'ar' ? (exercises.length === 1 ? 'نشاط' : exercises.length === 2 ? 'نشاطان' : exercises.length <= 10 ? 'أنشطة' : 'نشاطًا') : exercises.length === 1 ? 'activity' : 'activities'}
                   </span>
                 </div>
-                <h4 className={cn(
+                <h3 className={cn(
                   'mt-0.5 font-display text-lg sm:text-xl font-semibold tracking-[-0.02em]',
                   focusTheme.title
                 )}>
                   {language === 'ar' ? 'التركيز اللغوي' : 'Language Focus'}
-                </h4>
+                </h3>
                 <p className={cn(
                   'mt-1 font-serif leading-relaxed',
                   isArabic ? 'text-[14px] sm:text-base' : 'text-[12px] sm:text-[13px]',

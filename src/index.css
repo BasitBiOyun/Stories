@@ -118,6 +118,13 @@
     @apply bg-wood text-ink selection:bg-gold/30 transition-colors duration-500;
     overscroll-behavior-y: none;
   }
+
+  /* Keyboard focus floor (WCAG 2.4.7): every control shows where focus is, unless it draws its own ring.
+     This amber keeps at least 3:1 on white pages and on the dark wood and night surfaces. */
+  :where(a[href], button, input, select, textarea, summary, [role="button"], [role="tab"], [role="link"], [tabindex]:not([tabindex="-1"])):focus-visible {
+    outline: 2px solid #b7791f;
+    outline-offset: 2px;
+  }
   
   .font-dyslexic-mode * {
     font-family: var(--font-dyslexic) !important;
@@ -582,3 +589,27 @@
 .my-words-dark [class~="bg-emerald-100"] { background-color: rgb(16 185 129 / 0.18); }
 .my-words-dark [class~="text-emerald-800"] { color: #8EE0BC; }
 .my-words-dark [class~="bg-brand-700"] { background-color: #c2aa6b; color: #1b1408; }
+
+/* "Skip to content" (SkipLink.tsx): off screen until it is focused with Tab. */
+.skip-link {
+  position: fixed;
+  top: 0.75rem;
+  inset-inline-start: 0.75rem;
+  z-index: 100000;
+  transform: translateY(-200%);
+  border-radius: 9999px;
+  background: #1f1a12;
+  color: #fff9ec;
+  padding: 0.65rem 1.1rem;
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+.skip-link:focus-visible,
+.skip-link:focus {
+  transform: none;
+  outline: 2px solid #d8b35c;
+  outline-offset: 2px;
+}

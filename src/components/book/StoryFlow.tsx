@@ -90,7 +90,7 @@ const ChapterBlock = React.memo(({
             {t('nav.chapter')} {formatNumber(page.id)}
           </p>
         )}
-        <h3 className="mt-1 font-display text-2xl sm:text-3xl font-semibold tracking-[-0.03em] leading-tight text-wood clip-room">{page.title}</h3>
+        <h2 className="mt-1 font-display text-2xl sm:text-3xl font-semibold tracking-[-0.03em] leading-tight text-wood clip-room">{page.title}</h2>
       </header>
       <div
         className={cn('font-serif leading-[1.72] text-wood/90 flow-root', isDyslexic && 'font-sans tracking-wide', isRTL && 'text-right')}

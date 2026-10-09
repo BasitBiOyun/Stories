@@ -591,7 +591,7 @@ export const MasterGlossary: React.FC<MasterGlossaryProps> = ({
               >
                 {isPhone && opt.value === 'known' && <Check size={12} className="me-1 inline-block align-[-1px]" aria-hidden="true" />}
                 {isPhone && opt.value === 'unknown' && <RotateCcw size={12} className="me-1 inline-block align-[-1px]" aria-hidden="true" />}
-                {opt.label} <span className="opacity-90">· {formatNumber(opt.count)}</span>
+                {opt.label} <span>· {formatNumber(opt.count)}</span>
               </button>
             ))}
           </div>

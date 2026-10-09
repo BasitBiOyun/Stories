@@ -8,6 +8,7 @@ import { SECTION_ICONS } from '../../lib/sectionIcons';
 import { getStoryMeta } from '../../core/content/storyCatalog';
 import { MY_WORDS_LEARNED, getMyWordsBook, markMyWord, removeMyWord, reviewQueue, useMyWords, type MyWord } from '../../lib/myWords';
 import type { Level } from '../../types';
+import { useDialogFocus } from '../../hooks/useDialogFocus';
 
 interface MyWordsPanelProps {
   isOpen: boolean;
@@ -26,6 +27,8 @@ const sameBook = (word: MyWord, book: { storyId: string; level: Level }) => word
 
 /** "My words": the Word Notes the reader saved, with a short flashcard review. Everything stays on the device. */
 export const MyWordsPanel: React.FC<MyWordsPanelProps> = ({ isOpen, onClose, startInReview = false, book, excludeBook, embedded = false }) => {
+  // Tab stays inside and focus returns to the opener; Escape is handled below.
+  const dialogRef = useDialogFocus(isOpen && !embedded, onClose, { escape: false });
   const { language, isRTL, formatNumber } = useLanguage();
   const lang = language === 'ar' ? 'ar' : 'en';
   const allWords = useMyWords();
@@ -273,6 +276,7 @@ export const MyWordsPanel: React.FC<MyWordsPanelProps> = ({ isOpen, onClose, sta
             initial={{ y: 12, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: 12, opacity: 0 }}
+            ref={dialogRef}
             role="dialog"
             aria-modal="true"
             aria-label={SECTION_ICONS.myWords[lang]}

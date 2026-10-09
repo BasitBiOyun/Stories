@@ -3,6 +3,7 @@ import { createPortal } from 'react-dom';
 import { AnimatePresence, motion } from 'motion/react';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { cn } from '../../lib/utils';
+import { useDialogFocus } from '../../hooks/useDialogFocus';
 
 const TOUR_KEY = 'app_reader_tour_done';
 
@@ -46,6 +47,8 @@ const firstVisible = (selector: string): HTMLElement | null => {
  * Quick Challenge. Steps whose target is not on this page are skipped. Runs once per device.
  */
 export const ReaderTour: React.FC<ReaderTourProps> = ({ active, onFinish }) => {
+  // Tab stays on the tour card and focus returns afterwards; Escape is handled below.
+  const dialogRef = useDialogFocus(active, onFinish, { escape: false });
   const { t, isRTL, formatNumber } = useLanguage();
   const [steps, setSteps] = useState<TourStep[]>([]);
   const [index, setIndex] = useState(0);
@@ -144,7 +147,9 @@ export const ReaderTour: React.FC<ReaderTourProps> = ({ active, onFinish }) => {
           key={step.selector}
           initial={{ opacity: 0, y: placeBelow ? 6 : -6 }}
           animate={{ opacity: 1, y: 0 }}
+          ref={dialogRef}
           role="dialog"
+          aria-modal="true"
           aria-labelledby="reader-tour-title"
           className="absolute rounded-panel bg-white p-4 text-start shadow-[0_18px_48px_rgba(0,0,0,0.35)]"
           style={{ width: cardWidth, left: cardLeft, top: cardTop, bottom: cardBottom }}

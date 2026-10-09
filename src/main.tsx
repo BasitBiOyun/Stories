@@ -10,6 +10,7 @@ import './arabicTypography.css';
 import './lib/pdfDownloadLock';
 import { LanguageProvider } from './contexts/LanguageContext';
 import { ArabicUiSanitizer } from './components/ArabicUiSanitizer';
+import { SkipLink } from './components/ui/SkipLink';
 import { UserRoleProvider } from './contexts/UserRoleContext';
 import { ClassModeProvider } from './contexts/ClassModeContext';
 import { registerServiceWorker } from './lib/pwa';
@@ -47,6 +48,7 @@ createRoot(document.getElementById('root')!).render(
     <LanguageProvider>
       <UserRoleProvider>
         <ClassModeProvider>
+          <SkipLink />
           <App />
           <ArabicUiSanitizer />
         </ClassModeProvider>

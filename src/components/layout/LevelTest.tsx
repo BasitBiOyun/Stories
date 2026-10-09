@@ -8,6 +8,7 @@ import { SECTION_ICONS } from '../../lib/sectionIcons';
 import { levelTestAr, levelTestEn, scoreLevelTest } from '../../data/levelTest';
 import { firstOpenBookAt } from '../../lib/nextBook';
 import type { Level } from '../../types';
+import { useDialogFocus } from '../../hooks/useDialogFocus';
 
 const RESULT_KEY = 'v2:level-test';
 
@@ -42,6 +43,8 @@ interface LevelTestProps {
 
 /** The optional ten-question level test for self-learners. The result is only a suggestion. */
 export const LevelTest: React.FC<LevelTestProps> = ({ isOpen, onClose, onResult, onStart }) => {
+  // Tab stays inside and focus returns to the opener; Escape is handled below.
+  const dialogRef = useDialogFocus(isOpen, onClose, { escape: false });
   const { language, isRTL, formatNumber } = useLanguage();
   const lang = language === 'ar' ? 'ar' : 'en';
   const items = lang === 'ar' ? levelTestAr : levelTestEn;
@@ -138,6 +141,7 @@ export const LevelTest: React.FC<LevelTestProps> = ({ isOpen, onClose, onResult,
             initial={{ y: 12, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: 12, opacity: 0 }}
+            ref={dialogRef}
             role="dialog"
             aria-modal="true"
             aria-label={SECTION_ICONS.levelTest[lang]}

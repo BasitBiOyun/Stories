@@ -10,6 +10,7 @@ import { BookMarked, Check, Eye, EyeOff } from './icons';
 import { setWordNoteGlossShown, useWordNoteGlossShown } from '../../lib/wordNoteGloss';
 import { isMyWord, toggleMyWord, useMyWords } from '../../lib/myWords';
 import { useIsPhone, useSheetDrag } from '../../lib/phone';
+import { useDialogFocus } from '../../hooks/useDialogFocus';
 
 export const VocabularyWord = ({ 
   word, 
@@ -32,6 +33,8 @@ export const VocabularyWord = ({
   const isSaved = isMyWord(myWords, wordLanguage, word);
   const triggerRef = useRef<HTMLSpanElement>(null);
   const tooltipRef = useRef<HTMLDivElement>(null);
+  // Opening moves focus onto the card so a screen reader reads it; Escape closes it and focus returns to the word.
+  useDialogFocus(isOpen, () => setIsOpen(false), { initialFocus: 'dialog' }, tooltipRef);
   const [coords, setCoords] = useState<{
     top: number;
     left: number;
@@ -165,6 +168,8 @@ export const VocabularyWord = ({
               />
               <motion.div
                 ref={tooltipRef}
+                role="dialog"
+                aria-label={word.replace(/[\s.,;:!?،؛…"“”'‘’()«»]+$/u, '')}
                 initial={isPhone ? { y: '100%' } : { opacity: 0, scale: 0.985 }}
                 animate={isPhone ? { y: 0 } : { opacity: 1, scale: 1 }}
                 exit={isPhone ? { y: '100%' } : { opacity: 0, scale: 0.985 }}

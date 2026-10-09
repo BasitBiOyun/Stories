@@ -9,7 +9,7 @@ export interface PolicySection {
   points: { en: string; ar: string }[];
 }
 
-export const policyUpdated = { en: 'Last updated: 7 October 2026', ar: 'آخر تحديث: 7 أكتوبر 2026' };
+export const policyUpdated = { en: 'Last updated: 9 October 2026', ar: 'آخر تحديث: 9 أكتوبر 2026' };
 
 export const policySections: PolicySection[] = [
   {
@@ -69,6 +69,10 @@ export const policySections: PolicySection[] = [
       {
         en: 'Text contrast on the main screens meets the 4.5:1 rule, buttons on phones have 44-pixel touch areas, and Arabic pages read from right to left.',
         ar: 'تباين النص في الشاشات الرئيسية يحقّق نسبة 4.5:1، وللأزرار على الهواتف مساحة لمس قدرها 44 بكسلًا، وتُعرَض الصفحات العربية من اليمين إلى اليسار.',
+      },
+      {
+        en: 'Keyboard: a "Skip to content" link comes first, focus is always visible, and menus, cards and guides take focus when they open, close with Escape and return focus to where it was.',
+        ar: 'لوحة المفاتيح: أوّل ما يظهر رابط «انتقل إلى المحتوى»، ومكان التركيز ظاهر دائمًا، والقوائم والبطاقات والأدلّة تأخذ التركيز عند فتحها، وتُغلَق بمفتاح Escape، ثم يعود التركيز إلى مكانه.',
       },
       {
         en: 'Known gaps: the app has not yet been tested with screen readers (VoiceOver, TalkBack, NVDA), and some map games and matching activities need touch or a mouse.',

@@ -8,6 +8,7 @@ import { EntityMap } from './LazyEntityMap';
 import { entityPictureUrl } from './pictures';
 import { LearnerName } from './LearnerNameLine';
 import { groupColor } from './categories';
+import { useDialogFocus } from '../../hooks/useDialogFocus';
 
 export const HistoricalEntityWord = ({
   word,
@@ -22,6 +23,8 @@ export const HistoricalEntityWord = ({
   const [isOpen, setIsOpen] = useState(false);
   const triggerRef = useRef<HTMLSpanElement>(null);
   const tooltipRef = useRef<HTMLDivElement>(null);
+  // Opening moves focus onto the card so a screen reader reads it; Escape closes it and focus returns to the word.
+  useDialogFocus(isOpen, () => setIsOpen(false), { initialFocus: 'dialog' }, tooltipRef);
   const [coords, setCoords] = useState({
     top: 0,
     left: 0,
@@ -111,7 +114,7 @@ export const HistoricalEntityWord = ({
         className={cn(
           'rounded-[3px] px-[2px] font-bold cursor-pointer transition-colors',
           'text-teal-900 border-b-2 border-teal-600/75 bg-teal-100/55',
-          'hover:bg-teal-200/70 hover:border-teal-700 focus:outline-none focus:ring-2 focus:ring-teal-500/40',
+          'hover:bg-teal-200/70 hover:border-teal-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500/60',
         )}
       >
         {word}
@@ -124,6 +127,8 @@ export const HistoricalEntityWord = ({
               <div className="fixed inset-0 z-[99998]" onClick={close} />
               <motion.div
                 ref={tooltipRef}
+                role="dialog"
+                aria-label={copy.title}
                 initial={{ opacity: 0, scale: 0.985 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.985 }}

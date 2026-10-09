@@ -439,7 +439,7 @@ export const PlacesPage = ({
                       }}
                     >
                       {color && !active && <span className="h-2 w-2 rounded-full" style={{ backgroundColor: color }} />}
-                      {key === 'all' ? text.all : text.groups[key]} <span className="opacity-90">· {formatNumber(count)}</span>
+                      {key === 'all' ? text.all : text.groups[key]} <span>· {formatNumber(count)}</span>
                     </button>
                   );
                 })}

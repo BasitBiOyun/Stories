@@ -379,7 +379,7 @@ export const SummaryDashboard: React.FC<SummaryDashboardProps> = ({
         />
       </div>
 
-      <main className="relative mx-auto w-full max-w-7xl px-5 py-7 sm:px-8 sm:py-9 lg:px-12 lg:py-12">
+      <div className="relative mx-auto w-full max-w-7xl px-5 py-7 sm:px-8 sm:py-9 lg:px-12 lg:py-12">
         <motion.section
           initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
@@ -757,7 +757,7 @@ export const SummaryDashboard: React.FC<SummaryDashboardProps> = ({
             </div>
           </div>
         </section>
-      </main>
+      </div>
     </div>
   );
 };

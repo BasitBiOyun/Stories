@@ -31,6 +31,7 @@ import { collectionVisualFor } from '../../core/content/storyCatalog';
 import { TeacherGuideSection, Level, PageData } from '../../types';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { GuideV2ChapterBox, GuideV2Tools, storyPageForSection } from './GuideV2';
+import { useDialogFocus } from '../../hooks/useDialogFocus';
 
 const splitLessonPlanSteps = (lessonPlan: string): string[] => {
   const normalized = lessonPlan.replace(/\s+/g, ' ').trim();
@@ -82,6 +83,8 @@ export const TeacherGuide = ({
   /** The book's printable Teacher's Book (opens in a new tab). */
   pdfUrl?: string;
 }) => {
+  // Tab stays inside and focus returns to the opener; Escape is handled below.
+  const dialogRef = useDialogFocus(isOpen, onClose, { escape: false });
   const [activeTab, setActiveTab] = useState('overview');
   const [searchQuery, setSearchQuery] = useState('');
   const [isPrepOpen, setIsPrepOpen] = useState(false);
@@ -1529,6 +1532,10 @@ entries.set(key, { word, definition });
             "teacher-guide-shell fixed inset-0 bg-wood/95 backdrop-blur-2xl z-[100] overflow-hidden flex flex-col",
             isRTL && "font-arabic"
           )}
+          ref={dialogRef}
+          role="dialog"
+          aria-modal="true"
+          aria-label={t('nav.teacherGuide')}
           style={{
             '--color-gold': guideTokens.accent,
             '--color-wood': guideTokens.chromeMenu,

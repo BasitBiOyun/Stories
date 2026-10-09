@@ -7,6 +7,7 @@ import { X } from '../ui/icons';
 import { SECTION_ICONS } from '../../lib/sectionIcons';
 import { decodeResult, type ResultCodeData } from '../../lib/resultCode';
 import { getStoryMeta } from '../../core/content/storyCatalog';
+import { useDialogFocus } from '../../hooks/useDialogFocus';
 
 interface CheckResultCodeProps {
   isOpen: boolean;
@@ -15,6 +16,8 @@ interface CheckResultCodeProps {
 
 /** Teacher tool: type the 8-character code from a student's result card and see the same numbers. */
 export const CheckResultCode: React.FC<CheckResultCodeProps> = ({ isOpen, onClose }) => {
+  // Tab stays inside and focus returns to the opener; Escape is handled below.
+  const dialogRef = useDialogFocus(isOpen, onClose, { escape: false });
   const { language, isRTL, formatNumber } = useLanguage();
   const lang = language === 'ar' ? 'ar' : 'en';
   const [value, setValue] = useState('');
@@ -73,6 +76,7 @@ export const CheckResultCode: React.FC<CheckResultCodeProps> = ({ isOpen, onClos
           <motion.div
             initial={{ y: 12, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
+            ref={dialogRef}
             role="dialog"
             aria-modal="true"
             aria-label={SECTION_ICONS.checkCode[lang]}

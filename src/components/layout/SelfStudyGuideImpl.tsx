@@ -10,6 +10,7 @@ import { PageData, StudentGuideSection, TeacherGuideSection } from '../../types'
 import { GuideV2ChapterBox, GuideV2Tools, storyPageForSection } from './GuideV2';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { useStoryProgress } from '../../contexts/StoryProgressContext';
+import { useDialogFocus } from '../../hooks/useDialogFocus';
 
 const GuideIcon = ({ name, className = 'w-7 h-7' }: { name: GuideIconName; className?: string }) => (
   <PhosphorGuideIcon name={name} className={className} />
@@ -110,6 +111,8 @@ export const SelfStudyGuide = ({
   /** The book's printable Self-Study Guide (opens in a new tab). */
   pdfUrl?: string;
 }) => {
+  // Tab stays inside and focus returns to the opener; Escape is handled below.
+  const dialogRef = useDialogFocus(isOpen, onClose, { escape: false });
   const [activeTab, setActiveTab] = useState('welcome');
   const [activeGuideSection, setActiveGuideSection] = useState(0);
   const [activeStudyStep, setActiveStudyStep] = useState(0);
@@ -759,6 +762,10 @@ export const SelfStudyGuide = ({
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           className={cn('self-study-shell fixed inset-0 bg-wood/98 backdrop-blur-3xl z-[100] overflow-hidden flex flex-col', isRTL && 'font-arabic')}
+          ref={dialogRef}
+          role="dialog"
+          aria-modal="true"
+          aria-label={t('nav.selfStudyGuide')}
           style={{
             '--color-gold': guideTokens.accent,
             '--color-wood': guideTokens.chromeMenu

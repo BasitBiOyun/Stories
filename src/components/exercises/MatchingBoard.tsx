@@ -185,7 +185,7 @@ export const MatchingBoard: React.FC<MatchingBoardProps> = ({
                 aria-pressed={active}
                 className={cn('h-8 min-w-8 rounded-full px-2 font-display text-xs font-black transition-colors',
                   active ? 'ring-2 ring-brand-600 ring-offset-1' : '',
-                  assigned ? 'text-white' : 'bg-white text-wood/60 ring-1 ring-black/10')}
+                  assigned ? 'text-white' : 'bg-white text-wood/75 ring-1 ring-black/10')}
                 style={assigned ? { backgroundColor: pairColor(pairIndex) } : undefined}
               >
                 {formatNumber(pairIndex + 1)}

@@ -22,6 +22,7 @@ import {
   storyCatalog,
   type StoryCollectionId,
 } from '../../core/content/storyCatalog';
+import { useDialogFocus } from '../../hooks/useDialogFocus';
 
 type CatalogStory = (typeof storyCatalog)[number];
 type Tab = 'library' | 'words' | 'settings';
@@ -79,7 +80,7 @@ export const PhoneLibrary: React.FC<PhoneLibraryProps> = ({
   const [tab, setTab] = useState<Tab>('library');
   const [openBook, setOpenBook] = useState<{ id: string; level: Level } | null>(null);
   const bookSheet = useSheetDrag(() => setOpenBook(null));
-  const scrollRef = useRef<HTMLDivElement>(null);
+  const scrollRef = useRef<HTMLElement>(null);
 
   const copy = lang === 'ar'
     ? {
@@ -137,6 +138,8 @@ export const PhoneLibrary: React.FC<PhoneLibraryProps> = ({
     [stories],
   );
   const bookOpen = openBook ? stories.find(story => story.id === openBook.id) ?? null : null;
+  // Tab stays in the book sheet and focus returns to the cover; Escape is handled below.
+  const bookSheetRef = useDialogFocus(bookOpen !== null, () => setOpenBook(null), { escape: false });
 
   useEffect(() => {
     if (!openBook) return undefined;
@@ -199,7 +202,7 @@ export const PhoneLibrary: React.FC<PhoneLibraryProps> = ({
         <LanguageToggle />
       </header>
 
-      <div ref={scrollRef} className="min-h-0 flex-1 overflow-y-auto overscroll-contain pb-6">
+      <main id="main" ref={scrollRef} className="min-h-0 flex-1 overflow-y-auto overscroll-contain pb-6">
         {tab === 'library' ? (
           <div className="space-y-7 px-4 pt-2">
             {lastStory && lastActive && (
@@ -327,7 +330,7 @@ export const PhoneLibrary: React.FC<PhoneLibraryProps> = ({
             </section>
           </div>
         )}
-      </div>
+      </main>
 
       <nav
         className="flex shrink-0 border-t border-white/[0.08] bg-[#0b0e0c]/95 px-2 pb-[env(safe-area-inset-bottom)] backdrop-blur-xl"
@@ -349,6 +352,7 @@ export const PhoneLibrary: React.FC<PhoneLibraryProps> = ({
             onClick={() => setOpenBook(null)}
           >
             <motion.div
+              ref={bookSheetRef}
               role="dialog"
               aria-modal="true"
               aria-label={storyName(bookOpen)}

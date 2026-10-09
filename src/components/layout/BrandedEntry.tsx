@@ -37,8 +37,8 @@ export const BrandedEntry: React.FC<{ children: React.ReactNode }> = ({ children
         isRTL && 'font-arabic',
       )}
     >
-      <div className="relative overflow-hidden" aria-hidden="true">
-        <div className="absolute inset-[-30%_-20%] flex rotate-[-8deg] flex-col gap-5 opacity-75">
+      <header className="relative overflow-hidden">
+        <div className="absolute inset-[-30%_-20%] flex rotate-[-8deg] flex-col gap-5 opacity-75" aria-hidden="true">
           {[0, 1, 2, 3].map(row => (
             <div
               key={row}
@@ -55,6 +55,7 @@ export const BrandedEntry: React.FC<{ children: React.ReactNode }> = ({ children
           ))}
         </div>
         <div
+          aria-hidden="true"
           className={cn(
             'absolute inset-0',
             isRTL
@@ -70,9 +71,9 @@ export const BrandedEntry: React.FC<{ children: React.ReactNode }> = ({ children
             <BrandTitle />
           </h1>
         </div>
-      </div>
+      </header>
 
-      <div className="relative flex items-center justify-center px-5 py-10 sm:px-10">
+      <main id="main" className="relative flex items-center justify-center px-5 py-10 sm:px-10">
         <div className="absolute end-4 top-4 z-20 flex items-center gap-2">
           <LanguageToggle />
           <FullscreenToggle />
@@ -81,7 +82,7 @@ export const BrandedEntry: React.FC<{ children: React.ReactNode }> = ({ children
           <img src={homeIcon} alt="" className="h-14 w-14 rounded-[14px] bg-white/[0.05] p-2" />
           {children}
         </div>
-      </div>
+      </main>
     </div>
   );
 };

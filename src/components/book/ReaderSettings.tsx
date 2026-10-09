@@ -7,6 +7,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { cn } from '../../lib/utils';
 import { useMediaQuery } from '../../lib/useMediaQuery';
 import { useSheetDrag } from '../../lib/phone';
+import { useDialogFocus } from '../../hooks/useDialogFocus';
 import { SECTION_ICONS } from '../../lib/sectionIcons';
 import { BookOpen, Highlighter, Scroll, Settings, TextSize, Type, Waveform, WideView, X } from '../ui/icons';
 
@@ -58,6 +59,8 @@ export const ReaderSettings = (props: ReaderSettingsProps) => {
   const ar = language === 'ar';
   const isPhone = useMediaQuery('(max-width: 639px)');
   const settingsSheet = useSheetDrag(() => setOpen(false));
+  // Escape closes it and focus comes back to the button; the phone sheet is modal, the popover is not.
+  const dialogRef = useDialogFocus(open, () => setOpen(false), { modal: isPhone });
   // Wide view only changes anything on large screens.
   const canWiden = useMediaQuery('(min-width: 1024px)');
   const title = ar ? 'إعدادات القصة' : 'Story settings';
@@ -236,7 +239,9 @@ export const ReaderSettings = (props: ReaderSettingsProps) => {
                   />
                   <motion.div
                     key="sheet"
+                    ref={dialogRef}
                     role="dialog"
+                    aria-modal="true"
                     aria-label={title}
                     dir={isRTL ? 'rtl' : 'ltr'}
                     initial={{ y: '100%' }}
@@ -262,6 +267,7 @@ export const ReaderSettings = (props: ReaderSettingsProps) => {
           <AnimatePresence>
             {open && (
               <motion.div
+                ref={dialogRef}
                 role="dialog"
                 aria-label={title}
                 initial={{ opacity: 0, y: -8, scale: 0.97 }}

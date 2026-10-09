@@ -11,6 +11,7 @@ import {
   teamSections,
 } from '../../data/aboutContent';
 import { policySections, policyUpdated } from '../../data/policyContent';
+import { useDialogFocus } from '../../hooks/useDialogFocus';
 
 type AboutTab = 'about' | 'sources' | 'privacy';
 
@@ -21,6 +22,8 @@ interface AboutPageProps {
 
 /** "About & Sources" overlay, opened from the home page footer and the reader menu. */
 export const AboutPage: React.FC<AboutPageProps> = ({ isOpen, onClose }) => {
+  // Tab stays inside and focus returns to the opener; Escape is handled below.
+  const dialogRef = useDialogFocus(isOpen, onClose, { escape: false });
   const { language, isRTL, t } = useLanguage();
   const [tab, setTab] = useState<AboutTab>('about');
   const closeRef = useRef<HTMLButtonElement>(null);
@@ -90,6 +93,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ isOpen, onClose }) => {
             isRTL && 'font-arabic',
           )}
           dir={isRTL ? 'rtl' : 'ltr'}
+          ref={dialogRef}
           role="dialog"
           aria-modal="true"
           aria-label={copy.heading}

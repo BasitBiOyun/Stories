@@ -26,6 +26,7 @@ import { EVENT_SETTLE, makeTimeScale } from './timeScale';
 import { MapEventScene } from './MapEventScene';
 import { MapChallengeOverlay, type ChallengeAnswer } from './MapChallengeOverlay';
 import type { StoryMap, StoryMapCamera, StoryMapPlace } from './types';
+import { useDialogFocus } from '../../hooks/useDialogFocus';
 
 type View = { x: number; y: number; w: number; h: number };
 
@@ -99,6 +100,7 @@ export const StoryMapPage: React.FC<StoryMapPageProps> = ({ page }) => {
   const isPhone = useIsPhone();
   const [sheetOpen, setSheetOpen] = useState(false);
   const infoSheet = useSheetDrag(() => setSheetOpen(false));
+  const infoSheetRef = useDialogFocus(isPhone && sheetOpen && !challengeOn, () => setSheetOpen(false));
   const [resultSlot, setResultSlot] = useState<HTMLDivElement | null>(null);
   useEffect(() => { if (challengeOn || !isPhone) setSheetOpen(false); }, [challengeOn, isPhone]);
   const question = map.challenge[cIndex];
@@ -1033,7 +1035,9 @@ export const StoryMapPage: React.FC<StoryMapPageProps> = ({ page }) => {
           />
           <motion.div
             key="sheet"
+            ref={infoSheetRef}
             role="dialog"
+            aria-modal="true"
             aria-label={selected?.name ?? t('map.startTitle')}
             data-map-sheet
             dir={isRTL ? 'rtl' : 'ltr'}

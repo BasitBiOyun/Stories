@@ -22,6 +22,7 @@ import { getResponsiveStoryFontStyle, useStoryTextRenderer } from './useStoryTex
 import { ChapterAudioBar, ChapterAudioElement, useChapterAudio } from './ChapterAudio';
 import { useMediaQuery } from '../../lib/useMediaQuery';
 import { ChapterActivityRail, ChapterSteps, LanguageFocusPanel, QuickChallengePanel } from './ChapterActivities';
+import { useDialogFocus } from '../../hooks/useDialogFocus';
 
 // One chapter of the reader: title, steps and audio on top, picture and story text, then the chapter's activities.
 // The parts live in their own files: the story text (useStoryText.tsx, StoryPoem.tsx), the picture points
@@ -71,6 +72,7 @@ export const StoryPage = ({
   const [isLessonCardOpen, setIsLessonCardOpen] = useState(false);
   // Wide screens: the group task or the I can list opened from the icons beside the picture.
   const [railPanel, setRailPanel] = useState<'group' | 'iCan' | null>(null);
+  const railRef = useDialogFocus(isWide && railPanel !== null, () => setRailPanel(null));
   // First story page on this device: a three-step tour once the page has settled.
   const [isTourActive, setIsTourActive] = useState(false);
   useEffect(() => {
@@ -321,7 +323,7 @@ export const StoryPage = ({
   );
   const renderHeading = () => (
     <div className={cn("flex flex-col min-w-0", isRTL && "text-right")}>
-      <h3 className="font-display text-[1.3rem] sm:text-3xl lg:text-4xl text-wood font-semibold tracking-[-0.03em] leading-tight lg:truncate clip-room">{page.title}</h3>
+      <h2 className="font-display text-[1.3rem] sm:text-3xl lg:text-4xl text-wood font-semibold tracking-[-0.03em] leading-tight lg:truncate clip-room">{page.title}</h2>
       <p className={cn(
         "font-serif text-xs sm:text-base lg:text-lg sm:mt-0.5",
         language !== 'ar' && "italic",
@@ -413,7 +415,7 @@ export const StoryPage = ({
                     <p className={cn("font-display font-semibold uppercase text-white/80", language === 'ar' ? "text-[13px]" : "text-[11px] tracking-[0.16em]")}>
                       {t('nav.chapter')} {formatNumber(page.id)}
                     </p>
-                    <h3 className="font-display text-[1.35rem] font-semibold leading-tight tracking-[-0.02em] [text-shadow:0_1px_8px_rgba(0,0,0,0.45)]">{page.title}</h3>
+                    <h2 className="font-display text-[1.35rem] font-semibold leading-tight tracking-[-0.02em] [text-shadow:0_1px_8px_rgba(0,0,0,0.45)]">{page.title}</h2>
                   </div>
                 )}
               </div>
@@ -563,6 +565,7 @@ export const StoryPage = ({
               exit={{ opacity: 0 }}
               className="fixed inset-0 z-[300] flex items-center justify-center bg-black/45 p-8 backdrop-blur-sm"
               onClick={() => setRailPanel(null)}
+              ref={railRef}
               role="dialog"
               aria-modal="true"
               dir={isRTL ? 'rtl' : 'ltr'}

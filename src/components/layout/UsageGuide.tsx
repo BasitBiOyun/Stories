@@ -21,6 +21,7 @@ import {
   type AppIconProps,
 } from '../ui/icons';
 import { USAGE_GUIDES, usageGuidePdfUrl, type UsageGuideIcon } from '../../data/usageGuides';
+import { useDialogFocus } from '../../hooks/useDialogFocus';
 
 const ICONS: Record<UsageGuideIcon, React.ComponentType<AppIconProps>> = {
   LockKeyhole, Library, BookOpen, Notepad, ProjectorScreen, Trophy, Certificate, FileText, Lightbulb, Target, BookMarked, Search, Users,
@@ -35,6 +36,8 @@ interface UsageGuideProps {
 
 /** The role's short usage guide (Teacher Guide, Student Guide or User Guide), with its PDF. Opened from the reader menu. */
 export const UsageGuide: React.FC<UsageGuideProps> = ({ isOpen, onClose }) => {
+  // Tab stays inside and focus returns to the opener; Escape is handled below.
+  const dialogRef = useDialogFocus(isOpen, onClose, { escape: false });
   const { language, isRTL, formatNumber } = useLanguage();
   const { role } = useUserRole();
   const lang = language === 'ar' ? 'ar' : 'en';
@@ -72,6 +75,7 @@ export const UsageGuide: React.FC<UsageGuideProps> = ({ isOpen, onClose }) => {
             initial={{ y: 12, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: 12, opacity: 0 }}
+            ref={dialogRef}
             role="dialog"
             aria-modal="true"
             aria-label={guide.title}

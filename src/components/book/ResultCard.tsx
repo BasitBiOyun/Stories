@@ -9,6 +9,7 @@ import { SECTION_ICONS } from '../../lib/sectionIcons';
 import { encodeResult, type ResultScores } from '../../lib/resultCode';
 import { getStoryMeta } from '../../core/content/storyCatalog';
 import type { BookData, Level } from '../../types';
+import { useDialogFocus } from '../../hooks/useDialogFocus';
 
 const NAME_KEY = 'v2:result-name';
 
@@ -66,6 +67,8 @@ interface ResultCardProps {
 
 /** One card a student shows (or prints) for the teacher: name, book, scores and a code the teacher can check. */
 export const ResultCard: React.FC<ResultCardProps> = ({ isOpen, onClose, bookData, storyId, level }) => {
+  // Tab stays inside and focus returns to the opener; Escape is handled below.
+  const dialogRef = useDialogFocus(isOpen, onClose, { escape: false });
   const { language, isRTL, formatNumber } = useLanguage();
   const lang = language === 'ar' ? 'ar' : 'en';
   const scores = useResultScores(bookData, lang);
@@ -135,6 +138,7 @@ export const ResultCard: React.FC<ResultCardProps> = ({ isOpen, onClose, bookDat
           <motion.div
             initial={{ y: 12, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
+            ref={dialogRef}
             role="dialog"
             aria-modal="true"
             aria-label={SECTION_ICONS.resultCard[lang]}

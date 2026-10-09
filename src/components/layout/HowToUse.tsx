@@ -4,6 +4,7 @@ import { cn } from '../../lib/utils';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { ChevronLeft } from '../ui/icons';
 import { MODE_ICONS, SECTION_ICONS, type SectionIconEntry } from '../../lib/sectionIcons';
+import { useDialogFocus } from '../../hooks/useDialogFocus';
 
 interface HowToUseProps {
   isOpen: boolean;
@@ -28,6 +29,8 @@ const GROUPS: { title: { en: string; ar: string }; items: SectionIconEntry[] }[]
 
 /** "How to use this book": the fixed icon key, explained once. Opened from the reader menu. */
 export const HowToUse: React.FC<HowToUseProps> = ({ isOpen, onClose, isTeacher = false }) => {
+  // Tab stays inside and focus returns to the opener; Escape is handled below.
+  const dialogRef = useDialogFocus(isOpen, onClose, { escape: false });
   const { language, isRTL } = useLanguage();
   const lang = language === 'ar' ? 'ar' : 'en';
   const closeRef = useRef<HTMLButtonElement>(null);
@@ -75,6 +78,7 @@ export const HowToUse: React.FC<HowToUseProps> = ({ isOpen, onClose, isTeacher =
             initial={{ y: 12, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: 12, opacity: 0 }}
+            ref={dialogRef}
             role="dialog"
             aria-modal="true"
             aria-label={copy.heading}

@@ -445,6 +445,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart, onOpenTeacherGuide 
         </div>
       </header>
 
+      <main id="main">
       {/* Three role options do not fit beside the title on a phone, so the switch gets its own row there. */}
       <div className="flex px-5 pb-2 sm:hidden">
         <RoleToggle />
@@ -603,7 +604,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart, onOpenTeacherGuide 
         </button>
       </section>
 
-      <main className="relative mx-auto w-full max-w-[1500px] px-5 pb-10 sm:px-8 lg:px-12">
+      <div className="relative mx-auto w-full max-w-[1500px] px-5 pb-10 sm:px-8 lg:px-12">
         <section ref={shelfRef} className="scroll-mt-4 pt-10" data-home-shelf>
           <p className={eyebrowClass}>{copy.shelfEyebrow}</p>
           <h2 className={sectionTitleClass}>{copy.shelfTitle}</h2>
@@ -901,6 +902,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onStart, onOpenTeacherGuide 
             </div>
           </div>
         </section>
+      </div>
       </main>
 
       <LevelTest

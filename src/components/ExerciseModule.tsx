@@ -28,6 +28,7 @@ import { isLanguageItemType, scoreLanguageItems } from '../lib/exerciseScoring';
 import { LanguageItemExercise } from './exercises/LanguageItemExercises';
 import { MatchingBoard } from './exercises/MatchingBoard';
 import { useIsPhone, useRevealOnPhone } from '../lib/phone';
+import { useDialogFocus } from '../hooks/useDialogFocus';
 
 interface ExerciseModuleProps {
   exercise: Exercise;
@@ -113,6 +114,8 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
   embedded = false,
 }) => {
   const { language, t, formatNumber, isRTL } = useLanguage();
+  // Full-screen exercises: focus moves in, Tab stays inside, Escape closes, focus returns to the opener.
+  const dialogRef = useDialogFocus(!embedded, onClose);
     const isArabic = language === 'ar';
   const isQuick = variant === 'quick';
   const isLanguage = variant === 'language';
@@ -865,6 +868,7 @@ export const ExerciseModule: React.FC<ExerciseModuleProps> = ({
       )}
       style={!embedded ? (isQuick ? { background: quickBackground } : isLanguage ? { background: languageBackground } : undefined) : undefined}
       dir={isRTL ? 'rtl' : 'ltr'}
+      ref={dialogRef}
       role={embedded ? 'group' : 'dialog'}
       aria-modal={embedded ? undefined : true}
       aria-label={isQuick ? t('nav.quickChallenge') : isLanguage ? (language === 'ar' ? 'التركيز اللغوي' : 'Language Focus') : (displayExerciseTitle || exercise.question || t('nav.interactiveChallenge'))}

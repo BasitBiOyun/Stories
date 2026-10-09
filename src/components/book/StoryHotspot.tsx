@@ -6,6 +6,7 @@ import { Info } from '../ui/icons';
 import { Hotspot } from '../../types';
 import { cn } from '../../lib/utils';
 import { useLanguage } from '../../contexts/LanguageContext';
+import { useDialogFocus } from '../../hooks/useDialogFocus';
 
 export const HotspotButton = ({ 
   hotspot, 
@@ -21,6 +22,8 @@ export const HotspotButton = ({
   const buttonRef = useRef<HTMLButtonElement>(null);
   const tooltipRef = useRef<HTMLDivElement>(null);
   const [canShowTooltip, setCanShowTooltip] = useState(false);
+  // Opening moves focus onto the card so a screen reader reads it; Escape closes it and focus returns to the button.
+  useDialogFocus(isActive && canShowTooltip, onToggle, { initialFocus: 'dialog' }, tooltipRef);
   const [coords, setCoords] = useState({
     top: 12,
     left: 12,
@@ -137,6 +140,8 @@ export const HotspotButton = ({
                 />
                 <motion.div
                   ref={tooltipRef}
+                  role="dialog"
+                  aria-label={hotspot.title}
                   initial={{ opacity: 0, scale: 0.985 }}
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.985 }}

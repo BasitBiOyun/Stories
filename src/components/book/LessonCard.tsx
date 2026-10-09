@@ -5,6 +5,7 @@ import { cn } from '../../lib/utils';
 import { X, Clock } from '../ui/icons';
 import { MODE_ICONS, SECTION_ICONS } from '../../lib/sectionIcons';
 import type { GroupTask, TeacherGuideSection } from '../../types';
+import { useDialogFocus } from '../../hooks/useDialogFocus';
 
 interface LessonCardProps {
   isOpen: boolean;
@@ -27,6 +28,8 @@ export const splitLessonPlan = (plan: string) =>
 
 /** A one-screen summary of the Teacher Guide for this chapter: aims, timed steps, group task and exit ticket. */
 export const LessonCard: React.FC<LessonCardProps> = ({ isOpen, onClose, section, groupTask, language }) => {
+  // Tab stays inside and focus returns to the opener; Escape is handled below.
+  const dialogRef = useDialogFocus(isOpen, onClose, { escape: false });
   const isArabic = language === 'ar';
   const lang = isArabic ? 'ar' : 'en';
   const onCloseRef = useRef(onClose);
@@ -66,6 +69,7 @@ export const LessonCard: React.FC<LessonCardProps> = ({ isOpen, onClose, section
           <motion.div
             initial={{ y: 12, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
+            ref={dialogRef}
             role="dialog"
             aria-modal="true"
             aria-label={SECTION_ICONS.lessonCard[lang]}
