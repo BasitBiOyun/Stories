@@ -188,7 +188,18 @@ export const HistoricalEntityWord = ({
                   </div>
                 )}
 
-                <div className={cn('px-3.5 pb-3', mapAsset ? 'pt-2.5' : 'pt-0')}>
+                {!mapAsset && picture && (
+                  // A card with no place on the map (a person such as the Pharaoh) still shows its picture.
+                  <div className="mx-3">
+                    <img
+                      src={picture}
+                      alt=""
+                      className="pointer-events-none block aspect-[4/3] w-full rounded-xl object-cover shadow-lg ring-1 ring-white/20"
+                    />
+                  </div>
+                )}
+
+                <div className={cn('px-3.5 pb-3', mapAsset || picture ? 'pt-2.5' : 'pt-0')}>
                   <p className={cn('font-serif leading-snug text-parchment/90', isArabic ? 'text-base' : 'text-sm')}>
                     {copy.summary}
                   </p>
