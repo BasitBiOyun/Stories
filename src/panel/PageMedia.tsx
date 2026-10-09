@@ -34,20 +34,25 @@ interface NarrationRequest {
   narrationText: string;
 }
 
+/** The chapter's file in Storage: undefined while looking, null when there is none. */
 const useChapterFile = (storyId: string, level: string, kind: MediaKind, chapter: number, revision: number) => {
   const [file, setFile] = useState<ChapterFile | null | undefined>(undefined);
+  const [failed, setFailed] = useState(false);
   useEffect(() => {
     let live = true;
     setFile(undefined);
+    setFailed(false);
     chapterFiles(storyId, level, kind)
       .then(files => live && setFile(files[chapter] ?? null))
-      .catch(() => live && setFile(null));
+      .catch(() => live && setFailed(true));
     return () => {
       live = false;
     };
   }, [storyId, level, kind, chapter, revision]);
-  return file;
+  return [file, failed] as const;
 };
+
+const LOOK_FAILED = 'Storage’a şu an bakılamadı. Sayfayı yenileyip tekrar deneyin.';
 
 const extensionOf = (name: string, fallback: string) => (/\.([a-z0-9]+)$/i.exec(name)?.[1] ?? fallback).toLowerCase();
 
@@ -81,11 +86,37 @@ export const PageMedia = ({ storyId, level, language, page, pageIndex, focusPict
   if (!isStory) return <p className="muted">Resim ve ses sadece hikâye bölümlerinde var.</p>;
   return (
     <div>
-      <Picture storyId={storyId} level={level} language={language} page={page} pageIndex={pageIndex} chapter={chapter} media={media} revision={revision} onUploaded={() => setRevision(value => value + 1)} />
+      <Picture
+        storyId={storyId}
+        level={level}
+        language={language}
+        page={page}
+        pageIndex={pageIndex}
+        chapter={chapter}
+        media={media}
+        revision={revision}
+        onUploaded={() => setRevision(value => value + 1)}
+      />
       {!focusPictures && (
         <>
-          <Recording storyId={storyId} level={level} language="en" chapter={chapter} pageIndex={pageIndex} media={media} revision={revision} />
-          <Recording storyId={storyId} level={level} language="ar" chapter={chapter} pageIndex={pageIndex} media={media} revision={revision} />
+          <Recording
+            storyId={storyId}
+            level={level}
+            language="en"
+            chapter={chapter}
+            pageIndex={pageIndex}
+            media={media}
+            revision={revision}
+          />
+          <Recording
+            storyId={storyId}
+            level={level}
+            language="ar"
+            chapter={chapter}
+            pageIndex={pageIndex}
+            media={media}
+            revision={revision}
+          />
         </>
       )}
     </div>
@@ -105,7 +136,7 @@ const Picture = ({
   revision,
   onUploaded,
 }: Props & { chapter: number; media: MediaItem[]; revision: number; onUploaded: () => void }) => {
-  const found = useChapterFile(storyId, level, 'image', chapter, revision);
+  const [found, lookFailed] = useChapterFile(storyId, level, 'image', chapter, revision);
   const [chosen, setChosen] = useState<number | null>(null);
   const [busy, setBusy] = useState(false);
   const picture = useRef<HTMLDivElement>(null);
@@ -116,7 +147,11 @@ const Picture = ({
   const file = bookPath(editionOf(storyId, level, language));
   const readOnly = !mayEditPath(file);
   const target = found?.path ?? storagePathOf(page.image) ?? null;
-  const waiting = media.find(item => item.kind === 'image' && (item.target === target || (item.chapter === chapter && item.edition.startsWith(`${storyId}-${level.toLowerCase()}-`))));
+  const waiting = media.find(
+    item =>
+      item.kind === 'image' &&
+      (item.target === target || (item.chapter === chapter && item.edition.startsWith(`${storyId}-${level.toLowerCase()}-`))),
+  );
   const shown = waiting?.url ?? found?.url ?? page.image;
   const hotspots = page.hotspots ?? [];
   const spotsPath = ['book', 'pages', pageIndex, 'hotspots'];
@@ -128,11 +163,16 @@ const Picture = ({
       updateDraft(path, value => {
         const list = (getIn(value, spotsPath) as Hotspot[] | undefined) ?? [];
         if (!list.some(spot => spot.id === id)) return value;
-        return setIn(value, spotsPath, list.map(spot => (spot.id === id ? { ...spot, x, y } : spot)));
+        return setIn(
+          value,
+          spotsPath,
+          list.map(spot => (spot.id === id ? { ...spot, x, y } : spot)),
+        );
       });
     }
   };
-  const setSpots = (path: string, change: (list: Hotspot[]) => Hotspot[]) => updateDraft(path, value => setIn(value, spotsPath, change((getIn(value, spotsPath) as Hotspot[] | undefined) ?? [])));
+  const setSpots = (path: string, change: (list: Hotspot[]) => Hotspot[]) =>
+    updateDraft(path, value => setIn(value, spotsPath, change((getIn(value, spotsPath) as Hotspot[] | undefined) ?? [])));
 
   const pointer = (event: PointerEvent) => {
     const box = picture.current?.getBoundingClientRect();
@@ -165,7 +205,7 @@ const Picture = ({
         {waiting && <span className="chip warn">Yeni resim onay bekliyor</span>}
       </div>
       {found === undefined && !page.image ? (
-        <p className="muted small">Resim aranıyor…</p>
+        <p className="muted small">{lookFailed ? LOOK_FAILED : 'Resim aranıyor…'}</p>
       ) : shown ? (
         <>
           <div
@@ -207,7 +247,10 @@ const Picture = ({
               </button>
             ))}
           </div>
-          <p className="small muted">Resimdeki numaralar öğrencinin tıkladığı noktalardır. Yerini değiştirmek için sürükleyin; yazısını aşağıdan değiştirin. Yeri iki dilde ortaktır.</p>
+          <p className="small muted">
+            Resimdeki numaralar öğrencinin tıkladığı noktalardır. Yerini değiştirmek için sürükleyin; yazısını aşağıdan değiştirin. Yeri iki
+            dilde ortaktır.
+          </p>
         </>
       ) : (
         <p className="muted small">Bu bölümün henüz resmi yok.</p>
@@ -228,8 +271,17 @@ const Picture = ({
               {busy ? 'yükleniyor…' : 'seçin'}
             </button>
           </span>
-          <input ref={input} type="file" accept="image/png,image/jpeg,image/webp" hidden onChange={event => void choose(event.target.files)} />
-          <span className="small muted">Büyük ve net bir resim yükleyin; uygulama telefona küçük kopyasını kendisi yapar. Kitapların resim kuralları geçerlidir (peygamberler ve yakınları çizilmez).</span>
+          <input
+            ref={input}
+            type="file"
+            accept="image/png,image/jpeg,image/webp"
+            hidden
+            onChange={event => void choose(event.target.files)}
+          />
+          <span className="small muted">
+            Büyük ve net bir resim yükleyin; uygulama telefona küçük kopyasını kendisi yapar. Kitapların resim kuralları geçerlidir
+            (peygamberler ve yakınları çizilmez).
+          </span>
         </div>
       )}
 
@@ -238,7 +290,12 @@ const Picture = ({
       </div>
       {hotspots.length === 0 && <p className="small muted">Bu resimde nokta yok.</p>}
       {hotspots.map((spot, index) => (
-        <details key={spot.id} className="box nested" open={chosen === index} onToggle={event => (event.currentTarget as HTMLDetailsElement).open && setChosen(index)}>
+        <details
+          key={spot.id}
+          className="box nested"
+          open={chosen === index}
+          onToggle={event => (event.currentTarget as HTMLDetailsElement).open && setChosen(index)}
+        >
           <summary>
             <span className="chip">{index + 1}</span> {spot.title || 'Başlıksız nokta'}
           </summary>
@@ -262,8 +319,12 @@ const Picture = ({
               type="button"
               className="btn small danger"
               onClick={async () => {
-                if (!(await confirm({ title: 'Nokta silinsin mi?', text: 'Nokta iki dilde de resimden kalkar.', yes: 'Sil', danger: true }))) return;
-                for (const path of [enFile, arFile]) if (getState().drafts[path] && mayEditPath(path)) setSpots(path, list => list.filter(item => item.id !== spot.id));
+                if (
+                  !(await confirm({ title: 'Nokta silinsin mi?', text: 'Nokta iki dilde de resimden kalkar.', yes: 'Sil', danger: true }))
+                )
+                  return;
+                for (const path of [enFile, arFile])
+                  if (getState().drafts[path] && mayEditPath(path)) setSpots(path, list => list.filter(item => item.id !== spot.id));
                 setChosen(null);
               }}
             >
@@ -278,24 +339,44 @@ const Picture = ({
           className="btn small"
           onClick={() => {
             const id = `hs-${chapter}-${Date.now().toString(36)}`;
-            for (const path of [enFile, arFile]) if (getState().drafts[path] && mayEditPath(path)) setSpots(path, list => [...list, { id, x: 50, y: 50, title: '', description: '' }]);
+            for (const path of [enFile, arFile])
+              if (getState().drafts[path] && mayEditPath(path))
+                setSpots(path, list => [...list, { id, x: 50, y: 50, title: '', description: '' }]);
             setChosen(hotspots.length);
           }}
         >
           <IconPlus size={15} /> Nokta ekle
         </button>
       )}
-      {!readOnly && language === 'ar' && <p className="small muted">Yeni nokta İngilizce görünümden eklenir; Arapça yazısı sonra buradan yazılır.</p>}
+      {!readOnly && language === 'ar' && (
+        <p className="small muted">Yeni nokta İngilizce görünümden eklenir; Arapça yazısı sonra buradan yazılır.</p>
+      )}
     </section>
   );
 };
 
 // --- one recording ------------------------------------------------------------------------------
 
-const Recording = ({ storyId, level, language, chapter, pageIndex, media, revision }: { storyId: string; level: string; language: 'en' | 'ar'; chapter: number; pageIndex: number; media: MediaItem[]; revision: number }) => {
+const Recording = ({
+  storyId,
+  level,
+  language,
+  chapter,
+  pageIndex,
+  media,
+  revision,
+}: {
+  storyId: string;
+  level: string;
+  language: 'en' | 'ar';
+  chapter: number;
+  pageIndex: number;
+  media: MediaItem[];
+  revision: number;
+}) => {
   const kind: MediaKind = language === 'ar' ? 'arabicAudio' : 'englishAudio';
   const [mine, setMine] = useState(0);
-  const found = useChapterFile(storyId, level, kind, chapter, revision + mine);
+  const [found, lookFailed] = useChapterFile(storyId, level, kind, chapter, revision + mine);
   const [busy, setBusy] = useState(false);
   const input = useRef<HTMLInputElement>(null);
   const file = bookPath(editionOf(storyId, level, language));
@@ -305,12 +386,24 @@ const Recording = ({ storyId, level, language, chapter, pageIndex, media, revisi
   const page = getIn(book?.value, ['book', 'pages', pageIndex]) as PageData | undefined;
   const target = found?.path ?? storagePathOf(page?.audioUrl) ?? null;
   const waiting = media.find(item => item.kind === 'audio' && item.target === target);
-  const requests = ((tts?.value as { requests: NarrationRequest[] } | undefined)?.requests ?? []).filter(item => target && item.storagePath === target);
-  const published = ((tts?.original as { requests: NarrationRequest[] } | undefined)?.requests ?? []).filter(item => target && item.storagePath === target);
+  const requests = ((tts?.value as { requests: NarrationRequest[] } | undefined)?.requests ?? []).filter(
+    item => target && item.storagePath === target,
+  );
+  const published = ((tts?.original as { requests: NarrationRequest[] } | undefined)?.requests ?? []).filter(
+    item => target && item.storagePath === target,
+  );
   const latest = requests[requests.length - 1];
   const text = page ? `${page.title}\n\n${page.content ?? ''}` : '';
   const queued = latest && !published.some(item => item.id === latest.id);
-  const state: 'none' | 'unknown' | 'current' | 'stale' | 'queued' = !target ? 'none' : queued ? 'queued' : !latest ? 'unknown' : latest.narrationText === text ? 'current' : 'stale';
+  const state: 'none' | 'unknown' | 'current' | 'stale' | 'queued' = !target
+    ? 'none'
+    : queued
+      ? 'queued'
+      : !latest
+        ? 'unknown'
+        : latest.narrationText === text
+          ? 'current'
+          : 'stale';
   const name = language === 'ar' ? 'Arapça ses' : 'İngilizce ses';
   const readOnly = !mayEditPath(ttsFile);
 
@@ -357,19 +450,21 @@ const Recording = ({ storyId, level, language, chapter, pageIndex, media, revisi
         <IconSound size={16} />
         <b>{name}</b>
         <span className={`chip ${state === 'current' ? 'good' : state === 'stale' ? 'bad' : state === 'queued' ? 'warn' : ''}`}>
-          {
-            {
-              none: 'Kayıt yok',
-              unknown: 'Kayıt var',
-              current: 'Metinle aynı',
-              stale: 'Metin değişti, ses eski',
-              queued: 'Yeniden seslendirilecek',
-            }[state]
-          }
+          {found === undefined && !target
+            ? lookFailed
+              ? 'bakılamadı'
+              : 'aranıyor…'
+            : {
+                none: 'Kayıt yok',
+                unknown: 'Kayıt var',
+                current: 'Metinle aynı',
+                stale: 'Metin değişti, ses eski',
+                queued: 'Yeniden seslendirilecek',
+              }[state]}
         </span>
       </div>
       {found === undefined ? (
-        <p className="small muted">Kayıt aranıyor…</p>
+        <p className="small muted">{lookFailed ? LOOK_FAILED : 'Kayıt aranıyor…'}</p>
       ) : (
         (waiting?.url || found?.url) && <audio controls preload="none" src={waiting?.url ?? found?.url} style={{ width: '100%' }} />
       )}
@@ -379,10 +474,13 @@ const Recording = ({ storyId, level, language, chapter, pageIndex, media, revisi
           <IconWarn size={14} /> Bu bölümün başlığı veya metni seslendirildikten sonra değişti. Okunan ses ekrandaki metinle uyuşmuyor.
         </p>
       )}
-      {state === 'unknown' && <p className="small muted">Bu kayıt seslendirme listesinden önce yapılmış; hangi metinden okunduğu bilinmiyor.</p>}
+      {state === 'unknown' && (
+        <p className="small muted">Bu kayıt seslendirme listesinden önce yapılmış; hangi metinden okunduğu bilinmiyor.</p>
+      )}
       {state === 'queued' && (
         <p className="small muted">
-          Kaydettiğinizde listeye girer. Yönetici yayınlayınca sunucu bu bölümü ElevenLabs ile yeniden okur ve eski kaydın yerine koyar (aboneliğin ses kotasından düşer).
+          Kaydettiğinizde listeye girer. Yönetici yayınlayınca sunucu bu bölümü ElevenLabs ile yeniden okur ve eski kaydın yerine koyar
+          (aboneliğin ses kotasından düşer).
         </p>
       )}
       {!readOnly && target && /\.mp3$/i.test(target) && state !== 'queued' && (
@@ -413,7 +511,13 @@ const Recording = ({ storyId, level, language, chapter, pageIndex, media, revisi
           <button type="button" className="btn small ghost" onClick={() => input.current?.click()} disabled={busy}>
             <IconUpload size={15} /> {busy ? 'Yükleniyor…' : target ? 'Kendi kaydını yükle' : 'Kayıt yükle'}
           </button>
-          <input ref={input} type="file" accept=".mp3,.m4a,audio/mpeg,audio/mp4" hidden onChange={event => void choose(event.target.files)} />
+          <input
+            ref={input}
+            type="file"
+            accept=".mp3,.m4a,audio/mpeg,audio/mp4"
+            hidden
+            onChange={event => void choose(event.target.files)}
+          />
         </div>
       )}
     </section>

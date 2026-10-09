@@ -36,6 +36,9 @@ export const MediaPage = () => {
   const [planned, setPlanned] = useState<Planned[]>([]);
   const [busy, setBusy] = useState<string | null>(null);
   const [revision, setRevision] = useState(0);
+  // Until Storage answers, nothing is said to be missing.
+  const [look, setLook] = useState<'looking' | 'done' | 'failed'>('looking');
+  const unknown = look === 'looking' ? 'aranıyor…' : look === 'failed' ? 'bakılamadı' : null;
   const current = editions.find(item => item.edition === choice) ?? editions[0];
   const storyId = current?.storyId ?? '';
   const level = current?.level ?? '';
@@ -45,9 +48,14 @@ export const MediaPage = () => {
   useEffect(() => {
     if (!storyId) return;
     let live = true;
-    Promise.all((['image', 'englishAudio', 'arabicAudio'] as MediaKind[]).map(kind => chapterFiles(storyId, level, kind).catch(() => ({}))))
-      .then(([image, englishAudio, arabicAudio]) => live && setFiles({ image, englishAudio, arabicAudio }))
-      .catch(() => undefined);
+    setLook('looking');
+    Promise.all((['image', 'englishAudio', 'arabicAudio'] as MediaKind[]).map(kind => chapterFiles(storyId, level, kind)))
+      .then(([image, englishAudio, arabicAudio]) => {
+        if (!live) return;
+        setFiles({ image, englishAudio, arabicAudio });
+        setLook('done');
+      })
+      .catch(() => live && setLook('failed'));
     return () => {
       live = false;
     };
@@ -100,14 +108,22 @@ export const MediaPage = () => {
   };
 
   const waitingFor = (chapter: number, kind: MediaKind) =>
-    media.find(item => item.chapter === chapter && item.edition.startsWith(`${storyId}-${level.toLowerCase()}-`) && (kind === 'image' ? item.kind === 'image' : item.kind === 'audio' && item.edition.endsWith(kind === 'arabicAudio' ? '-ar' : '-en')));
+    media.find(
+      item =>
+        item.chapter === chapter &&
+        item.edition.startsWith(`${storyId}-${level.toLowerCase()}-`) &&
+        (kind === 'image' ? item.kind === 'image' : item.kind === 'audio' && item.edition.endsWith(kind === 'arabicAudio' ? '-ar' : '-en')),
+    );
 
   return (
     <div className="content">
       <div className="page-head">
         <div>
           <h1>Resim ve ses</h1>
-          <p>Bir kitabın bütün resimlerini ya da kayıtlarını tek seferde yükleyin. Dosya adındaki sayı bölümü belirler: “3.png”, “chapter 3.mp3”, “bolum_03.jpg”.</p>
+          <p>
+            Bir kitabın bütün resimlerini ya da kayıtlarını tek seferde yükleyin. Dosya adındaki sayı bölümü belirler: “3.png”, “chapter
+            3.mp3”, “bolum_03.jpg”.
+          </p>
         </div>
         <div className="actions">
           <select aria-label="Kitap" value={current?.edition ?? ''} onChange={event => (setChoice(event.target.value), setPlanned([]))}>
@@ -135,7 +151,13 @@ export const MediaPage = () => {
             ya da{' '}
             <label className="linkish">
               bilgisayardan seçin
-              <input type="file" multiple accept="image/png,image/jpeg,image/webp,.mp3,.m4a" hidden onChange={event => plan(event.target.files)} />
+              <input
+                type="file"
+                multiple
+                accept="image/png,image/jpeg,image/webp,.mp3,.m4a"
+                hidden
+                onChange={event => plan(event.target.files)}
+              />
             </label>
           </span>
           <div className="seg" role="group" aria-label="Seslerin dili">
@@ -148,7 +170,9 @@ export const MediaPage = () => {
           </div>
         </div>
       ) : (
-        <div className="notice">{config?.storage ? 'Rolünüz dosya yüklemeye izin vermiyor.' : 'Dosya yükleme, panelin depolama bağlantısı kurulunca açılır.'}</div>
+        <div className="notice">
+          {config?.storage ? 'Rolünüz dosya yüklemeye izin vermiyor.' : 'Dosya yükleme, panelin depolama bağlantısı kurulunca açılır.'}
+        </div>
       )}
 
       {planned.length > 0 && (
@@ -167,7 +191,11 @@ export const MediaPage = () => {
                         <select
                           aria-label={`${item.file.name} bölümü`}
                           value={item.chapter ?? ''}
-                          onChange={event => setPlanned(list => list.map((other, at) => (at === index ? { ...other, chapter: Number(event.target.value) || null } : other)))}
+                          onChange={event =>
+                            setPlanned(list =>
+                              list.map((other, at) => (at === index ? { ...other, chapter: Number(event.target.value) || null } : other)),
+                            )
+                          }
                         >
                           <option value="">Bölüm seçin</option>
                           {chapters.map(page => (
@@ -177,7 +205,19 @@ export const MediaPage = () => {
                           ))}
                         </select>
                       </td>
-                      <td className="small">{known ? (files[item.kind][item.chapter!] ? 'eskisinin yerine geçer' : 'yeni') : <span className="chip bad">bölüm yok</span>}</td>
+                      <td className="small">
+                        {known ? (
+                          unknown ? (
+                            unknown
+                          ) : files[item.kind][item.chapter!] ? (
+                            'eskisinin yerine geçer'
+                          ) : (
+                            'yeni'
+                          )
+                        ) : (
+                          <span className="chip bad">bölüm yok</span>
+                        )}
+                      </td>
                     </tr>
                   );
                 })}
@@ -205,15 +245,30 @@ export const MediaPage = () => {
             const enWaiting = waitingFor(page.id, 'englishAudio');
             const arWaiting = waitingFor(page.id, 'arabicAudio');
             return (
-              <a key={page.id} className="media-card" href={`#/duzenle/${storyId}/${level.toLowerCase()}/${(current?.pages.indexOf(page) ?? 0) + 1}?dil=en`}>
-                <span className="thumb">{picture ? <img src={waitingFor(page.id, 'image') ? picture : thumb(picture, 320)} alt="" loading="lazy" /> : <span className="muted small">resim yok</span>}</span>
+              <a
+                key={page.id}
+                className="media-card"
+                href={`#/duzenle/${storyId}/${level.toLowerCase()}/${(current?.pages.indexOf(page) ?? 0) + 1}?dil=en`}
+              >
+                <span className="thumb">
+                  {picture ? (
+                    <img src={waitingFor(page.id, 'image') ? picture : thumb(picture, 320)} alt="" loading="lazy" />
+                  ) : (
+                    <span className="muted small">{unknown ?? 'resim yok'}</span>
+                  )}
+                </span>
                 <b>
                   {page.id}. {page.title}
                 </b>
                 <span className="row wrap small">
                   {waitingFor(page.id, 'image') && <span className="chip warn">yeni resim bekliyor</span>}
-                  <span className={`chip ${files.englishAudio[page.id] || enWaiting ? '' : 'bad'}`}>EN ses {enWaiting ? 'bekliyor' : files.englishAudio[page.id] ? (page.audio === 'stale' ? 'eski' : 'var') : 'yok'}</span>
-                  <span className={`chip ${files.arabicAudio[page.id] || arWaiting ? '' : 'bad'}`}>AR ses {arWaiting ? 'bekliyor' : files.arabicAudio[page.id] ? 'var' : 'yok'}</span>
+                  <span className={`chip ${files.englishAudio[page.id] || enWaiting || unknown ? '' : 'bad'}`}>
+                    EN ses{' '}
+                    {enWaiting ? 'bekliyor' : files.englishAudio[page.id] ? (page.audio === 'stale' ? 'eski' : 'var') : (unknown ?? 'yok')}
+                  </span>
+                  <span className={`chip ${files.arabicAudio[page.id] || arWaiting || unknown ? '' : 'bad'}`}>
+                    AR ses {arWaiting ? 'bekliyor' : files.arabicAudio[page.id] ? 'var' : (unknown ?? 'yok')}
+                  </span>
                 </span>
               </a>
             );

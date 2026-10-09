@@ -1,5 +1,5 @@
 import { initializeApp } from '@firebase/app';
-import { getDownloadURL, getStorage, listAll, ref } from '@firebase/storage';
+import { getDownloadURL, getStorage, listAll, ref, type StorageReference } from '@firebase/storage';
 import { firebaseConfig } from '../lib/firebaseConfig';
 import { getStorageManifest } from '../core/storage/storageManifests';
 import { parseChapterNumber } from '../core/storage/storageAssetLoader';
@@ -43,21 +43,32 @@ export const chapterFiles = (storyId: string, level: string, kind: MediaKind): P
   const cached = cache.get(key);
   if (cached) return cached;
   const request = (async () => {
-    const found: Record<number, ChapterFile> = {};
-    for (const folder of manifestFolders(storyId, level, kind)) {
-      try {
-        const result = await listAll(ref(bucket(), folder));
-        const items = result.items.filter(item => EXTENSIONS[kind].test(item.name)).sort((a, b) => a.name.localeCompare(b.name));
-        for (const item of items) {
-          const chapter = parseChapterNumber(item.name);
-          if (chapter === null || found[chapter]) continue;
-          found[chapter] = { chapter, path: item.fullPath, url: await getDownloadURL(item).catch(() => ''), name: item.name };
-        }
-      } catch {
-        // A folder that does not exist is simply skipped, as the app does.
+    // All folders are listed at once and all addresses fetched at once: one after the other took
+    // long enough for a page to look empty while it was still looking.
+    const folders = manifestFolders(storyId, level, kind);
+    const listings = await Promise.allSettled(folders.map(folder => listAll(ref(bucket(), folder))));
+    // listAll answers an empty list for a folder that does not exist; a rejection is a real failure.
+    if (listings.length > 0 && listings.every(result => result.status === 'rejected')) throw new Error('Storage could not be read');
+    const chosen: Record<number, StorageReference> = {};
+    for (const listing of listings) {
+      if (listing.status !== 'fulfilled') continue;
+      const items = listing.value.items.filter(item => EXTENSIONS[kind].test(item.name)).sort((a, b) => a.name.localeCompare(b.name));
+      for (const item of items) {
+        const chapter = parseChapterNumber(item.name);
+        // Earlier folders win, as in the app.
+        if (chapter !== null && !chosen[chapter]) chosen[chapter] = item;
       }
     }
-    return found;
+    const entries = await Promise.all(
+      Object.entries(chosen).map(
+        async ([chapter, item]) =>
+          [
+            Number(chapter),
+            { chapter: Number(chapter), path: item.fullPath, url: await getDownloadURL(item).catch(() => ''), name: item.name },
+          ] as const,
+      ),
+    );
+    return Object.fromEntries(entries) as Record<number, ChapterFile>;
   })();
   cache.set(key, request);
   request.catch(() => cache.delete(key));
