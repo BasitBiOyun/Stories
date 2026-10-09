@@ -259,6 +259,7 @@ const sendMediaImage = async (req, res) => {
 // those files are sent only to a browser that opened the app with ?gizli=<PREVIEW_KEY> (it then
 // keeps a cookie for 30 days). Without PREVIEW_KEY everything is served as before.
 const previewKey = process.env.PREVIEW_KEY || '';
+const pdfBaseUrl = (process.env.PDF_BASE_URL || '').replace(/\/+$/, '');
 const PREVIEW_COOKIE = 'stories_preview';
 const hasPreviewCookie = (req) => String(req.headers.cookie || '')
   .split(';')
@@ -398,6 +399,14 @@ const server = http.createServer(async (req, res) => {
         return sendFile(req, res, contentPath, { 'Cache-Control': 'private, no-store' });
       }
     }
+  }
+
+  // The book PDFs can live on Cloudflare R2. With PDF_BASE_URL set, /pdfs/books/<name>.pdf answers
+  // with a redirect there, so the links in the app keep working whichever copy is used.
+  if (pdfBaseUrl && /^\/pdfs\/books\/[a-z0-9-]+\.pdf$/.test(urlPath)) {
+    res.writeHead(302, { Location: `${pdfBaseUrl}${urlPath.slice('/pdfs'.length)}`, 'Cache-Control': 'public, max-age=300' });
+    res.end();
+    return;
   }
 
   const safePath = normalize(urlPath).replace(/^([.][.][/\\])+/, '');
