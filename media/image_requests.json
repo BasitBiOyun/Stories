@@ -354,6 +354,30 @@
       "source": "https://pub-18750481345e4878b338a79a06de57df.r2.dev/media-queue/Abraham/abraham_b1/images/abraham_b1_chapter13.png",
       "sha256": "26b74fe973c3308362db7caea8b56c52688168494b7ba9f571a14f759da2937c",
       "note": "2026-10-09 redraw"
+    },
+    {
+      "target": "Adam_A2/images/adam_a2_ch1.png",
+      "source": "https://pub-18750481345e4878b338a79a06de57df.r2.dev/media-queue/Adam_A2/images/adam_a2_ch1.png",
+      "sha256": "24f7760d2a4132ff8fdfff3a75aa4f365d7310e5e369d18dc3d763c3b85380df",
+      "note": "2026-10-09 redraw"
+    },
+    {
+      "target": "Adam_A2/images/Adam_Chapter1.png",
+      "source": "https://pub-18750481345e4878b338a79a06de57df.r2.dev/media-queue/Adam_A2/images/Adam_Chapter1.png",
+      "sha256": "24f7760d2a4132ff8fdfff3a75aa4f365d7310e5e369d18dc3d763c3b85380df",
+      "note": "2026-10-09 redraw"
+    },
+    {
+      "target": "Adam_A2/images/adam-a2_adam_a2_chapter2.png",
+      "source": "https://pub-18750481345e4878b338a79a06de57df.r2.dev/media-queue/Adam_A2/images/adam-a2_adam_a2_chapter2.png",
+      "sha256": "63ce176a25eba2b46ac303dc0dee6d15d20a589b7408df145e1efc72453ca2b5",
+      "note": "2026-10-09 redraw"
+    },
+    {
+      "target": "Adam_A2/images/adam-a2_adam_a2_chapter3.png",
+      "source": "https://pub-18750481345e4878b338a79a06de57df.r2.dev/media-queue/Adam_A2/images/adam-a2_adam_a2_chapter3.png",
+      "sha256": "b909766c17f0c3bad89ee58fc7f0451ea6321c65f398f329119abd23e017b26b",
+      "note": "2026-10-09 redraw"
     }
   ]
 }
