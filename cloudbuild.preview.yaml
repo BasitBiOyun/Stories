@@ -180,7 +180,7 @@ steps:
   # preview address. If GitHub cannot be reached (for example on a private repository without
   # a token), the gate logs it and the deploy goes on as before.
   - id: tests-gate
-    waitFor: ['-']
+    waitFor: ['check-app-changes']
     name: gcr.io/google.com/cloudsdktool/cloud-sdk:slim
     entrypoint: bash
     args:
@@ -191,8 +191,13 @@ steps:
           echo "[Stories Tests] Branch ${BRANCH_NAME} is not preview; nothing to gate."
           exit 0
         fi
+        # Nothing is deployed (no app or content change, or a newer commit deploys): no need to wait.
+        if [ -f /workspace/.skip-deploy ]; then
+          echo "[Stories Tests] Nothing to deploy for this commit; not waiting for the tests."
+          exit 0
+        fi
         api="https://api.github.com/repos/kitapkomisyonukonya/Stories/commits/$COMMIT_SHA/check-runs"
-        for attempt in $$(seq 1 40); do
+        for attempt in $$(seq 1 80); do
           body="$$(curl -fsS -H 'Accept: application/vnd.github+json' "$$api" 2>/dev/null || true)"
           if [ -z "$$body" ]; then
             echo "[Stories Tests] GitHub could not be read; the deploy continues without the gate."
@@ -212,7 +217,8 @@ steps:
             *)
               echo "[Stories Tests] Tests are still running (attempt $$attempt)." ;;
           esac
-          sleep 20
+          # Checked often, so the deploy starts within seconds of the tests passing.
+          sleep 10
         done
         echo "[Stories Tests] Tests did not finish in time; the deploy continues so a stuck run never blocks a release."
 

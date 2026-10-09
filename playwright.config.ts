@@ -17,7 +17,8 @@ export default defineConfig({
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 1 : 0,
-  workers: process.env.CI ? 2 : 4,
+  // GitHub's runner for a public repository has 4 cores; 4 workers halve the time the deploy waits.
+  workers: 4,
   reporter: process.env.CI ? [['list'], ['html', { open: 'never' }]] : 'list',
   // GitHub's runner draws text a little differently from the cloud sandbox, so each keeps its own
   // screenshots: e2e/__screenshots__/ci/ is recorded on GitHub (run the Tests workflow by hand
