@@ -48,7 +48,24 @@ def narration_for_audio(text: str) -> str:
     title, sep, story = cleaned.partition("\n")
     if sep and title.strip() and not re.search(r"[.!?؟:…]$", title.strip()):
         cleaned = f"{title.rstrip()}.{sep}{story}"
-    return cleaned
+    return end_poem_lines(cleaned)
+
+
+def end_poem_lines(text: str) -> str:
+    """A poem line without closing punctuation ran into the next line ("gerek Misafirdir");
+    a comma at its end gives the voice a short pause, as a reader pauses at a line break."""
+    lines = text.split("\n")
+    in_poem = False
+    for index, line in enumerate(lines):
+        marker = line.strip()
+        if marker == "[POEM]":
+            in_poem = True
+        elif marker == "[/POEM]":
+            in_poem = False
+        elif in_poem and marker and not re.search(r"[.,،;؛:!?؟…»”\"]$", marker):
+            comma = "،" if ARABIC_SCRIPT_RE.search(marker[-1]) else ","
+            lines[index] = f"{line.rstrip()}{comma}"
+    return "\n".join(lines)
 
 
 def validate_request(item: dict[str, Any]) -> tuple[str, str, str]:

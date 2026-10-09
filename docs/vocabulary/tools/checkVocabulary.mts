@@ -21,6 +21,7 @@
  * Usage: npx tsx docs/vocabulary/tools/checkVocabulary.mts <story> <A2|B1|B2> [--dump]
  * story ids: adam, ibrahim (Abraham), musa (Moses), mecca, yunusEmre
  */
+import '../../../scripts/lib/nodeContent';
 import { getBookDefinition } from '../../../src/core/content/bookRegistry';
 import { highlightPhraseOccurs, normalizeHighlightText } from '../../../src/lib/highlightTextMatch';
 import type { PageData, VocabularyItem } from '../../../src/types';

@@ -1476,10 +1476,6 @@
       "definition": "__historical_entity__:moses-egypt-ancient"
      },
      {
-      "word": "فِي الْمَدِينَةِ",
-      "definition": "__historical_entity__:moses-midian"
-     },
-     {
       "word": "الْقَصْرِ",
       "definition": "__historical_entity__:moses-pharaohs-palace"
      },
@@ -1862,10 +1858,6 @@
     "image": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fb2%2Fimages%2Fmoses_b2_chapter10.png?alt=media",
     "audioUrl": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fb2%2Faudio%2Farabic_audio%2Fchapter%2010.mp3?alt=media&token=bd5ffc06-c808-43e3-86d7-df2f8a8cf6aa",
     "vocabulary": [
-     {
-      "word": "فِي الْمَدِينَةِ",
-      "definition": "__historical_entity__:moses-midian"
-     },
      {
       "word": "غَوِيٌّ",
       "definition": "من ضلّ عن الصواب ويكثر إثارة المشاكل."

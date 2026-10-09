@@ -1,5 +1,6 @@
 import type { BookPair } from '../core/content/contracts';
 import { highlightPhraseMatches, normalizeHighlightText } from '../lib/highlightTextMatch';
+import { getHistoricalEntityIdFromDefinition } from '../features/historical-entities/registry';
 
 export type BilingualCardLanguage = 'en' | 'ar';
 
@@ -50,8 +51,13 @@ export const setActiveBilingualBookPair = (pair: BookPair | null): void => {
     const arabicPage = arabicStoryPages.get(englishPage.id);
     if (!arabicPage) return;
 
-    const englishVocabulary = englishPage.vocabulary ?? [];
-    const arabicVocabulary = arabicPage.vocabulary ?? [];
+    // Place and people cards open their own card, not a Word Note, and the two languages do not
+    // always link the same number of them; pair only the Word Notes.
+    const wordNotes = (list: typeof englishPage.vocabulary) => (list ?? []).filter(
+      (entry) => !getHistoricalEntityIdFromDefinition(entry.definition ?? ''),
+    );
+    const englishVocabulary = wordNotes(englishPage.vocabulary);
+    const arabicVocabulary = wordNotes(arabicPage.vocabulary);
 
     // Fail closed in the UI if a future content regression escapes validation.
     if (englishVocabulary.length !== arabicVocabulary.length) return;
