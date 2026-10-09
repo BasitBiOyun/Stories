@@ -86,6 +86,10 @@ const CommitDetail = ({ commit, canUndo }: { commit: HistoryCommit; canUndo: boo
           detail.parents[0] ? api.file(file.path, detail.parents[0]).catch(() => ({ text: null })) : Promise.resolve({ text: null }),
           api.file(file.path, commit.sha).catch(() => ({ text: null })),
         ]);
+        if (file.path.endsWith('.webp')) {
+          result.push({ path: file.path, changes: [{ where: ['Resim'], before: 'eski resim', after: 'yeni resim' } as Change] });
+          continue;
+        }
         result.push({ path: file.path, changes: describeChanges(before.text ? JSON.parse(before.text) : {}, after.text ? JSON.parse(after.text) : {}) });
       }
       if (live) setFiles(result);

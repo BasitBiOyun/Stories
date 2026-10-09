@@ -125,6 +125,10 @@ const covers: Record<string, { image: string; imageSmall?: string }> = {
   gevherNesibe: { image: scholarsIcon },
 };
 
+/** A book's cover picture (the content panel shows it too); a book without one gets the collection picture. */
+export const storyCover = (storyId: string): { image: string; imageSmall?: string; placeholder: boolean } =>
+  covers[storyId] && covers[storyId].image !== scholarsIcon ? { ...covers[storyId], placeholder: false } : { image: scholarsIcon, placeholder: true };
+
 /**
  * The books themselves live in src/content/stories.json: name and description per language,
  * levels, collection. Only the cover pictures stay in code, because the bundler has to see them.

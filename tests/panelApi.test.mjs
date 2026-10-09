@@ -294,3 +294,22 @@ test('a new book starts on its own branch with the text, never a Word file', asy
   assert.equal(manual.status, 200);
   assert.equal(repo.dispatched.length, 2);
 });
+
+test('a card picture is replaced through the basket and can be put back', async () => {
+  const { api } = setup();
+  const path = 'src/features/historical-entities/assets/pictures/mecca/abyssinia.webp';
+  const webp = Buffer.concat([Buffer.from('RIFF'), Buffer.alloc(4), Buffer.from('WEBPVP8 '), Buffer.alloc(32, 7)]).toString('base64');
+  const save = (as, base64) => call(api, 'POST', '/panel-api/basket/save', { as, body: { files: [{ path, base64 }], message: 'resim' } });
+  assert.equal((await save('tr@example.com', webp)).status, 403);
+  assert.equal((await save('editor@example.com', Buffer.from('<svg/>').toString('base64'))).status, 400);
+  const saved = await save('editor@example.com', webp);
+  assert.equal(saved.status, 200);
+  assert.ok(saved.body.files.some(file => file.path === path));
+  const mine = await call(api, 'GET', `/panel-api/file?path=${encodeURIComponent(path)}`, { as: 'editor@example.com' });
+  assert.equal(mine.body.image, `data:image/webp;base64,${webp}`);
+  const preview = await call(api, 'GET', `/panel-api/file?path=${encodeURIComponent(path)}&ref=base`, { as: 'editor@example.com' });
+  assert.equal(preview.body.image, `data:image/webp;base64,${readFileSync(path).toString('base64')}`);
+  const back = await call(api, 'POST', '/panel-api/basket/discard', { as: 'editor@example.com', body: { path } });
+  assert.equal(back.status, 200);
+  assert.ok(!back.body.files.some(file => file.path === path));
+});

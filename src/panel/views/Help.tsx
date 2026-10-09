@@ -14,16 +14,16 @@ const ROWS: [string, string][] = [
   ['Bölüm resmi, ses kaydı', 'Bölümde “Resim ve ses” sekmesi; bir kitabın hepsi için menüdeki “Resim ve ses”.'],
   ['Metin değişince ses', 'Başlık da okunur. Metin değişince sekmede “ses eski” yazar; “Güncel metinden yeniden seslendir” deyin, yayınlanınca sunucu okur.'],
   ['Öğretmen kitabı, öğrenci rehberi', 'Bölümde sağdaki “Öğretmen kitabı” sekmesi.'],
-  ['Places & People kartları', 'Menüdeki “Places & People”. Kartın adı, bilgisi ve hikâyedeki adları.'],
+  ['Places & People kartları', 'Menüdeki “Places & People”. Kartın resmi, türü, adı, bilgisi ve hikâyedeki adları; her dil kendi sekmesinde.'],
   ['Kitabın adı, açıklaması, gizli/görünür', 'Kitaplar → kitap → sağdaki kutu.'],
-  ['Yeni kitap ya da yeni seviye', 'Menüdeki “Yeni kitap”: hocanın Word dosyası. Claude yazar, kitap gizli gelir.'],
+  ['Yeni kitap veya seviye', 'Menüdeki “Yeni kitap”: hikâye metni Word dosyası olarak yüklenir, kitap hazırlanır ve onaylanana kadar gizli kalır.'],
   ['Ekibe kişi eklemek, yetki vermek', 'Menüdeki “Ekip” (yönetici).'],
   ['Bir değişikliği geri almak', 'Kaydetmeden: “Geri al”. Yayınlandıktan sonra: “Geçmiş” → değişiklik → “Geri al”.'],
 ];
 
 const CODE_ONLY: string[] = [
   'Uygulamanın kendi düğme ve menü yazıları (Next, Settings, Quick Challenge başlığı gibi).',
-  'Kitap kapakları, harita çizimleri ve kart resimleri.',
+  'Kitap kapakları ve harita çizimleri; resim yeri henüz açılmamış kartların resmi.',
   'Hangi bölümde hangi Places & People kartının çıktığı ve haritadaki yeri.',
   'Sayfaların sırası ve uygulamanın görünüşü.',
 ];

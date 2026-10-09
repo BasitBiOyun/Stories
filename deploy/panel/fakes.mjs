@@ -36,8 +36,12 @@ export const createFakeRepo = ({ root = process.cwd(), base = 'preview', checks 
   const writeCommit = (branch, files, message) => {
     const entry = branches.get(branch);
     const parents = [entry.head];
-    const changes = files.map(file => ({ path: file.path, before: fileOn(branch, file.path), after: file.text }));
-    for (const file of files) entry.overlay.set(file.path, file.text);
+    // A file given by blob (fileSha) goes back to the base branch's copy.
+    const changes = files.map(file => ({ path: file.path, before: fileOn(branch, file.path), after: file.sha ? fileOn(base, file.path) : file.text }));
+    for (const file of files) {
+      if (file.sha) entry.overlay.delete(file.path);
+      else entry.overlay.set(file.path, file.text);
+    }
     const sha = shaOf(`${branch}:${message}:${Date.now()}:${Math.random()}`);
     entry.head = sha;
     commits.set(sha, { sha, message, date: new Date().toISOString(), parents, branch, changes });
@@ -72,6 +76,18 @@ export const createFakeRepo = ({ root = process.cwd(), base = 'preview', checks 
       return diskFile(path);
     },
     branchSha: async branch => branches.get(branch)?.head ?? null,
+    // Pictures: what a branch or commit holds, as base64 (a saved picture is kept as base64).
+    readBase64: async (ref, path) => {
+      const commit = commits.get(ref);
+      const change = commit?.changes.find(item => item.path === path);
+      if (change) return change.after;
+      for (let name = branches.has(ref) ? ref : commitSha(ref); name && branches.has(name); name = branches.get(name).parent) {
+        if (branches.get(name).overlay.has(path)) return branches.get(name).overlay.get(path);
+      }
+      const full = join(root, path);
+      return existsSync(full) ? readFileSync(full).toString('base64') : null;
+    },
+    fileSha: async (ref, path) => (fileOn(branches.has(ref) ? ref : base, path) === null ? null : shaOf(`${ref}:${path}`)),
     createBranch: async (branch, fromSha) => {
       branches.set(branch, { overlay: new Map(), head: fromSha, parent: commitSha(fromSha) ?? base });
     },
@@ -172,6 +188,12 @@ export const createFakeStorage = ({ publicPaths = [] } = {}) => {
       return { path: to, url: `https://firebasestorage.googleapis.com/v0/b/fake/o/${encodeURIComponent(to)}?alt=media&token=${token}` };
     },
     list: async prefix => [...objects.keys()].filter(path => path.startsWith(prefix)),
+    listFolder: async folder => {
+      const prefix = folder.endsWith('/') ? folder : `${folder}/`;
+      return [...objects.keys()]
+        .filter(path => path.startsWith(prefix) && !path.slice(prefix.length).includes('/'))
+        .map(path => ({ path, name: path.slice(prefix.length), url: `https://firebasestorage.googleapis.com/v0/b/demo/o/${encodeURIComponent(path)}?alt=media&token=demo` }));
+    },
     remove: async path => {
       objects.delete(path);
     },

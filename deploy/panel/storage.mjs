@@ -110,6 +110,28 @@ export const createCloudStorage = (bucket, fetchImpl = fetch) => {
       } while (pageToken);
       return names;
     },
+    /**
+     * The files directly inside a folder with the address the app would get for each (its first
+     * download token), in one request instead of one per file.
+     */
+    listFolder: async folder => {
+      const prefix = folder.endsWith('/') ? folder : `${folder}/`;
+      const files = [];
+      let pageToken = '';
+      do {
+        const response = await call(
+          'GET',
+          `${GCS}/storage/v1/b/${bucket}/o?prefix=${encodeURIComponent(prefix)}&delimiter=%2F&fields=items(name,metadata/firebaseStorageDownloadTokens),nextPageToken${pageToken ? `&pageToken=${pageToken}` : ''}`,
+        );
+        const data = await response.json();
+        for (const item of data.items ?? []) {
+          const token = String(item.metadata?.firebaseStorageDownloadTokens ?? '').split(',')[0];
+          files.push({ path: item.name, name: item.name.slice(prefix.length), url: token ? downloadUrl(bucket, item.name, token) : '' });
+        }
+        pageToken = data.nextPageToken ?? '';
+      } while (pageToken);
+      return files;
+    },
     remove: async path => {
       await call('DELETE', object(path), { allow404: true });
     },

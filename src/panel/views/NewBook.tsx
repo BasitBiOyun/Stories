@@ -79,7 +79,7 @@ export const NewBook = () => {
         nameAr,
         collection,
       });
-      toast(writer === 'claude' ? 'Gönderildi. Claude kitabı yazmaya başladı; hazır olunca “Onay bekleyenler”de görünür.' : 'Metin kaydedildi. Claude’a sohbetten “panel/yeni-kitap dalındaki kitabı yaz” deyin.', 'good');
+      toast(writer === 'claude' ? 'Gönderildi. Kitap hazırlanıyor; tamamlanınca “Onay bekleyenler” sayfasında görünür.' : 'Metin kaydedildi. Hazırlık, aşağıdaki “Hazırlanan kitaplar” bölümünden istenebilir.', 'good');
       setDraft(null);
       setFileName('');
       setBrief('');
@@ -95,8 +95,8 @@ export const NewBook = () => {
     <div className="content">
       <div className="page-head">
         <div>
-          <h1>Yeni kitap ya da yeni seviye</h1>
-          <p>Hocanın Word dosyasını yükleyin. Claude kelime notlarını, alıştırmaları ve öğretmen kitabını o kitabın kendi olaylarından yazar. Kitap gizli kalır; siz bakıp onaylayınca rafa çıkar.</p>
+          <h1>Yeni kitap veya seviye ekle</h1>
+          <p>Hikâye metnini Word dosyası olarak yükleyin. Kelime notları, alıştırmalar ve öğretmen rehberi metnin kendi olaylarından hazırlanır. Kitap, incelenip onaylanana kadar okurlara kapalı kalır.</p>
         </div>
       </div>
       {!config?.proposals && (
@@ -109,13 +109,15 @@ export const NewBook = () => {
         <section className="card">
           <ol className="steps-list">
             <li>
-              <h3>Hangi kitap?</h3>
-              <div className="seg" role="group" aria-label="Kitap türü" style={{ marginBottom: 10 }}>
+              <h3>Kitap</h3>
+              <div className="choices" role="group" aria-label="Kitap türü">
                 <button type="button" aria-pressed={mode === 'existing'} onClick={() => setMode('existing')}>
-                  Var olan kitaba seviye
+                  <b>Mevcut kitaba yeni seviye</b>
+                  <span>Kütüphanedeki bir kitaba A2, B1 veya B2 seviyesi eklenir.</span>
                 </button>
                 <button type="button" aria-pressed={mode === 'new'} onClick={() => setMode('new')}>
-                  Yepyeni kitap
+                  <b>Yeni kitap</b>
+                  <span>Kütüphaneye yeni bir kitap eklenir.</span>
                 </button>
               </div>
               {mode === 'existing' ? (
@@ -154,6 +156,7 @@ export const NewBook = () => {
                   </label>
                 </>
               )}
+              <span className="field-label" style={{ display: 'block', marginTop: 10 }}>Seviye</span>
               <div className="seg" role="group" aria-label="Seviye">
                 {LEVELS.map(item => (
                   <button key={item} type="button" aria-pressed={level === item} onClick={() => setLevel(item)}>
@@ -161,15 +164,15 @@ export const NewBook = () => {
                   </button>
                 ))}
               </div>
-              <p className="small muted">A1 ve C1 uygulamada henüz yok; onlar kurulunca burada da çıkar.</p>
-              {levelExists && <p className="small">Bu kitabın {level} seviyesi zaten var. Gönderirseniz Claude var olanı bu metinle yeniden yazar.</p>}
+              <p className="small muted">A1 ve C1 seviyeleri uygulamaya eklendiğinde burada da seçilebilecek.</p>
+              {levelExists && <p className="small">Bu kitabın {level} seviyesi zaten var. Gönderilirse mevcut seviye bu metinle yeniden hazırlanır.</p>}
             </li>
             <li>
-              <h3>Word dosyası</h3>
+              <h3>Hikâye metni (Word)</h3>
               <label className="dropzone">
                 <IconUpload size={18} />
                 <span>
-                  <b>{fileName || 'Word (.docx) dosyasını seçin'}</b>
+                  <b>{fileName || 'Dosya seçin (.docx)'}</b>
                 </span>
                 <input
                   type="file"
@@ -186,33 +189,38 @@ export const NewBook = () => {
                     }
                   }}
                 />
-                <span className="small muted">Bölüm başlıkları Word’de “Başlık” stiliyle ya da “Chapter 1: …” diye yazılmış olmalı. Kalın veya renkli işaretli kelimeler kelime notu adayı sayılır.</span>
+                <span className="small muted">Bölüm başlıkları Word’de “Başlık” stiliyle veya “Chapter 1: …” biçiminde yazılmalıdır. Kalın ya da renkli işaretlenen kelimeler kelime notu adayı sayılır.</span>
               </label>
             </li>
             <li>
-              <h3>Claude için notlar</h3>
-              <textarea value={brief} onChange={event => setBrief(event.target.value)} rows={4} placeholder="Örnek: 3. bölümdeki tarih hocaya soruldu, değişmesin. Resimler sonra gelecek." />
-              <div className="seg" role="group" aria-label="Kim yazsın" style={{ marginTop: 8 }}>
+              <h3>Hazırlık</h3>
+              <div className="choices" role="group" aria-label="Hazırlık">
                 <button type="button" aria-pressed={writer === 'claude'} onClick={() => setWriter('claude')}>
-                  Claude hemen yazsın
+                  <b>Claude hazırlasın</b>
+                  <span>Kelime notları, alıştırmalar ve rehber hazırlanır; sonuç “Onay bekleyenler” sayfasına gelir.</span>
                 </button>
                 <button type="button" aria-pressed={writer === 'manual'} onClick={() => setWriter('manual')}>
-                  Sadece kaydet, sohbetten isteyeceğim
+                  <b>Yalnızca metni kaydet</b>
+                  <span>Metin saklanır; hazırlık daha sonra istenir.</span>
                 </button>
               </div>
+              <label className="field" style={{ marginTop: 10 }}>
+                <span className="field-label">Notlar (isteğe bağlı)</span>
+                <textarea value={brief} onChange={event => setBrief(event.target.value)} rows={3} placeholder="Örnek: 3. bölümdeki tarih değiştirilmesin. Resimler daha sonra eklenecek." />
+              </label>
             </li>
           </ol>
           <button type="button" className="btn primary" disabled={!ready || busy || !config?.proposals} onClick={() => void send()}>
-            <IconSend size={16} /> {busy ? 'Gönderiliyor…' : 'Gönder'}
+            <IconSend size={16} /> {busy ? 'Gönderiliyor…' : writer === 'claude' ? 'Hazırlamaya gönder' : 'Metni kaydet'}
           </button>
         </section>
 
         <section className="card">
           <h2>
-            <IconSparkDoc size={18} /> Word dosyasında bulunanlar
+            <IconSparkDoc size={18} /> Dosya önizlemesi
           </h2>
           {!draft ? (
-            <p className="muted">Dosyayı seçince bölümler burada görünür.</p>
+            <p className="muted">Dosya seçildiğinde bölümler burada listelenir.</p>
           ) : (
             <>
               <p>
@@ -220,7 +228,7 @@ export const NewBook = () => {
               </p>
               {draft.chapters.length === 0 && (
                 <div className="notice warn">
-                  <IconWarn size={16} /> Bölüm bulunamadı. Word’de bölüm başlıklarına “Başlık 1” stilini verin ya da başlıkları “Chapter 1: …” diye yazın.
+                  <IconWarn size={16} /> Bölüm bulunamadı. Word’de bölüm başlıklarına “Başlık 1” stilini verin veya başlıkları “Chapter 1: …” biçiminde yazın.
                 </div>
               )}
               <ol className="chapter-list">
@@ -235,7 +243,7 @@ export const NewBook = () => {
                   </li>
                 ))}
               </ol>
-              {draft.front.length > 0 && <p className="small muted">Bölümlerden önce {draft.front.length} paragraf var (önsöz veya not); Claude bunları not olarak okur.</p>}
+              {draft.front.length > 0 && <p className="small muted">Bölümlerden önce {draft.front.length} paragraf var (önsöz veya not); bunlar hazırlıkta not olarak dikkate alınır.</p>}
             </>
           )}
         </section>
@@ -243,13 +251,13 @@ export const NewBook = () => {
 
       {(open.length > 0 || runs.length > 0) && (
         <section className="card" style={{ marginTop: 16 }}>
-          <h2>Yazılmakta olan kitaplar</h2>
+          <h2>Hazırlanan kitaplar</h2>
           {open.map(item => (
             <AskBox key={item.branch} number={item.number!} title={item.title.replace(/^Panel: /, '')} url={item.url} />
           ))}
           {runs.slice(0, 5).map(run => (
             <p key={run.id} className="small">
-              {run.status === 'completed' ? (run.conclusion === 'success' ? 'Bitti' : 'Hata verdi') : 'Claude yazıyor'} · {timeAgo(run.createdAt)} ·{' '}
+              {run.status === 'completed' ? (run.conclusion === 'success' ? 'Tamamlandı' : 'Tamamlanamadı') : 'Hazırlanıyor'} · {timeAgo(run.createdAt)} ·{' '}
               <a href={run.url} target="_blank" rel="noreferrer">
                 ayrıntı
               </a>
@@ -274,9 +282,9 @@ const AskBox = ({ number, title, url }: { number: number; title: string; url: st
           </a>
         )}
       </div>
-      <p className="small muted">Claude’dan bir değişiklik isteyin; aynı dalda düzeltir. Bitince “Onay bekleyenler”den bakıp yayınlayın.</p>
+      <p className="small muted">Bu kitapta yapılacak değişikliği yazın; aynı taslak üzerinde düzeltilir. Sonuç “Onay bekleyenler” sayfasında incelenip yayınlanır.</p>
       <div className="row">
-        <input value={text} onChange={event => setText(event.target.value)} placeholder="Örnek: 2. bölümün Quick sorularını daha kolay yap." style={{ flex: 1 }} />
+        <input value={text} onChange={event => setText(event.target.value)} placeholder="Örnek: 2. bölümün Quick sorularını kolaylaştır." style={{ flex: 1 }} />
         <button
           type="button"
           className="btn"
@@ -286,7 +294,7 @@ const AskBox = ({ number, title, url }: { number: number; title: string; url: st
             try {
               await api.askNewBook(number, text);
               setText('');
-              toast('İstek Claude’a gönderildi.', 'good');
+              toast('İstek iletildi.', 'good');
             } catch (error) {
               toast((error as Error).message, 'bad');
             } finally {
@@ -294,7 +302,7 @@ const AskBox = ({ number, title, url }: { number: number; title: string; url: st
             }
           }}
         >
-          İste
+          Değişiklik iste
         </button>
       </div>
     </div>

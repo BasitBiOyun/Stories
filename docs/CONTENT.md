@@ -53,8 +53,14 @@ team, new books) have their own pages. Ctrl+K finds any sentence in any book.
 Saving puts the change in the person's basket; an admin publishes a basket as one commit (one
 build), and every published change can be undone from "Geçmiş". Setup: docs/OPERATIONS.md.
 
-What stays in code: book covers, the app's own interface texts and layout, the pictures of Places
-& People cards, and new kinds of exercise.
+A Places & People card's picture is replaced on its card page: the panel cuts it to a 480 px square
+WebP and saves it to the basket like any change (the file under
+src/features/historical-entities/assets/pictures/). A card whose picture spot is not yet set in
+src/features/historical-entities/books/ needs that one line in code first. The card's words have a
+tab per language of src/content/languages.json.
+
+What stays in code: book covers, the app's own interface texts and layout, where each card's
+picture lives and which chapter shows it, and new kinds of exercise.
 
 ## Seeing what the library holds
 

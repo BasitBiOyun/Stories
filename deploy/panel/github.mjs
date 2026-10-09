@@ -49,6 +49,18 @@ export const createGithubRepo = (token, repo, fetchImpl = fetch) => {
 
     branchSha,
 
+    /** A picture on a branch or commit, as base64, or null when it is not there. */
+    readBase64: async (ref, path) => {
+      const file = await request('GET', `/contents/${path}?ref=${encodeURIComponent(ref)}`, null, { allow404: true });
+      if (!file) return null;
+      if (file.content) return file.content.replace(/\s/g, '');
+      // Over 1 MB the contents API leaves the content out; the blob still has it.
+      return (await request('GET', `/git/blobs/${file.sha}`)).content.replace(/\s/g, '');
+    },
+
+    /** The blob of a file on a branch, or null when it is not there. */
+    fileSha: async (ref, path) => (await request('GET', `/contents/${path}?ref=${encodeURIComponent(ref)}`, null, { allow404: true }))?.sha ?? null,
+
     createBranch: async (branch, fromSha) => {
       await request('POST', '/git/refs', { ref: `refs/heads/${branch}`, sha: fromSha });
     },
@@ -69,6 +81,11 @@ export const createGithubRepo = (token, repo, fetchImpl = fetch) => {
       for (const file of files) {
         if (file.text === null) {
           tree.push({ path: file.path, mode: '100644', type: 'blob', sha: null });
+          continue;
+        }
+        if (file.sha) {
+          // An existing blob (a picture put back as it was).
+          tree.push({ path: file.path, mode: '100644', type: 'blob', sha: file.sha });
           continue;
         }
         const blob = await request('POST', '/git/blobs', { content: file.text, encoding: file.encoding ?? 'utf-8' });

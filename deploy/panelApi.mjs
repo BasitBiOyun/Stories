@@ -45,6 +45,8 @@ const EDITABLE = [
   { kind: 'guide', re: /^src\/content\/guides\/([a-z][a-zA-Z]*)-(a1|a2|b1|b2|c1)-([a-z]{2})\.json$/, indent: 1 },
   { kind: 'stories', re: /^src\/content\/stories\.json$/, indent: 1 },
   { kind: 'entityCards', re: /^src\/content\/entityCards\.json$/, indent: 1 },
+  // A Places & People card's square picture (the app bundles these files).
+  { kind: 'picture', re: /^src\/features\/historical-entities\/assets\/pictures\/([a-zA-Z]+)\/([a-z0-9-]+)\.webp$/, binary: true },
   { kind: 'tts', re: /^tts\/requests\.json$/, indent: 2, language: 'en' },
   { kind: 'tts', re: /^tts\/arabic_requests\.json$/, indent: 2, language: 'ar' },
 ];
@@ -150,6 +152,16 @@ export const revertChange = (before, after, now) => {
 };
 
 const personId = email => createHash('sha256').update(String(email).toLowerCase()).digest('hex').slice(0, 12);
+/** The display name inside an ID token that verify() has already accepted. */
+const googleName = token => {
+  try {
+    const claims = JSON.parse(Buffer.from(String(token).split('.')[1] ?? '', 'base64url').toString('utf8'));
+    return typeof claims.name === 'string' ? claims.name.trim().slice(0, 80) : '';
+  } catch {
+    return '';
+  }
+};
+
 const nameFromEmail = email => String(email).split('@')[0].replace(/[._-]+/g, ' ').replace(/\b\w/g, letter => letter.toUpperCase());
 
 const readTeam = raw => {
@@ -292,11 +304,12 @@ export const createPanelApi = (env = process.env, deps = {}) => {
     const list = [];
     for (const [email, owner] of owners ?? []) {
       const extra = stored.find(member => member.email === email);
-      list.push({ email, role: owner.role, name: extra?.name || owner.name || nameFromEmail(email), owner: true });
+      const name = extra?.name || owner.name;
+      list.push({ email, role: owner.role, name: name || nameFromEmail(email), named: Boolean(name), owner: true });
     }
     for (const member of stored) {
       if (owners?.has(member.email)) continue;
-      list.push({ email: member.email, role: member.role, name: member.name || nameFromEmail(member.email), owner: false, addedBy: member.addedBy, addedAt: member.addedAt });
+      list.push({ email: member.email, role: member.role, name: member.name || nameFromEmail(member.email), named: Boolean(member.name), owner: false, addedBy: member.addedBy, addedAt: member.addedAt });
     }
     return list;
   };
@@ -310,7 +323,10 @@ export const createPanelApi = (env = process.env, deps = {}) => {
     if (!email) return null;
     const member = (await teamList()).find(item => item.email === email);
     if (!member) return null;
-    return { ...member, id: personId(email), label: ROLES[member.role].label, approve: ROLES[member.role].approve };
+    // Without a name set in the team list, the person's own Google name is used, never one made
+    // from the e-mail address.
+    const name = member.named ? member.name : googleName(header.slice(7)) || member.name;
+    return { ...member, name, id: personId(email), label: ROLES[member.role].label, approve: ROLES[member.role].approve };
   };
 
   const writeTeam = async (by, change) => {
@@ -437,6 +453,14 @@ export const createPanelApi = (env = process.env, deps = {}) => {
       const file = editableFile(item.path);
       if (!file) throw problem(400, `Bu dosya panelden değiştirilemez: ${item.path}`);
       if (!mayPropose(member.role, file)) throw problem(403, 'Rolün bu dosyayı değiştirmeye izin vermiyor.');
+      if (file.binary) {
+        const bytes = Buffer.from(String(item.base64 || ''), 'base64');
+        const webp = bytes.length > 12 && bytes.toString('latin1', 0, 4) === 'RIFF' && bytes.toString('latin1', 8, 12) === 'WEBP';
+        if (!webp) throw problem(400, 'Resim kaydedilmedi: dosya okunamadı.');
+        if (bytes.length > 600 * 1024) throw problem(413, 'Resim çok büyük.');
+        prepared.push({ path: file.path, text: bytes.toString('base64'), encoding: 'base64' });
+        continue;
+      }
       const shape = checkFileShape(file, item.json);
       if (shape) throw problem(400, `Değişiklik kaydedilmedi: ${shape}.`);
       prepared.push({ path: file.path, text: serialize(file, item.json) });
@@ -457,8 +481,10 @@ export const createPanelApi = (env = process.env, deps = {}) => {
     if (!file) throw problem(400, 'Bilinmeyen dosya.');
     const branch = basketBranch(member);
     if (!(await repo.branchSha(branch))) throw problem(404, 'Sepet boş.');
-    const original = await repo.readFile(baseBranch, file.path);
-    await repo.commitFiles(branch, [{ path: file.path, text: original }], `Panel: ${file.path} sepetten çıkarıldı\n\n${member.name} panelde yaptı.`);
+    // A picture goes back by pointing at the preview's own copy; text files are written back.
+    const restored = file.binary ? { path: file.path, sha: await repo.fileSha(baseBranch, file.path), text: undefined } : { path: file.path, text: await repo.readFile(baseBranch, file.path) };
+    if (file.binary && !restored.sha) restored.text = null;
+    await repo.commitFiles(branch, [restored], `Panel: ${file.path} sepetten çıkarıldı\n\n${member.name} panelde yaptı.`);
     return closeIfEmpty(member);
   };
 
@@ -527,6 +553,7 @@ export const createPanelApi = (env = process.env, deps = {}) => {
     for (const item of basket.media) {
       try {
         await storage.replace(item.staged, item.target);
+        folderCache.clear();
         await storage.remove(item.staged).catch(() => undefined);
       } catch (error) {
         mediaErrors.push(`${item.label || item.target}: ${error.message}`);
@@ -563,11 +590,50 @@ export const createPanelApi = (env = process.env, deps = {}) => {
     if (ROLES[member.role].propose === 'none') throw problem(403, 'Rolün değişiklik yapmaya izin vermiyor.');
   };
 
+  // Folder listings for the media views, kept for a minute; a publish that replaces files clears them.
+  const folderCache = new Map();
+  const listFolderCached = async folder => {
+    const hit = folderCache.get(folder);
+    if (hit && Date.now() < hit.until) return hit.files;
+    const files = await storage.listFolder(folder);
+    folderCache.set(folder, { files, until: Date.now() + 60_000 });
+    return files;
+  };
+
   const routes = [
+    [
+      'POST',
+      /^media\/folders$/,
+      async ({ body }) => {
+        if (!storage?.listFolder) throw problem(503, 'Depolama bağlı değil.');
+        const folders = (Array.isArray(body.folders) ? body.folders : []).map(String).slice(0, 60);
+        const result = {};
+        await Promise.all(
+          folders.map(async folder => {
+            const clean = folder.replace(/\/+$/, '');
+            const top = clean.split('/')[0];
+            if (!clean || clean.includes('..') || clean.startsWith('/') || ['tts-state', 'panel-state'].includes(top)) return;
+            result[folder] = await listFolderCached(clean).catch(() => null);
+          }),
+        );
+        return { folders: result };
+      },
+    ],
     [
       'GET',
       /^me$/,
-      async ({ member }) => ({ email: member.email, name: member.name, role: member.role, label: member.label, approve: member.approve, id: member.id }),
+      async ({ member }) => {
+        // The first sign-in keeps the person's Google name in the team list, so the team page,
+        // the history and the baskets show the same name everywhere.
+        if (!member.named && member.name && storage) {
+          await writeTeam(member, members => {
+            const existing = members.find(item => item.email === member.email);
+            if (existing) existing.name ||= member.name;
+            else members.push({ email: member.email, role: member.role, name: member.name });
+          }).catch(() => undefined);
+        }
+        return { email: member.email, name: member.name, role: member.role, label: member.label, approve: member.approve, id: member.id };
+      },
     ],
     ['GET', /^team$/, async () => ({ members: await teamList(), roles: Object.fromEntries(Object.entries(ROLES).map(([key, role]) => [key, role.label])), canWrite: Boolean(storage) })],
     [
@@ -584,7 +650,7 @@ export const createPanelApi = (env = process.env, deps = {}) => {
         await writeTeam(member, members => {
           const existing = members.find(item => item.email === email);
           if (existing) Object.assign(existing, { role, name: name || existing.name });
-          else members.push({ email, role, name: name || nameFromEmail(email), addedBy: member.name, addedAt: new Date().toISOString() });
+          else members.push({ email, role, name, addedBy: member.name, addedAt: new Date().toISOString() });
         });
         return { members: await teamList() };
       },
@@ -610,26 +676,28 @@ export const createPanelApi = (env = process.env, deps = {}) => {
       async ({ member, query }) => {
         const file = editableFile(query.get('path'));
         if (!file) throw problem(400, 'Bilinmeyen dosya.');
+        // A picture comes as an image the panel can show, never as letters.
+        const read = async (at, from) => {
+          if (!file.binary) return { text: await repo.readFile(at, file.path), from };
+          const data = await repo.readBase64(at, file.path);
+          return { text: null, image: data ? `data:image/webp;base64,${data}` : null, from };
+        };
         const ref = query.get('ref');
-        if (ref === 'base' || !repo) {
-          return { text: repo ? await repo.readFile(baseBranch, file.path) : null, from: 'preview' };
-        }
-        if (ref && ref.startsWith('basket:')) {
-          const branch = `${BASKET_PREFIX}${ref.slice(7).replace(/[^a-f0-9]/g, '')}`;
-          return { text: await repo.readFile(branch, file.path), from: 'basket' };
-        }
+        if (!repo) return { text: null, from: 'preview' };
+        if (ref === 'base') return read(baseBranch, 'preview');
+        if (ref && ref.startsWith('basket:')) return read(`${BASKET_PREFIX}${ref.slice(7).replace(/[^a-f0-9]/g, '')}`, 'basket');
         if (ref && ref.startsWith('branch:')) {
           const branch = ref.slice(7);
           if (!branch.startsWith(NEW_BOOK_PREFIX)) throw problem(400, 'Bilinmeyen dal.');
-          return { text: await repo.readFile(branch, file.path), from: 'new-book' };
+          return read(branch, 'new-book');
         }
-        if (ref && /^[a-f0-9]{7,40}$/.test(ref)) return { text: await repo.readFile(ref, file.path), from: 'history' };
+        if (ref && /^[a-f0-9]{7,40}$/.test(ref)) return read(ref, 'history');
         const branch = basketBranch(member);
         if (await repo.branchSha(branch)) {
-          const text = await repo.readFile(branch, file.path);
-          if (text !== null) return { text, from: 'basket' };
+          const result = await read(branch, 'basket');
+          if (result.text !== null || result.image) return result;
         }
-        return { text: await repo.readFile(baseBranch, file.path), from: 'preview' };
+        return read(baseBranch, 'preview');
       },
     ],
     [
@@ -741,7 +809,8 @@ export const createPanelApi = (env = process.env, deps = {}) => {
         let conflicts = 0;
         for (const changed of commit.files) {
           const file = editableFile(changed.path);
-          if (!file || !mayPropose(member.role, file)) continue;
+          // Pictures are put back by hand (choose the old one again); texts are merged back.
+          if (!file || file.binary || !mayPropose(member.role, file)) continue;
           const before = await repo.readFile(commit.parents[0], file.path);
           const after = await repo.readFile(commit.sha ?? match[1], file.path);
           if (before === null || after === null) continue;

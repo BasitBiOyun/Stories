@@ -48,6 +48,8 @@ export const MediaPage = () => {
   useEffect(() => {
     if (!storyId) return;
     let live = true;
+    // Another book's pictures never stay on screen while this one's are looked up.
+    setFiles({ image: {}, englishAudio: {}, arabicAudio: {} });
     setLook('looking');
     Promise.all((['image', 'englishAudio', 'arabicAudio'] as MediaKind[]).map(kind => chapterFiles(storyId, level, kind)))
       .then(([image, englishAudio, arabicAudio]) => {

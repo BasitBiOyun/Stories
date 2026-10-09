@@ -1,5 +1,6 @@
 import { initializeApp } from '@firebase/app';
-import { getDownloadURL, getStorage, listAll, ref, type StorageReference } from '@firebase/storage';
+import { getDownloadURL, getStorage, listAll, ref } from '@firebase/storage';
+import { api } from './api';
 import { firebaseConfig } from '../lib/firebaseConfig';
 import { getStorageManifest } from '../core/storage/storageManifests';
 import { parseChapterNumber } from '../core/storage/storageAssetLoader';
@@ -38,44 +39,75 @@ export const manifestFolders = (storyId: string, level: string, kind: MediaKind)
   return [...(entry?.paths ?? [])];
 };
 
+interface FolderFile {
+  path: string;
+  name: string;
+  url: string;
+}
+
+/**
+ * The files in some folders. The panel's server lists them in one request, with their addresses
+ * (it keeps the answer for a minute); without a server the browser asks Storage itself.
+ */
+const folderCache = new Map<string, Promise<FolderFile[] | null>>();
+const listFolders = (folders: string[]): Promise<(FolderFile[] | null)[]> => {
+  const missing = folders.filter(folder => !folderCache.has(folder));
+  if (missing.length) {
+    const asked = api
+      .mediaFolders(missing)
+      .then(result => result.folders)
+      .catch(async () => {
+        const fromBrowser: Record<string, FolderFile[] | null> = {};
+        await Promise.all(
+          missing.map(async folder => {
+            try {
+              const listing = await listAll(ref(bucket(), folder));
+              fromBrowser[folder] = await Promise.all(listing.items.map(async item => ({ path: item.fullPath, name: item.name, url: await getDownloadURL(item).catch(() => '') })));
+            } catch {
+              fromBrowser[folder] = null;
+            }
+          }),
+        );
+        return fromBrowser;
+      });
+    for (const folder of missing) {
+      const one = asked.then(all => all[folder] ?? null);
+      folderCache.set(folder, one);
+      one.catch(() => folderCache.delete(folder));
+    }
+  }
+  return Promise.all(folders.map(folder => folderCache.get(folder)!));
+};
+
 export const chapterFiles = (storyId: string, level: string, kind: MediaKind): Promise<Record<number, ChapterFile>> => {
   const key = `${storyId}:${level}:${kind}`;
   const cached = cache.get(key);
   if (cached) return cached;
   const request = (async () => {
-    // All folders are listed at once and all addresses fetched at once: one after the other took
-    // long enough for a page to look empty while it was still looking.
     const folders = manifestFolders(storyId, level, kind);
-    const listings = await Promise.allSettled(folders.map(folder => listAll(ref(bucket(), folder))));
-    // listAll answers an empty list for a folder that does not exist; a rejection is a real failure.
-    if (listings.length > 0 && listings.every(result => result.status === 'rejected')) throw new Error('Storage could not be read');
-    const chosen: Record<number, StorageReference> = {};
+    const listings = await listFolders(folders);
+    // A folder that does not exist lists as empty; null means it could not be read at all.
+    if (listings.length > 0 && listings.every(listing => listing === null)) throw new Error('Storage could not be read');
+    const found: Record<number, ChapterFile> = {};
     for (const listing of listings) {
-      if (listing.status !== 'fulfilled') continue;
-      const items = listing.value.items.filter(item => EXTENSIONS[kind].test(item.name)).sort((a, b) => a.name.localeCompare(b.name));
+      const items = (listing ?? []).filter(item => EXTENSIONS[kind].test(item.name)).sort((a, b) => a.name.localeCompare(b.name));
       for (const item of items) {
         const chapter = parseChapterNumber(item.name);
         // Earlier folders win, as in the app.
-        if (chapter !== null && !chosen[chapter]) chosen[chapter] = item;
+        if (chapter !== null && !found[chapter]) found[chapter] = { chapter, path: item.path, url: item.url, name: item.name };
       }
     }
-    const entries = await Promise.all(
-      Object.entries(chosen).map(
-        async ([chapter, item]) =>
-          [
-            Number(chapter),
-            { chapter: Number(chapter), path: item.fullPath, url: await getDownloadURL(item).catch(() => ''), name: item.name },
-          ] as const,
-      ),
-    );
-    return Object.fromEntries(entries) as Record<number, ChapterFile>;
+    return found;
   })();
   cache.set(key, request);
   request.catch(() => cache.delete(key));
   return request;
 };
 
-export const forgetChapterFiles = () => cache.clear();
+export const forgetChapterFiles = () => {
+  cache.clear();
+  folderCache.clear();
+};
 
 /** Where a new file for a chapter goes when the book has none yet: the first folder, a clear name. */
 export const newChapterPath = (storyId: string, level: string, kind: MediaKind, chapter: number, extension: string) => {

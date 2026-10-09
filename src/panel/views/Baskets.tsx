@@ -247,11 +247,17 @@ const FileChanges = ({ path, status, branchRef, canDiscard }: { path: string; st
   const [changes, setChanges] = useState<Change[] | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [all, setAll] = useState(false);
+  const [pictures, setPictures] = useState<[string | null, string | null] | null>(null);
   useEffect(() => {
     let live = true;
     Promise.all([api.file(path, 'base'), api.file(path, branchRef)])
       .then(([before, after]) => {
         if (!live) return;
+        if (path.endsWith('.webp')) {
+          setPictures([before.image ?? null, after.image ?? null]);
+          setChanges([]);
+          return;
+        }
         const a = before.text ? JSON.parse(before.text) : {};
         const b = after.text ? JSON.parse(after.text) : {};
         setChanges(path.endsWith('.json') ? describeChanges(a, b) : []);
@@ -268,7 +274,7 @@ const FileChanges = ({ path, status, branchRef, canDiscard }: { path: string; st
         <b>{describeFile(path, id => storyName(id))}</b>
         <span className="small muted">
           {' '}
-          · {status === 'added' ? 'yeni dosya' : status === 'removed' ? 'silindi' : changes ? `${changes.length} değişiklik` : '…'}
+          · {pictures ? 'resim değişti' : status === 'added' ? 'yeni dosya' : status === 'removed' ? 'silindi' : changes ? `${changes.length} değişiklik` : '…'}
         </span>
         {canDiscard && (
           <button
@@ -293,6 +299,16 @@ const FileChanges = ({ path, status, branchRef, canDiscard }: { path: string; st
         )}
       </summary>
       {error && <p className="small muted">{error}</p>}
+      {pictures && (
+        <div className="row wrap" style={{ gap: 16, marginTop: 8 }}>
+          {(['Önce', 'Sonra'] as const).map((label, index) => (
+            <figure key={label} style={{ margin: 0 }}>
+              {pictures[index] ? <img src={pictures[index]!} alt={label} width={140} height={140} style={{ borderRadius: 10, objectFit: 'cover' }} /> : <div className="small muted">resim yoktu</div>}
+              <figcaption className="small muted">{label}</figcaption>
+            </figure>
+          ))}
+        </div>
+      )}
       {shown.map((change, index) => (
         <div key={index} className="diff-row">
           <div className="diff-where small muted">{change.where.join(' › ') || 'Dosya'}</div>

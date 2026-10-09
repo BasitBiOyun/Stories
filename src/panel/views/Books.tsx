@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { storyCover } from '../../core/content/storyCatalog';
 import { TextField } from '../FieldEditor';
 import { IconEye, IconEyeOff, IconSound, IconWarn } from '../icons';
 import { PAGE_TYPES } from '../labels';
@@ -33,8 +34,8 @@ export const Books = () => {
                 const chapters = editions.filter(item => item.language === 'en').reduce((sum, item) => sum + item.pages.filter(page => page.type === 'story').length, 0);
                 return (
                   <button key={story.id} type="button" className="cover-card" onClick={() => navigate(`/kitap/${story.id}`)}>
-                    <span className="art" aria-hidden="true">
-                      {story.text.en?.name?.replace(/^Prophet /, '').slice(0, 1)}
+                    <span className={`art${storyCover(story.id).placeholder ? ' placeholder' : ''}`} aria-hidden="true">
+                      <img src={storyCover(story.id).imageSmall ?? storyCover(story.id).image} alt="" loading="lazy" />
                     </span>
                     <span className="body">
                       <b>{story.text.en?.name}</b>
@@ -94,7 +95,8 @@ export const BookDetail = ({ storyId }: { storyId: string }) => {
   return (
     <div className="content">
       <div className="page-head">
-        <div>
+        <img className={`book-cover${storyCover(storyId).placeholder ? ' placeholder' : ''}`} src={storyCover(storyId).imageSmall ?? storyCover(storyId).image} alt="" />
+        <div className="grow">
           <p className="small">
             <a href="#/kitaplar">Kitaplar</a> ›
           </p>
@@ -194,7 +196,7 @@ export const BookDetail = ({ storyId }: { storyId: string }) => {
             </div>
           )}
           <p className="small muted" style={{ marginTop: 12 }}>
-            Yeni bir seviye ya da yeni bir kitap “Yeni kitap” sayfasından Word dosyasıyla eklenir. Kapak resmi uygulamanın kodunda durur; değiştirmek için Claude’a yazın.
+            Yeni bir seviye ya da yeni bir kitap “Yeni kitap” sayfasından Word dosyasıyla eklenir. Kapak resmi uygulamanın kodunda durur; değiştirmek için Claude’a yazın. Kapağı olmayan kitapta koleksiyon resmi görünür.
           </p>
         </section>
       </div>
@@ -206,6 +208,7 @@ const ChapterGrid = ({ storyId, level, pages, arPages }: { storyId: string; leve
   const [images, setImages] = useState<Record<number, ChapterFile>>({});
   useEffect(() => {
     let live = true;
+    setImages({});
     chapterFiles(storyId, level, 'image')
       .then(found => live && setImages(found))
       .catch(() => undefined);

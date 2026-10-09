@@ -53,6 +53,8 @@ export const describeFile = (path: string, storyName: (id: string) => string): s
   if (path === ENTITY_CARDS_PATH) return 'Places & People kartları';
   if (path === TTS_PATH.en) return 'İngilizce seslendirme listesi';
   if (path === TTS_PATH.ar) return 'Arapça seslendirme listesi';
+  const picture = /^src\/features\/historical-entities\/assets\/pictures\/([a-zA-Z]+)\/([a-z0-9-]+)\.webp$/.exec(path);
+  if (picture) return `Places & People kart resmi: ${picture[2].replace(/-/g, ' ')}`;
   return path;
 };
 

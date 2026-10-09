@@ -1,3 +1,4 @@
+import type { StorageReference } from '@firebase/storage';
 import type { BookData, PageData } from '../../types';
 import type { BookPair } from '../content/contracts';
 import type { AssetKind, BookAssetManifest, ResolvedBookAssets, StoragePathCandidates } from './contracts';
@@ -40,29 +41,37 @@ const loadMergedFolders = async ({ paths, kind }: StoragePathCandidates): Promis
       import('@firebase/storage'),
       import('../../lib/firebase'),
     ]);
-    const resolved: Record<number, string> = {};
-
-    for (const path of paths) {
-      try {
-        const result = await listAll(ref(storage, path));
-        const items = [...result.items]
-          .filter(item => extensionMatchesKind(item.name, kind))
-          .sort((left, right) => left.name.localeCompare(right.name));
-
-        for (const item of items) {
-          const chapterNumber = parseChapterNumber(item.name);
-          if (chapterNumber === null || resolved[chapterNumber]) continue;
-          try {
-            resolved[chapterNumber] = await getDownloadURL(item);
-          } catch (error) {
-            console.error(`Unable to resolve ${kind} asset ${item.fullPath}`, error);
-          }
-        }
-      } catch (error) {
-        console.warn(`Storage path unavailable: ${path}`, error);
+    // All candidate folders are listed at once, and every chosen file's address is asked for at
+    // once: one after the other made a book's pictures and recordings arrive slowly.
+    const listings = await Promise.all(
+      paths.map(path =>
+        listAll(ref(storage, path)).catch(error => {
+          console.warn(`Storage path unavailable: ${path}`, error);
+          return null;
+        }),
+      ),
+    );
+    const chosen = new Map<number, StorageReference>();
+    for (const result of listings) {
+      if (!result) continue;
+      const items = [...result.items].filter(item => extensionMatchesKind(item.name, kind)).sort((left, right) => left.name.localeCompare(right.name));
+      for (const item of items) {
+        const chapterNumber = parseChapterNumber(item.name);
+        // Earlier folders have priority; later ones only fill missing chapters.
+        if (chapterNumber !== null && !chosen.has(chapterNumber)) chosen.set(chapterNumber, item);
       }
     }
 
+    const resolved: Record<number, string> = {};
+    await Promise.all(
+      [...chosen].map(async ([chapterNumber, item]) => {
+        try {
+          resolved[chapterNumber] = await getDownloadURL(item);
+        } catch (error) {
+          console.error(`Unable to resolve ${kind} asset ${item.fullPath}`, error);
+        }
+      }),
+    );
     return resolved;
   })();
 

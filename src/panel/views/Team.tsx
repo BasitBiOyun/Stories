@@ -18,6 +18,8 @@ export const Team = () => {
   const [canWrite, setCanWrite] = useState(false);
   const [form, setForm] = useState<{ email: string; name: string; role: Role }>({ email: '', name: '', role: 'teacher' });
   const [busy, setBusy] = useState(false);
+  const [renaming, setRenaming] = useState<string | null>(null);
+  const [newName, setNewName] = useState('');
   const admin = Boolean(member?.approve);
 
   useEffect(() => {
@@ -75,7 +77,40 @@ export const Team = () => {
                   {members.map(person => (
                     <tr key={person.email}>
                       <td>
-                        <b>{person.name}</b>
+                        {renaming === person.email ? (
+                          <form
+                            className="row"
+                            onSubmit={async event => {
+                              event.preventDefault();
+                              if (newName.trim() && (await save({ email: person.email, name: newName.trim(), role: person.role }))) setRenaming(null);
+                            }}
+                          >
+                            <input value={newName} onChange={event => setNewName(event.target.value)} aria-label="Adı soyadı" autoFocus />
+                            <button type="submit" className="btn small primary" disabled={busy}>
+                              Kaydet
+                            </button>
+                            <button type="button" className="btn small ghost" onClick={() => setRenaming(null)}>
+                              Vazgeç
+                            </button>
+                          </form>
+                        ) : (
+                          <b>
+                            {person.name}
+                            {admin && canWrite && (
+                              <button
+                                type="button"
+                                className="linkish small"
+                                style={{ marginInlineStart: 8, fontWeight: 400 }}
+                                onClick={() => {
+                                  setRenaming(person.email);
+                                  setNewName(person.name);
+                                }}
+                              >
+                                adı değiştir
+                              </button>
+                            )}
+                          </b>
+                        )}
                         <div className="small muted">{person.email}</div>
                         {person.addedBy && (
                           <div className="small muted">
@@ -147,7 +182,7 @@ export const Team = () => {
                   </label>
                   <label className="field">
                     <span className="field-label">Adı soyadı</span>
-                    <input type="text" value={form.name} onChange={event => setForm({ ...form, name: event.target.value })} placeholder="Panelde ve geçmişte böyle görünür" />
+                    <input type="text" value={form.name} onChange={event => setForm({ ...form, name: event.target.value })} placeholder="Boş kalırsa Google hesabındaki adı kullanılır" />
                   </label>
                   <fieldset className="field">
                     <legend className="field-label">Rolü</legend>

@@ -178,14 +178,18 @@ export const api = {
     return response?.ok ? ((await response.json()) as PanelConfig) : null;
   },
   me: () => request<Member>('/panel-api/me'),
+  mediaFolders: (folders: string[]) =>
+    request<{ folders: Record<string, { path: string; name: string; url: string }[] | null> }>('/panel-api/media/folders', { method: 'POST', body: { folders } }),
   previewAccess: () => request<{ hidden: boolean }>('/panel-api/preview-access', { method: 'POST', body: {} }).catch(() => ({ hidden: false })),
   team: () => request<{ members: TeamMember[]; roles: Record<Role, string>; canWrite: boolean }>('/panel-api/team'),
   saveMember: (member: { email: string; name: string; role: Role }) => request<{ members: TeamMember[] }>('/panel-api/team', { method: 'POST', body: member }),
   removeMember: (email: string) => request<{ members: TeamMember[] }>('/panel-api/team/remove', { method: 'POST', body: { email } }),
   file: (path: string, ref?: string) =>
-    request<{ text: string | null; from: string }>(`/panel-api/file?path=${encodeURIComponent(path)}${ref ? `&ref=${encodeURIComponent(ref)}` : ''}`),
+    request<{ text: string | null; image?: string | null; from: string }>(`/panel-api/file?path=${encodeURIComponent(path)}${ref ? `&ref=${encodeURIComponent(ref)}` : ''}`),
   basket: () => request<Basket>('/panel-api/basket'),
   save: (files: { path: string; json: unknown }[], message: string) => request<Basket>('/panel-api/basket/save', { method: 'POST', body: { files, message } }),
+  /** A picture (base64 WebP) into the basket. */
+  saveBinary: (path: string, base64: string, message: string) => request<Basket>('/panel-api/basket/save', { method: 'POST', body: { files: [{ path, base64 }], message } }),
   discard: (path: string) => request<Basket>('/panel-api/basket/discard', { method: 'POST', body: { path } }),
   clear: () => request<Basket>('/panel-api/basket/clear', { method: 'POST', body: {} }),
   submit: (note: string) => request<{ submitted: boolean }>('/panel-api/basket/submit', { method: 'POST', body: { note } }),

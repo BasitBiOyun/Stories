@@ -307,15 +307,14 @@ const Shell = () => {
           {member && (
             <button
               type="button"
-              className="icon-btn"
-              aria-label="Çıkış yap"
-              title="Çıkış yap"
+              title="Panelden çıkış yap"
               onClick={async () => {
                 if (getState().drafts && dirtyDrafts().length && !window.confirm('Kaydedilmemiş değişiklikler var. Yine de çıkılsın mı?')) return;
                 await signOutOfPanel();
               }}
             >
-              <IconLogout size={17} />
+              <IconLogout size={16} />
+              Çıkış yap
             </button>
           )}
         </div>
