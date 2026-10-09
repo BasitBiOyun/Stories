@@ -211,6 +211,8 @@ export const api = {
     text: string;
     brief: string;
     mode: 'claude' | 'manual';
+    model?: WriterModel;
+    effort?: WriterEffort;
     isNew: boolean;
     nameEn?: string;
     nameAr?: string;
@@ -218,10 +220,24 @@ export const api = {
   }) =>
     request<{ branch: string; number: number }>('/panel-api/new-book', { method: 'POST', body }),
   newBookRuns: () => request<{ runs: { id: number; branch: string; status: string; conclusion: string | null; createdAt: string; url: string }[] }>('/panel-api/new-book'),
-  askNewBook: (number: number, text: string) => request<{ asked: boolean }>(`/panel-api/new-book/${number}/ask`, { method: 'POST', body: { text } }),
+  askNewBook: (number: number, text: string, choice: { model: WriterModel; effort: WriterEffort }) =>
+    request<{ asked: boolean }>(`/panel-api/new-book/${number}/ask`, { method: 'POST', body: { text, ...choice } }),
   release: () => request<{ enabled: boolean; branch?: string; exists?: boolean; waiting?: { sha: string; message: string; date?: string }[]; aheadBy?: number | null }>('/panel-api/release'),
   goLive: () => request<{ released: string }>('/panel-api/release', { method: 'POST', body: {} }),
 };
+
+/** Which Claude writes a new book, and how hard it thinks (the server and yeni-kitap.yml accept only these). */
+export type WriterModel = 'claude-opus-5-5' | 'claude-sonnet-5-5';
+export type WriterEffort = 'medium' | 'high' | 'xhigh';
+export const WRITER_MODELS: [WriterModel, string][] = [
+  ['claude-opus-5-5', 'Opus 5.5'],
+  ['claude-sonnet-5-5', 'Sonnet 5.5 (daha az kullanım)'],
+];
+export const WRITER_EFFORTS: [WriterEffort, string][] = [
+  ['medium', 'Orta (Medium)'],
+  ['high', 'Yüksek (High)'],
+  ['xhigh', 'Çok yüksek (Extra high)'],
+];
 
 /** A file read as bytes, for an upload. */
 export const fileToBase64 = (file: Blob): Promise<string> =>

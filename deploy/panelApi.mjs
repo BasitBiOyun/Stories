@@ -64,6 +64,14 @@ export const editableFile = path => {
   return null;
 };
 
+/** Which Claude writes a new book and how hard it thinks; .github/workflows/yeni-kitap.yml reads these lines. */
+export const WRITER_MODELS = ['claude-opus-5-5', 'claude-sonnet-5-5'];
+export const WRITER_EFFORTS = ['medium', 'high', 'xhigh'];
+const writerChoice = (body, effort = 'medium') => [
+  `- Model: ${WRITER_MODELS.includes(body.model) ? body.model : WRITER_MODELS[0]}`,
+  `- Çaba: ${WRITER_EFFORTS.includes(body.effort) ? body.effort : effort}`,
+];
+
 export const mayPropose = (role, file) => {
   const rule = ROLES[role]?.propose;
   if (rule === 'all') return true;
@@ -892,6 +900,7 @@ export const createPanelApi = (env = process.env, deps = {}) => {
           body.isNew ? `- Koleksiyon: ${String(body.collection || '').slice(0, 40)}` : null,
           `- Yükleyen: ${member.name}`,
           `- Yazan: ${body.mode === 'manual' ? 'elle' : 'Claude'}`,
+          ...writerChoice(body),
           '',
           '## Notlar',
           '',
@@ -944,7 +953,7 @@ export const createPanelApi = (env = process.env, deps = {}) => {
         const stamp = new Date().toISOString().replace(/[-:]/g, '').replace(/\..*/, '').replace('T', '-');
         const folder = (await repo.compare(baseBranch, pull.branch)).files.map(file => file.path).find(path => /^story-intake\/panel\/[^/]+\/hikaye\.md$/.test(path))?.replace(/\/hikaye\.md$/, '');
         if (!folder) throw problem(409, 'Bu taslağın Word metni bulunamadı.');
-        await repo.commitFiles(pull.branch, [{ path: `${folder}/istekler/${stamp}.md`, text: `# ${member.name} istedi\n\n${text}\n` }], `Panel: yeni kitap için istek\n\n${member.name} panelden istedi.`);
+        await repo.commitFiles(pull.branch, [{ path: `${folder}/istekler/${stamp}.md`, text: `# ${member.name} istedi\n\n${writerChoice(body).join('\n')}\n\n${text}\n` }], `Panel: yeni kitap için istek\n\n${member.name} panelden istedi.`);
         audit('new book request', { by: member.id, pull: pull.number });
         return { asked: true };
       },

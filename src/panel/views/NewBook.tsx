@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { api } from '../api';
+import { api, WRITER_EFFORTS, WRITER_MODELS, type WriterEffort, type WriterModel } from '../api';
 import { readDocx, type StoryDraft } from '../docx';
 import { IconSend, IconSparkDoc, IconUpload, IconWarn } from '../icons';
 import { refreshBaskets, toast, useStore } from '../store';
@@ -43,6 +43,8 @@ export const NewBook = () => {
   const [fileName, setFileName] = useState('');
   const [brief, setBrief] = useState('');
   const [writer, setWriter] = useState<'claude' | 'manual'>('claude');
+  const [model, setModel] = useState<WriterModel>('claude-opus-5-5');
+  const [effort, setEffort] = useState<WriterEffort>('medium');
   const [busy, setBusy] = useState(false);
   const [runs, setRuns] = useState<{ id: number; branch: string; status: string; conclusion: string | null; createdAt: string; url: string }[]>([]);
 
@@ -74,6 +76,8 @@ export const NewBook = () => {
         text: draft.markdown,
         brief,
         mode: writer,
+        model,
+        effort,
         isNew: mode === 'new',
         nameEn,
         nameAr,
@@ -204,6 +208,7 @@ export const NewBook = () => {
                   <span>Metin saklanır; hazırlık daha sonra istenir.</span>
                 </button>
               </div>
+              {writer === 'claude' && <WriterChoice model={model} effort={effort} onModel={setModel} onEffort={setEffort} />}
               <label className="field" style={{ marginTop: 10 }}>
                 <span className="field-label">Notlar (isteğe bağlı)</span>
                 <textarea value={brief} onChange={event => setBrief(event.target.value)} rows={3} placeholder="Örnek: 3. bölümdeki tarih değiştirilmesin. Resimler daha sonra eklenecek." />
@@ -269,8 +274,36 @@ export const NewBook = () => {
   );
 };
 
+/** Model and effort for the writer: Opus 5.5 Medium is the team's default. */
+const WriterChoice = ({ model, effort, onModel, onEffort }: { model: WriterModel; effort: WriterEffort; onModel: (model: WriterModel) => void; onEffort: (effort: WriterEffort) => void }) => (
+  <div className="row wrap" style={{ marginTop: 10, gap: 10 }}>
+    <label className="field" style={{ flex: '1 1 200px', margin: 0 }}>
+      <span className="field-label">Model</span>
+      <select value={model} onChange={event => onModel(event.target.value as WriterModel)}>
+        {WRITER_MODELS.map(([key, label]) => (
+          <option key={key} value={key}>
+            {label}
+          </option>
+        ))}
+      </select>
+    </label>
+    <label className="field" style={{ flex: '1 1 160px', margin: 0 }}>
+      <span className="field-label">Düşünme düzeyi</span>
+      <select value={effort} onChange={event => onEffort(event.target.value as WriterEffort)}>
+        {WRITER_EFFORTS.map(([key, label]) => (
+          <option key={key} value={key}>
+            {label}
+          </option>
+        ))}
+      </select>
+    </label>
+  </div>
+);
+
 const AskBox = ({ number, title, url }: { number: number; title: string; url: string | null }) => {
   const [text, setText] = useState('');
+  const [model, setModel] = useState<WriterModel>('claude-opus-5-5');
+  const [effort, setEffort] = useState<WriterEffort>('medium');
   const [busy, setBusy] = useState(false);
   return (
     <div className="box">
@@ -292,7 +325,7 @@ const AskBox = ({ number, title, url }: { number: number; title: string; url: st
           onClick={async () => {
             setBusy(true);
             try {
-              await api.askNewBook(number, text);
+              await api.askNewBook(number, text, { model, effort });
               setText('');
               toast('İstek iletildi.', 'good');
             } catch (error) {
@@ -305,6 +338,7 @@ const AskBox = ({ number, title, url }: { number: number; title: string; url: st
           Değişiklik iste
         </button>
       </div>
+      <WriterChoice model={model} effort={effort} onModel={setModel} onEffort={setEffort} />
     </div>
   );
 };

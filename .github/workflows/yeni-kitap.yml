@@ -45,6 +45,14 @@ jobs:
           # A book the team writes by hand only gets the text; later requests still ask Claude.
           if ! printf '%s\n' "$files" | grep -q '/istekler/' && printf '%s\n' "$files" | grep -q '/istek\.md$' && grep -q '^- Yazan: elle' $(printf '%s\n' "$files" | grep '/istek\.md$'); then files=''; fi
           echo "files=$(printf '%s ' $files)" >> "$GITHUB_OUTPUT"
+          # The model and effort chosen in the panel: the newest request's, else the book's istek.md.
+          src=$(printf '%s\n' $files | grep '/istekler/' | tail -1 || true)
+          if [ -z "$src" ]; then src=$(printf '%s\n' $files | grep '/istek\.md$' | head -1 || true); fi
+          if [ -z "$src" ] && [ -n "$files" ]; then src=$(dirname "$(printf '%s\n' $files | head -1)" | sed 's#/istekler$##')/istek.md; fi
+          model=$( { grep -m1 -E '^- Model: claude-(opus|sonnet)-5-5$' "$src" 2>/dev/null || true; } | sed 's/^- Model: //')
+          effort=$( { grep -m1 -E '^- Çaba: (medium|high|xhigh)$' "$src" 2>/dev/null || true; } | sed 's/^- Çaba: //')
+          echo "model=${model:-claude-opus-5-5}" >> "$GITHUB_OUTPUT"
+          echo "effort=${effort:-medium}" >> "$GITHUB_OUTPUT"
       - uses: actions/setup-node@v4
         if: steps.ask.outputs.files != ''
         with:
@@ -62,9 +70,9 @@ jobs:
             Read .github/yeni-kitap/talimat.md and follow it exactly.
             This run was started by these files on branch ${{ github.ref_name }}: ${{ steps.ask.outputs.files }}
           claude_args: >-
-            --model claude-opus-5-5
-            --effort medium
             --max-turns 250
+            --model ${{ steps.ask.outputs.model }}
+            --effort ${{ steps.ask.outputs.effort }}
             --allowedTools "Read,Write,Edit,MultiEdit,Glob,Grep,Bash(npm run validate:*),Bash(npx tsx:*),Bash(node:*),Bash(git diff:*),Bash(git status:*),Bash(git log:*)"
       - name: Commit to the basket
         id: commit
