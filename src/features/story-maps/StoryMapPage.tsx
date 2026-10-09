@@ -57,6 +57,14 @@ const PALETTE = {
 const prefersReducedMotion = () =>
   typeof window !== 'undefined' && window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
 
+/** "40 years" for the age line; Arabic says سنة / سنتين alone for 1 and 2, سنوات up to 10, سنة after. */
+const yearsText = (age: number, value: string, language: string) => {
+  if (language !== 'ar') return `${value} ${age === 1 ? 'year' : 'years'}`;
+  if (age === 1) return 'سَنَةٍ';
+  if (age === 2) return 'سَنَتَيْنِ';
+  return `${value} ${age <= 10 ? 'سَنَواتٍ' : 'سَنَةً'}`;
+};
+
 const buzz = () => { try { navigator.vibrate?.(10); } catch { /* not available */ } };
 const easeInOut = (p: number) => (p < 0.5 ? 4 * p * p * p : 1 - Math.pow(-2 * p + 2, 3) / 2);
 
@@ -717,7 +725,7 @@ export const StoryMapPage: React.FC<StoryMapPageProps> = ({ page }) => {
   const age = shownYear - map.time.birth;
   const ageLine = !map.age || stagesMode ? null : age <= 0
     ? map.age.born
-    : shownYear >= map.time.lastYear ? map.age.died(formatNumber(age), age) : map.age.alive(formatNumber(age), age);
+    : (shownYear >= map.time.lastYear ? map.age.died : map.age.alive).replace('{years}', yearsText(age, formatNumber(age), language));
   const activeEvent = map.timeline[activeIndex];
   const activeIsBattle = places.find(place => place.id === activeEvent?.placeId)?.tone === 'event';
 

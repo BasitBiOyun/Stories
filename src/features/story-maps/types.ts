@@ -131,11 +131,15 @@ export interface StoryMapRoute {
   tone: 'journey' | 'army';
 }
 
-/** The age line shown with the year. `value` is the number in the reader's digits, `age` the plain number. */
+/**
+ * The age line shown with the year. The book files are JSON, so `alive` and `died` are sentences
+ * with a `{years}` slot ("Yunus Emre is about {years} old."); the page fills it with the age in the
+ * reader's digits and the right word for "years".
+ */
 export interface StoryMapAgeCopy {
   born: string;
-  alive: (value: string, age: number) => string;
-  died: (value: string, age: number) => string;
+  alive: string;
+  died: string;
 }
 
 export interface StoryMapCopy {

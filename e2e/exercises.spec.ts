@@ -1,5 +1,5 @@
 import { test, expect, type Page } from '@playwright/test';
-import { enterLibrary, isPhone, openPage } from './helpers';
+import { enterLibrary, isPhone, openPage, trackErrors } from './helpers';
 
 const openQuick = async (page: Page) => {
   if (isPhone(page)) await page.getByRole('region', { name: 'Quick Challenge' }).getByRole('button', { name: 'Start Exercise' }).click();
@@ -71,6 +71,14 @@ test.describe('book-end pages', () => {
       await expect(place).toHaveAttribute('aria-pressed', 'true', { timeout: 2000 });
     }).toPass({ timeout: 20_000 });
     await expect(page.locator('main').first()).toContainText(/Explored 1 ?\/ ?5/);
+  });
+
+  test('a journey map with a year slider shows the age line', async ({ page }) => {
+    // The age sentences come from the book file with a {years} slot; a missing one used to crash the page.
+    const errors = trackErrors(page);
+    await openPage(page, 'yunusEmre/a2/9');
+    await expect(page.locator('main').first()).toContainText(/Yunus Emre is about \d+ years? old\./);
+    expect(errors).toEqual([]);
   });
 
   test('Knowledge Check: an answer is marked and counted', async ({ page }) => {

@@ -39,6 +39,15 @@ const checkPage = (page: PageData, where: string) => {
   if (!PAGE_TYPES.includes(page?.type)) fail(where, `has an unknown page type "${page?.type}"`);
   if (!isText(page?.title) && page?.type !== 'map') fail(where, 'has no title');
   if (typeof page?.content !== 'string') fail(where, 'has no content field');
+  // A map with a year slider shows the person's age, so it needs all three sentences, the last two with {years}.
+  const map = page?.map as { time?: { mode?: string }; age?: Record<string, unknown> } | undefined;
+  if (map?.age) {
+    if (!isText(map.age.born)) fail(`${where} map`, 'has no age.born sentence');
+    for (const key of ['alive', 'died']) {
+      const text = map.age[key];
+      if (!isText(text) || !text.includes('{years}')) fail(`${where} map`, `needs an age.${key} sentence with {years}`);
+    }
+  }
   for (const list of [page?.exercises, page?.languageFocusExercises]) {
     (list ?? []).forEach((exercise, index) => {
       if (!isText(exercise?.id)) fail(`${where} exercise ${index + 1}`, 'has no id');

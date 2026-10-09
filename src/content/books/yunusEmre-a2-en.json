@@ -1651,7 +1651,9 @@
       "mongol-1243": "Mongol army, 1242–1243"
      },
      "age": {
-      "born": "Yunus Emre is born."
+      "born": "Yunus Emre is born.",
+      "alive": "Yunus Emre is about {years} old.",
+      "died": "Yunus Emre dies. He is about {years} old."
      },
      "routes": [],
      "places": [

@@ -3330,7 +3330,9 @@
       "route:mongols": "Mongol army, 1242–1243"
      },
      "age": {
-      "born": "Yunus Emre is born around this time."
+      "born": "Yunus Emre is born around this time.",
+      "alive": "Yunus Emre is about {years} old.",
+      "died": "Yunus Emre dies around this time. He is about {years} old."
      },
      "routes": [
       {
