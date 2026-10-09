@@ -32,6 +32,9 @@ interface NarrationRequest {
   chapterNumber: number;
   storagePath: string;
   narrationText: string;
+  /** The chapter text on screen this recording stands for, when the read text differs on purpose
+   * (a pronunciation spelling, a [calm] tag) or only in what is not heard (spelling, parentheses). */
+  bookText?: string;
 }
 
 /** The chapter's file in Storage: undefined while looking, null when there is none. */
@@ -401,7 +404,7 @@ const Recording = ({
       ? 'queued'
       : !latest
         ? 'unknown'
-        : latest.narrationText === text
+        : (latest.bookText ?? latest.narrationText) === text
           ? 'current'
           : 'stale';
   const name = language === 'ar' ? 'Arapça ses' : 'İngilizce ses';

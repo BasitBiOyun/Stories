@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 import { IconInbox, IconSearch, IconSound, IconSparkDoc, IconWarn } from '../icons';
 import { navigate } from '../router';
 import { storyName, useStore, type EditionSummary } from '../store';
@@ -13,6 +13,7 @@ export const Home = () => {
   const basket = useStore(state => state.basket);
   const baskets = useStore(state => state.baskets);
   const config = useStore(state => state.config);
+  const [allStale, setAllStale] = useState(false);
 
   const stats = useMemo(() => {
     const list = summary ?? [];
@@ -115,7 +116,7 @@ export const Home = () => {
             <>
               <p className="small muted">Bu bölümlerin metni seslendirildikten sonra değişti. Açıp “Resim ve ses” sekmesinden yeniden seslendirin.</p>
               <ul className="list plain">
-                {stats.stale.slice(0, 12).map(({ item, page }) => (
+                {(allStale ? stats.stale : stats.stale.slice(0, 12)).map(({ item, page }) => (
                   <li key={`${item.edition}-${page.id}`}>
                     <a href={`#/duzenle/${item.storyId}/${item.level.toLowerCase()}/${item.pages.indexOf(page) + 1}?dil=${item.language}`}>
                       {storyName(item.storyId)} · {item.level} · {item.language === 'ar' ? 'Arapça' : 'İngilizce'} · {page.id}. bölüm
@@ -123,7 +124,11 @@ export const Home = () => {
                   </li>
                 ))}
               </ul>
-              {stats.stale.length > 12 && <p className="small muted">ve {stats.stale.length - 12} bölüm daha.</p>}
+              {stats.stale.length > 12 && (
+                <button type="button" className="linkish small" onClick={() => setAllStale(value => !value)}>
+                  {allStale ? 'Daha az göster' : `ve ${stats.stale.length - 12} bölüm daha: hepsini göster`}
+                </button>
+              )}
             </>
           )}
         </section>

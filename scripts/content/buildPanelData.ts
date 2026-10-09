@@ -37,6 +37,8 @@ interface NarrationRequest {
   storagePath: string;
   chapterNumber?: number;
   narrationText: string;
+  /** The screen text the recording stands for, when the read text differs on purpose or only inaudibly. */
+  bookText?: string;
 }
 
 const readJson = <T>(path: string): T => JSON.parse(readFileSync(path, 'utf8')) as T;
@@ -70,7 +72,7 @@ const audioState = (page: PageData, language: 'en' | 'ar'): 'current' | 'stale' 
   const requests = narration.filter(item => item.language === language && item.storagePath === path);
   const latest = requests[requests.length - 1];
   if (!latest) return 'unknown';
-  return latest.narrationText === `${page.title}\n\n${page.content}` ? 'current' : 'stale';
+  return (latest.bookText ?? latest.narrationText) === `${page.title}\n\n${page.content}` ? 'current' : 'stale';
 };
 
 const editions = [];
