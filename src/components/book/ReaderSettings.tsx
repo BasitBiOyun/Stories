@@ -9,7 +9,8 @@ import { useMediaQuery } from '../../lib/useMediaQuery';
 import { useSheetDrag } from '../../lib/phone';
 import { useDialogFocus } from '../../hooks/useDialogFocus';
 import { SECTION_ICONS } from '../../lib/sectionIcons';
-import { BookOpen, Highlighter, Scroll, Settings, TextSize, Type, Waveform, WideView, X } from '../ui/icons';
+import { BookOpen, Highlighter, Languages, Scroll, Settings, TextSize, Type, Waveform, WideView, X } from '../ui/icons';
+import { setHarakatShown, useHarakatShown } from '../../lib/arabicHarakat';
 
 type Setter = React.Dispatch<React.SetStateAction<boolean>>;
 
@@ -64,6 +65,8 @@ export const ReaderSettings = (props: ReaderSettingsProps) => {
   // Wide view only changes anything on large screens.
   const canWiden = useMediaQuery('(min-width: 1024px)');
   const title = ar ? 'إعدادات القصة' : 'Story settings';
+  // Arabic only: harakat are on by default and can be turned off.
+  const harakatShown = useHarakatShown();
 
   const sectionLabel = (en: string, arText: string) => (
     <p className={cn('mb-1.5 mt-4 px-1 font-display text-[10.5px] font-semibold uppercase text-gold', ar ? 'text-[12px]' : 'tracking-[0.08em]')}>
@@ -168,6 +171,7 @@ export const ReaderSettings = (props: ReaderSettingsProps) => {
           </div>
         </div>
         {toggleRow(Type, ar ? 'خط سهل للقراءة' : 'Dyslexia-friendly font', isDyslexic, () => setIsDyslexic(prev => !prev), 'data-dyslexic-toggle')}
+        {ar && toggleRow(Languages, 'إظهار الحركات (التشكيل)', harakatShown, () => setHarakatShown(!harakatShown), 'data-harakat-toggle')}
       </div>
 
       {sectionLabel('While reading', 'أثناء القراءة')}

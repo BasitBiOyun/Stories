@@ -1016,7 +1016,7 @@
     "title": "The Trade Routes",
     "image": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fb1%2Fimages%2Fmecca_b1_ch5-clean.png?alt=media&token=18da4b35-0ee7-4077-bdb5-37bde9ae581b",
     "audioUrl": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fb1%2Faudio%2F04_Chapter_5_The_Trade_Routes.mp3?alt=media&token=236486a7-c3f0-415c-aabe-1584a1da8bb8",
-    "content": "Because Mecca was in the middle of important trade routes, it became a busy and wealthy city. From the early 6th century, Mecca became a major trading center.\n\nHashim ibn Abd Manaf, Prophet Muhammad’s (pbuh) great-grandfather, helped grow Mecca’s economy. He and the Quraysh leaders made special trade agreements with other tribes and nations. These agreements allowed merchants to travel safely and trade in places like Byzantium, Yemen, Iraq, and Ethiopia.\n\nThe sacred months, Zilkade, Zilhicce, Muharram, and Rajab, made the region safer. In these months, people focused on worship, showed respect, and stayed away from fighting. Because of this safe atmosphere, more people could visit the city to perform Hajj.",
+    "content": "Because Mecca was in the middle of important trade routes, it became a busy and wealthy city. From the early 6th century, Mecca became a major trading center.\n\nHashim ibn Abd Manaf, Prophet Muhammad’s (pbuh) great-grandfather, helped grow Mecca’s economy. He and the Quraysh leaders made special trade agreements with other tribes and nations. These agreements allowed merchants to travel safely and trade in places like Byzantium, Yemen, Iraq, and Ethiopia.\n\nThe sacred months, Dhu al-Qadah, Dhu al-Hijjah, Muharram, and Rajab, made the region safer. In these months, people focused on worship, showed respect, and stayed away from fighting. Because of this safe atmosphere, more people could visit the city to perform Hajj.",
     "vocabulary": [
      {
       "word": "Mecca",
@@ -1181,7 +1181,7 @@
         "answer": 1
        },
        {
-        "sentence": "The sacred months, Zilkade, Zilhicce, Muharram, and Rajab, made the region [choice].",
+        "sentence": "The sacred months, Dhu al-Qadah, Dhu al-Hijjah, Muharram, and Rajab, made the region [choice].",
         "options": [
          "to be safer",
          "more safer",
@@ -4887,7 +4887,7 @@
       "level": "B1",
       "chapter": 5,
       "chapterTitle": "The Trade Routes",
-      "storyExample": "The sacred months, Zilkade, Zilhicce, Muharram, and Rajab, made the region safer."
+      "storyExample": "The sacred months, Dhu al-Qadah, Dhu al-Hijjah, Muharram, and Rajab, made the region safer."
      },
      {
       "word": "trade fairs",

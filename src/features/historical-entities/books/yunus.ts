@@ -35,7 +35,7 @@ const entities = [
     id: "yunus-sivas", kind: "city",
     aliases: { en: ["Sivas"], ar: ["سيواس","سيفاس"] },
     copy: {
-      en: { title: "Sivas", kindLabel: "City", periodLabel: "Central Anatolia", summary: "Sivas is a city in central Anatolia. After the battle of Kösedağ in 1243, the Mongols destroyed and robbed it.", more: "It stands on the Kızılırmak, the longest river in Türkiye." },
+      en: { title: "Sivas", kindLabel: "City", periodLabel: "Central Anatolia", summary: "Sivas is a city in central Anatolia. After the battle of Kose Dag in 1243, the Mongols destroyed and robbed it.", more: "It stands on the Kızılırmak, the longest river in Türkiye." },
       ar: { title: "سِيوَاس", kindLabel: "مَدِينَةٌ", periodLabel: "وَسَطُ الْأَنَاضُولِ", summary: "سِيوَاسُ مَدِينَةٌ فِي وَسَطِ الْأَنَاضُولِ. بَعْدَ مَعْرَكَةِ كُوسَه دَاغ عَامَ أَلْفٍ وَمِئَتَيْنِ وَثَلَاثَةٍ وَأَرْبَعِينَ، دَمَّرَهَا الْمُغُولُ وَنَهَبُوهَا.", more: "وَتَقَعُ عَلَى نَهْرِ قِزِلْ إِرْمَاق، أَطْوَلِ نَهْرٍ فِي تُرْكِيَا." },
     },
     focus: medPoint(39.75, 37.02, CITY_ZOOM),
@@ -46,7 +46,7 @@ const entities = [
     id: "yunus-kayseri", kind: "city",
     aliases: { en: ["Kayseri"], ar: ["قيصري"] },
     copy: {
-      en: { title: "Kayseri", kindLabel: "City", periodLabel: "Central Anatolia", summary: "Kayseri is an old city in central Anatolia. After the battle of Kösedağ in 1243, the Mongols destroyed and robbed it.", more: "It lies at the foot of Mount Erciyes, a high old volcano." },
+      en: { title: "Kayseri", kindLabel: "City", periodLabel: "Central Anatolia", summary: "Kayseri is an old city in central Anatolia. After the battle of Kose Dag in 1243, the Mongols destroyed and robbed it.", more: "It lies at the foot of Mount Erciyes, a high old volcano." },
       ar: { title: "قَيْصَرِي", kindLabel: "مَدِينَةٌ", periodLabel: "وَسَطُ الْأَنَاضُولِ", summary: "قَيْصَرِي مَدِينَةٌ قَدِيمَةٌ فِي وَسَطِ الْأَنَاضُولِ. بَعْدَ مَعْرَكَةِ كُوسَه دَاغ عَامَ أَلْفٍ وَمِئَتَيْنِ وَثَلَاثَةٍ وَأَرْبَعِينَ، دَمَّرَهَا الْمُغُولُ وَنَهَبُوهَا.", more: "وَتَقَعُ عِنْدَ سَفْحِ جَبَلِ أَرْجِيَسَ، وَهُوَ بُرْكَانٌ قَدِيمٌ عَالٍ." },
     },
     focus: medPoint(38.72, 35.49, CITY_ZOOM),
@@ -57,7 +57,7 @@ const entities = [
     id: "yunus-erzincan", kind: "city",
     aliases: { en: ["Erzincan"], ar: ["أرزنجان","إرزنجان"] },
     copy: {
-      en: { title: "Erzincan", kindLabel: "City", periodLabel: "Eastern Anatolia", summary: "Erzincan is a city in eastern Anatolia. After the battle of Kösedağ in 1243, the Mongols destroyed and robbed it.", more: "It lies in a green plain between high mountains, near the Euphrates River." },
+      en: { title: "Erzincan", kindLabel: "City", periodLabel: "Eastern Anatolia", summary: "Erzincan is a city in eastern Anatolia. After the battle of Kose Dag in 1243, the Mongols destroyed and robbed it.", more: "It lies in a green plain between high mountains, near the Euphrates River." },
       ar: { title: "أَرْزِنْجَان", kindLabel: "مَدِينَةٌ", periodLabel: "شَرْقُ الْأَنَاضُولِ", summary: "أَرْزِنْجَانُ مَدِينَةٌ فِي شَرْقِ الْأَنَاضُولِ. بَعْدَ مَعْرَكَةِ كُوسَه دَاغ عَامَ أَلْفٍ وَمِئَتَيْنِ وَثَلَاثَةٍ وَأَرْبَعِينَ، دَمَّرَهَا الْمُغُولُ وَنَهَبُوهَا.", more: "وَتَقَعُ فِي سَهْلٍ أَخْضَرَ بَيْنَ جِبَالٍ عَالِيَةٍ، قُرْبَ نَهْرِ الْفُرَاتِ." },
     },
     focus: medPoint(39.75, 39.49, CITY_ZOOM),
@@ -101,7 +101,7 @@ const entities = [
     id: "yunus-middle-east", kind: "region", tr: "Orta Doğu",
     aliases: { en: ["Middle East"], ar: ["الشرق الأوسط"] },
     copy: {
-      en: { title: "The Middle East", kindLabel: "Region", periodLabel: "Western Asia and Egypt", summary: "The Middle East is a large area in western Asia and Egypt. When Sultan Alaeddin I died, the Anatolian Seljuks were the strongest and largest state in the Middle East.", more: "Today, it has countries like Türkiye, Iran, Iraq, Syria and Egypt." },
+      en: { title: "The Middle East", kindLabel: "Region", periodLabel: "Western Asia and Egypt", summary: "The Middle East is a large area in western Asia and Egypt. When Sultan Ala al-Din Kayqubad I died, the Anatolian Seljuks were the strongest and largest state in the Middle East.", more: "Today, it has countries like Türkiye, Iran, Iraq, Syria and Egypt." },
       ar: { title: "الشَّرْقُ الْأَوْسَطُ", kindLabel: "مِنْطَقَةٌ", periodLabel: "غَرْبُ آسِيَا وَمِصْرُ", summary: "الشَّرْقُ الْأَوْسَطُ مِنْطَقَةٌ كَبِيرَةٌ فِي غَرْبِ آسِيَا وَمِصْرَ. وَعِنْدَ وَفَاةِ السُّلْطَانِ عَلَاءِ الدِّينِ الْأَوَّلِ، كَانَتْ دَوْلَةُ سَلَاجِقَةِ الْأَنَاضُولِ أَقْوَى دَوْلَةٍ فِيهِ وَأَكْبَرَهَا.", more: "وَفِيهِ الْيَوْمَ دُوَلٌ مِثْلُ تُرْكِيَا وَإِيرَانَ وَالْعِرَاقِ وَسُورِيَا وَمِصْرَ." },
     },
     focus: medFeature('middle-east', 31, 42, 1),
@@ -176,20 +176,20 @@ const entities = [
   }),
   defineEntity({
     id: "yunus-kosedag", kind: "landmark",
-    aliases: { en: ["Kösedağ"], ar: ["كوسه داغ"] },
+    aliases: { en: ["Kose Dag"], ar: ["كوسه داغ"] },
     copy: {
-      en: { title: "Kösedağ", kindLabel: "Mountain", periodLabel: "Battle of 1243", summary: "Kösedağ is a mountain about 80 km north-east of Sivas. Here, in 1243, the Mongols defeated the army of the Anatolian Seljuks.", more: "This defeat opened the way for the Mongols into Anatolia." },
+      en: { title: "Kose Dag", kindLabel: "Mountain", periodLabel: "Battle of 1243", summary: "Kose Dag is a mountain about 80 km north-east of Sivas. Here, in 1243, the Mongols defeated the army of the Anatolian Seljuks.", more: "This defeat opened the way for the Mongols into Anatolia." },
       ar: { title: "كُوسَه دَاغ", kindLabel: "جَبَلٌ", periodLabel: "مَعْرَكَةُ عَامِ 1243", summary: "كُوسَه دَاغ جَبَلٌ يَقَعُ عَلَى بُعْدِ نَحْوِ ثَمَانِينَ كِيلُومِتْرًا شَمَالَ شَرْقِ سِيوَاسَ. وَعِنْدَهُ هَزَمَ الْمُغُولُ جَيْشَ سَلَاجِقَةِ الْأَنَاضُولِ عَامَ أَلْفٍ وَمِئَتَيْنِ وَثَلَاثَةٍ وَأَرْبَعِينَ.", more: "وَقَدْ فَتَحَتْ هَذِهِ الْهَزِيمَةُ الطَّرِيقَ أَمَامَ الْمُغُولِ إِلَى الْأَنَاضُولِ." },
     },
     focus: medPoint(40.03, 37.92, CITY_ZOOM),
     picture: { folder: "yunus", name: "kosedag" },
-    sources: ["TDV İslâm Ansiklopedisi: Kösedağ Savaşı"],
+    sources: ["TDV İslâm Ansiklopedisi: Kose Dag Savaşı"],
   }),
   defineEntity({
     id: "yunus-mediterranean", kind: "sea", tr: "Akdeniz",
     aliases: { en: ["Mediterranean"], ar: ["الأبيض المتوسط"] },
     copy: {
-      en: { title: "Mediterranean Sea", kindLabel: "Sea", periodLabel: "South of Anatolia", summary: "The Mediterranean Sea is a large sea south of Anatolia. Sultan Alaeddin I built a navy on this sea.", more: "On its coast is Alanya, a port town that Alaeddin I took for his state." },
+      en: { title: "Mediterranean Sea", kindLabel: "Sea", periodLabel: "South of Anatolia", summary: "The Mediterranean Sea is a large sea south of Anatolia. Sultan Ala al-Din Kayqubad I built a navy on this sea.", more: "On its coast is Alanya, a port town that Ala al-Din Kayqubad I took for his state." },
       ar: { title: "الْبَحْرُ الْأَبْيَضُ الْمُتَوَسِّطُ", kindLabel: "بَحْرٌ", periodLabel: "جَنُوبَ الْأَنَاضُولِ", summary: "الْبَحْرُ الْأَبْيَضُ الْمُتَوَسِّطُ بَحْرٌ كَبِيرٌ جَنُوبَ الْأَنَاضُولِ. وَقَدْ أَنْشَأَ السُّلْطَانُ عَلَاءُ الدِّينِ الْأَوَّلُ أُسْطُولًا بَحْرِيًّا فِيهِ.", more: "وَعَلَى سَاحِلِهِ مَدِينَةُ أَلَانْيَا، الَّتِي ضَمَّهَا عَلَاءُ الدِّينِ الْأَوَّلُ إِلَى دَوْلَتِهِ." },
     },
     focus: medFeature('mediterranean', 34.6, 18, 1),
@@ -200,7 +200,7 @@ const entities = [
     id: "yunus-black-sea", kind: "sea", tr: "Karadeniz",
     aliases: { en: ["Black Sea","Black Seas"], ar: ["البحر الأسود"] },
     copy: {
-      en: { title: "Black Sea", kindLabel: "Sea", periodLabel: "North of Anatolia", summary: "The Black Sea is a large sea north of Anatolia. Sultan Alaeddin I also had a navy on this sea.", more: "Sinop was an important Seljuk port on its coast." },
+      en: { title: "Black Sea", kindLabel: "Sea", periodLabel: "North of Anatolia", summary: "The Black Sea is a large sea north of Anatolia. Sultan Ala al-Din Kayqubad I also had a navy on this sea.", more: "Sinop was an important Seljuk port on its coast." },
       ar: { title: "الْبَحْرُ الْأَسْوَدُ", kindLabel: "بَحْرٌ", periodLabel: "شَمَالَ الْأَنَاضُولِ", summary: "الْبَحْرُ الْأَسْوَدُ بَحْرٌ كَبِيرٌ شَمَالَ الْأَنَاضُولِ. وَكَانَ لِلسُّلْطَانِ عَلَاءِ الدِّينِ الْأَوَّلِ أُسْطُولٌ بَحْرِيٌّ فِيهِ أَيْضًا.", more: "وَكَانَتْ سِينُوبُ مِينَاءً سَلْجُوقِيًّا مُهِمًّا عَلَى سَاحِلِهِ." },
     },
     focus: medFeature('black-sea', 43.3, 34.5, 1),
@@ -251,7 +251,7 @@ const entities = [
     id: "yunus-mevlana-rumi", kind: "person", tr: "Mevlânâ Celâleddîn-i Rûmî",
     aliases: { en: ["Mevlana"], ar: ["مولانا"] },
     copy: {
-      en: { title: "Mevlana Celaleddin Rumi", kindLabel: "Scholar and poet", periodLabel: "Died 1273", summary: "Mevlana Celaleddin Rumi was a great Muslim scholar and Sufi poet. He lived at the same time as Yunus Emre and died in 1273.", more: "He lived in Konya, and many people visit his tomb there." },
+      en: { title: "Mevlana Jalal al-Din Rumi", kindLabel: "Scholar and poet", periodLabel: "Died 1273", summary: "Mevlana Jalal al-Din Rumi was a great Muslim scholar and Sufi poet. He lived at the same time as Yunus Emre and died in 1273.", more: "He lived in Konya, and many people visit his tomb there." },
       ar: { title: "مَوْلَانَا جَلَالُ الدِّينِ الرُّومِيُّ", kindLabel: "عَالِمٌ وَشَاعِرٌ", periodLabel: "تُوُفِّيَ عَامَ 1273", summary: "كَانَ مَوْلَانَا جَلَالُ الدِّينِ الرُّومِيُّ عَالِمًا مُسْلِمًا كَبِيرًا وَشَاعِرًا صُوفِيًّا. عَاشَ فِي زَمَنِ يُونُسَ إِمْرَه، وَتُوُفِّيَ عَامَ أَلْفٍ وَمِئَتَيْنِ وَثَلَاثَةٍ وَسَبْعِينَ.", more: "عَاشَ فِي قُونْيَةَ، وَيَزُورُ قَبْرَهُ فِيهَا كَثِيرٌ مِنَ النَّاسِ." },
     },
     picture: { folder: "yunus", name: "mevlana-rumi" },
@@ -259,9 +259,9 @@ const entities = [
   }),
   defineEntity({
     id: "yunus-haci-bektas-veli", kind: "person",
-    aliases: { en: ["Hacı Bektaş-ı Veli"], ar: ["حاجي بكتاش"] },
+    aliases: { en: ["Haji Bektash Veli"], ar: ["حاجي بكتاش"] },
     copy: {
-      en: { title: "Hacı Bektaş-ı Veli", kindLabel: "Sufi teacher", periodLabel: "13th century", summary: "Hacı Bektaş-ı Veli was a famous Sufi teacher in Anatolia. He lived at the same time as Yunus Emre.", more: "A town in central Anatolia, Hacıbektaş, carries his name." },
+      en: { title: "Haji Bektash Veli", kindLabel: "Sufi teacher", periodLabel: "13th century", summary: "Haji Bektash Veli was a famous Sufi teacher in Anatolia. He lived at the same time as Yunus Emre.", more: "A town in central Anatolia, Hacıbektaş, carries his name." },
       ar: { title: "حَاجِي بَكْتَاش وَلِيّ", kindLabel: "مُعَلِّمٌ صُوفِيٌّ", periodLabel: "الْقَرْنُ الثَّالِثَ عَشَرَ", summary: "كَانَ حَاجِي بَكْتَاش وَلِيّ مُعَلِّمًا صُوفِيًّا مَشْهُورًا فِي الْأَنَاضُولِ. وَعَاشَ فِي زَمَنِ يُونُسَ إِمْرَه.", more: "وَتَحْمِلُ اسْمَهُ بَلْدَةٌ فِي وَسَطِ الْأَنَاضُولِ، هِيَ بَلْدَةُ حَاجِي بَكْتَاش." },
     },
     picture: { folder: "yunus", name: "haci-bektas-veli" },
@@ -279,9 +279,9 @@ const entities = [
   }),
   defineEntity({
     id: "yunus-alaeddin-keykubad-i", kind: "person", tr: "I. Alâeddin Keykubad",
-    aliases: { en: ["Alaeddin I"], ar: ["علاء الدين الأول"] },
+    aliases: { en: ["Ala al-Din Kayqubad I"], ar: ["علاء الدين الأول"] },
     copy: {
-      en: { title: "Sultan Alaeddin I", kindLabel: "Sultan of the Anatolian Seljuks", periodLabel: "Ruled 1220–1237", summary: "Alaeddin I was a sultan of the Anatolian Seljuks. His rule was their strongest time, and he built a navy in the Mediterranean and Black Seas.", more: "Many stone caravanserais, inns for travellers on the trade roads, were built in his time." },
+      en: { title: "Sultan Ala al-Din Kayqubad I", kindLabel: "Sultan of the Anatolian Seljuks", periodLabel: "Ruled 1220–1237", summary: "Ala al-Din Kayqubad I was a sultan of the Anatolian Seljuks. His rule was their strongest time, and he built a navy in the Mediterranean and Black Seas.", more: "Many stone caravanserais, inns for travellers on the trade roads, were built in his time." },
       ar: { title: "السُّلْطَانُ عَلَاءُ الدِّينِ الْأَوَّلُ", kindLabel: "سُلْطَانُ سَلَاجِقَةِ الْأَنَاضُولِ", periodLabel: "حَكَمَ 1220–1237", summary: "كَانَ عَلَاءُ الدِّينِ الْأَوَّلُ سُلْطَانًا مِنْ سَلَاجِقَةِ الْأَنَاضُولِ. وَكَانَ عَهْدُهُ أَقْوَى فَتَرَاتِهِمْ، وَقَدْ أَنْشَأَ أُسْطُولًا بَحْرِيًّا فِي الْبَحْرِ الْأَبْيَضِ الْمُتَوَسِّطِ وَالْبَحْرِ الْأَسْوَدِ.", more: "وَبُنِيَتْ فِي عَهْدِهِ خَانَاتٌ حَجَرِيَّةٌ كَثِيرَةٌ لِلْمُسَافِرِينَ عَلَى طُرُقِ التِّجَارَةِ." },
     },
     picture: { folder: "yunus", name: "alaeddin-keykubad-i" },
@@ -289,9 +289,9 @@ const entities = [
   }),
   defineEntity({
     id: "yunus-giyaseddin-keyhusrev-ii", kind: "person", tr: "II. Gıyaseddin Keyhüsrev",
-    aliases: { en: ["Giyaseddin Keyhüsrev II"], ar: ["غياث الدين كيخسرو"] },
+    aliases: { en: ["Kaykhusraw II"], ar: ["غياث الدين كيخسرو"] },
     copy: {
-      en: { title: "Giyaseddin Keyhüsrev II", kindLabel: "Sultan of the Anatolian Seljuks", periodLabel: "Ruled 1237–1246", summary: "Giyaseddin Keyhüsrev II was the son of Alaeddin I and a sultan of the Anatolian Seljuks. Because of his poor rule, the state began to grow weak.", more: "In his time, the Mongols defeated the Seljuk army at Kösedağ." },
+      en: { title: "Kaykhusraw II", kindLabel: "Sultan of the Anatolian Seljuks", periodLabel: "Ruled 1237–1246", summary: "Kaykhusraw II was the son of Ala al-Din Kayqubad I and a sultan of the Anatolian Seljuks. Because of his poor rule, the state began to grow weak.", more: "In his time, the Mongols defeated the Seljuk army at Kose Dag." },
       ar: { title: "غِيَاثُ الدِّينِ كَيْخُسْرَوْ الثَّانِي", kindLabel: "سُلْطَانُ سَلَاجِقَةِ الْأَنَاضُولِ", periodLabel: "حَكَمَ 1237–1246", summary: "كَانَ غِيَاثُ الدِّينِ كَيْخُسْرَوْ الثَّانِي ابْنَ عَلَاءِ الدِّينِ الْأَوَّلِ، وَسُلْطَانًا مِنْ سَلَاجِقَةِ الْأَنَاضُولِ. وَبِسَبَبِ سُوءِ إِدَارَتِهِ بَدَأَتِ الدَّوْلَةُ تَضْعُفُ.", more: "وَفِي عَهْدِهِ هَزَمَ الْمُغُولُ الْجَيْشَ السَّلْجُوقِيَّ فِي كُوسَه دَاغ." },
     },
     picture: { folder: "yunus", name: "giyaseddin-keyhusrev-ii" },
@@ -299,9 +299,9 @@ const entities = [
   }),
   defineEntity({
     id: "yunus-baba-ilyas", kind: "person",
-    aliases: { en: ["Baba İlyas"], ar: ["بابا إلياس"] },
+    aliases: { en: ["Baba Ilyas"], ar: ["بابا إلياس"] },
     copy: {
-      en: { title: "Baba İlyas", kindLabel: "Turkmen religious leader", periodLabel: "13th century", summary: "Baba İlyas was a religious and Sufi leader among the Turkmen in Anatolia. He started a movement that was not Sunni, and Baba İshak was his follower.", more: "It is said that he came from Khorasan and lived near Amasya." },
+      en: { title: "Baba Ilyas", kindLabel: "Turkmen religious leader", periodLabel: "13th century", summary: "Baba Ilyas was a religious and Sufi leader among the Turkmen in Anatolia. He started a movement that was not Sunni, and Baba Ishak was his follower.", more: "It is said that he came from Khorasan and lived near Amasya." },
       ar: { title: "بَابَا إِلْيَاس", kindLabel: "قَائِدٌ دِينِيٌّ تُرْكُمَانِيٌّ", periodLabel: "الْقَرْنُ الثَّالِثَ عَشَرَ", summary: "كَانَ بَابَا إِلْيَاسُ قَائِدًا دِينِيًّا صُوفِيًّا بَيْنَ التُّرْكُمَانِ فِي الْأَنَاضُولِ. أَسَّسَ حَرَكَةً دِينِيَّةً غَيْرَ سُنِّيَّةٍ، وَكَانَ بَابَا إِسْحَاقُ مِنْ مُرِيدِيهِ.", more: "وَيُقَالُ إِنَّهُ جَاءَ مِنْ خُرَاسَانَ، وَعَاشَ قُرْبَ مَدِينَةِ أَمَاسْيَا." },
     },
     picture: { folder: "yunus", name: "baba-ilyas" },
@@ -309,9 +309,9 @@ const entities = [
   }),
   defineEntity({
     id: "yunus-baba-ishak", kind: "person",
-    aliases: { en: ["Baba İshak"], ar: ["بابا إسحاق"] },
+    aliases: { en: ["Baba Ishak"], ar: ["بابا إسحاق"] },
     copy: {
-      en: { title: "Baba İshak", kindLabel: "Turkmen leader", periodLabel: "Revolt of 1240", summary: "Baba İshak was a follower of Baba İlyas. In 1240, he led the Turkmen in a revolt against the Anatolian Seljuks.", more: "This revolt is known as the Babai revolt." },
+      en: { title: "Baba Ishak", kindLabel: "Turkmen leader", periodLabel: "Revolt of 1240", summary: "Baba Ishak was a follower of Baba Ilyas. In 1240, he led the Turkmen in a revolt against the Anatolian Seljuks.", more: "This revolt is known as the Babai revolt." },
       ar: { title: "بَابَا إِسْحَاق", kindLabel: "قَائِدٌ تُرْكُمَانِيٌّ", periodLabel: "ثَوْرَةُ عَامِ 1240", summary: "كَانَ بَابَا إِسْحَاقُ مُرِيدًا لِبَابَا إِلْيَاسَ. وَفِي عَامِ أَلْفٍ وَمِئَتَيْنِ وَأَرْبَعِينَ، قَادَ التُّرْكُمَانَ فِي ثَوْرَةٍ عَلَى سَلَاجِقَةِ الْأَنَاضُولِ.", more: "وَتُعْرَفُ هَذِهِ الثَّوْرَةُ بِثَوْرَةِ الْبَابَائِيِّينَ." },
     },
     picture: { folder: "yunus", name: "baba-ishak" },
@@ -319,9 +319,9 @@ const entities = [
   }),
   defineEntity({
     id: "yunus-celaleddin-karatay", kind: "person",
-    aliases: { en: ["Celaleddin Karatay"], ar: ["قرطاي"] },
+    aliases: { en: ["Jalal al-Din Karatay"], ar: ["قرطاي"] },
     copy: {
-      en: { title: "Celaleddin Karatay", kindLabel: "Statesman", periodLabel: "13th century", summary: "Celaleddin Karatay was a statesman of the Anatolian Seljuks. He tried to manage the Mongols and to help the state and the people.", more: "The Karatay Madrasa that he built in Konya is a museum today." },
+      en: { title: "Jalal al-Din Karatay", kindLabel: "Statesman", periodLabel: "13th century", summary: "Jalal al-Din Karatay was a statesman of the Anatolian Seljuks. He tried to manage the Mongols and to help the state and the people.", more: "The Karatay Madrasa that he built in Konya is a museum today." },
       ar: { title: "جَلَالُ الدِّينِ قَرَطَاي", kindLabel: "رَجُلُ دَوْلَةٍ", periodLabel: "الْقَرْنُ الثَّالِثَ عَشَرَ", summary: "كَانَ جَلَالُ الدِّينِ قَرَطَاي رَجُلَ دَوْلَةٍ عِنْدَ سَلَاجِقَةِ الْأَنَاضُولِ. حَاوَلَ أَنْ يُدِيرَ الْعَلَاقَةَ مَعَ الْمُغُولِ، وَأَنْ يُخَفِّفَ عَنِ الدَّوْلَةِ وَالشَّعْبِ.", more: "وَالْمَدْرَسَةُ الَّتِي بَنَاهَا فِي قُونْيَةَ، مَدْرَسَةُ قَرَطَاي، أَصْبَحَتِ الْيَوْمَ مُتْحَفًا." },
     },
     picture: { folder: "yunus", name: "celaleddin-karatay" },
@@ -331,7 +331,7 @@ const entities = [
     id: "yunus-anatolian-seljuks", kind: "kingdom", tr: "Anadolu Selçukluları",
     aliases: { en: ["Anatolian Seljuk","Seljuk Sultanate of Konya","Seljuk"], ar: ["السلاجقة الأناضوليون","سلاجقة قونية","السلاجقة"] },
     copy: {
-      en: { title: "Anatolian Seljuks", kindLabel: "Sultanate", periodLabel: "11th–14th century", summary: "The Anatolian Seljuks were a Turkish Muslim state, and their capital was Konya. After the defeat at Kösedağ in 1243, they slowly came under Mongol rule.", more: "Many of their stone buildings can still be seen in Konya today." },
+      en: { title: "Anatolian Seljuks", kindLabel: "Sultanate", periodLabel: "11th–14th century", summary: "The Anatolian Seljuks were a Turkish Muslim state, and their capital was Konya. After the defeat at Kose Dag in 1243, they slowly came under Mongol rule.", more: "Many of their stone buildings can still be seen in Konya today." },
       ar: { title: "سَلَاجِقَةُ الْأَنَاضُولِ", kindLabel: "سَلْطَنَةٌ", periodLabel: "الْقُرُونُ 11–14", summary: "كَانَتْ دَوْلَةُ سَلَاجِقَةِ الْأَنَاضُولِ دَوْلَةً تُرْكِيَّةً مُسْلِمَةً، وَعَاصِمَتُهَا قُونْيَةُ. وَبَعْدَ هَزِيمَةِ كُوسَه دَاغ عَامَ أَلْفٍ وَمِئَتَيْنِ وَثَلَاثَةٍ وَأَرْبَعِينَ، أَصْبَحُوا شَيْئًا فَشَيْئًا تَابِعِينَ لِلْمُغُولِ.", more: "وَلَا تَزَالُ كَثِيرٌ مِنْ مَبَانِيهِمُ الْحَجَرِيَّةِ قَائِمَةً فِي قُونْيَةَ حَتَّى الْيَوْمِ." },
     },
     focus: medFeature('anatolian-seljuk-lands', 38.8, 34.5, 1),

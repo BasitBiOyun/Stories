@@ -94,9 +94,9 @@ export const levelTestEn: LevelTestItem[] = [
   {
     band: 'B2',
     source: { storyId: 'yunusEmre', level: 'B2', chapter: 2 },
-    passage: 'At that time, tekkes were not just institutions that offered Sûfî training but they were also important civil society organizations that strengthened social solidarity and cooperation and also received support from government officials of their time.',
+    passage: 'At that time, tekkes were not just institutions that offered Sufi training but they were also important civil society organizations that strengthened social solidarity and cooperation and also received support from government officials of their time.',
     question: 'What does the text suggest about tekkes?',
-    options: ['They only offered Sûfî training.', 'They had a social role as well as an educational one.', 'The government was against them.'],
+    options: ['They only offered Sufi training.', 'They had a social role as well as an educational one.', 'The government was against them.'],
     answer: 1,
   },
 ];

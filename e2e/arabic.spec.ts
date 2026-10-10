@@ -33,4 +33,31 @@ test.describe('Arabic', () => {
       await expect(page.locator('main').first()).toContainText(/[؀-ۿ]{3,}/, { timeout: 20_000 });
     }
   });
+
+  test('harakat show by default and can be turned off and on again', async ({ page }) => {
+    const errors = trackErrors(page);
+    await enterLibrary(page, { language: 'ar' });
+    await openPage(page, 'mecca/a2/1');
+    const story = page.locator('main').first();
+    const harakat = /[\u064B-\u0652]/;
+    await expect(story).toContainText(harakat);
+    const before = await story.innerText();
+
+    await page.locator('[data-reader-settings-button]').click();
+    await page.locator('[data-harakat-toggle]').click();
+    await expect(page.locator('[data-harakat-toggle]')).toHaveAttribute('aria-pressed', 'false');
+    await expect.poll(async () => harakat.test(await story.innerText())).toBe(false);
+
+    await page.locator('[data-harakat-toggle]').click();
+    await expect.poll(async () => story.innerText()).toBe(before);
+    expect(errors).toEqual([]);
+  });
+
+  test('the harakat setting is only offered in Arabic', async ({ page }) => {
+    await enterLibrary(page);
+    await openPage(page, 'mecca/a2/1');
+    await page.locator('[data-reader-settings-button]').click();
+    await expect(page.locator('[data-dyslexic-toggle]')).toBeVisible();
+    await expect(page.locator('[data-harakat-toggle]')).toHaveCount(0);
+  });
 });

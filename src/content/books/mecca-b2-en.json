@@ -435,7 +435,7 @@
     "title": "The Holy City",
     "image": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fb2%2Fimages%2Fmecca_b2_ch3-clean.png?alt=media&token=2e0ead7d-354d-414b-855f-68ebe0325821",
     "audioUrl": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fb2%2Faudio%2F02_Chapter_3_The_Holy_City.mp3?alt=media&token=c4c83d65-5191-426b-9cb3-f81504080779",
-    "content": "Mecca is the holy city of Islam. Allah chose this city to be the location of His House, the Holy Ka’ba. (See Âl-i Imran, 96.) It was also in this city that the last Prophet, Muhammad (pbuh), was born and spent 52 years of his life; 40 years of his life in this city before his prophethood and almost 13 years after it. And here he began to spread the message of Islam.\n\nThe Qiblah is the direction Muslims face while performing their daily prayers, salah.\n\nProphet Muhammad (pbuh) loved this city so much that while leaving Mecca during his migration to Medina, he (pbuh) said: “I love you more than any other city. Had my people not forced me to leave, I would never have left you.” (Sunan al-Tirmidhi, 3925).\n\nMecca is described in the Holy Qur’an as “a valley where no crops grow” (Surah Ibrahim: 37). The Ka’ba is the main factor in the establishment of Mecca as a settlement. It can be said that city life began here only with the building of the Ka’ba.\n\nWhen Prophet Abraham (pbuh) brought his son Ishmael and his wife Hagar to the city and left them there, the Zamzam water had not yet been discovered, so there was no population living there. This date is approximately in the 20th century BC.",
+    "content": "Mecca is the holy city of Islam. Allah chose this city to be the location of His House, the Holy Ka’ba. (See Al Imran, 96.) It was also in this city that the last Prophet, Muhammad (pbuh), was born and spent 52 years of his life; 40 years of his life in this city before his prophethood and almost 13 years after it. And here he began to spread the message of Islam.\n\nThe Qiblah, the direction Muslims face while performing their daily prayers (salah), is also in this city.\n\nProphet Muhammad (pbuh) loved this city so much that while leaving Mecca during his migration to Medina, he (pbuh) said: “I love you more than any other city. Had my people not forced me to leave, I would never have left you.” (Sunan al-Tirmidhi, 3925).\n\nMecca is described in the Holy Qur’an as “a valley where no crops grow” (Surah Ibrahim: 37). The Ka’ba is the main factor in the establishment of Mecca as a settlement. It can be said that city life began here only with the building of the Ka’ba.\n\nWhen Prophet Abraham (pbuh) brought his son Ishmael and his wife Hagar to the city and left them there, the Zamzam water had not yet been discovered, so there was no population living there. This date is approximately in the 20th century BC.",
     "vocabulary": [
      {
       "word": "Mecca",
@@ -487,7 +487,7 @@
       "x": 69,
       "y": 31,
       "title": "Qiblah",
-      "description": "The Qiblah is the direction Muslims face while performing their daily prayers, salah."
+      "description": "The Qiblah, the direction Muslims face while performing their daily prayers (salah), is also in this city."
      }
     ],
     "exercises": [
@@ -504,7 +504,7 @@
        "The Prophet (pbuh) would never have left Mecca if his people had not forced him."
       ],
       "correctAnswer": 2,
-      "explanation": "The writer introduces this claim with “It can be said that city life began here only with the building of the Ka’ba.” The other three statements come with a reference: Surah Ibrahim: 37, Âl-i Imran, 96 and Sunan al-Tirmidhi, 3925.",
+      "explanation": "The writer introduces this claim with “It can be said that city life began here only with the building of the Ka’ba.” The other three statements come with a reference: Surah Ibrahim: 37, Al Imran, 96 and Sunan al-Tirmidhi, 3925.",
       "feedback": {
        "correct": "Well done. “It can be said that …” marks the writer’s interpretation; the other statements rest on a Qur’an verse or a hadith.",
        "incorrect": "Check which statements have a reference in brackets. Then find the sentence in paragraph 4 that starts with “It can be said …”."
@@ -525,7 +525,7 @@
        "Nobody can say anything about when city life began here."
       ],
       "correctAnswer": 1,
-      "explanation": "“It can be said that …” marks the sentence as the writer’s interpretation, drawn from the evidence around it, not as a quoted source or a proven fact. Compare the sentences that carry a reference in brackets, such as “(Surah Ibrahim: 37)” or “(See Âl-i Imran, 96.)”: there the writer points to a source. B2 historical writing keeps these two kinds of statement apart.",
+      "explanation": "“It can be said that …” marks the sentence as the writer’s interpretation, drawn from the evidence around it, not as a quoted source or a proven fact. Compare the sentences that carry a reference in brackets, such as “(Surah Ibrahim: 37)” or “(See Al Imran, 96.)”: there the writer points to a source. B2 historical writing keeps these two kinds of statement apart.",
       "feedback": {
        "correct": "Correct. The writer offers a careful interpretation, neither a proven fact nor a refusal to judge.",
        "incorrect": "Find the sentence that begins “It can be said that …” in paragraph 4. Does it present a certain fact, or a reasonable interpretation? And what does it say about the Ka’ba?"
@@ -1072,7 +1072,7 @@
     "title": "Sacred Months and Trade",
     "image": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fb2%2Fimages%2Fmecca_b2_ch6-clean.png?alt=media&token=910919c7-b2e6-4c4b-a6e7-0511c73eeaaa",
     "audioUrl": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fb2%2Faudio%2F05_Chapter_6_Sacred_Months_and_Trade.mp3?alt=media&token=242dadf2-33f1-446e-aa11-8aee2dc422ce",
-    "content": "During this period, the Silk Road—the most important of the eastern trade routes that connected the Indian Ocean to the Mediterranean—became unusable in the 6th century CE due to the wars between the Byzantine and Sassanid empires. This made the Red Sea route and the overland route through Arabia highly important.\n\nThe safe environment created by the sacred months (These are the four sacred lunar months during which fighting is prohibited. During this period, which consists of Zilkade, Zilhicce, Muharram, and Rajab, people focus on worship, show respect, and refrain from sinning, with the aim of creating an atmosphere of peace.) made it possible for more people to perform the Hajj. (During the pre-Islamic Jahiliyyah period, the Arabs continued to visit the Ka’ba and the sacred sites in its neighborhood. Pagan people would walk around the Ka’ba, perform the sa’y between Safa and Marwah, and stand in Arafat.)\n\nHajj also meant livelier trade. In addition, major trade festivals such as Ukaz, Majannah, and Dhul-Majaz were also held during the sacred months. They were particularly held during the Hajj season, and after people attended these fairs, they went to Arafat.\n\nBecause of its extensive trade activities, Mecca was described as the “Republic of Traders.”\n\nSo, at the beginning of the 7th century, the Quraysh gained control of the most important trade route and wealth in Arabia.",
+    "content": "During this period, the Silk Road—the most important of the eastern trade routes that connected the Indian Ocean to the Mediterranean—became unusable in the 6th century CE due to the wars between the Byzantine and Sassanid empires. This made the Red Sea route and the overland route through Arabia highly important.\n\nThe safe environment created by the sacred months (These are the four sacred lunar months during which fighting is prohibited. During this period, which consists of Dhu al-Qadah, Dhu al-Hijjah, Muharram, and Rajab, people focus on worship, show respect, and refrain from sinning, with the aim of creating an atmosphere of peace.) made it possible for more people to perform the Hajj. (During the pre-Islamic Jahiliyyah period, the Arabs continued to visit the Ka’ba and the sacred sites in its neighborhood. Pagan people would walk around the Ka’ba, perform the sa’y between Safa and Marwah, and stand in Arafat.)\n\nHajj also meant livelier trade. In addition, major trade festivals such as Ukaz, Majannah, and Dhul-Majaz were also held during the sacred months. They were particularly held during the Hajj season, and after people attended these fairs, they went to Arafat.\n\nBecause of its extensive trade activities, Mecca was described as the “Republic of Traders.”\n\nSo, at the beginning of the 7th century, the Quraysh gained control of the most important trade route and wealth in Arabia.",
     "vocabulary": [
      {
       "word": "Mecca",
@@ -1545,10 +1545,10 @@
    {
     "id": 8,
     "type": "story",
-    "title": "Injustice and Hilfü’l-Fudûl",
+    "title": "Injustice and Hilf al-Fudul",
     "image": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fb2%2Fimages%2Fmecca_b2_ch8-clean.png?alt=media&token=230f0572-6df9-4e28-afe9-ea5da6376344",
     "audioUrl": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fb2%2Faudio%2F07_Chapter_8_Injustice_and_Hilf%C3%BC%E2%80%99l-Fud%C3%BBl.mp3?alt=media&token=99765b8e-c692-41bc-bbbc-bdb8c267dcb1",
-    "content": "Even when Prophet Muhammad (pbuh) began calling people to Islam, these people said, “With men like us around, is it really up to Muhammad to become the leader of the Quraysh?” (see Surah Zuhruf: 31)\n\nIn such a society, orphans were oppressed, the weak were looked down on, and the poor were shown no mercy. For instance, the camels of the weak used to be taken without payment, and the goods and property of small sellers were unjustly seized by force. Furthermore, the weak and defenseless people who came to the city from outside for pilgrimage and trade were unfairly treated and oppressed. To prevent such incidents, an agreement was made by some Quraysh tribes to help people who had been oppressed in Mecca. Prophet Muhammad (pbuh), who was twenty years old at the time, also attended this meeting. This formation was named Hilfü’l-Fudûl, which means The Community of the Righteous. Young Muhammad became an enthusiastic member of the organization.\n\nDuring the pre-Islamic era, those who oppressed and treated people unfairly were generally wealthy and powerful individuals. Due to its fight against injustice, Hilfü’l-Fudûl received support from the community.\n\nThis organization played a very important role in maintaining justice and order in Mecca and tried to protect the rights of the oppressed. For example, a merchant had sold goods to Ubayy b. Halef, one of Mecca’s leading figures, but had not received payment. The merchant, having no other option, turned to Hilfü’l-Fudûl for help. The members of the organization told him to go to Ubayy and demand his money again, and to inform him that if he did not pay, they would collect it themselves.",
+    "content": "Even when Prophet Muhammad (pbuh) began calling people to Islam, these people said, “With men like us around, is it really up to Muhammad to become the leader of the Quraysh?” (see Surah Zukhruf: 31)\n\nIn such a society, orphans were oppressed, the weak were looked down on, and the poor were shown no mercy. For instance, the camels of the weak used to be taken without payment, and the goods and property of small sellers were unjustly seized by force. Furthermore, the weak and defenseless people who came to the city from outside for pilgrimage and trade were unfairly treated and oppressed. To prevent such incidents, an agreement was made by some Quraysh tribes to help people who had been oppressed in Mecca. Prophet Muhammad (pbuh), who was twenty years old at the time, also attended this meeting. This formation was named Hilf al-Fudul, which means The Community of the Righteous. Young Muhammad became an enthusiastic member of the organization.\n\nDuring the pre-Islamic era, those who oppressed and treated people unfairly were generally wealthy and powerful individuals. Due to its fight against injustice, Hilf al-Fudul received support from the community.\n\nThis organization played a very important role in maintaining justice and order in Mecca and tried to protect the rights of the oppressed. For example, a merchant had sold goods to Ubayy b. Khalaf, one of Mecca’s leading figures, but had not received payment. The merchant, having no other option, turned to Hilf al-Fudul for help. The members of the organization told him to go to Ubayy and demand his money again, and to inform him that if he did not pay, they would collect it themselves.",
     "vocabulary": [
      {
       "word": "Mecca",
@@ -1575,7 +1575,7 @@
       "definition": "A decision or promise made by people together."
      },
      {
-      "word": "Hilfü’l-Fudûl",
+      "word": "Hilf al-Fudul",
       "definition": "The Community of the Righteous formed to defend the oppressed."
      },
      {
@@ -1592,8 +1592,8 @@
       "id": "h8-1",
       "x": 32,
       "y": 70,
-      "title": "Hilfü’l-Fudûl",
-      "description": "Some Quraysh tribes made an agreement to help people oppressed in Mecca and named it Hilfü’l-Fudûl, the Community of the Righteous."
+      "title": "Hilf al-Fudul",
+      "description": "Some Quraysh tribes made an agreement to help people oppressed in Mecca and named it Hilf al-Fudul, the Community of the Righteous."
      },
      {
       "id": "h8-2",
@@ -1609,15 +1609,15 @@
       "type": "multiple-choice",
       "title": "The Unpaid Merchant",
       "instructions": "Choose the best answer. Use Chapter 8.",
-      "question": "What does the example of the unpaid merchant show about Hilfü’l-Fudûl?",
+      "question": "What does the example of the unpaid merchant show about Hilf al-Fudul?",
       "options": [
        "It helped only visitors who came to Mecca for pilgrimage.",
        "It supported weak people with real pressure on powerful ones.",
        "It paid merchants back from its own money.",
-       "It was founded by Ubayy b. Halef and his friends."
+       "It was founded by Ubayy b. Khalaf and his friends."
       ],
       "correctAnswer": 1,
-      "explanation": "The merchant had not been paid by Ubayy b. Halef, “one of Mecca’s leading figures”. The members told him to warn Ubayy “that if he did not pay, they would collect it themselves.” The pact did not only give advice; it stood behind the weak side.",
+      "explanation": "The merchant had not been paid by Ubayy b. Khalaf, “one of Mecca’s leading figures”. The members told him to warn Ubayy “that if he did not pay, they would collect it themselves.” The pact did not only give advice; it stood behind the weak side.",
       "feedback": {
        "correct": "Yes. The pact defended the merchant’s right against a powerful man and was ready to act.",
        "incorrect": "Read the last paragraph again. What did the members tell the merchant to say to Ubayy?"
@@ -1645,7 +1645,7 @@
         "items": [
          "an agreement was made by some Quraysh tribes",
          "those who oppressed and treated people unfairly were generally wealthy and powerful individuals",
-         "a merchant had sold goods to Ubayy b. Halef"
+         "a merchant had sold goods to Ubayy b. Khalaf"
         ]
        }
       ],
@@ -1658,7 +1658,7 @@
        "Doer named": [
         "an agreement was made by some Quraysh tribes",
         "those who oppressed and treated people unfairly were generally wealthy and powerful individuals",
-        "a merchant had sold goods to Ubayy b. Halef"
+        "a merchant had sold goods to Ubayy b. Khalaf"
        ]
       },
       "explanation": "Passive sentences without “by …” keep the orphans, the weak and the small sellers in focus and leave the oppressor unnamed. The writer names the oppressors separately and generally: “those who oppressed … were generally wealthy and powerful individuals”. “An agreement was made by some Quraysh tribes” is also passive, but the “by” phrase names the doers while the agreement stays at the front of the sentence.",
@@ -1717,14 +1717,14 @@
        {
         "question": "Use “If he did not pay …, they would …”, “… was forced to …” and “… to + verb”.",
         "mode": "Individual",
-        "example": "A merchant sold goods to Ubayy b. Halef, one of Mecca’s leading figures, but he was not paid. Having no other option, he turned to Hilfü’l-Fudûl for help. The members told him to go back to Ubayy in order to demand his money again. He was also told to say that if Ubayy did not pay, they would collect the money themselves. This clear warning worked, and the merchant was paid at once."
+        "example": "A merchant sold goods to Ubayy b. Khalaf, one of Mecca’s leading figures, but he was not paid. Having no other option, he turned to Hilf al-Fudul for help. The members told him to go back to Ubayy in order to demand his money again. He was also told to say that if Ubayy did not pay, they would collect the money themselves. This clear warning worked, and the merchant was paid at once."
        }
       ]
      }
     ],
     "beforeYouRead": {
      "kind": "find",
-     "question": "Find it fast: What does the name Hilfü’l-Fudûl mean?",
+     "question": "Find it fast: What does the name Hilf al-Fudul mean?",
      "options": [
       "The Community of the Righteous",
       "The Council of the Rich",
@@ -1734,7 +1734,7 @@
      "quote": "which means The Community of the Righteous"
     },
     "iCan": [
-     "I can explain why Hilfü’l-Fudûl was formed and how it helped people.",
+     "I can explain why Hilf al-Fudul was formed and how it helped people.",
      "I can say what happened to people without naming who did it.",
      "I can explain a rule that works because a clear result stands behind it."
     ]
@@ -1745,7 +1745,7 @@
     "title": "Generosity and Tribal Life",
     "image": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fb2%2Fimages%2Fmecca_b2_ch9-clean.png?alt=media&token=9742cd4f-0908-4885-adb1-bf9970869372",
     "audioUrl": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fb2%2Faudio%2F08_Chapter_9_Generosity_and_Tribal_Life.mp3?alt=media&token=625e064a-2550-4e65-8f31-f5f636bfc185",
-    "content": "On this, Ubayy paid the money immediately. This formation also made Mecca a safer city for trade.\n\nAll sources note that the Prophet (pbuh) spoke highly of this formation even after his prophethood and believed that Islam had further strengthened it. He used to say: “I have no desire to abandon my oath even against a herd of red-haired camels.” It is recorded that he said he would respond immediately without hesitation if he were called again (Musnad, I, 190, 317).\n\nAs the example of the Hilfü’l-Fudûl shows, it certainly doesn’t make sense to call the pre-Islamic era entirely negative. In addition to this, for instance, the Arabs before Islam were known for their extraordinary generosity and hospitality. They used to bet on who could slay and offer the most camels for their guests. The bet was a type of gambling as well. Until one side gave up, camels continued to be slaughtered, and at the end, the victor became well-known for his generosity. All of this was done for the fame of the individual and the tribe.\n\nThe admirable qualities of the Arabs before Islam, like generosity, were driven mostly by arrogance rather than real goodness. In the end, such behaviors turned into a tribal honor contest, and this led to greater problems.\n\nTribes were the basis of Arab society.",
+    "content": "On this, Ubayy paid the money immediately. This formation also made Mecca a safer city for trade.\n\nAll sources note that the Prophet (pbuh) spoke highly of this formation even after his prophethood and believed that Islam had further strengthened it. He used to say: “I have no desire to abandon my oath even against a herd of red-haired camels.” It is recorded that he said he would respond immediately without hesitation if he were called again (Musnad, I, 190, 317).\n\nAs the example of the Hilf al-Fudul shows, it certainly doesn’t make sense to call the pre-Islamic era entirely negative. In addition to this, for instance, the Arabs before Islam were known for their extraordinary generosity and hospitality. They used to bet on who could slay and offer the most camels for their guests. The bet was a type of gambling as well. Until one side gave up, camels continued to be slaughtered, and at the end, the victor became well-known for his generosity. All of this was done for the fame of the individual and the tribe.\n\nThe admirable qualities of the Arabs before Islam, like generosity, were driven mostly by arrogance rather than real goodness. In the end, such behaviors turned into a tribal honor contest, and this led to greater problems.\n\nTribes were the basis of Arab society.",
     "vocabulary": [
      {
       "word": "Mecca",
@@ -1756,7 +1756,7 @@
       "definition": "__historical_entity__:mecca-pre-islamic-arabs"
      },
      {
-      "word": "Hilfü’l-Fudûl",
+      "word": "Hilf al-Fudul",
       "definition": "__historical_entity__:mecca-hilf-al-fudul"
      },
      {
@@ -1856,7 +1856,7 @@
        "The admirable qualities of the Arabs before Islam, like generosity, had nothing to do with arrogance."
       ],
       "correctAnswer": 1,
-      "explanation": "“Mostly” limits the claim: Arrogance was the main motive, but the writer does not say it was the only one. “Rather than” compares two possible motives and prefers one. The same balance runs through the whole chapter: The Hilfü’l-Fudûl and Arab hospitality are real positive evidence, yet the camel contest is also called “a type of gambling”. The writer praises the action and still questions the motive.",
+      "explanation": "“Mostly” limits the claim: Arrogance was the main motive, but the writer does not say it was the only one. “Rather than” compares two possible motives and prefers one. The same balance runs through the whole chapter: The Hilf al-Fudul and Arab hospitality are real positive evidence, yet the camel contest is also called “a type of gambling”. The writer praises the action and still questions the motive.",
       "feedback": {
        "correct": "Correct. You kept both the qualifier “mostly” and the direction of the contrast.",
        "incorrect": "Look at the first sentence of paragraph 4. Which motive does the writer see as the main one, and is it described as the only motive?"
@@ -1870,7 +1870,7 @@
       "question": "Can you correct the forms that qualify, add evidence and describe a repeated action?",
       "errorItems": [
        {
-        "sentence": "As the example of the Hilfü’l-Fudûl shows, it certainly doesn’t make sense to call the pre-Islamic era entire negative.",
+        "sentence": "As the example of the Hilf al-Fudul shows, it certainly doesn’t make sense to call the pre-Islamic era entire negative.",
         "error": "entire negative",
         "options": [
          "entire negatively",
@@ -1923,7 +1923,7 @@
        {
         "question": "Use “not entirely …”, “in addition”, “however” and “rather than”.",
         "mode": "Individual",
-        "example": "It does not make sense to call the pre-Islamic era entirely negative. Hilfü’l-Fudûl, for example, tried to protect the rights of the oppressed. In addition, the Arabs before Islam were known for their extraordinary generosity and hospitality. However, this generosity was driven mostly by arrogance rather than real goodness. Men competed to slaughter the most camels for fame, and this contest led to greater problems."
+        "example": "It does not make sense to call the pre-Islamic era entirely negative. Hilf al-Fudul, for example, tried to protect the rights of the oppressed. In addition, the Arabs before Islam were known for their extraordinary generosity and hospitality. However, this generosity was driven mostly by arrogance rather than real goodness. Men competed to slaughter the most camels for fame, and this contest led to greater problems."
        }
       ]
      }
@@ -2554,7 +2554,7 @@
       },
       {
        "name": "Justice Expert (Chapters 8–9)",
-       "job": "You teach how Hilfü’l-Fudûl protected the oppressed and what the book says about generosity."
+       "job": "You teach how Hilf al-Fudul protected the oppressed and what the book says about generosity."
       },
       {
        "name": "People Expert (Chapters 10–11)",
@@ -2953,7 +2953,7 @@
     "title": "Opposition to the New Faith",
     "image": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fb2%2Fimages%2Fmecca_b2_ch15-clean.png?alt=media&token=8cf5995d-ea53-41d0-991b-b5c4d4e7099f",
     "audioUrl": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fb2%2Faudio%2F14_Chapter_15_Opposition_to_the_New_Faith.mp3?alt=media&token=bcc84aa4-8c72-43b3-8f3c-7ea4bef502f6",
-    "content": "They knew that the Prophet’s call to monotheism—which rejected oppression, injustice, exploitation, and usury—would eventually bring them face to face with people who carried out these practices.\n\nPagan Meccan leaders tried various methods to prevent the new faith from growing stronger. At first, they mocked just the new religion. When the Prophet (pbuh) passed by the places where the disbelievers were sitting, they would point and laugh at him and say, “The son of the family of Abdulmuttalib is bringing news from heaven!”\n\nHowever, when the Qur’an began to speak ill of their idols, mock them, and announce that they and their idols would be fuel for Hell, they began to oppose him fiercely. Poor people or those without powerful protectors suffered the most. One of them was Bilal, an Abyssinian slave. He became one of the first believers in Islam. His master, Umayya b. Halef, often took him out in the hot midday sun. He put a heavy rock on Bilal’s chest and ordered him to give up his religion.\n\nThe Meccan elites went further and imposed a social and economic boycott on the Muslims and those who protected the Prophet (pbuh) between 617 and 620. During this period the Prophet (pbuh), his wife Khadija, and Abu Talib spent all their wealth to support the Muslims. Some people died of starvation; there were even those who ate tree leaves. The cries of children dying of hunger began to be heard.",
+    "content": "They knew that the Prophet’s call to monotheism—which rejected oppression, injustice, exploitation, and usury—would eventually bring them face to face with people who carried out these practices.\n\nPagan Meccan leaders tried various methods to prevent the new faith from growing stronger. At first, they mocked just the new religion. When the Prophet (pbuh) passed by the places where the disbelievers were sitting, they would point and laugh at him and say, “The son of the family of Abd al-Muttalib is bringing news from heaven!”\n\nHowever, when the Qur’an began to speak ill of their idols, mock them, and announce that they and their idols would be fuel for Hell, they began to oppose him fiercely. Poor people or those without powerful protectors suffered the most. One of them was Bilal, an Abyssinian slave. He became one of the first believers in Islam. His master, Umayya b. Khalaf, often took him out in the hot midday sun. He put a heavy rock on Bilal’s chest and ordered him to give up his religion.\n\nThe Meccan elites went further and imposed a social and economic boycott on the Muslims and those who protected the Prophet (pbuh) between 617 and 620. During this period the Prophet (pbuh), his wife Khadija, and Abu Talib spent all their wealth to support the Muslims. Some people died of starvation; there were even those who ate tree leaves. The cries of children dying of hunger began to be heard.",
     "vocabulary": [
      {
       "word": "Umayya",
@@ -3528,7 +3528,7 @@
      "roles": [
       {
        "name": "Quote Finder",
-       "job": "You reread Chapters 8–9 and copy one sentence about Hilfü’l-Fudûl exactly as it is written."
+       "job": "You reread Chapters 8–9 and copy one sentence about Hilf al-Fudul exactly as it is written."
       },
       {
        "name": "Pact Writer",
@@ -3550,7 +3550,7 @@
       "Read the pact aloud in your group and improve one sentence. Nobody speaks as a person from the story; you only quote the book and write your own pact."
      ],
      "share": "Each group presents its pact in two minutes, reads its quote from the book and explains which part of the pact the quote inspired.",
-     "solo": "Copy one sentence about Hilfü’l-Fudûl from Chapters 8–9, then write a short pact for your school with a problem, a promise and a clear result if the promise is not kept."
+     "solo": "Copy one sentence about Hilf al-Fudul from Chapters 8–9, then write a short pact for your school with a problem, a promise and a clear result if the promise is not kept."
     }
    },
    {
@@ -4171,7 +4171,7 @@
       "type": "multiple-choice",
       "title": "An Alliance Confirmed",
       "instructions": "Choose the answer that best reflects Chapter 9.",
-      "question": "According to the sources the writer cites, how did the Prophet (pbuh) view Hilfü’l-Fudûl after his prophethood?",
+      "question": "According to the sources the writer cites, how did the Prophet (pbuh) view Hilf al-Fudul after his prophethood?",
       "options": [
        "He saw it as a custom of the Jahiliyyah that Islam had made unnecessary.",
        "He respected its aims but regretted taking part in it as a young man.",
@@ -4405,7 +4405,7 @@
       "partOfSpeech": "noun",
       "chapter": 3,
       "chapterTitle": "The Holy City",
-      "storyExample": "The Qiblah is the direction Muslims face while performing their daily prayers, salah.",
+      "storyExample": "The Qiblah, the direction Muslims face while performing their daily prayers (salah), is also in this city.",
       "category": "Sacred Geography & Faith"
      },
      {
@@ -4664,7 +4664,7 @@
       "level": "B2",
       "partOfSpeech": "noun",
       "chapter": 8,
-      "chapterTitle": "Injustice and Hilfü’l-Fudûl",
+      "chapterTitle": "Injustice and Hilf al-Fudul",
       "storyExample": "In such a society, orphans were oppressed, the weak were looked down on, and the poor were shown no mercy.",
       "category": "Justice & Social Protection"
      },
@@ -4674,7 +4674,7 @@
       "level": "B2",
       "partOfSpeech": "verb",
       "chapter": 8,
-      "chapterTitle": "Injustice and Hilfü’l-Fudûl",
+      "chapterTitle": "Injustice and Hilf al-Fudul",
       "storyExample": "Furthermore, the weak and defenseless people who came to the city from outside for pilgrimage and trade were unfairly treated and oppressed.",
       "category": "Justice & Social Protection"
      },
@@ -4684,18 +4684,18 @@
       "level": "B2",
       "partOfSpeech": "noun",
       "chapter": 8,
-      "chapterTitle": "Injustice and Hilfü’l-Fudûl",
+      "chapterTitle": "Injustice and Hilf al-Fudul",
       "storyExample": "To prevent such incidents, an agreement was made by some Quraysh tribes to help people who had been oppressed in Mecca.",
       "category": "Justice & Social Protection"
      },
      {
-      "word": "Hilfü’l-Fudûl",
+      "word": "Hilf al-Fudul",
       "definition": "The Community of the Righteous formed to defend the oppressed.",
       "level": "B2",
       "partOfSpeech": "noun",
       "chapter": 8,
-      "chapterTitle": "Injustice and Hilfü’l-Fudûl",
-      "storyExample": "This formation was named Hilfü’l-Fudûl, which means The Community of the Righteous.",
+      "chapterTitle": "Injustice and Hilf al-Fudul",
+      "storyExample": "This formation was named Hilf al-Fudul, which means The Community of the Righteous.",
       "category": "Justice & Social Protection"
      },
      {
@@ -4704,8 +4704,8 @@
       "level": "B2",
       "partOfSpeech": "adjective",
       "chapter": 8,
-      "chapterTitle": "Injustice and Hilfü’l-Fudûl",
-      "storyExample": "This formation was named Hilfü’l-Fudûl, which means The Community of the Righteous.",
+      "chapterTitle": "Injustice and Hilf al-Fudul",
+      "storyExample": "This formation was named Hilf al-Fudul, which means The Community of the Righteous.",
       "category": "Justice & Social Protection"
      },
      {
@@ -4714,8 +4714,8 @@
       "level": "B2",
       "partOfSpeech": "noun phrase",
       "chapter": 8,
-      "chapterTitle": "Injustice and Hilfü’l-Fudûl",
-      "storyExample": "Due to its fight against injustice, Hilfü’l-Fudûl received support from the community.",
+      "chapterTitle": "Injustice and Hilf al-Fudul",
+      "storyExample": "Due to its fight against injustice, Hilf al-Fudul received support from the community.",
       "category": "Justice & Social Protection"
      },
      {
@@ -5458,8 +5458,8 @@
       "question": "How else can we say these sentences from the book?",
       "transformItems": [
        {
-        "source": "Due to its fight against injustice, Hilfü’l-Fudûl received support from the community.",
-        "frame": "Hilfü’l-Fudûl received support from the community because [blank].",
+        "source": "Due to its fight against injustice, Hilf al-Fudul received support from the community.",
+        "frame": "Hilf al-Fudul received support from the community because [blank].",
         "answers": [
          "it fought against injustice",
          "it fought injustice",
@@ -5719,7 +5719,7 @@
       "type": "true-false",
       "title": "Who Formed the Alliance?",
       "instructions": "Decide whether the statement is supported by the story.",
-      "question": "Hilfü’l-Fudûl was formed by the city’s wealthy oppressors to protect their own trade.",
+      "question": "Hilf al-Fudul was formed by the city’s wealthy oppressors to protect their own trade.",
       "correctAnswer": false,
       "explanation": "Chapter 8 says: “an agreement was made by some Quraysh tribes to help people who had been oppressed in Mecca.” It also says: “those who oppressed and treated people unfairly were generally wealthy and powerful individuals.”",
       "feedback": {
@@ -5784,7 +5784,7 @@
       "question": "Which point does each reference support?",
       "matchingPairs": [
        {
-        "left": "Âl-i Imran, 96",
+        "left": "Al Imran, 96",
         "right": "Allah chose Mecca for His House."
        },
        {
@@ -5792,7 +5792,7 @@
         "right": "The Quraysh made summer and winter journeys."
        },
        {
-        "left": "Surah Zuhruf, 31",
+        "left": "Surah Zukhruf, 31",
         "right": "The leaders asked why Muhammad should lead them."
        },
        {
@@ -5801,12 +5801,12 @@
        }
       ],
       "correctAnswer": {
-       "Âl-i Imran, 96": "Allah chose Mecca for His House.",
+       "Al Imran, 96": "Allah chose Mecca for His House.",
        "Surah Quraysh, 1–4": "The Quraysh made summer and winter journeys.",
-       "Surah Zuhruf, 31": "The leaders asked why Muhammad should lead them.",
+       "Surah Zukhruf, 31": "The leaders asked why Muhammad should lead them.",
        "Surah Nahl, 58–59": "Some fathers grieved at the birth of a daughter."
       },
-      "explanation": "Chapter 3: “Allah chose this city to be the location of His House, the Holy Ka’ba. (See Âl-i Imran, 96.)” Chapter 5: “The summer and winter journeys described in the Holy Qur’an were organized once a year with large caravans (see Surah Quraysh: 1-4).” Chapter 8: “With men like us around, is it really up to Muhammad to become the leader of the Quraysh?” (see Surah Zuhruf: 31). Chapter 11: “The Holy Qur’an describes this scene in Surah Nahl, verses 58-59”.",
+      "explanation": "Chapter 3: “Allah chose this city to be the location of His House, the Holy Ka’ba. (See Al Imran, 96.)” Chapter 5: “The summer and winter journeys described in the Holy Qur’an were organized once a year with large caravans (see Surah Quraysh: 1-4).” Chapter 8: “With men like us around, is it really up to Muhammad to become the leader of the Quraysh?” (see Surah Zukhruf: 31). Chapter 11: “The Holy Qur’an describes this scene in Surah Nahl, verses 58-59”.",
       "feedback": {
        "correct": "Yes. The writer supports key claims about Mecca’s holiness, trade, leaders and society with the Qur’an.",
        "incorrect": "Look for the references in brackets in Chapters 3, 5, 8 and 11."
@@ -5853,7 +5853,7 @@
       "sequencingItems": [
        {
         "id": "3",
-        "text": "Young Muhammad joins Hilfü’l-Fudûl at the age of twenty."
+        "text": "Young Muhammad joins Hilf al-Fudul at the age of twenty."
        },
        {
         "id": "1",
@@ -5879,7 +5879,7 @@
        "4",
        "5"
       ],
-      "explanation": "Hagar and Ishmael, about the 20th century BC (Chapter 3); Hashim, the Prophet’s great-grandfather (Chapter 5); Hilfü’l-Fudûl, when the Prophet was twenty (Chapter 8); the call in 610 (Chapter 13); and the boycott between 617 and 620 (Chapter 15).",
+      "explanation": "Hagar and Ishmael, about the 20th century BC (Chapter 3); Hashim, the Prophet’s great-grandfather (Chapter 5); Hilf al-Fudul, when the Prophet was twenty (Chapter 8); the call in 610 (Chapter 13); and the boycott between 617 and 620 (Chapter 15).",
       "feedback": {
        "correct": "Yes. The book moves from Mecca’s founding to its trade, then to the Prophet’s youth, his call and the pressure against it.",
        "incorrect": "Remember that Hashim was the Prophet’s great-grandfather, so his trade deals came before the Prophet’s youth."

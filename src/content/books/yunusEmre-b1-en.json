@@ -13,10 +13,10 @@
    {
     "id": 1,
     "type": "story",
-    "title": "Yunus Emre and Sûfîsm",
+    "title": "Yunus Emre and Sufism",
     "image": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/yunus%2Fb1%2Fimages%2Fyunus_b1_ch1-clean.png?alt=media&token=35c3e7df-520e-4293-916b-7312d4aba9a0",
     "audioUrl": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/yunus%2Fb1%2Faudio%2F00_Chapter_1.mp3?alt=media&token=8374c2f7-3dc6-480b-ae3b-3b0145c6f071",
-    "content": "Yunus Emre was a famous Turkish poet and a Sûfî from Anatolia. A Sûfî is a person who aims to get closer to Allah by following Islamic mysticism. Sûfîs lead a way of life within the outer (visible) and inner rules of Islam. The outer part is related to the body’s acts of worship, while the inner side refers to the heart’s intentions and morality.\n\nSûfîs follow moral principles such as seeking to improve and become better people, being patient in times of need, giving generously without expecting anything in return, doing good to everyone without biases, responding to evil with kindness, and not attaching importance to worldly matters such as wealth, status, and fame.\n\nIn addition to being a Sûfî, Yunus Emre was one of the first to write and recite poems in simple Turkish. The words and phrases which he used helped develop a better literary Turkish. Yunus Emre is known as one of the founders of Turkish Sûfî literature.",
+    "content": "Yunus Emre was a famous Turkish poet and a Sufi from Anatolia. A Sufi is a person who aims to get closer to Allah by following Islamic mysticism. Sufis lead a way of life within the outer (visible) and inner rules of Islam. The outer part is related to the body’s acts of worship, while the inner side refers to the heart’s intentions and morality.\n\nSufis follow moral principles such as seeking to improve and become better people, being patient in times of need, giving generously without expecting anything in return, doing good to everyone without biases, responding to evil with kindness, and not attaching importance to worldly matters such as wealth, status, and fame.\n\nIn addition to being a Sufi, Yunus Emre was one of the first to write and recite poems in simple Turkish. The words and phrases which he used helped develop a better literary Turkish. Yunus Emre is known as one of the founders of Turkish Sufi literature.",
     "vocabulary": [
      {
       "word": "Anatolia",
@@ -48,15 +48,15 @@
       "id": "yunus-b1-en-1-1",
       "x": 31,
       "y": 39,
-      "title": "Sûfîsm",
-      "description": "Sûfîsm joins outward worship with inward intention and good morals."
+      "title": "Sufism",
+      "description": "Sufism joins outward worship with inward intention and good morals."
      },
      {
       "id": "yunus-b1-en-1-2",
       "x": 70,
       "y": 61,
       "title": "Moral Principles",
-      "description": "Sûfîs value patience, generosity and kindness, and give no importance to wealth, status or fame."
+      "description": "Sufis value patience, generosity and kindness, and give no importance to wealth, status or fame."
      }
     ],
     "exercises": [
@@ -65,14 +65,14 @@
       "type": "multiple-choice",
       "title": "A Founder of a Literature",
       "instructions": "Read the question. Choose the best answer from Chapter 1.",
-      "question": "Why is Yunus Emre known as one of the founders of Turkish Sûfî literature?",
+      "question": "Why is Yunus Emre known as one of the founders of Turkish Sufi literature?",
       "options": [
        "He wrote his poems in Arabic and Persian, the languages of the scholars of his time.",
        "He was one of the first to write poems in simple Turkish, and his words helped develop literary Turkish.",
        "He trained many famous Turkish poets in the tekkes and helped them improve their skills."
       ],
       "correctAnswer": 1,
-      "explanation": "Chapter 1 says Yunus Emre “was one of the first to write and recite poems in simple Turkish” and that the words and phrases he used “helped develop a better literary Turkish.” This is why he is called one of the founders of Turkish Sûfî literature.",
+      "explanation": "Chapter 1 says Yunus Emre “was one of the first to write and recite poems in simple Turkish” and that the words and phrases he used “helped develop a better literary Turkish.” This is why he is called one of the founders of Turkish Sufi literature.",
       "feedback": {
        "correct": "Yes. He was an early poet in simple Turkish, and his language helped literary Turkish grow.",
        "incorrect": "Read the last paragraph of Chapter 1 again. Look for what Yunus Emre was “one of the first” to do and what his words helped to develop."
@@ -85,11 +85,11 @@
       "type": "multiple-choice",
       "title": "What Does “By + -ing” Tell Us?",
       "instructions": "Read the sentence from Chapter 1. Then choose the best answer.",
-      "question": "“A Sûfî is a person who aims to get closer to Allah by following Islamic mysticism.” What does “by following Islamic mysticism” tell us?",
+      "question": "“A Sufi is a person who aims to get closer to Allah by following Islamic mysticism.” What does “by following Islamic mysticism” tell us?",
       "options": [
-       "why a person decides to become a Sûfî",
-       "how a Sûfî tries to reach this aim",
-       "what happens after a Sûfî reaches this aim",
+       "why a person decides to become a Sufi",
+       "how a Sufi tries to reach this aim",
+       "what happens after a Sufi reaches this aim",
        "when a person starts to follow this path"
       ],
       "correctAnswer": 1,
@@ -107,7 +107,7 @@
       "question": "Can you fix the list of principles?",
       "errorItems": [
        {
-        "sentence": "Sûfîs follow moral principles such as seeking to improve and become better people, being patient in times of need, give generously …",
+        "sentence": "Sufis follow moral principles such as seeking to improve and become better people, being patient in times of need, give generously …",
         "error": "give",
         "options": [
          "giving",
@@ -127,7 +127,7 @@
         "answer": 1
        },
        {
-        "sentence": "In addition to be a Sûfî, Yunus Emre was one of the first to write and say poems in simple Turkish.",
+        "sentence": "In addition to be a Sufi, Yunus Emre was one of the first to write and say poems in simple Turkish.",
         "error": "to be",
         "options": [
          "being",
@@ -138,7 +138,7 @@
        }
       ],
       "correctAnswer": null,
-      "explanation": "The list of principles after “such as” uses the same form every time: seeking, being, giving, doing, responding, not attaching. Keeping the list parallel makes the principles sound like parts of one way of life. The negative form is “not + -ing”. “In addition to” is a preposition, so it is followed by an -ing form: “In addition to being a Sûfî …”.",
+      "explanation": "The list of principles after “such as” uses the same form every time: seeking, being, giving, doing, responding, not attaching. Keeping the list parallel makes the principles sound like parts of one way of life. The negative form is “not + -ing”. “In addition to” is a preposition, so it is followed by an -ing form: “In addition to being a Sufi …”.",
       "feedback": {
        "correct": "Well done. You kept the list parallel and used -ing after “in addition to”.",
        "incorrect": "Look at the second paragraph of Chapter 1: every principle in the list starts with an -ing form. Then check the first words of the third paragraph."
@@ -149,11 +149,11 @@
       "type": "transformation",
       "title": "Say It Another Way",
       "instructions": "Write the missing words. Keep the same meaning.",
-      "question": "How else can we say these lines about the Sûfî?",
+      "question": "How else can we say these lines about the Sufi?",
       "transformItems": [
        {
-        "source": "A Sûfî is a person who aims to get closer to Allah by following Islamic mysticism.",
-        "frame": "A Sûfî follows Islamic mysticism [blank] get closer to Allah.",
+        "source": "A Sufi is a person who aims to get closer to Allah by following Islamic mysticism.",
+        "frame": "A Sufi follows Islamic mysticism [blank] get closer to Allah.",
         "answers": [
          "to",
          "in order to",
@@ -171,8 +171,8 @@
         ]
        },
        {
-        "source": "Yunus Emre is known as one of the founders of Turkish Sûfî literature.",
-        "frame": "People [blank] Yunus Emre as one of the founders of Turkish Sûfî literature.",
+        "source": "Yunus Emre is known as one of the founders of Turkish Sufi literature.",
+        "frame": "People [blank] Yunus Emre as one of the founders of Turkish Sufi literature.",
         "answers": [
          "know",
          "see",
@@ -228,7 +228,7 @@
     ],
     "beforeYouRead": {
      "kind": "find",
-     "question": "Find it fast: Which worldly matters do Sûfîs not attach importance to?",
+     "question": "Find it fast: Which worldly matters do Sufis not attach importance to?",
      "options": [
       "wealth, status and fame",
       "food, sleep and rest",
@@ -238,7 +238,7 @@
      "quote": "not attaching importance to worldly matters such as wealth, status, and fame"
     },
     "iCan": [
-     "I can explain what a Sûfî is and why Yunus Emre is famous.",
+     "I can explain what a Sufi is and why Yunus Emre is famous.",
      "I can say what someone wants to do and how they do it.",
      "I can describe a person I admire in a few connected sentences."
     ]
@@ -249,7 +249,7 @@
     "title": "His Language and Education",
     "image": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/yunus%2Fb1%2Fimages%2Fyunus_b1_ch2-clean.png?alt=media&token=ef85a87c-039b-46e1-8d62-abeea2891b07",
     "audioUrl": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/yunus%2Fb1%2Faudio%2F01_Chapter_2_His_Language_and_Education.mp3?alt=media&token=34d1568e-fb36-486e-914f-61928ab3bc20",
-    "content": "People love his works very much due to his style. It is neither too simple nor too complex. His works are very popular because they combine great literary quality with simple language. This plain language helps people understand his writings and sayings easily. The philosophy in his poems includes important moral principles that still have a significant influence on Turkish culture and society.\n\nAccording to historical sources, he lived during the same era as important people like Hacı Bektaş-ı Veli and Mevlana Celaleddin Rumi. He was born around 1240–1241 and died around 1320–1321. Some sources say that he received a good madrasa education and had a strong knowledge of Arabic, Persian, and the Islamic sciences of his time. But he also studied Allah’s love and morals at the tekke, which was a place where Sûfî education was taught under the guidance of a sheikh (spiritual tutor).",
+    "content": "People love his works very much due to his style. It is neither too simple nor too complex. His works are very popular because they combine great literary quality with simple language. This plain language helps people understand his writings and sayings easily. The philosophy in his poems includes important moral principles that still have a significant influence on Turkish culture and society.\n\nAccording to historical sources, he lived during the same era as important people like Haji Bektash Veli and Mevlana Jalal al-Din Rumi. He was born around 1240–1241 and died around 1320–1321. Some sources say that he received a good madrasa education and had a strong knowledge of Arabic, Persian, and the Islamic sciences of his time. But he also studied Allah’s love and morals at the tekke, which was a place where Sufi education was taught under the guidance of a sheikh (spiritual tutor).",
     "vocabulary": [
      {
       "word": "tekke",
@@ -264,7 +264,7 @@
       "definition": "__historical_entity__:yunus-mevlana-rumi"
      },
      {
-      "word": "Hacı Bektaş-ı Veli",
+      "word": "Haji Bektash Veli",
       "definition": "__historical_entity__:yunus-haci-bektas-veli"
      },
      {
@@ -308,7 +308,7 @@
       "instructions": "Is the sentence true or false? Use Chapter 2.",
       "question": "Chapter 2 says that Yunus Emre studied Allah’s love and morals at the madrasa.",
       "correctAnswer": false,
-      "explanation": "Some sources say he received a good madrasa education and had a strong knowledge of Arabic, Persian and the Islamic sciences. “But he also studied Allah’s love and morals at the tekke,” where Sûfî education was taught under the guidance of a sheikh.",
+      "explanation": "Some sources say he received a good madrasa education and had a strong knowledge of Arabic, Persian and the Islamic sciences. “But he also studied Allah’s love and morals at the tekke,” where Sufi education was taught under the guidance of a sheikh.",
       "feedback": {
        "correct": "Correct. The madrasa gave him knowledge, but he studied Allah’s love and morals at the tekke, with a sheikh as his guide.",
        "incorrect": "Read the last two sentences of Chapter 2 again. Compare the two places where Yunus Emre studied and what he learned in each one."
@@ -369,7 +369,7 @@
       "question": "How sure is the writer about Yunus Emre’s life?",
       "formChoices": [
        {
-        "sentence": "[choice] historical sources, he lived during the same era as important people like Hacı Bektaş-ı Veli and Mevlana Celaleddin Rumi.",
+        "sentence": "[choice] historical sources, he lived during the same era as important people like Haji Bektash Veli and Mevlana Jalal al-Din Rumi.",
         "options": [
          "Due to",
          "According to",
@@ -409,7 +409,7 @@
       "title": "Two Kinds of Learning",
       "instructions": "Complete the lines from Chapter 2 with words from the bank. Two words are not needed.",
       "question": "Where did Yunus Emre learn, and what was a tekke?",
-      "fillBlanksText": "… he received a good madrasa education and had a strong knowledge of Arabic, Persian, and the Islamic sciences of his time. But he [blank] studied Allah’s love and morals at the tekke, [blank] was a place where Sûfî education was [blank] under the guidance of a sheikh (spiritual tutor).",
+      "fillBlanksText": "… he received a good madrasa education and had a strong knowledge of Arabic, Persian, and the Islamic sciences of his time. But he [blank] studied Allah’s love and morals at the tekke, [blank] was a place where Sufi education was [blank] under the guidance of a sheikh (spiritual tutor).",
       "wordBank": [
        "also",
        "which",
@@ -470,10 +470,10 @@
      "options": [
       "Ibn Sina and Al-Farabi",
       "Saladin and Ibn Jubayr",
-      "Hacı Bektaş-ı Veli and Mevlana"
+      "Haji Bektash Veli and Mevlana"
      ],
      "answer": 2,
-     "quote": "he lived during the same era as important people like Hacı Bektaş-ı Veli and Mevlana Celaleddin Rumi"
+     "quote": "he lived during the same era as important people like Haji Bektash Veli and Mevlana Jalal al-Din Rumi"
     },
     "iCan": [
      "I can explain why people love Yunus Emre’s works and where he studied.",
@@ -487,14 +487,14 @@
     "title": "Tekkes and Anatolia",
     "image": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/yunus%2Fb1%2Fimages%2Fyunus_b1_ch3-clean.png?alt=media&token=e198d320-064d-4e55-ba56-f3157dead704",
     "audioUrl": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/yunus%2Fb1%2Faudio%2F02_Chapter_3_Tekk%C3%A9s_and_Anatolia.mp3?alt=media&token=682bf6e3-309d-4d12-9672-3a2e89a0419e",
-    "content": "At that time, tekkes were not only places for Sûfî training. They were also important community organizations that helped people and brought them together. Furthermore, they received support from government officials. These places were very important for fine arts too, especially poetry. Many famous Turkish poets improved their skills in tekkes. Yunus Emre was also a great poet who trained under his spiritual tutor, Taptuk Emre.\n\nYunus Emre lived during the 13th and 14th centuries, which was a very difficult time in Anatolia. The Anatolian Seljuks were seriously weakened by the Babai revolts in the 13th century. While the negative effects of these revolts were still being felt, the defeat at Kösedağ took place. The defeat caused the Mongols' invasion of Anatolia. Because of these hard circumstances, Anatolia faced serious political, economic, and social problems. People were struggling to cope with these tough situations.",
+    "content": "At that time, tekkes were not only places for Sufi training. They were also important community organizations that helped people and brought them together. Furthermore, they received support from government officials. These places were very important for fine arts too, especially poetry. Many famous Turkish poets improved their skills in tekkes. Yunus Emre was also a great poet who trained under his spiritual tutor, Taptuk Emre.\n\nYunus Emre lived during the 13th and 14th centuries, which was a very difficult time in Anatolia. The Anatolian Seljuks were seriously weakened by the Babai revolts in the 13th century. While the negative effects of these revolts were still being felt, the defeat at Kose Dag took place. The defeat caused the Mongols' invasion of Anatolia. Because of these hard circumstances, Anatolia faced serious political, economic, and social problems. People were struggling to cope with these tough situations.",
     "vocabulary": [
      {
       "word": "Anatolia",
       "definition": "__historical_entity__:yunus-anatolia"
      },
      {
-      "word": "Kösedağ",
+      "word": "Kose Dag",
       "definition": "__historical_entity__:yunus-kosedag"
      },
      {
@@ -532,14 +532,14 @@
       "x": 27,
       "y": 54,
       "title": "Tekkes",
-      "description": "Tekkes were places of Sûfî training, community help and poetry."
+      "description": "Tekkes were places of Sufi training, community help and poetry."
      },
      {
       "id": "yunus-b1-en-3-2",
       "x": 73,
       "y": 35,
       "title": "Anatolia",
-      "description": "Revolts, the defeat at Kösedağ and the Mongol invasion brought hard times to Anatolia."
+      "description": "Revolts, the defeat at Kose Dag and the Mongol invasion brought hard times to Anatolia."
      }
     ],
     "exercises": [
@@ -567,7 +567,7 @@
         "right": "seriously weakened the Anatolian Seljuks"
        },
        {
-        "left": "The defeat at Kösedağ",
+        "left": "The defeat at Kose Dag",
         "right": "caused the Mongols’ invasion of Anatolia"
        }
       ],
@@ -575,7 +575,7 @@
        "Tekkes": "community organizations that helped people and brought them together",
        "Taptuk Emre": "the spiritual tutor who trained Yunus",
        "The Babai revolts": "seriously weakened the Anatolian Seljuks",
-       "The defeat at Kösedağ": "caused the Mongols’ invasion of Anatolia"
+       "The defeat at Kose Dag": "caused the Mongols’ invasion of Anatolia"
       },
       "explanation": "Chapter 3 says tekkes “were also important community organizations that helped people and brought them together,” and Yunus Emre “trained under his spiritual tutor, Taptuk Emre.” Then: “The Anatolian Seljuks were seriously weakened by the Babai revolts” and “The defeat caused the Mongols’ invasion of Anatolia.”",
       "feedback": {
@@ -635,7 +635,7 @@
       "question": "What was still going on, and what happened suddenly?",
       "formChoices": [
        {
-        "sentence": "While the negative effects of these revolts [choice], the defeat at Kösedağ …",
+        "sentence": "While the negative effects of these revolts [choice], the defeat at Kose Dag …",
         "options": [
          "were still feeling",
          "were still being felt",
@@ -644,7 +644,7 @@
         "answer": 1
        },
        {
-        "sentence": "While the negative effects …, the defeat at Kösedağ [choice].",
+        "sentence": "While the negative effects …, the defeat at Kose Dag [choice].",
         "options": [
          "took place",
          "has taken place",
@@ -762,7 +762,7 @@
     "title": "The Babai Revolts",
     "image": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/yunus%2Fb1%2Fimages%2Fyunus_b1_ch4-clean.png?alt=media&token=6da91fc7-0438-4fea-8808-5856c2ad63e8",
     "audioUrl": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/yunus%2Fb1%2Faudio%2F03_Chapter_4_The_Babai_Revolts.mp3?alt=media&token=35484302-b0f7-4108-8c31-de80109de40f",
-    "content": "If we take a closer look at this historical atmosphere, we can better understand Anatolia—the land where Yunus Emre lived and recited his unforgettable verses.\n\nThe rule of the Anatolian Seljuk Sultan Alaeddin I (1220–1237) was the most powerful and brilliant period of the Seljuks. He expanded the country’s borders and established a navy in the Mediterranean and Black Seas. At the time of his death, the Seljuks were the most powerful and largest state in the Middle East. However, because of the poor governance of his son, Giyaseddin Keyhüsrev II (1237–1246), the Seljuk economic and social structure began to decline. The Mongol invasion caused many people to migrate to Anatolia from Central Asia, which totally turned the lives of the local people upside down. At the beginning of the 13th century, the Turkmen population grew in Anatolia. However, Giyaseddin Keyhüsrev II’s failure to manage this situation worsened the social and economic chaos.",
+    "content": "If we take a closer look at this historical atmosphere, we can better understand Anatolia—the land where Yunus Emre lived and recited his unforgettable verses.\n\nThe rule of the Anatolian Seljuk Sultan Ala al-Din Kayqubad I (1220–1237) was the most powerful and brilliant period of the Seljuks. He expanded the country’s borders and established a navy in the Mediterranean and Black Seas. At the time of his death, the Seljuks were the most powerful and largest state in the Middle East. However, because of the poor governance of his son, Kaykhusraw II (1237–1246), the Seljuk economic and social structure began to decline. The Mongol invasion caused many people to migrate to Anatolia from Central Asia, which totally turned the lives of the local people upside down. At the beginning of the 13th century, the Turkmen population grew in Anatolia. However, Kaykhusraw II’s failure to manage this situation worsened the social and economic chaos.",
     "vocabulary": [
      {
       "word": "Anatolia",
@@ -789,11 +789,11 @@
       "definition": "__historical_entity__:yunus-yunus-emre"
      },
      {
-      "word": "Alaeddin I",
+      "word": "Ala al-Din Kayqubad I",
       "definition": "__historical_entity__:yunus-alaeddin-keykubad-i"
      },
      {
-      "word": "Giyaseddin Keyhüsrev II",
+      "word": "Kaykhusraw II",
       "definition": "__historical_entity__:yunus-giyaseddin-keyhusrev-ii"
      },
      {
@@ -831,7 +831,7 @@
       "x": 34,
       "y": 31,
       "title": "Seljuk Anatolia",
-      "description": "Under Alaeddin I the Seljuks were at their strongest; under his son they began to decline."
+      "description": "Under Ala al-Din Kayqubad I the Seljuks were at their strongest; under his son they began to decline."
      },
      {
       "id": "yunus-b1-en-4-2",
@@ -849,15 +849,15 @@
       "instructions": "Read the question. Choose the best answer from Chapter 4.",
       "question": "According to Chapter 4, why did the Seljuk economic and social structure begin to decline?",
       "options": [
-       "Alaeddin I expanded the borders and built a navy in two seas.",
-       "Giyaseddin Keyhüsrev II ruled poorly and could not manage the growing Turkmen population.",
+       "Ala al-Din Kayqubad I expanded the borders and built a navy in two seas.",
+       "Kaykhusraw II ruled poorly and could not manage the growing Turkmen population.",
        "Many Turkmen people left Anatolia and moved back to Central Asia."
       ],
       "correctAnswer": 1,
-      "explanation": "Chapter 4 says the decline began “because of the poor governance of his son, Giyaseddin Keyhüsrev II,” and that his “failure to manage this situation worsened the social and economic chaos.” Alaeddin I’s rule was the most powerful period, and people migrated to Anatolia from Central Asia, not away from it.",
+      "explanation": "Chapter 4 says the decline began “because of the poor governance of his son, Kaykhusraw II,” and that his “failure to manage this situation worsened the social and economic chaos.” Ala al-Din Kayqubad I’s rule was the most powerful period, and people migrated to Anatolia from Central Asia, not away from it.",
       "feedback": {
        "correct": "Yes. The problem was the son’s poor governance, not his father’s strong rule.",
-       "incorrect": "Read the second half of Chapter 4 again, from “However, because of …”. Who ruled after Alaeddin I, and what did he fail to do?"
+       "incorrect": "Read the second half of Chapter 4 again, from “However, because of …”. Who ruled after Ala al-Din Kayqubad I, and what did he fail to do?"
       }
      }
     ],
@@ -889,7 +889,7 @@
       "question": "When was the state strong, and what changed?",
       "formChoices": [
        {
-        "sentence": "The rule of the Anatolian Seljuk Sultan Alaeddin I (1220–1237) was [choice] period of the Seljuks.",
+        "sentence": "The rule of the Anatolian Seljuk Sultan Ala al-Din Kayqubad I (1220–1237) was [choice] period of the Seljuks.",
         "options": [
          "the more powerful and brilliant",
          "the most powerful and brilliant",
@@ -917,7 +917,7 @@
        }
       ],
       "correctAnswer": null,
-      "explanation": "The superlative “the most + adjective” with “the” evaluates Alaeddin I’s rule as the highest point of the Seljuks. “However” turns the story in a new direction: After the strongest period comes a decline. “Where” begins a clause about a place (the land where he lived); “which” would need a subject or object after it, and “when” is for time.",
+      "explanation": "The superlative “the most + adjective” with “the” evaluates Ala al-Din Kayqubad I’s rule as the highest point of the Seljuks. “However” turns the story in a new direction: After the strongest period comes a decline. “Where” begins a clause about a place (the land where he lived); “which” would need a subject or object after it, and “when” is for time.",
       "feedback": {
        "correct": "Correct. You chose the superlative, the contrast word and the place word.",
        "incorrect": "Read the second paragraph of Chapter 4 again. Is the sentence praising the best period, turning to a change, or describing a place?"
@@ -942,8 +942,8 @@
         ]
        },
        {
-        "source": "… Giyaseddin Keyhüsrev II’s failure to manage this situation worsened the social and economic chaos.",
-        "frame": "The social and economic chaos got worse because Giyaseddin Keyhüsrev II [blank] this situation.",
+        "source": "… Kaykhusraw II’s failure to manage this situation worsened the social and economic chaos.",
+        "frame": "The social and economic chaos got worse because Kaykhusraw II [blank] this situation.",
         "answers": [
          "failed to manage",
          "did not manage",
@@ -1003,14 +1003,14 @@
     ],
     "beforeYouRead": {
      "kind": "find",
-     "question": "Find it fast: In which years did Sultan Alaeddin I rule?",
+     "question": "Find it fast: In which years did Sultan Ala al-Din Kayqubad I rule?",
      "options": [
       "1220–1237",
       "1243–1260",
       "1320–1321"
      ],
      "answer": 0,
-     "quote": "Alaeddin I (1220–1237)"
+     "quote": "Ala al-Din Kayqubad I (1220–1237)"
     },
     "iCan": [
      "I can explain how the Seljuks went from their strongest time to decline.",
@@ -1025,7 +1025,7 @@
      "roles": [
       {
        "name": "Chapter 1 Expert",
-       "job": "You teach what a Sûfî is and why Yunus Emre is important for the Turkish language."
+       "job": "You teach what a Sufi is and why Yunus Emre is important for the Turkish language."
       },
       {
        "name": "Chapter 2 Expert",
@@ -1042,7 +1042,7 @@
      ],
      "steps": [
       "Read your chapter again. Note two key facts and one sentence from the book that supports them.",
-      "Teach your facts to the group in your own words, then read your sentence aloud, for example: “one of the founders of Turkish Sûfî literature” or “a very difficult time in Anatolia”.",
+      "Teach your facts to the group in your own words, then read your sentence aloud, for example: “one of the founders of Turkish Sufi literature” or “a very difficult time in Anatolia”.",
       "Listen to the others and build one short fact file together: Who Yunus Emre was, how he learned, and what was happening around him.",
       "Together, complete this sentence with two reasons, each backed by a quote: “Yunus Emre’s time was hard for the people of Anatolia because …”."
      ],
@@ -1053,10 +1053,10 @@
    {
     "id": 5,
     "type": "story",
-    "title": "Kösedağ and Destruction",
+    "title": "Kose Dag and Destruction",
     "image": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/yunus%2Fb1%2Fimages%2Fyunus_b1_ch5-clean.png?alt=media&token=c745aa27-2c80-4af2-984c-6002e9c24247",
     "audioUrl": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/yunus%2Fb1%2Faudio%2F04_Chapter_5_K%C3%B6seda%C4%9F_and_Destruction.mp3?alt=media&token=e36afa71-bbf1-4895-bc30-87baf97a40bb",
-    "content": "Because of many economic and social problems, the Turkmen people were looking for a way out and started a revolt against the state. They followed spiritual leaders called 'Baba', because they believed these leaders would save them. The rebellion spread rapidly; the Turkmen achieved significant success. In the end, the Seljuk forces put an end to the rebellion with great difficulty and defeated the rebels with swords.\n\nHowever, this situation gave the Mongols in Azerbaijan the courage to attack the Seljuk Empire. In 1242, the Mongols captured Erzurum and killed its people. This disaster caused deep sorrow and fear among the Seljuk people. Finally, in 1243, the Seljuk army and the Mongols clashed at Kösedağ, 80 km northeast of Sivas. The Mongols used the classic false retreat and circling tactic. Thus, they easily defeated the Seljuks. After that, the Mongols destroyed and raided Sivas, Kayseri, and Erzincan, leaving not a single stone standing.",
+    "content": "Because of many economic and social problems, the Turkmen people were looking for a way out and started a revolt against the state. They followed spiritual leaders called 'Baba', because they believed these leaders would save them. The rebellion spread rapidly; the Turkmen achieved significant success. In the end, the Seljuk forces put an end to the rebellion with great difficulty and defeated the rebels with swords.\n\nHowever, this situation gave the Mongols in Azerbaijan the courage to attack the Seljuk Empire. In 1242, the Mongols captured Erzurum and killed its people. This disaster caused deep sorrow and fear among the Seljuk people. Finally, in 1243, the Seljuk army and the Mongols clashed at Kose Dag, 80 km northeast of Sivas. The Mongols used the classic false retreat and circling tactic. Thus, they easily defeated the Seljuks. After that, the Mongols destroyed and raided Sivas, Kayseri, and Erzincan, leaving not a single stone standing.",
     "vocabulary": [
      {
       "word": "Erzurum",
@@ -1079,7 +1079,7 @@
       "definition": "__historical_entity__:yunus-azerbaijan"
      },
      {
-      "word": "Kösedağ",
+      "word": "Kose Dag",
       "definition": "__historical_entity__:yunus-kosedag"
      },
      {
@@ -1116,8 +1116,8 @@
       "id": "yunus-b1-en-5-1",
       "x": 24,
       "y": 44,
-      "title": "Kösedağ",
-      "description": "In 1243 the Mongols defeated the Seljuk army at Kösedağ with a false retreat."
+      "title": "Kose Dag",
+      "description": "In 1243 the Mongols defeated the Seljuk army at Kose Dag with a false retreat."
      },
      {
       "id": "yunus-b1-en-5-2",
@@ -1131,7 +1131,7 @@
      {
       "id": "yunus-b1-qc-5",
       "type": "sequencing",
-      "title": "The Road to Kösedağ",
+      "title": "The Road to Kose Dag",
       "instructions": "Put the events from Chapter 5 in the right order.",
       "question": "In what order did these events happen?",
       "sequencingItems": [
@@ -1149,7 +1149,7 @@
        },
        {
         "id": "4",
-        "text": "The Seljuk army and the Mongols clashed at Kösedağ."
+        "text": "The Seljuk army and the Mongols clashed at Kose Dag."
        },
        {
         "id": "5",
@@ -1163,7 +1163,7 @@
        "4",
        "5"
       ],
-      "explanation": "The revolt came first, and the Seljuk forces ended it “with great difficulty.” This “gave the Mongols in Azerbaijan the courage to attack”: they captured Erzurum in 1242, defeated the Seljuks at Kösedağ in 1243, and after that raided Sivas, Kayseri and Erzincan.",
+      "explanation": "The revolt came first, and the Seljuk forces ended it “with great difficulty.” This “gave the Mongols in Azerbaijan the courage to attack”: they captured Erzurum in 1242, defeated the Seljuks at Kose Dag in 1243, and after that raided Sivas, Kayseri and Erzincan.",
       "feedback": {
        "correct": "Well done. The hard fight against the revolt left the Seljuks weak, and this opened the way for the Mongol attacks.",
        "incorrect": "Follow the time words in Chapter 5: “In the end”, “In 1242”, “Finally, in 1243” and “After that”."
@@ -1303,7 +1303,7 @@
     ],
     "beforeYouRead": {
      "kind": "find",
-     "question": "Find it fast: What tactic did the Mongols use at Kösedağ?",
+     "question": "Find it fast: What tactic did the Mongols use at Kose Dag?",
      "options": [
       "a long siege of the city",
       "an attack by sea",
@@ -1313,7 +1313,7 @@
      "quote": "The Mongols used the classic false retreat and circling tactic."
     },
     "iCan": [
-     "I can tell what happened in the revolt and at Kösedağ.",
+     "I can tell what happened in the revolt and at Kose Dag.",
      "I can report what people expected would happen.",
      "I can explain a chain of events from cause to result."
     ]
@@ -1591,7 +1591,7 @@
     "title": "Yunus as a Wise Dervish",
     "image": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/yunus%2Fb1%2Fimages%2Fyunus_b1_ch7-clean.png?alt=media&token=f8a95b8e-4bbb-4786-a4d3-abdba63be0ad",
     "audioUrl": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/yunus%2Fb1%2Faudio%2F06_Chapter_7_Yunus_as_a_Wise_Dervish.mp3?alt=media&token=b49d99a5-9f7c-4fc0-9cc5-f2ad927740cf",
-    "content": "Anatolia was experiencing total chaos. During the same period, the shaykhs from the regions of Turkestan, Khorasan and Iran came to Anatolia under Mongol pressure. These shaykhs trained dervishes in their teachings. These dervishes were influential among nomads. They were spreading a simple understanding of Islam and establishing popular Sûfîsm.\n\nSo in such an environment, Yunus Emre also appeared as a wise Sûfî and dervish and traveled around Anatolia. As a Sûfî, he helped people make sense of life during those hard days. Poetry was his most influential tool.\n\nYunus’s understanding of Sûfîsm comes from the Qur’an and the Prophet’s (pbuh) Sunnah. He was also inspired by the ideas and experiences of earlier Muslim Sûfîs.",
+    "content": "Anatolia was experiencing total chaos. During the same period, the shaykhs from the regions of Turkestan, Khorasan and Iran came to Anatolia under Mongol pressure. These shaykhs trained dervishes in their teachings. These dervishes were influential among nomads. They were spreading a simple understanding of Islam and establishing popular Sufism.\n\nSo in such an environment, Yunus Emre also appeared as a wise Sufi and dervish and traveled around Anatolia. As a Sufi, he helped people make sense of life during those hard days. Poetry was his most influential tool.\n\nYunus’s understanding of Sufism comes from the Qur’an and the Prophet’s (pbuh) Sunnah. He was also inspired by the ideas and experiences of earlier Muslim Sufis.",
     "vocabulary": [
      {
       "word": "Anatolia",
@@ -1623,7 +1623,7 @@
      },
      {
       "word": "dervishes",
-      "definition": "Members of a Sûfî group who follow a spiritual path."
+      "definition": "Members of a Sufi group who follow a spiritual path."
      },
      {
       "word": "influential",
@@ -1639,7 +1639,7 @@
       "id": "yunus-b1-en-7-1",
       "x": 35,
       "y": 58,
-      "title": "Wise Sûfî",
+      "title": "Wise Sufi",
       "description": "Yunus traveled around Anatolia and helped people make sense of life in hard days."
      },
      {
@@ -1663,7 +1663,7 @@
        "He trained the dervishes who spread a simple understanding of Islam among nomads."
       ],
       "correctAnswer": 0,
-      "explanation": "Chapter 7 says Yunus Emre “appeared as a wise Sûfî and dervish and traveled around Anatolia” and “helped people make sense of life during those hard days. Poetry was his most influential tool.” It was the shaykhs from Turkestan, Khorasan and Iran who trained dervishes.",
+      "explanation": "Chapter 7 says Yunus Emre “appeared as a wise Sufi and dervish and traveled around Anatolia” and “helped people make sense of life during those hard days. Poetry was his most influential tool.” It was the shaykhs from Turkestan, Khorasan and Iran who trained dervishes.",
       "feedback": {
        "correct": "Yes. In a time of total chaos, he traveled and used poetry to help people.",
        "incorrect": "The first paragraph of Chapter 7 is about the shaykhs and their dervishes. Read the second paragraph to find what Yunus himself did."
@@ -1676,12 +1676,12 @@
       "type": "multiple-choice",
       "title": "A Foundation and an Inspiration",
       "instructions": "Read the last two sentences of Chapter 7. Then choose the best answer.",
-      "question": "“Yunus’s understanding of Sûfîsm comes from the Qur’an and the Prophet’s (pbuh) Sunnah. He was also inspired by the ideas and experiences of earlier Muslim Sûfîs.” How are the two sources different?",
+      "question": "“Yunus’s understanding of Sufism comes from the Qur’an and the Prophet’s (pbuh) Sunnah. He was also inspired by the ideas and experiences of earlier Muslim Sufis.” How are the two sources different?",
       "options": [
-       "The earlier Sûfîs are the foundation, and the Qur’an and the Sunnah are an extra inspiration.",
+       "The earlier Sufis are the foundation, and the Qur’an and the Sunnah are an extra inspiration.",
        "Both sentences say exactly the same thing in different words.",
-       "The Qur’an and the Sunnah are the foundation, and the earlier Sûfîs are an extra inspiration.",
-       "The second sentence shows that Yunus disagreed with the earlier Sûfîs."
+       "The Qur’an and the Sunnah are the foundation, and the earlier Sufis are an extra inspiration.",
+       "The second sentence shows that Yunus disagreed with the earlier Sufis."
       ],
       "correctAnswer": 2,
       "explanation": "“Comes from” names the origin or foundation of something. “Was also inspired by” adds a second, additional influence: Ideas and experiences that encouraged him. The word “also” shows that this influence is added to the foundation, not placed above it.",
@@ -1698,7 +1698,7 @@
       "question": "Can you fix the sentences about the dervishes?",
       "errorItems": [
        {
-        "sentence": "They were spreading a simple understanding of Islam and established popular Sûfîsm.",
+        "sentence": "They were spreading a simple understanding of Islam and established popular Sufism.",
         "error": "established",
         "options": [
          "establish",
@@ -1718,7 +1718,7 @@
         "answer": 0
        },
        {
-        "sentence": "As a Sûfî, he helped people making sense of life during those hard days.",
+        "sentence": "As a Sufi, he helped people making sense of life during those hard days.",
         "error": "making",
         "options": [
          "made",
@@ -1741,7 +1741,7 @@
       "title": "Time, Pressure and Response",
       "instructions": "Complete the lines from Chapter 7 with words from the bank. Three words are not needed.",
       "question": "What was happening, and how did Yunus Emre help?",
-      "fillBlanksText": "Anatolia was experiencing total chaos. [blank] the same period, the shaykhs from the regions of Turkestan, Khorasan and Iran came to Anatolia [blank] Mongol pressure. … So in [blank] an environment, Yunus Emre also appeared as a wise Sûfî and dervish and traveled around Anatolia. … Poetry was his [blank] influential tool.",
+      "fillBlanksText": "Anatolia was experiencing total chaos. [blank] the same period, the shaykhs from the regions of Turkestan, Khorasan and Iran came to Anatolia [blank] Mongol pressure. … So in [blank] an environment, Yunus Emre also appeared as a wise Sufi and dervish and traveled around Anatolia. … Poetry was his [blank] influential tool.",
       "wordBank": [
        "under",
        "During",
@@ -1828,7 +1828,7 @@
      "roles": [
       {
        "name": "Reader A (1242–1243)",
-       "job": "You know Chapter 5: the Mongols in Azerbaijan, Erzurum, Kösedağ and the cities they raided."
+       "job": "You know Chapter 5: the Mongols in Azerbaijan, Erzurum, Kose Dag and the cities they raided."
       },
       {
        "name": "Reader B (1277–1308)",
@@ -3029,7 +3029,7 @@
     "title": "A Moral Guide",
     "image": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/yunus%2Fb1%2Fimages%2Fyunus_b1_ch13-clean.png?alt=media&token=eebe2a5e-58f3-4b6d-8937-4f2d895b8537",
     "audioUrl": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/yunus%2Fb1%2Faudio%2F12_Chapter_13_A_Moral_Guide.mp3?alt=media&token=40b8f838-654b-4c54-9555-b670353ceebc",
-    "content": "In another verse, he talks about “patience” and says:\n\n[POEM]\nEnglish:\n“Patience is the foundation of an everlasting kingdom,\nAnd those who are blessed with patience will reach greatness.”\nTurkish:\nSabırlu devleti dâim olur\nNasibi sabır olanlar ulu olur\n[/POEM]\n\n[POEM]\nEnglish:\n“Whoever possesses patience rises to the heavens,\nFor within patience lies every kind of skill”\nTurkish:\nSabır kimde ise o arşa yükselir\nKi sabrın içinde bulunur türlü hünerler\n[/POEM]\n\nIn the following verse, he warns against “rage and arrogance”:\n\n[POEM]\nEnglish:\n“Whoever is filled with anger loses their faith\nIf faith is required, one must give up rage”\nTurkish:\nBuşu kimde ise imanı gider\nİman gerek ise öfkeyi gider\n[/POEM]\n\nIt is clear that Yunus Emre was an important person of his era, and his poems are still valuable today as a moral guide for future generations.\n\nHis works are as follows:\n\nRisâletü’n-Nushiye (a book of moral advice)\n\nDivan (his collected poems)",
+    "content": "In another verse, he talks about “patience” and says:\n\n[POEM]\nEnglish:\n“Patience is the foundation of an everlasting kingdom,\nAnd those who are blessed with patience will reach greatness.”\nTurkish:\nSabırlu devleti dâim olur\nNasibi sabır olanlar ulu olur\n[/POEM]\n\n[POEM]\nEnglish:\n“Whoever possesses patience rises to the heavens,\nFor within patience lies every kind of skill”\nTurkish:\nSabır kimde ise o arşa yükselir\nKi sabrın içinde bulunur türlü hünerler\n[/POEM]\n\nIn the following verse, he warns against “rage and arrogance”:\n\n[POEM]\nEnglish:\n“Whoever is filled with anger loses their faith\nIf faith is required, one must give up rage”\nTurkish:\nBuşu kimde ise imanı gider\nİman gerek ise öfkeyi gider\n[/POEM]\n\nIt is clear that Yunus Emre was an important person of his era, and his poems are still valuable today as a moral guide for future generations.\n\nHis works are as follows:\n\nRisalat al-Nushiyya (a book of moral advice)\n\nDivan (his collected poems)",
     "vocabulary": [
      {
       "word": "Yunus Emre",
@@ -3089,7 +3089,7 @@
         "right": "makes the person it fills lose their faith"
        },
        {
-        "left": "Risâletü’n-Nushiye",
+        "left": "Risalat al-Nushiyya",
         "right": "a book of moral advice"
        },
        {
@@ -3100,10 +3100,10 @@
       "correctAnswer": {
        "Patience": "the foundation of an everlasting kingdom",
        "Anger": "makes the person it fills lose their faith",
-       "Risâletü’n-Nushiye": "a book of moral advice",
+       "Risalat al-Nushiyya": "a book of moral advice",
        "Divan": "Yunus Emre’s collected poems"
       },
-      "explanation": "The verses say “Patience is the foundation of an everlasting kingdom” and “Whoever is filled with anger loses their faith.” The chapter names his works: Risâletü’n-Nushiye (a book of moral advice) and Divan (his collected poems).",
+      "explanation": "The verses say “Patience is the foundation of an everlasting kingdom” and “Whoever is filled with anger loses their faith.” The chapter names his works: Risalat al-Nushiyya (a book of moral advice) and Divan (his collected poems).",
       "feedback": {
        "correct": "Well done. Yunus praises patience, warns against anger, and his works still guide people today.",
        "incorrect": "Look at the three poems first, then at the list of his works at the end of Chapter 13."
@@ -3475,8 +3475,8 @@
        "labelSide": "left",
        "name": "Anatolia",
        "kind": "Region",
-       "text": "Yunus Emre was a famous Turkish poet and a Sûfî from Anatolia. He was born around 1240–1241 and died around 1320–1321. He lived in a very difficult time, but he traveled around Anatolia as a wise dervish and helped people with his poetry.",
-       "teacherNote": "The book names no birthplace, lodge or grave, so the map shows only the region. Chapter 4: the Anatolian Seljuk Sultan Alaeddin I (1220–1237) built a navy in the Mediterranean and Black Seas; point to both sea names. The line from the east shows people migrating to Anatolia from Central Asia because of the Mongol invasion (Chapter 4); its path is approximate.",
+       "text": "Yunus Emre was a famous Turkish poet and a Sufi from Anatolia. He was born around 1240–1241 and died around 1320–1321. He lived in a very difficult time, but he traveled around Anatolia as a wise dervish and helped people with his poetry.",
+       "teacherNote": "The book names no birthplace, lodge or grave, so the map shows only the region. Chapter 4: the Anatolian Seljuk Sultan Ala al-Din Kayqubad I (1220–1237) built a navy in the Mediterranean and Black Seas; point to both sea names. The line from the east shows people migrating to Anatolia from Central Asia because of the Mongol invasion (Chapter 4); its path is approximate.",
        "question": "Why was Yunus Emre’s time a very difficult time in Anatolia?"
       },
       {
@@ -3501,9 +3501,9 @@
        "icon": "swords",
        "tone": "event",
        "labelSide": "top",
-       "name": "Kösedağ, 1243",
+       "name": "Kose Dag, 1243",
        "kind": "Battle",
-       "text": "In 1243, the Anatolian Seljuk army and the Mongols clashed at Kösedağ, 80 km northeast of Sivas. The Mongols used a false retreat and then circled the army, so they won easily. After that, they destroyed and raided Sivas, Kayseri and Erzincan.",
+       "text": "In 1243, the Anatolian Seljuk army and the Mongols clashed at Kose Dag, 80 km northeast of Sivas. The Mongols used a false retreat and then circled the army, so they won easily. After that, they destroyed and raided Sivas, Kayseri and Erzincan.",
        "teacherNote": "The book gives the place as 80 km northeast of Sivas; the exact battlefield is not known, so the pin is approximate. Chapter 3 says this defeat caused the Mongols’ invasion of Anatolia. Chapter 6 continues: Men were killed, women and children were taken captive, and the cities were deserted.",
        "question": "Which three cities did the Mongols raid after the battle? Find them on the map."
       },
@@ -3608,7 +3608,7 @@
         "lat": 39.4,
         "zoom": 1.9
        },
-       "label": "Kösedağ"
+       "label": "Kose Dag"
       },
       {
        "year": 1277,
@@ -3680,7 +3680,7 @@
        "lon": 38.05,
        "lat": 40.1,
        "radiusKm": 110,
-       "prompt": "Find Kösedağ. It is 80 km northeast of Sivas."
+       "prompt": "Find Kose Dag. It is 80 km northeast of Sivas."
       },
       {
        "id": "erzurum",
@@ -3694,7 +3694,7 @@
        "lon": 35.49,
        "lat": 38.72,
        "radiusKm": 100,
-       "prompt": "Find Kayseri. The Mongols raided it after the battle of Kösedağ."
+       "prompt": "Find Kayseri. The Mongols raided it after the battle of Kose Dag."
       },
       {
        "id": "azerbaijan",
@@ -3749,9 +3749,9 @@
       "type": "multiple-choice",
       "title": "A Brilliant Period",
       "instructions": "Choose the best answer. Use the evidence in Chapter 4.",
-      "question": "Why does Chapter 4 call the rule of Alaeddin I the most powerful period of the Seljuks?",
+      "question": "Why does Chapter 4 call the rule of Ala al-Din Kayqubad I the most powerful period of the Seljuks?",
       "options": [
-       "He defeated the Mongols in the battle at Kösedağ.",
+       "He defeated the Mongols in the battle at Kose Dag.",
        "He expanded the borders and built a navy in two seas.",
        "He managed the growing Turkmen population well."
       ],
@@ -3759,7 +3759,7 @@
       "explanation": "Chapter 4: “He expanded the country’s borders and established a navy in the Mediterranean and Black Seas.”",
       "feedback": {
        "correct": "Correct. He made the country larger and built a navy in the Mediterranean and the Black Sea, so the Seljuks became the strongest state in the Middle East.",
-       "incorrect": "Not quite. Reread the second paragraph of Chapter 4. What did Alaeddin I do during his rule?"
+       "incorrect": "Not quite. Reread the second paragraph of Chapter 4. What did Ala al-Din Kayqubad I do during his rule?"
       }
      },
      {
@@ -3805,9 +3805,9 @@
        "They fought against the Mongols in Anatolia’s cities."
       ],
       "correctAnswer": 1,
-      "explanation": "Chapter 7: “These dervishes were influential among nomads.” Chapter 7: “They were spreading a simple understanding of Islam and establishing popular Sûfîsm.”",
+      "explanation": "Chapter 7: “These dervishes were influential among nomads.” Chapter 7: “They were spreading a simple understanding of Islam and establishing popular Sufism.”",
       "feedback": {
-       "correct": "Correct. The dervishes had influence among nomads and spread a simple form of Islam and popular Sûfîsm.",
+       "correct": "Correct. The dervishes had influence among nomads and spread a simple form of Islam and popular Sufism.",
        "incorrect": "Not quite. Reread the first paragraph of Chapter 7. Among whom were the dervishes influential, and what did they spread?"
       }
      },
@@ -3870,8 +3870,8 @@
       "category": "Ideas & Description",
       "level": "B1",
       "chapter": 1,
-      "chapterTitle": "Yunus Emre and Sûfîsm",
-      "storyExample": "Sûfîs lead a way of life within the outer (visible) and inner rules of Islam."
+      "chapterTitle": "Yunus Emre and Sufism",
+      "storyExample": "Sufis lead a way of life within the outer (visible) and inner rules of Islam."
      },
      {
       "word": "biases",
@@ -3893,8 +3893,8 @@
       "category": "Values & Society",
       "level": "B1",
       "chapter": 1,
-      "chapterTitle": "Yunus Emre and Sûfîsm",
-      "storyExample": "Sûfîs follow moral principles such as seeking to improve and become better people, being patient in times of need, giving generously without expecting anything in return, doing good to everyone without biases, responding to evil with kindness, and not attaching importance to worldly matters such as wealth, status, and fame."
+      "chapterTitle": "Yunus Emre and Sufism",
+      "storyExample": "Sufis follow moral principles such as seeking to improve and become better people, being patient in times of need, giving generously without expecting anything in return, doing good to everyone without biases, responding to evil with kindness, and not attaching importance to worldly matters such as wealth, status, and fame."
      },
      {
       "word": "worldly",
@@ -3912,8 +3912,8 @@
       "category": "Values & Society",
       "level": "B1",
       "chapter": 1,
-      "chapterTitle": "Yunus Emre and Sûfîsm",
-      "storyExample": "Sûfîs follow moral principles such as seeking to improve and become better people, being patient in times of need, giving generously without expecting anything in return, doing good to everyone without biases, responding to evil with kindness, and not attaching importance to worldly matters such as wealth, status, and fame."
+      "chapterTitle": "Yunus Emre and Sufism",
+      "storyExample": "Sufis follow moral principles such as seeking to improve and become better people, being patient in times of need, giving generously without expecting anything in return, doing good to everyone without biases, responding to evil with kindness, and not attaching importance to worldly matters such as wealth, status, and fame."
      },
      {
       "word": "literary",
@@ -3931,7 +3931,7 @@
       "category": "Language & Literature",
       "level": "B1",
       "chapter": 1,
-      "chapterTitle": "Yunus Emre and Sûfîsm",
+      "chapterTitle": "Yunus Emre and Sufism",
       "storyExample": "The words and phrases which he used helped develop a better literary Turkish."
      },
      {
@@ -3973,7 +3973,7 @@
       "level": "B1",
       "chapter": 2,
       "chapterTitle": "His Language and Education",
-      "storyExample": "According to historical sources, he lived during the same era as important people like Hacı Bektaş-ı Veli and Mevlana Celaleddin Rumi."
+      "storyExample": "According to historical sources, he lived during the same era as important people like Haji Bektash Veli and Mevlana Jalal al-Din Rumi."
      },
      {
       "word": "sources",
@@ -3992,7 +3992,7 @@
       "level": "B1",
       "chapter": 2,
       "chapterTitle": "His Language and Education",
-      "storyExample": "According to historical sources, he lived during the same era as important people like Hacı Bektaş-ı Veli and Mevlana Celaleddin Rumi."
+      "storyExample": "According to historical sources, he lived during the same era as important people like Haji Bektash Veli and Mevlana Jalal al-Din Rumi."
      },
      {
       "word": "tutor",
@@ -4011,7 +4011,7 @@
       "level": "B1",
       "chapter": 2,
       "chapterTitle": "His Language and Education",
-      "storyExample": "But he also studied Allah’s love and morals at the tekke, which was a place where Sûfî education was taught under the guidance of a sheikh (spiritual tutor)."
+      "storyExample": "But he also studied Allah’s love and morals at the tekke, which was a place where Sufi education was taught under the guidance of a sheikh (spiritual tutor)."
      },
      {
       "word": "revolts",
@@ -4130,7 +4130,7 @@
       "level": "B1",
       "chapter": 4,
       "chapterTitle": "The Babai Revolts",
-      "storyExample": "However, because of the poor governance of his son, Giyaseddin Keyhüsrev II (1237–1246), the Seljuk economic and social structure began to decline."
+      "storyExample": "However, because of the poor governance of his son, Kaykhusraw II (1237–1246), the Seljuk economic and social structure began to decline."
      },
      {
       "word": "decline",
@@ -4155,7 +4155,7 @@
       "level": "B1",
       "chapter": 4,
       "chapterTitle": "The Babai Revolts",
-      "storyExample": "However, because of the poor governance of his son, Giyaseddin Keyhüsrev II (1237–1246), the Seljuk economic and social structure began to decline."
+      "storyExample": "However, because of the poor governance of his son, Kaykhusraw II (1237–1246), the Seljuk economic and social structure began to decline."
      },
      {
       "word": "chaos",
@@ -4180,7 +4180,7 @@
       "level": "B1",
       "chapter": 4,
       "chapterTitle": "The Babai Revolts",
-      "storyExample": "However, Giyaseddin Keyhüsrev II’s failure to manage this situation worsened the social and economic chaos."
+      "storyExample": "However, Kaykhusraw II’s failure to manage this situation worsened the social and economic chaos."
      },
      {
       "word": "rebellion",
@@ -4199,7 +4199,7 @@
       "category": "History & Conflict",
       "level": "B1",
       "chapter": 5,
-      "chapterTitle": "Kösedağ and Destruction",
+      "chapterTitle": "Kose Dag and Destruction",
       "storyExample": "The rebellion spread rapidly; the Turkmen achieved significant success."
      },
      {
@@ -4221,7 +4221,7 @@
       "category": "Conflict & Actions",
       "level": "B1",
       "chapter": 5,
-      "chapterTitle": "Kösedağ and Destruction",
+      "chapterTitle": "Kose Dag and Destruction",
       "storyExample": "In 1242, the Mongols captured Erzurum and killed its people."
      },
      {
@@ -4240,7 +4240,7 @@
       "category": "Feelings",
       "level": "B1",
       "chapter": 5,
-      "chapterTitle": "Kösedağ and Destruction",
+      "chapterTitle": "Kose Dag and Destruction",
       "storyExample": "This disaster caused deep sorrow and fear among the Seljuk people."
      },
      {
@@ -4262,8 +4262,8 @@
       "category": "Conflict & Actions",
       "level": "B1",
       "chapter": 5,
-      "chapterTitle": "Kösedağ and Destruction",
-      "storyExample": "Finally, in 1243, the Seljuk army and the Mongols clashed at Kösedağ, 80 km northeast of Sivas."
+      "chapterTitle": "Kose Dag and Destruction",
+      "storyExample": "Finally, in 1243, the Seljuk army and the Mongols clashed at Kose Dag, 80 km northeast of Sivas."
      },
      {
       "word": "cruel",
@@ -4370,7 +4370,7 @@
      },
      {
       "word": "dervishes",
-      "definition": "Members of a Sûfî group who follow a spiritual path.",
+      "definition": "Members of a Sufi group who follow a spiritual path.",
       "partOfSpeech": "noun",
       "pronunciation": "/ˈdɜːrvɪʃɪz/",
       "wordFamily": [
@@ -4378,7 +4378,7 @@
        "dervishes"
       ],
       "collocations": [
-       "Sûfî dervishes",
+       "Sufi dervishes",
        "train dervishes"
       ],
       "category": "People & Spiritual Life",
@@ -4950,7 +4950,7 @@
       "meaning": "Related to ordinary daily life and things like money, not to spiritual matters.",
       "partOfSpeech": "adjective",
       "chapter": 1,
-      "context": "Sûfîs follow moral principles such as seeking to improve and become better people, being patient in times of need, giving generously without expecting anything in return, doing good to everyone without biases, responding to evil with kindness, and not attaching importance to worldly matters such as wealth, status, and fame."
+      "context": "Sufis follow moral principles such as seeking to improve and become better people, being patient in times of need, giving generously without expecting anything in return, doing good to everyone without biases, responding to evil with kindness, and not attaching importance to worldly matters such as wealth, status, and fame."
      },
      {
       "word": "sources",
@@ -4971,7 +4971,7 @@
       "meaning": "The way a state or organization is managed.",
       "partOfSpeech": "noun",
       "chapter": 4,
-      "context": "However, because of the poor governance of his son, Giyaseddin Keyhüsrev II (1237–1246), the Seljuk economic and social structure began to decline."
+      "context": "However, because of the poor governance of his son, Kaykhusraw II (1237–1246), the Seljuk economic and social structure began to decline."
      },
      {
       "word": "captured",
@@ -5043,14 +5043,14 @@
         "group": "Passive with “by”: the doer is named at the end",
         "items": [
          "The Anatolian Seljuks were seriously weakened by the Babai revolts …",
-         "He was also inspired by the ideas and experiences of earlier Muslim Sûfîs."
+         "He was also inspired by the ideas and experiences of earlier Muslim Sufis."
         ]
        },
        {
         "group": "Passive without a doer: Who did it is not said",
         "items": [
-         "Yunus Emre is known as one of the founders of Turkish Sûfî literature.",
-         "… Sûfî education was taught under the guidance of a sheikh …",
+         "Yunus Emre is known as one of the founders of Turkish Sufi literature.",
+         "… Sufi education was taught under the guidance of a sheikh …",
          "Finally, an agreement was made with the Mongols …"
         ]
        }
@@ -5063,15 +5063,15 @@
        ],
        "Passive with “by”: the doer is named at the end": [
         "The Anatolian Seljuks were seriously weakened by the Babai revolts …",
-        "He was also inspired by the ideas and experiences of earlier Muslim Sûfîs."
+        "He was also inspired by the ideas and experiences of earlier Muslim Sufis."
        ],
        "Passive without a doer: Who did it is not said": [
-        "Yunus Emre is known as one of the founders of Turkish Sûfî literature.",
-        "… Sûfî education was taught under the guidance of a sheikh …",
+        "Yunus Emre is known as one of the founders of Turkish Sufi literature.",
+        "… Sufi education was taught under the guidance of a sheikh …",
         "Finally, an agreement was made with the Mongols …"
        ]
       },
-      "explanation": "In an active sentence the subject acts: Alaeddin I expanded, the Mongols used, the shaykhs trained. The passive (be + past participle) puts the person or thing that the action happens to in first position: The Seljuks were weakened, Yunus was inspired. The writer adds “by + doer” only when the doer matters (the Babai revolts, earlier Sûfîs). When the doer is unknown, obvious or unimportant, it is left out: is known, was taught, was made. The focus is on the result, not on who did it.",
+      "explanation": "In an active sentence the subject acts: Ala al-Din Kayqubad I expanded, the Mongols used, the shaykhs trained. The passive (be + past participle) puts the person or thing that the action happens to in first position: The Seljuks were weakened, Yunus was inspired. The writer adds “by + doer” only when the doer matters (the Babai revolts, earlier Sufis). When the doer is unknown, obvious or unimportant, it is left out: is known, was taught, was made. The focus is on the result, not on who did it.",
       "feedback": {
        "correct": "Well done. You separated active sentences, passives with “by” and passives without a doer.",
        "incorrect": "First find the verb. Is it be + past participle (were weakened, is known)? Then look for “by”: does the sentence name who did it? Check Chapters 1–7."
@@ -5101,7 +5101,7 @@
       "type": "true-false",
       "title": "Notice: Not Only … But Also",
       "instructions": "Read the sentences from the book. Is the statement true or false?",
-      "question": "Chapter 3: “At that time, tekkes were not only places for Sûfî training. They were also important community organizations …” Chapter 10: “Yunus Emre emphasizes not only the heart but also the intellect as a value …” Chapter 12: “Yunus Emre’s poems are not only literary works but also a moral guide.” Statement: In these sentences, the second idea replaces the first one. For example, Yunus Emre’s poems are a moral guide, not literary works.",
+      "question": "Chapter 3: “At that time, tekkes were not only places for Sufi training. They were also important community organizations …” Chapter 10: “Yunus Emre emphasizes not only the heart but also the intellect as a value …” Chapter 12: “Yunus Emre’s poems are not only literary works but also a moral guide.” Statement: In these sentences, the second idea replaces the first one. For example, Yunus Emre’s poems are a moral guide, not literary works.",
       "correctAnswer": false,
       "explanation": "‘Not only A but also B’ keeps A and adds B with the same weight: The poems are literary works AND a moral guide; Yunus values the heart AND the intellect. In Chapter 3 the pattern is split over two sentences: “not only …” in the first, “also …” in the second. The pattern is used when the second point might surprise the reader.",
       "feedback": {
@@ -5115,7 +5115,7 @@
       "title": "Build: Reason, Turn and Result",
       "instructions": "Complete the lines from the book with words from the bank. Two words are not needed.",
       "question": "Which word fits each gap?",
-      "fillBlanksText": "People love his works very much [blank] his style. … At the time of his death, the Seljuks were the most powerful and largest state in the Middle East. [blank], because of the poor governance of his son, Giyaseddin Keyhüsrev II (1237–1246), the Seljuk economic and social structure began to decline. The Mongol invasion [blank] many people to migrate to Anatolia from Central Asia … It is “the throne of the Lord,” that is, the place where Allah reveals Himself. [blank], he described breaking a heart as destroying Allah’s house.",
+      "fillBlanksText": "People love his works very much [blank] his style. … At the time of his death, the Seljuks were the most powerful and largest state in the Middle East. [blank], because of the poor governance of his son, Kaykhusraw II (1237–1246), the Seljuk economic and social structure began to decline. The Mongol invasion [blank] many people to migrate to Anatolia from Central Asia … It is “the throne of the Lord,” that is, the place where Allah reveals Himself. [blank], he described breaking a heart as destroying Allah’s house.",
       "wordBank": [
        "due to",
        "However",
@@ -5153,7 +5153,7 @@
         "answer": 0
        },
        {
-        "sentence": "… Giyaseddin Keyhüsrev II’s failure [choice] this situation worsened the social and economic chaos.",
+        "sentence": "… Kaykhusraw II’s failure [choice] this situation worsened the social and economic chaos.",
         "options": [
          "managing",
          "to manage",
@@ -5231,8 +5231,8 @@
       "question": "How else can we say these lines from the book?",
       "transformItems": [
        {
-        "source": "The rule of the Anatolian Seljuk Sultan Alaeddin I (1220–1237) was the most powerful and brilliant period of the Seljuks.",
-        "frame": "No other period of the Seljuks was as [blank] as the rule of Alaeddin I.",
+        "source": "The rule of the Anatolian Seljuk Sultan Ala al-Din Kayqubad I (1220–1237) was the most powerful and brilliant period of the Seljuks.",
+        "frame": "No other period of the Seljuks was as [blank] as the rule of Ala al-Din Kayqubad I.",
         "answers": [
          "powerful and brilliant",
          "brilliant and powerful"
@@ -5383,9 +5383,9 @@
      {
       "id": "yunus-b1-final-1",
       "type": "multiple-choice",
-      "title": "A Sûfî Principle",
+      "title": "A Sufi Principle",
       "instructions": "Choose the answer the story gives.",
-      "question": "Which of these is one of the moral principles that Sûfîs follow?",
+      "question": "Which of these is one of the moral principles that Sufis follow?",
       "options": [
        "responding to evil with kindness",
        "looking for fame and a high status",
@@ -5394,7 +5394,7 @@
       "correctAnswer": 0,
       "explanation": "Chapter 1 lists principles such as “giving generously without expecting anything in return, doing good to everyone without biases, responding to evil with kindness, and not attaching importance to worldly matters such as wealth, status, and fame.”",
       "feedback": {
-       "correct": "Yes. A Sûfî answers evil with kindness and does not chase fame or payment.",
+       "correct": "Yes. A Sufi answers evil with kindness and does not chase fame or payment.",
        "incorrect": "Read the second paragraph of Chapter 1. The other two options go against the list."
       }
      },
@@ -5477,7 +5477,7 @@
       "matchingPairs": [
        {
         "left": "tekke",
-        "right": "a place of Sûfî education under a sheikh"
+        "right": "a place of Sufi education under a sheikh"
        },
        {
         "left": "Baba",
@@ -5493,12 +5493,12 @@
        }
       ],
       "correctAnswer": {
-       "tekke": "a place of Sûfî education under a sheikh",
+       "tekke": "a place of Sufi education under a sheikh",
        "Baba": "a spiritual leader the Turkmen followed",
        "Ilkhanate": "the Mongol state centred in Iran",
        "Tawhid": "the Oneness of Allah"
       },
-      "explanation": "Chapter 2: “the tekke, which was a place where Sûfî education was taught under the guidance of a sheikh (spiritual tutor).” Chapter 5: “They followed spiritual leaders called 'Baba'”. Chapter 6: “the Ilkhanate Empire (the Mongol state centred in Iran).” Chapter 8: “the idea of Tawhid, which means the Oneness of Allah.”",
+      "explanation": "Chapter 2: “the tekke, which was a place where Sufi education was taught under the guidance of a sheikh (spiritual tutor).” Chapter 5: “They followed spiritual leaders called 'Baba'”. Chapter 6: “the Ilkhanate Empire (the Mongol state centred in Iran).” Chapter 8: “the idea of Tawhid, which means the Oneness of Allah.”",
       "feedback": {
        "correct": "Yes. You found each meaning where the story explains the word.",
        "incorrect": "Look for the explanations in Chapters 2, 5, 6 and 8."
@@ -5520,13 +5520,13 @@
      {
       "id": "yunus-b1-final-7",
       "type": "true-false",
-      "title": "The Roots of His Sûfîsm",
+      "title": "The Roots of His Sufism",
       "instructions": "Decide whether the statement is true or false.",
-      "question": "Yunus Emre’s understanding of Sûfîsm came only from earlier Sûfîs, not from the Qur’an.",
+      "question": "Yunus Emre’s understanding of Sufism came only from earlier Sufis, not from the Qur’an.",
       "correctAnswer": false,
-      "explanation": "Chapter 7 says: “Yunus’s understanding of Sûfîsm comes from the Qur’an and the Prophet’s (pbuh) Sunnah. He was also inspired by the ideas and experiences of earlier Muslim Sûfîs.”",
+      "explanation": "Chapter 7 says: “Yunus’s understanding of Sufism comes from the Qur’an and the Prophet’s (pbuh) Sunnah. He was also inspired by the ideas and experiences of earlier Muslim Sufis.”",
       "feedback": {
-       "correct": "Right. The Qur’an and the Sunnah came first; earlier Sûfîs were an extra inspiration.",
+       "correct": "Right. The Qur’an and the Sunnah came first; earlier Sufis were an extra inspiration.",
        "incorrect": "Read the last paragraph of Chapter 7. Where does his understanding come from?"
       }
      },
@@ -5573,11 +5573,11 @@
       "sequencingItems": [
        {
         "id": "3",
-        "text": "The Mongols defeat the Seljuks at Kösedağ."
+        "text": "The Mongols defeat the Seljuks at Kose Dag."
        },
        {
         "id": "1",
-        "text": "The rule of Sultan Alaeddin I ends."
+        "text": "The rule of Sultan Ala al-Din Kayqubad I ends."
        },
        {
         "id": "5",
@@ -5599,9 +5599,9 @@
        "4",
        "5"
       ],
-      "explanation": "Alaeddin I ruled until 1237 (Chapter 4). Yunus was born around 1240–1241 (Chapter 2). Kösedağ was in 1243 (Chapter 5). Anatolia was attached to the Ilkhanate in 1308 (Chapter 6). Yunus died around 1320–1321 (Chapter 2).",
+      "explanation": "Ala al-Din Kayqubad I ruled until 1237 (Chapter 4). Yunus was born around 1240–1241 (Chapter 2). Kose Dag was in 1243 (Chapter 5). Anatolia was attached to the Ilkhanate in 1308 (Chapter 6). Yunus died around 1320–1321 (Chapter 2).",
       "feedback": {
-       "correct": "Yes. Yunus was a small child at Kösedağ and lived through the whole Mongol period.",
+       "correct": "Yes. Yunus was a small child at Kose Dag and lived through the whole Mongol period.",
        "incorrect": "Use the dates in Chapters 2, 4, 5 and 6."
       }
      }

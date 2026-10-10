@@ -418,9 +418,9 @@ const entities = [
   }),
   defineEntity({
     id: "mecca-hilf-al-fudul", kind: "people", tr: "Hilfü'l-Fudûl",
-    aliases: { en: ["Hilfü’l-fudûl","Hilfü’l-Fudûl"], ar: ["حلف الفضول"] },
+    aliases: { en: ["Hilf al-Fudul","Hilf al-Fudul"], ar: ["حلف الفضول"] },
     copy: {
-      en: { title: "Hilfü’l-Fudûl", kindLabel: "Alliance", periodLabel: "Before Islam · Mecca", summary: "Hilfü’l-Fudûl was an agreement made by some Quraysh tribes in Mecca to help people who were treated unfairly. Young Muhammad (pbuh) also took part in it.", more: "The meeting was held in the house of Abdullah ibn Jud’an in Mecca." },
+      en: { title: "Hilf al-Fudul", kindLabel: "Alliance", periodLabel: "Before Islam · Mecca", summary: "Hilf al-Fudul was an agreement made by some Quraysh tribes in Mecca to help people who were treated unfairly. Young Muhammad (pbuh) also took part in it.", more: "The meeting was held in the house of Abdullah ibn Jud’an in Mecca." },
       ar: { title: "حِلْفُ الْفُضُولِ", kindLabel: "حِلْفٌ", periodLabel: "قَبْلَ الْإِسْلَامِ · مَكَّةُ", summary: "حِلْفُ الْفُضُولِ اتِّفَاقٌ عَقَدَتْهُ بَعْضُ قَبَائِلِ قُرَيْشٍ فِي مَكَّةَ لِنُصْرَةِ الْمَظْلُومِينَ. وَقَدْ حَضَرَهُ مُحَمَّدٌ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ فِي شَبَابِهِ.", more: "عُقِدَ هَذَا الْحِلْفُ فِي بَيْتِ عَبْدِ اللَّهِ بْنِ جُدْعَانَ فِي مَكَّةَ." },
     },
     focus: medPoint(21.42, 39.83, CITY_ZOOM),
@@ -436,18 +436,18 @@ const entities = [
     },
     focus: medPoint(21.42, 39.83, CITY_ZOOM),
     picture: { folder: "mecca", name: "umayya-ibn-khalaf" },
-    sources: ["TDV İslâm Ansiklopedisi: Ümeyye b. Halef"],
+    sources: ["TDV İslâm Ansiklopedisi: Ümeyye b. Khalaf"],
   }),
   defineEntity({
     id: "mecca-ubayy-ibn-khalaf", kind: "person", tr: "Übey b. Halef",
     aliases: { en: ["Ubayy"], ar: ["أبي بن خلف"] },
     copy: {
-      en: { title: "Ubayy ibn Khalaf", kindLabel: "Person", periodLabel: "Before Islam · Mecca", summary: "Ubayy ibn Khalaf was one of the leading men of Mecca. He did not pay a merchant for his goods, but he paid at once when Hilfü’l-Fudûl stood with the merchant.", more: "He was a brother of Umayya ibn Khalaf." },
+      en: { title: "Ubayy ibn Khalaf", kindLabel: "Person", periodLabel: "Before Islam · Mecca", summary: "Ubayy ibn Khalaf was one of the leading men of Mecca. He did not pay a merchant for his goods, but he paid at once when Hilf al-Fudul stood with the merchant.", more: "He was a brother of Umayya ibn Khalaf." },
       ar: { title: "أُبَيُّ بْنُ خَلَفٍ", kindLabel: "شَخْصٌ", periodLabel: "قَبْلَ الْإِسْلَامِ · مَكَّةُ", summary: "كَانَ أُبَيُّ بْنُ خَلَفٍ مِنَ الشَّخْصِيَّاتِ الْبَارِزَةِ فِي مَكَّةَ. لَمْ يَدْفَعْ لِتَاجِرٍ ثَمَنَ بَضَائِعِهِ، ثُمَّ دَفَعَهُ فَوْرًا حِينَ وَقَفَ حِلْفُ الْفُضُولِ مَعَ التَّاجِرِ.", more: "كَانَ أَخًا لِأُمَيَّةَ بْنِ خَلَفٍ." },
     },
     focus: medPoint(21.42, 39.83, CITY_ZOOM),
     picture: { folder: "mecca", name: "ubayy-ibn-khalaf" },
-    sources: ["TDV İslâm Ansiklopedisi: Übey b. Halef"],
+    sources: ["TDV İslâm Ansiklopedisi: Übey b. Khalaf"],
   }),
   defineEntity({
     id: "mecca-abu-jahl", kind: "person", tr: "Ebû Cehil",

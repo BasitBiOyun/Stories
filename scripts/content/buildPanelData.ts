@@ -6,6 +6,7 @@ import { cpSync, mkdirSync, readFileSync, readdirSync, rmSync, writeFileSync } f
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import type { PageData } from '../../src/types';
+import { sameNarratedText } from '../../src/lib/narratedText';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '../..');
 const out = `${root}/dist/content`;
@@ -72,7 +73,7 @@ const audioState = (page: PageData, language: 'en' | 'ar'): 'current' | 'stale' 
   const requests = narration.filter(item => item.language === language && item.storagePath === path);
   const latest = requests[requests.length - 1];
   if (!latest) return 'unknown';
-  return (latest.bookText ?? latest.narrationText) === `${page.title}\n\n${page.content}` ? 'current' : 'stale';
+  return sameNarratedText(latest.bookText ?? latest.narrationText, `${page.title}\n\n${page.content}`) ? 'current' : 'stale';
 };
 
 const editions = [];

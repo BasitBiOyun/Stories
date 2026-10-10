@@ -1576,10 +1576,10 @@
   },
   "mecca-hilf-al-fudul": {
    "en": {
-    "title": "Hilfü’l-Fudûl",
+    "title": "Hilf al-Fudul",
     "kindLabel": "Alliance",
     "periodLabel": "Before Islam · Mecca",
-    "summary": "Hilfü’l-Fudûl was an agreement made by some Quraysh tribes in Mecca to help people who were treated unfairly. Young Muhammad (pbuh) also took part in it.",
+    "summary": "Hilf al-Fudul was an agreement made by some Quraysh tribes in Mecca to help people who were treated unfairly. Young Muhammad (pbuh) also took part in it.",
     "more": "The meeting was held in the house of Abdullah ibn Jud’an in Mecca."
    },
    "ar": {
@@ -1591,8 +1591,8 @@
    },
    "aliases": {
     "en": [
-     "Hilfü’l-fudûl",
-     "Hilfü’l-Fudûl"
+     "Hilf al-Fudul",
+     "Hilf al-Fudul"
     ],
     "ar": [
      "حلف الفضول"
@@ -1630,7 +1630,7 @@
     "title": "Ubayy ibn Khalaf",
     "kindLabel": "Person",
     "periodLabel": "Before Islam · Mecca",
-    "summary": "Ubayy ibn Khalaf was one of the leading men of Mecca. He did not pay a merchant for his goods, but he paid at once when Hilfü’l-Fudûl stood with the merchant.",
+    "summary": "Ubayy ibn Khalaf was one of the leading men of Mecca. He did not pay a merchant for his goods, but he paid at once when Hilf al-Fudul stood with the merchant.",
     "more": "He was a brother of Umayya ibn Khalaf."
    },
    "ar": {
@@ -2795,7 +2795,7 @@
     "title": "Sivas",
     "kindLabel": "City",
     "periodLabel": "Central Anatolia",
-    "summary": "Sivas is a city in central Anatolia. After the battle of Kösedağ in 1243, the Mongols destroyed and robbed it.",
+    "summary": "Sivas is a city in central Anatolia. After the battle of Kose Dag in 1243, the Mongols destroyed and robbed it.",
     "more": "It stands on the Kızılırmak, the longest river in Türkiye."
    },
    "ar": {
@@ -2820,7 +2820,7 @@
     "title": "Kayseri",
     "kindLabel": "City",
     "periodLabel": "Central Anatolia",
-    "summary": "Kayseri is an old city in central Anatolia. After the battle of Kösedağ in 1243, the Mongols destroyed and robbed it.",
+    "summary": "Kayseri is an old city in central Anatolia. After the battle of Kose Dag in 1243, the Mongols destroyed and robbed it.",
     "more": "It lies at the foot of Mount Erciyes, a high old volcano."
    },
    "ar": {
@@ -2844,7 +2844,7 @@
     "title": "Erzincan",
     "kindLabel": "City",
     "periodLabel": "Eastern Anatolia",
-    "summary": "Erzincan is a city in eastern Anatolia. After the battle of Kösedağ in 1243, the Mongols destroyed and robbed it.",
+    "summary": "Erzincan is a city in eastern Anatolia. After the battle of Kose Dag in 1243, the Mongols destroyed and robbed it.",
     "more": "It lies in a green plain between high mountains, near the Euphrates River."
    },
    "ar": {
@@ -2944,7 +2944,7 @@
     "title": "The Middle East",
     "kindLabel": "Region",
     "periodLabel": "Western Asia and Egypt",
-    "summary": "The Middle East is a large area in western Asia and Egypt. When Sultan Alaeddin I died, the Anatolian Seljuks were the strongest and largest state in the Middle East.",
+    "summary": "The Middle East is a large area in western Asia and Egypt. When Sultan Ala al-Din Kayqubad I died, the Anatolian Seljuks were the strongest and largest state in the Middle East.",
     "more": "Today, it has countries like Türkiye, Iran, Iraq, Syria and Egypt."
    },
    "ar": {
@@ -3116,10 +3116,10 @@
   },
   "yunus-kosedag": {
    "en": {
-    "title": "Kösedağ",
+    "title": "Kose Dag",
     "kindLabel": "Mountain",
     "periodLabel": "Battle of 1243",
-    "summary": "Kösedağ is a mountain about 80 km north-east of Sivas. Here, in 1243, the Mongols defeated the army of the Anatolian Seljuks.",
+    "summary": "Kose Dag is a mountain about 80 km north-east of Sivas. Here, in 1243, the Mongols defeated the army of the Anatolian Seljuks.",
     "more": "This defeat opened the way for the Mongols into Anatolia."
    },
    "ar": {
@@ -3131,7 +3131,7 @@
    },
    "aliases": {
     "en": [
-     "Kösedağ"
+     "Kose Dag"
     ],
     "ar": [
      "كوسه داغ"
@@ -3143,8 +3143,8 @@
     "title": "Mediterranean Sea",
     "kindLabel": "Sea",
     "periodLabel": "South of Anatolia",
-    "summary": "The Mediterranean Sea is a large sea south of Anatolia. Sultan Alaeddin I built a navy on this sea.",
-    "more": "On its coast is Alanya, a port town that Alaeddin I took for his state."
+    "summary": "The Mediterranean Sea is a large sea south of Anatolia. Sultan Ala al-Din Kayqubad I built a navy on this sea.",
+    "more": "On its coast is Alanya, a port town that Ala al-Din Kayqubad I took for his state."
    },
    "ar": {
     "title": "الْبَحْرُ الْأَبْيَضُ الْمُتَوَسِّطُ",
@@ -3168,7 +3168,7 @@
     "title": "Black Sea",
     "kindLabel": "Sea",
     "periodLabel": "North of Anatolia",
-    "summary": "The Black Sea is a large sea north of Anatolia. Sultan Alaeddin I also had a navy on this sea.",
+    "summary": "The Black Sea is a large sea north of Anatolia. Sultan Ala al-Din Kayqubad I also had a navy on this sea.",
     "more": "Sinop was an important Seljuk port on its coast."
    },
    "ar": {
@@ -3298,10 +3298,10 @@
   },
   "yunus-mevlana-rumi": {
    "en": {
-    "title": "Mevlana Celaleddin Rumi",
+    "title": "Mevlana Jalal al-Din Rumi",
     "kindLabel": "Scholar and poet",
     "periodLabel": "Died 1273",
-    "summary": "Mevlana Celaleddin Rumi was a great Muslim scholar and Sufi poet. He lived at the same time as Yunus Emre and died in 1273.",
+    "summary": "Mevlana Jalal al-Din Rumi was a great Muslim scholar and Sufi poet. He lived at the same time as Yunus Emre and died in 1273.",
     "more": "He lived in Konya, and many people visit his tomb there."
    },
    "ar": {
@@ -3323,10 +3323,10 @@
   },
   "yunus-haci-bektas-veli": {
    "en": {
-    "title": "Hacı Bektaş-ı Veli",
+    "title": "Haji Bektash Veli",
     "kindLabel": "Sufi teacher",
     "periodLabel": "13th century",
-    "summary": "Hacı Bektaş-ı Veli was a famous Sufi teacher in Anatolia. He lived at the same time as Yunus Emre.",
+    "summary": "Haji Bektash Veli was a famous Sufi teacher in Anatolia. He lived at the same time as Yunus Emre.",
     "more": "A town in central Anatolia, Hacıbektaş, carries his name."
    },
    "ar": {
@@ -3338,7 +3338,7 @@
    },
    "aliases": {
     "en": [
-     "Hacı Bektaş-ı Veli"
+     "Haji Bektash Veli"
     ],
     "ar": [
      "حاجي بكتاش"
@@ -3372,10 +3372,10 @@
   },
   "yunus-alaeddin-keykubad-i": {
    "en": {
-    "title": "Sultan Alaeddin I",
+    "title": "Sultan Ala al-Din Kayqubad I",
     "kindLabel": "Sultan of the Anatolian Seljuks",
     "periodLabel": "Ruled 1220–1237",
-    "summary": "Alaeddin I was a sultan of the Anatolian Seljuks. His rule was their strongest time, and he built a navy in the Mediterranean and Black Seas.",
+    "summary": "Ala al-Din Kayqubad I was a sultan of the Anatolian Seljuks. His rule was their strongest time, and he built a navy in the Mediterranean and Black Seas.",
     "more": "Many stone caravanserais, inns for travellers on the trade roads, were built in his time."
    },
    "ar": {
@@ -3387,7 +3387,7 @@
    },
    "aliases": {
     "en": [
-     "Alaeddin I"
+     "Ala al-Din Kayqubad I"
     ],
     "ar": [
      "علاء الدين الأول"
@@ -3397,11 +3397,11 @@
   },
   "yunus-giyaseddin-keyhusrev-ii": {
    "en": {
-    "title": "Giyaseddin Keyhüsrev II",
+    "title": "Kaykhusraw II",
     "kindLabel": "Sultan of the Anatolian Seljuks",
     "periodLabel": "Ruled 1237–1246",
-    "summary": "Giyaseddin Keyhüsrev II was the son of Alaeddin I and a sultan of the Anatolian Seljuks. Because of his poor rule, the state began to grow weak.",
-    "more": "In his time, the Mongols defeated the Seljuk army at Kösedağ."
+    "summary": "Kaykhusraw II was the son of Ala al-Din Kayqubad I and a sultan of the Anatolian Seljuks. Because of his poor rule, the state began to grow weak.",
+    "more": "In his time, the Mongols defeated the Seljuk army at Kose Dag."
    },
    "ar": {
     "title": "غِيَاثُ الدِّينِ كَيْخُسْرَوْ الثَّانِي",
@@ -3412,7 +3412,7 @@
    },
    "aliases": {
     "en": [
-     "Giyaseddin Keyhüsrev II"
+     "Kaykhusraw II"
     ],
     "ar": [
      "غياث الدين كيخسرو"
@@ -3422,10 +3422,10 @@
   },
   "yunus-baba-ilyas": {
    "en": {
-    "title": "Baba İlyas",
+    "title": "Baba Ilyas",
     "kindLabel": "Turkmen religious leader",
     "periodLabel": "13th century",
-    "summary": "Baba İlyas was a religious and Sufi leader among the Turkmen in Anatolia. He started a movement that was not Sunni, and Baba İshak was his follower.",
+    "summary": "Baba Ilyas was a religious and Sufi leader among the Turkmen in Anatolia. He started a movement that was not Sunni, and Baba Ishak was his follower.",
     "more": "It is said that he came from Khorasan and lived near Amasya."
    },
    "ar": {
@@ -3437,7 +3437,7 @@
    },
    "aliases": {
     "en": [
-     "Baba İlyas"
+     "Baba Ilyas"
     ],
     "ar": [
      "بابا إلياس"
@@ -3446,10 +3446,10 @@
   },
   "yunus-baba-ishak": {
    "en": {
-    "title": "Baba İshak",
+    "title": "Baba Ishak",
     "kindLabel": "Turkmen leader",
     "periodLabel": "Revolt of 1240",
-    "summary": "Baba İshak was a follower of Baba İlyas. In 1240, he led the Turkmen in a revolt against the Anatolian Seljuks.",
+    "summary": "Baba Ishak was a follower of Baba Ilyas. In 1240, he led the Turkmen in a revolt against the Anatolian Seljuks.",
     "more": "This revolt is known as the Babai revolt."
    },
    "ar": {
@@ -3461,7 +3461,7 @@
    },
    "aliases": {
     "en": [
-     "Baba İshak"
+     "Baba Ishak"
     ],
     "ar": [
      "بابا إسحاق"
@@ -3470,10 +3470,10 @@
   },
   "yunus-celaleddin-karatay": {
    "en": {
-    "title": "Celaleddin Karatay",
+    "title": "Jalal al-Din Karatay",
     "kindLabel": "Statesman",
     "periodLabel": "13th century",
-    "summary": "Celaleddin Karatay was a statesman of the Anatolian Seljuks. He tried to manage the Mongols and to help the state and the people.",
+    "summary": "Jalal al-Din Karatay was a statesman of the Anatolian Seljuks. He tried to manage the Mongols and to help the state and the people.",
     "more": "The Karatay Madrasa that he built in Konya is a museum today."
    },
    "ar": {
@@ -3485,7 +3485,7 @@
    },
    "aliases": {
     "en": [
-     "Celaleddin Karatay"
+     "Jalal al-Din Karatay"
     ],
     "ar": [
      "قرطاي"
@@ -3497,7 +3497,7 @@
     "title": "Anatolian Seljuks",
     "kindLabel": "Sultanate",
     "periodLabel": "11th–14th century",
-    "summary": "The Anatolian Seljuks were a Turkish Muslim state, and their capital was Konya. After the defeat at Kösedağ in 1243, they slowly came under Mongol rule.",
+    "summary": "The Anatolian Seljuks were a Turkish Muslim state, and their capital was Konya. After the defeat at Kose Dag in 1243, they slowly came under Mongol rule.",
     "more": "Many of their stone buildings can still be seen in Konya today."
    },
    "ar": {

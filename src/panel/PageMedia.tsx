@@ -7,6 +7,7 @@ import { chapterFiles, forgetChapterFiles, newChapterPath, storagePathOf, thumb,
 import { getState, mayEditPath, refreshBasket, setState, toast, updateDraft, useStore } from './store';
 import { confirm } from './ui';
 import { bookPath, editionOf, getIn, setIn, TTS_PATH } from './util';
+import { sameNarratedText } from '../lib/narratedText';
 
 /**
  * The picture and the two recordings of one chapter.
@@ -404,7 +405,7 @@ const Recording = ({
       ? 'queued'
       : !latest
         ? 'unknown'
-        : (latest.bookText ?? latest.narrationText) === text
+        : sameNarratedText(latest.bookText ?? latest.narrationText, text)
           ? 'current'
           : 'stale';
   const name = language === 'ar' ? 'Arapça ses' : 'İngilizce ses';

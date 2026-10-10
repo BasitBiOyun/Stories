@@ -10,6 +10,7 @@ import './arabicTypography.css';
 import './lib/pdfDownloadLock';
 import { LanguageProvider } from './contexts/LanguageContext';
 import { ArabicUiSanitizer } from './components/ArabicUiSanitizer';
+import { ArabicHarakatFilter } from './components/ArabicHarakatFilter';
 import { SkipLink } from './components/ui/SkipLink';
 import { UserRoleProvider } from './contexts/UserRoleContext';
 import { ClassModeProvider } from './contexts/ClassModeContext';
@@ -51,6 +52,7 @@ createRoot(document.getElementById('root')!).render(
           <SkipLink />
           <App />
           <ArabicUiSanitizer />
+          <ArabicHarakatFilter />
         </ClassModeProvider>
       </UserRoleProvider>
     </LanguageProvider>

@@ -108,7 +108,7 @@ const approvedEnglishHotspots: HotspotOverrides = {
     'h2-1': { title: 'Jahiliyyah', description: 'The period before Islam was called the Age of Ignorance, or Jahiliyyah.' },
     'h2-2': { title: 'Rich and Poor', description: 'There was a big gap between rich and poor people.' },
     'h3-1': { title: 'Slave Markets', description: 'Slave markets were very common in Arabia.' },
-    'h3-2': { title: 'Umayya', description: 'His master was Umayya b. Halef.' },
+    'h3-2': { title: 'Umayya', description: 'His master was Umayya b. Khalaf.' },
     'h4-1': { title: 'Hot Sun', description: 'He looked after his master’s camels and worked under the hot sun in the desert of Mecca all day.' },
     'h4-2': { title: 'Respect', description: 'They did not respect him as a person.' },
     'h5-1': { title: 'His Freedom', description: 'He did not have any money to pay for his freedom.' },
