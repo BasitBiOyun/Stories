@@ -183,7 +183,7 @@ const entities = [
     },
     focus: medPoint(40.03, 37.92, CITY_ZOOM),
     picture: { folder: "yunus", name: "kosedag" },
-    sources: ["TDV İslâm Ansiklopedisi: Kose Dag Savaşı"],
+    sources: ["TDV İslâm Ansiklopedisi: Kösedağ Savaşı"],
   }),
   defineEntity({
     id: "yunus-mediterranean", kind: "sea", tr: "Akdeniz",

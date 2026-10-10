@@ -436,7 +436,7 @@ const entities = [
     },
     focus: medPoint(21.42, 39.83, CITY_ZOOM),
     picture: { folder: "mecca", name: "umayya-ibn-khalaf" },
-    sources: ["TDV İslâm Ansiklopedisi: Ümeyye b. Khalaf"],
+    sources: ["TDV İslâm Ansiklopedisi: Ümeyye b. Halef"],
   }),
   defineEntity({
     id: "mecca-ubayy-ibn-khalaf", kind: "person", tr: "Übey b. Halef",
@@ -447,7 +447,7 @@ const entities = [
     },
     focus: medPoint(21.42, 39.83, CITY_ZOOM),
     picture: { folder: "mecca", name: "ubayy-ibn-khalaf" },
-    sources: ["TDV İslâm Ansiklopedisi: Übey b. Khalaf"],
+    sources: ["TDV İslâm Ansiklopedisi: Übey b. Halef"],
   }),
   defineEntity({
     id: "mecca-abu-jahl", kind: "person", tr: "Ebû Cehil",
