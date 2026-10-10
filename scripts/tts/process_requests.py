@@ -119,7 +119,29 @@ def get_object_metadata(access_token: str, storage_path: str) -> dict[str, Any] 
         raise TtsError(f"Could not read Storage metadata ({exc.code}): {details}") from exc
 
 
-def elevenlabs_synthesize(api_key: str, narration_text: str) -> bytes:
+def voice_options(item: dict[str, Any]) -> dict[str, Any]:
+    """Optional per-request model and voice settings (older requests send none)."""
+    options: dict[str, Any] = {}
+    model_id = str(item.get("modelId", "")).strip()
+    if model_id:
+        if not re.fullmatch(r"[a-z0-9_]{3,40}", model_id):
+            raise TtsError("Invalid modelId.")
+        options["model_id"] = model_id
+    settings: dict[str, float] = {}
+    for key, low, high in (("speed", 0.7, 1.2), ("stability", 0.0, 1.0)):
+        if key in item:
+            value = float(item[key])
+            if not low <= value <= high:
+                raise TtsError(f"{key} must be between {low} and {high}.")
+            settings[key] = value
+    if settings:
+        options["voice_settings"] = settings
+    return options
+
+
+def elevenlabs_synthesize(
+    api_key: str, narration_text: str, options: dict[str, Any] | None = None
+) -> bytes:
     cleaned = strip_parenthetical_content(narration_text)
     if not cleaned:
         raise TtsError("Narration became empty after parenthetical cleanup.")
@@ -130,9 +152,9 @@ def elevenlabs_synthesize(api_key: str, narration_text: str) -> bytes:
         f"https://api.elevenlabs.io/v1/text-to-speech/{VOICE_ID}"
         "?output_format=mp3_44100_128"
     )
-    # model_id and voice_settings are deliberately omitted. ElevenLabs therefore
-    # uses the API default model and Rowan's stored/default voice settings.
-    body = json.dumps({"text": cleaned}, ensure_ascii=False).encode("utf-8")
+    # Without modelId/speed/stability on the request, ElevenLabs uses the API
+    # default model and Rowan's stored voice settings (all older chapters).
+    body = json.dumps({"text": cleaned, **(options or {})}, ensure_ascii=False).encode("utf-8")
     req = request.Request(
         endpoint,
         data=body,
@@ -152,7 +174,8 @@ def elevenlabs_synthesize(api_key: str, narration_text: str) -> bytes:
 
     if len(audio) < 1024:
         raise TtsError("ElevenLabs returned an unexpectedly small audio payload.")
-    log(f"Rowan generated {len(cleaned)} narration characters.")
+    model = (options or {}).get("model_id", "default model")
+    log(f"Rowan generated {len(cleaned)} narration characters ({model}).")
     return audio
 
 
@@ -267,6 +290,7 @@ def main() -> int:
 
     for item in items:
         request_id, narration_text, storage_path = validate_request(item)
+        options = voice_options(item)
         existing = get_object_metadata(access_token, storage_path)
         existing_custom = (existing or {}).get("metadata") or {}
 
@@ -281,7 +305,7 @@ def main() -> int:
             )
 
         log(f"{request_id}: generating Rowan narration -> gs://{BUCKET}/{storage_path}")
-        audio = elevenlabs_synthesize(api_key, narration_text)
+        audio = elevenlabs_synthesize(api_key, narration_text, options)
         uploaded, firebase_url = multipart_upload(
             access_token, storage_path, audio, existing, request_id
         )
