@@ -59,6 +59,15 @@ def strip_parenthetical_content(text: str) -> str:
     return cleaned.strip()
 
 
+def end_title(text: str) -> str:
+    """A title without closing punctuation ran straight into the first sentence;
+    a full stop makes the voice end the title before the story starts."""
+    title, sep, story = text.partition("\n")
+    if sep and title.strip() and not re.search(r"[.!?؟:…]$", title.strip()):
+        return f"{title.rstrip()}.{sep}{story}"
+    return text
+
+
 def validate_storage_path(storage_path: str) -> None:
     if not storage_path or storage_path.startswith("/"):
         raise TtsError("storagePath must be a relative Firebase Storage object path.")
@@ -142,7 +151,7 @@ def voice_options(item: dict[str, Any]) -> dict[str, Any]:
 def elevenlabs_synthesize(
     api_key: str, narration_text: str, options: dict[str, Any] | None = None
 ) -> bytes:
-    cleaned = strip_parenthetical_content(narration_text)
+    cleaned = end_title(strip_parenthetical_content(narration_text))
     if not cleaned:
         raise TtsError("Narration became empty after parenthetical cleanup.")
     if len(cleaned) > MAX_TEXT_CHARS:

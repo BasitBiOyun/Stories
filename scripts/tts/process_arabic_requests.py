@@ -23,6 +23,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from process_requests import (  # noqa: E402
     MAX_TEXT_CHARS,
     TtsError,
+    end_title,
     get_access_token,
     get_object_metadata,
     multipart_upload,
@@ -42,13 +43,7 @@ def narration_for_audio(text: str) -> str:
     cleaned = strip_parenthetical_content(text)
     cleaned = re.sub(r"[ \t]+([،؛.!?؟:])", r"\1", cleaned)
     cleaned = re.sub(r"[ \t]{2,}", " ", cleaned)
-    cleaned = cleaned.strip()
-    # A title without closing punctuation ran straight into the first sentence;
-    # a full stop makes the voice end the title before the story starts.
-    title, sep, story = cleaned.partition("\n")
-    if sep and title.strip() and not re.search(r"[.!?؟:…]$", title.strip()):
-        cleaned = f"{title.rstrip()}.{sep}{story}"
-    return end_poem_lines(cleaned)
+    return end_poem_lines(end_title(cleaned.strip()))
 
 
 def end_poem_lines(text: str) -> str:
@@ -144,7 +139,14 @@ def load_requests() -> list[dict[str, Any]]:
     items = payload.get("requests")
     if not isinstance(items, list):
         raise TtsError(f"{REQUESTS_FILE} must contain a requests array.")
-    return [item for item in items if isinstance(item, dict) and item.get("enabled", True)]
+    # One request per Storage object, as in the English queue. Two enabled requests for the
+    # same path would both regenerate whenever the queue changes, and with parallel workers
+    # the older text could finish last and win.
+    latest_by_path: dict[str, dict[str, Any]] = {}
+    for item in items:
+        if isinstance(item, dict) and item.get("enabled", True):
+            latest_by_path[str(item.get("storagePath", ""))] = item
+    return list(latest_by_path.values())
 
 
 def process_item(api_key: str, access_token: str, item: dict[str, Any]) -> str:
@@ -217,7 +219,11 @@ def main() -> int:
         f"processed={counts['processed']}, skipped={counts['skipped']}, "
         f"failed={counts['failed']}, deferred={counts['deferred']}"
     )
-    return 1 if counts["failed"] else 0
+    # Deferred chapters must keep the queue "unfinished", so the build does not save the
+    # queue hash and the next build carries on with them.
+    if counts["deferred"]:
+        log(f"{counts['deferred']} chapters wait for the next build (time budget spent).")
+    return 1 if counts["failed"] or counts["deferred"] else 0
 
 
 if __name__ == "__main__":

@@ -22,6 +22,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from process_requests import (  # noqa: E402
     BUCKET,
     TtsError,
+    end_title,
     get_access_token,
     get_object_metadata,
     read_json_response,
@@ -58,7 +59,7 @@ def spoken_text(narration_text: str) -> str:
     """The exact text the voice read, cleaned the same way as the TTS scripts."""
     if ARABIC_SCRIPT_RE.search(narration_text):
         return narration_for_audio(narration_text.strip())
-    return strip_parenthetical_content(narration_text)
+    return end_title(strip_parenthetical_content(narration_text))
 
 
 def download(access_token: str, storage_path: str) -> bytes:
