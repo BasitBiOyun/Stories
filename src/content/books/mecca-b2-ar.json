@@ -4442,7 +4442,7 @@
    {
     "id": 18,
     "type": "quiz",
-    "title": "اخْتِبَارُ الْمَعْرِفَةِ",
+    "title": "اختبار المعرفة",
     "image": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fb2%2Fimages%2Fmecca_b2_ch18-clean.png?alt=media&token=c193ab4f-a2e6-4299-8877-bb89bc2385cc",
     "audioUrl": "",
     "content": "تَحَقَّقْ مِنْ فَهْمِكَ لِلْكِتَابِ كُلِّهِ مِنْ خِلَالِ ثَمَانِيَةِ أَسْئِلَةٍ. اقْرَأْ كُلَّ خِيَارٍ بِدِقَّةٍ، وَاخْتَرِ الْإِجَابَةَ الَّتِي يَدْعَمُهَا النَّصُّ.",
@@ -4590,7 +4590,7 @@
    {
     "id": 21,
     "type": "glossary",
-    "title": "الْمُعْجَمُ الرَّئِيسِيُّ",
+    "title": "المعجم الرئيسي",
     "image": "",
     "audioUrl": "",
     "content": "رَاجِعْ جَمِيعَ مُفْرَدَاتِ الْقِصَّةِ الْمُهِمَّةِ فِي مَكَانٍ وَاحِدٍ قَبْلَ تَحَدِّي الْمُفْرَدَاتِ.",
@@ -5269,7 +5269,7 @@
    {
     "id": 20,
     "type": "vocabulary-match",
-    "title": "تَحَدِّي الْمُفْرَدَاتِ (B2)",
+    "title": "تحدي المفردات",
     "image": "",
     "audioUrl": "",
     "content": "تَدَرَّبْ عَلَى الْمُفْرَدَاتِ الْمُسْتَهْدَفَةِ مِنْ خِلَالِ الْمُطَابَقَةِ وَالسِّيَاقِ وَالِاسْتِرْجَاعِ النَّشِطِ.",
@@ -5349,7 +5349,7 @@
    {
     "id": 19,
     "type": "exercises",
-    "title": "مُرَاجَعَةُ اللُّغَةِ",
+    "title": "مراجعة اللغة",
     "image": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fb2%2Fimages%2Fmecca_b2_ch19-clean.png?alt=media&token=262dfbc4-22df-422f-bbb9-32bc837d36ef",
     "audioUrl": "",
     "content": "رَاجِعْ وَاسْتَعْمِلْ تَرَاكِيبَ اللُّغَةِ وَالْخِطَابِ الَّتِي تَعَلَّمْتَهَا فِي الْفُصُولِ.",
@@ -5710,7 +5710,7 @@
    {
     "id": 22,
     "type": "final-challenge",
-    "title": "التَّحَدِّي النِّهَائِيُّ",
+    "title": "التحدي النهائي",
     "image": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fb2%2Fimages%2Fmecca_b2_ch22-clean.png?alt=media&token=f25dfbc9-ffda-4ac2-a89c-33abcba12bcd",
     "audioUrl": "",
     "content": "أَظْهِرْ إِتْقَانَكَ الْعَمِيقَ لِلنُّظُمِ التَّارِيخِيَّةِ وَالِاجْتِمَاعِيَّةِ فِي مَكَّةَ قَبْلَ الْإِسْلَامِ عَلَى مُسْتَوَى (B2).",

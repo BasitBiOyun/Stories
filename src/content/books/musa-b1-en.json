@@ -708,7 +708,7 @@
     ],
     "beforeYouRead": {
      "kind": "picture",
-     "question": "Look at the picture. Where did Moses’ mother put her baby?",
+     "question": "Look at the picture. Where did Moses’s mother put her baby?",
      "options": [
       "in a cave in the mountains",
       "in a room of the palace",
@@ -2243,10 +2243,10 @@
       "Each reader reads only his or her chapters and then closes the book.",
       "The Map Keeper asks each reader: Where did he go? Why did he go there? How long did he stay?",
       "Each reader answers with one sentence from the book, for example: “He left Egypt and traveled for a long time.” The Map Keeper adds the place and the reason to the route.",
-      "Together, check your route against the map page “Moses’ Journey” in the app and correct anything you placed wrongly."
+      "Together, check your route against the map page “Moses’s Journey” in the app and correct anything you placed wrongly."
      ],
      "share": "Each group traces its route Egypt → Midian → the mountain for the class and gives a reason for each move with because or so.",
-     "solo": "Cover Chapters 5–9, draw the route Egypt → Midian → the mountain from memory with one reason for each move, then check it on the map page “Moses’ Journey”."
+     "solo": "Cover Chapters 5–9, draw the route Egypt → Midian → the mountain from memory with one reason for each move, then check it on the map page “Moses’s Journey”."
     }
    },
    {
@@ -3202,7 +3202,7 @@
    {
     "id": 101,
     "type": "map",
-    "title": "Moses’ Journey",
+    "title": "Moses’s Journey",
     "subtitle": "Map · Chapters 1–13",
     "content": "",
     "map": {

@@ -3559,7 +3559,7 @@
    {
     "id": 15,
     "type": "quiz",
-    "title": "اخْتِبَارُ الْمَعْرِفَةِ",
+    "title": "اختبار المعرفة",
     "image": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_a2%2Fimages%2FAbraham_a2_ch1.png?alt=media&token=5e040caa-6fbf-4bb4-840f-8fc15c0c8478",
     "audioUrl": "",
     "content": "اخْتَبِرْ فَهْمَكَ لِلْأَحْدَاثِ الرَّئِيسِيَّةِ فِي حَيَاةِ النَّبِيِّ إِبْرَاهِيمَ عَلَيْهِ السَّلَامُ.",
@@ -3698,7 +3698,7 @@
    {
     "id": 18,
     "type": "glossary",
-    "title": "الْمُعْجَمُ الرَّئِيسِيُّ",
+    "title": "المعجم الرئيسي",
     "content": "رَاجِعْ جَمِيعَ مُفْرَدَاتِ الْقِصَّةِ الْمُهِمَّةِ فِي مَكَانٍ وَاحِدٍ.",
     "image": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_a2%2Fimages%2Fabraham_a2_ch14.png?alt=media&token=2923c7c2-4109-4e50-b98f-6ae8d5de5385",
     "vocabulary": [
@@ -4218,7 +4218,7 @@
    {
     "id": 16,
     "type": "vocabulary-match",
-    "title": "تَحَدِّي الْمُفْرَدَاتِ",
+    "title": "تحدي المفردات",
     "image": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_a2%2Fimages%2Fabraham_a2_ch13.png?alt=media&token=d61931ab-8d9b-4d2e-a7cd-8341d1e6be76",
     "audioUrl": "",
     "content": "طَابِقِ الْكَلِمَاتِ الْهَامَّةَ مِنَ الْقِصَّةِ مَعَ مَعَانِيهَا الصَّحِيحَةِ.",
@@ -4571,7 +4571,7 @@
    {
     "id": 20,
     "type": "final-challenge",
-    "title": "التَّحَدِّي النِّهَائِيُّ",
+    "title": "التحدي النهائي",
     "content": "اخْتَبِرْ مَعْرِفَتَكَ بِقِصَّةِ النَّبِيِّ إِبْرَاهِيمَ عَلَيْهِ السَّلَامُ كَامِلَةً.",
     "image": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Abraham%2Fabraham_a2%2Fimages%2Fabraham_a2_ch14.png?alt=media&token=2923c7c2-4109-4e50-b98f-6ae8d5de5385",
     "exercises": [

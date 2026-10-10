@@ -963,7 +963,7 @@
    "targetLearners": "Learners ready to analyse historical causality, source qualification, argument structure, metaphor and moral argument, and to write connected, evidence-based paragraphs and a whole-book synthesis.",
    "purpose": "Develop analytical B2 reading, listening, speaking and writing through Yunus Emre’s historical setting, Sufi thought, poetry and moral teaching, using the Language Focus attached to every story chapter.",
    "approachDesc": "Every story chapter follows the TYMM route. YDAB1 listening and YDAB2 reading establish meaning and evidence; the Quick Challenge checks comprehension. Grammar and discourse are then learned inductively, as the Maarif Model expects for English: in the Language Focus, learners first NOTICE a form in a real chapter sentence and work out what it does to meaning, certainty or argument (the rule is confirmed only afterwards), then BUILD it in controlled, meaningful practice, and finally USE it in connected YDAB3 speaking and YDAB4 writing about their own world. At B2, learners analyse, qualify and evaluate: they separate evidence from interpretation, keep the writer’s hedges and attributions, and take a stance of their own. Longer or denser chapters are divided into two 40-minute lessons rather than compressed. See https://tymm.meb.gov.tr/beceriler/yabanci-dil-alan-becerileri.",
-   "assessmentEvidence": "13 Quick Challenges, evidence and source checks, chapter Language Focus tasks and production, exit tickets, Knowledge Check, Vocabulary Challenge, Final Review & Reflection with cumulative Language Review tasks, and Final Challenge.",
+   "assessmentEvidence": "13 Quick Challenges, evidence and source checks, chapter Language Focus tasks and production, exit tickets, Knowledge Check, Vocabulary Challenge, Language Review, and Final Challenge.",
    "assessmentOverview": {
     "formative": [
      "Quick Challenge after each chapter",
@@ -973,7 +973,7 @@
      "Exit tickets",
      "Knowledge Check",
      "Vocabulary Challenge",
-     "Final Review & Reflection / cumulative Language Review"
+     "Language Review"
     ],
     "summative": [
      "Final Challenge"
@@ -1948,8 +1948,9 @@
     "text": "After Chapter 13, do the review pages in this order. Go back to the chapter when an answer is not clear.",
     "points": [
      "Knowledge Check",
-     "Vocabulary Challenge",
      "Master Glossary",
+     "Places & People",
+     "Vocabulary Challenge",
      "Language Review",
      "Final Challenge"
     ]
