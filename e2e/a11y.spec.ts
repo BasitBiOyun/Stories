@@ -13,6 +13,7 @@ async function scan(page: Page) {
 const screens: [string, string][] = [
   ['home', ''],
   ['chapter', 'mecca/a2/1'],
+  ['chapter with poems', 'yunusEmre/b1/13'],
   ['journey map', 'mecca/a2/14'],
   ['knowledge check', 'mecca/a2/15'],
   ['master glossary', 'mecca/a2/16'],

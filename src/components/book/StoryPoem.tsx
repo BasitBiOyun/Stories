@@ -1,113 +1,142 @@
-// Poems in the story text ([POEM] / [POEM_GRID], Yunus Emre): the block and the parser (moved from StoryPage.tsx).
+// Poems in the story text ([POEM] / [POEM_GRID], Yunus Emre): the poem card and the parser (moved from StoryPage.tsx).
+// Poems that follow each other with only a short lead-in line between them share one card (useStoryText groups them):
+// one language switch for the whole card, the lead-in inside it, a small gold dot between poems.
 import React, { useState } from 'react';
-import { motion } from 'motion/react';
-import { ArrowLeftRight } from '../ui/icons';
 import { cn } from '../../lib/utils';
 import { useLanguage } from '../../contexts/LanguageContext';
 
-export const PoemBlock = ({ 
-  english, 
-  turkish, 
-  fontSize,
-  renderTranslation,
-  compact = false,
-  inGrid = false,
-}: { 
-  english: string; 
-  turkish?: string; 
-  fontSize: number;
-  renderTranslation?: (line: string, lineIndex: number) => React.ReactNode;
+export interface PoemCardItem {
+  key: string;
+  /** The short story sentence that introduces this poem, already rendered (Word Notes included). */
+  lead?: React.ReactNode;
+  /** Translation lines, already rendered with Word Notes. */
+  lines: React.ReactNode[];
+  /** Original Turkish lines (never voiced). */
+  original: string[];
   compact?: boolean;
-  inGrid?: boolean;
-}) => {
-  const { isRTL } = useLanguage();
+}
+
+const GOLD_TEXT = 'text-[#7a6534]';
+
+export const PoemCard = ({ items, fontSize }: { items: PoemCardItem[]; fontSize: number }) => {
+  const { isRTL, t, formatNumber } = useLanguage();
   const [showOriginal, setShowOriginal] = useState(false);
-  const hasOriginal = Boolean(turkish?.trim());
+  const hasOriginal = items.some(item => item.original.length > 0);
+  const count = items.length;
+  const transFont = isRTL ? "'Arakom', sans-serif" : "'Poppins', sans-serif";
+  const poet = t('poem.poet');
 
-  const poemFontSize = compact
-    ? `clamp(0.82rem, 0.74rem + 0.42vw, ${(fontSize * 1.08 * 1.3333).toFixed(1)}px)`
-    : `clamp(0.95rem, 0.8rem + 0.6vw, ${(fontSize * 1.25 * 1.3333).toFixed(1)}px)`;
+  // Arabic script reads smaller than Latin at the same size, so Arabic poems get one step more.
+  const poemFontSize = (compact?: boolean) => {
+    const scale = (compact ? 1.08 : 1.18) * (isRTL ? 1.12 : 1);
+    return `clamp(${isRTL ? '1.05rem' : '0.95rem'}, 0.8rem + 0.6vw, ${(fontSize * scale * 1.3333).toFixed(1)}px)`;
+  };
 
-  const renderPoemLines = (
-    text: string,
-    useHighlights: boolean,
-  ) => text.split('\n').map((line, idx) => (
-    <div key={idx} className="my-1">
-      {useHighlights && renderTranslation ? renderTranslation(line.trim(), idx) : line.trim()}
+  // A poem with no lead-in sits beside the one before it when the card is wide enough.
+  const rows: { lead?: React.ReactNode; items: PoemCardItem[] }[] = [];
+  items.forEach(item => {
+    const last = rows[rows.length - 1];
+    if (last && !item.lead && last.items.length < 2) last.items.push(item);
+    else rows.push({ lead: item.lead, items: [item] });
+  });
+
+  const dot = (
+    <div aria-hidden className="flex items-center justify-center gap-3 my-5">
+      <span className="h-px w-12 bg-gold/50" />
+      <span className="w-1.5 h-1.5 rounded-full bg-gold" />
+      <span className="h-px w-12 bg-gold/50" />
     </div>
-  ));
+  );
+
+  const renderPoem = (item: PoemCardItem) => {
+    const original = showOriginal && item.original.length > 0;
+    return (
+      <div
+        lang={original ? 'tr' : isRTL ? 'ar' : 'en'}
+        dir={original ? 'ltr' : isRTL ? 'rtl' : 'ltr'}
+        className="space-y-2 text-ink select-text selection:bg-gold/20"
+        style={{
+          fontSize: poemFontSize(item.compact),
+          fontFamily: original ? "'Poppins', sans-serif" : transFont,
+          lineHeight: isRTL && !original ? 1.9 : 1.55,
+        }}
+      >
+        {(original ? item.original : item.lines).map((line, idx) => (
+          <div key={idx} className="font-medium [text-wrap:balance]">{line}</div>
+        ))}
+      </div>
+    );
+  };
 
   return (
-    <motion.div 
-      initial={{ opacity: 0, y: 15 }}
-      animate={{ opacity: 1, y: 0 }}
-      onClick={() => hasOriginal && setShowOriginal(current => !current)}
-      className={cn(
-        "w-auto p-4 md:py-4 rounded-2xl bg-parchment/45 border border-sky-300/60 border-l-4 border-r-4 border-sky-400 shadow-md relative overflow-hidden flex flex-col items-center justify-center text-center page-texture transition-all hover:shadow-lg hover:bg-parchment/55 hover:border-sky-500 select-none",
-        inGrid ? "my-0 h-full min-h-[180px]" : "my-6 clear-both", // clear-both: in story mode a poem goes under the chapter picture, full width
-        hasOriginal ? "md:ps-10 md:pe-16 cursor-pointer" : "md:px-10"
-      )}
+    <figure
+      data-poem
+      className="@container my-6 clear-both relative rounded-2xl px-5 md:px-10 pt-4 pb-5 text-center border-y-[3px] border-double border-gold/70"
+      style={{ background: 'radial-gradient(ellipse 70% 60% at 50% 0%, rgba(255,247,222,0.95), rgba(244,241,234,0.9) 60%, rgba(239,234,222,0.9))' }}
     >
-      <div className="grid w-full place-items-center">
-        <motion.div
-          aria-hidden={showOriginal}
-          animate={{ opacity: showOriginal ? 0 : 1, scale: showOriginal ? 0.985 : 1 }}
-          transition={{ duration: 0.15 }}
-          dir={isRTL ? 'rtl' : 'ltr'}
-          lang={isRTL ? 'ar' : 'en'}
-          className={cn(
-            "col-start-1 row-start-1 py-3 select-text selection:bg-gold/20 leading-relaxed font-semibold italic",
-            showOriginal && "pointer-events-none"
-          )}
-          style={{
-            fontSize: poemFontSize,
-            fontFamily: isRTL ? "'Arakom', sans-serif" : "'Poppins', sans-serif",
-          }}
-        >
-          {renderPoemLines(english, true)}
-        </motion.div>
-
-        {hasOriginal && (
-          <motion.div
-            aria-hidden={!showOriginal}
-            animate={{ opacity: showOriginal ? 1 : 0, scale: showOriginal ? 1 : 0.985 }}
-            transition={{ duration: 0.15 }}
-            dir="ltr"
-            lang="tr"
-            className={cn(
-              "col-start-1 row-start-1 py-3 select-text selection:bg-gold/20 leading-relaxed font-semibold italic",
-              !showOriginal && "pointer-events-none"
-            )}
-            style={{
-              fontSize: poemFontSize,
-              fontFamily: "'Poppins', sans-serif",
-            }}
-          >
-            {renderPoemLines(turkish!, false)}
-          </motion.div>
-        )}
-      </div>
-
-      {hasOriginal && (
-        <button
-          type="button"
-          onClick={(event) => {
-            event.stopPropagation();
-            setShowOriginal(current => !current);
-          }}
-          aria-label={showOriginal ? 'Show translation' : 'Show original Turkish'}
-          className="absolute end-4 md:end-6 top-1/2 -translate-y-1/2 p-2.5 rounded-full bg-sky-50 hover:bg-sky-100 text-sky-600 transition-colors shadow-sm border border-sky-100 flex items-center justify-center"
-        >
-          <ArrowLeftRight size={16} />
-        </button>
+      {count > 1 && (
+        <div className={cn('text-[12px] font-semibold uppercase mb-2', GOLD_TEXT, !isRTL && 'tracking-[0.12em]')} style={{ fontFamily: transFont }}>
+          {poet} · {count === 2 ? t('poem.versesTwo') : t('poem.verses').replace('{count}', formatNumber(count))}
+        </div>
       )}
-    </motion.div>
+
+      {hasOriginal ? (
+        <div className="mb-4 flex justify-center">
+          <div role="group" aria-label={t('poem.languageLabel')} className="inline-flex rounded-full bg-white/70 border border-gold/40 p-0.5 text-[13px] font-medium">
+            {[
+              { original: false, label: t('poem.translation'), font: transFont },
+              { original: true, label: 'Türkçe', font: "'Poppins', sans-serif", lang: 'tr' },
+            ].map(option => (
+              <button
+                key={String(option.original)}
+                type="button"
+                lang={option.lang}
+                aria-pressed={showOriginal === option.original}
+                onClick={() => setShowOriginal(option.original)}
+                className={cn(
+                  'min-h-8 px-3.5 py-1 rounded-full transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-605',
+                  showOriginal === option.original ? 'bg-sky-850 text-white' : 'text-slate-600 hover:text-ink',
+                )}
+                style={{ fontFamily: option.font }}
+              >
+                {option.label}
+              </button>
+            ))}
+          </div>
+        </div>
+      ) : (
+        <div className="h-3" />
+      )}
+
+      {rows.map((row, rowIdx) => (
+        <React.Fragment key={row.items[0].key}>
+          {rowIdx > 0 && dot}
+          {row.lead && (
+            <div className="mb-3 mx-auto max-w-[36rem] text-slate-600 [&_p]:mb-0 [&_p]:!text-center" style={{ fontSize: '0.86em', lineHeight: 1.6 }}>
+              {row.lead}
+            </div>
+          )}
+          <div className={cn('grid gap-5', row.items.length > 1 && '@xl:grid-cols-2 @xl:gap-8')}>
+            {row.items.map((item, idx) => (
+              <React.Fragment key={item.key}>
+                {idx > 0 && <div className="@xl:hidden -my-5">{dot}</div>}
+                <div className={cn(idx > 0 && '@xl:border-s @xl:border-gold/40 @xl:ps-8')}>{renderPoem(item)}</div>
+              </React.Fragment>
+            ))}
+          </div>
+        </React.Fragment>
+      ))}
+
+      {count === 1 && (
+        <figcaption className={cn('mt-4 text-[13px] tracking-wide', GOLD_TEXT)} style={{ fontFamily: transFont }}>{poet}</figcaption>
+      )}
+    </figure>
   );
 };
 
 const normalizePoemLabel = (line: string) =>
   line
-    .replace(/[\u064B-\u065F\u0670]/g, '')
+    .replace(/[ً-ٰٟ]/g, '')
     .trim()
     .toLowerCase();
 

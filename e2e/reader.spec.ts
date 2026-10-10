@@ -17,6 +17,19 @@ test.describe('reading a chapter', () => {
     expect(errors).toEqual([]);
   });
 
+  test('poems with a short lead-in share one card with one language switch', async ({ page }) => {
+    await openPage(page, 'yunusEmre/b1/13');
+    const card = page.locator('[data-poem]').filter({ visible: true });
+    await expect(card).toHaveCount(1);
+    await expect(card).toContainText('Yunus Emre · 3 verses');
+    await expect(card).toContainText('In the following verse, he warns against');
+    await card.getByRole('button', { name: 'Türkçe' }).click();
+    await expect(card.locator('[lang="tr"]').filter({ hasText: 'Sabırlu devleti dâim olur' })).toBeVisible();
+    await expect(card.locator('[lang="tr"]').filter({ hasText: 'Buşu kimde ise imanı gider' })).toBeVisible();
+    await card.getByRole('button', { name: 'English' }).click();
+    await expect(card).toContainText('Patience is the foundation of an everlasting kingdom');
+  });
+
   test('Next reminds about the Quick Challenge once, then moves on; Back returns', async ({ page }) => {
     await openPage(page, 'mecca/a2/1');
     const next = page.getByRole('button', { name: 'Next', exact: true });

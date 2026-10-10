@@ -11,7 +11,7 @@ import { highlightPhraseMatches, highlightTokenMatches, normalizeHighlightText }
 import { VERSE_CLOSE, VERSE_MARKS, VERSE_OPEN } from '../../lib/quranVerses';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { fallbackDefinitions as rawFallbackDefinitions, arabicAnimatedDefinitions as rawArabicAnimatedDefinitions } from '../../data/fallbackVocab';
-import { PoemBlock, parsePoem } from './StoryPoem';
+import { PoemCard, PoemCardItem, parsePoem } from './StoryPoem';
 
 const normalizeArabic = (text: string) => {
   return text
@@ -362,51 +362,7 @@ export const useStoryTextRenderer = ({
       return rendered;
     };
 
-    return parts.map((markedPart, partIdx) => {
-      // Poems are never verses, so their marks are dropped.
-      const part = /^\[POEM/.test(markedPart) ? markedPart.replace(VERSE_MARKS, '') : markedPart;
-      if (part.startsWith('[POEM_GRID]') && part.endsWith('[/POEM_GRID]')) {
-        const poemParts = [...part.matchAll(/\[POEM(?:\s+compact)?\][\s\S]*?\[\/POEM\]/gi)].map(match => match[0]);
-        if (poemParts.length > 0) {
-          return (
-            <div key={`poem-grid-${partIdx}`} className="my-6 clear-both grid grid-cols-1 md:grid-cols-2 gap-4 items-stretch">
-              {poemParts.map((poemPart, poemIndex) => {
-                const poem = parsePoem(poemPart);
-                if (!poem.translation) return null;
-                return (
-                  <PoemBlock
-                    key={`poem-grid-${partIdx}-${poemIndex}`}
-                    english={poem.translation}
-                    turkish={poem.original}
-                    fontSize={fontSize}
-                    compact
-                    inGrid
-                    renderTranslation={(line, lineIndex) => renderInlineHighlights(line, `poem-grid-${partIdx}-${poemIndex}-${lineIndex}`)}
-                  />
-                );
-              })}
-            </div>
-          );
-        }
-      }
-
-      if (/^\[POEM(?:\s+compact)?\]/i.test(part) && part.endsWith('[/POEM]')) {
-        const poem = parsePoem(part);
-        if (poem.translation) {
-          const compact = /^\[POEM\s+compact\]/i.test(part);
-          return (
-            <PoemBlock 
-              key={`poem-${partIdx}`} 
-              english={poem.translation} 
-              turkish={poem.original} 
-              fontSize={fontSize}
-              compact={compact}
-              renderTranslation={(line, lineIndex) => renderInlineHighlights(line, `poem-${partIdx}-${lineIndex}`)}
-            />
-          );
-        }
-      }
-
+    const renderPart = (part: string, partIdx: number) => {
       // Normal text part
       const paragraphs = part
         .split('\n')
@@ -586,7 +542,49 @@ export const useStoryTextRenderer = ({
           </p>
         );
       });
-    });
+    };
+
+    // Poems: [POEM_GRID] and poems separated only by a short lead-in line ("In another verse, he says:") share one card.
+    const isPoemPart = (part: string) => /^\[POEM/i.test(part);
+    const isLeadIn = (text: string) => !text.trim() || (!text.trim().includes('\n\n') && text.trim().length <= 120);
+    const poemItems = (markedPart: string, partIdx: number): PoemCardItem[] => {
+      // Poems are never verses, so their marks are dropped.
+      const part = markedPart.replace(VERSE_MARKS, '');
+      const poemParts = part.startsWith('[POEM_GRID]')
+        ? [...part.matchAll(/\[POEM(?:\s+compact)?\][\s\S]*?\[\/POEM\]/gi)].map(match => match[0])
+        : [part];
+      return poemParts.flatMap((poemPart, poemIndex) => {
+        const poem = parsePoem(poemPart);
+        if (!poem.translation) return [];
+        const key = `poem-${partIdx}-${poemIndex}`;
+        return [{
+          key,
+          lines: poem.translation.split('\n').map((line, lineIndex) => renderInlineHighlights(line.trim(), `${key}-${lineIndex}`)),
+          original: (poem.original ?? '').split('\n').map(line => line.trim()).filter(Boolean),
+          compact: /^\[POEM\s+compact\]/i.test(poemPart),
+        }];
+      });
+    };
+
+    const rendered: React.ReactNode[] = [];
+    for (let partIdx = 0; partIdx < parts.length; partIdx += 1) {
+      if (!isPoemPart(parts[partIdx])) {
+        rendered.push(renderPart(parts[partIdx], partIdx));
+        continue;
+      }
+      const items = poemItems(parts[partIdx], partIdx);
+      let next = partIdx + 1;
+      while (next + 1 < parts.length && isLeadIn(parts[next]) && isPoemPart(parts[next + 1])) {
+        const lead = parts[next].trim() ? renderPart(parts[next], next) : undefined;
+        const following = poemItems(parts[next + 1], next + 1);
+        if (following.length > 0) following[0] = { ...following[0], lead };
+        items.push(...following);
+        next += 2;
+      }
+      if (items.length > 0) rendered.push(<PoemCard key={`poem-card-${partIdx}`} items={items} fontSize={fontSize} />);
+      partIdx = next - 1;
+    }
+    return rendered;
   };
 
   return renderContent;
