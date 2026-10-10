@@ -57,24 +57,37 @@ export const useStoryTextRenderer = ({
 
   const animatedStyle = "text-brand-700 border-b-2 border-brand-500/50 hover:border-brand-600 transition-colors font-bold cursor-help";
 
-  // Place and history cards show in every chapter that lists them.
-  const isPlaceCard = (definition: string) => Boolean(getHistoricalEntityIdFromDefinition(definition));
-  const seenHighlightedWords = useMemo(() => {
+  // A Places & People card is tappable in the first two chapters that show it (once per
+  // chapter); from the third chapter on the name is plain text.
+  const PLACE_CARD_CHAPTERS = 2;
+  const { seenHighlightedWords, placeCardChapters } = useMemo(() => {
     const seen = new Set<string>();
+    const cardChapters = new Map<string, number>();
     for (let i = 0; i < currentIndex; i++) {
       const prevPage = allPages[i];
       if (prevPage.animatedWords) {
         prevPage.animatedWords.forEach(word => seen.add(word));
       }
-      if (prevPage.vocabulary) {
-        // Place and history cards stay tappable in every chapter they are listed for.
-        prevPage.vocabulary
-          .filter(v => !getHistoricalEntityIdFromDefinition(v.definition))
-          .forEach(v => seen.add(v.word));
-      }
+      prevPage.vocabulary?.forEach(v => {
+        const entityId = getHistoricalEntityIdFromDefinition(v.definition);
+        if (!entityId) seen.add(v.word);
+        else if (prevPage.type === 'story') cardChapters.set(entityId, (cardChapters.get(entityId) ?? 0) + 1);
+      });
     }
-    return seen;
+    return { seenHighlightedWords: seen, placeCardChapters: cardChapters };
   }, [allPages, currentIndex]);
+  const hasAlreadyBeenHighlighted = (requested: string, seen: Set<string>) => {
+    const normalizedRequested = normalizeHighlightText(requested, highlightLanguage);
+    return [...seen].some(previous => (
+      normalizeHighlightText(previous, highlightLanguage) === normalizedRequested
+    ));
+  };
+  const isStillHighlighted = (v: { word: string; definition: string }) => {
+    const entityId = getHistoricalEntityIdFromDefinition(v.definition);
+    return entityId
+      ? (placeCardChapters.get(entityId) ?? 0) < PLACE_CARD_CHAPTERS
+      : !hasAlreadyBeenHighlighted(v.word, seenHighlightedWords);
+  };
 
   // Dynamic book vocabulary map built from all pages of the current book
   const bookVocabularyMap = useMemo(() => {
@@ -226,12 +239,6 @@ export const useStoryTextRenderer = ({
       ...(highlightVocabulary ?? []).map(v => highlightWordCount(v.word)),
       ...(highlightAnimatedWords ?? []).map(highlightWordCount),
     );
-    const hasAlreadyBeenHighlighted = (requested: string, seen: Set<string>) => {
-      const normalizedRequested = normalizeHighlightText(requested, highlightLanguage);
-      return [...seen].some(previous => (
-        normalizeHighlightText(previous, highlightLanguage) === normalizedRequested
-      ));
-    };
     
     let globalWordCounter = 0;
     const seenOnCurrentPage = new Set<string>();
@@ -277,7 +284,7 @@ export const useStoryTextRenderer = ({
           const candidate = potentialPhrases[i];
           const vocab = highlightVocabulary?.find(v => (
             highlightWordCount(v.word) > 1
-            && (isPlaceCard(v.definition) || !hasAlreadyBeenHighlighted(v.word, seenHighlightedWords))
+            && isStillHighlighted(v)
             && !hasAlreadyBeenHighlighted(v.word, seenOnCurrentPage)
             && highlightPhraseMatches(candidate.text, v.word, highlightLanguage)
           ));
@@ -319,7 +326,7 @@ export const useStoryTextRenderer = ({
 
         const vocab = highlightVocabulary?.find(v => (
           highlightWordCount(v.word) === 1
-          && (isPlaceCard(v.definition) || !hasAlreadyBeenHighlighted(v.word, seenHighlightedWords))
+          && isStillHighlighted(v)
           && !hasAlreadyBeenHighlighted(v.word, seenOnCurrentPage)
           && highlightTokenMatches(word, v.word, highlightLanguage)
         ));
@@ -454,7 +461,7 @@ export const useStoryTextRenderer = ({
             const p = potentialPhrases[i];
             const vocab = highlightVocabulary?.find(v => (
               highlightWordCount(v.word) > 1
-              && (isPlaceCard(v.definition) || !hasAlreadyBeenHighlighted(v.word, seenHighlightedWords))
+              && isStillHighlighted(v)
               && !hasAlreadyBeenHighlighted(v.word, seenOnCurrentPage)
               && highlightPhraseMatches(p.text, v.word, highlightLanguage)
             ));
@@ -519,7 +526,7 @@ export const useStoryTextRenderer = ({
           } else {
             const vocab = highlightVocabulary?.find(v => (
               highlightWordCount(v.word) === 1
-              && (isPlaceCard(v.definition) || !hasAlreadyBeenHighlighted(v.word, seenHighlightedWords))
+              && isStillHighlighted(v)
               && !hasAlreadyBeenHighlighted(v.word, seenOnCurrentPage)
               && highlightTokenMatches(word, v.word, highlightLanguage)
             ));
