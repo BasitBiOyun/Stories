@@ -120,15 +120,15 @@ const neu: Localized = { en: 'Necmettin Erbakan University', ar: 'جامعة ن�
 const selcuk: Localized = { en: 'Selçuk University', ar: 'جامعة سلجوق' };
 
 export const advisoryBoard: BoardMember[] = [
-  { name: 'Prof. Ahmet Turan Yüksel', university: neu, department: theologyIslamicHistory },
-  { name: 'Prof. Mithat Eser', university: selcuk, department: theologyIslamicHistory },
+  { name: 'Prof. Dr. Ahmet Turan Yüksel', university: neu, department: theologyIslamicHistory },
+  { name: 'Prof. Dr. Mithat Eser', university: selcuk, department: theologyIslamicHistory },
   {
-    name: 'Prof. Bilal Kuşpınar',
+    name: 'Prof. Dr. Bilal Kuşpınar',
     university: neu,
     department: { en: 'Faculty of Social Sciences and Humanities · History of Philosophy', ar: 'كلية العلوم الاجتماعية والإنسانية · تاريخ الفلسفة' },
   },
   {
-    name: 'Prof. Resul Ay',
+    name: 'Prof. Dr. Resul Ay',
     university: { en: 'Hacettepe University', ar: 'جامعة حاجة تبه' },
     department: { en: 'Faculty of Letters · Department of History · Medieval History', ar: 'كلية الآداب · قسم التاريخ · تاريخ العصور الوسطى' },
   },
