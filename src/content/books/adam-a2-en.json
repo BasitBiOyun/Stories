@@ -1258,8 +1258,8 @@
       "definition": "To lead or manage a place."
      },
      {
-      "word": "planet",
-      "definition": "A large round object in space, such as Earth."
+      "word": "nature",
+      "definition": "Everything around us that people did not make, such as land, water, plants and animals."
      },
      {
       "word": "weak",
@@ -3381,22 +3381,23 @@
       "category": "Leadership & Responsibility"
      },
      {
-      "word": "planet",
-      "definition": "A large round object in space, such as Earth.",
+      "word": "nature",
+      "definition": "Everything around us that people did not make, such as land, water, plants and animals.",
       "partOfSpeech": "noun",
       "level": "A2",
-      "pronunciation": "/ˈplænɪt/",
+      "pronunciation": "/ˈneɪtʃər/",
       "wordFamily": [
-       "planet",
-       "planetary"
+       "nature",
+       "natural",
+       "naturally"
       ],
       "collocations": [
-       "planet Earth",
-       "live on a planet"
+       "protect nature",
+       "plants and nature"
       ],
       "chapter": 6,
       "chapterTitle": "Life on Earth",
-      "storyExample": "They were the rulers of the planet Earth.",
+      "storyExample": "They were going to build buildings for housing, protect nature and help the weak.",
       "category": "World & Nature"
      },
      {

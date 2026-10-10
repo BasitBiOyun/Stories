@@ -1799,8 +1799,8 @@
       "definition": "Power of the body."
      },
      {
-      "word": "honor",
-      "definition": "To show great respect and loyalty to someone or something."
+      "word": "sons",
+      "definition": "Male children of a family."
      },
      {
       "word": "tribal protection",
@@ -5113,20 +5113,22 @@
       "storyExample": "Life in the desert was very hard, so physical strength was extremely important."
      },
      {
-      "word": "honor",
-      "partOfSpeech": "verb",
+      "word": "sons",
+      "partOfSpeech": "noun",
       "collocations": [
-       "honor your family",
-       "protect and honor"
+       "have many sons",
+       "sons and daughters"
       ],
       "wordFamily": [
-       "honor",
-       "honorable"
+       "son",
+       "sons"
       ],
-      "definition": "To show great respect and loyalty to someone or something.",
+      "definition": "Male children of a family.",
       "chapter": 8,
       "chapterTitle": "Tribal Life",
-      "storyExample": "They had to protect and honor their tribe in every situation, even when the tribe did something wrong."
+      "storyExample": "To earn respect from other tribes, families wanted to have many sons.",
+      "pronunciation": "/sʌnz/",
+      "category": "Family & History"
      },
      {
       "word": "tribal protection",

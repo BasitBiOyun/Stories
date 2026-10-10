@@ -697,8 +697,8 @@
       "definition": "The One who brought all things into existence."
      },
      {
-      "word": "warned",
-      "definition": "Told someone about a possible danger so they could avoid it."
+      "word": "hated",
+      "definition": "Disliked someone very strongly."
      },
      {
       "word": "enemy",
@@ -930,8 +930,8 @@
       "definition": "Good things or gifts for which people are thankful."
      },
      {
-      "word": "pretending",
-      "definition": "Acting as if something is true when it is not."
+      "word": "whispered",
+      "definition": "Spoke very quietly so that others could not hear."
      }
     ],
     "hotspots": [
@@ -3675,24 +3675,24 @@
       "category": "Belief & Faith"
      },
      {
-      "word": "warned",
-      "definition": "Told someone about a possible danger so they could avoid it.",
+      "word": "hated",
+      "definition": "Disliked someone very strongly.",
       "partOfSpeech": "verb",
       "level": "B1",
-      "pronunciation": "/wɔːrnd/",
+      "pronunciation": "/ˈheɪtɪd/",
       "wordFamily": [
-       "warn",
-       "warned",
-       "warning"
+       "hate",
+       "hated",
+       "hatred"
       ],
       "collocations": [
-       "warn someone about",
-       "warn someone to be careful"
+       "hate someone",
+       "get angry and hate"
       ],
       "chapter": 4,
       "chapterTitle": "The Expulsion of Iblis",
-      "storyExample": "Allah told Adam (pbuh) that Iblis was his enemy and warned him to be careful of Iblis.",
-      "category": "Guidance & Faith"
+      "storyExample": "Iblis got angry with Adam (pbuh) and hated him.",
+      "category": "Feelings"
      },
      {
       "word": "enemy",
@@ -3813,26 +3813,26 @@
       "category": "Spiritual Life"
      },
      {
-      "word": "pretending",
-      "definition": "Acting as if something is true when it is not.",
+      "word": "whispered",
+      "definition": "Spoke very quietly so that others could not hear.",
       "partOfSpeech": "verb",
       "level": "B1",
-      "pronunciation": "/prɪˈtendɪŋ/",
+      "pronunciation": "/ˈwɪspərd/",
       "wordFamily": [
-       "pretend",
-       "pretending",
-       "pretence"
+       "whisper",
+       "whispered",
+       "whispering"
       ],
       "collocations": [
-       "pretend to be",
-       "pretend to be a friend"
+       "whisper to someone",
+       "whisper a secret"
       ],
       "synonyms": [
        "faking"
       ],
       "chapter": 5,
       "chapterTitle": "Life in Paradise and the Warning",
-      "storyExample": "When Adam (pbuh) and Eve were happy in Paradise, Iblis came near them pretending to be their friend.",
+      "storyExample": "He whispered to them that if they ate from that one tree, they would never die.",
       "category": "Honesty & Deception"
      },
      {
