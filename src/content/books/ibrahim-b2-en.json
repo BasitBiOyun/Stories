@@ -2507,7 +2507,7 @@
       "x": 65,
       "y": 45,
       "title": "The Angry Idol Maker",
-      "description": "His father was the most furious of all, because he shaped and sold idols as well as worshipping them."
+      "description": "His father was the most furious of all because he shaped and sold idols as well as worshipping them."
      }
     ],
     "exercises": [
@@ -4077,9 +4077,9 @@
         "example": "She asks this question, for the advert promises results that nobody has shown."
        },
        {
-        "question": "Step 3 — Add one exception: “She tested every … except one, because …”",
+        "question": "Step 3 — Add one exception: “She tested every … except one because …”",
         "mode": "Pair",
-        "example": "She tested every product on the shelf except one, because that one made no claims on its label. This shows that she was testing claims, not products."
+        "example": "She tested every product on the shelf except one because that one made no claims on its label. This shows that she was testing claims, not products."
        },
        {
         "question": "Step 4 — Name the source: “According to a report by …, …”",
@@ -4153,7 +4153,7 @@
       "x": 79,
       "y": 64,
       "title": "A Public Trial",
-      "description": "Abraham (pbuh) did not resist his arrest, because a trial let him show everyone that their beliefs were foolish."
+      "description": "Abraham (pbuh) did not resist his arrest because a trial let him show everyone that their beliefs were foolish."
      }
     ],
     "exercises": [
@@ -4400,7 +4400,7 @@
       "instructions": "Read the sentence from the start of Chapter 20. Then choose the best explanation.",
       "question": "“He told them that it must be the culprit!” What does “must” express?",
       "options": [
-       "A conclusion presented as the only logical one — said ironically, because Abraham knew the idol could not act.",
+       "A conclusion presented as the only logical one — said ironically because Abraham knew the idol could not act.",
        "An obligation: The idol had to accept the blame.",
        "Uncertainty: Abraham was not sure who had broken the idols.",
        "A fact that the idol itself had admitted."
@@ -4498,9 +4498,9 @@
       },
       "discussionPrompts": [
        {
-        "question": "Step 1 — Draw a strong conclusion: “The plan must be weak, because …”",
+        "question": "Step 1 — Draw a strong conclusion: “The plan must be weak because …”",
         "mode": "Individual",
-        "example": "The plan for the new car park must be weak, because the experts found three serious problems in it."
+        "example": "The plan for the new car park must be weak because the experts found three serious problems in it."
        },
        {
         "question": "Step 2 — Show what they knew but would not admit: “In fact, … . However, …”",
@@ -4597,7 +4597,7 @@
       "correctAnswer": false,
       "explanation": "Abraham answered: “Nothing from you.” He trusted in Allah alone, and Allah commanded: “O fire! Be coolness and safety for Abraham” (Surah al-Anbiya: 69).",
       "feedback": {
-       "correct": "Correct. Abraham asked Gabriel for nothing, because his trust was in Allah.",
+       "correct": "Correct. Abraham asked Gabriel for nothing because his trust was in Allah.",
        "incorrect": "Read the beginning of Chapter 21. Find Gabriel’s question and Abraham’s short answer."
       }
      }
@@ -6292,9 +6292,9 @@
       },
       "discussionPrompts": [
        {
-        "question": "Step 1 — Say what had to happen first: “The village had to …, because …”",
+        "question": "Step 1 — Say what had to happen first: “The village had to … because …”",
         "mode": "Individual",
-        "example": "The village had to find a building first, because books cannot be kept outside in the rain. The old school was the only empty place."
+        "example": "The village had to find a building first because books cannot be kept outside in the rain. The old school was the only empty place."
        },
        {
         "question": "Step 2 — Explain a word: “…, that is, …”",
@@ -7853,7 +7853,7 @@
        "not just people of a chosen race or color": "nobody excluded because of their origin",
        "coexisted with idolatry": "lived side by side with the worship of idols"
       },
-      "explanation": "“But” can mean “only” (was but the restorer = was only the restorer): it limits the claim, because the Ka’ba “was originally built long before”. “Not just X” widens the scope to everyone. The prefix co- in “coexisted” means “together”: the two beliefs were present in the same region at the same time.",
+      "explanation": "“But” can mean “only” (was but the restorer = was only the restorer): it limits the claim because the Ka’ba “was originally built long before”. “Not just X” widens the scope to everyone. The prefix co- in “coexisted” means “together”: the two beliefs were present in the same region at the same time.",
       "feedback": {
        "correct": "Correct. You read the limiting, widening and coexistence expressions.",
        "incorrect": "Find each expression in Chapter 35. Which one limits Abraham’s role, which widens who the Ka’ba is for, and which shows two things existing together?"

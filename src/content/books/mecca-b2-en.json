@@ -215,7 +215,7 @@
        {
         "question": "Start with the two empires, compare them with Arabia, then turn to Mecca. Use “because” and “however”.",
         "mode": "Individual",
-        "example": "In the 7th century, the two superpowers of the region were the Byzantine Empire and the Sassanid Persians. Because these two empires were rivals for a long time, both sides became exhausted. On the other hand, the Arabs had no political unity, because they lived in separate tribes. While the empires were busy with their rivalry, a city in western Arabia was becoming more important. That city was Mecca, where Islam was born."
+        "example": "In the 7th century, the two superpowers of the region were the Byzantine Empire and the Sassanid Persians. Because these two empires were rivals for a long time, both sides became exhausted. On the other hand, the Arabs had no political unity because they lived in separate tribes. While the empires were busy with their rivalry, a city in western Arabia was becoming more important. That city was Mecca, where Islam was born."
        }
       ]
      }
@@ -2313,7 +2313,7 @@
        {
         "question": "Use “both … and …”, “more … than”, “yet”, and “… was / were seen as …”.",
         "mode": "Individual",
-        "example": "In Mecca, power came from both wealth and words. Slaves were bought and sold like animals, and owning them was a show of wealth. Poets held a different kind of power, because poetry was used to keep the tribe’s history alive. Yet many poets praised conflict and war rather than peace. In a sense, their words shaped what the whole tribe believed, much as the media does today."
+        "example": "In Mecca, power came from both wealth and words. Slaves were bought and sold like animals, and owning them was a show of wealth. Poets held a different kind of power because poetry was used to keep the tribe’s history alive. Yet many poets praised conflict and war rather than peace. In a sense, their words shaped what the whole tribe believed, much as the media does today."
        }
       ]
      }
@@ -2638,7 +2638,7 @@
       "type": "true-false",
       "title": "The Writer’s View",
       "instructions": "Is the statement true or false? Use Chapter 13.",
-      "question": "In the first paragraph, the writer presents the opposition to Islam as something that could be expected, because politics, economics and religion are linked.",
+      "question": "In the first paragraph, the writer presents the opposition to Islam as something that could be expected because politics, economics and religion are linked.",
       "correctAnswer": true,
       "explanation": "The writer states that “Politics, economics, and religion are three interconnected areas” and concludes: “So, it is understandable that Islam faced opposition from both politically and economically powerful groups in Mecca.”",
       "feedback": {
@@ -3112,7 +3112,7 @@
        {
         "question": "Use “at first”, “however, when”, “went further” and “would eventually”. Mention people with no protectors.",
         "mode": "Individual",
-        "example": "The Meccan leaders knew that the call to monotheism would eventually bring them face to face with people who practised injustice and usury. At first, they only mocked the new religion. However, when the Qur’an began to speak against their idols, they opposed the Prophet (pbuh) fiercely. People without powerful protectors suffered the most, because nobody could defend them. Bilal, an Abyssinian slave, was one of them. Later, the elites went further and imposed a social and economic boycott on the Muslims from 617 to 620."
+        "example": "The Meccan leaders knew that the call to monotheism would eventually bring them face to face with people who practised injustice and usury. At first, they only mocked the new religion. However, when the Qur’an began to speak against their idols, they opposed the Prophet (pbuh) fiercely. People without powerful protectors suffered the most because nobody could defend them. Bilal, an Abyssinian slave, was one of them. Later, the elites went further and imposed a social and economic boycott on the Muslims from 617 to 620."
        }
       ]
      }
@@ -5639,7 +5639,7 @@
        {
         "question": "Sentences 4–5 — Be careful: “Although …, …”, “… is not always …”",
         "mode": "Pair",
-        "example": "Although our teachers already help, they cannot see everything that happens during the breaks. The committee’s role would be mostly to listen rather than to punish, because a complaint is not always a sign of a serious problem."
+        "example": "Although our teachers already help, they cannot see everything that happens during the breaks. The committee’s role would be mostly to listen rather than to punish because a complaint is not always a sign of a serious problem."
        },
        {
         "question": "Sentences 6–7 — Results: “If the group …, it would … . Otherwise, …”",

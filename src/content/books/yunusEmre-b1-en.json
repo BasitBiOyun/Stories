@@ -1056,7 +1056,7 @@
     "title": "Kose Dag and Destruction",
     "image": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/yunus%2Fb1%2Fimages%2Fyunus_b1_ch5-clean.png?alt=media&token=c745aa27-2c80-4af2-984c-6002e9c24247",
     "audioUrl": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/yunus%2Fb1%2Faudio%2F04_Chapter_5_K%C3%B6seda%C4%9F_and_Destruction.mp3?alt=media&token=e36afa71-bbf1-4895-bc30-87baf97a40bb",
-    "content": "Because of many economic and social problems, the Turkmen people were looking for a way out and started a revolt against the state. They followed spiritual leaders called 'Baba', because they believed these leaders would save them. The rebellion spread rapidly; the Turkmen achieved significant success. In the end, the Seljuk forces put an end to the rebellion with great difficulty and defeated the rebels with swords.\n\nHowever, this situation gave the Mongols in Azerbaijan the courage to attack the Seljuk Empire. In 1242, the Mongols captured Erzurum and killed its people. This disaster caused deep sorrow and fear among the Seljuk people. Finally, in 1243, the Seljuk army and the Mongols clashed at Kose Dag, 80 km northeast of Sivas. The Mongols used the classic false retreat and circling tactic. Thus, they easily defeated the Seljuks. After that, the Mongols destroyed and raided Sivas, Kayseri, and Erzincan, leaving not a single stone standing.",
+    "content": "Because of many economic and social problems, the Turkmen people were looking for a way out and started a revolt against the state. They followed spiritual leaders called 'Baba' because they believed these leaders would save them. The rebellion spread rapidly; the Turkmen achieved significant success. In the end, the Seljuk forces put an end to the rebellion with great difficulty and defeated the rebels with swords.\n\nHowever, this situation gave the Mongols in Azerbaijan the courage to attack the Seljuk Empire. In 1242, the Mongols captured Erzurum and killed its people. This disaster caused deep sorrow and fear among the Seljuk people. Finally, in 1243, the Seljuk army and the Mongols clashed at Kose Dag, 80 km northeast of Sivas. The Mongols used the classic false retreat and circling tactic. Thus, they easily defeated the Seljuks. After that, the Mongols destroyed and raided Sivas, Kayseri, and Erzincan, leaving not a single stone standing.",
     "vocabulary": [
      {
       "word": "Erzurum",
@@ -1233,7 +1233,7 @@
         "answer": 1
        },
        {
-        "sentence": "They followed spiritual leaders called 'Baba', because of they believed these leaders would save them.",
+        "sentence": "They followed spiritual leaders called 'Baba' because of they believed these leaders would save them.",
         "error": "because of",
         "options": [
          "because",
@@ -1440,7 +1440,7 @@
         "… in 1308, the lands of Anatolia were directly attached to the Ilkhanate Empire …"
        ]
       },
-      "explanation": "The passive is “was/were + past participle”. It puts the people or places that suffered in first position: the men, the women and children, the lands of Anatolia. The doer is often not named, because the focus is on what happened to the victims. Note: “by the sword” names the weapon, not the doer.",
+      "explanation": "The passive is “was/were + past participle”. It puts the people or places that suffered in first position: the men, the women and children, the lands of Anatolia. The doer is often not named because the focus is on what happened to the victims. Note: “by the sword” names the weapon, not the doer.",
       "feedback": {
        "correct": "Correct. You separated the sentences about the doers from the sentences about those affected.",
        "incorrect": "Look for “was/were + past participle” (killed, taken, attached). In those sentences the subject does not act; something happens to it."
@@ -3234,7 +3234,7 @@
        {
         "question": "Sentence 4 — Add a warning: “In the same way, …”",
         "mode": "Pair",
-        "example": "In the same way, anger can stop your progress, because angry learners often give up."
+        "example": "In the same way, anger can stop your progress because angry learners often give up."
        },
        {
         "question": "Sentence 5 — End with advice: “If one wants to …, one must …”",
@@ -5196,7 +5196,7 @@
         "answer": 1
        },
        {
-        "sentence": "They followed spiritual leaders called 'Baba', because they believed these leaders will save them.",
+        "sentence": "They followed spiritual leaders called 'Baba' because they believed these leaders will save them.",
         "error": "will save",
         "options": [
          "save",
@@ -5343,7 +5343,7 @@
       "instructions": "Write 5–6 sentences about a real change in your school or town.",
       "question": "Can you tell the news of a change clearly?",
       "correctAnswer": null,
-      "explanation": "Example: “Three years ago, the park in our neighbourhood was full of rubbish, and few families were using it. However, last spring the park was cleaned by volunteers from our school, and new benches were put in. According to my neighbor, Mr Hasan, more children play there now than ever before. The park is not only cleaner but also safer, because it has new lights. For this reason, my friends and I go there almost every day. Anyone who uses the park should help keep it clean.”",
+      "explanation": "Example: “Three years ago, the park in our neighbourhood was full of rubbish, and few families were using it. However, last spring the park was cleaned by volunteers from our school, and new benches were put in. According to my neighbor, Mr Hasan, more children play there now than ever before. The park is not only cleaner but also safer because it has new lights. For this reason, my friends and I go there almost every day. Anyone who uses the park should help keep it clean.”",
       "feedback": {
        "correct": "Check your paragraph: was/were + -ing for the background; However for the turn; was/were + past participle for the change; According to … for someone’s view; not only … but also …; because / because of, For this reason; Anyone who … should ….",
        "incorrect": ""

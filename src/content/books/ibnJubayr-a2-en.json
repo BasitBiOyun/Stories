@@ -398,7 +398,7 @@
     "type": "story",
     "title": "The Rihla and a Dangerous Journey",
     "image": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/andulus%2Fa2%2Fimages%2Fandulus_a2_ch3.jpeg?alt=media",
-    "content": "Ibn Jubayr was not the first person from Al-Andalus to travel for Hajj. But he was one of the first to carefully write about his trip and share his stories with many other people. Ibn Jubayr wrote a travel diary about his journey. The name of his travel book is the Rihla. In the Arabic language, the word rihla means travel book. This book made him very famous in history, because his diary became the model for a whole new kind of travel book.\n\nToday, everyone knows this book as the Rihla of Ibn Jubayr. Ibn Jubayr wrote down everything he saw and heard almost every day while he still remembered the details. This old travel book opens a magical window into the Mediterranean journeys in the twelfth century. This helps the reader imagine everything Ibn Jubayr saw. He describes both daily life and amazing sights. For example, while you are reading his travel book, you can see big storms hitting ships and imagine large crowds of pilgrims in Mecca. At that time, Crusaders were in Palestine. Ibn Jubayr wrote about Muslim prisoners. You can also see that Crusaders sold Muslim slaves in the market.\n\nIn the Middle Ages, the journey to Mecca for Hajj was very long and difficult. It was much harder than today. At the end of the twelfth century, the Mediterranean Sea and the lands around it were very dangerous. Almost the whole area was a war zone. Ibn Jubayr’s long journey took two years and three and a half months. He traveled by boat, by camel, and on foot to visit Mecca.",
+    "content": "Ibn Jubayr was not the first person from Al-Andalus to travel for Hajj. But he was one of the first to carefully write about his trip and share his stories with many other people. Ibn Jubayr wrote a travel diary about his journey. The name of his travel book is the Rihla. In the Arabic language, the word rihla means travel book. This book made him very famous in history because his diary became the model for a whole new kind of travel book.\n\nToday, everyone knows this book as the Rihla of Ibn Jubayr. Ibn Jubayr wrote down everything he saw and heard almost every day while he still remembered the details. This old travel book opens a magical window into the Mediterranean journeys in the twelfth century. This helps the reader imagine everything Ibn Jubayr saw. He describes both daily life and amazing sights. For example, while you are reading his travel book, you can see big storms hitting ships and imagine large crowds of pilgrims in Mecca. At that time, Crusaders were in Palestine. Ibn Jubayr wrote about Muslim prisoners. You can also see that Crusaders sold Muslim slaves in the market.\n\nIn the Middle Ages, the journey to Mecca for Hajj was very long and difficult. It was much harder than today. At the end of the twelfth century, the Mediterranean Sea and the lands around it were very dangerous. Almost the whole area was a war zone. Ibn Jubayr’s long journey took two years and three and a half months. He traveled by boat, by camel, and on foot to visit Mecca.",
     "vocabulary": [
      {
       "word": "Mediterranean",
@@ -2066,7 +2066,7 @@
     "type": "story",
     "title": "Dangers of Medieval Travel",
     "image": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/andulus%2Fa2%2Fimages%2Fandulus_a2_ch12.jpeg?alt=media",
-    "content": "Ibn Jubayr had many adventures during his journey and even faced deadly dangers, because the journey in the Middle Ages was really dangerous. It did not matter how people traveled. By sea, big storms and shipwrecks were very real dangers. Ibn Jubayr survived both of them. He almost lost his life during these times. By land, groups of desert robbers were a big problem. They attacked the caravans. They took everything from the travelers. Then, the travelers had to walk to find safety or die under the burning sun.\n\nIn fact, the weather and nature could also bring real dangers. The caravans usually traveled at night. This way, they avoided the hot afternoon sun. Travelers also needed to fill their water bags all the time. This situation greatly worried Ibn Jubayr, and he always wrote down the locations of fresh water wells.",
+    "content": "Ibn Jubayr had many adventures during his journey and even faced deadly dangers because the journey in the Middle Ages was really dangerous. It did not matter how people traveled. By sea, big storms and shipwrecks were very real dangers. Ibn Jubayr survived both of them. He almost lost his life during these times. By land, groups of desert robbers were a big problem. They attacked the caravans. They took everything from the travelers. Then, the travelers had to walk to find safety or die under the burning sun.\n\nIn fact, the weather and nature could also bring real dangers. The caravans usually traveled at night. This way, they avoided the hot afternoon sun. Travelers also needed to fill their water bags all the time. This situation greatly worried Ibn Jubayr, and he always wrote down the locations of fresh water wells.",
     "vocabulary": [
      {
       "word": "adventures",
@@ -3276,7 +3276,7 @@
        "It was a book about the history of Granada."
       ],
       "correctAnswer": 1,
-      "explanation": "Chapter 3: “This book made him very famous in history, because his diary became the model for a whole new kind of travel book.”",
+      "explanation": "Chapter 3: “This book made him very famous in history because his diary became the model for a whole new kind of travel book.”",
       "feedback": {
        "correct": "Yes! Later writers followed his example, so his diary became a model.",
        "incorrect": "Not this one. Read the first paragraph of Chapter 3 again. Find the word “because”."
@@ -4892,7 +4892,7 @@
       ],
       "chapter": 12,
       "chapterTitle": "Dangers of Medieval Travel",
-      "storyExample": "Ibn Jubayr had many adventures during his journey and even faced deadly dangers, because the journey in the Middle Ages was really dangerous.",
+      "storyExample": "Ibn Jubayr had many adventures during his journey and even faced deadly dangers because the journey in the Middle Ages was really dangerous.",
       "category": "Travel"
      },
      {
@@ -4914,7 +4914,7 @@
       ],
       "chapter": 12,
       "chapterTitle": "Dangers of Medieval Travel",
-      "storyExample": "Ibn Jubayr had many adventures during his journey and even faced deadly dangers, because the journey in the Middle Ages was really dangerous.",
+      "storyExample": "Ibn Jubayr had many adventures during his journey and even faced deadly dangers because the journey in the Middle Ages was really dangerous.",
       "category": "War and Safety"
      },
      {

@@ -375,7 +375,7 @@
     "title": "Knowledge and Respect",
     "image": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Adam_A2%2Fimages%2Fadam-a2_adam_a2_chapter2.png?alt=media&token=649ddbc9-ea42-4fe9-9a58-09ce1d27191a",
     "audioUrl": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Adam_A2%2Fadam_a2_english_chapter2.mp3?alt=media&token=1e1580e8-16b3-4957-8f44-0f06bed5ec21",
-    "content": "Allah told His angels, “After I have created Adam and given him life, show respect to him.” Adam could learn and understand. He was wiser than the angels, because Allah gave Adam knowledge and taught him to think. He learned more than the angels knew. \n\nAll the angels thought that Adam was amazing. They all admired him and respected him. But Iblis didn’t think so. Iblis thought Adam was an unimportant creature created from clay.",
+    "content": "Allah told His angels, “After I have created Adam and given him life, show respect to him.” Adam could learn and understand. He was wiser than the angels because Allah gave Adam knowledge and taught him to think. He learned more than the angels knew. \n\nAll the angels thought that Adam was amazing. They all admired him and respected him. But Iblis didn’t think so. Iblis thought Adam was an unimportant creature created from clay.",
     "vocabulary": [
      {
       "word": "respect",
@@ -423,7 +423,7 @@
        "The angels admired him and respected him."
       ],
       "correctAnswer": 0,
-      "explanation": "Chapter 2 says Adam “was wiser than the angels, because Allah gave Adam knowledge and taught him to think.”",
+      "explanation": "Chapter 2 says Adam “was wiser than the angels because Allah gave Adam knowledge and taught him to think.”",
       "feedback": {
        "correct": "Right! Allah gave Adam knowledge and taught him to think. That is why he learned more than the angels knew.",
        "incorrect": "Read the first paragraph of Chapter 2 again. Find the word “because” and read what comes after it."
@@ -438,7 +438,7 @@
       "instructions": "Read the sentence from Chapter 2. True or false?",
       "question": "“Adam could learn and understand.” This means Adam was able to learn and understand.",
       "correctAnswer": true,
-      "explanation": "“Could + verb” tells us what someone was able to do in the past. Adam was able to learn and understand, because Allah gave him knowledge.",
+      "explanation": "“Could + verb” tells us what someone was able to do in the past. Adam was able to learn and understand because Allah gave him knowledge.",
       "feedback": {
        "correct": "Correct. “Could” shows Adam’s ability.",
        "incorrect": "Read the first paragraph of Chapter 2 again. “Could learn” = was able to learn."
@@ -450,7 +450,7 @@
       "title": "Wiser and More",
       "instructions": "Complete the lines with words from the bank. Two words are extra.",
       "question": "Which words go with “than” and after “taught him”?",
-      "fillBlanksText": "He was [blank] than the angels, because Allah gave Adam knowledge and taught him [blank] think. He learned [blank] than the angels knew.",
+      "fillBlanksText": "He was [blank] than the angels because Allah gave Adam knowledge and taught him [blank] think. He learned [blank] than the angels knew.",
       "wordBank": [
        "wisest",
        "wiser",
@@ -548,7 +548,7 @@
     "title": "Iblis’s Arrogance",
     "image": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Adam_A2%2Fimages%2Fadam-a2_adam_a2_chapter3.png?alt=media&token=47e43312-d51a-45a8-9349-7f2f097d37a2",
     "audioUrl": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Adam_A2%2FAdam%20A2%20Chapter%203%20(1).mp3?alt=media&token=cd9880b6-62a1-4810-9ded-7054952d9039",
-    "content": "Then Allah asked Iblis, “Why didn’t you respect Adam?” Iblis said, “I am better than Adam. You created me from fire, and You created Adam from soil.” \n\nIblis was arrogant. He thought he was more important and more valuable than Adam. He came from the fire and believed his origin was better. He thought little and was wrong about Adam. Iblis couldn’t see that Adam had perfect knowledge and it was for the good of every creature of Allah. This knowledge made Adam more valuable. \n\nFor Allah, the clay or the fire did not make anybody valuable. But useful knowledge makes people great, because with this knowledge, humans can do good and stop bad. \n\nBut Iblis continued saying he was right and the Creator was wrong. Allah said to Iblis, “Go away! You are far from My love and care.” \n\nAdam was now in Paradise.",
+    "content": "Then Allah asked Iblis, “Why didn’t you respect Adam?” Iblis said, “I am better than Adam. You created me from fire, and You created Adam from soil.” \n\nIblis was arrogant. He thought he was more important and more valuable than Adam. He came from the fire and believed his origin was better. He thought little and was wrong about Adam. Iblis couldn’t see that Adam had perfect knowledge and it was for the good of every creature of Allah. This knowledge made Adam more valuable. \n\nFor Allah, the clay or the fire did not make anybody valuable. But useful knowledge makes people great because with this knowledge, humans can do good and stop bad. \n\nBut Iblis continued saying he was right and the Creator was wrong. Allah said to Iblis, “Go away! You are far from My love and care.” \n\nAdam was now in Paradise.",
     "vocabulary": [
      {
       "word": "arrogant",
@@ -618,7 +618,7 @@
        "Clay or fire": "It did not make anybody valuable.",
        "Useful knowledge": "With it, humans can do good and stop bad."
       },
-      "explanation": "Iblis said he was better because he came from fire. But Chapter 3 says, “For Allah, the clay or the fire did not make anybody valuable. But useful knowledge makes people great, because with this knowledge, humans can do good and stop bad.”",
+      "explanation": "Iblis said he was better because he came from fire. But Chapter 3 says, “For Allah, the clay or the fire did not make anybody valuable. But useful knowledge makes people great because with this knowledge, humans can do good and stop bad.”",
       "feedback": {
        "correct": "Well done! Where we come from does not make us better. Useful knowledge and good actions do.",
        "incorrect": "Read Chapter 3 again. The first paragraph has Iblis’s words, the second is about Adam’s knowledge, and the third is about clay, fire and useful knowledge."
@@ -1014,7 +1014,7 @@
     "title": "Satan’s Lie and Regret",
     "image": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Adam_A2%2Fimages%2Fadam_a2_chapter5.png?alt=media&token=76cd56fb-6403-4eed-9d22-2125689e9ab1",
     "audioUrl": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Adam_A2%2FAdam%20A2%20Chapter%205%20(1).mp3?alt=media&token=99c3f2f1-6939-4348-bdbf-ef1fd9611730",
-    "content": "When Adam and Eve were happy in Paradise, Iblis came near them and told them he was their friend. It was a big lie. He softly spoke to them: “If you eat from that one tree, you will never die.” \n\nAfter a while, Iblis finally made them believe his lie. They forgot Allah’s warning. Unfortunately, people are sometimes forgetful. \n\nAdam and Eve ate fruit from that banned tree. They made a mistake, but it wasn’t on purpose. They were very sad about their wrong action. They said sorry to Allah. They learned from their mistake and decided never to repeat it. They wanted Allah to excuse them. \n\nHowever, Iblis took an opposite direction. He never thought he was wrong, because he was arrogant. He believed that he was superior to, smarter than and more important than the human. Iblis’ character makes it hard to do the right thing and see the difference between good and bad.",
+    "content": "When Adam and Eve were happy in Paradise, Iblis came near them and told them he was their friend. It was a big lie. He softly spoke to them: “If you eat from that one tree, you will never die.” \n\nAfter a while, Iblis finally made them believe his lie. They forgot Allah’s warning. Unfortunately, people are sometimes forgetful. \n\nAdam and Eve ate fruit from that banned tree. They made a mistake, but it wasn’t on purpose. They were very sad about their wrong action. They said sorry to Allah. They learned from their mistake and decided never to repeat it. They wanted Allah to excuse them. \n\nHowever, Iblis took an opposite direction. He never thought he was wrong because he was arrogant. He believed that he was superior to, smarter than and more important than the human. Iblis’ character makes it hard to do the right thing and see the difference between good and bad.",
     "vocabulary": [
      {
       "word": "lie",
@@ -1209,7 +1209,7 @@
        {
         "question": "Sentence 2 — Say if you meant it: “It wasn’t on purpose.”",
         "mode": "Individual",
-        "example": "It wasn’t on purpose, because I was very busy that week."
+        "example": "It wasn’t on purpose because I was very busy that week."
        },
        {
         "question": "Sentence 3 — Say what you learned: “I learned from …”",
@@ -1437,7 +1437,7 @@
     "title": "The First Messenger",
     "image": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Adam_A2%2Fimages%2Fadam_a2_chapter7.png?alt=media&token=2cca3dac-2759-4016-824a-106d09ff0781",
     "audioUrl": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Adam_A2%2Fadam_a2_english_chapter7.mp3?alt=media&token=38ea267e-8e50-4369-bad9-a2b925c4247a",
-    "content": "Adam and Eve lived on earth for many years. They had good and hard days. Some days brought them peace, and some days were difficult. They also had lots of children. We are all their children. Then, Allah made Adam His first Messenger. He was the first Messenger of Islam. He started teaching people to be honest, do good, stop bad and always remember Allah. \n\nAdam (pbuh) and Eve taught their children to behave well for the love of Allah and to thank Him for His help and good things in life. They also warned their children against Iblis, because Iblis was their enemy, not their friend. \n\nAfter the death of Adam (pbuh), Allah sent many other messengers. They taught the people right and wrong and the ways to stay away from Iblis. All the prophets took the same way. They wanted to make people remember Allah.",
+    "content": "Adam and Eve lived on earth for many years. They had good and hard days. Some days brought them peace, and some days were difficult. They also had lots of children. We are all their children. Then, Allah made Adam His first Messenger. He was the first Messenger of Islam. He started teaching people to be honest, do good, stop bad and always remember Allah. \n\nAdam (pbuh) and Eve taught their children to behave well for the love of Allah and to thank Him for His help and good things in life. They also warned their children against Iblis because Iblis was their enemy, not their friend. \n\nAfter the death of Adam (pbuh), Allah sent many other messengers. They taught the people right and wrong and the ways to stay away from Iblis. All the prophets took the same way. They wanted to make people remember Allah.",
     "vocabulary": [
      {
       "word": "honest",
@@ -1485,7 +1485,7 @@
        "The other messengers asked them to do it."
       ],
       "correctAnswer": 0,
-      "explanation": "Chapter 7 says, “They also warned their children against Iblis, because Iblis was their enemy, not their friend.” The other messengers came later, after Adam’s death.",
+      "explanation": "Chapter 7 says, “They also warned their children against Iblis because Iblis was their enemy, not their friend.” The other messengers came later, after Adam’s death.",
       "feedback": {
        "correct": "Right! Iblis said he was their friend, but he was really their enemy.",
        "incorrect": "Read the second paragraph of Chapter 7 again. Find the word “because” after “warned their children”."
@@ -1942,7 +1942,7 @@
     "title": "The First Crime",
     "image": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Adam_A2%2Fimages%2Fadam_a2_chapter9.png?alt=media&token=12a5e3e0-c1be-47c1-9a1d-0b64288ddf56",
     "audioUrl": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Adam_A2%2Fadam_a2_english_chapter9.mp3?alt=media&token=25446a2e-d966-4fdc-9def-e7b43c8cf34c",
-    "content": "Allah was pleased with Habil’s offering, because he gave from his heart. Qabil became very angry and said, “I will kill you.” When Habil heard this, he said, “I won’t fight back or harm you. You are my brother, and I fear Allah.” Qabil started fighting with his brother and hit him with a stone. Habil died there. \n\nSoon, Qabil’s anger cooled and he felt so sad. But he also started to panic. He said, “I killed my brother. I did the worst thing in life. Now I don’t know what I should do with his dead body.” Then, Allah sent a crow. It landed on the ground near Qabil and started digging the ground. The crow showed Qabil the way to put his brother’s dead body in the hole. Qabil cried and said, “I am worse than this crow. I cannot hide my brother’s dead body.”",
+    "content": "Allah was pleased with Habil’s offering because he gave from his heart. Qabil became very angry and said, “I will kill you.” When Habil heard this, he said, “I won’t fight back or harm you. You are my brother, and I fear Allah.” Qabil started fighting with his brother and hit him with a stone. Habil died there. \n\nSoon, Qabil’s anger cooled and he felt so sad. But he also started to panic. He said, “I killed my brother. I did the worst thing in life. Now I don’t know what I should do with his dead body.” Then, Allah sent a crow. It landed on the ground near Qabil and started digging the ground. The crow showed Qabil the way to put his brother’s dead body in the hole. Qabil cried and said, “I am worse than this crow. I cannot hide my brother’s dead body.”",
     "vocabulary": [
      {
       "word": "crow",
@@ -1992,7 +1992,7 @@
       "correctAnswer": 1,
       "explanation": "Habil gave his reasons himself: “You are my brother, and I fear Allah.”",
       "feedback": {
-       "correct": "Yes! Habil chose not to hurt his brother, because he feared Allah.",
+       "correct": "Yes! Habil chose not to hurt his brother because he feared Allah.",
        "incorrect": "Read Habil’s words in the first paragraph of Chapter 9 again. Look at the sentence right after “I won’t fight back or harm you.”"
       }
      }
@@ -2458,7 +2458,7 @@
       "type": "true-false",
       "title": "The Mistake",
       "instructions": "Read the sentence. Is it true or false?",
-      "question": "Adam and Eve ate from the tree on purpose, because they wanted to disobey Allah.",
+      "question": "Adam and Eve ate from the tree on purpose because they wanted to disobey Allah.",
       "correctAnswer": false,
       "explanation": "Chapter 5: “They forgot Allah’s warning.” And: “They made a mistake, but it wasn’t on purpose.”",
       "feedback": {
@@ -2865,7 +2865,7 @@
        {
         "question": "Sentence 4 — Compare: “The day was better / harder than I thought.”",
         "mode": "Pair",
-        "example": "The day was better than I thought, because I read a good book."
+        "example": "The day was better than I thought because I read a good book."
        }
       ]
      }
@@ -3007,7 +3007,7 @@
       ],
       "chapter": 2,
       "chapterTitle": "Knowledge and Respect",
-      "storyExample": "He was wiser than the angels, because Allah gave Adam knowledge and taught him to think.",
+      "storyExample": "He was wiser than the angels because Allah gave Adam knowledge and taught him to think.",
       "category": "Learning & Thinking"
      },
      {
@@ -3942,7 +3942,7 @@
        "They said sorry, but Iblis never thought he was wrong."
       ],
       "correctAnswer": 2,
-      "explanation": "Chapter 5 says Adam and Eve “said sorry to Allah” and “learned from their mistake”. But Iblis “never thought he was wrong, because he was arrogant.”",
+      "explanation": "Chapter 5 says Adam and Eve “said sorry to Allah” and “learned from their mistake”. But Iblis “never thought he was wrong because he was arrogant.”",
       "feedback": {
        "correct": "Yes. Adam and Eve learned from their mistake. Iblis was arrogant and did not change.",
        "incorrect": "Compare the third paragraph of Chapter 5 (Adam and Eve) with the last paragraph (Iblis)."

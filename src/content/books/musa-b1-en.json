@@ -381,7 +381,7 @@
        "describing something that happens every year"
       ],
       "correctAnswer": 2,
-      "explanation": "“Will + base verb” is used here for a prediction: the advisors say what they believe is going to happen. “Will be born” is passive, because a baby does not do the action of being born. The prediction leads to the Pharaoh’s order, which uses an imperative with no subject: “Kill …”.",
+      "explanation": "“Will + base verb” is used here for a prediction: the advisors say what they believe is going to happen. “Will be born” is passive because a baby does not do the action of being born. The prediction leads to the Pharaoh’s order, which uses an imperative with no subject: “Kill …”.",
       "feedback": {
        "correct": "Correct. The advisors predict a future event, and the Pharaoh reacts to it.",
        "incorrect": "Ask: Has the boy been born yet when the advisors speak? Check what they said after the Pharaoh woke up."
@@ -1025,7 +1025,7 @@
     "title": "A Mistake in the Bazaar",
     "image": "",
     "audioUrl": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fb1%2Faudio%2F04_Chapter_5_A_Mistake_in_the_Bazaar.mp3?alt=media&token=11a36743-f419-4b9d-b47d-d37505d638b8",
-    "content": "One day, while Moses (pbuh) was walking in the bazaar, he saw two men fighting. One of them was an Egyptian, while the other was from the Children of Israel. Suddenly, a poor and weak man from the Children of Israel called out, “Help me!” Moses ran to help him. He hit the Egyptian and accidentally caused someone’s death. Moses was very upset. He prayed to Allah, “Forgive me! I didn’t do it on purpose. I have wronged myself. This is of Satan’s doing.” (Surah al-Qasas: 15–16) Allah pardoned him, because He is Forgiving and Merciful. The next day, Moses was again in the bazaar where he saw two men fighting. One of them was the same man from the Children of Israel who Moses helped the day before. The man once more called out to Moses, “Help me!” Moses understood that the Israelite was a quarrelsome man, not a peaceable man. Moses approached those who were fighting. The man from the Children of Israel made fun of Moses, “You accidentally caused someone’s death yesterday. Are you going to kill me too?”",
+    "content": "One day, while Moses (pbuh) was walking in the bazaar, he saw two men fighting. One of them was an Egyptian, while the other was from the Children of Israel. Suddenly, a poor and weak man from the Children of Israel called out, “Help me!” Moses ran to help him. He hit the Egyptian and accidentally caused someone’s death. Moses was very upset. He prayed to Allah, “Forgive me! I didn’t do it on purpose. I have wronged myself. This is of Satan’s doing.” (Surah al-Qasas: 15–16) Allah pardoned him because He is Forgiving and Merciful. The next day, Moses was again in the bazaar where he saw two men fighting. One of them was the same man from the Children of Israel who Moses helped the day before. The man once more called out to Moses, “Help me!” Moses understood that the Israelite was a quarrelsome man, not a peaceable man. Moses approached those who were fighting. The man from the Children of Israel made fun of Moses, “You accidentally caused someone’s death yesterday. Are you going to kill me too?”",
     "vocabulary": [
      {
       "word": "Children of Israel",
@@ -1334,7 +1334,7 @@
        "The soldiers have already caught Moses.",
        "The soldiers catch people like Moses every day.",
        "The man is promising to help the soldiers.",
-       "He expects it to happen soon, because the soldiers are already searching."
+       "He expects it to happen soon because the soldiers are already searching."
       ],
       "correctAnswer": 3,
       "explanation": "“Be going to” makes a prediction based on what is happening now. The evidence is in the present continuous: “are looking for you” – the search is already in progress. That is why the man then gives an urgent imperative: “Run away from the city.”",
@@ -1697,7 +1697,7 @@
     "title": "A Simple Life in Midian",
     "image": "",
     "audioUrl": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fb1%2Faudio%2F07_Chapter_8_A_Simple_Life_in_Midian.mp3?alt=media&token=c081e538-c8bc-48cc-871b-bbcb6daaa664",
-    "content": "Shu’ayb (pbuh) said, “Go and call the young man, I would like to thank him for the work he did.” Moses (pbuh) came to the house, where he ate food with the girls’ father. Shu’ayb (pbuh) offered Moses a job. He accepted the offer, because he was a stranger in Midian and he urgently needed a job and a house. Moses helped the family with their work while he was staying with them. Later, he married one of the sisters. They lived a simple life with patience. After living in Midian for about ten years, with the guidance of Allah, Moses decided to go back to Egypt. He took his family and started to travel towards Egypt. They traveled a long time. It was winter. They met nobody on the way. It was getting dark and cold. They were crossing a valley between mountains. Suddenly, Moses saw a fire on the hillside. He said to his family, “Wait here. Let me go and take some burning sticks from the fire to get warm.”",
+    "content": "Shu’ayb (pbuh) said, “Go and call the young man, I would like to thank him for the work he did.” Moses (pbuh) came to the house, where he ate food with the girls’ father. Shu’ayb (pbuh) offered Moses a job. He accepted the offer because he was a stranger in Midian and he urgently needed a job and a house. Moses helped the family with their work while he was staying with them. Later, he married one of the sisters. They lived a simple life with patience. After living in Midian for about ten years, with the guidance of Allah, Moses decided to go back to Egypt. He took his family and started to travel towards Egypt. They traveled a long time. It was winter. They met nobody on the way. It was getting dark and cold. They were crossing a valley between mountains. Suddenly, Moses saw a fire on the hillside. He said to his family, “Wait here. Let me go and take some burning sticks from the fire to get warm.”",
     "vocabulary": [
      {
       "word": "Egypt",
@@ -1847,7 +1847,7 @@
        },
        {
         "left": "urgently",
-        "right": "very quickly, because it could not wait"
+        "right": "very quickly because it could not wait"
        },
        {
         "left": "with patience",
@@ -1864,7 +1864,7 @@
       ],
       "correctAnswer": {
        "a stranger": "a person from another place",
-       "urgently": "very quickly, because it could not wait",
+       "urgently": "very quickly because it could not wait",
        "with patience": "calmly, without complaining",
        "hillside": "the sloping side of a mountain",
        "burning sticks": "pieces of wood that are on fire"
@@ -1894,7 +1894,7 @@
         ]
        },
        {
-        "source": "He accepted the offer, because he was a stranger in Midian and he urgently needed a job and a house.",
+        "source": "He accepted the offer because he was a stranger in Midian and he urgently needed a job and a house.",
         "frame": "He was a stranger in Midian and he urgently needed a job and a house, [blank] he accepted the offer.",
         "answers": [
          "so",
@@ -2477,7 +2477,7 @@
     "title": "The Miracle of the Staff",
     "image": "",
     "audioUrl": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/Moses%2Fb1%2Faudio%2F10_Chapter_11_The_Miracle_of_the_Staff.mp3?alt=media&token=dd7499b4-4031-4904-a038-ad43505e4ae0",
-    "content": "They made fun of Moses (pbuh) and Allah’s signs. The king said to Moses (pbuh), “This is only magic. All of my magicians can do this.” He invited his magicians to the palace. The magicians came with sticks in their hands. Some were holding ropes. They put down the sticks and ropes. Once the sticks and ropes fell to the ground, they looked just like snakes! When Moses (pbuh) saw them, he got frightened. But Allah spoke to Moses (pbuh), “Throw down your staff!” Moses (pbuh) threw down his staff and it turned into a huge snake. In a second, his staff ate up all the snakes of the magicians. The magicians who witnessed this miracle bowed down to Allah. They shouted, “We believe in the Lord of Moses and Harun!” The king still refused to believe in Allah, because he was arrogant. The Pharaoh did not want to let those who worshipped Allah live. He continued to trouble Moses (pbuh) and his people day and night. He told his advisors and soldiers, “Be rude to them!”",
+    "content": "They made fun of Moses (pbuh) and Allah’s signs. The king said to Moses (pbuh), “This is only magic. All of my magicians can do this.” He invited his magicians to the palace. The magicians came with sticks in their hands. Some were holding ropes. They put down the sticks and ropes. Once the sticks and ropes fell to the ground, they looked just like snakes! When Moses (pbuh) saw them, he got frightened. But Allah spoke to Moses (pbuh), “Throw down your staff!” Moses (pbuh) threw down his staff and it turned into a huge snake. In a second, his staff ate up all the snakes of the magicians. The magicians who witnessed this miracle bowed down to Allah. They shouted, “We believe in the Lord of Moses and Harun!” The king still refused to believe in Allah because he was arrogant. The Pharaoh did not want to let those who worshipped Allah live. He continued to trouble Moses (pbuh) and his people day and night. He told his advisors and soldiers, “Be rude to them!”",
     "vocabulary": [
      {
       "word": "palace",
@@ -2554,7 +2554,7 @@
        "The Pharaoh": "still refused to believe because he was arrogant",
        "Moses (pbuh)": "got frightened at first when the sticks and ropes looked like snakes"
       },
-      "explanation": "When the sticks and ropes looked like snakes, Moses “got frightened”, but Allah told him to throw down his staff. The magicians “bowed down to Allah” and said, “We believe in the Lord of Moses and Harun!” But “The king still refused to believe in Allah, because he was arrogant.”",
+      "explanation": "When the sticks and ropes looked like snakes, Moses “got frightened”, but Allah told him to throw down his staff. The magicians “bowed down to Allah” and said, “We believe in the Lord of Moses and Harun!” But “The king still refused to believe in Allah because he was arrogant.”",
       "feedback": {
        "correct": "Well done. The same miracle led the magicians to faith, while pride kept the Pharaoh away from it.",
        "incorrect": "Read Chapter 11 again: The middle tells how Moses felt, and the end tells what the magicians and the king did."
@@ -4133,7 +4133,7 @@
       ],
       "chapter": 5,
       "chapterTitle": "A Mistake in the Bazaar",
-      "storyExample": "Allah pardoned him, because He is Forgiving and Merciful.",
+      "storyExample": "Allah pardoned him because He is Forgiving and Merciful.",
       "category": "Forgiveness & Values"
      },
      {
@@ -4378,7 +4378,7 @@
       ],
       "chapter": 8,
       "chapterTitle": "A Simple Life in Midian",
-      "storyExample": "He accepted the offer, because he was a stranger in Midian and he urgently needed a job and a house.",
+      "storyExample": "He accepted the offer because he was a stranger in Midian and he urgently needed a job and a house.",
       "category": "People & Society"
      },
      {
@@ -4655,7 +4655,7 @@
       ],
       "chapter": 11,
       "chapterTitle": "The Miracle of the Staff",
-      "storyExample": "The king still refused to believe in Allah, because he was arrogant.",
+      "storyExample": "The king still refused to believe in Allah because he was arrogant.",
       "category": "Character & Values"
      },
      {
@@ -4907,7 +4907,7 @@
       "meaning": "A person who is new to a place and does not know people there.",
       "partOfSpeech": "noun",
       "chapter": 8,
-      "context": "He accepted the offer, because he was a stranger in Midian and he urgently needed a job and a house."
+      "context": "He accepted the offer because he was a stranger in Midian and he urgently needed a job and a house."
      },
      {
       "word": "signs",
@@ -5303,7 +5303,7 @@
        {
         "question": "Sentence 3 — Give reasons: “because … . That’s why … . We … in order to …”",
         "mode": "Pair",
-        "example": "The tent was very heavy, because it was wet. That’s why we asked the parents for help. We worked together in order to finish before the guests arrived."
+        "example": "The tent was very heavy because it was wet. That’s why we asked the parents for help. We worked together in order to finish before the guests arrived."
        },
        {
         "question": "Sentence 4 — Say how it ended: “Our teacher told us to … . In the end, we managed to …”",

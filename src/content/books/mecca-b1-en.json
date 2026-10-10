@@ -16,7 +16,7 @@
     "title": "The City and the Age",
     "image": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fb1%2Fimages%2Fmecca_b1_ch1-clean.png?alt=media&token=e13d2444-ea46-44d8-8170-383aef833b68",
     "audioUrl": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0373200489.firebasestorage.app/o/mecca%2Fb1%2Faudio%2F00_Chapter_1.mp3?alt=media&token=32fccb2c-133f-404e-9e6e-dab63c05bd13",
-    "content": "Islam started in the 7th century in the city of Mecca. The period before Islam was called the Age of Ignorance, or Jahiliyyah, because religious and social disorder was common in society. Life was hard and chaotic. There was no central government in Arabia, and tribes were the basis of society.\n\nBefore Islam, Mecca was led by a council of rich merchants. For this reason, the city was known as the Republic of Merchants. Powerful people controlled many parts of life, while poor and weak people lived in misery.\n\nSociety was not fair, and people from poor backgrounds were often treated badly. The Qur’an describes this period as a time of ignorance and cruelty. Violence, hatred, and fighting were common in the social life of the time.",
+    "content": "Islam started in the 7th century in the city of Mecca. The period before Islam was called the Age of Ignorance, or Jahiliyyah because religious and social disorder was common in society. Life was hard and chaotic. There was no central government in Arabia, and tribes were the basis of society.\n\nBefore Islam, Mecca was led by a council of rich merchants. For this reason, the city was known as the Republic of Merchants. Powerful people controlled many parts of life, while poor and weak people lived in misery.\n\nSociety was not fair, and people from poor backgrounds were often treated badly. The Qur’an describes this period as a time of ignorance and cruelty. Violence, hatred, and fighting were common in the social life of the time.",
     "vocabulary": [
      {
       "word": "Mecca",
@@ -76,7 +76,7 @@
        "Mecca had no trade with other places."
       ],
       "correctAnswer": 1,
-      "explanation": "Chapter 1 says the period “was called the Age of Ignorance, or Jahiliyyah, because religious and social disorder was common in society.” The council of rich merchants explains a different name: The Republic of Merchants.",
+      "explanation": "Chapter 1 says the period “was called the Age of Ignorance, or Jahiliyyah because religious and social disorder was common in society.” The council of rich merchants explains a different name: The Republic of Merchants.",
       "feedback": {
        "correct": "Right. The word “because” in the first paragraph links the name to religious and social disorder.",
        "incorrect": "Read the first paragraph again and find the word “because” after “Jahiliyyah”. The merchants explain a different name."
@@ -332,7 +332,7 @@
        "of barbarism."
       ],
       "correctAnswer": null,
-      "explanation": "The pattern is describe + thing + as + description: “described Islam as the opposite of barbarism”. The same pattern appears in Chapter 1: “The Qur’an describes this period as a time of ignorance and cruelty.” Here the pattern builds a contrast, because the chapter has just called the Jahiliyyah “an age of barbarism”.",
+      "explanation": "The pattern is describe + thing + as + description: “described Islam as the opposite of barbarism”. The same pattern appears in Chapter 1: “The Qur’an describes this period as a time of ignorance and cruelty.” Here the pattern builds a contrast because the chapter has just called the Jahiliyyah “an age of barbarism”.",
       "feedback": {
        "correct": "Well done. The thing being described comes straight after “described”, and “as” introduces the description.",
        "incorrect": "Start with the person, then “described”, then what he described, then “as …”. Check the first paragraph of Chapter 2."
@@ -2384,7 +2384,7 @@
        }
       ],
       "correctAnswer": null,
-      "explanation": "“Most” means the majority, not everyone; “all” would be an overclaim, because the next sentence names people who followed other religions. “Only a few” is used with countable nouns such as “people”; “a little” is for uncountable nouns. “Including” introduces some examples from a larger group; it does not give the full list.",
+      "explanation": "“Most” means the majority, not everyone; “all” would be an overclaim because the next sentence names people who followed other religions. “Only a few” is used with countable nouns such as “people”; “a little” is for uncountable nouns. “Including” introduces some examples from a larger group; it does not give the full list.",
       "feedback": {
        "correct": "Correct. You described the groups accurately without overgeneralising.",
        "incorrect": "Ask: Did everyone worship idols? Is “people” countable? Does the list give all 360 idols or only some examples? Then check the first paragraph of Chapter 10."
@@ -2609,7 +2609,7 @@
        "It shows a contrast with the sentence before it."
       ],
       "correctAnswer": 1,
-      "explanation": "“That is why” points back to the ideas already given and introduces their result. The writer first makes two general statements (in the present simple, because they are always true) and then applies them to history (in the past simple). A new belief could change how people lived, and so it could also change who had power and money.",
+      "explanation": "“That is why” points back to the ideas already given and introduces their result. The writer first makes two general statements (in the present simple because they are always true) and then applies them to history (in the past simple). A new belief could change how people lived, and so it could also change who had power and money.",
       "feedback": {
        "correct": "Correct. The dislike of Islam is presented as a result of the general ideas before it.",
        "incorrect": "“That” refers back to what came before. Ask: Is the last sentence a reason, an example, a contrast, or a result?"
@@ -3331,7 +3331,7 @@
        "Because the children heard their own cries."
       ],
       "correctAnswer": 2,
-      "explanation": "“Could be heard” is a passive form with “could”. The passive puts the cries at the start of the sentence and leaves out the listener, because the listener could be anyone. With “everywhere”, it shows how widespread the hunger was.",
+      "explanation": "“Could be heard” is a passive form with “could”. The passive puts the cries at the start of the sentence and leaves out the listener because the listener could be anyone. With “everywhere”, it shows how widespread the hunger was.",
       "feedback": {
        "correct": "Correct. The passive keeps the focus on the cries and how widely they could be heard.",
        "incorrect": "Look at the word “everywhere”. If the cries could be heard everywhere, who could hear them?"
@@ -4372,7 +4372,7 @@
       "type": "true-false",
       "title": "Freedom of Choice",
       "instructions": "Decide whether the statement is true or false according to the story.",
-      "question": "It was hard for a person to choose a new religion, because leaving the tribe’s way could mean losing its protection.",
+      "question": "It was hard for a person to choose a new religion because leaving the tribe’s way could mean losing its protection.",
       "correctAnswer": true,
       "explanation": "Chapter 15: “In old Arab society, tribal loyalty was so strong that freedom of choice was difficult. If someone left the tribe’s way, that person could lose protection. It was almost like being stateless today.”",
       "feedback": {
@@ -4405,7 +4405,7 @@
       "level": "B1",
       "chapter": 1,
       "chapterTitle": "The City and the Age",
-      "storyExample": "The period before Islam was called the Age of Ignorance, or Jahiliyyah, because religious and social disorder was common in society."
+      "storyExample": "The period before Islam was called the Age of Ignorance, or Jahiliyyah because religious and social disorder was common in society."
      },
      {
       "word": "chaotic",
@@ -6215,7 +6215,7 @@
       "explanation": "“While” joins two different situations in one sentence, so no second linker is needed. The “while” clause comes first and is followed by a comma. In the second sentence, the passive (“was defeated”) puts the Jurhum tribe, the group that lost, at the start; “by” names the winner.",
       "feedback": {
        "correct": "Well done. You joined a contrast with “while” and used the passive to change the focus.",
-       "incorrect": "For the first frame, write what rich women could do. For the second, use was + past participle, because the Jurhum tribe did not defeat anyone."
+       "incorrect": "For the first frame, write what rich women could do. For the second, use was + past participle because the Jurhum tribe did not defeat anyone."
       }
      },
      {

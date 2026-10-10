@@ -864,7 +864,7 @@ entries.set(key, { word, definition });
             { title: 'الصدق الباطن والنزاهة:', description: 'الاستقامة المطلقة في النوايا الباطنة والظاهرة، فالحق سبحانه لا يقبل اعوجاجاً في طريق الصدق.' },
             { title: 'التماسك الاجتماعي والفنون:', description: 'استخدام الكلمة الطيبة والشعر البسيط العذب لتقريب القلوب وبث السلام في أوقات الفتن.' }
           ] : [
-            { title: 'Universal Compassion:', description: 'Viewing all of creation with active love and kindness, because every creature is a temporal mirror reflecting the names of the Creator.' },
+            { title: 'Universal Compassion:', description: 'Viewing all of creation with active love and kindness because every creature is a temporal mirror reflecting the names of the Creator.' },
             { title: 'Honesty and Integrity (Straight Wood):', description: 'Cultivating absolute honesty inside one\'s thoughts and outer deeds, symbolizing that nothing crooked remains in the circle of truth.' },
             { title: 'Cultural Cohesion & Fine Arts:', description: 'Employing simple, beautiful language and pure poetry as emotional healing and a force of unity in times of social unrest.' }
           ]
