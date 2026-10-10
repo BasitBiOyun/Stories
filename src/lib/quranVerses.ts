@@ -13,7 +13,7 @@ type Range = [number, number];
 
 const EXTRA: Record<string, Record<number, [string, string][]>> = {
   'musa-B2': {
-    10: [['And he entered the city', 'who do right.”']],
+    10: [['“And he entered the city', 'who do right.”']],
     11: [['And there came a man', 'who are wrongdoers!”']],
     17: [['“Verily, the Hour is coming', 'as an arrogant tyrant).”']],
   },
@@ -38,7 +38,22 @@ const EXTRA: Record<string, Record<number, [string, string][]>> = {
 // Arabic passages with no reference after them, matching an English verse that has one.
 const EXTRA_AR: Record<string, Record<number, [string, string][]>> = {
   'musa-B1': { 5: [['«اِغْفِرْ لي!', 'من عمل الشيطان»']] },
-  'musa-B2': { 11: [['وَجَاءَ رَجُلٌ مِنْ أَقْصَى الْمَدِينَةِ', 'مِنَ الْقَوْمِ الظَّالِمِينَ!»']] },
+  'musa-B2': {
+    10: [['﴿وَدَخَلَ الْمَدِينَةَ', 'مِنَ الْمُصْلِحِينَ»']],
+    11: [['وَجَاءَ رَجُلٌ مِنْ أَقْصَى الْمَدِينَةِ', 'مِنَ الْقَوْمِ الظَّالِمِينَ!»']],
+  },
+};
+
+// Quotations the rule would take for verses but that are not the verse's own words: a title, or
+// people's words retold in the story's own way. Listed by how the quotation begins.
+const NOT_VERSE: Record<'en' | 'ar', Record<string, Record<number, string[]>>> = {
+  en: {
+    'mecca-B2': { 8: ['“With men like us around'] },
+  },
+  ar: {
+    'ibrahim-B2': { 1: ['«خَلِيلُ اللَّهِ»'] },
+    'mecca-B2': { 8: ['«مَعَ وُجُودِ رِجَالٍ'] },
+  },
 };
 
 const EN_CITE = /^\s*\((see |See )?(Surah|[A-Z][\w’'-]+:\s?\d)/;
@@ -82,7 +97,8 @@ export function quranVerseRanges(text: string, language: 'en' | 'ar', storyId: s
   } else {
     out.push(...quoteRanges(text, '“', '”', (s, e) => EN_CITE.test(text.slice(e, e + 40)) || EN_INTRO.test(lastParagraph(text, s)), out));
   }
-  return out.sort((x, y) => x[0] - y[0]);
+  const notVerse = NOT_VERSE[language][`${storyId}-${level}`]?.[chapter] ?? [];
+  return out.filter(([s]) => !notVerse.some(start => text.startsWith(start, s))).sort((x, y) => x[0] - y[0]);
 }
 
 export const VERSE_OPEN = '\uE000';
